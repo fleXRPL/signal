@@ -26,8 +26,8 @@ from rapidfuzz import fuzz
 from rich.console import Console
 from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
 
-from signal import store
-from signal.prompts import (
+from pipeline import store
+from pipeline.prompts import (
     CLUSTER_ANALYSIS,
     CORRELATION_ANALYSIS,
     ENTITY_EXTRACTION,
@@ -574,7 +574,6 @@ def synthesize_brief(
         console.print(f"  [red]LLM error:[/red] {exc}")
         brief = "Brief synthesis failed. Check Ollama connection."
 
-    store.save_brief(run_id=0, brief_text=brief)
     console.print("  [green]✓[/green] Brief complete")
     return brief
 
@@ -602,7 +601,7 @@ def run_pipeline(
         Tuple of (brief_text, clusters, correlation_analysis)
     """
     ollama_cfg = config.get("ollama", {})
-    model = ollama_cfg.get("model", "llama3.1:8b")
+    model = ollama_cfg.get("model", "qwen2.5:14b")
     analysis_model = ollama_cfg.get("analysis_model", model)
     base_url = ollama_cfg.get("base_url", "http://localhost:11434")
     timeout = ollama_cfg.get("timeout", 120)

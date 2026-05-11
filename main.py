@@ -43,10 +43,10 @@ def run_signal(args: argparse.Namespace) -> None:
     """Main pipeline execution."""
     # Import here so venv is set up first when running via bootstrap
     from rich.console import Console
-    from signal import store
-    from signal.collector import collect_feeds, load_config
-    from signal.analyzer import run_pipeline
-    from signal.reporter import generate_report
+    from pipeline import store
+    from pipeline.collector import collect_feeds, load_config
+    from pipeline.analyzer import run_pipeline
+    from pipeline.reporter import generate_report
 
     console = Console()
     console.print("\n[bold cyan]▸ SIGNAL[/bold cyan] [dim]— Political Intelligence Pipeline[/dim]\n")
@@ -78,13 +78,13 @@ def run_signal(args: argparse.Namespace) -> None:
         return
 
     # Check Ollama is reachable
-    model = config["ollama"].get("model", "llama3.1:8b")
+    model = config["ollama"].get("model", "qwen2.5:14b")
     console.print(f"[dim]Checking Ollama ({model})...[/dim]")
     try:
         import ollama as _ollama
         client = _ollama.Client(host=config["ollama"].get("base_url", "http://localhost:11434"))
         models = client.list()
-        available = [m["name"] for m in models.get("models", [])]
+        available = [m.model for m in models.models]
         if not any(model in m for m in available):
             console.print(f"\n[yellow]⚠[/yellow]  Model [bold]{model}[/bold] not found in Ollama.")
             console.print(f"    Available: {', '.join(available) or 'none'}")
