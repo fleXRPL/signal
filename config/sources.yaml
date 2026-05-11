@@ -1,0 +1,112 @@
+ollama:
+  model: "llama3.1:8b"        # swap to qwen2.5:14b for better analysis
+  base_url: "http://localhost:11434"
+  timeout: 120
+  analysis_model: "llama3.1:8b"  # can set a different model for deep analysis passes
+
+collection:
+  max_articles_per_source: 20
+  article_age_hours: 48         # ignore articles older than this
+  fetch_full_text: true         # try to fetch full article body
+  fetch_timeout: 10
+
+analysis:
+  min_cluster_size: 2           # min articles to form a cluster
+  entity_similarity_threshold: 0.75
+  title_similarity_threshold: 0.70
+
+sources:
+  # ── Wire Services (center) ──────────────────────────────────────────────
+  - name: "AP Politics"
+    url: "https://feeds.apnews.com/rss/politics"
+    bias: "center"
+    type: rss
+
+  - name: "Reuters Politics"
+    url: "https://feeds.reuters.com/reuters/politicsNews"
+    bias: "center"
+    type: rss
+
+  - name: "C-SPAN"
+    url: "https://www.c-span.org/rss/podcast/congressthisweek.xml"
+    bias: "center"
+    type: rss
+
+  # ── Center / Center-Left ────────────────────────────────────────────────
+  - name: "NPR Politics"
+    url: "https://feeds.npr.org/1014/rss.xml"
+    bias: "center-left"
+    type: rss
+
+  - name: "PBS NewsHour Politics"
+    url: "https://www.pbs.org/newshour/feeds/rss/politics"
+    bias: "center-left"
+    type: rss
+
+  - name: "Politico"
+    url: "https://www.politico.com/rss/politicopicks.xml"
+    bias: "center-left"
+    type: rss
+
+  - name: "The Hill"
+    url: "https://thehill.com/feed/"
+    bias: "center"
+    type: rss
+
+  - name: "Axios Politics"
+    url: "https://api.axios.com/feed/politics"
+    bias: "center"
+    type: rss
+
+  # ── Left ────────────────────────────────────────────────────────────────
+  - name: "Washington Post Politics"
+    url: "https://feeds.washingtonpost.com/rss/politics"
+    bias: "left"
+    type: rss
+
+  - name: "The Guardian US"
+    url: "https://www.theguardian.com/us-news/rss"
+    bias: "left"
+    type: rss
+
+  - name: "Mother Jones"
+    url: "https://www.motherjones.com/feed/"
+    bias: "far-left"
+    type: rss
+
+  # ── Center-Right / Right ────────────────────────────────────────────────
+  - name: "Wall Street Journal Politics"
+    url: "https://feeds.a.dj.com/rss/RSSPolitics.xml"
+    bias: "center-right"
+    type: rss
+
+  - name: "Fox News Politics"
+    url: "https://moxie.foxnews.com/google-publisher/politics.xml"
+    bias: "right"
+    type: rss
+
+  - name: "Washington Examiner"
+    url: "https://www.washingtonexaminer.com/tag/politics.rss"
+    bias: "right"
+    type: rss
+
+  - name: "National Review"
+    url: "https://www.nationalreview.com/feed/"
+    bias: "right"
+    type: rss
+
+  - name: "Breitbart"
+    url: "https://feeds.feedburner.com/breitbart"
+    bias: "far-right"
+    type: rss
+
+  # ── Specialty / Aggregators ─────────────────────────────────────────────
+  - name: "RealClearPolitics"
+    url: "https://www.realclearpolitics.com/xml/politics.xml"
+    bias: "center-right"
+    type: rss
+
+  - name: "Reason"
+    url: "https://reason.com/feed/"
+    bias: "libertarian"
+    type: rss
