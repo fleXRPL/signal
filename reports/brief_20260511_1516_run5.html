@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-11 15:16 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <div><!-- spacer --></div>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-11 15:16 UTC</span>
+    <span class="pill">133 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 qwen2.5:14b</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics currently grapples with significant legal and political challenges centered around redistricting and voting rights, particularly following the Virginia Supreme Court&#x27;s invalidation of a newly redrawn election map. This ruling has set off a chain reaction of legal and political responses across multiple states, reflecting a broader national debate over electoral fairness and minority representation. Concurrently, President Trump’s diplomatic actions regarding Iran are influencing both U.S. foreign policy and domestic political narratives, highlighting the complex interplay between international diplomacy and domestic politics.</p>
+<p>The core issue in Virginia is not just the court ruling but the proposed response by Democrats to lower the mandatory retirement age for justices, a move that raises questions about judicial independence and political influence over the judiciary. This debate underscores broader concerns about the politicization of legal institutions and its implications for democratic processes. Meanwhile, President Trump’s stance on Iran reflects his ongoing efforts to shape U.S. foreign policy through personal diplomacy, which has significant implications for both international relations and domestic political discourse.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Key actors driving events include Virginia&#x27;s Supreme Court justices, Democratic lawmakers in Virginia, and President Donald Trump. The alliances between these actors are complex: Democrats are pushing back against what they see as gerrymandering efforts by Republicans, while Trump’s diplomatic maneuvers aim to influence both foreign policy and domestic political narratives. Pressures from various interest groups and legal challenges further complicate the dynamics.</p>
+<p>Motivations behind these actions often go beyond immediate political gains. For instance, Democrats’ push for judicial reforms in Virginia is driven by a desire to protect voting rights and ensure fair elections, while Trump’s diplomatic efforts are motivated by his vision of reshaping U.S. foreign policy through personal relationships with world leaders. These motivations are obscured in much of the media coverage, which tends to focus on immediate political implications rather than underlying strategic goals.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Left-leaning sources often downplay or omit discussions about potential constitutional and ethical implications of lowering judges&#x27; retirement ages, focusing instead on voting rights issues. Conversely, right-leaning outlets tend to overlook criticisms of Trump’s handling of the Iran situation as detrimental to international security and stability. Additionally, both sides selectively highlight narratives that align with their ideological stances, potentially obscuring broader bipartisan or cross-ideological issues.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The timing of Virginia&#x27;s Supreme Court ruling invalidating the newly redrawn election map coincides with significant political activity around redistricting in other states like Tennessee. This suggests coordinated legal challenges or strategic planning by political actors across multiple jurisdictions, indicating a systemic approach to addressing gerrymandering issues.</p>
+<p>Another pattern is the interplay between international diplomacy and domestic politics, exemplified by President Trump’s actions regarding Iran. These diplomatic maneuvers are influencing both U.S. foreign policy decisions and shaping narratives within the domestic political sphere, highlighting the complex dynamics that shape current geopolitical strategies.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Legal Challenges to Redistricting Maps</strong>: Monitor for legal challenges to redistricting maps in other states following Virginia&#x27;s Supreme Court ruling. This could set a precedent with national implications.</li>
+<li><strong>U.S.-Iran Negotiations</strong>: Keep an eye on further developments in U.S.-Iran negotiations and their broader implications for Middle East policy.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is characterized by significant legal challenges to redistricting efforts, reflecting deep-seated concerns about electoral fairness and minority representation. Simultaneously, President Trump’s diplomatic actions are reshaping the geopolitical landscape while influencing domestic political narratives. The interplay between these issues underscores a complex dynamic where immediate political gains often mask underlying strategic goals and broader ideological battles.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Virginia&#x27;s Supreme Court invalidates newly redrawn election map, prompting political response from Democrats</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The core issue is the Supreme Court&#x27;s invalidation of a redistricting map, which has significant political ramifications. The proposed response by Democrats to lower the mandatory retirement age for justices is speculative and contentious, highlighting broader concerns about judicial independence and political influence over the judiciary.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The situation is presented as a setback for Democrats, emphasizing the political implications of the court&#x27;s decision and the need for strategic response
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The situation is presented neutrally, focusing on the immediate political challenges faced by Virginia Democrats due to the court&#x27;s decision
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The proposed action by Democrats to lower the retirement age is framed as an unconstitutional move aimed at undermining judicial independence and integrity
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Details about proposed actions to lower the mandatory retirement age for justices are not mentioned in left-leaning coverage
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Left-leaning outlets do not emphasize the potential constitutional and ethical implications of lowering the retirement age for judges
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">President Trump Rejects Iran&#x27;s Response to Ceasefire Proposal, Preparing for Summit with China</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:21.1;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:15.8;" title="center-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:26.3;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:26.3;" title="left: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:10.5;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The coverage highlights a significant diplomatic standoff between the U.S. and Iran, with potential for further escalation or resolution depending on future negotiations. The framing by different outlets reflects their political biases but does not significantly alter the factual core of the events.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets frame the situation as a diplomatic failure with rising tensions, emphasizing Trump&#x27;s erratic foreign policy and potential for conflict escalation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present a balanced view of diplomatic tensions and high-stakes meetings between world leaders, focusing on collaborative efforts in law enforcement and trade discussions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets emphasize confrontation and the need for strong action against Iran, framing President Trump&#x27;s approach as masterful diplomacy that could lead to economic prosperity.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Right-leaning coverage often includes claims about Trump&#x27;s potential for economic success through diplomacy, which are not emphasized by left-leaning sources.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Far-right outlets tend to omit criticisms of Trump&#x27;s handling of the Iran situation as detrimental to international security and stability, which are highlighted in left-leaning reports.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A Virginia Supreme Court ruling has invalidated a Democrat-led redistricting map, with differing interpretations across political spectrums.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:25.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The differing interpretations highlight the polarized nature of political discourse, where factual events are framed through ideological lenses. The court ruling&#x27;s implications for redistricting efforts and its impact on midterms is the core issue, overshadowed by partisan narratives.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the awarding of the no-bid contract as a potential conflict of interest and the Virginia Supreme Court&#x27;s decision as an attack on voting rights.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Neutral reporting focusing on the factual aspects of the court ruling and its implications for upcoming midterms without significant emotional or ideological framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Celebrates the court ruling as a victory for Republican efforts in redistricting, while accusing Democrats of attempting to rig elections.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not mention the celebration by Republicans regarding the Virginia Supreme Court&#x27;s decision, nor does it address Rep. Ted Lieu&#x27;s comments about Trump&#x27;s coalition collapse.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Omits discussion of the no-bid contract awarded to a company with ties to Trump and downplays concerns over potential conflicts of interest or attacks on voting rights.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Political figures debate the implications of gerrymandering and redistricting efforts in Tennessee, with concerns over civil rights progress and minority voting power.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The debate over redistricting efforts in Tennessee highlights a larger national conversation around protecting minority voting power. While both sides agree on the criticism of current practices, they differ significantly in their framing and emotional tone, with left-leaning outlets emphasizing civil rights concerns and right-leaning outlets focusing on perceived political attacks.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames gerrymandering as a tool used by Republicans to suppress the voting power of minority groups, emphasizing emotional language around civil rights.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    A neutral framing would likely focus on the factual aspects of redistricting efforts and their impact on minority voting power without emotional language or extreme claims.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Implies that Rep. Jones&#x27; comments are inflammatory and out-of-context, focusing on perceived overreach in criticism rather than substantive policy discussion.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not address potential criticisms that Rep. Jones&#x27; comments are overly inflammatory or lack context regarding specific policy details.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Omits discussion about the broader implications of gerrymandering for minority voting rights and civil rights progress.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Defense Secretary Pete Hegseth accuses Senator Mark Kelly of potentially revealing classified information during a public interview.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core issue revolves around an accusation of revealing classified information during a public interview. The framing varies based on political orientation, with right-leaning outlets emphasizing political tensions and left-leaning outlets focusing on security breaches. The actual review by the Pentagon is a factual point agreed upon across all sources.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets emphasize the breach of security protocol and the potential implications for national security.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present the accusation as a serious breach of security protocol without additional framing or emphasis on political tensions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets frame the situation as a violation of security protocols within the context of an ongoing feud between military leadership and Senator Kelly, highlighting the political tension.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning sources do not mention the ongoing feud between Hegseth and Kelly that is emphasized by right-leaning sources.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning sources omit details about the specific nature of the classified information mentioned in left-leaning coverage, focusing instead on the political context.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Virginia</span><span class="entity-tag">Tennessee</span></div>
+  <div class="connection-text">Both states are experiencing significant political and legal challenges related to redistricting and voting rights, reflecting a broader national trend.</div>
+  <div class="connection-sig">↳ This connection highlights the systemic nature of gerrymandering issues across multiple states, indicating potential for coordinated legal or legislative responses.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">President Trump</span><span class="entity-tag">Iran</span></div>
+  <div class="connection-text">Trump&#x27;s diplomatic actions and statements regarding Iran are influencing U.S. foreign policy and domestic political narratives.</div>
+  <div class="connection-sig">↳ The interplay between international diplomacy and domestic politics underscores the complex dynamics shaping current geopolitical strategies.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Multiple stories focus on redistricting efforts and voting rights, reflecting a national debate over electoral fairness and minority representation.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The timing of Virginia&#x27;s Supreme Court ruling invalidating the newly redrawn election map coincides with significant political activity around redistricting in other states like Tennessee, suggesting coordinated legal challenges or strategic planning by political actors.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Left-leaning sources are focusing heavily on issues related to civil rights and voting rights, while right-leaning sources emphasize national security concerns and criticism of the Biden administration&#x27;s policies. This pattern suggests that each side is selectively highlighting narratives that align with their ideological stance, potentially obscuring broader bipartisan or cross-ideological issues.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Oregon&#x27;s most unexpected gubernatorial candidate? A pencil with a point</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Ro Khanna, D-Calif., on Trump&#x27;s visit to China</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congress likely to pass Republicans&#x27; plan to fund ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran ceasefire tested as cargo ship catches fire after being hit off Qatar&#x27;s coast</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gas, groceries and getting by: How voters in one Ohio district see affordability</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Protests and boycotts rock prestigious Venice Biennale</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The latest congressional redistricting changes and what to know</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GOP redistricting splintering Florida community angers Republicans and Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Abraham Foxman, influential leader of Anti-Defamation League, dies at 86</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lawyers for the global elite aren’t buying Trump’s gold card visa</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans who denied 2020 election results could be governors next year</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Suspect in White House press dinner shooting pleads not guilty to all charges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Six people found dead inside train car at rail yard near Texas-Mexico border</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Family of Florida university shooting victim sues over suspect’s ChatGPT use</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chicago teen who pushed for parents’ release from ICE custody dies of cancer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lasers in the sky: hi-tech missions track record snowpack loss in US west</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Advocates decry Trump’s plan to open 24m acres of federal lands to cattle grazing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The son of Somali immigrants shaking up Utah’s Democratic primary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US Senate expected to confirm Kevin Warsh as next Federal Reserve chair</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sean Duffy faces backlash for new family reality show: ‘unfocused and out of touch’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal judge dismisses former Trump supporter’s defamation suit against Fox News</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I can tell Stephen A Smith why many Black people don’t like him | Etan Thomas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans would rather self-destruct than save themselves from Trump | Sidney Blumenthal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How do we get more men to join the anti-Trump resistance? | Saul Austerlitz</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New England’s Revolution are a surprise contender: MLS weekend wrap</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Soaring World Cup ticket prices for players’ families and guests leave several FAs stunned</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Recent Close Calls for Michigan’s Dams Are a Warning to America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Energy Secretary: “I Can’t Predict the Price of Energy”</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› HHS Celebrates Mother’s Day With Pro-Life Pregnancy Advice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Black Lung Surges in Coal Country as Trump Slow-Walks Protections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Legislators Denounce “Appalling and Horrific Treatment” of Mothers in Immigrant Detention</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama&#x27;s congressional map hinges on US Supreme Court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump accuses Schumer of trying to &#x27;interfere in our elections&#x27; with latest strategy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Dem gov in hot seat for ‘complete failure’ in ‘INSANE’ early release of thousands of inmates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Freedom Caucus vows &#x27;gloves are coming off&#x27; as FISA deadline looms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump criticizes 2 Supreme Court justices by name over tariff ruling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The unexpected force keeping beef prices high and why the pressure could last for years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Union-funded anti-Spencer Pratt ad sparks backlash as critics say it could help him</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump says US helped secure release of 5 prisoners in Belarus deal, thanks Lukashenko</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Biden seeks to block DOJ release of 2017 audio, court filing says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Free beer&#x27; for Trump death Dem activist running for Wisconsin gov: &#x27;I will win&#x27; if they silence me</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Virginia Democrats’ $70M redistricting gamble backfires after court defeat, ignites blame game</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rand Paul vows to keep pressure on Fauci as statute of limitations on criminal referral expires Monday</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court’s junior justice goes on solo tear as Trump fights put her at odds with the bench</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AOC, asked about running for president, says her ambition is &#x27;way bigger than that&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump warns college sports could be ‘lost forever’ as committee pushes changes, Congress urged to act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Duffys fire back after Pete Buttigieg, husband attack new road trip TV series: &#x27;Radical, miserable left&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Canada’s Sovereign Malinvestment Fund</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ending Racial Bias in Admissions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Misguided Empathy Is Killing Us</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Breaking: Pope Leo Is Catholic</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› End the National Flood Insurance Program</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Newsflash! People Have Actually Never Lived in Harmony</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The West Is Good</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Five Ways Republicans Can Bring Down Gas Prices and Reclaim the ‘Affordability’ Mantle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Understanding Jimmy Lai</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Power of ‘Baby’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Farage Says Work Begins Now to Destroy the &#x27;Delusional&#x27; Westminster Establishment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Starmer Pushes Spectre of Supposed &#x27;Far-Right&#x27; in Bid to Save His Job After Election Calamity</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NYC: Jakhongir Sattorov Charged with Smashing Down Door and Raping Older Neighbor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Criticizes Cost of Watching NFL Games as DOJ Investigates: &#x27;I Don&#x27;t Like It&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› SOURCE: At Least Six Dead Migrants Found in Trainyard near Texas Border</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Two Men Convicted of Spying on Hong Kong Dissidents in the UK for China</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Over Half Million Migrants Waiting in Libya to Cross Into Europe, Warns Greek Immigration Minister</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former OpenAI Employees Tear into Sam Altman&#x27;s Character During Testimony for Elon Musk</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woke Woman Now Regrets Not Pressing Charges Against Subway Attacker Who Then Allegedly Killed Retired Teacher</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Clyburn: SC Republican Redistricting Could Mean Two Dem Seat Pickups</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mississippi Billboard Reminds Would-Be Criminals: &#x27;Firing Squad Is Legal. Think Twice&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Newsom&#x27;s $20 Million Diaper Deal Reveals Sweetheart Relationships Using Taxpayer Dollars</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mark Kelly: Trump Administration $1.5 Trillion Defense Budget Request &#x27;Outrageous&#x27;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Legal challenges to redistricting maps in other states following Virginia&#x27;s Supreme Court ruling</div>
+<div class="watch-item">Further developments in U.S.-Iran negotiations and their implications for broader Middle East policy</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
