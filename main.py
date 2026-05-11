@@ -109,9 +109,40 @@ def run_signal(args: argparse.Namespace) -> None:
     console.print(f"\n[bold cyan]Generating HTML report...[/bold cyan]")
     report_path = generate_report(brief, clusters, correlation, articles, run_id, model)
 
+    # Update index.html to redirect to the latest report
+    _update_index(report_path)
+
     console.print(f"\n[bold green]✓ Brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
     console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
+
+
+def _update_index(report_path: Path) -> None:
+    """Regenerate index.html at the repo root pointing to the latest report."""
+    rel = report_path.relative_to(ROOT)
+    index = ROOT / "index.html"
+    index.write_text(
+        f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="0; url={rel}">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Pipeline</title>
+<style>
+  body {{ background: #0d1117; color: #c9d1d9; font-family: -apple-system, sans-serif;
+         display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }}
+  a {{ color: #58a6ff; font-size: 1.1rem; }}
+</style>
+</head>
+<body>
+<p>Redirecting to <a href="{rel}">latest brief</a>…</p>
+<script>window.location.replace("{rel}");</script>
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
 
 
 def main() -> None:
