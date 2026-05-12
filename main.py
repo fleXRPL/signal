@@ -146,9 +146,28 @@ def _update_index(report_path: Path) -> None:
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }}
   * {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  body {{ background: var(--bg); color: var(--text); font-family: var(--sans);
-          min-height: 100vh; display: flex; flex-direction: column;
-          align-items: center; justify-content: center; padding: 40px 24px; }}
+  body {{
+    background-color: var(--bg);
+    background-image: url('images/signal_banner.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: var(--text); font-family: var(--sans);
+    min-height: 100vh; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 40px 24px;
+    position: relative;
+  }}
+  body::before {{
+    content: '';
+    position: fixed; inset: 0;
+    background: rgba(13, 17, 23, 0.82);
+    z-index: 0;
+  }}
+  .content {{
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center;
+  }}
   .wordmark {{ font-family: var(--mono); font-size: 11px; letter-spacing: .3em;
                color: var(--muted); text-transform: uppercase; margin-bottom: 12px;
                text-align: center; }}
@@ -158,9 +177,10 @@ def _update_index(report_path: Path) -> None:
   .tagline {{ color: var(--muted); font-size: 14px; margin-bottom: 48px;
               text-align: center; }}
   .cards {{ display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }}
-  .card {{ background: var(--surface); border: 1px solid var(--border);
+  .card {{ background: rgba(22, 27, 34, 0.85); border: 1px solid var(--border);
            border-radius: 10px; padding: 28px 32px; text-decoration: none;
-           color: var(--text); width: 260px; transition: border-color .15s; }}
+           color: var(--text); width: 260px; transition: border-color .15s;
+           backdrop-filter: blur(6px); }}
   .card:hover {{ border-color: var(--accent); }}
   .card-label {{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
                  text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
@@ -171,20 +191,22 @@ def _update_index(report_path: Path) -> None:
 </style>
 </head>
 <body>
-  <div class="wordmark">Signal // Political Intelligence</div>
-  <h1>SIGNAL</h1>
-  <p class="tagline">Daily cross-spectrum political intelligence — powered by local AI</p>
-  <div class="cards">
-    <a href="{rel}" class="card">
-      <div class="card-label">Latest Brief</div>
-      <div class="card-title">Today's Intelligence Report</div>
-      <div class="card-meta">{brief_date} · {brief_time} · Run {brief_run}</div>
-    </a>
-    <a href="archive.html" class="card archive">
-      <div class="card-label">History</div>
-      <div class="card-title">Browse Past Briefs</div>
-      <div class="card-meta">All previous reports</div>
-    </a>
+  <div class="content">
+    <div class="wordmark">Signal // Political Intelligence</div>
+    <h1>SIGNAL</h1>
+    <p class="tagline">Daily cross-spectrum political intelligence — powered by local AI</p>
+    <div class="cards">
+      <a href="{rel}" class="card">
+        <div class="card-label">Latest Brief</div>
+        <div class="card-title">Today's Intelligence Report</div>
+        <div class="card-meta">{brief_date} · {brief_time} · Run {brief_run}</div>
+      </a>
+      <a href="archive.html" class="card archive">
+        <div class="card-label">History</div>
+        <div class="card-title">Browse Past Briefs</div>
+        <div class="card-meta">All previous reports</div>
+      </a>
+    </div>
   </div>
 </body>
 </html>
