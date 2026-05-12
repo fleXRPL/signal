@@ -118,10 +118,11 @@ def run_signal(args: argparse.Namespace) -> None:
 
 
 def _update_index(report_path: Path) -> None:
-    """Regenerate index.html at the repo root pointing to the latest report."""
+    """Regenerate index.html (redirect to latest) and archive.html (full list)."""
     rel = report_path.relative_to(ROOT)
-    index = ROOT / "index.html"
-    index.write_text(
+
+    # index.html — instant redirect to latest report
+    (ROOT / "index.html").write_text(
         f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -138,6 +139,82 @@ def _update_index(report_path: Path) -> None:
 <body>
 <p>Redirecting to <a href="{rel}">latest brief</a>…</p>
 <script>window.location.replace("{rel}");</script>
+</body>
+</html>
+""",
+        encoding="utf-8",
+    )
+
+    # archive.html — reverse-chronological list of all reports
+    reports_dir = ROOT / "reports"
+    reports = sorted(reports_dir.glob("brief_*.html"), reverse=True)
+
+    rows = []
+    for p in reports:
+        # filename: brief_YYYYMMDD_HHMM_runN.html
+        parts = p.stem.split("_")
+        try:
+            date_str = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
+            time_str = f"{parts[2][:2]}:{parts[2][2:]}"
+            run_num  = parts[3].replace("run", "#")
+            label    = f"{date_str} {time_str} UTC — Run {run_num}"
+        except IndexError:
+            label = p.stem
+        is_latest = p == report_path
+        badge = ' <span style="background:#1f6feb;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-family:monospace;vertical-align:middle;">latest</span>' if is_latest else ""
+        rows.append(
+            f'<li><a href="reports/{p.name}">{label}</a>{badge}</li>'
+        )
+
+    rows_html = "\n      ".join(rows)
+
+    (ROOT / "archive.html").write_text(
+        f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Brief Archive</title>
+<style>
+  :root {{
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ background: var(--bg); color: var(--text); font-family: var(--sans);
+          font-size: 15px; line-height: 1.65; padding: 0 0 80px; }}
+  .header {{ background: var(--surface); border-bottom: 1px solid var(--border);
+             padding: 28px 40px 20px; }}
+  .wordmark {{ font-family: var(--mono); font-size: 11px; letter-spacing: .25em;
+               color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }}
+  h1 {{ font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent); }}
+  .container {{ max-width: 720px; margin: 48px auto; padding: 0 24px; }}
+  h2 {{ font-family: var(--mono); font-size: 13px; letter-spacing: .15em;
+        text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }}
+  ul {{ list-style: none; }}
+  li {{ border-bottom: 1px solid var(--border); padding: 14px 0; }}
+  a {{ color: var(--accent); text-decoration: none; font-size: 15px; }}
+  a:hover {{ text-decoration: underline; }}
+  .back {{ display: inline-block; margin-top: 32px; font-family: var(--mono);
+           font-size: 12px; color: var(--muted); text-decoration: none;
+           border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; }}
+  .back:hover {{ color: var(--accent); border-color: var(--accent); }}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="wordmark">Signal // Political Intelligence</div>
+  <h1>BRIEF ARCHIVE</h1>
+</div>
+<div class="container">
+  <h2>{len(reports)} brief{"s" if len(reports) != 1 else ""} — most recent first</h2>
+  <ul>
+      {rows_html}
+  </ul>
+  <a href="index.html" class="back">▸ Latest brief</a>
+</div>
 </body>
 </html>
 """,

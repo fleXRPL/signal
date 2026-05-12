@@ -444,7 +444,10 @@ HTML_TEMPLATE = """\
       <div class="wordmark">Signal // Political Intelligence</div>
       <h1>POLITICAL INTELLIGENCE BRIEF</h1>
     </div>
-    <div><!-- spacer --></div>
+    <a href="../archive.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="View all past briefs">◁ Archive</a>
   </div>
   <div class="meta-pills">
     <span class="pill accent">📅 {date}</span>
