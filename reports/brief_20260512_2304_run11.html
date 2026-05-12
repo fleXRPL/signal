@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-12 23:04 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-12 23:04 UTC</span>
+    <span class="pill">147 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 qwen2.5:14b</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics currently grapples with significant internal turmoil and external diplomatic efforts that serve as a strategic distraction. High-level resignations, Senate hearings, and policy disagreements within federal agencies underscore deepening divisions between political factions. The resignation of FDA Commissioner Marty Makary and the Senate scrutiny faced by Kash Patel highlight systemic challenges in maintaining bipartisan support for key government positions. Concurrently, President Trump&#x27;s visit to China amid domestic instability suggests a strategic use of foreign diplomacy to improve international relations during periods of internal strife. Additionally, redistricting efforts in South Carolina and escalating election integrity operations across multiple states indicate ongoing political maneuvering ahead of midterm elections.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Key actors driving events include President Trump, who is leveraging diplomatic engagements with China as a strategic move amid domestic challenges; Marty Makary and Kash Patel, whose controversies reflect broader issues within federal agencies; and Pete Hegseth, facing criticism from lawmakers over Pentagon budget priorities. Alliances are forming around these figures based on shared ideological stances or mutual interests in maintaining political agendas. Pressures come from both internal factions seeking to assert their influence and external actors like China, which presents opportunities for strategic leverage. Conflicts arise between different political factions within federal agencies and Congress, leading to policy disagreements and high-level resignations.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Left-leaning sources tend to downplay economic impacts and ideological narratives related to gender-affirming care debates, focusing instead on broader social implications. Right-leaning outlets often omit discussions about conflicts with the Trump administration and internal FDA controversies that are emphasized by left outlets. Additionally, both sides selectively highlight aspects of redistricting efforts in South Carolina without fully addressing the broader political and legal context surrounding voting rights.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>Non-obvious relationships between stories reveal coordinated narratives aimed at shaping public perception. The simultaneous resignation of Marty Makary and Senate scrutiny faced by Kash Patel suggest a coordinated narrative or underlying systemic issues within federal agencies. Furthermore, President Trump&#x27;s visit to China coincides with significant domestic political turmoil, indicating the strategic use of foreign diplomacy as a distraction during periods of internal instability.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Senate hearings regarding Kash Patel</strong>: These hearings will provide critical insights into conduct allegations and broader policy implications.</li>
+<li><strong>Redistricting efforts in South Carolina</strong>: The refusal of state senators to extend their legislative calendar for redistricting highlights ongoing political maneuvering with significant legal and social implications.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is characterized by strategic use of diplomacy, internal factionalism within federal agencies, and ideological battles over policy implementation. These dynamics obscure underlying systemic challenges and selective coverage patterns that reveal each side&#x27;s agenda-driven narratives. Understanding these connections is crucial for discerning the true nature of ongoing events in American politics.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Marty Makary resigns as FDA Commissioner amid controversies and policy disagreements; Kash Patel faces Senate scrutiny over conduct allegations</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (3)</span><span class="bias-badge" style="color:#e0a87a;">center-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (3)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 3"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:8.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 3"></div><div class="bias-segment" style="background:#a07ae0; flex:8.3;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:8.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The resignation of Marty Makary and the Senate hearing involving Kash Patel highlight ongoing tensions within federal agencies and between different political factions. The focus should be on understanding the underlying causes of these events rather than attributing blame to specific parties or policies.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets frame the events as political confrontations over policy disagreements and allegations of misconduct within high-ranking government positions, emphasizing Democratic concerns about conduct issues.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets provide balanced coverage, focusing on the factual details of the resignations and hearings without strong political bias, emphasizing the procedural changes in leadership and the contentious nature of the Senate hearing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets focus on policy disputes and pressure from pro-life groups, framing Makary&#x27;s resignation as a result of internal conflicts rather than external pressures or personal conduct issues.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Right-leaning sources often omit discussions about conflicts with the Trump administration and internal FDA controversies that are emphasized by left outlets.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Left-leaning sources tend to downplay or ignore the policy disagreements and pro-life group frustrations mentioned in right coverage, focusing instead on conduct issues and political confrontations.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Defense Secretary Pete Hegseth testified before Congress regarding Iran conflict and Pentagon budget issues, facing criticism from lawmakers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The hearings highlight significant disagreements within Congress over the Trump administration&#x27;s handling of the Iran conflict and Pentagon budget priorities. The framing by different media outlets reflects their political leanings, with left-leaning sources emphasizing bipartisan concern and right-leaning sources defending the administration’s actions.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The left-leaning outlets emphasize a bipartisan concern over the Trump administration&#x27;s strategy and costs related to the Iran conflict.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present a balanced view focusing on Republican criticism and bipartisan concern over the handling of the Iran situation by the Trump administration.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets frame the discussion around dismissing concerns about strained U.S. munitions stockpiles due to the ongoing conflict with Iran, highlighting Hegseth’s defense of Pentagon spending priorities.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning sources do not mention Hegseth&#x27;s dismissal of concerns about U.S. munitions depletion, which is emphasized in right-leaning coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets omit mentioning bipartisan concern and criticism from both sides regarding the costs and strategy related to the Iran conflict, focusing instead on defense of Pentagon spending.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Texas federal prosecutor issues subpoena to NYU Langone Health for information related to gender-affirming care for minors</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The subpoena issued by Texas federal prosecutors to NYU Langone Health over gender-affirming care is a significant legal action that has sparked ideological debates. Left-leaning outlets emphasize it as part of an anti-transgender agenda, while right-leaning coverage focuses on economic and political narratives unrelated to the healthcare issue.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the subpoena as an attack on transgender youth healthcare and part of a larger conservative agenda to restrict access to gender-affirming care
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Would likely focus on factual reporting of the subpoena and its potential implications for patient privacy and healthcare regulation without strong ideological framing
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Focuses on NY Mayor Mamdani&#x27;s policies driving away wealthy individuals, with little direct mention of the hospital subpoena
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not discuss the economic impact or migration of wealthy executives due to Mamdani&#x27;s policies, which is a key point in right-leaning coverage
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Omits discussion of the subpoena and its implications for transgender youth healthcare, focusing instead on broader political narratives about New York City&#x27;s business environment
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">President Trump visits China for a meeting with President Xi Jinping, focusing on diplomatic relations and technological competition.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Both sources provide valid perspectives but emphasize different aspects of the visit. While diplomatic relations and technology competition are both significant, the omission of one aspect by each source suggests a potential bias towards their respective narratives.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Framed as a diplomatic temperature check amid tensions with Iran, highlighting potential geopolitical risks.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Balanced view focusing on both diplomatic relations and technological competition without strong emotional bias.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Emphasizes technological competition and the race for dominance in artificial intelligence between the US and China.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Hill&#x27;s focus on AI technology is not emphasized by NPR, suggesting a lack of attention to technological aspects.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    NPR&#x27;s emphasis on Iran tensions is absent in The Hill’s coverage, indicating less focus on geopolitical risks.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">South Carolina state senators declined to extend their legislative calendar for redistricting, disappointing President Trump.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources highlight the refusal of South Carolina state senators to extend their legislative calendar for redistricting, but The Guardian places more emphasis on the broader political and legal context surrounding voting rights. This highlights the importance of understanding both immediate political impacts and long-term implications in analyzing such events.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the story as a conflict between state legislators and the president over redistricting, emphasizing the political tension and implications of weakening voting rights protections.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Frames the decision as a direct disappointment to President Trump&#x27;s efforts regarding redistricting, focusing on the immediate political impact.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Framed the decision as a setback for President Trump&#x27;s agenda without delving into specific reasons or broader context.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Hill does not mention the weakening of the Voting Rights Act by the Supreme Court and its implications for redistricting.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The Guardian US does not emphasize the direct disappointment to President Trump&#x27;s agenda as a significant aspect of the story.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Memphis Grizzlies forward Brandon Clarke has died at age 29</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the basic facts but differ in their framing. The Guardian US emphasizes the human aspect and loss to the community, while Breitbart focuses on the tragedy of a young athlete&#x27;s death without additional commentary.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian US frames the death as a significant loss to Clarke&#x27;s community and loved ones, emphasizing his gentle nature.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    A neutral outlet would likely report the facts without additional commentary or emotional framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart reports the news in a straightforward manner, focusing on the tragic event of a young athlete&#x27;s death.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian US does not provide details about the cause of death or any political context that Breitbart might include.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart does not emphasize Clarke&#x27;s personal qualities or the impact on his community, focusing solely on the factual report.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">China</span></div>
+  <div class="connection-text">President Trump&#x27;s visit to China coincides with significant domestic political turmoil, suggesting a strategic timing to improve international relations amid internal challenges.</div>
+  <div class="connection-sig">↳ This connection highlights the potential use of foreign diplomacy as a distraction or leverage during periods of domestic instability.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Marty Makary</span><span class="entity-tag">Kash Patel</span></div>
+  <div class="connection-text">Both individuals are facing scrutiny and controversy within federal agencies, indicating broader issues with political appointments and policy implementation.</div>
+  <div class="connection-sig">↳ This pattern suggests systemic challenges in maintaining bipartisan support for key government positions.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Multiple stories focus on high-level resignations and Senate hearings involving controversial figures, reflecting ongoing tensions within federal agencies and between different political factions.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The sudden resignation of FDA Commissioner Marty Makary amid controversies is unusually timed with Kash Patel facing Senate scrutiny over conduct allegations, suggesting a coordinated narrative or underlying systemic issues.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Left-leaning sources tend to emphasize broader social and political implications in their coverage, while right-leaning outlets focus more on economic and ideological narratives. This pattern of avoidance suggests each side is selectively highlighting aspects that align with their respective agendas.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Omaha&#x27;s U.S. House race will test candidates&#x27; ability to reach beyond party lines</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The SPLC survived firebombs and death threats. Will it survive Trump 2.0?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Southern states rush to draw new Congressional districts after Supreme Court ruling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama splits U.S. House primaries after court ruling; SC redistricting stalls</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Transportation Secretary Duffy filmed a reality show, funded by firms he regulates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The economic chilling effect of Trump&#x27;s immigration crackdown</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As Trump goes to China, what do Americans say about tariffs, Iran and world standing?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voters head to the polls in Nebraska as Democrats hope to turn a red district blue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump taps former FEMA director to lead the disaster agency again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: &#x27;I don&#x27;t think about Americans&#x27; financial situation&#x27; when negotiating with Iran, Trump says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s redistricting push falters in South Carolina Senate but notches a win in Missouri&#x27;s top court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Murray calls Pentagon&#x27;s Iran war cost estimate &#x27;suspiciously low,&#x27; presses for damage price tag</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Push for South Carolina to join congressional redistricting battle fails as Republicans reject map</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Appeals court says Trump doesn&#x27;t have to pay $83 million to E. Jean Carroll &amp;mdash; for now</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court halts order on Alabama&#x27;s U.S. House map, giving GOP an opening to gain seat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nebraska Democrats face off in House primary for the state&#x27;s &#x27;blue dot&#x27; district</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: West Virginia midterm state and congressional primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Nebraska midterm state and congressional primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump has a proposal to expand fertility benefits. Here&#x27;s how that would work</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice Dept. charges shipping company in deadly Key Bridge collapse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why the Iran war is hurting the economy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hegseth, Caine encounter intense bipartisan frustration with Iran war</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump shares post calling for Obama’s arrest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s approach on China has changed, now appears focused on getting along</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A California billionaire is testing voters’ aversion to the ultrarich</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lawmaker pushes for more ICE oversight after indictment for visit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The complicated history of American presidents visiting China</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Virginia Democrats appeal to U.S. Supreme Court to save new House maps</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court hands Alabama major boost in redistricting fight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Death of man struck by Frontier Airlines plane ruled suicide by medical examiner</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republican Jen Kiggans faces calls to resign for agreeing with racist ‘cotton-picking’ remark</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Epstein survivors give tearful testimony in House field hearing in Palm Beach</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump posts late-night social media spree as Iran war drags on</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US university’s commencement speaker reveals he will pay off students’ final-year loans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump nominates Kari Lake to be US ambassador to Jamaica</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Deaths of at least six people believed to be due to heat inside shipping container in Texas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pity the poor billionaires – demands for higher taxes must feel hurtful | Arwa Mahdawi</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The supreme court’s takedown of American democracy is complete | Austin Sarat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I wrote a book about the last 40 years of US men’s soccer. Here is what I learned | Leander Schaerlaeckens</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Upload government papers to go online? That’s our terrifying future | Aliya Bhatia</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US government studies into vaccine safety are being suppressed | Robert B Shpiner</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Yes, Europe’s leaders are finally standing up to Trump. Here’s why | Mujtaba Rahman</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› $28.3m Messi is MLS’s top earner again, making more than twice as much as Son</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Marty Makary Wasn’t Anti-Abortion or Pro-Vape Enough for Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Thought He’d Escaped the Abortion Trap</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Hospital Faces Criminal Subpoena in Texas Over Trans Youth Care</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Approving Alabama Gerrymander, the Roberts Court Shows Its Naked Political Bias</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Broke His Own Record—for Economic Disapproval</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thomas Massie Has Always Been a Pain in the Ass</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems’ latest Virginia redistricting scheme draws mockery amid major court filing blunder</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem House hopeful tied to district’s secret sex-abuse settlements after touting transparency record</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Million-dollar SNAP food stamp fraud scheme in Walz&#x27;s backyard sparks outrage: &#x27;Cruel joke&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Schumer backs GOP&#x27;s plan to bring the pain during future shutdowns: &#x27;I&#x27;m going to vote for it&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Military vet sees opening for GOP in blue state amid ‘embarrassment’ of ‘stolen valor Walz’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FBI questioning current and former CIA officials in DOJ probe into John Brennan&#x27;s role in Russia assessment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pelosi, other Dems, and former Rep MTG dogpile on Trump over inflation, Iran war</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› RNC launches multimillion-dollar election integrity push in 17 states ahead of midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama Republicans plow forward after key Supreme Court win leads gov to call snap primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Once doomed, Trump&#x27;s pick to carry out his economic vision clears first crucial hurdle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Virginia GOP leader blasts ‘power-hungry’ Jeffries as Dems mount ‘insane’ gambit to overpower high court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fetterman weighs in after PA Supreme Court justice apparently splits from Democratic Party over antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE: SPLC&#x27;s &#x27;far-left&#x27; &#x27;anti-racism&#x27; curriculum found in classrooms as early as kindergarten: watchdog</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump urges Republicans to &#x27;BE BOLD&#x27; as red states  push to rewrite congressional maps</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon’s declassified UAP footage fuels Americans&#x27; belief in aliens: ‘We’re not alone&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate weighs new, painful leverage tactic as fears of another government shutdown grow</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fentanyl deaths could now cost drug dealers their lives under new GOP proposal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wasserman Schultz weighs District 20 bid as Cherfilus-McCormick vows to fight for reelection</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› You’re fired: How the National Science Board sank itself</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Does AOC Think Billionaires Can’t Exist?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Vietnam Problem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Florida Teachers’ Union’s Flimsy Lawsuit Against School Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ignoring the Debt Won’t Make It Go Away</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Nigel Farage Will Never Be Prime Minister</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive – Sec. Doug Burgum: ‘Energy Island’ California Increasing National Costs by Its Policies, Was Only State Dependent on Strait of Hormuz Oil</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hantavirus Horror: Is a New Deadly Pandemic About to Explode?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll: Support for Democrats Slides as Critical Midterms Approach</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nolte: NYT Admits ‘No Evidence’ Israel Trained Dogs to Rape Prisoners, Prints Outlandish Hamas Lies Anyway</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GOP Senators: Joe Biden&#x27;s DOJ Buried Newly-Released Texts of Possible Hunter Biden Prostitution Crimes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Georgia Senate Committee Subpoenas Stacey Abrams in Campaign Finance Violations Probe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› PHOTO: Army Veteran Honored with Special Gift for Dedication to Fellow Military Members</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Microsoft CEO Satya Nadella Takes the Stand to Defend Relationship with OpenAI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ Has Charged More than 260 Tren de Aragua Gang Members Since Trump Took Office</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: ICE Agents Arrest Illegal Aliens Convicted of Child Sex Crimes, Armed Robbery, Assault</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› CNN’s Sellers: Republicans &#x27;Swapped Out Klan Hoods for Brooks Brothers Suits&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Spurns Trump&#x27;s Call to Pass Senate-Passed ROAD to Housing Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Trump Sanctions Rattle Spanish Companies Propping Up Tourism in Cuba</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iranian Terror Commander Makes Surprise Visit to Baghdad</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Watch Live: Kash Patel Testifies Before Senate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Video: Stephen Colbert Hosts His Own ‘Late Show’ Funeral with Kimmel, Fallon, Meyers, and John Oliver</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Netflix Co-Founder Reed Hastings Backs Gavin Newsom for President</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› HBO&#x27;s &#x27;Hacks&#x27; Star Hannah Einbinder: &#x27;Pisses Me Off&#x27; Hollywood Won&#x27;t Say Israel Committing &#x27;Genocide&#x27;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Senate hearings regarding Kash Patel</div>
+<div class="watch-item">Redistricting efforts in South Carolina</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

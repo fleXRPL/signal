@@ -12,6 +12,7 @@ Usage:
 """
 
 import argparse
+import shutil
 import subprocess
 import sys
 import venv
@@ -53,9 +54,6 @@ def run_signal(args: argparse.Namespace) -> None:
 
     # Load config
     config = load_config()
-    if args.model:
-        config["ollama"]["model"] = args.model
-        config["ollama"]["analysis_model"] = args.model
     if args.no_fetch:
         config["collection"]["fetch_full_text"] = False
 
@@ -77,24 +75,45 @@ def run_signal(args: argparse.Namespace) -> None:
         store.finish_run(run_id, len(articles), 0)
         return
 
-    # Check Ollama is reachable
-    model = config["ollama"].get("model", "qwen2.5:14b")
-    console.print(f"[dim]Checking Ollama ({model})...[/dim]")
-    try:
-        import ollama as _ollama
-        client = _ollama.Client(host=config["ollama"].get("base_url", "http://localhost:11434"))
-        models = client.list()
-        available = [m.model for m in models.models]
-        if not any(model in m for m in available):
-            console.print(f"\n[yellow]⚠[/yellow]  Model [bold]{model}[/bold] not found in Ollama.")
-            console.print(f"    Available: {', '.join(available) or 'none'}")
-            console.print(f"    Run: [bold]ollama pull {model}[/bold]\n")
+    # Determine provider (env var overrides config)
+    import os
+    llm_cfg  = config.get("llm", {})
+    provider = os.environ.get("SIGNAL_LLM_PROVIDER", llm_cfg.get("provider", "ollama"))
+
+    if provider == "claude":
+        claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
+        console.print("[dim]Checking Claude Code CLI...[/dim]")
+        try:
+            result = subprocess.run(
+                [claude_bin, "--version"], capture_output=True, text=True, timeout=10
+            )
+            if result.returncode != 0:
+                raise RuntimeError(result.stderr.strip())
+            console.print(f"[green]✓[/green] {result.stdout.strip()}\n")
+        except Exception as exc:
+            console.print(f"[red]✗[/red] Cannot reach Claude CLI: {exc}")
+            console.print("  Install via: [bold]npm install -g @anthropic-ai/claude-code[/bold]")
             sys.exit(1)
-        console.print(f"[green]✓[/green] Ollama ready with {model}\n")
-    except Exception as exc:
-        console.print(f"[red]✗[/red] Cannot reach Ollama: {exc}")
-        console.print("  Make sure Ollama is running: [bold]ollama serve[/bold]")
-        sys.exit(1)
+        model = "claude"
+    else:
+        import ollama as _ollama
+        ollama_cfg = llm_cfg.get("ollama", {})
+        model      = ollama_cfg.get("model", "qwen2.5:14b")
+        base_url   = ollama_cfg.get("base_url", "http://localhost:11434")
+        console.print(f"[dim]Checking Ollama ({model})...[/dim]")
+        try:
+            client    = _ollama.Client(host=base_url)
+            available = [m.model for m in client.list().models]
+            if not any(model in m for m in available):
+                console.print(f"\n[yellow]⚠[/yellow]  Model [bold]{model}[/bold] not found.")
+                console.print(f"    Available: {', '.join(available) or 'none'}")
+                console.print(f"    Run: [bold]ollama pull {model}[/bold]\n")
+                sys.exit(1)
+            console.print(f"[green]✓[/green] Ollama ready with {model}\n")
+        except Exception as exc:
+            console.print(f"[red]✗[/red] Cannot reach Ollama: {exc}")
+            console.print("  Start it with: [bold]ollama serve[/bold]")
+            sys.exit(1)
 
     # Run analysis pipeline
     brief, clusters, correlation = run_pipeline(
