@@ -121,24 +121,71 @@ def _update_index(report_path: Path) -> None:
     """Regenerate index.html (redirect to latest) and archive.html (full list)."""
     rel = report_path.relative_to(ROOT)
 
-    # index.html — instant redirect to latest report
+    # index.html — landing page with navigation
+    # Parse date/run from filename for display
+    parts = report_path.stem.split("_")
+    try:
+        brief_date = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
+        brief_time = f"{parts[2][:2]}:{parts[2][2:]} UTC"
+        brief_run  = parts[3].replace("run", "#")
+    except IndexError:
+        brief_date, brief_time, brief_run = "—", "—", "—"
+
     (ROOT / "index.html").write_text(
         f"""<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta http-equiv="refresh" content="0; url={rel}">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Political Intelligence Pipeline</title>
 <style>
-  body {{ background: #0d1117; color: #c9d1d9; font-family: -apple-system, sans-serif;
-         display: flex; align-items: center; justify-content: center; height: 100vh; margin: 0; }}
-  a {{ color: #58a6ff; font-size: 1.1rem; }}
+  :root {{
+    --bg: #0d1117; --surface: #161b22; --border: #30363d;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ background: var(--bg); color: var(--text); font-family: var(--sans);
+          min-height: 100vh; display: flex; flex-direction: column;
+          align-items: center; justify-content: center; padding: 40px 24px; }}
+  .wordmark {{ font-family: var(--mono); font-size: 11px; letter-spacing: .3em;
+               color: var(--muted); text-transform: uppercase; margin-bottom: 12px;
+               text-align: center; }}
+  h1 {{ font-family: var(--mono); font-size: 28px; font-weight: 700;
+        color: var(--accent); letter-spacing: -.02em; margin-bottom: 8px;
+        text-align: center; }}
+  .tagline {{ color: var(--muted); font-size: 14px; margin-bottom: 48px;
+              text-align: center; }}
+  .cards {{ display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }}
+  .card {{ background: var(--surface); border: 1px solid var(--border);
+           border-radius: 10px; padding: 28px 32px; text-decoration: none;
+           color: var(--text); width: 260px; transition: border-color .15s; }}
+  .card:hover {{ border-color: var(--accent); }}
+  .card-label {{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
+                 text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
+  .card-title {{ font-size: 17px; font-weight: 600; color: var(--accent);
+                 margin-bottom: 8px; }}
+  .card-meta {{ font-size: 12px; color: var(--muted); font-family: var(--mono); }}
+  .card.archive .card-title {{ color: var(--text); }}
 </style>
 </head>
 <body>
-<p>Redirecting to <a href="{rel}">latest brief</a>…</p>
-<script>window.location.replace("{rel}");</script>
+  <div class="wordmark">Signal // Political Intelligence</div>
+  <h1>SIGNAL</h1>
+  <p class="tagline">Daily cross-spectrum political intelligence — powered by local AI</p>
+  <div class="cards">
+    <a href="{rel}" class="card">
+      <div class="card-label">Latest Brief</div>
+      <div class="card-title">Today's Intelligence Report</div>
+      <div class="card-meta">{brief_date} · {brief_time} · Run {brief_run}</div>
+    </a>
+    <a href="archive.html" class="card archive">
+      <div class="card-label">History</div>
+      <div class="card-title">Browse Past Briefs</div>
+      <div class="card-meta">All previous reports</div>
+    </a>
+  </div>
 </body>
 </html>
 """,
