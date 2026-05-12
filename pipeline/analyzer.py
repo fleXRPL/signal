@@ -10,13 +10,15 @@ Five-pass architecture:
   Pass 4: Cross-story correlation and pattern detection
   Pass 5: Final brief synthesis
 
-All LLM calls go through Ollama running locally.
+All LLM calls go through the Claude Code CLI.
 """
 
 from __future__ import annotations
 
 import json
 import re
+import shutil
+import subprocess
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from typing import Any, Dict, List, Optional, Tuple
@@ -38,16 +40,29 @@ console = Console()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Ollama helpers
+# LLM dispatch — Ollama (default) or Claude Code CLI
 # ─────────────────────────────────────────────────────────────────────────────
 
 def _llm_call(
     prompt: str,
-    model: str,
+    model: str = "qwen2.5:14b",
     base_url: str = "http://localhost:11434",
     timeout: int = 120,
+    provider: str = "ollama",
 ) -> str:
-    """Make a single Ollama completion call; return raw text."""
+    """Dispatch a completion call to the configured LLM provider."""
+    if provider == "claude":
+        return _llm_call_claude(prompt, timeout)
+    return _llm_call_ollama(prompt, model, base_url, timeout)
+
+
+def _llm_call_ollama(
+    prompt: str,
+    model: str,
+    base_url: str,
+    timeout: int,
+) -> str:
+    """Call Ollama and return raw text."""
     client = ollama.Client(host=base_url)
     response = client.generate(
         model=model,
@@ -55,6 +70,20 @@ def _llm_call(
         options={"temperature": 0.1, "num_predict": 2048},
     )
     return response.get("response", "")
+
+
+def _llm_call_claude(prompt: str, timeout: int) -> str:
+    """Call the Claude Code CLI and return raw text."""
+    claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
+    result = subprocess.run(
+        [claude_bin, "-p", prompt, "--print"],
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or "Claude CLI non-zero exit")
+    return result.stdout.strip()
 
 
 def _parse_json_response(raw: str) -> Optional[Dict[str, Any]]:
@@ -94,6 +123,7 @@ def extract_entities(
     model: str,
     base_url: str,
     timeout: int,
+    provider: str = "ollama",
 ) -> List[Dict[str, Any]]:
     """
     Run entity extraction on each article via the LLM.
@@ -133,7 +163,7 @@ def extract_entities(
             )
 
             try:
-                raw = _llm_call(prompt, model, base_url, timeout)
+                raw = _llm_call(prompt, model, base_url, timeout, provider)
                 parsed = _parse_json_response(raw)
             except Exception as exc:  # noqa: BLE001
                 console.print(f"  [red]LLM error:[/red] {exc}")
@@ -323,6 +353,7 @@ def analyze_clusters(
     model: str,
     base_url: str,
     timeout: int,
+    provider: str = "ollama",
 ) -> List[Dict[str, Any]]:
     """
     Analyze each multi-source cluster for framing differences and omissions.
@@ -353,7 +384,7 @@ def analyze_clusters(
             )
 
             try:
-                raw = _llm_call(prompt, model, base_url, timeout)
+                raw = _llm_call(prompt, model, base_url, timeout, provider)
                 analysis = _parse_json_response(raw)
             except Exception as exc:  # noqa: BLE001
                 console.print(f"  [red]LLM error:[/red] {exc}")
@@ -472,6 +503,7 @@ def correlate_stories(
     model: str,
     base_url: str,
     timeout: int,
+    provider: str = "ollama",
 ) -> Dict[str, Any]:
     """
     Cross-story analysis: find patterns, connections, anomalies.
@@ -497,7 +529,7 @@ def correlate_stories(
     )
 
     try:
-        raw = _llm_call(prompt, model, base_url, timeout)
+        raw = _llm_call(prompt, model, base_url, timeout, provider)
         analysis = _parse_json_response(raw)
     except Exception as exc:  # noqa: BLE001
         console.print(f"  [red]LLM error:[/red] {exc}")
@@ -533,6 +565,7 @@ def synthesize_brief(
     model: str,
     base_url: str,
     timeout: int,
+    provider: str = "ollama",
 ) -> str:
     """
     Generate the final analyst brief from all analysis passes.
@@ -568,11 +601,11 @@ def synthesize_brief(
     )
 
     try:
-        raw = _llm_call(prompt, model, base_url, min(timeout * 3, 360))
+        raw = _llm_call(prompt, model, base_url, min(timeout * 3, 360), provider)
         brief = raw.strip()
     except Exception as exc:  # noqa: BLE001
         console.print(f"  [red]LLM error:[/red] {exc}")
-        brief = "Brief synthesis failed. Check Ollama connection."
+        brief = "Brief synthesis failed. Check LLM connection."
 
     console.print("  [green]✓[/green] Brief complete")
     return brief
@@ -600,11 +633,21 @@ def run_pipeline(
     Returns:
         Tuple of (brief_text, clusters, correlation_analysis)
     """
-    ollama_cfg = config.get("ollama", {})
-    model = ollama_cfg.get("model", "qwen2.5:14b")
-    analysis_model = ollama_cfg.get("analysis_model", model)
-    base_url = ollama_cfg.get("base_url", "http://localhost:11434")
-    timeout = ollama_cfg.get("timeout", 120)
+    import os
+    llm_cfg        = config.get("llm", {})
+    provider       = os.environ.get("SIGNAL_LLM_PROVIDER", llm_cfg.get("provider", "ollama"))
+    if provider == "claude":
+        claude_cfg     = llm_cfg.get("claude", {})
+        model          = ""
+        analysis_model = ""
+        base_url       = ""
+        timeout        = claude_cfg.get("timeout", 180)
+    else:
+        ollama_cfg     = llm_cfg.get("ollama", {})
+        model          = ollama_cfg.get("model", "qwen2.5:14b")
+        analysis_model = ollama_cfg.get("analysis_model", model)
+        base_url       = ollama_cfg.get("base_url", "http://localhost:11434")
+        timeout        = ollama_cfg.get("timeout", 120)
 
     clustering_cfg = config.get("analysis", {})
     title_threshold = clustering_cfg.get("title_similarity_threshold", 0.70)
@@ -614,19 +657,19 @@ def run_pipeline(
         article["_db_id"] = db_id
 
     # Pass 1
-    articles = extract_entities(articles, run_id, article_db_ids, model, base_url, timeout)
+    articles = extract_entities(articles, run_id, article_db_ids, model, base_url, timeout, provider)
 
     # Pass 2
     clusters = cluster_articles(articles, run_id, title_threshold=title_threshold)
 
     # Pass 3
-    clusters = analyze_clusters(clusters, run_id, analysis_model, base_url, timeout)
+    clusters = analyze_clusters(clusters, run_id, analysis_model, base_url, timeout, provider)
 
     # Pass 4
-    correlation = correlate_stories(clusters, run_id, analysis_model, base_url, timeout)
+    correlation = correlate_stories(clusters, run_id, analysis_model, base_url, timeout, provider)
 
     # Pass 5
-    brief = synthesize_brief(clusters, correlation, articles, analysis_model, base_url, timeout)
+    brief = synthesize_brief(clusters, correlation, articles, analysis_model, base_url, timeout, provider)
 
     # Fix the run_id in the brief store call
     store.save_brief(run_id, brief)
