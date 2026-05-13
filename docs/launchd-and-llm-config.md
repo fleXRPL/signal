@@ -40,23 +40,26 @@ Edit the `StartCalendarInterval` block in `scripts/com.flexrpl.signal.plist`:
 <key>StartCalendarInterval</key>
 <dict>
     <key>Hour</key>
-    <integer>7</integer>   <!-- 0–23, local time -->
+    <integer>5</integer>   <!-- 0–23, local time -->
     <key>Minute</key>
     <integer>0</integer>   <!-- 0–59 -->
 </dict>
 ```
 
-**Current schedule: 7:00 AM local time daily.**
+**Current schedule: 5:00 AM local time daily.**
+
+5am was chosen to catch overnight wire content and early-morning news cycle updates before
+the bulk of daily traffic hits news servers.
 
 Common alternatives:
 
 | Time                  | Hour  | Minute |
 | --------------------- | ----- | ------ |
 | 12:01 AM              | 0     | 1      |
+| **5:00 AM (current)** | **5** | **0**  |
 | 6:00 AM               | 6     | 0      |
-| **7:00 AM (current)** | **7** | **0**  |
+| 7:00 AM               | 7     | 0      |
 | 8:00 AM               | 8     | 0      |
-| 12:00 PM              | 12    | 0      |
 
 After editing, apply the change with the commands in the section above.
 
@@ -66,25 +69,31 @@ After editing, apply the change with the commands in the section above.
 
 The pipeline supports two LLM backends, switchable without touching Python code.
 
+> **Important:** Claude is the default and recommended provider for all automated (launchd)
+> runs. Ollama caused kernel panics on macOS when invoked from a background launchd daemon
+> due to Metal GPU driver issues. See `docs/troubleshooting-macos-crash.md` for the full
+> investigation. Ollama remains available for interactive manual runs.
+
 ### Option 1 — Environment Variable (recommended for one-off runs)
 
 ```bash
-# Use Ollama (default)
+# Use Claude (default)
 python3 main.py
 
-# Use Claude Code CLI
-SIGNAL_LLM_PROVIDER=claude python3 main.py
+# Force Ollama for a manual run
+SIGNAL_LLM_PROVIDER=ollama python3 main.py
 ```
 
 ### Option 2 — Persistent switch via the plist (for scheduled runs)
 
-Edit `scripts/com.flexrpl.signal.plist`:
+The plist already sets `SIGNAL_LLM_PROVIDER=claude`. To revert to Ollama (not recommended
+for scheduled runs), edit `scripts/com.flexrpl.signal.plist`:
 
 ```xml
 <key>EnvironmentVariables</key>
 <dict>
     <key>SIGNAL_LLM_PROVIDER</key>
-    <string>ollama</string>   <!-- change to "claude" to use Claude Code CLI -->
+    <string>claude</string>   <!-- change to "ollama" only for manual/interactive use -->
 </dict>
 ```
 
@@ -99,26 +108,29 @@ launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.plist
 
 ### Option 3 — Default via sources.yaml (fallback when env var is not set)
 
-Edit `config/sources.yaml`:
+`config/sources.yaml` defaults to `claude`:
 
 ```yaml
 llm:
-  provider: ollama # change to "claude" here as a code-level default
+  provider: claude # ollama | claude
 ```
+
+The precedence order is: `SIGNAL_LLM_PROVIDER` env var → `sources.yaml` → `claude`.
 
 ---
 
 ## Provider Comparison
 
-|              | Ollama (`qwen2.5:14b`)                                | Claude Code CLI                      |
-| ------------ | ----------------------------------------------------- | ------------------------------------ |
-| **Cost**     | Free (local)                                          | Uses Claude Pro/Max subscription     |
-| **Speed**    | ~28 min / full run                                    | Slower (sequential subprocess calls) |
-| **Quality**  | Good                                                  | Significantly better analysis        |
-| **Requires** | Ollama running (`ollama serve`)                       | Claude Code installed + logged in    |
-| **Model**    | Configured in `sources.yaml` under `llm.ollama.model` | Whatever Claude Code defaults to     |
+|                      | Ollama (`qwen2.5:14b`)                                | Claude Code CLI                      |
+| -------------------- | ----------------------------------------------------- | ------------------------------------ |
+| **Cost**             | Free (local)                                          | Uses Claude Pro/Max subscription     |
+| **Speed**            | ~28 min / full run                                    | Slower (sequential subprocess calls) |
+| **Quality**          | Good                                                  | Significantly better analysis        |
+| **Requires**         | Ollama running (`ollama serve`)                       | Claude Code installed + logged in    |
+| **Model**            | Configured in `sources.yaml` under `llm.ollama.model` | Whatever Claude Code defaults to     |
+| **Safe for launchd** | **No** — Metal GPU crashes kernel on macOS            | **Yes**                              |
 
-**Default: Ollama.** Switch to Claude when you want higher-quality analysis or are testing prompts.
+**Default: Claude.** Use Ollama only for interactive manual runs where you want local/free inference.
 
 ---
 
@@ -161,57 +173,66 @@ python3 main.py --collect-only
 
 Confirms: config loads, DB initialises, feeds are reachable. Works for both providers.
 
-### Step 2 — Test Ollama end-to-end
+### Step 2 — Test Claude end-to-end (default)
 
 ```bash
-python3 main.py --no-fetch
+python3 main.py
 ```
 
-`--no-fetch` skips full article text retrieval, making the run faster (~10 min vs ~28 min).
 Confirm you see:
+
+- `✓ 2.x.x (Claude Code)`
+- All 5 passes completing
+- HTML report written to `reports/`
+
+### Step 3 — Test Ollama end-to-end (manual/interactive only)
+
+```bash
+SIGNAL_LLM_PROVIDER=ollama python3 main.py
+```
+
+Confirm you see:
+
 - `✓ Ollama ready with qwen2.5:14b`
 - Pass 1 through Pass 5 completing
 - HTML report written to `reports/`
 
-### Step 3 — Test Claude end-to-end
+> Do not run Ollama via `run_and_publish.sh` or launchd — it triggers Metal GPU kernel
+> panics in the background daemon context. See `docs/troubleshooting-macos-crash.md`.
+
+### Step 4 — Test the full script (mirrors launchd exactly)
 
 ```bash
-SIGNAL_LLM_PROVIDER=claude python3 main.py --no-fetch
+bash scripts/run_and_publish.sh
+# Watch progress in a second terminal:
+tail -f logs/cron.log
 ```
-
-Confirm you see:
-- `✓ 2.x.x (Claude Code)`
-- All 5 passes completing (will be slower — each article is a subprocess call)
-- HTML report written to `reports/`
-
-### Step 4 — Compare output quality
-
-Open both reports side by side and compare the `SITUATION OVERVIEW` and
-`CONNECTIONS & PATTERNS` sections. Claude typically produces more nuanced
-entity extraction and sharper cross-story analysis.
 
 ### What to check if a pass fails
 
-| Symptom | Likely cause |
-|---|---|
-| `LLM error: RuntimeError` in Pass 1 | Ollama not running / Claude CLI not authenticated |
-| JSON parse failures in Pass 3/4 | Model returned malformed JSON — re-run, it's non-deterministic |
-| Pass 5 hangs | Timeout too low — increase `timeout` in `sources.yaml` |
-| `FOREIGN KEY constraint failed` | DB corruption — delete `signal.db` and re-run |
+| Symptom                             | Likely cause                                                   |
+| ----------------------------------- | -------------------------------------------------------------- |
+| `LLM error: RuntimeError` in Pass 1 | Ollama not running / Claude CLI not authenticated              |
+| JSON parse failures in Pass 3/4     | Model returned malformed JSON — re-run, it's non-deterministic |
+| Pass 5 hangs                        | Timeout too low — increase `timeout` in `sources.yaml`         |
+| `FOREIGN KEY constraint failed`     | DB corruption — delete `signal.db` and re-run                  |
 
 ---
 
 ## Manually Triggering a Run
 
 ```bash
-# Via launchd (same environment as the scheduled job)
-launchctl start com.flexrpl.signal
+# Run the full script exactly as launchd does (output → logs/cron.log)
+bash /Users/garotconklin/garotm/fleXRPL/signal/scripts/run_and_publish.sh
 
-# Watch the log
+# Watch the log in a second terminal
 tail -f /Users/garotconklin/garotm/fleXRPL/signal/logs/cron.log
 
-# Directly (uses your shell's PATH and env vars)
+# Run pipeline only with live terminal output (no git push)
 python3 /Users/garotconklin/garotm/fleXRPL/signal/main.py
+
+# Via launchd directly (identical to the scheduled run)
+launchctl start com.flexrpl.signal
 ```
 
 ---
@@ -222,12 +243,13 @@ python3 /Users/garotconklin/garotm/fleXRPL/signal/main.py
 
 1. Confirm it is loaded: `launchctl list | grep flexrpl`
 2. Check the log: `cat logs/cron.log`
-3. Ensure Full Disk Access is granted to `cron` in System Settings → Privacy & Security → Full Disk Access
+3. After editing the plist, always copy and reload — launchd reads from `~/Library/LaunchAgents/`, not the repo
 
-**Ollama not found:**
+**Mac freezes or reboots during the run:**
 
-- Start it: `ollama serve`
-- The `run_and_publish.sh` script will attempt to start Ollama automatically if it is not running
+This is almost certainly Ollama's Metal GPU driver crashing the kernel when invoked from a
+background daemon. Switch to Claude — see `docs/troubleshooting-macos-crash.md` for the
+full diagnosis.
 
 **Claude CLI not found:**
 
@@ -237,3 +259,10 @@ claude --version      # should return 2.x.x (Claude Code)
 ```
 
 If missing: `npm install -g @anthropic-ai/claude-code`
+
+**Ollama not found (for manual runs only):**
+
+```bash
+ollama serve          # start the server
+ollama list           # confirm qwen2.5:14b is installed
+```
