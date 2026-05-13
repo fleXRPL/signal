@@ -865,6 +865,6 @@ def generate_report(
         source_index_html=source_index_html,
     )
 
-    out_path = REPORTS_DIR / f"brief_{file_date}_run{run_id}.html"
+    out_path = REPORTS_DIR / f"brief_{file_date}.html"
     out_path.write_text(rendered, encoding="utf-8")
     return out_path

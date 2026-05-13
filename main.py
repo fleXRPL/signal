@@ -146,9 +146,8 @@ def _update_index(report_path: Path) -> None:
     try:
         brief_date = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
         brief_time = f"{parts[2][:2]}:{parts[2][2:]} UTC"
-        brief_run  = parts[3].replace("run", "#")
     except IndexError:
-        brief_date, brief_time, brief_run = "—", "—", "—"
+        brief_date, brief_time = "—", "—"
 
     (ROOT / "index.html").write_text(
         f"""<!DOCTYPE html>
@@ -218,7 +217,7 @@ def _update_index(report_path: Path) -> None:
       <a href="{rel}" class="card">
         <div class="card-label">Latest Brief</div>
         <div class="card-title">Today's Intelligence Report</div>
-        <div class="card-meta">{brief_date} · {brief_time} · Run {brief_run}</div>
+        <div class="card-meta">{brief_date} · {brief_time}</div>
       </a>
       <a href="archive.html" class="card archive">
         <div class="card-label">History</div>
@@ -239,13 +238,12 @@ def _update_index(report_path: Path) -> None:
 
     rows = []
     for p in reports:
-        # filename: brief_YYYYMMDD_HHMM_runN.html
+        # filename: brief_YYYYMMDD_HHMM.html
         parts = p.stem.split("_")
         try:
             date_str = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
             time_str = f"{parts[2][:2]}:{parts[2][2:]}"
-            run_num  = parts[3].replace("run", "#")
-            label    = f"{date_str} {time_str} UTC — Run {run_num}"
+            label    = f"{date_str} · {time_str} UTC"
         except IndexError:
             label = p.stem
         is_latest = p == report_path

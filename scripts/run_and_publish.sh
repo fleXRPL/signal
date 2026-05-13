@@ -23,11 +23,16 @@ echo "========================================"
 
 cd "$REPO"
 
-# Ensure Ollama is running; start it if not
-if ! pgrep -x "ollama" > /dev/null; then
-    echo "Starting Ollama..."
-    /usr/local/bin/ollama serve &
-    sleep 5
+# Default to Claude; override with SIGNAL_LLM_PROVIDER=ollama if needed
+export SIGNAL_LLM_PROVIDER="${SIGNAL_LLM_PROVIDER:-claude}"
+
+# If using Ollama, ensure it is running
+if [ "$SIGNAL_LLM_PROVIDER" = "ollama" ]; then
+    if ! pgrep -x "ollama" > /dev/null; then
+        echo "Starting Ollama..."
+        /usr/local/bin/ollama serve &
+        sleep 5
+    fi
 fi
 
 # Run the pipeline (venv already exists, skip setup)

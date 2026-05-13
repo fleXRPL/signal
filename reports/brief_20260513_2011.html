@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-13 20:11 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-13 20:11 UTC</span>
+    <span class="pill">146 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant event of the moment is the Trump-Xi summit in Beijing, but the summit&#x27;s real significance is not trade optics — it is the simultaneous confirmation of Kevin Warsh as Federal Reserve chair, which hands the administration a monetary policy lever it can use as an invisible negotiating instrument with a counterparty holding $760 billion in U.S. Treasuries. The visible negotiation is tariffs. The invisible negotiation may be rate trajectory signals that never appear in treaty text. This is not speculation; it is the structural implication of the timing, and markets will read Warsh&#x27;s first public statement accordingly.</p>
+<p>Beneath the summit, a redistricting cascade is reshaping the 2026 midterm map in real time and almost entirely out of public view. The Supreme Court&#x27;s Louisiana v. Callais ruling has triggered simultaneous legislative and legal action in Georgia, Alabama, South Carolina, New York, and Missouri within a single news cycle. These are not coincidental state-level developments — they represent a coordinated post-Callais legal strategy being executed in parallel. The June 17 Georgia special session is the most immediate inflection point, but the aggregate map effect across all six states is the actual story, and no outlet is covering it as such.</p>
+<p>The third thread — less visible than either — is a systematic pattern of executive opacity that cuts across war financing, intelligence findings, domestic contracting, and criminal justice. The $29 billion Iran war cost without congressional written documentation, the alleged CIA report alteration, the $1 billion no-bid ballroom contract, and the 120,000-page Maxwell document release are structurally similar: enormous consequential decisions or exposures managed in ways that preserve executive flexibility while minimizing the paper trail that enables oversight. This is not sloppiness. It is architecture.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is operating from a position of unusual institutional consolidation: Fed chair replaced, Senate confirmations proceeding, foreign policy theater providing favorable news cycles, and domestic legal exposure (Carroll judgment, Maxwell documents) being managed through favorable court rulings that cluster around high-profile diplomatic moments. Whether that clustering is coordinated or coincidental, the pattern is real and worth tracking.</p>
+<p><strong>Kevin Warsh</strong> is the sleeper actor of the moment. His confirmation is being reported as a personnel change. It is a policy instrument. His known profile — hawkish when inflation is running, accommodative when aligned with political incentives — gives the administration a chair who can signal rate flexibility without appearing to do so at Trump&#x27;s direction. His first post-summit public statement is the item to watch.</p>
+<p><strong>Rand Paul</strong> is the most consequential single senator in the current environment and is being systematically undercovered. He is simultaneously probing the CIA lab leak suppression allegation, resisting the $1 billion ballroom no-bid contract on Republican appropriations grounds, and operating in the space where Iran war cost documentation gaps become leverage in debt ceiling and reconciliation negotiations. His multi-front posture looks like coordinated positioning, not ideological reflex.</p>
+<p><strong>Georgia Governor Brian Kemp</strong> has called the June 17 special session with the specific legal cover of Louisiana v. Callais. The critical question — not answered by any current coverage — is whether the session targets genuine VRA compliance or uses Callais as cover to maximize Republican seats. The district lines proposed on June 17 will answer that question definitively.</p>
+<p>The <strong>CIA whistleblower</strong> (James Erdman III) matters less as an individual than as a test case: if the underlying altered report is subpoenaed, the allegation moves from right-ecosystem laundering to documentary evidence that forces broader coverage. If it is not subpoenaed, the allegation dies in the Senate Homeland Security Committee record as citable but unverifiable.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is not reporting the producer price surge — the largest monthly gain since 2022 — on the same day it covered the Warsh confirmation extensively. This is not a minor omission. If accurate, this data point directly complicates the rate trajectory that Warsh will inherit and is the most market-relevant economic signal of the day. Its absence from center and left coverage that otherwise devoted significant attention to Fed independence suggests editorial filtering rather than editorial judgment.</p>
+<p>The right is not reporting the substance of what may have been offered on Taiwan during the Beijing summit. Trade concession optics dominate right-leaning coverage. Any commitments — explicit or implied — that constrain future U.S. posture on Taiwan are structurally absent. This is the most consequential possible omission from the entire dataset, because those commitments, if made, are not revocable by Congress.</p>
+<p>Neither side is covering the CIA whistleblower story across the full spectrum. A sworn Senate hearing under oath received zero coverage from center, center-left, or left outlets. The analytically significant fact is not the allegation itself but the complete absence. This suggests either a coordinated editorial determination that the source lacks credibility, or that the right-media ecosystem and the Senate committee hearing are sufficiently intertwined that other outlets are declining to amplify an allegation whose institutional venue and sourcing community are the same people.</p>
+<p>The Iran war cost documentation gap — $29 billion, acknowledged as incomplete, without congressional written authorization — is being buried in the diplomatic frame on both sides. The left covers it as a criticism of Trump&#x27;s war; the right does not cover it at all. Neither is covering it as a structural oversight failure with War Powers Act implications regardless of who is in office.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Fed chair confirmation vote (54-45) was held while Trump was physically in Beijing and therefore unavailable for domestic political fallout management. Senate floor scheduling is not accidental. The vote timing minimized the window for market reaction and bipartisan criticism to cohere into a news cycle capable of complicating the summit optics. This is operational, not procedural.</p>
+<p>Lockheed Martin tripling missile production in Alabama and Florida is being covered as an economic story (jobs, deterrence). The $29 billion Iran war cost lacks congressional documentation. Trump is simultaneously in Beijing, where Taiwan policy and the U.S. defense commitment architecture are on the table. These three stories form a single strategic posture: munitions capacity is expanding, the war financing it is being kept outside congressional accounting, and the administration is negotiating with the one power that has the most to gain from uncertainty about U.S. defense commitments being durable or revocable. The production story and the accountability story are being covered in opposite ecosystems, which prevents the connection from becoming visible in any single outlet&#x27;s coverage.</p>
+<p>The redistricting cascade triggered by Louisiana v. Callais is the hidden determinant of the 2026 midterms. Georgia (June 17 session), Alabama (Supreme Court halt), South Carolina (failed Republican push), New York, and Missouri are all in active map litigation or legislative action simultaneously. Covering any one of these as a standalone state story — which is how all current coverage frames them — obscures the aggregate map effect that will determine House control. The 2026 map is being drawn right now, in a distributed fashion that is harder to track precisely because it is not centralized.</p>
+<p>The Maxwell document release (120,000 pages) and the E. Jean Carroll judgment pause both landed on the same day as the Beijing summit. Two major Trump legal-exposure items dampening domestic political liability on the day of maximum foreign policy theater is a pattern worth calendaring going forward. Whether coordinated or coincidental, the alignment has now occurred multiple times.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Kevin Warsh&#x27;s first public statement or Fed communication</strong> — specifically any rate signal that maps to a trade timeline milestone. If he signals accommodation in language that tracks the Beijing timeline, the monetary-diplomatic connection is confirmed rather than inferred.</p>
+<p><strong>Georgia June 17 special session</strong> — the specific district lines proposed will reveal whether the session targets VRA compliance or maximizes Republican seats under Callais cover. This is the single most important redistricting decision in the current cycle.</p>
+<p><strong>Alabama redistricting</strong> — the Supreme Court halt is temporary. The underlying order and its resolution timeline determine whether Alabama gets a second majority-Black district before 2026. Watch for the Court&#x27;s next procedural action.</p>
+<p><strong>Congressional response to the $29 billion Iran war cost gap</strong> — specifically whether any member formally requests written authorization or invokes the War Powers Act clock. Rand Paul is the most likely actor. If he does not move, the documentation gap is likely to be absorbed without triggering oversight.</p>
+<p><strong>CIA whistleblower subpoena question</strong> — if the Senate Homeland Security Committee subpoenas the underlying altered report, the allegation graduates from committee record to documentary evidence and forces broader coverage. If no subpoena is filed within 72 hours, the story is likely to die in the right-media ecosystem.</p>
+<p><strong>Producer price data follow-through</strong> — watch for whether the PPI surge is revised, confirmed, or explained by Fed communications. A revision downward would be buried; a confirmation would directly complicate Warsh&#x27;s rate posture at the worst possible diplomatic moment.</p>
+<p><strong>Kash Patel</strong> — complete disappearance from coverage after prior watch-list prominence. Either his confirmation arc is complete and he is operating below the news threshold, or coverage is being actively suppressed. A single observable action from his current role would resolve the ambiguity.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is defined by a structural asymmetry between what is visible and what is consequential. The visible layer — summit pageantry, confirmation votes, redistricting hearings — is real, but it is also the layer both partisan media ecosystems are comfortable reporting, which means it is by definition the layer least likely to contain what actually matters. The consequential layer is the institutional opacity pattern: a $29 billion war without congressional paper, a Fed chair confirmed while the president is abroad, a redistricting cascade executing across six states without any outlet covering the aggregate effect, a Senate hearing receiving zero coverage from half the media spectrum. These are not separate anomalies. They reflect a governing approach that treats ambiguity as a resource — keeping decisions undocumented preserves flexibility, keeps adversaries uncertain, and prevents oversight mechanisms from acquiring the paper trail they need to function. The honest assessment is that the administration is more disciplined about managing the information environment than any current press coverage suggests, and the tell is not what is being said loudly but what is being allowed to disappear quietly.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">President Trump arrived in Beijing for a state visit with Xi Jinping to discuss trade, Iran war costs, and Taiwan, as the Senate confirmed Kevin Warsh as Federal Reserve chair 54-45, replacing Jerome Powell.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (18)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (13)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (4)</span><span class="bias-badge" style="color:#5ab56e;">right (15)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:15.1;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:24.7;" title="center-left: 18"></div><div class="bias-segment" style="background:#e05252; flex:6.8;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:9.6;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:17.8;" title="left: 13"></div><div class="bias-segment" style="background:#a07ae0; flex:5.5;" title="libertarian: 4"></div><div class="bias-segment" style="background:#5ab56e; flex:20.5;" title="right: 15"></div></div></div>
+  <div class="story-assessment">The Trump-Xi summit is the dominant real-world event, but its substance — particularly any movement on Taiwan policy — is being reported through sharply divergent frames that make independent assessment difficult from media coverage alone. The Warsh confirmation and Iran war costs are the two items with the most concrete policy consequence: replacing Fed leadership during a period of economic stress is historically significant regardless of framing, and a $29 billion war cost that is acknowledged as incomplete and lacks congressional written documentation represents a genuine oversight gap that cuts across partisan lines. The redistricting story is structurally important for the 2026 midterms but is being covered almost entirely through tribal framing rather than electoral mechanics.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Trump&#x27;s China visit as a dangerous concession to Beijing, potentially sacrificing Taiwan, and characterize the accompanying executives as evidence of corporate capture of foreign policy. Iran war costs are framed as a transparency and accountability crisis. The Warsh confirmation is framed as a partisan assault on Fed independence at a fragile economic moment. Redistricting is framed as a coordinated civil rights rollback targeting Black voters. Overall emotional register: institutional alarm and democratic erosion.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill) present most developments factually with minimal editorializing — the China visit as high-stakes but uncertain, Warsh&#x27;s confirmation as significant with bipartisan nuance noted (one Democratic crossover), and the Iran war costs as a legitimate congressional oversight concern. The Hill surfaces stories from both sides of the aisle without strong tonal commitment to either narrative.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump&#x27;s China visit as a historic, triumphant diplomatic mission with strong business community validation. The Warsh confirmation is framed as Trump&#x27;s economic vision coming into focus. The Iran war is framed through the lens of imminent military victory being squandered by restraint. Redistricting court wins are framed as lawful electoral victories. The anti-fraud task force is framed as heroic stewardship of taxpayer money. Overall emotional register: triumphalism and vindication.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: the scale and specifics of the anti-fraud task force&#x27;s findings (the $1.4B in withheld fraudulent health payments and the OPT foreign student fraud investigation); positive business community participation in the China trip; and the procedural detail of how China accommodated Rubio as a diplomatic gesture rather than a concession.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: bipartisan congressional frustration with the lack of written cost breakdowns for the Iran war; Senator Murkowski&#x27;s defection on the war powers vote and what it signals about GOP fractures; substantive concerns about the Fed&#x27;s independence following a politically driven replacement of Powell; and the specific Taiwan concession signals reportedly made during the China summit.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Georgia Governor Brian Kemp announced a June 17 special legislative session to redraw congressional maps following the Supreme Court&#x27;s Louisiana v Callais ruling — while separately, federal courts issued conflicting rulings on mifepristone telehealth access.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two sources are covering entirely different stories — Georgia redistricting and abortion medication access — making direct cross-source comparison on any single story impossible. The framing analysis is therefore one-sided by design: only left and far-left perspectives are represented. Any &#x27;balance&#x27; conclusion drawn from this dataset would be methodologically invalid. The most important real-world facts — the specific legal holdings in Louisiana v Callais and their direct effect on Georgia&#x27;s map-drawing obligations — are not clearly established by either source.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both outlets center harm to marginalized groups — Black voters losing representation in Georgia, and abortion patients losing healthcare access. Emotional weight is placed on victims of institutional action. Courts and Republican legislators are cast as aggressors dismantling protections.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source is represented in this dataset. Cannot characterize center framing without fabricating it.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is represented in this dataset. Cannot characterize right framing without fabricating it.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left outlet addresses the legal rationale the state or courts offered — e.g., what specific VRA provisions were struck in Callais and why the Court ruled as it did, or what procedural basis the Fifth Circuit cited for the mifepristone ruling. The legal logic of the opposing side is absent.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot assess right omissions without right-leaning sources. This is a critical gap in the dataset.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A CIA employee testified before the Senate Homeland Security Committee alleging that intelligence officials suppressed or altered findings supporting a COVID-19 lab leak origin.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">A CIA employee made serious allegations under oath that deserve investigation, but both outlets collapse the distinction between allegation and established fact. The core claim — that a report was deliberately altered to suppress lab leak conclusions — is significant if true, but remains unverified without the underlying document. The only sources covering this are right-leaning, which limits analytical triangulation and suggests the story is being driven by a particular political agenda rather than broad journalistic consensus.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided in this dataset. Historically, left-leaning outlets have emphasized scientific uncertainty around COVID origins, raised concerns about the politicization of intelligence, and questioned the credibility of anonymous whistleblowers promoted by partisan senators.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. Center outlets would likely report the testimony as a significant but unverified allegation, note the absence of corroborating documentation, and contextualize it within the broader, still-unresolved debate over COVID origins.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both outlets treat the whistleblower&#x27;s allegations as credible and essentially confirmed. Fox emphasizes &#x27;deep state&#x27; framing and casts Rand Paul as a heroic truth-seeker. Breitbart goes further, treating the testimony itself as proof of a coverup rather than an allegation. Emotional register: vindication, outrage, validation of long-held suspicions.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left sources provided. Based on coverage patterns, left outlets likely omit or downplay the specific allegation of report alteration, the witness&#x27;s CIA tenure as a credibility marker, and Rand Paul&#x27;s framing of institutional betrayal.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right sources omit that the witness is unnamed, that the underlying altered report has not been made public or independently verified, that intelligence community assessments on COVID origins remain split, and that whistleblower allegations — however credible — are not findings of fact.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The South Carolina Supreme Court unanimously overturned Alex Murdaugh&#x27;s murder convictions due to improper jury interference by a court clerk, with prosecutors announcing plans to retry him.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core legal fact is undisputed: a unanimous state supreme court found the trial was tainted by a court clerk&#x27;s improper jury contact, requiring a new trial. The divergence is tonal — PBS centers prosecutorial continuity while The Guardian centers institutional accountability. Neither outlet spins the facts, but the absence of any right-leaning source limits this as a full-spectrum analysis.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes systemic fairness and the integrity of jury processes — the overturn is cast as the justice system self-correcting against institutional misconduct, with the court clerk&#x27;s interference as the central wrongdoing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Focuses on prosecutorial next steps and procedural outcome — neutral and forward-looking, treating the overturn as a legal development rather than a moral judgment about the system.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this analysis; right framing cannot be assessed from available coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not emphasize the prosecution&#x27;s intent to retry as a sign of continued confidence in the state&#x27;s case — the retrial angle is treated as secondary to the systemic fairness narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was provided — this field cannot be accurately populated without fabricating coverage.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Analysis invalid: the two sources cover entirely unrelated stories and cannot be compared as spectrum coverage of the same event.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two sources are reporting on completely different events — a disease outbreak and a sports scheduling announcement. No meaningful cross-spectrum analysis of the same story is possible with this pairing. The data pipeline feeding this analysis appears to have a story-matching or deduplication failure that is grouping unrelated articles together.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian US frames the NFL&#x27;s 2026 international expansion as commercially motivated, questioning whether global growth serves sport or profit.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames a hantavirus outbreak as an urgent, internationally spreading public health emergency, emphasizing severe individual cases.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this dataset.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian US says nothing about the hantavirus outbreak covered by The Hill.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was provided; The Hill says nothing about the NFL international schedule covered by The Guardian.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Kevin Warsh confirmation</span><span class="entity-tag">Trump-Xi summit</span></div>
+  <div class="connection-text">The Fed chair replacement was confirmed on the same day Trump landed in Beijing. China holds approximately $760B in US Treasuries and is acutely sensitive to Fed rate trajectory. Warsh, known for hawkish-then-dovish flexibility and close Trump alignment, gives the administration a lever to signal monetary accommodation as a trade negotiation sweetener — without it appearing in any treaty text.</div>
+  <div class="connection-sig">↳ If tariff concessions are the visible negotiation, monetary policy signaling may be the invisible one. Markets and foreign counterparties will be watching Warsh&#x27;s first public statements for rate signals that map onto trade timeline commitments.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lockheed Martin missile production tripling</span><span class="entity-tag">Iran war costs ($29B, undocumented)</span><span class="entity-tag">Trump-Xi summit</span></div>
+  <div class="connection-text">Defense production is accelerating in Alabama and Florida while Iran war costs remain without congressional written authorization — and simultaneously Trump is in Beijing where Taiwan policy is on the table. These three stories form a single strategic posture: the US is expanding munitions capacity, funding a war through extralegal channels, and negotiating with the one power that could complicate both.</div>
+  <div class="connection-sig">↳ The absence of congressional documentation on Iran war costs is not administrative sloppiness — it preserves executive flexibility precisely when Beijing is watching whether US commitments are durable or revocable.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rand Paul</span><span class="entity-tag">CIA whistleblower hearing</span><span class="entity-tag">Senate ballroom resistance</span><span class="entity-tag">Iran war cost documentation gap</span></div>
+  <div class="connection-text">Rand Paul appears across four stories as a consistent thread: the COVID lab leak Senate hearing (his committee territory), Senate Republican resistance to the $1B ballroom, and the broader Iran war funding oversight gap. He is the single senator most actively probing executive branch spending opacity from multiple angles simultaneously.</div>
+  <div class="connection-sig">↳ Paul&#x27;s multi-front oversight posture may be coordinated positioning ahead of debt ceiling negotiations or budget reconciliation — using institutional legitimacy concerns to extract concessions rather than purely ideological opposition.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Georgia redistricting special session</span><span class="entity-tag">Alabama map halted by Supreme Court</span><span class="entity-tag">South Carolina redistricting failure</span><span class="entity-tag">New York redistricting wars</span></div>
+  <div class="connection-text">Louisiana v. Callais is producing a simultaneous multi-state redistricting cascade. Georgia (June 17 session), Alabama (map halted), South Carolina (failed Republican push), and New York are all in active map litigation or legislative action within the same news cycle. This is not coincidental — it reflects a coordinated post-Callais legal strategy being executed in parallel across swing and competitive states.</div>
+  <div class="connection-sig">↳ The 2026 midterm map is being drawn right now, largely out of public view, through a series of state-level actions that individually appear routine but collectively represent the most consequential redistricting moment since 2022.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Ghislaine Maxwell prison transfer documents (120,000 pages)</span><span class="entity-tag">E. Jean Carroll appeal ruling</span><span class="entity-tag">Trump-Xi summit timing</span></div>
+  <div class="connection-text">Two major Trump legal-exposure stories — Maxwell document release and Carroll judgment pause — emerged on the same day as the summit. Both dampen domestic political liability during a moment of maximum foreign policy theater. The Carroll ruling in particular has no obvious connection to the summit but functionally reduces negative Trump coverage on a day the White House wants a single dominant narrative.</div>
+  <div class="connection-sig">↳ Whether coordinated or coincidental, legal favorable news clustering around major diplomatic moments has become a detectable pattern worth tracking across the administration&#x27;s calendar.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Institutional opacity as executive strategy: The Iran war cost documentation gap, the CIA lab leak suppression allegation, the $1B no-bid ballroom contract, and the Maxwell document volume all share a single structural feature — enormous consequential decisions made without the paper trail that would enable oversight. This is not ideological; it cuts across war, domestic spending, intelligence, and criminal justice. The pattern suggests a systemic preference for preserving decision ambiguity.</div>
+<div class="pattern-item">Redistricting as the real midterm story: While media attention focuses on the Trump-Xi summit, the actual determinant of 2026 congressional outcomes is being decided through simultaneous legal and legislative actions in Georgia, Alabama, South Carolina, New York, and Missouri. The left covers only losses (Alabama halt, South Carolina failure); the right covers only the wins (Missouri, New York). Neither side is covering the aggregate map effect.</div>
+<div class="pattern-item">The COVID lab leak allegation is being laundered through Senate procedure: The CIA whistleblower testimony follows a now-familiar pattern — a right-media-exclusive story gains institutional legitimacy by entering the congressional record through a committee hearing, at which point it becomes citable as &#x27;Senate testimony&#x27; rather than &#x27;conservative claim.&#x27; The story about James Erdman III&#x27;s background (COVID mandate fights) appearing in the same news cycle as his Senate appearance is the tell — the sourcing community and the institutional venue are the same ecosystem.</div>
+<div class="pattern-item">Defense spending normalization alongside war cost opacity: Lockheed tripling production is framed as economic good news (jobs, deterrence) while the $29B Iran war cost lacks congressional documentation. The juxtaposition normalizes defense expansion while keeping its financial accountability outside public debate — the production story dominates right-leaning coverage while the cost accountability story is buried in the diplomatic frame.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Fed chair confirmation vote (54-45) during an active foreign summit is historically anomalous. Senate floor scheduling is not accidental. Holding the vote while Trump is physically in Beijing — and therefore unavailable for domestic political fallout — minimized the window for market reaction and bipartisan criticism to build into a coherent news cycle.</div>
+<div class="anomaly-item">The CIA whistleblower story (Senate Homeland Security Committee testimony, under oath) received zero coverage from center, center-left, or left outlets in today&#x27;s dataset. For a sworn Senate hearing to be entirely absent from half the media spectrum is itself the story — it suggests either coordinated editorial suppression or a determination that the source&#x27;s credibility (COVID mandate activist turned intelligence employee) is insufficient to report. The absence is more analytically significant than the allegation.</div>
+<div class="anomaly-item">South Carolina appears in three separate stories simultaneously: the Murdaugh conviction overturn, the redistricting failure, and a redistricting win notation. The state is unusually over-represented in today&#x27;s news, which may reflect coordinated Republican legislative activity there that spans multiple policy domains.</div>
+<div class="anomaly-item">Producer prices surging past expectations (largest monthly gain since 2022) appeared only in right-leaning coverage on a day when the new Fed chair was confirmed. This data point, if accurate, would directly complicate Warsh&#x27;s rate trajectory and is the most market-relevant economic signal of the day — yet it is absent from center and left coverage that extensively covered the Warsh confirmation.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding three categories today: economic bad news (producer price surge, wage hike job impacts in Minneapolis), anything that validates the CIA lab leak hearing as newsworthy, and the redistricting wins the right is notching in Missouri and New York. The right is systematically avoiding the substance of the Trump-Xi summit (particularly Taiwan), the Murdaugh institutional accountability story, and the mifepristone telehealth ruling. The combined effect is that neither side is covering the full picture of a single major story: the left is not reporting the inflationary data that complicates the Warsh confirmation they covered, and the right is not reporting the foreign policy commitments that may have been made in Beijing to secure the trade optics they celebrated.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Murder Convictions Overturned South Carolina</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Georgia’S Republican Governor Calls Special</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Powell pulls ahead in tight race for Nebraska&#x27;s 2nd District</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The SPLC survived firebombs and death threats. Will it survive Trump 2.0?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Vance and Oz announce numerous moves on Medicaid and Medicare fraud, focusing on Democratic-run states</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What&#x27;s in the billion-dollar paragraph behind the White House ballroom debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s redistricting push falters in South Carolina Senate but notches a win in Missouri&#x27;s top court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Push for South Carolina to join congressional redistricting battle fails as Republicans reject map</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Appeals court says Trump doesn&#x27;t have to pay $83 million to E. Jean Carroll &amp;mdash; for now</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court halts order on Alabama&#x27;s U.S. House map, giving GOP an opening to gain seat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Unusual flood of money from a veterans group roils Iowa Senate primary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Missouri man charged for posting bomb-making tutorials that aided New Orleans attack</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama woman sues alleging she gave birth on prison floor as guards watched</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Utah woman who published book on grief after husband’s death to be sentenced for his murder</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US man accused of killing rock singer in 1993 arrested after decades on the run</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jim Furyk tells US players they need to make Ryder Cup more of a priority</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Australian NBA star Dyson Daniels on his breakout season, missing three-pointers… and investing tips</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How will the liberal Masai Ujiri handle leading the ultraconservative Dallas Mavericks?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Solution to Urban Heat Is Actually Amazingly Simple</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Admin Has Up to 120,000 Pages of Documents on Ghislaine Maxwell’s Prison Transfer</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate Brings Whistleblower Hearing Alleging</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Age of first-time mothers hits record high in blue states as birth rates keep falling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who is James Erdman III? CIA whistleblower who went from COVID mandate fights to Senate spotlight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem ripped for ‘disgusting’ absence on bill to punish violent criminals after girl strangled in grisly killing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Twin Cities’ wage hikes roasted after report exposes job-crushing fallout in Tim Walz’s backyard</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate Republicans balk at $1B White House ballroom request: ‘You made that number up’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I’m Beginning to Think the Court-Packers Have Not Thought This Through</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Demonizing Billionaires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fosse for the Defense</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Enters the Redistricting Wars</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congress Should Say No to Funding the Ballroom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Chance to Reset Antitrust After Spirit Airlines</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bill Maher’s Category Error on Socialism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lockheed Martin Triples Missile Production as New Munitions Center Breaks Ground</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nolte: Dem L.A. Mayor Karen Bass Proposes Free Teeth for Meth Addicts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nolte: Gallrein Overtakes Massie in Kentucky GOP Primary Poll</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Christopher Nolan Defends &#x27;The Odyssey&#x27; Casting Decisions After Online Backlash</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘The View’ Hosts Erupt on Billy Bob Thornton for Choosing Not to Force His Politics Down His Audience&#x27;s Throat: ‘Silence is Complicity’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pop Star Hayley Williams Declares &#x27;F**k ICE,&#x27; &#x27;Free Palestine&#x27; at Concert</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› George Floyd Family Rages at Kevin Hart, Tony Hinchcliffe over Netflix Roast Jokes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE: Two Mexican Fugitives Arrested in Bi-National Sting by San Diego Border Patrol Agents</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bodies of Three Women Pulled From Sea Off England&#x27;s South Coast</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EU Chief Says Bloc Looking to Introduce Law Banning Social Media for Children by Summer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Police Investigate After NATO Soldiers Attacked by Mask-Wearing, Slogan Shouting Men</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Producer Prices Surge Past Expectations in April, Largest Monthly Gain Since 2022</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Kevin Warsh&#x27;s first public statement or Fed communication after the Beijing summit — watch for any rate signal that maps to a specific trade timeline milestone</div>
+<div class="watch-item">The June 17 Georgia special legislative session: the specific district lines proposed will reveal whether the session targets VRA compliance or maximizes Republican seats under Callais cover</div>
+<div class="watch-item">Alabama redistricting: the Supreme Court halt is temporary — the underlying order and its timeline will determine whether Alabama gets a second majority-Black district before 2026</div>
+<div class="watch-item">Congressional response to the $29B Iran war cost documentation gap — specifically whether any member formally requests the written authorization or triggers the War Powers Act clock</div>
+<div class="watch-item">James Erdman III / CIA whistleblower: watch for whether the underlying altered report is subpoenaed, which would force the story into center-left coverage and test whether the allegation has documentary support</div>
+<div class="watch-item">Lockheed Martin Alabama/Florida munitions center: track contract award documentation for no-bid provisions similar to the White House ballroom contract — the pattern of undocumented large expenditures warrants cross-program scrutiny</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
