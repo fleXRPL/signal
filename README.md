@@ -1,6 +1,6 @@
 # Signal — Political Intelligence Pipeline
 
-![Signal Logo](images/signal_banner.png)
+[![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
 
 A five-pass analysis pipeline that ingests political news across the full spectrum, finds non-obvious patterns and connections, and generates an analyst-style intelligence brief rather than a news summary.
 
