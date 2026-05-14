@@ -38,8 +38,8 @@ fi
 # Run the pipeline (venv already exists, skip setup)
 "$PYTHON" main.py --no-venv
 
-# Stage report and index
-git add reports/ index.html
+# Stage report, index, and archive
+git add reports/ index.html archive.html
 
 # Only commit + push if something actually changed
 if git diff --cached --quiet; then
