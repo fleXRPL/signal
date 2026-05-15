@@ -129,3 +129,7 @@ signal/
 ├── requirements.txt
 └── signal.db              # runtime database (gitignored)
 ```
+
+## Infographic
+
+![Signal Infographic](/images/signal_infographic.png)
