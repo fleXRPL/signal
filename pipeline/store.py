@@ -89,6 +89,15 @@ def init_db() -> None:
             created_at TEXT NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS weekly_briefs (
+            id          INTEGER PRIMARY KEY AUTOINCREMENT,
+            week_start  TEXT NOT NULL,
+            week_end    TEXT NOT NULL,
+            run_ids     TEXT NOT NULL,
+            brief_text  TEXT NOT NULL,
+            created_at  TEXT NOT NULL
+        );
+
         CREATE INDEX IF NOT EXISTS idx_articles_run ON articles(run_id);
         CREATE INDEX IF NOT EXISTS idx_clusters_run ON clusters(run_id);
         CREATE INDEX IF NOT EXISTS idx_articles_url  ON articles(url);
@@ -301,3 +310,124 @@ def get_previous_watch_list(run_id: int) -> List[str]:
     if prev:
         return prev.get("recommended_watch", [])
     return []
+
+
+# ── Weekly briefs ─────────────────────────────────────────────────────────────
+
+def get_runs_for_weekly(days: int = 7) -> List[Dict[str, Any]]:
+    """Return complete runs from the past N days, one per calendar date (latest per day)."""
+    conn = get_connection()
+    rows = conn.execute(
+        """
+        SELECT r.id, r.started_at, r.article_count, r.cluster_count
+        FROM runs r
+        WHERE r.status = 'complete'
+          AND r.started_at >= datetime('now', ? || ' days')
+          AND EXISTS (SELECT 1 FROM briefs b WHERE b.run_id = r.id)
+        ORDER BY r.started_at
+        """,
+        (f"-{days}",),
+    ).fetchall()
+    conn.close()
+
+    # Deduplicate: keep only the latest complete run per calendar date
+    seen_dates: dict = {}
+    for row in rows:
+        date_key = row["started_at"][:10]
+        seen_dates[date_key] = dict(row)
+
+    return list(seen_dates.values())
+
+
+def get_weekly_source_data(run_ids: List[int]) -> List[Dict[str, Any]]:
+    """
+    For each run, return the brief text and correlation analysis.
+
+    Returns a list of dicts with keys: run_id, started_at, brief_text,
+    correlation, watch_list.
+    """
+    if not run_ids:
+        return []
+
+    conn = get_connection()
+    placeholders = ",".join("?" * len(run_ids))
+
+    briefs_rows = conn.execute(
+        f"SELECT run_id, brief_text FROM briefs WHERE run_id IN ({placeholders})",
+        run_ids,
+    ).fetchall()
+
+    corr_rows = conn.execute(
+        f"""SELECT run_id, analysis_json FROM correlation_analyses
+            WHERE run_id IN ({placeholders})
+            ORDER BY id DESC""",
+        run_ids,
+    ).fetchall()
+
+    run_rows = conn.execute(
+        f"SELECT id, started_at, article_count FROM runs WHERE id IN ({placeholders})",
+        run_ids,
+    ).fetchall()
+    conn.close()
+
+    brief_map = {r["run_id"]: r["brief_text"] for r in briefs_rows}
+    run_map = {r["id"]: dict(r) for r in run_rows}
+
+    # Keep only the latest correlation per run
+    corr_map: dict = {}
+    for r in corr_rows:
+        if r["run_id"] not in corr_map:
+            try:
+                corr_map[r["run_id"]] = json.loads(r["analysis_json"])
+            except json.JSONDecodeError:
+                corr_map[r["run_id"]] = {}
+
+    result = []
+    for run_id in run_ids:
+        if run_id not in brief_map:
+            continue
+        corr = corr_map.get(run_id, {})
+        result.append(
+            {
+                "run_id": run_id,
+                "started_at": run_map.get(run_id, {}).get("started_at", ""),
+                "article_count": run_map.get(run_id, {}).get("article_count", 0),
+                "brief_text": brief_map[run_id],
+                "narrative_patterns": corr.get("narrative_patterns", []),
+                "anomalies": corr.get("anomalies", []),
+                "watch_list": corr.get("recommended_watch", []),
+                "delta": corr.get("delta_from_previous", ""),
+            }
+        )
+
+    return sorted(result, key=lambda x: x["started_at"])
+
+
+def save_weekly_brief(
+    week_start: str,
+    week_end: str,
+    run_ids: List[int],
+    brief_text: str,
+) -> int:
+    """Save a weekly brief and return its id."""
+    conn = get_connection()
+    cur = conn.execute(
+        """INSERT INTO weekly_briefs
+           (week_start, week_end, run_ids, brief_text, created_at)
+           VALUES (?,?,?,?,?)""",
+        (week_start, week_end, json.dumps(run_ids), brief_text, now_utc()),
+    )
+    weekly_id = cur.lastrowid
+    conn.commit()
+    conn.close()
+    return weekly_id
+
+
+def get_weekly_briefs() -> List[Dict[str, Any]]:
+    """Return all weekly briefs in reverse chronological order."""
+    conn = get_connection()
+    rows = conn.execute(
+        "SELECT id, week_start, week_end, created_at FROM weekly_briefs ORDER BY id DESC"
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]

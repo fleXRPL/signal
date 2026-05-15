@@ -1,7 +1,8 @@
 #!/bin/bash
 # run_and_publish.sh
-# Runs the Signal pipeline and pushes the generated report to GitHub Pages.
-# Intended to be called by cron nightly.
+# Runs the Signal daily pipeline and pushes the generated report to GitHub Pages.
+# Intended to be called by launchd daily at 5:00 AM.
+# For weekly synthesis, see run_weekly_and_publish.sh.
 
 set -euo pipefail
 

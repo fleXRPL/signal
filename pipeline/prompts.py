@@ -168,3 +168,63 @@ the underlying dynamic that explains what is otherwise confusing or fragmented.
 
 Write in plain, direct English. No bullet points in Situation Overview or Analyst Note. \
 Be willing to make calls. This briefing is only useful if it actually says something."""
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PASS 6 (WEEKLY) — Weekly intelligence summary
+# Single large-context call over all daily briefs for the week.
+# Focus is on CHANGE OVER TIME, not re-summarizing individual days.
+# ─────────────────────────────────────────────────────────────────────────────
+
+WEEKLY_BRIEF = """\
+You are a senior political intelligence analyst writing a WEEKLY briefing. \
+You have been given the daily intelligence briefs from the past {day_count} days \
+({week_start} through {week_end}), along with each day's watch list and narrative patterns.
+
+Your job is NOT to summarize each day again. Your job is to analyze CHANGE OVER TIME. \
+What moved? What stalled? What surprised? What pattern only becomes visible when you look \
+at the full week as a unit?
+
+DAILY BRIEFS AND INTELLIGENCE:
+{daily_data}
+
+WATCH LIST EVOLUTION ACROSS THE WEEK:
+{watch_list_evolution}
+
+Write the weekly brief with exactly these section headers (use markdown ## headers):
+
+## WEEK IN REVIEW
+2-3 paragraphs. The dominant political dynamic of the week as a whole. \
+Not a list of things that happened — an assessment of the underlying political movement \
+that animated the week. What was the week actually about beneath the surface noise?
+
+## STORY ARC TRACKER
+For each of the 3-5 most significant stories of the week: how did it evolve day by day? \
+Did it escalate, resolve, get buried, or shift framing across the week? \
+Be specific about how the story changed from Monday to Friday.
+
+## WHAT ESCALATED
+Stories or dynamics that grew in significance as the week progressed. \
+What started small and became important? What watch list items materialized?
+
+## WHAT WAS BURIED
+Stories that appeared prominently early in the week and then disappeared from coverage. \
+Was that disappearance natural (story resolved) or suspicious (story suppressed)? \
+What dropped off the watch list without resolution?
+
+## BLINDSPOT OF THE WEEK
+The single most significant story the mainstream political media on BOTH sides \
+systematically underreported or ignored this week. Why does it matter more than the coverage suggests?
+
+## WATCH LIST: NEXT WEEK
+Specific items to monitor in the coming week. Name the entity, vote, deadline, or \
+development. Explain why it is likely to move. Be concrete — vague watch list items \
+are useless.
+
+## ANALYST NOTE
+One paragraph. Your honest assessment of where American politics actually is right now \
+after looking at a full week of data — not a single day. What is the trajectory? \
+What should a well-informed observer be most concerned about or watching most closely?
+
+Write in plain, direct English. Be willing to make calls. \
+The value of a weekly brief is exactly the perspective that daily coverage cannot provide."""
