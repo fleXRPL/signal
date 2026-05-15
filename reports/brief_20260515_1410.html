@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-15 14:10 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-15 14:10 UTC</span>
+    <span class="pill">95 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of May 15 is the Beijing summit, but the summit is being read incorrectly by almost everyone covering it. Trump secured a concrete trade deliverable (200-plane Boeing order), a verbal Iranian arms pledge from Xi, and diplomatic re-engagement with the world&#x27;s second-largest economy — these are real. What the right-leaning coverage omits is that China extracted something real in return: peer-superpower optics, a public Taiwan warning that now constrains U.S. response options, and a baseline of summit normalcy that Beijing will cite in every future multilateral forum. The ledger is mixed. The administration got transactions; Beijing got positioning.</p>
+<p>Buried beneath the Beijing imagery is the more consequential story of the day: CIA Director Ratcliffe made a clandestine trip to Havana while Trump was in Beijing. A sitting CIA director meeting with Raúl Castro&#x27;s grandson while the DOJ simultaneously threatens to indict a former Cuban head of state is an aggressive dual-track pressure operation — coercion plus engagement running in parallel. This is not routine diplomacy. It represents an administration willing to operate in multiple coercive registers simultaneously, compressing the diplomatic timeline in ways that create genuine escalation risk if either track leaks or misfires. The Cuba story should be leading. It is not.</p>
+<p>Domestically, the day&#x27;s news reflects a political system engaged in structural changes that are difficult to reverse. Multiple redistricting moves in the Deep South, a Supreme Court stay on mifepristone that preserves the status quo without resolving the underlying legal question, and turbulence inside the immigration enforcement apparatus — Border Patrol head resignation, &#x27;Alligator Alcatraz&#x27; closure, a private-prison executive now running ICE — together describe a political moment characterized less by policy debates than by institutional architecture being quietly rearranged while attention is directed toward Beijing.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is operating in an unusually compressed tempo across multiple domains simultaneously: summit diplomacy in Beijing, covert pressure on Cuba, domestic legislative scaffolding through the reconciliation bill, and ongoing judicial confrontations. The compression appears deliberate — creating so many simultaneous fronts that no single story accumulates enough oxygen to generate sustained accountability. The Boeing deal and the CENTCOM &#x27;Epic Fury&#x27; Iran announcement are genuine deliverables; they are also useful news-management assets deployed into a cycle containing less favorable stories about redistricting, emoluments, and enforcement failures.</p>
+<p><strong>Xi Jinping</strong> achieved what China has sought for years: a summit format that implicitly ratifies peer-superpower status. The Taiwan warning issued publicly during Trump&#x27;s visit is a message to Beijing&#x27;s domestic audience and to regional allies, not to Washington. Xi&#x27;s Iran verbal pledge costs him little if CENTCOM&#x27;s assessment that Iran is already severely degraded is accurate — which is the critical analytical question neither side is asking.</p>
+<p><strong>JD Vance</strong> is emerging as a connective node between the crypto-donor pipeline and the administration&#x27;s foreign policy posture. His appearance in both the Alabama Senate race context (crypto billionaire backing) and the Beijing summit coverage is not coincidental. The crypto-to-Republican-power pipeline is now structural, not emergent.</p>
+<p><strong>Senate Republicans</strong> (Cotton, Cruz, Boozman) are pushing domestic lithium supply legislation that directly contradicts the administration&#x27;s deepening trade engagement with China. This is not theater — it reflects a genuine fracture between the trade-engagement faction that traveled to Beijing and the decoupling faction operating from the Senate. This tension will surface in the reconciliation bill when defense-industrial policy riders collide with the trade posture Trump is now committed to.</p>
+<p><strong>The immigration enforcement apparatus</strong> is in visible internal disorder: a leadership departure at Border Patrol, a private-sector appointment at ICE, and the closure of a flagship detention facility. The policy incoherence — privatizing ICE leadership while closing a privatized detention facility — suggests not a strategic pivot but genuine internal breakdown. This is happening on a day when the right-media apparatus has gone entirely silent on immigration, which is anomalous.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering three categories today, and the omission pattern is too clean to be accidental. First, domestic institutional norm violations: FBI Director Patel&#x27;s use of government resources at Pearl Harbor, the presidential library emoluments question, and the Christian nationalist prayer gathering are all absent from right-leaning coverage. These stories individually read as partisan complaints; collectively they describe systematic boundary-testing across law enforcement, constitutional law, and civil religion — a narrative the right has no prepared counter-frame for. Second, electoral structure manipulation: the redistricting moves in Louisiana, Tennessee, and Georgia, plus the crypto-donor capture of the Alabama Senate seat, are being covered exclusively by left-leaning outlets. The geographic spread traces the Deep South and suggests coordinated timing to overwhelm legal challenge capacity. Third, immigration enforcement failures are invisible on the right today — extraordinary, given that immigration is the coalition&#x27;s flagship issue.</p>
+<p>The left, for its part, is systematically avoiding foreign policy success framing. CENTCOM&#x27;s announcement that Iran&#x27;s forces are severely degraded and proxies cut off is absent from left coverage, as is any serious engagement with the Boeing deal&#x27;s economic significance or the Cuba CIA track&#x27;s strategic logic. The left&#x27;s avoidance here is a strategic choice — crediting the administration with foreign policy wins during a domestic accountability news cycle — but it leaves the left without any foreign policy counter-narrative at the precise moment the administration is generating genuine, if mixed, deliverables.</p>
+<p>The most significant single absence of the day: no outlet appears to have cross-referenced the CENTCOM &#x27;Epic Fury&#x27; announcement with the Beijing Iran verbal pledge. If Iran&#x27;s capabilities are already severely degraded, Xi&#x27;s commitment to restrain arms transfers costs Beijing almost nothing. The pledge may be structurally cheap. This is not a subtle point, and no one is making it.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Beijing summit and the Havana CIA trip are not two separate foreign policy stories — they are a single strategic message delivered in two registers. Overt engagement in Beijing signals &quot;we make deals.&quot; Covert pressure in Havana, combining CIA back-channel contact with an indictment threat against a former head of state, signals coercive capability. Together they are directed at adversarial states watching both moves simultaneously. The risk is that the compressed timeline creates operational exposure: if either track leaks to the other side&#x27;s intelligence services before it matures, both collapse. The Cuba track is the higher-risk element.</p>
+<p>The simultaneous redistricting activity in Louisiana, Tennessee, and Georgia should not be read as three independent state-level stories. The geographic concentration in the Deep South and border South, the parallel timing, and the addition of crypto-donor capture of Alabama Senate representation together describe a coordinated regional reshaping of congressional and Senate power below the national attention threshold. The strategy appears to be simultaneity — advance on multiple fronts at once to dilute legal challenge capacity and media bandwidth.</p>
+<p>The structural-irreversibility concentration in today&#x27;s news is abnormal. Redistricting maps, Boeing contract structures, CENTCOM&#x27;s military degradation of a state actor, a CIA back-channel establishment, SCOTUS procedural stays — these are not normal news-day distributions. When multiple structurally-irreversible changes cluster in a single news cycle, it typically signals a political sprint before a window closes. The relevant window here may be the reconciliation bill timeline, a congressional recess, or an approaching court deadline.</p>
+<p>The Cotton-Cruz-Boozman lithium legislation and the Trump Boeing deal are structurally contradictory: one seeks to reduce strategic mineral dependency on China while the other deepens commercial aviation dependency. These represent a genuine internal GOP fracture that will become impossible to paper over once the reconciliation bill forces explicit trade-posture choices.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>State Department sanctions designation against Chinese supertanker (72-hour window from summit close):</strong> The clearest operational test of whether Xi&#x27;s Iran verbal pledge was real or performative. No designation within 72 hours confirms pageantry. Watch specifically for a State Department press briefing that avoids the question entirely — that evasion is itself a signal.</p>
+<p><strong>DOJ grand jury activity on Cuba indictment (2-week window):</strong> The CIA back-channel and the indictment threat are a matched pair. Movement on one signals the status of the other. Watch for any DOJ filing, grand jury convening notice, or leak to a national security beat reporter.</p>
+<p><strong>Right-wing media&#x27;s first coverage of the 7-2 mifepristone SCOTUS ruling:</strong> The silence is currently total. The first conservative outlet to break it will reveal whether the right has a prepared counter-frame (&quot;procedural, not on the merits&quot;) or is caught flat-footed. If silence persists past 72 hours, the absence becomes the story.</p>
+<p><strong>Border Patrol acting director appointment:</strong> Who fills the vacancy and where they come from — career civil service or private detention sector — will signal whether the Border Patrol institutional culture is being deliberately disrupted to match the ICE privatization pattern or whether the leadership turbulence is uncontrolled.</p>
+<p><strong>Kevin Warsh (Fed) first post-confirmation statement on dollar strength:</strong> Still on watch from prior cycle. If any Beijing currency commitment was made off the record, this is where it surfaces. No signal yet; the window remains open.</p>
+<p><strong>Alabama Senate race crypto PAC filings (30-day window):</strong> If Alabama is a template rather than an isolated case, parallel financial activity should appear in Georgia or Mississippi within 30 days. Watch FEC filings for crypto-affiliated PAC expenditures in adjacent Deep South races.</p>
+<p><strong>CENTCOM &#x27;Epic Fury&#x27; independent assessment:</strong> The administration&#x27;s &#x27;severely degraded&#x27; claim about Iranian military capacity is self-reported. Watch for any Iranian counter-statement, allied intelligence assessment, or satellite imagery analysis that either confirms or contests the claim — this directly determines whether the Beijing Iran pledge has any operational value.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic of May 15, 2026 is a governing style that uses tempo and simultaneity as its primary tools of political management. By running overt diplomacy in Beijing, covert pressure in Havana, domestic redistricting in three states, immigration enforcement restructuring, and a SCOTUS procedural win on abortion all in a single news cycle, the administration creates a coverage environment in which no single story accumulates enough sustained attention to generate accountability — not because any individual story is unimportant, but because the aggregate volume exceeds the processing capacity of both the media and the opposition. This is not accidental. The structural-irreversibility concentration in today&#x27;s news — maps drawn, contracts signed, military operations announced, back-channels opened — suggests a deliberate sprint to lock in changes before some closing window, most likely the reconciliation bill endgame or a court deadline that will constrain options. The Cuba story remains the most underleveraged intelligence thread of the day: a CIA director in Havana while the president is in Beijing, running coercive and diplomatic pressure simultaneously against a state that has historically served as a relay node for adversarial communications, is the kind of development that demands independent monitoring regardless of what the Beijing imagery cycle allows to surface.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">President Trump completed a state visit to Beijing meeting with Xi Jinping, securing a 200-plane Boeing deal and a verbal pledge on Iran arms, while Xi issued a public Taiwan warning and invoked the &#x27;Thucydides Trap&#x27;; separately, CIA Director Ratcliffe made a clandestine trip to Havana to meet Cuban officials including Raúl Castro&#x27;s grandson.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.1;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:16.1;" title="center-left: 5"></div><div class="bias-segment" style="background:#e05252; flex:6.5;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:6.5;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:25.8;" title="left: 8"></div><div class="bias-segment" style="background:#5ab56e; flex:29.0;" title="right: 9"></div></div></div>
+  <div class="story-assessment">The Trump-Xi summit produced a mixed but real ledger: a concrete trade deliverable (Boeing order), a verbal Iran commitment of uncertain enforceability, and diplomatic re-engagement — but at the cost of imagery that advanced Beijing&#x27;s peer-superpower narrative and a public Taiwan warning that constrains future U.S. flexibility. Neither &#x27;total win&#x27; nor &#x27;total capitulation&#x27; captures it accurately. The Cuba track is the more underreported story: a covert CIA diplomatic channel combined with the threat of a sitting ex-head-of-state indictment represents an unusually aggressive and high-risk dual-track pressure strategy that deserves scrutiny regardless of political orientation.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The summit was a symbolic and strategic win for Beijing: the pageantry of peer-superpower equality was Xi&#x27;s long-standing goal, Trump appeared deferential, China prevailed in the opening tariff clash, and Xi&#x27;s Taiwan warning signals hardened red lines that complicate Trump&#x27;s transactional instincts. On Cuba, the angle is cautious diplomacy with conditions. The overall tone is skeptical wariness — diplomatic warmth masking serious, unresolved dangers.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Balanced but politically focused — noting the domestic blame-shifting around Xi&#x27;s remarks, the time pressure on the Cuba window, congressional procedural concerns, and the institutional transition at the Fed. The Hill and others contextualize diplomatic warmth against prior tariff escalation and legal setbacks, treating outcomes as ambiguous rather than decisive in either direction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The summit was an unambiguous American diplomatic and economic triumph: Trump personally leveraged a high-profile business delegation to extract a massive Boeing order, a concrete pledge from Xi on Iranian arms, and favorable trade language. The &#x27;declining nation&#x27; framing is redeployed as an attack on Biden. Cuba is framed as the U.S. holding the leverage of both military threat and potential indictment. Tone is celebratory and validating of Trump&#x27;s dealmaking persona.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit or minimize the concrete deliverables Trump secured: the specifics of the Boeing deal, Xi&#x27;s explicit Iran arms pledge, and the composition and significance of the U.S. business delegation as genuine negotiating leverage. They also underplay the urgency and potential strategic value of the Cuba back-channel.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not report that the Supreme Court had previously ruled Trump&#x27;s broad tariffs illegal — context that directly affects U.S. leverage claims. They omit the framing that China achieved its long-sought symbolic peer-status goal through summit imagery. Xi&#x27;s Taiwan warning is mentioned but not treated as a serious constraint on U.S. policy. The CIA&#x27;s implicit use of military threat as a negotiating tool in Cuba is absent from right framing.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The Supreme Court voted 7-2 to block a Fifth Circuit ruling that would have restricted mail-order access to mifepristone, preserving the status quo on abortion pill availability.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core fact is clear: the Supreme Court preserved mifepristone access by blocking a lower court ruling, and the 7-2 margin signals broad consensus among the justices on standing or procedural grounds. However, both sources provided are left-leaning, creating an echo chamber effect — the analysis lacks the necessary ideological diversity to perform a genuine cross-spectrum comparison. The framing differences between the two sources (decisive &#x27;victory&#x27; vs. temporary &#x27;pause&#x27;) are actually the most analytically interesting signal here, hinting at genuine legal uncertainty about whether this ruling fully resolves the issue.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Victory for abortion access and reproductive rights. Emphasis on patient relief, threat narrowly averted. Dissenters are cast as extreme outliers. Emotional register is cautious optimism mixed with ongoing alarm about the broader anti-abortion legal environment.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources are present in this dataset, so center framing cannot be assessed from available coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources are present in this dataset, so right framing cannot be assessed from available coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    With no right-leaning sources present, it is not possible to identify what left outlets are omitting relative to right coverage. Notably absent from both sources: substantive discussion of the legal standing arguments, the plaintiffs&#x27; identity and specific claims, or any steelman of the regulatory concerns about the FDA&#x27;s approval process that animated the original lawsuit.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be assessed — no right-leaning sources were provided for comparison.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Supreme Court issued a stay blocking a 5th Circuit ruling that would have restricted mifepristone distribution by mail, preserving telehealth access to medication abortion while related litigation continues in lower courts.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This dataset has a fundamental data quality problem: the two &#x27;sources&#x27; cover different Supreme Court cases. Only NPR&#x27;s report actually addresses mifepristone access, making cross-spectrum analysis impossible. The underlying legal fact — a SCOTUS stay preserving telehealth mifepristone access while Louisiana litigation proceeds — is significant but narrow: it is a procedural pause, not a final ruling on the merits.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The assigned left source (Washington Post) does not cover this story. Its article addresses a separate Supreme Court decision weakening the Voting Rights Act and its downstream effect on Black congressional representation in Louisiana — a different case with a different outcome.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR frames the stay as maintaining the status quo — neutral, procedural language that emphasizes continuity of access rather than victory or defeat for either side. The focus is on what changed legally, not what it means politically.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this dataset. Right coverage of mifepristone access typically emphasizes regulatory process concerns, FDA approval questions, and objections to expanded telehealth prescribing without in-person examination.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Because the left source covers an entirely different story, no meaningful comparison can be drawn. Standard left omissions on this topic would include the dissenting justices&#x27; reasoning and the specific safety objections raised by plaintiffs.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right source present. Typical right-source omissions on this topic include the strong safety record of mifepristone in clinical use and the logistical barriers rural patients face without mail access.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Cross-spectrum comparison is not possible: the two sources are covering entirely different stories with no factual overlap.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two sources are not covering the same event. The story tagging or aggregation pipeline appears to have mismatched unrelated articles under a single story slug. No meaningful cross-spectrum analysis of a shared event is possible here. The data should be flagged for review before publication.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Guardian frames ICE as militarized and performatively brutal, emphasizing danger to children, protest suppression, and social media exploitation of a violent arrest of a US citizen.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source provided — cannot assess.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the LA mayoral race as competitive and Bass as potentially vulnerable, platforming Spencer Pratt as a meaningful challenger to generate uncertainty about the incumbent.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian makes no mention of the LA mayoral race or the political context of Karen Bass&#x27;s incumbency.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart makes no mention of the ICE arrest of Christian Cerna, the use of flash-bang grenades, the presence of children, or any civil liberties concerns around ICE enforcement tactics.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">CIA Director Ratcliffe Cuba trip</span><span class="entity-tag">Trump-Xi Beijing summit</span></div>
+  <div class="connection-text">Two simultaneous back-channel engagements with adversarial states — one overt in Beijing, one covert in Havana — occurring on the same news day. Cuba has historically served as a diplomatic relay node, and Raúl Castro&#x27;s grandson&#x27;s presence suggests succession-era leverage, not nostalgia. The dual-track timing is almost certainly coordinated: the Beijing summit provides a &#x27;we can make deals&#x27; signal while the Havana pressure track (indictment threat + CIA contact) signals coercive capability. Together they form a single strategic message about the administration&#x27;s willingness to operate in multiple registers simultaneously.</div>
+  <div class="connection-sig">↳ The Cuba story is the most underreported development of the day. A sitting CIA director making a clandestine trip to Havana while the President is in Beijing represents an unusually compressed diplomatic tempo. If either track leaks to adversaries before it matures, both collapse. The risk profile here is higher than the Beijing optics suggest.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">CENTCOM &#x27;Epic Fury&#x27; Iran degradation announcement</span><span class="entity-tag">Trump-Xi verbal Iran pledge</span></div>
+  <div class="connection-text">CENTCOM&#x27;s announcement that Iran&#x27;s forces are &#x27;severely degraded&#x27; and proxies &#x27;cut off&#x27; was released into the same news cycle as the Beijing summit&#x27;s Iran verbal pledge. This is either deliberate sequencing — releasing the military success story to give Trump leverage with Xi — or it inadvertently undercuts the pledge&#x27;s value. If Iran is already severely degraded, Beijing&#x27;s commitment to restrain arms transfers costs China almost nothing. The pledge may be cheaper than it appears.</div>
+  <div class="connection-sig">↳ This is the key analytical question for the Iran thread: was the verbal pledge extracted because Iran is weak (making it a low-cost concession for Beijing), or despite Iran being weak (making it meaningless as a deliverable)? The CENTCOM story and the Beijing story need to be read together, not separately. Neither outlet set is doing this.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Senate lithium domestic supply push (Cotton, Cruz, Boozman)</span><span class="entity-tag">Trump Boeing-China deal</span><span class="entity-tag">OpenAI data center NIMBY story</span></div>
+  <div class="connection-text">While Trump signs Boeing deals in Beijing, Republican senators are simultaneously asking the Department of War to reduce strategic mineral dependency on China. The OpenAI data center NIMBY story adds a third vector: domestic infrastructure buildout is stalled by local opposition even as the administration is deepening trade engagement with the primary strategic competitor. These three stories together map an internal GOP fracture between the trade-engagement faction (Trump) and the decoupling faction (Cotton/Cruz), with a domestic infrastructure bottleneck as a third complicating variable.</div>
+  <div class="connection-sig">↳ The lithium push and the Beijing deal are structurally contradictory. If this tension goes unresolved, it will surface in the reconciliation bill fight where defense-industrial policy riders and trade posture intersect.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Louisiana majority-Black district elimination</span><span class="entity-tag">Georgia redistricting (implied)</span><span class="entity-tag">Tennessee redistricting</span><span class="entity-tag">Crypto billionaires Alabama Senate seat</span></div>
+  <div class="connection-text">Four simultaneous stories about structural manipulation of electoral representation — map-drawing in three states plus donor-class capture of a Senate seat — are all appearing on the same day and are covered exclusively by left-leaning outlets. The geographic spread (Louisiana, Georgia, Tennessee, Alabama) traces the Deep South and border South. This is not four independent stories; it is a coordinated regional reshaping of congressional and Senate representation happening in parallel, below the national attention threshold.</div>
+  <div class="connection-sig">↳ The pattern suggests a deliberate sequencing strategy: advance redistricting in multiple states simultaneously to overwhelm legal challenge capacity and dilute media attention. The Alabama crypto story adds a donor-class dimension — the same political geography being restructured at the map level is also being restructured at the fundraising level.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FBI Director Patel &#x27;VIP snorkel&#x27; Pearl Harbor</span><span class="entity-tag">Trump emoluments clause presidential library</span><span class="entity-tag">Trump prayer gathering Christian nationalism</span></div>
+  <div class="connection-text">Three separate stories about norm erosion in different institutional domains — executive agency resource use, constitutional emoluments limits, and church-state separation — appear on the same day, covered exclusively by left-leaning outlets. Each story individually reads as a minor controversy. Collectively they describe a systematic pattern of institutional boundary-testing across law enforcement, constitutional law, and civil religion.</div>
+  <div class="connection-sig">↳ The right&#x27;s complete silence on all three stories is itself the signal. These are not stories the right is framing differently — they are stories the right is not covering at all. That asymmetry will compound: the left builds a cumulative institutional-decay narrative while the right has no counter-frame prepared.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Border Patrol head resignation</span><span class="entity-tag">ICE leadership from private prison sector</span><span class="entity-tag">&#x27;Alligator Alcatraz&#x27; closure</span></div>
+  <div class="connection-text">Three simultaneous immigration enforcement stories — a leadership departure, a private-sector appointment to ICE, and the closure of a flagship detention facility — together describe significant internal turbulence in the enforcement apparatus. The private prison executive at ICE and the Alcatraz closure point in opposite directions on the privatization question, suggesting policy incoherence rather than strategic pivot.</div>
+  <div class="connection-sig">↳ This cluster is invisible to right-wing media today, which is anomalous given that immigration is ostensibly a core priority. The absence suggests either the stories are embarrassing to the enforcement narrative or internal coordination has broken down in ways that are not yet fully visible.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Structural irreversibility concentration: An unusual proportion of today&#x27;s stories involve changes that are difficult or impossible to reverse — redistricting maps, SCOTUS procedural stays, Boeing contract structures, military degradation of a state actor, CIA back-channel establishment. This is not normal news-day distribution. When multiple structurally-irreversible changes cluster in a single news cycle, it often signals a political sprint before a window closes — an election, a court deadline, or a congressional recess.</div>
+<div class="pattern-item">Simultaneous dual-track diplomacy as a governing style: The Beijing summit and the Havana CIA trip are not isolated events — they represent a pattern where the administration runs overt and covert diplomatic tracks in parallel on the same day toward adversarial states. This governing style creates maximum ambiguity for adversaries but also maximum interpretive chaos domestically, which may be a feature rather than a bug.</div>
+<div class="pattern-item">Right-media foreign success / Left-media domestic accountability split: Today&#x27;s right-only stories cluster around foreign policy wins (CENTCOM Iran, Israel, lithium independence push) and cultural critique (Colbert, academia, Sweden). Today&#x27;s left-only stories cluster around domestic institutional accountability (Patel, redistricting, Border Patrol, emoluments). Neither side is covering the other&#x27;s primary domain. This is not new but today&#x27;s split is unusually clean — there is almost no topical overlap between the two coverage universes.</div>
+<div class="pattern-item">Crypto-to-power pipeline solidifying: JD Vance appears in both the crypto-Alabama Senate story and the Beijing summit story. The Alabama race, the crypto billionaire donor pattern, and Vance&#x27;s presence as a connective node suggests the crypto-to-Republican-power pipeline is no longer an emerging trend — it is now a structural feature of the coalition that is worth tracking as a unified phenomenon rather than isolated donor stories.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">A 7-2 Supreme Court ruling on a major abortion-adjacent case is covered exclusively by two left-leaning outlets. A supermajority ruling of this magnitude on this topic should generate wall-to-wall coverage across the spectrum. The right&#x27;s total silence is almost certainly strategic: the ruling is politically inconvenient for a narrative that SCOTUS conservatives will reliably restrict abortion access. Watch for whether this silence holds through the weekend or whether right-leaning outlets eventually frame it as a procedural victory (&#x27;they didn&#x27;t rule on the merits&#x27;).</div>
+<div class="anomaly-item">The CIA director&#x27;s clandestine Havana trip is buried in the Beijing summit story despite being independently significant. A sitting CIA director meeting with a Castro family member while simultaneously threatening indictment of a Cuban ex-head-of-state is a genuine foreign policy anomaly that would dominate coverage in any prior administration. Its submersion beneath the Beijing optics story suggests either deliberate news management or a media landscape too saturated with summit imagery to process a second major diplomatic development on the same day.</div>
+<div class="anomaly-item">The CENTCOM &#x27;Epic Fury&#x27; success announcement and the Beijing Iran verbal pledge were released into the same news cycle without any outlet apparently cross-referencing them. If Iran&#x27;s capabilities are already severely degraded, the pledge Xi made is structurally cheap — this is the kind of analytic connection that should be generating follow-up reporting but appears not to be.</div>
+<div class="anomaly-item">The Border Patrol head resignation and the &#x27;Alligator Alcatraz&#x27; closure are both immigration-enforcement setbacks appearing on a day when the administration is projecting diplomatic strength. These stories are absent from right-wing coverage entirely, which is anomalous: immigration has been a flagship issue. Either the stories are being suppressed in right-wing editorial decisions or the enforcement apparatus setbacks are genuinely not being registered as significant by the coalition that cares most about the policy.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: domestic institutional norm violations (Patel, emoluments, Christian nationalism prayer gathering), electoral structure manipulation (redistricting, crypto donor capture), and immigration enforcement failures (Border Patrol resignation, Alcatraz closure). This avoidance pattern is not random — all three categories undercut the coalition&#x27;s core narratives about institutional competence, electoral integrity, and border security. The left is systematically avoiding foreign policy success framing: CENTCOM&#x27;s Iran degradation announcement, any positive read of the Boeing deal, and the Cuba CIA track entirely. The left&#x27;s avoidance suggests a strategic decision not to credit the administration with foreign policy wins during a week when domestic accountability stories are in play, but it leaves the left without a foreign policy counter-narrative at a moment when the administration is generating genuine deliverables, however mixed.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court Keeps Abortion Mifepristone</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court Allows Abortion Mifepristone</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Death toll in attack on Kyiv apartment building now stands at 24</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› After redistricting, what does representation mean to Tennessee voters?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Reps. Brian Fitzpatrick and Tom Suozzi on rising issue of gerrymandering</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› News Wrap: Senate votes to withhold their own pay during future shutdowns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How reality TV stars seeking office are changing politics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida&#x27;s controversial &#x27;Alligator Alcatraz&#x27; expected to close</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Louisiana senate passes new U.S. House map that would eliminate majority-Black district</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FBI Director Kash Patel took &#x27;VIP snorkel&#x27; at a Pearl Harbor memorial, emails show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. Border Patrol head announces resignation in latest leadership shakeup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump to join prayer gathering criticized for promoting Christian nationalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senators vote to withhold their own pay during future government shutdowns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A golden statue of Trump draws mixed reactions at his golf course</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mapping where the redistricting fight stands and where it’s headed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 13 men killed by US military boat strikes identified: ‘These were flesh-and-blood people’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US teens getting less sleep than ever, new report finds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota Democratic lawmakers begin sit-in over gun violence protection bill</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Stone-cold racism’: Newsom condemns GOP redistricting efforts; Louisiana approves plan to erase majority-Black district – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Oklahoma Communities Gutted by ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why the Next President Could Finally Be Elected by the Popular Vote</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How to Steal Back the Future: Boots Riley on His “Best Film Yet”</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Taps Former Private Prison Exec to Run ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Officials, Billionaires and the Quiet Reshaping of America’s Public Lands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Crypto Billionaires Are Trying to Buy a Senate Seat in Alabama</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Turns Out, Nobody Wants a Data Center in Their Backyard</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Israel, Jews targeted worldwide as well-funded leftist, Islamist groups join for ‘Nakba 78’ protests</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This Midwestern state leads the nation in home foreclosures as US filings jump by 26%</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why I am quitting the Conservative Party after 40 years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Colbert collapse: How television’s sharpest satirist lost his edge — and his show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Academia and the media against older Americans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Disbarring John Eastman Breaks Yet Another Norm Against Lawfare</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Hollywood Revenge Sermon</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Keeping America Prosperous — Far Beyond 250</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No, Sweden Is Not Really Moving Toward Capitalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Week: A Historic Summit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Time for the &lt;i&gt;Times&lt;/i&gt; to Retract the Israeli-Rape Column</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Iran, What Now?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› CENTCOM Chief: Iran’s Forces ‘Severely Degraded,’ Terror Proxies ‘Cut Off’ — ‘Every Objective for Epic Fury Met’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Sens. Cotton, Boozman, Cruz Ask Department of War to Invest in Untapped Domestic Lithium Supply</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spencer Pratt Responds to Report He Lives at Luxury Hotel, Not Airstream Trailer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Watch Xavier Becerra Mansplain to Latinx Female Journalist How to Do Her Job on T.V.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Marlow Calls B.S. on Mayorkas: &#x27;Architect&#x27; of Biden&#x27;s Open Border Now Says He Disagreed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Brandon Gill: Fairfax County Democrat Prosecutor Helped Illegal Alien Sex Offender Evade Prison</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Princeton Drops Honor Code, Will Supervise Exams for First Time in 133 Years Due to AI</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">State Department sanctions designation (or absence) against the Chinese supertanker that transited Hormuz — the 72-hour window from the Beijing summit is the critical test of whether the Iran verbal pledge was operationally real or performative. No designation = pageantry confirmed.</div>
+<div class="watch-item">Cuba: watch for any DOJ grand jury activity or formal indictment move against the Cuban ex-head-of-state within 2 weeks. The covert CIA track and the indictment threat are a matched pair — movement on one will signal the status of the other.</div>
+<div class="watch-item">Alabama Senate race: track whether crypto PAC money is flowing to other Deep South Senate races simultaneously — if Alabama is a template rather than an isolated case, we should see parallel financial activity in Georgia or Mississippi within 30 days.</div>
+<div class="watch-item">Right-wing media coverage of the 7-2 SCOTUS mifepristone ruling: watch for the first conservative outlet to break silence and what frame they use. The frame chosen will reveal whether the right has a prepared counter-narrative or is genuinely caught flat-footed.</div>
+<div class="watch-item">CENTCOM &#x27;Epic Fury&#x27; aftermath: watch for any Iranian counter-claim or third-party assessment of actual Iranian military capacity — the administration&#x27;s &#x27;severely degraded&#x27; claim is self-reported and should be independently assessed before the Beijing Iran pledge is evaluated.</div>
+<div class="watch-item">Border Patrol leadership vacancy: who is nominated or appointed as acting head, and whether they come from the private detention sector (matching the ICE appointment pattern) or from career civil service — this will signal whether the Border Patrol institutional culture is being deliberately disrupted.</div>
+<div class="watch-item">Kevin Warsh Fed communication: still on watch — no signal has emerged yet. His first post-confirmation statement on dollar strength remains the clearest indicator of whether any Beijing currency commitment was made off the record.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
