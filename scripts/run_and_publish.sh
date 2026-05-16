@@ -24,6 +24,14 @@ echo "========================================"
 
 cd "$REPO"
 
+# Always publish from main — switch if on a feature branch
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$CURRENT_BRANCH" != "main" ]; then
+    echo "On branch '$CURRENT_BRANCH' — switching to main for publish..."
+    git checkout main
+    git pull --ff-only origin main || echo "Warning: pull failed, continuing with local main"
+fi
+
 # Default to Claude; override with SIGNAL_LLM_PROVIDER=ollama if needed
 export SIGNAL_LLM_PROVIDER="${SIGNAL_LLM_PROVIDER:-claude}"
 

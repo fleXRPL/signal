@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-16 14:25 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-16 14:25 UTC</span>
+    <span class="pill">88 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">2 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics is operating in two distinct registers simultaneously, and the gap between them is widening to the point where they no longer share a factual substrate. At the surface level, the week&#x27;s dominant events are a Beijing summit, a closed strait, a commuted sentence, and a Saturday primary. Beneath that surface, what is actually happening is a systematic compression of the institutional mechanisms — electoral accountability, independent data collection, congressional oversight, and enforcement consequences — that would normally constrain executive power. No single actor needs to be coordinating all of it. The cumulative effect is real regardless of intent.</p>
+<p>The Trump-Xi summit is the week&#x27;s most consequential event and also its most misread one. The ideological frames (&quot;triumph&quot; vs. &quot;humiliation&quot;) are both wrong. The operative facts are these: Trump publicly acknowledged allowing China to retrieve sanctioned Iranian oil tankers, which is a sanctions policy concession regardless of what it is called; his post-summit language on Taiwan introduced deliberate ambiguity about U.S. commitments; and the summit occurred while the Strait of Hormuz was closed, meaning any energy-related side understandings made in Beijing have immediate real-world consequence. The summit was not a photo opportunity. It was a working session with measurable policy outputs that are being obscured by framing fights.</p>
+<p>The domestic political story is structurally simpler and more alarming. Three accountability mechanisms — criminal consequences for election tampering, a Democratic congressional map, and the political viability of intra-party congressional dissent — are all being neutralized in the same 72-hour window. The Peters commutation is the most legally novel: an unverified but specific allegation that federal infrastructure funding was conditioned on a Democratic governor&#x27;s clemency decision would, if true, constitute a documented coercion precedent with no modern equivalent. The fact that no outlet appears to be actively working to verify or refute it is itself a significant failure.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Trump is operating across three simultaneously active tracks — Beijing diplomacy, domestic electoral consolidation, and Iran pressure management — and doing so in ways that are deliberately compartmentalized. The domestic track (Peters commutation, Cassidy primary, Virginia map) does not require his direct involvement in each case to serve his interests. The Beijing track is producing quiet policy concessions that the arrest of an Iranian terror commander, timed to the summit, is being used to offset rhetorically. The Iran track is the most volatile: a closed Strait of Hormuz is not a negotiating posture, it is a physical supply disruption, and the agricultural and energy downstream effects will arrive before any diplomatic resolution regardless of summit outcomes.</p>
+<p>Xi Jinping emerges from this week&#x27;s coverage as the actor receiving the most concrete deliverables: a documented sanctions concession on Iranian oil, a softened or ambiguous Taiwan signal, and a summit photo at a moment when U.S. domestic credibility is strained. Whether those deliverables were the result of genuine leverage or deliberate U.S. strategic choice is the key unanswered question.</p>
+<p>Jared Polis is the most analytically interesting domestic actor this week precisely because his behavior is hardest to explain on standard political logic. A Democratic governor with no ideological reason to commute a Republican election tamperer&#x27;s sentence, doing so under an unverified allegation of federal infrastructure coercion, is either a victim of extortion or a willing participant in something that will be explained differently later. His silence on the clean water allegation is notable.</p>
+<p>Bill Cassidy functions as a structural signal rather than an individual actor. His primary result Saturday will be read by every sitting GOP senator as a direct data point on the survivable cost of dissent. A blowout loss — not merely a loss — is the outcome that closes the oversight question for 2026.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The Russia oil sanctions waiver decision is the most consequential near-term policy call in this news cycle and is receiving almost no coverage from either ideological ecosystem. This is not suppression in the conspiratorial sense — it is a story that does not fit available partisan frames, so it falls through. The structural reality is straightforward: with the Strait of Hormuz closed, global energy markets are stressed, Russian revenues are already benefiting from the supply disruption, and a U.S. decision to extend a sanctions waiver on Russian oil in this environment constitutes a traceable, measurable transfer of value to Moscow. The waiver decision is the single most operationally testable signal of whether any energy policy understanding emerged from the Beijing summit. Neither side is watching it.</p>
+<p>The Virginia SCOTUS story is being covered by the left without the acknowledgment that the procedural defect courts found was real and that nine justices agreed. This matters because the credibility of democratic norms arguments depends on conceding procedural defects in one&#x27;s own party&#x27;s maps. Selectively valid proceduralism is not proceduralism.</p>
+<p>The right is not covering the Taiwan ambiguity problem that emerged from Beijing. A voluntary weakening of U.S. Taiwan commitments — or even a deliberate introduction of ambiguity — is a federal-overreach story of the first order if the frame is applied consistently, and it is being ignored entirely.</p>
+<p>The abortion-by-mail SCOTUS ruling is appearing exclusively in right-wing coverage as an alarm story. A Supreme Court ruling expanding abortion access would normally generate wall-to-wall left-outlet coverage. The total absence of left coverage has three possible explanations: the ruling is more technically limited than right-wing alarm framing suggests, the left is strategically quiet ahead of midterm mobilization calculus, or left outlets missed it. Any of these explanations is significant, and none has been offered.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Iran terror commander arrest deserves scrutiny on timing. Trump was physically in Beijing managing a diplomatic session with China that included documented discussion of Iranian oil sanctions when the domestic arrest announcement was made. If the announcement timing was operationally driven, the concurrence is coincidental. If the announcement was held for this week, it is direct image management: project domestic strength on Iran while making quiet concessions on Iranian oil in private. The gap between the arrest announcement and the documented tanker-retrieval concession is the tell. No outlet has examined this gap.</p>
+<p>The simultaneous neutralization of three accountability mechanisms — Peters commutation, Virginia map voiding, Cassidy primary — does not require coordination to function as a coordinated signal. The cumulative message to electoral officials, mapmakers, and sitting senators is identical regardless of whether the three events were sequenced deliberately: consequences for election tampering are erasable, Democratic maps are procedurally vulnerable, and the cost of congressional resistance is career-ending. Receiving all three signals in one news cycle concentrates the effect.</p>
+<p>The pattern of institutional measurement being dismantled is visible only in aggregate. The FDA drug chief&#x27;s departure (disputed termination), the civil rights data tracking halt, and the Border Patrol leadership vacancy are individually a personnel story, a policy story, and an appointment story. The functional output across all three is identical: reduced independent measurement capacity in three domains where inconvenient data has historically generated accountability pressure. This is not a conspiracy theory — it is a description of observable institutional effects that becomes visible only when the stories are read together.</p>
+<p>The Russia-Iran-China energy triangle that the sanctions waiver story, the Hormuz closure, and the Beijing summit together describe is the week&#x27;s most significant invisible story. Iran disrupts supply, Russia benefits from price spikes, U.S. potentially extends Russia sanctions relief simultaneously — each story is covered in isolation; the triangle is covered by no one.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Russia oil sanctions waiver deadline</strong>: Identify the exact expiration date and monitor for extension, modification, or lapse. A waiver extension in the current Hormuz-closed, post-Beijing environment is the single most operationally testable signal of energy policy coordination across the three active tracks. This is the highest-priority item on this list.</p>
+<p><strong>Polis/Peters coercion allegation</strong>: Determine whether the specific federal clean water project cited as leverage can be verified as conditionally withheld. FOIA or Colorado state records are the verification path. Two-week resolution window. If true, this is a documented coercion precedent with no modern equivalent. The absence of active verification effort by any outlet is itself worth flagging.</p>
+<p><strong>Cassidy primary margin, Saturday</strong>: A loss is expected. The margin is the data point. A narrow loss suggests survivable dissent costs and will sustain some residual GOP independence. A blowout loss — 20+ points — confirms terminal costs and will be read directly by every GOP senator calculating 2026 oversight votes.</p>
+<p><strong>Taiwan clarification window</strong>: Watch State Department spokesperson language in the next 72 hours for any clarification, reaffirmation, or deliberate non-clarification of Trump&#x27;s post-Beijing Taiwan ambiguity. The decision to clarify or stay ambiguous is itself a policy signal. The window is closing.</p>
+<p><strong>Abortion-by-mail SCOTUS ruling</strong>: Obtain the actual decision text. The analytical gap between right-only alarm coverage and left-total-silence on a Supreme Court abortion ruling is unstable — one side is misreading the ruling&#x27;s scope, and the direction of the misread has significant implications for both mobilization and legal interpretation.</p>
+<p><strong>Supertanker sanctions designation</strong>: Now past the 72-hour post-summit window. Each additional day without a designation increases the probability that the Iran verbal pledge made in or around the Beijing track was performative. Absence of designation is becoming confirmatory.</p>
+<p><strong>Kevin Warsh first public statement</strong>: Now past two cycles of post-confirmation, post-Beijing silence. Any Fed board meeting, congressional testimony, or public appearance is the first opportunity to test whether any currency or dollar-strength commitment was made in Beijing. Watch for unusually careful or unusually absent dollar language.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that unifies this week&#x27;s otherwise fragmented picture is the systematic conversion of institutional processes into political instruments while maintaining procedural legitimacy as cover. Courts void maps on real procedural grounds. Governors exercise genuine clemency authority. Primaries are democratic mechanisms. Arrests are legitimate law enforcement. Each action is defensible in isolation; the aggregate describes something different. What is unusual about this moment is not that political actors are using institutions for political ends — that is baseline politics — but that the velocity and simultaneity of the compression is high enough that accountability mechanisms normally operate with lag time sufficient to generate resistance, and that lag time is being eliminated. Congress is silent as an institution this week across both chambers during a news cycle that includes a closed strait, an ambiguous summit, a coercion allegation against a governor, five pardoned rioters re-arrested, and a disputed agency termination. That silence — not any individual story — is the week&#x27;s most important political fact.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The U.S. Supreme Court unanimously declined to restore Virginia&#x27;s Democratic-drawn congressional map after a procedural invalidation; Colorado&#x27;s Democratic governor commuted convicted election tamperer Tina Peters&#x27; sentence amid Trump pressure; and Louisiana Sen. Bill Cassidy faces a Trump-backed primary challenger Saturday.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (9)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:13.3;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:30.0;" title="center-left: 9"></div><div class="bias-segment" style="background:#e05252; flex:3.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:10.0;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:23.3;" title="left: 7"></div><div class="bias-segment" style="background:#a07ae0; flex:3.3;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:16.7;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The three stories share a common thread: institutional and electoral mechanisms being tested under concentrated presidential pressure. The Virginia SCOTUS outcome is legally unremarkable — unanimous courts found a real procedural defect — but its timing benefits Republicans in 2026 regardless of merits. The Peters commutation is the most analytically ambiguous: Polis is a Democrat with no ideological reason to grant it, the clean water allegation (unverified) would represent serious executive coercion if true, and its truth or falsity matters enormously to how the act should be judged. The Cassidy primary is the cleanest signal: if a two-term senator who won his last race by 40 points loses Saturday, it confirms that dissent from Trump carries a near-terminal political cost within the GOP, which has structural implications for congressional oversight capacity.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Trump is an authoritarian using financial coercion (clean water funds), electoral retribution (Cassidy primary), and institutional capture (SCOTUS inaction) to consolidate one-party control. Peters&#x27; commutation is framed as extorted capitulation by a Democratic governor, not legitimate clemency. The Virginia ruling suppresses democratic will. The prayer event signals creeping Christian nationalism.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Events are reported as partisan stakes in ongoing institutional battles: SCOTUS inaction as a redistricting setback for Democrats, the Peters commutation as a politically charged executive action, and the Cassidy primary as a measurable test of Trump&#x27;s intra-party influence. Editorial judgment is largely withheld in favor of structural framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Democratic actors — gerrymandering through procedurally flawed referenda, convicting local election integrity advocates with disproportionate sentences, weaponizing redistricting — are being held accountable by courts and voters. Peters is a sympathetic figure vindicated by clemency. Cassidy faces legitimate political consequences for betraying his party. Trump&#x27;s border and foreign policy record is historic success.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit that the Virginia map was itself a Democratic gerrymander attempt — the procedural flaw that voided it was real and unanimous courts agreed. They understate that Peters&#x27; nine-year sentence was notably severe by historical comparisons for similar offenses. They do not engage seriously with whether Polis had independent grounds for clemency beyond Trump pressure.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit or minimize the specific criminal conduct Peters was convicted of — she allowed an unauthorized party to copy election system software and lied to investigators — treating her conviction as purely political. They do not report the alleged clean water funding leverage at all. They ignore the historically unprecedented nature of a sitting president running active primary campaigns against incumbent members of his own party.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">President Trump met with Xi Jinping in Beijing while simultaneously managing an active conflict with Iran that has closed the Strait of Hormuz and disrupted global supply chains.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:15.4;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:15.4;" title="center-left: 2"></div><div class="bias-segment" style="background:#e05252; flex:15.4;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:30.8;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:7.7;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:7.7;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:7.7;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The summit&#x27;s real strategic significance lies in two underreported facts: Trump publicly admitted the U.S. deliberately allowed China to retrieve Iranian oil tankers (a potential sanctions policy shift with major implications), and his post-summit statements introduced deliberate ambiguity about U.S. commitments to Taiwan. Both are consequential policy signals that the ideological noise around &#x27;triumph vs. failure&#x27; framing is burying. The Strait of Hormuz closure is the most tangible near-term risk — regardless of how it is politically spun, a closed strait means disrupted energy and fertilizer flows with cascading global economic effects that will arrive before diplomatic resolution does.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the week as evidence of a presidency in crisis — the China trip is a distraction from domestic economic pain and an active war; Trump&#x27;s meme coin business is naked corruption; the Iran conflict is causing real humanitarian harm to farmers and the global poor. The emotional register is alarm and moral indignation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets focus on concrete strategic uncertainties — specifically whether Trump&#x27;s Taiwan ambiguity is destabilizing U.S. credibility in Asia, and whether the Strait of Hormuz closure is being managed competently. The framing is analytical and process-focused rather than ideologically charged.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the Trump-Xi summit as a geopolitical win that has Iran rattled and isolated. Iran&#x27;s rhetorical attacks on Hegseth are presented as evidence of weakness. Trump&#x27;s admission about allowing China&#x27;s oil tankers is reported without scrutiny. The tone is triumphalist, with sardonic skepticism toward China&#x27;s &#x27;vision&#x27; language rather than toward Trump&#x27;s conduct.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not engage with the argument that the summit may have diplomatically pressured Iran or that Beijing&#x27;s positive response could represent a genuine diplomatic achievement. They do not address the war powers vote outcome or its implications. The specific mechanism by which Trump allowed China to retrieve Iranian oil tankers — potentially a deliberate sanctions carve-out — receives no critical examination from the left.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not address the Taiwan ambiguity problem raised by The Hill, which represents a concrete credibility risk for U.S. alliances. The agricultural and food security downstream effects of the Hormuz closure are entirely absent. The constitutionality or sanctions implications of allowing sanctioned Iranian oil to flow to China go unexamined. The sculpture garden&#x27;s potential regulatory circumvention is ignored.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Tina Peters commutation</span><span class="entity-tag">Virginia SCOTUS map ruling</span><span class="entity-tag">Bill Cassidy primary</span></div>
+  <div class="connection-text">Three simultaneous electoral-integrity mechanisms are being neutralized through three different institutional vectors in the same news cycle: executive clemency erasing consequences for election tampering, judicial procedure voiding a Democratic gerrymander on technical grounds, and primary threat enforcing GOP dissent suppression. No single actor needs to coordinate all three for the cumulative effect to be real.</div>
+  <div class="connection-sig">↳ The composite effect is a single-cycle compression of electoral accountability: consequences for tampering erased, Democratic map voided, and the cost of congressional oversight signaled as career-ending. If Cassidy loses Saturday, this 72-hour window will retrospectively look like a stress test of all three accountability pillars simultaneously.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran terror commander arrest</span><span class="entity-tag">Trump-Xi Beijing summit</span><span class="entity-tag">Strait of Hormuz closure</span></div>
+  <div class="connection-text">The Iran terror commander arrest — announced while Trump was physically in Beijing managing the Hormuz crisis — creates a domestic &#x27;tough on Iran&#x27; narrative at the precise moment Trump is potentially softening Iran posture in private with Xi. The Beijing summit story documents Trump admitting the U.S. allowed China to retrieve Iranian oil tankers, which is a sanctions policy concession. The arrest provides political cover for that concession.</div>
+  <div class="connection-sig">↳ If the arrest timing was operationally driven rather than announcement-timed, the concurrence is coincidental. If the announcement was held for this week, it is direct image management: project strength on Iran publicly while making quiet concessions on Iranian oil privately. The gap between the two signals — arrest vs. tanker concession — is the operational tell.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Russia sanctions waiver (Warren/Shaheen)</span><span class="entity-tag">Trump-Xi summit</span><span class="entity-tag">Strait of Hormuz closure</span></div>
+  <div class="connection-text">Warren and Shaheen are urging Trump not to extend the Russian oil sanctions waiver. With Hormuz closed, global energy markets are already stressed. Russia is the direct financial beneficiary of Hormuz disruption — higher oil prices pad Russian revenues. If Trump extends the Russia waiver while Hormuz is closed, Russia receives a double energy windfall: market price spike plus sanctions relief. This triangular relationship (Iran disrupts supply, Russia benefits, U.S. grants waiver) is invisible if you read each story in isolation.</div>
+  <div class="connection-sig">↳ The waiver decision is the most operationally testable signal of whether the Beijing summit involved any off-record understanding about energy market management. A waiver extension in this environment is a traceable transfer of value to Moscow.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">South Africa (migration language story)</span><span class="entity-tag">South Africa (China-Trump summit coverage)</span></div>
+  <div class="connection-text">South Africa appears in two unrelated story clusters: the State Department migration language story (echoing white nationalist framing around South African white farmers) and the China-Trump geopolitical summit coverage. The U.S. is simultaneously running a racial/immigration politics track on South Africa domestically while South Africa appears in the broader geopolitical realignment story. South Africa has been deepening BRICS engagement with China.</div>
+  <div class="connection-sig">↳ The domestic white-farmer refugee framing and the geopolitical BRICS-alignment pressure are not separate policies — they are two pressure vectors on the same government. Whether coordinated or not, they function as a pincer.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FDA chief departure</span><span class="entity-tag">Federal civil rights data tracking halt</span><span class="entity-tag">Border Patrol vacancy</span></div>
+  <div class="connection-text">Three institutional positions responsible for independent data collection or regulatory enforcement are simultaneously in flux: the FDA drug chief departs claiming termination (disputed), the civil rights watchdog halts race/sex data tracking, and the Border Patrol leadership vacancy remains unfilled. Each individually reads as a personnel or policy story. Together they represent a pattern of removing or neutralizing the institutional infrastructure that generates inconvenient measurement.</div>
+  <div class="connection-sig">↳ You cannot be held accountable to data that is not collected. The FDA departure disrupts drug approval oversight; the civil rights data halt removes demographic enforcement baselines; Border Patrol vacancy disrupts institutional continuity. The functional outcome across all three is the same: reduced independent measurement capacity.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Five Capitol attack pardonees re-arrested</span><span class="entity-tag">Tina Peters commutation</span><span class="entity-tag">DOJ prosecuting DC curfew-breaking parents</span></div>
+  <div class="connection-text">In the same news cycle: individuals convicted of January 6 offenses have new charges after pardons, an election tamperer has her sentence commuted, and the DOJ is prosecuting parents of teenagers who broke DC curfew. The accountability gradient is inverted: aggressive prosecution of minor infractions by disfavored groups, zero consequence for constitutional crimes by aligned actors.</div>
+  <div class="connection-sig">↳ This is not subtlety — it is the explicit demonstration of differential enforcement as a political signal. The audience for the DC curfew prosecution is different from the audience for the Peters commutation; both audiences are receiving the same message about who the law protects.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Iran is being used simultaneously as three distinct political instruments in today&#x27;s coverage: a domestic threat narrative (terror commander arrest), a foreign policy leverage point in Beijing diplomacy, and an energy disruption actor via Hormuz — with no outlet connecting all three threads. The fragmentation appears to serve the administration&#x27;s interest in preventing a unified assessment of its Iran posture.</div>
+<div class="pattern-item">Institutional proceduralism as political cover: the Virginia SCOTUS ruling, the Peters commutation (executive discretion), and the Cassidy primary (electoral mechanics) all use legitimate institutional processes to achieve politically convenient outcomes while maintaining plausible deniability about intent. The pattern is that no individual action requires bad faith — only the aggregate does.</div>
+<div class="pattern-item">The left-only and right-only story split has reached near-total segregation: the two media ecosystems are not arguing about the same facts today — they are covering different countries. Left covers heat deaths, ICE accountability, civil rights data, FDA departures. Right covers Hunter Biden tapes, Medicaid fraud, detransition clinics, abortion-by-mail alarm. There is almost no shared factual ground from which a cross-partisan argument could even be constructed.</div>
+<div class="pattern-item">Abortion policy is appearing in four distinct story contexts (SCOTUS history, mifepristone ruling, abortion-by-mail green-light, Trump&#x27;s &#x27;conflicted views&#x27;) while each story is siloed to one ideological audience. The right is covering it as mobilization alarm; the left is covering structural/access stories. Neither side is covering the same abortion story, which means the issue is generating heat without generating shared deliberation.</div>
+<div class="pattern-item">The &#x27;accountability inversion&#x27; pattern runs through at least six stories today: pardoned January 6 defendants re-offend, an election tamperer is commuted, the DOJ pursues curfew-breaking parents, the civil rights data watchdog is neutralized, the FDA chief is removed, and the Border Patrol vacancy persists. Each story individually reads as a policy or personnel item. Collectively they describe a systematic reorientation of enforcement priority.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Polis/Peters clean water coercion allegation — if a federal infrastructure project was conditioned on a state governor commuting a specific defendant&#x27;s sentence — would be the first publicly documented case of the Trump administration using capital expenditure as direct extortion against a named state official for a named defendant. This should be one of the largest stories of the week. It is instead buried inside a three-story roundup and marked &#x27;unverified.&#x27; The anomaly is not that it&#x27;s unverified — it&#x27;s that no outlet appears to be actively working to verify or refute it.</div>
+<div class="anomaly-item">The SCOTUS abortion-by-mail ruling appears exclusively in right-wing coverage. A Supreme Court ruling expanding abortion access would normally be lead news for every left and center-left outlet. Its total absence from left coverage is unexplained — possibilities include: the ruling was actually a technical loss framed as a win, the left is strategically quiet to avoid mobilizing the right before midterms, or the ruling is more limited than right-wing alarm coverage suggests. Any of these explanations is significant.</div>
+<div class="anomaly-item">There is no story today about Congress asserting any institutional authority in response to: a closed strait, a summit with ambiguous Taiwan commitments, a governor potentially coerced via federal funds, five pardoned rioters re-arrested, or an FDA chief claiming termination. Congressional silence as an institution — across both chambers and both parties — during a week of this density is itself an event.</div>
+<div class="anomaly-item">Kevin Warsh&#x27;s continued post-confirmation silence is now extending past the Beijing summit — the window in which any currency or dollar-strength commitment made off the record in Beijing would begin to generate observable Fed communication signals. Each additional day of silence narrows the interpretive possibilities: either no commitment was made, or the commitment requires a longer lag before it surfaces in Fed language.</div>
+<div class="anomaly-item">The UFO files story is paired with Hunter Biden coverage in right-wing outlets. The specific pairing of a discrediting legacy story (Biden tapes) with a novelty/distraction story (UFO files) is a documented attention management technique. Its appearance on the same day as the Beijing summit and Hormuz crisis — stories that require sustained analytical attention — is worth flagging regardless of whether it is intentional.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding the Hormuz closure&#x27;s economic consequences and the Taiwan ambiguity signal from Beijing — both of which cut against the &#x27;Trump triumphant&#x27; summit framing — while also ignoring the Polis coercion allegation entirely, despite federal coercion of a Democratic governor normally being a prime right-wing grievance story (suggesting the Peters beneficiary status overrides the federal-overreach frame). The left is systematically avoiding the Virginia map procedural ruling&#x27;s legitimate legal basis, which matters because conceding procedural defects in Democratic gerrymanders is necessary for credible democratic norms advocacy, and is instead framing all three electoral stories as pure Trump pressure. Both sides are avoiding the Russia sanctions waiver story, which is the most structurally consequential near-term decision in today&#x27;s news and has no obvious partisan valence — suggesting it is simply too complex to fit available frames rather than being strategically suppressed.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Under Trump, State Department language on migration echoes that of white nationalists</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can the NFL&#x27;s Rooney Rule survive the DEI backlash?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jerome Powell&#x27;s impact and legacy at the Federal Reserve</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who is Tova Noel, a former prison guard testifying in the Epstein investigation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Takeaways from Fed chair Jerome Powell&#x27;s legacy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A North Carolina farmer is testing whether Democrats can still win rural America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Parents of teens who break curfew in D.C. will be prosecuted, DOJ says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal civil rights watchdog wants to stop tracking data on race and sex</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A golden statue of Trump draws mixed reactions at his golf course</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› From reality TV villain to mayor? Spencer Pratt tries to convince Los Angeles he should lead the city</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘A mask can’t hide you from God’: can you shame an ICE agent into quitting?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘A horrible way to die’: after deaths in Laredo, experts prepare for lethal summer heat at US-Mexico border</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida tightens rules on capturing giant manta rays but stops short of full ban</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At least five people pardoned by Trump for Capitol attack accused of new crimes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FDA turmoil deepens as top drug chief departs claiming she was fired</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Newsom’s Budget Shows He’s Not the Resistance Leader You Think He Is</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Antisemitic Hantavirus Conspiracy Theories Are Spreading—and the Platforms Are Hands Off</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hunter Biden resurfaces in LA, reacts to questions about Biden tapes, UFO files</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Red-state auditor reports &#x27;explosion&#x27; of fraud tips as he targets state employees &#x27;racking up&#x27; taxpayer waste</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senator John Kennedy introduces America to ‘Margaret,’ his elliptical trainer named after Thatcher</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Navy veteran Rocky Rochford seeks to turn Tampa Bay red, unseat 20-year House incumbent</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota Medicaid operator’s bankruptcy-to-riches rise crashes into fraud probe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Garry Trudeau and William F. Buckley Bridged Partisan Divides</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trump DOJ Goes to War with the Press</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Conflicted Views Are Complicating Abortion Policy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wall Street’s Revolutionary War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Our Screen Culture Increasingly Can’t Read</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Israel Knows a Defamation Case Won’t Fly. That’s Not the Play</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› These Kennedy Whelps Just Keep Coming Back</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court Green-Lights Abortion-by-Mail</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Feds Nab Iran-Backed Terror Commander Behind Global Campaign Targeting Americans, Jews</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NYC Mayor Mamdani&#x27;s Wife&#x27;s Spotify Contains Anti-Israel Songs &#x27;About Greedy Jews&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas Children’s Hospital to Pay Millions, Create ‘First-Ever’ Detransition Clinic in DOJ Settlement</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Polis/Peters coercion allegation: identify whether the specific federal clean water project cited can be verified as conditionally withheld — FOIA or state records request is the verification path; resolution within 2 weeks would confirm or deny a novel coercion precedent</div>
+<div class="watch-item">Russia oil sanctions waiver decision deadline: track the exact expiration date and whether Trump extends, modifies, or lets it lapse — the decision in the context of Hormuz closure and Beijing summit is the single most operationally testable signal of energy policy coordination between the three tracks</div>
+<div class="watch-item">Taiwan: any clarification, walk-back, or reaffirmation of Trump&#x27;s post-Beijing ambiguity on U.S. commitments — watch for State Department spokesperson language specifically, as any clarification or deliberate non-clarification within 72 hours signals whether the ambiguity was intentional</div>
+<div class="watch-item">Cassidy primary result Saturday: the margin matters as much as the outcome — a narrow loss signals survivable dissent costs, a blowout loss confirms terminal cost and will be read by every GOP senator as a direct signal about 2026 oversight votes</div>
+<div class="watch-item">Abortion-by-mail SCOTUS ruling: obtain the actual decision text and verify whether left-outlet silence reflects a technical limitation in the ruling that right-wing alarm coverage is overstating — the gap between right-only alarm and left-total-silence on a SCOTUS abortion ruling is analytically unstable and one side is misreading it</div>
+<div class="watch-item">State Department supertanker sanctions designation: still the critical operational test from last cycle — now past the 72-hour summit window, meaning absence of designation is increasingly confirmatory of pageantry</div>
+<div class="watch-item">Kevin Warsh first post-confirmation public statement on dollar policy: the Beijing summit has now passed without signal — watch for any Fed board meeting, congressional testimony, or media appearance as the first opportunity for the commitment hypothesis to be tested</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
