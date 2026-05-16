@@ -40,6 +40,29 @@ def setup_venv() -> Path:
     return python
 
 
+def run_weekly_signal(args: argparse.Namespace) -> None:
+    """Weekly synthesis pipeline — reads DB, runs Pass 6, writes HTML report."""
+    from rich.console import Console
+    from pipeline.collector import load_config
+    from pipeline.weekly import run_weekly
+    from pipeline.reporter import generate_weekly_report
+
+    console = Console()
+    config = load_config()
+    days = getattr(args, "days", 7)
+
+    brief_text, metadata = run_weekly(config, days=days)
+
+    console.print("[bold cyan]Generating weekly HTML report...[/bold cyan]")
+    report_path = generate_weekly_report(brief_text, metadata)
+
+    _update_index(latest_daily=None, latest_weekly=report_path)
+
+    console.print("\n[bold green]✓ Weekly brief complete[/bold green]")
+    console.print(f"  Report: [underline]{report_path}[/underline]")
+    console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
+
+
 def run_signal(args: argparse.Namespace) -> None:
     """Main pipeline execution."""
     # Import here so venv is set up first when running via bootstrap
@@ -125,29 +148,66 @@ def run_signal(args: argparse.Namespace) -> None:
     store.finish_run(run_id, len(articles), len(multi_clusters))
 
     # Generate report
-    console.print(f"\n[bold cyan]Generating HTML report...[/bold cyan]")
+    console.print("\n[bold cyan]Generating HTML report...[/bold cyan]")
     report_path = generate_report(brief, clusters, correlation, articles, run_id, model)
 
     # Update index.html to redirect to the latest report
-    _update_index(report_path)
+    _update_index(latest_daily=report_path, latest_weekly=None)
 
-    console.print(f"\n[bold green]✓ Brief complete[/bold green]")
+    console.print("\n[bold green]✓ Brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
     console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
 
 
-def _update_index(report_path: Path) -> None:
-    """Regenerate index.html (redirect to latest) and archive.html (full list)."""
-    rel = report_path.relative_to(ROOT)
+def _update_index(
+    latest_daily: "Path | None",
+    latest_weekly: "Path | None",
+) -> None:
+    """Regenerate index.html and archive.html after any report is generated."""
+    reports_dir = ROOT / "reports"
 
-    # index.html — landing page with navigation
-    # Parse date/run from filename for display
-    parts = report_path.stem.split("_")
-    try:
-        brief_date = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
-        brief_time = f"{parts[2][:2]}:{parts[2][2:]} UTC"
-    except IndexError:
-        brief_date, brief_time = "—", "—"
+    # Resolve the latest daily report (use argument or fall back to most recent file)
+    daily_reports = sorted(reports_dir.glob("brief_*.html"), reverse=True)
+    if latest_daily is None and daily_reports:
+        latest_daily = daily_reports[0]
+
+    # Resolve the latest weekly report
+    weekly_reports = sorted(reports_dir.glob("weekly_*.html"), reverse=True)
+    if latest_weekly is None and weekly_reports:
+        latest_weekly = weekly_reports[0]
+
+    # ── index.html ────────────────────────────────────────────────────────────
+    daily_card = ""
+    if latest_daily:
+        rel = latest_daily.relative_to(ROOT)
+        parts = latest_daily.stem.split("_")
+        try:
+            brief_date = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
+            brief_time = f"{parts[2][:2]}:{parts[2][2:]} UTC"
+        except IndexError:
+            brief_date, brief_time = "—", "—"
+        daily_card = f"""
+      <a href="{rel}" class="card">
+        <div class="card-label">Latest Brief</div>
+        <div class="card-title">Today's Intelligence Report</div>
+        <div class="card-meta">{brief_date} · {brief_time}</div>
+      </a>"""
+
+    weekly_card = ""
+    if latest_weekly:
+        w_rel = latest_weekly.relative_to(ROOT)
+        w_parts = latest_weekly.stem.split("_")
+        try:
+            # weekly_2026W20_20260519_2200 → week label from stem
+            w_label = f"Week {w_parts[1]}"
+        except IndexError:
+            w_label = latest_weekly.stem
+        weekly_card = f"""
+      <a href="{w_rel}" class="card weekly">
+        <div class="card-label">Weekly Summary</div>
+        <div class="card-title">Weekly Intelligence Brief</div>
+        <div class="card-meta">{w_label}</div>
+      </a>"""
 
     (ROOT / "index.html").write_text(
         f"""<!DOCTYPE html>
@@ -159,7 +219,7 @@ def _update_index(report_path: Path) -> None:
 <style>
   :root {{
     --bg: #0d1117; --surface: #161b22; --border: #30363d;
-    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; --gold: #e3b341;
     --mono: 'JetBrains Mono', 'Fira Code', monospace;
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }}
@@ -200,10 +260,12 @@ def _update_index(report_path: Path) -> None:
            color: var(--text); width: 260px; transition: border-color .15s;
            backdrop-filter: blur(6px); }}
   .card:hover {{ border-color: var(--accent); }}
+  .card.weekly:hover {{ border-color: var(--gold); }}
   .card-label {{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
                  text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
   .card-title {{ font-size: 17px; font-weight: 600; color: var(--accent);
                  margin-bottom: 8px; }}
+  .card.weekly .card-title {{ color: var(--gold); }}
   .card-meta {{ font-size: 12px; color: var(--muted); font-family: var(--mono); }}
   .card.archive .card-title {{ color: var(--text); }}
 </style>
@@ -214,11 +276,8 @@ def _update_index(report_path: Path) -> None:
     <h1>SIGNAL</h1>
     <p class="tagline">Daily cross-spectrum political intelligence — powered by local AI</p>
     <div class="cards">
-      <a href="{rel}" class="card">
-        <div class="card-label">Latest Brief</div>
-        <div class="card-title">Today's Intelligence Report</div>
-        <div class="card-meta">{brief_date} · {brief_time}</div>
-      </a>
+      {daily_card}
+      {weekly_card}
       <a href="archive.html" class="card archive">
         <div class="card-label">History</div>
         <div class="card-title">Browse Past Briefs</div>
@@ -232,27 +291,51 @@ def _update_index(report_path: Path) -> None:
         encoding="utf-8",
     )
 
-    # archive.html — reverse-chronological list of all reports
-    reports_dir = ROOT / "reports"
-    reports = sorted(reports_dir.glob("brief_*.html"), reverse=True)
-
-    rows = []
-    for p in reports:
-        # filename: brief_YYYYMMDD_HHMM.html
+    # ── archive.html ──────────────────────────────────────────────────────────
+    def _daily_row(p: Path, is_latest: bool) -> str:
         parts = p.stem.split("_")
         try:
             date_str = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
             time_str = f"{parts[2][:2]}:{parts[2][2:]}"
-            label    = f"{date_str} · {time_str} UTC"
+            label = f"{date_str} · {time_str} UTC"
         except IndexError:
             label = p.stem
-        is_latest = p == report_path
-        badge = ' <span style="background:#1f6feb;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-family:monospace;vertical-align:middle;">latest</span>' if is_latest else ""
-        rows.append(
-            f'<li><a href="reports/{p.name}">{label}</a>{badge}</li>'
+        badge = (
+            ' <span style="background:#1f6feb;color:#fff;font-size:10px;padding:2px 8px;'
+            'border-radius:10px;font-family:monospace;vertical-align:middle;">latest</span>'
+            if is_latest
+            else ""
+        )
+        return f'<li><a href="reports/{p.name}">{label}</a>{badge}</li>'
+
+    def _weekly_row(p: Path, is_latest: bool) -> str:
+        parts = p.stem.split("_")
+        try:
+            w_label = parts[1]  # e.g. 2026W20
+        except IndexError:
+            w_label = p.stem
+        badge = (
+            ' <span style="background:#6e4c00;color:#e3b341;font-size:10px;padding:2px 8px;'
+            'border-radius:10px;font-family:monospace;vertical-align:middle;">latest week</span>'
+            if is_latest
+            else ""
+        )
+        return (
+            f'<li><a href="reports/{p.name}" style="color:#e3b341;">'
+            f'📊 Weekly Brief — {w_label}</a>{badge}</li>'
         )
 
-    rows_html = "\n      ".join(rows)
+    daily_rows_html = "\n      ".join(
+        _daily_row(p, p == latest_daily) for p in daily_reports
+    )
+
+    weekly_rows_html = ""
+    if weekly_reports:
+        weekly_rows_html = f"""
+  <h2 style="margin-top:40px;">Weekly Summaries — {len(weekly_reports)} report{"s" if len(weekly_reports) != 1 else ""}</h2>
+  <ul>
+      {chr(10).join(_weekly_row(p, p == latest_weekly) for p in weekly_reports)}
+  </ul>"""
 
     (ROOT / "archive.html").write_text(
         f"""<!DOCTYPE html>
@@ -295,11 +378,12 @@ def _update_index(report_path: Path) -> None:
   <h1>BRIEF ARCHIVE</h1>
 </div>
 <div class="container">
-  <h2>{len(reports)} brief{"s" if len(reports) != 1 else ""} — most recent first</h2>
+  <h2>{len(daily_reports)} daily brief{"s" if len(daily_reports) != 1 else ""} — most recent first</h2>
   <ul>
-      {rows_html}
+      {daily_rows_html}
   </ul>
-  <a href="index.html" class="back">▸ Latest brief</a>
+  {weekly_rows_html}
+  <a href="index.html" class="back">▸ Back to home</a>
 </div>
 </body>
 </html>
@@ -319,7 +403,9 @@ Model recommendations for M1 Max 32GB:
   mistral:7b      Compact baseline, ~4GB
 
 Examples:
-  python main.py
+  python main.py                       # daily run
+  python main.py --weekly              # weekly synthesis (reads DB, no fetching)
+  python main.py --weekly --days 5     # weekly synthesis over past 5 days
   python main.py --model qwen2.5:14b
   python main.py --no-fetch --model llama3.1:8b
   python main.py --collect-only
@@ -329,20 +415,37 @@ Examples:
     parser.add_argument("--no-venv", action="store_true", help="Skip venv setup")
     parser.add_argument("--collect-only", action="store_true", help="Fetch articles only, skip analysis")
     parser.add_argument("--no-fetch", action="store_true", help="Skip full article text fetch")
+    parser.add_argument(
+        "--weekly",
+        action="store_true",
+        help="Generate weekly intelligence summary from DB (no fetching)",
+    )
+    parser.add_argument(
+        "--days",
+        type=int,
+        default=7,
+        help="Number of days to include in weekly synthesis (default: 7)",
+    )
     args = parser.parse_args()
 
     if args.no_venv:
-        run_signal(args)
+        if args.weekly:
+            run_weekly_signal(args)
+        else:
+            run_signal(args)
     else:
         python = setup_venv()
-        # Re-run under venv Python
         cmd = [str(python), str(Path(__file__).resolve()), "--no-venv"]
-        if args.model:
-            cmd += ["--model", args.model]
-        if args.collect_only:
-            cmd.append("--collect-only")
-        if args.no_fetch:
-            cmd.append("--no-fetch")
+        if args.weekly:
+            cmd.append("--weekly")
+            cmd += ["--days", str(args.days)]
+        else:
+            if args.model:
+                cmd += ["--model", args.model]
+            if args.collect_only:
+                cmd.append("--collect-only")
+            if args.no_fetch:
+                cmd.append("--no-fetch")
         result = subprocess.run(cmd, cwd=str(ROOT))
         sys.exit(result.returncode)
 

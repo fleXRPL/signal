@@ -761,7 +761,7 @@ def _render_connections(connections: List[Dict[str, Any]]) -> str:
 
 def _render_list_items(items: List[str], css_class: str) -> str:
     if not items:
-        return f"<p style='color:var(--muted)'>None identified.</p>"
+        return "<p style='color:var(--muted)'>None identified.</p>"
     return "\n".join(
         f'<div class="{css_class}">{html.escape(str(item))}</div>'
         for item in items
@@ -803,7 +803,7 @@ def generate_report(
     clusters: List[Dict[str, Any]],
     correlation: Dict[str, Any],
     articles: List[Dict[str, Any]],
-    run_id: int,
+    run_id: int,  # noqa: ARG001 — retained for API consistency
     model: str,
 ) -> Path:
     """
@@ -814,7 +814,7 @@ def generate_report(
         clusters: Analyzed story clusters from Pass 3.
         correlation: Cross-story correlation from Pass 4.
         articles: All collected articles.
-        run_id: Pipeline run id.
+        run_id: Pipeline run id (retained for API consistency).
         model: Ollama model used.
 
     Returns:
@@ -845,7 +845,7 @@ def generate_report(
 
     source_index_html = _render_source_index(articles)
 
-    source_names = set(a["source_name"] for a in articles)
+    source_names = {a["source_name"] for a in articles}
 
     rendered = HTML_TEMPLATE.format(
         date=date_str,
@@ -868,3 +868,387 @@ def generate_report(
     out_path = REPORTS_DIR / f"brief_{file_date}.html"
     out_path.write_text(rendered, encoding="utf-8")
     return out_path
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Weekly report
+# ─────────────────────────────────────────────────────────────────────────────
+
+WEEKLY_SECTION_STYLES: Dict[str, tuple] = {
+    "WEEK IN REVIEW":         ("highlight", "🗓"),
+    "STORY ARC TRACKER":      ("", "📈"),
+    "WHAT ESCALATED":         ("warn-section", "🔺"),
+    "WHAT WAS BURIED":        ("danger-section", "⬇"),
+    "BLINDSPOT OF THE WEEK":  ("danger-section", "🔇"),
+    "WATCH LIST: NEXT WEEK":  ("warn-section", "👁"),
+    "ANALYST NOTE":           ("highlight", "🧠"),
+}
+
+WEEKLY_HTML_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Weekly Intelligence Brief {week_label}</title>
+<style>
+  :root {{
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #e3b341;
+    --warn:     #58a6ff;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }}
+
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
+  body {{
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }}
+
+  .header {{
+    background: var(--surface);
+    border-bottom: 3px solid var(--accent);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }}
+
+  .header-top {{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }}
+
+  .wordmark {{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }}
+
+  .weekly-badge {{
+    display: inline-block;
+    background: var(--accent);
+    color: #0d1117;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }}
+
+  .header h1 {{
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }}
+
+  .meta-pills {{
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }}
+
+  .pill {{
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }}
+
+  .pill.accent {{ border-color: var(--accent); color: var(--accent); }}
+  .pill.warn   {{ border-color: var(--warn);   color: var(--warn); }}
+
+  .container {{ max-width: 960px; margin: 0 auto; padding: 0 24px; }}
+
+  .brief-section {{
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }}
+
+  .brief-section.highlight {{ border-left-color: var(--accent); }}
+  .brief-section.warn-section {{ border-left-color: var(--warn); }}
+  .brief-section.danger-section {{ border-left-color: var(--danger); }}
+
+  .section-label {{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }}
+
+  .brief-section h2 {{
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }}
+
+  .brief-section p {{ margin-bottom: 14px; color: var(--text); }}
+
+  .brief-section ul {{ list-style: none; padding: 0; }}
+
+  .brief-section ul li {{
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }}
+
+  .brief-section ul li::before {{
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }}
+
+  .analyst-note {{
+    background: linear-gradient(135deg, rgba(227,179,65,0.07), rgba(227,179,65,0.02));
+    border: 1px solid rgba(227,179,65,0.35);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }}
+
+  .analyst-note-header {{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }}
+
+  .analyst-note p {{ font-size: 15px; line-height: 1.75; color: var(--text); }}
+
+  .watch-item {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }}
+
+  .days-covered {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }}
+
+  .day-chip {{
+    background: rgba(227,179,65,0.1);
+    border: 1px solid rgba(227,179,65,0.3);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }}
+
+  .divider {{ border: none; border-top: 1px solid var(--border); margin: 40px 0; }}
+
+  ::-webkit-scrollbar {{ width: 6px; }}
+  ::-webkit-scrollbar-track {{ background: var(--bg); }}
+  ::-webkit-scrollbar-thumb {{ background: var(--border); border-radius: 3px; }}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="weekly-badge">Weekly Summary</div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>WEEKLY INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 {week_start} → {week_end}</span>
+    <span class="pill">{day_count} days of coverage</span>
+    <span class="pill warn">🤖 {model}</span>
+    <span class="pill">generated {generated_at}</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="days-covered">
+    <span style="font-size:12px; color:var(--muted); font-family:var(--mono); margin-right:4px;">DAYS INCLUDED</span>
+    {day_chips}
+  </div>
+
+  {brief_sections}
+
+</div>
+</body>
+</html>
+"""
+
+
+def _render_weekly_sections(brief_text: str) -> str:
+    """Render weekly brief sections into styled HTML."""
+    sections = _parse_brief_sections(brief_text)
+    output = []
+
+    for name, content in sections.items():
+        if name == "preamble" or not content:
+            continue
+
+        style_class, icon = WEEKLY_SECTION_STYLES.get(name, ("", "▸"))
+        content_html = _md_to_html(content)
+
+        if name == "ANALYST NOTE":
+            output.append(f"""
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note — Weekly Assessment</div>
+  {content_html}
+</div>""")
+        elif name == "WATCH LIST: NEXT WEEK":
+            # Render watch list items as styled watch-item divs
+            items = [
+                line.strip().lstrip("-• ").strip()
+                for line in content.split("\n")
+                if line.strip() and not line.strip().startswith("#")
+            ]
+            if items:
+                watch_html = "\n".join(
+                    f'<div class="watch-item">{html.escape(item)}</div>'
+                    for item in items
+                    if item
+                )
+            else:
+                watch_html = content_html
+            output.append(f"""
+<div class="brief-section warn-section">
+  <div class="section-label">{icon} Forward Watch</div>
+  <h2>{html.escape(name)}</h2>
+  {watch_html}
+</div>""")
+        else:
+            output.append(f"""
+<div class="brief-section {style_class}">
+  <div class="section-label">{icon} Weekly Brief</div>
+  <h2>{html.escape(name)}</h2>
+  {content_html}
+</div>""")
+
+    return "\n".join(output)
+
+
+def generate_weekly_report(brief_text: str, metadata: Dict[str, Any]) -> Path:
+    """
+    Generate and write the weekly HTML intelligence brief.
+
+    Args:
+        brief_text: Markdown brief from Pass 6 (weekly synthesis).
+        metadata: Dict containing week_start, week_end, day_count,
+                  run_ids, generated_at.
+
+    Returns:
+        Path to the generated HTML file.
+    """
+    REPORTS_DIR.mkdir(exist_ok=True)
+
+    week_start = metadata["week_start"]
+    week_end = metadata["week_end"]
+    day_count = metadata["day_count"]
+    generated_at = metadata.get("generated_at", "")
+    run_ids = metadata.get("run_ids", [])
+
+    # Compute ISO week label for filename: weekly_2026W20.html
+    week_dt = datetime.strptime(week_start, "%Y-%m-%d")
+    iso_year, iso_week, _ = week_dt.isocalendar()
+    week_label = f"{iso_year}W{iso_week:02d}"
+    file_date = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
+
+    # Determine model label from env
+    import os
+    llm_provider = os.environ.get("SIGNAL_LLM_PROVIDER", "claude")
+    model_label = "Claude" if llm_provider == "claude" else "Ollama"
+
+    # Day chips
+    day_chips = "\n".join(
+        f'<span class="day-chip">{run_id_to_date(rid)}</span>'
+        for rid in run_ids
+    )
+
+    brief_sections_html = _render_weekly_sections(brief_text)
+
+    rendered = WEEKLY_HTML_TEMPLATE.format(
+        week_label=week_label,
+        week_start=week_start,
+        week_end=week_end,
+        day_count=day_count,
+        model=html.escape(model_label),
+        generated_at=html.escape(generated_at),
+        day_chips=day_chips,
+        brief_sections=brief_sections_html,
+    )
+
+    out_path = REPORTS_DIR / f"weekly_{week_label}_{file_date}.html"
+    out_path.write_text(rendered, encoding="utf-8")
+    return out_path
+
+
+def run_id_to_date(run_id: int) -> str:
+    """Return a short date string for a run by querying the store."""
+    try:
+        from pipeline import store as _store
+
+        conn = _store.get_connection()
+        row = conn.execute(
+            "SELECT started_at FROM runs WHERE id = ?", (run_id,)
+        ).fetchone()
+        conn.close()
+        if row:
+            return row["started_at"][:10]
+    except Exception:  # noqa: BLE001
+        pass
+    return f"run-{run_id}"
