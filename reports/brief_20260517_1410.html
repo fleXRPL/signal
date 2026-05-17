@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-17 14:10 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-17 14:10 UTC</span>
+    <span class="pill">67 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant fact of this cycle is Bill Cassidy finishing third in Louisiana — not second, third. That distinction matters more than any other data point in today&#x27;s set. A sitting senator who voted his constitutional conscience on impeachment was not narrowly defeated by a stronger candidate; he was institutionally repudiated, pushed behind both a Trump-endorsed challenger and an independent conservative. When you combine that result with Ken Paxton publicly signaling a primary challenge against John Cornyn in Texas, you are looking at a coordinated multi-state enforcement operation running simultaneously. Any Republican senator doing 2026 survival math right now received two simultaneous data points in the same news cycle, and both of them say the same thing: the cost of dissent is terminal, not survivable.</p>
+<p>The second major dynamic is a deliberate media architecture being constructed around that enforcement operation. Right-wing outlets — specifically the Breitbart/Salem Radio axis — ran three separate RFK Jr. &quot;exclusives&quot; on the same day the Cassidy result was confirmed. This is not coincidental scheduling. The editorial strategy appears to be pairing accountability enforcement stories with aspirational health-sovereignty content, keeping the coalition emotionally engaged rather than critically reflective about what consolidation actually looks like. You celebrate a purge; you immediately follow it with a martyr narrative about a health crusader. The audience doesn&#x27;t sit with the authoritarian implication because it&#x27;s already moving to the next story.</p>
+<p>The Senate parliamentarian&#x27;s removal of $1 billion in security funding from a GOP spending bill, and Trump&#x27;s simultaneous $10 billion IRS lawsuit, represent a legitimate financial accountability question being obscured by its own complexity. The ballroom allegation — public funds potentially subsidizing a private Trump project — is serious, but the causal link between the security fund and the ballroom remains asserted rather than proven in legislative text. Simultaneously, Trump&#x27;s IRS lawsuit rests on a real underlying grievance: a contractor did leak private tax records, which is a legitimate privacy breach regardless of who the victim is. Left outlets are treating a valid legal grievance as purely rhetorical cover, which weakens their own institutional-accountability posture.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump&#x27;s enforcement apparatus</strong> is the primary driver of events, but it is operating through surrogates rather than direct action. Julia Letlow was Trump-endorsed; Paxton is telegraphing the Cornyn challenge independently. The mechanism here is not top-down directive — it is a demonstrated cost structure that motivates secondary actors to self-enforce. Trump doesn&#x27;t need to run the Louisiana operation; the outcome itself runs the Texas operation.</p>
+<p><strong>Ken Paxton</strong> is the key actor to watch in the next two weeks. The Cassidy result gives him maximum momentum for a conversion from signaling to candidacy. His motivation is not purely ideological — a Cornyn primary challenge is the highest-visibility play available to him post-impeachment acquittal, and he is running it precisely when the cost-of-dissent signal is freshest.</p>
+<p><strong>RFK Jr.</strong> is being positioned by the Breitbart/Marlow editorial apparatus as an independent brand, not merely a Cabinet official. Three exclusives in one day through coordinated right media is a pre-announcement pattern. Something is coming from HHS — a food additive ban, vaccine schedule modification, or agency restructuring — and the media groundwork is being laid now. The &quot;lost 90% of friendships&quot; martyrdom framing is doing specific work: it is repositioning him for a right-coded audience that mistrusts his Kennedy-family origins.</p>
+<p><strong>Democratic institutional actors</strong> are largely reactive and absent from this cycle&#x27;s driver seat. The ActBlue CEO facing June 10 congressional testimony and the $40M strategic failure story represent a dual ethics-and-competence attack being assembled on the right without any meaningful Democratic counter-narrative visible in this dataset.</p>
+<p><strong>The Senate parliamentarian</strong> functioned as an institutional check this cycle — removing $1 billion on procedural grounds. That is worth noting as one of the few non-electoral accountability mechanisms that actually fired.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the Nigeria ISIS kill — a significant counterterrorism success claimed by the Trump administration. This is structurally inverted from the expected pattern. Military success stories are almost universally amplified by right media when a Republican president can claim credit. The absence strongly suggests the operation has Biden-era attribution that makes right-side celebration awkward. Watch whether this story migrates to right outlets with revised attribution language in the next 48 hours.</p>
+<p>The right is also not covering the hemp/CBD regulatory story — a potential federal ban on a product used by tens of millions of Americans, including rural farmers who are a core Trump constituency. A policy action that imposes visible costs on the base is being filtered out to preserve the MAHA health-freedom narrative that RFK Jr. is simultaneously being celebrated for. These two editorial choices — silence on the ISIS kill and silence on the hemp ban — reveal the same underlying constraint: stories where Trump-era policies produce costs on sympathetic populations do not run.</p>
+<p>The left has now been silent on the abortion-by-mail SCOTUS ruling for two consecutive cycles. This is the longest unresolved analytical anomaly in this dataset. A SCOTUS abortion ruling generating zero left-outlet coverage is not a normal editorial pattern. Two explanations are possible: the ruling contains a technical limitation — standing, remand, narrow scope — that makes it less significant than right-side coverage suggests, or left editorial desks made a coordinated decision not to amplify it during a period when they are trying to control the legal narrative around reproductive rights. The actual decision text needs to be obtained and read. Until that happens, this gap remains operationally unstable.</p>
+<p>Left outlets are also systematically avoiding the ActBlue investigation, the $40M Democratic strategic failure story, and the Hamas/Hezbollah flag protest — a pattern that reveals simultaneous editorial management of two anxieties: not legitimizing right-coded security concerns, and not amplifying internal Democratic institutional failures in a pre-2026 vulnerable period.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The simultaneity of the Cassidy result and the Paxton/Cornyn signal is the structurally significant fact of this cycle. These are not two independent stories — they are two data points in the same enforcement ratchet, dropping in the same news cycle, each amplifying the other&#x27;s signal. Any Republican senator calculating primary survival odds is now looking at a confirmed blowout in Louisiana and an announced challenge in Texas simultaneously. The message is not ambiguous.</p>
+<p>The Breitbart/Marlow axis running three RFK Jr. exclusives on Cassidy confirmation day is an editorial tell. The function of that volume and timing is to provide positive emotional content as counterweight to what could read as authoritarian consolidation. You close an enforcement action; you immediately open a health-freedom narrative. The coalition doesn&#x27;t dwell on what the purge means institutionally because it&#x27;s already invested in the MAHA story. This is not incidental — it is how coalition coherence is maintained during consolidation cycles.</p>
+<p>The dual Democratic failure stories — ActBlue ethics and $40M strategic misallocation — are appearing simultaneously on the right without either story carrying the full weight. One story establishes corruption; the other establishes incompetence. Neither story needs to be definitive on its own because together they construct a complete institutional failure argument. Watch whether this dual-track becomes the dominant right-side pre-2026 fundraising narrative.</p>
+<p>The federal terrorism charge unsealing (Kataib Hezbollah operative) on the same day as the Manhattan protest displaying those organizations&#x27; flags is a timing coincidence that warrants monitoring. Federal prosecutorial decisions about when to unseal charges are discretionary. Whether the timing was deliberate or not, it creates maximum political surface area and right outlets are using it to conflate protest display with operational terrorism — two legally and factually distinct things.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Paxton formal challenge announcement against Cornyn</strong> — within 2 weeks. The Cassidy blowout provides maximum momentum; Texas filing deadlines create a hard forcing function. Watch for conversion from signaling to candidacy. If Paxton files, it confirms the multi-state enforcement pattern is operational, not rhetorical.</p>
+<p><strong>RFK Jr. HHS policy announcement</strong> — within 5-7 days. Three coordinated exclusives through the same editorial axis is a pre-announcement pattern. A specific food additive ban, vaccine schedule modification, or agency restructuring announcement is the most likely trigger. The media groundwork is already laid.</p>
+<p><strong>ActBlue CEO June 10 congressional testimony</strong> — fixed date, subpoena force. The foreign donation allegation will either produce documentary evidence or collapse. This is the cleanest upcoming accountability test with a hard timestamp. Watch whether Democrats preemptively distance from ActBlue leadership before that date.</p>
+<p><strong>Cassidy public statement post-elimination</strong> — watch for whether he explicitly names the impeachment vote as cause. If he does, it becomes the clearest on-record confirmation of the oversight-cost mechanism. If he doesn&#x27;t, the silence itself is analytically significant — it means even eliminated officials are self-censoring about the accountability structure that eliminated them.</p>
+<p><strong>Abortion-by-mail SCOTUS ruling actual text</strong> — obtain and read the decision. The two-cycle left-silence anomaly is now the most analytically unstable unresolved item. The explanation will be either technical (narrow ruling) or editorial (coordinated suppression). Both have different implications.</p>
+<p><strong>Hemp/CBD federal scheduling action</strong> — watch for Senate HELP Committee or House Energy and Commerce movement. This has bipartisan constituency pressure that could force right-side coverage and directly contradicts the MAHA health-freedom narrative currently being amplified through RFK Jr.</p>
+<p><strong>Right-side coverage of Nigeria ISIS operation</strong> — watch for late amplification with revised attribution language. If right outlets eventually cover it and claim Trump credit, the timeline gap will confirm the editorial filter hypothesis: they waited until Biden-era attribution could be minimized.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that explains this otherwise fragmented cycle is institutional cost-setting. What you are watching is not a series of political news events — it is a systematic recalibration of what dissent within the Republican coalition costs, executed through multiple simultaneous channels: electoral (Cassidy third place), threatened (Paxton signaling Cornyn), and editorial (right media celebrating both while providing emotional counterweight through the RFK Jr. amplification cycle). The mechanism does not require central coordination to function; it only requires that the signals be legible, and they are. Meanwhile, Democratic institutional actors are navigating a mirror problem: two separate accountability stories (financial ethics and strategic failure) are being assembled against them in a pre-2026 cycle with no visible counter-narrative and key evidence appearing in six weeks at a congressional hearing with subpoena force. The abortion-by-mail SCOTUS gap and the right-side silence on the Nigeria kill are the two anomalies that most need resolution — both represent the clearest cases where one side&#x27;s editorial filter is producing a composite picture of reality that is operationally misleading rather than merely partisan.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Incumbent Republican Sen. Bill Cassidy of Louisiana was eliminated from his GOP Senate primary, finishing third behind Trump-endorsed Rep. Julia Letlow and state treasurer John Fleming, who advance to a runoff.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (9)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (3)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:28.1;" title="center: 9"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 8"></div><div class="bias-segment" style="background:#e05252; flex:6.2;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:9.4;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:9.4;" title="left: 3"></div><div class="bias-segment" style="background:#a07ae0; flex:3.1;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:18.8;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The core fact is unambiguous: a sitting senator was eliminated from his own party&#x27;s primary primarily because he voted his constitutional conscience on impeachment. Both framings — &#x27;democratic voters chose&#x27; and &#x27;Trump exacted retribution&#x27; — are simultaneously true, which is precisely what makes this significant. The real story is institutional: when the cost of exercising an oversight vote is political elimination, future senators will calculate accordingly, regardless of which party holds the White House.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Cassidy&#x27;s defeat is cast as a cautionary tale about the cost of crossing Trump and the erosion of Republican independence. The emotional register is concern — for democratic norms, for any remaining check on Trump within the GOP. Left outlets emphasize Trump&#x27;s vendetta as the driving force, framing voters as instruments of his retribution rather than autonomous actors.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets report the outcome factually and use Trump&#x27;s influence as the primary analytical lens, noting Cassidy&#x27;s elimination as a consequence of his impeachment vote. The framing is horse-race and power-dynamics focused, with less normative judgment than either flank — though the choice to frame it as a &#x27;Trump influence&#x27; story still implies a verdict.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Cassidy&#x27;s loss is framed as deserved and cathartic — a righteous democratic verdict against a disloyal senator who betrayed his party. Trump&#x27;s endorsement is portrayed as effective and legitimate. The emotional register is triumphalist. Letlow&#x27;s advance is presented as a victory for party unity, not intimidation.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not acknowledge that Louisiana voters may have had legitimate policy or representational reasons to prefer a different senator beyond blind MAGA loyalty. They largely omit that Cassidy faced two challengers and that Fleming (not Trump-endorsed) also advanced, complicating the &#x27;pure Trump retribution&#x27; narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not acknowledge the chilling effect Cassidy&#x27;s loss may have on future Republican senators considering dissent or oversight roles. They omit that the precedent of a sitting senator being eliminated for a single constitutional vote — not a policy failure — has structural implications for congressional independence from the executive.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Senate parliamentarian stripped $1 billion in security funding from a GOP spending bill that critics alleged could have subsidized Trump&#x27;s proposed $400 million White House ballroom, while Trump separately filed a $10 billion lawsuit against the IRS over leaked tax records.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two most concrete facts here are: (1) the Senate parliamentarian removed a $1 billion funding block on procedural grounds, and (2) Trump filed a $10 billion IRS lawsuit over a documented privacy breach. The left coverage conflates these separate stories into a unified corruption narrative while the causal link between the security fund and the ballroom remains asserted but unproven. The IRS lawsuit deserves more neutral treatment — a contractor leak of private tax records is a legitimate legal grievance, even if the $10 billion figure appears punitive.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both outlets frame these stories as evidence of systematic self-enrichment and corruption: Trump using public money and presidential power to benefit himself financially. The Guardian emphasizes hypocrisy (claiming private funding while pursuing public money). Mother Jones uses inflammatory language (&#x27;slush fund,&#x27; &#x27;what the hell&#x27;) to cast Trump&#x27;s legal action as an authoritarian assault on accountability institutions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. A center framing would likely focus on the parliamentarian ruling as a procedural Senate norm story, note the funding was labeled &#x27;security&#x27; not &#x27;ballroom,&#x27; and treat the IRS lawsuit as legally notable but not self-evidently corrupt.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided in this dataset. Absent that coverage, right framing cannot be characterized from evidence — only inferred: likely framing the IRS lawsuit as a legitimate privacy claim by a wronged citizen, and the parliamentarian ruling as a procedural obstacle to legitimate security spending.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither outlet addresses the merits of the underlying IRS privacy violation claim — a contractor did allegedly leak Trump&#x27;s tax records, which is itself a serious breach regardless of who the victim is. The Guardian does not specify whether the $1bn fund was explicitly linked to the ballroom in legislative text or is an editorial inference.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets are absent from this sample entirely. Based on left coverage, right outlets are likely omitting: the contradiction between Trump&#x27;s &#x27;private financing&#x27; claim and Republican legislative efforts to secure public funds for the project, and the scale ($400M) relative to historical White House expenditures.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Masked demonstrators displayed Hamas and Hezbollah flags at a Manhattan anti-Israel protest on the same day federal authorities charged an alleged Kataib Hezbollah operative with plotting attacks on Jewish targets in New York.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#5ab56e; flex:100.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The core factual event — terrorist-designated organization flags at a domestic protest on the same day a terrorism charge was filed — is newsworthy regardless of framing. However, this sample contains only two right-leaning sources covering somewhat different angles, which makes it impossible to construct a genuine cross-spectrum analysis; what appears here is right-of-center framing with no counterweight. The analytical risk is treating the absence of left/center coverage in this dataset as evidence of omission on their part, rather than a gap in the data provided.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided in this dataset. Left framing cannot be assessed without introducing speculation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided in this dataset. Center framing cannot be assessed without introducing speculation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets emphasize the dangerous symbolism of designated terrorist organizations&#x27; flags appearing at a domestic protest, frame the timing as damning irony for Mayor Mamdani, and use the protest as a lens to criticize both local political leadership and mainstream media (NYT) for enabling or obscuring the threat. The emotional register is alarm and moral condemnation.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning sources were included in this sample.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage does not address the broader context of the protest&#x27;s stated grievances, the proportion of attendees displaying terrorist symbols versus the overall crowd size, or whether local law enforcement assessed any direct threat from the protest itself. The National Review piece conflates media criticism with protest coverage, potentially obscuring both stories.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Bill Cassidy elimination</span><span class="entity-tag">Ken Paxton vs. John Cornyn</span></div>
+  <div class="connection-text">Two simultaneous MAGA establishment-purge operations in different states: Louisiana&#x27;s Cassidy finished third (not second — third), and Paxton is now publicly signaling a primary challenge to Cornyn in Texas. These are not isolated events — they represent a coordinated multi-state ratchet against every Republican who deviated on impeachment or Ukraine funding.</div>
+  <div class="connection-sig">↳ The simultaneity is the signal. Any GOP senator calculating 2026 survival odds is now watching two data points drop in the same news cycle. The Cassidy blowout (third place) combined with Paxton telegraphing the Cornyn challenge means the cost-of-dissent calculus just updated simultaneously in two of the most watched Senate races.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">RFK Jr. (triple exclusive)</span><span class="entity-tag">Cassidy primary result</span></div>
+  <div class="connection-text">Right-wing media ran three simultaneous &#x27;exclusive&#x27; RFK Jr. pieces on the same day the Cassidy purge was confirmed — all through the same outlet/host axis (Breitbart, Salem Radio, Alex Marlow). This is not coincidental scheduling. The MAHA narrative is being amplified precisely when a visible MAGA accountability action closes, functioning as a positive-valence counterweight to what could read as authoritarian consolidation.</div>
+  <div class="connection-sig">↳ The Breitbart/Marlow apparatus is running coordinated brand-building for RFK Jr. at HHS while simultaneously celebrating a primary purge. This suggests a deliberate editorial strategy: pair enforcement stories with aspirational health-sovereignty content to keep the coalition emotionally engaged rather than critically reflective.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Hamas/Hezbollah flag protest</span><span class="entity-tag">Kataib Hezbollah federal terrorism charge</span></div>
+  <div class="connection-text">The federal terrorism charge (Kataib Hezbollah operative plotting against Jewish targets in New York) and the Manhattan protest displaying those same organizations&#x27; flags occurred on the same day. The charge was likely in development for weeks — but the unsealing date is a prosecutorial choice. Whether the timing was deliberate or coincidental, it creates maximum political surface area.</div>
+  <div class="connection-sig">↳ If the unsealing was timed to the protest, it represents an operational use of the federal prosecution calendar as a political instrument — a tactic that warrants monitoring. If coincidental, right-wing media is conflating legally distinct events (protest display vs. operational terrorism) which itself distorts public threat assessment.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump $10B IRS lawsuit</span><span class="entity-tag">Senate parliamentarian ballroom ruling</span></div>
+  <div class="connection-text">Both are financial-accountability stories about Trump, appearing the same day, covered only by left outlets. The IRS lawsuit, whatever its merits, repositions Trump as a victim of government overreach — a counter-narrative that structurally dilutes coverage of the ballroom spending allegation. A legitimate privacy grievance (contractor tax leak) becomes rhetorical insulation.</div>
+  <div class="connection-sig">↳ Whether coordinated or not, the dual-story dynamic means left media must either validate the IRS lawsuit (undermining the corruption frame) or dismiss it (undermining their own institutional-accountability posture). This is a no-win framing trap that merits watching.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">ActBlue CEO June 10 grilling</span><span class="entity-tag">Democratic $40M failed gamble</span></div>
+  <div class="connection-text">Two separate right-only stories about Democratic financial failures and institutional deception appearing simultaneously — one about fundraising misrepresentation to Congress, one about strategic misallocation of $40M. Neither crossed into center or left coverage.</div>
+  <div class="connection-sig">↳ The coordination of these two narratives in a single cycle — one about ethics, one about competence — constructs a complete Democratic institutional failure argument (corrupt AND incompetent) without either story needing to carry the whole weight. Watch whether this becomes the dominant pre-2026 right-side fundraising narrative.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">MAGA accountability enforcement is running on two simultaneous tracks today: electoral (Cassidy third-place finish, Paxton threatening Cornyn) and cultural (Harvard/Yale viewpoint diversity pressure, right-side media celebrating institutional challenge). The pattern suggests a coordinated week of &#x27;costs confirmed, institutions yielding&#x27; messaging rather than independent story breaks.</div>
+<div class="pattern-item">Right-wing media is running an unusually high-volume RFK Jr. amplification cycle — three exclusives in one day through the same editorial axis. This volume suggests either an imminent HHS policy announcement being pre-seeded in friendly media, or a deliberate effort to build RFK Jr.&#x27;s independent brand ahead of 2028 positioning. The &#x27;lost 90% of friendships&#x27; framing specifically martyrizes him for a right-coded audience that mistrusts his family origins.</div>
+<div class="pattern-item">Left-side outlets are running two parallel AI datacenter concern stories (Wisconsin comedian, Oregon monument) with no coordination apparent in framing — suggesting genuine independent editorial convergence on infrastructure/environmental costs of AI buildout as an emerging left-leaning issue not yet matched by any right-side coverage.</div>
+<div class="pattern-item">Both sides are covering internal party stress in complete isolation from each other: left covers Alabama Black voting rights rally and California Newsom &#x27;break glass&#x27; succession anxiety; right covers California Newsom the same way but through a different frame. Neither side&#x27;s audience sees the symmetry of mutual institutional fragility.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The U.S.-Nigeria ISIS kill (a significant counterterrorism success Trump administration claimed credit for, per the headline) is covered only by left outlets. This is structurally inverted from the expected pattern — military success stories are typically amplified by right media. The absence suggests either the operation has Biden-era attribution that makes right-side celebration awkward, or right editorial desks deprioritized it to maintain narrative focus on domestic accountability stories this cycle.</div>
+<div class="anomaly-item">The hemp/CBD ban story (left-only) describes potential criminalization of a product used by tens of millions of Americans including rural farmers — a core Trump constituency. The complete absence of right-side coverage of a regulatory action that would harm their own base is anomalous and suggests either editorial unawareness or a deliberate decision not to amplify a policy cost that complicates the MAHA health-freedom narrative RFK Jr. is simultaneously being celebrated for.</div>
+<div class="anomaly-item">Cassidy finished THIRD, not second. The watch list from the previous cycle flagged that margin would be the signal — a narrow loss meant survivable dissent costs, a blowout confirmed terminal cost. Third place is beyond blowout; it is institutional repudiation. This specific data point — third place, not runner-up — is not being emphasized in any current framing and is the analytically most significant fact in today&#x27;s dataset.</div>
+<div class="anomaly-item">The abortion-by-mail SCOTUS ruling that appeared as a right-only alarm story in the previous cycle has completely vanished from today&#x27;s dataset across all spectrums. This is the second consecutive cycle of total left-silence on a SCOTUS abortion ruling. Either the ruling is technically narrower than right-side coverage suggested, or left outlets have made a coordinated editorial decision not to amplify it. This gap remains the most analytically unstable unresolved item.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding the Hamas/Hezbollah flag protest story, the ActBlue investigation, the Democratic $40M strategic failure, and any engagement with RFK Jr.&#x27;s HHS agenda — a pattern that suggests left editorial desks are managing two simultaneous anxieties: not legitimizing right-coded security concerns, and not amplifying internal Democratic institutional failures during a vulnerable pre-2026 period. The right is systematically avoiding the Nigeria ISIS kill, the immigration mental health story, the hemp/CBD ban, and the Alabama voting rights rally — a pattern that reveals a specific editorial constraint: stories where Trump-era policies produce visible costs on sympathetic or base-adjacent populations are being filtered out to preserve the coalition&#x27;s coherent self-image. Taken together, both sides are suppressing accountability stories about their own coalitions while amplifying accountability narratives targeting the opposition, which means the public&#x27;s composite picture of institutional health on both sides is systematically flattering and operationally misleading.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal Funding Trump’S $400M Ballroom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One clinic tracks the heavy toll Trump&#x27;s immigration crackdown takes on mental health</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How a CEO and Trump donor is weaponizing tariffs against his rivals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New burn bans and Trump&#x27;s battle with immigration and DEI are impacting forest fires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Magazine reviewing work of writer facing plagiarism allegations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. and Nigerian mission kills Islamic State group leader, Trump says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘We’re not ready’: US lags on pandemic preparedness after Covid, experts say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How US hemp ban could criminalize CBD products – and derail Medicare plan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Nobody’s negotiating for the people here’: comedian Charlie Berens takes on AI datacenters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump news at a glance: billions of taxpayer dollars could go to president and his allies in unprecedented move</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘They may draw racist maps, but we are the south’: thousands rally in Alabama for Black voting rights</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Shell-shocked: California man arrested for attempting to traffic wild turtles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kansas judge blocks law banning gender-transition treatments for minors</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Hallowed Monument to US History May Be Assailed by Data Centers</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hamas, Hezbollah Flags Anti-Israel Protest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Maduro&#x27;s alleged &#x27;bag man&#x27; Alex Saab arrested less than 3 years after Biden pardon: report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ActBlue CEO faces June 10 grilling after fundraising powerhouse allegedly misled Congress on foreign donations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Democratic leadership sank $40 million meant to defend key seats on a gamble that backfired</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News’s Rachel Campos-Duffy celebrates America in new book</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Buy into Hantapanic</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Harvard and Yale Discover (Gasp!) the Importance of Viewpoint Diversity</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jürgen Habermas: A Serious Man</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When the Guns Fall Silent: Ukraine After the War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive—‘We Are the Sickest Country in History’: Robert F. Kennedy Jr. Explains Why the MAHA Revolution Is Urgent</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive -- Robert F. Kennedy Jr.: USA in &#x27;Spiritual Malaise&#x27;; Calls for Restoring &#x27;Sacred Ritual&#x27; of Home-Cooked Meals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Robert F. Kennedy Jr. Says He Lost 90% of Friendships over His &#x27;Political Choices&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive - Ken Paxton: John Cornyn Has &#x27;Had His Time&#x27; and It&#x27;s &#x27;Time for a Change&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump China Recap: Here&#x27;s What Actually Got Done</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Newsom Says There Is a &#x27;Break The Glass Scenario&#x27; to Ensure Dems Move Forward in CA Gubernatorial Race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kiefer Sutherland Cancels U.S. Concert Tour Due to &#x27;Very Low&#x27; Ticket Sales</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Paxton formal primary challenge announcement against Cornyn: the Cassidy blowout gives MAGA challengers maximum momentum — watch for Texas filing deadlines and whether Paxton converts signaling to candidacy within 2 weeks</div>
+<div class="watch-item">RFK Jr. HHS policy action: three exclusives in one day through coordinated right media is a pre-announcement pattern — watch for a specific food additive ban, vaccine schedule modification, or agency restructuring announcement within 5-7 days</div>
+<div class="watch-item">ActBlue CEO June 10 congressional testimony: this is a fixed date with subpoena force — the specific foreign donation allegation will either produce documentary evidence or collapse; it is the cleanest upcoming accountability test with a hard timestamp</div>
+<div class="watch-item">Cassidy public statement post-elimination: watch for whether he explicitly names the impeachment vote as the cause — if he does, it becomes the clearest on-record confirmation of the oversight-cost mechanism; if he doesn&#x27;t, note the silence</div>
+<div class="watch-item">Hemp/CBD federal scheduling action: the story describes potential Medicare plan disruption — watch for Senate HELP committee or House Energy and Commerce movement, as this has bipartisan constituency pressure that could force right-side coverage</div>
+<div class="watch-item">Any right-side coverage of the Nigeria ISIS operation: if attribution migrates from &#x27;U.S. and Nigerian mission&#x27; to explicit Trump credit in right outlets, watch the timeline — late amplification after initial left-only coverage would confirm the editorial filter hypothesis</div>
+<div class="watch-item">Abortion-by-mail SCOTUS ruling: obtain the actual decision text and determine whether the ruling contains a technical limitation (standing, scope, remand) that explains left-silence — the two-cycle gap is the longest unresolved analytical anomaly on the watch list</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
