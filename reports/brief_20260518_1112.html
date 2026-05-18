@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-18 11:12 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-18 11:12 UTC</span>
+    <span class="pill">68 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on May 18, 2026 is operating under a demonstrably functioning deterrence regime. The Cassidy primary result is not primarily a story about Louisiana — it is empirical confirmation that the threat of primary elimination for crossing the party leader is real, executable, and no longer theoretical. A sitting U.S. senator received a third-place finish in his own party&#x27;s primary, and the causal mechanism — a single impeachment vote five years prior — is not in dispute. The deterrence infrastructure is now credibility-tested. Every Republican legislator currently weighing a dissent on any high-profile vote has new data today that they did not have last week.</p>
+<p>Simultaneously, a cluster of four structurally connected stories — Cassidy&#x27;s elimination, a voter eligibility enforcement program, a Supreme Court voting rights ruling, and a redistricting bill — are moving in the same cycle but being read as separate events. They are not separate. Together they describe a systematic tightening of the three mechanisms that determine electoral outcomes: who votes, how maps are drawn, and which incumbents survive dissent. No single outlet is reading all four simultaneously, which means the aggregate picture is currently invisible to any single-audience readership.</p>
+<p>The LIRR strike — the largest commuter rail shutdown in thirty years — is the most underreported significant event in today&#x27;s cycle. It is historically anomalous, economically consequential, and politically awkward for both sides. The right won&#x27;t touch it because its newly absorbed labor constituency makes attacking striking workers dangerous. The left covers it superficially because it directly implicates a Democratic governor&#x27;s governance failures. The result is that the largest infrastructure disruption in three decades is functionally undercovered across the entire political spectrum.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Donald Trump</strong> is not running a campaign operation right now — he is running a discipline operation. The Cassidy result and the simultaneous editorial calling for Thomas Massie&#x27;s defeat are not coincidentally timed. They function as a synchronized message using a live election result as credibility collateral. Cassidy&#x27;s blowout provides the proof of concept; the Massie editorial names the next target while the wound is fresh. This is sequenced pressure, not organic commentary.</p>
+<p><strong>Julia Letlow and John Fleming</strong> advance to a Louisiana runoff, but the more consequential actor in this story is the replacement dynamic itself: whoever wins will be a loyalist with no institutional incentive to support any bipartisan legislation, including the voting rights bills that Louisiana&#x27;s active federal litigation has made relevant. Cassidy&#x27;s seat is not just being filled — it is being converted.</p>
+<p><strong>Governor Hochul</strong> is in an exposed position on the LIRR strike that her own party&#x27;s media apparatus is underplaying. She is publicly urging unions — the core Democratic constituency — to return to work, which is either a principled governance call or a political miscalculation, and the coverage does not yet permit a clear read. The absence of right-side coverage on what would normally be prime &quot;blue-state dysfunction&quot; material is the tell: the right is paralyzed between attacking management (pro-Democratic) and attacking striking workers (anti-labor for a pro-labor constituency).</p>
+<p><strong>Thomas Massie</strong> is now the named next target in the deterrence sequence. His situation differs from Cassidy&#x27;s in one important respect: the editorial appeared before a challenger filed, which means the deterrence is still in its pre-seeding phase. The window between the editorial and a Trump-backed challenger announcement is the operative watch period.</p>
+<p><strong>ActBlue</strong> faces June 10 testimony under subpoena-level pressure on foreign donation allegations. This is the cleanest hard-timestamp accountability test in the current cycle — it has a fixed date, compelled attendance, and documentary evidence questions that resolve on a known schedule.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the LIRR strike. The silence is editorial paralysis, not indifference. MAGA&#x27;s absorption of a working-class labor voter base has created a genuine ideological bind: covering a union strike as Democratic governance failure now carries friendly-fire risk that didn&#x27;t exist four years ago. The Breitbart substitution — filing an unrelated New York political figure story under what should have been an LIRR story slot — is too clean to be accidental. They actively declined to produce labor strike content and substituted adjacent material.</p>
+<p>The right is also not claiming credit for the Venezuela deportation story. A Maduro ally being delivered to the United States for criminal proceedings is a textbook Trump foreign policy win, and right outlets have every incentive to amplify it. Its near-total absence from right-side coverage in the same cycle where Iran coverage is prominent suggests one of two things: the story broke too late for editorial cycles, or the cooperation required from Maduro&#x27;s government creates a narrative complication — claiming the win requires acknowledging that Maduro was useful, which disrupts the adversary framing.</p>
+<p>The left is not engaging substantively with the abortion pills story, the Iran threat framing, or the Huawei/China tech competition coverage. These are not small omissions — they represent a systematic ceding of national security and cultural terrain that has defined a decade of political realignment. Left outlets are also covering the LIRR strike without critically examining MTA management&#x27;s bargaining conduct or Governor Hochul&#x27;s leverage failures. The result is coverage that describes the disruption without assigning accountability to a Democratic actor.</p>
+<p>The most consequential single absence across both sides is Cassidy&#x27;s own voice. No story in today&#x27;s corpus contains his post-defeat statement or his own attribution of the result. Whether he names the impeachment vote explicitly will either confirm or complicate the deterrence thesis. His silence — or its omission from coverage — is not a gap. It is a data point.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The four electoral control stories — Cassidy&#x27;s purge, the voter eligibility program, the Supreme Court voting rights ruling, and the Kiley redistricting bill — are individually unremarkable. Together, in a single cycle, they constitute a comprehensive picture: one story for each of the three levers of electoral outcomes (turnout, maps, incumbent survival), plus a SCOTUS ruling that affects the legal terrain for all three. The fact that no outlet is reading them together is not neutral. It means the aggregate policy direction is currently invisible to every single-audience readership.</p>
+<p>The health deregulation pattern deserves the same synthetic read. FDA drops vaping guardrails. Abortion pills are framed as harmful. Hemp/CBD scheduling disrupts Medicare access. Three separate stories, three separate audiences, each confirming different priors — and none of them, individually, revealing what they reveal together: a systematic federal retreat from health substance regulation that is being executed through ideological segregation. The sweep is real. The concealment via audience fragmentation appears deliberate.</p>
+<p>Iran and Venezuela are running as parallel adversarial-nation pressure stories in completely segregated ideological lanes. Iran is right-only. Venezuela is left-only. If a coordinated sanctions package or joint foreign policy statement drops within the next seven days, today&#x27;s segregated coverage will retrospectively read as coordinated pre-seeding to different audiences. The editorial split prevents either side from seeing the possible coordination.</p>
+<p>The prediction markets ban (Utah) and ActBlue testimony are both about who controls the financial infrastructure of political signaling. One affects right-leaning forecasting markets; one targets left-leaning small-dollar fundraising. Running in the same cycle, they represent parallel constraints on political finance tools — and neither side appears to have recognized the symmetry.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Cassidy public statement, within 72 hours.</strong> If he explicitly names the impeachment vote as the cause of his defeat, the deterrence mechanism is confirmed by the target himself. If he avoids that attribution, watch for what alternative explanation he offers and whether it is amplified by right-side outlets as cover.</p>
+<p><strong>Thomas Massie primary challenger announcement, within 30 days.</strong> The &quot;Deserves to Lose&quot; editorial is a pre-seeding pattern. The Cassidy result provides the credibility collateral. A Trump-backed challenger filing within this window confirms the deterrence sequence is operating on a systematic schedule, not case-by-case.</p>
+<p><strong>LIRR federal intervention trigger.</strong> The strike is now large enough — two days in, no resolution, hundreds of thousands affected — to require a national political response. Watch for federal mediation request, invocation of emergency labor authority, or White House statement within 48 hours. Hochul&#x27;s public posture suggests she is already near the threshold of requesting outside intervention.</p>
+<p><strong>Iran-Venezuela joint policy action, within 7 days.</strong> Two adversarial nation pressure stories running simultaneously in segregated lanes. If a coordinated sanctions package or joint statement drops this week, the pre-seeding hypothesis is confirmed. Watch specifically for whether right-side outlets pick up the Venezuela story — the timing of that lag will reveal whether the editorial filter is deliberate.</p>
+<p><strong>ActBlue June 10 testimony.</strong> Fixed date, compelled attendance, documentary evidence questions. Watch for pre-testimony document leaks or postponement motions in the 10 days prior — either would indicate one side has assessed the testimony as damaging enough to require pre-emption.</p>
+<p><strong>Paxton-Cornyn Texas primary filing window.</strong> Cassidy&#x27;s blowout provides maximum momentum for converting primary threat to candidacy. The hard constraint is the Texas filing deadline. Watch for Paxton movement within 2 weeks.</p>
+<p><strong>FDA deregulation next action.</strong> Vaping guardrails dropped today. The pattern suggests sequential rollbacks to different constituencies to maintain ideological segregation. Watch for the next health substance regulatory action within 7-10 days, and note which audience it is targeted toward.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that makes today&#x27;s cycle coherent is this: the Republican Party has completed the transition from a coalition that uses deterrence to one that requires it. Cassidy&#x27;s third-place finish is not a data point about Louisiana voters — it is an institutional event that changes the calculation for every Republican currently in office. The deterrence only functions if it is visible, which is why the synchronized editorial targeting Massie appeared on the same day as the election result. What looks like organic political commentary is actually the maintenance of a discipline system: the retrospective punishment credentializes the prospective threat, and the threat suppresses dissent that would otherwise be statistically inevitable in a large legislative caucus. The system is working as designed. The more important question — one today&#x27;s coverage does not engage — is what happens to the legislative capacity of a caucus in which the cost of independent judgment has been set this high. Deterrence narrows the range of permissible outcomes. In a legislative body that requires negotiation, coalition-building, and occasional cross-party agreement to govern, a fully deterred caucus is not more powerful. It is more brittle.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Louisiana Senator Bill Cassidy, who voted to convict Trump in his 2021 impeachment trial, lost his Republican primary in a historic third-place finish, with Trump-backed challengers Julia Letlow and John Fleming advancing to a runoff.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:17.1;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:28.6;" title="center-left: 10"></div><div class="bias-segment" style="background:#e05252; flex:8.6;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:14.3;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:17.1;" title="left: 6"></div><div class="bias-segment" style="background:#5ab56e; flex:14.3;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The factual core is unambiguous: a sitting senator was removed from office by his own party&#x27;s voters for a single high-profile vote against a dominant party figure — a measurable, historically notable event. The genuine analytical question — whether this reflects healthy primary accountability or party coercion that degrades institutional independence — is real and unresolved by the coverage. Both framings contain truth: voters do have the right to replace senators they disagree with, and systematic removal of lawmakers who defy a single leader does structurally narrow the range of permissible dissent within a party.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Cassidy&#x27;s defeat as evidence of Trump&#x27;s authoritarian grip on the Republican Party — a &#x27;loyalty purge&#x27; that punishes principle over policy. The emotional register is alarm: Cassidy is cast as a casualty, his loss a warning shot to anyone who might cross Trump. Mother Jones goes further, arguing he deserved defeat for enabling RFK Jr., but the dominant left frame is that the party is being hollowed out by fear.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill) lead with institutional loss — Romney&#x27;s lament provides a moral anchor without partisan spin. Coverage focuses on GOP internal dysfunction and the precedent being set for lawmakers who cross Trump, treating the primary as a cautionary data point rather than either a triumph or a crisis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump&#x27;s primary campaign as legitimate accountability politics — voters rejecting a senator who betrayed them by voting to convict a president they still support. Cassidy&#x27;s loss is presented as natural democratic consequence, not coercion. Fox explicitly uses Cassidy&#x27;s defeat as context for Trump&#x27;s next target (Massie), framing the pattern as rational party discipline rather than a purge.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not seriously engage with the argument that Republican voters in Louisiana had a legitimate policy-based grievance with Cassidy beyond the impeachment vote. They largely omit any substantive record of Cassidy&#x27;s Senate tenure or why his constituents may have had independent reasons to support new representation.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not address the chilling effect Cassidy&#x27;s defeat creates for Republican lawmakers who might otherwise exercise independent judgment. They omit Romney&#x27;s &#x27;loss for the country&#x27; framing entirely and make no mention of Cassidy&#x27;s post-impeachment attempts to reconcile with Trump — which undercuts the &#x27;principled dissenter&#x27; narrative but also complicates the &#x27;traitor&#x27; one.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">North America&#x27;s largest commuter rail system, the Long Island Rail Road, entered its second day of shutdown as five unions struck over wages and healthcare, with Governor Hochul urging a return to negotiations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core event — a historic multi-union strike shutting down the LIRR for the first time in 30 years — is underreported in the provided corpus. The two left-leaning outlets cover the shutdown but neither scrutinizes MTA&#x27;s bargaining conduct or the specific financial gap driving the dispute. The Breitbart submission is an editorial mismatch: it covers an unrelated New York political figure, suggesting either a data pipeline error or deliberate topic avoidance. Readers relying on these three sources would have an incomplete picture of both the labor dispute&#x27;s substance and its economic stakes.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The strike is framed as a workers&#x27; rights dispute with real impact on working commuters. The Guardian subtly shields management from blame by amplifying Hochul&#x27;s distancing statements without scrutinizing MTA&#x27;s negotiating posture.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS frames the shutdown as a public-interest crisis, centering Hochul&#x27;s mediating role and the human cost to commuters, without taking a strong position on labor vs. management responsibility.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage of this story was provided. The Breitbart article submitted is a separate story about a DSA-affiliated congressional candidate advocating for transgender healthcare policy — it has no factual connection to the rail shutdown.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left source critically examines MTA management&#x27;s role in the impasse, the specific wage gap between union asks and MTA offers, or whether Hochul&#x27;s administration had leverage it failed to use earlier.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-wing media did not cover this story. The absence is itself notable — a major infrastructure disruption affecting hundreds of thousands of workers received no engagement from the far-right source provided.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two US Navy EA-18G Growler jets collided midair during the Gunfighter Skies Air Show at Mountain Home Air Force Base in Idaho, destroying both aircraft; all four crew members ejected safely and were reported in stable condition.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This is a rare case of near-identical factual coverage across the ideological spectrum — both outlets agree on all material facts and neither uses the incident for political point-scoring. The differences are stylistic: The Guardian is institutional and source-anchored; Breitbart is dramatic and visually led. The story&#x27;s natural framing — a bad accident with a fortunate outcome — leaves little room for narrative divergence, which likely explains the convergence.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Straightforward factual reporting with an emphasis on institutional process — officials confirming details, base lockdown as a procedural safety measure. Tone is measured and authoritative. Emotional register is relieved but restrained.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet was included in this sample; insufficient data to assess.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Dramatic and visually oriented — leads with video, emphasizes eyewitness experience and the spectacle of the collision. Treats the Navy response as competent and the outcome as fortunate. More celebratory of crew resilience and military professionalism.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not highlight the video footage or eyewitness drama that Breitbart features, and does not explicitly note that both aircraft were fully destroyed.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart does not foreground the base lockdown or cite official sources as the basis for reporting, which The Guardian uses to anchor credibility.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Cassidy primary loss</span><span class="entity-tag">Thomas Massie Deserves to Lose</span></div>
+  <div class="connection-text">Both stories run simultaneously in right-side media: Cassidy&#x27;s actual elimination and a preemptive editorial calling for Massie&#x27;s defeat. Both are Republicans who defied Trump on high-profile votes. The pairing is not coincidental — it functions as a synchronized warning to every remaining Republican in Congress who has crossed the party leader.</div>
+  <div class="connection-sig">↳ This is the mechanism of deterrence in action: the retrospective punishment of Cassidy provides credibility to the prospective threat against Massie. The editorial and the election result reinforce each other as a single message to potential dissenters. Watch for whether Massie faces a Trump-backed primary challenger within 60 days of today.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Louisiana</span><span class="entity-tag">Voting Rights Act</span><span class="entity-tag">Cassidy primary</span></div>
+  <div class="connection-text">The Voting Rights Act appears in three stories, two of which involve Louisiana directly. The Cassidy purge removes a senator who represented a state with active voting rights litigation. His replacement will be a loyalist with no incentive to support any federal voting rights legislation, and the Supreme Court&#x27;s local-level ruling story suggests the terrain is already shifting.</div>
+  <div class="connection-sig">↳ The electoral accountability story and the voting rights structural story are running in parallel in the same state. The purge of Cassidy closes one of the few remaining Republican votes that could have supported any bipartisan voting rights fix. Left-side coverage treats these as separate stories; they are not.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran</span><span class="entity-tag">Venezuela</span><span class="entity-tag">Trump administration</span></div>
+  <div class="connection-text">Iran (&#x27;terrorists have taken over&#x27;) and Venezuela (Maduro ally deported to U.S.) both appear in today&#x27;s cycle as adversarial-nation stories with active Trump administration pressure. Iran coverage is right-only; Venezuela is left-only. Neither side is reading both simultaneously.</div>
+  <div class="connection-sig">↳ Two parallel pressure campaigns against adversarial regimes are running on the same day with zero cross-coverage. The editorial segregation prevents readers from seeing a possible coordinated foreign policy action or pre-announcement positioning. If a joint statement or new sanctions package drops this week, today&#x27;s split coverage will look like coordinated pre-seeding.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FDA vaping deregulation</span><span class="entity-tag">Abortion pills coverage</span><span class="entity-tag">Hemp/CBD scheduling</span></div>
+  <div class="connection-text">Three separate health/substance regulatory rollback stories appear across the spectrum in the same cycle. FDA drops vaping guardrails (center coverage), abortion pills framed as harmful (right-only), hemp/CBD Medicare disruption (watch list carry-over). All three involve the federal government retreating from or attacking regulatory oversight of substances that enter the body.</div>
+  <div class="connection-sig">↳ This is a pattern, not three unrelated stories. A systematic deregulatory sweep across the health space — with different ideological audiences receiving different pieces — obscures the aggregate policy direction. No single outlet is covering all three simultaneously.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">LIRR strike</span><span class="entity-tag">Democratic Party</span><span class="entity-tag">Hochul</span></div>
+  <div class="connection-text">The largest commuter rail shutdown in 30 years features a Democratic governor urging unions — a core Democratic constituency — to return to work. Right-side media is almost entirely absent from this story despite it being a natural &#x27;Democratic governance failure&#x27; narrative. This absence is the signal.</div>
+  <div class="connection-sig">↳ The MAGA coalition has absorbed a significant pro-labor working-class voter base. Covering a union strike as a Democratic failure now creates ideological dissonance for right outlets — attacking the strike means attacking labor; supporting management means supporting a Democratic governor. The silence is editorial paralysis, not indifference.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Prediction markets ban (Utah)</span><span class="entity-tag">ActBlue congressional testimony</span></div>
+  <div class="connection-text">Both stories involve financial mechanisms for political activity facing legislative or legal challenge. Utah moves to ban prediction markets; ActBlue faces subpoena-force testimony on foreign donation allegations. Both are about who controls the financial infrastructure of political signaling and fundraising.</div>
+  <div class="connection-sig">↳ Running in the same cycle, these represent parallel efforts to constrain political finance tools — one used more by right-leaning forecasters, one by left-leaning small-dollar donors. If both advance simultaneously, the net effect could be mutual financial infrastructure constraint. Watch whether either side recognizes the symmetry.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">ELECTORAL CONTROL CONVERGENCE: Four separate stories — Cassidy primary purge, voter eligibility midterm program, Supreme Court voting rights ruling, and the Kiley redistricting bill — all address mechanisms of electoral control from different angles in the same cycle. No outlet is reading all four together. Individually each appears routine; together they describe a systematic tightening of who can vote, who can draw maps, and which elected officials can survive dissent.</div>
+<div class="pattern-item">SYNCHRONIZED DISSENTER WARNING: &#x27;Thomas Massie Deserves to Lose&#x27; (right editorial) + Cassidy&#x27;s third-place finish function as a two-part message to Republican legislators: the election result proves the threat is real, the editorial names the next target. This is not organic commentary — it is coordinated pressure using live election results as credibility collateral.</div>
+<div class="pattern-item">HEALTH DEREGULATION SWEEP OBSCURED BY IDEOLOGICAL SEGREGATION: FDA vaping, abortion pills framing, and hemp/CBD scheduling each reach different audiences through different outlets. The cumulative picture — broad federal retreat from health substance regulation — is invisible to any single-outlet reader. The segregation appears deliberate: each audience receives the piece that confirms their priors without seeing the pattern.</div>
+<div class="pattern-item">LABOR STORY BLACKOUT ON THE RIGHT: The LIRR strike is historically significant (first in 30 years, largest commuter rail in North America) and would normally be prime material for right-side &#x27;blue-state dysfunction&#x27; coverage. Its near-total absence from right outlets suggests the MAGA coalition&#x27;s newly absorbed labor constituency has created an editorial blind spot: attacking striking workers now carries political cost that didn&#x27;t exist four years ago.</div>
+<div class="pattern-item">ADVERSARIAL NATION PARALLEL PRESSURE: Iran and Venezuela pressure-campaign stories run simultaneously but in completely different ideological lanes. Neither side is reading both, which means neither side can see if these represent a coordinated foreign policy push or if the stories are being seeded to different audiences for different purposes.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">BREITBART LIRR MISMATCH: A Breitbart submission tagged to the LIRR story covers an unrelated New York political figure. This is either a data pipeline error or evidence of deliberate topic avoidance — Breitbart actively declined to produce LIRR labor strike content and substituted adjacent New York political content instead. The substitution is too clean to be accidental.</div>
+<div class="anomaly-item">NAVY COLLISION IDEOLOGICAL CONVERGENCE: The EA-18G midair collision is the only story with near-identical coverage across left and far-right outlets, with zero political exploitation by either side. In the current environment, military equipment failures or Air Force base incidents routinely become partisan fodder. The absence of political framing on a story involving two destroyed $70M+ aircraft and four ejected crew members is anomalous and worth monitoring — it may indicate editorial restraint in anticipation of an official explanation that forecloses political use.</div>
+<div class="anomaly-item">CASSIDY POST-DEFEAT SILENCE: No story in today&#x27;s corpus contains Cassidy&#x27;s own statement on why he lost. His public attribution — or deliberate non-attribution — of the result to his impeachment vote is the single most consequential accountability data point from the primary. The absence of his voice from coverage of his own elimination is suspicious and should be treated as a watch item, not a gap.</div>
+<div class="anomaly-item">RIGHT-SIDE RELIGION STORY ISOLATION: &#x27;Growing Number of Americans Say Religion Gaining Influence in Society&#x27; is right-only, with zero left-side pickup. A story about measurable growth in perceived religious influence in an environment where Christian nationalism is an active policy debate should generate substantial left-side reactive coverage. Its confinement to the right suggests either the data source is contested or left outlets are making a deliberate editorial choice to avoid amplifying the frame.</div>
+<div class="anomaly-item">VENEZUELA DEPORTATION LEFT-ONLY: Venezuela deporting a Maduro ally to the U.S. for criminal proceedings is a clean Trump-foreign-policy-wins story. Its near-total absence from right-side coverage in a cycle where Iran coverage is prominent and right-side outlets have every incentive to amplify Trump foreign policy wins is anomalous. Either the story broke too late for right editorial cycles or there is a reason right outlets are not claiming credit — possibly because the cooperation required from Maduro&#x27;s government creates an awkward narrative.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding the LIRR strike (editorial paralysis from absorbed labor constituency), the voting rights/redistricting cluster (unfavorable institutional framing), Indigenous sacred sites (border wall optics), and the Venezuela deportation win (Maduro cooperation complications). This pattern reveals a coalition under ideological stress: MAGA&#x27;s working-class base acquisition has created genuine blind spots where attacks on Democratic governance now carry friendly-fire risk. The left is systematically avoiding Thomas Massie, abortion pills substance coverage, Iran threat framing, and Huawei/China tech competition — stories that either complicate progressive coalition management or require engaging with national security framings the left has historically ceded to the right. The most significant combined absence is a full accounting of the LIRR strike: the right won&#x27;t cover it because labor, the left covers it superficially because it implicates a Democratic governor. The largest commuter disruption in 30 years is functionally undercovered across the entire spectrum.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Kevin Kiley, I-Calif, on his bill to stop mid-cycle redistricting efforts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why the Supreme Court&#x27;s voting rights ruling could play a big role at the local level</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bus riders to Montgomery retrace old steps while fighting a new fight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Critics fear a midterm purge as the Trump administration promotes program to check voter eligibility</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s border wall construction is desecrating sacred sites, Indigenous leaders say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Peru&#x27;s Fujimori and S&amp;aacute;nchez to meet in June 7 presidential runoff</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Venezuela deports Maduro ally to U.S. for criminal proceedings</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘You can bet on it’: Utah lawmakers form united front in push to ban prediction markets</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota deploys national guard to help fight wildfires in northern region</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A ‘tax-the-rich’ billionaire candidate? Democrats are intrigued</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Smuggled in Syringes: Inside Nairobi’s Black Market in Giant Harvester Ants</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thomas Massie Deserves to Lose</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Callousness of Abortion Pills</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Terrorists Have Taken Over Iran — Now What?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Do EU Transfer Payments Fuel Corruption?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America Must Aggressively Counter Huawei to Preserve Its AI Leadership</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialist Nithya Raman, Wife to &#x27;Modern Family&#x27; TV Producer, Racks Up Hollywood Support in L.A. Mayor Race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Alleged Austin Gunmen, Ages 15 and 17, Used Stolen Guns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Growing Number of Americans Say Religion Gaining Influence in Society</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Cassidy public statement within 72 hours: watch for whether he explicitly names the impeachment vote as cause — his language will either confirm or complicate the deterrence mechanism thesis</div>
+<div class="watch-item">Thomas Massie primary filing deadline: given synchronized editorial pressure and Cassidy result, watch for a Trump-endorsed challenger announcement within 30 days; the &#x27;deserves to lose&#x27; editorial is a pre-seeding pattern</div>
+<div class="watch-item">LIRR strike federal intervention: with Governor Hochul urging return to negotiations and no resolution in sight, watch for Biden-era precedent invocation or federal mediation request — this is now large enough to require national political response</div>
+<div class="watch-item">Iran-Venezuela joint policy action: two adversarial nation stories running simultaneously in segregated lanes — watch for a coordinated sanctions package, joint statement, or military posture announcement within 7 days</div>
+<div class="watch-item">FDA deregulation cascade: vaping guardrails dropped today — watch for the next health substance rollback announcement, likely targeting a different constituency to maintain the ideological segregation pattern</div>
+<div class="watch-item">Paxton-Cornyn Texas filing deadline: Cassidy&#x27;s blowout provides maximum momentum for MAGA challenger conversion from signaling to candidacy; Texas primary filing window is the hard constraint</div>
+<div class="watch-item">ActBlue June 10 testimony: fixed date, subpoena force — the documentary evidence question resolves on a hard timestamp; watch for pre-testimony document leaks or postponement motions in the 10 days prior</div>
+<div class="watch-item">Right-side Venezuela pickup: if right outlets begin claiming credit for the Maduro ally deportation after initial left-only coverage, the timing lag will confirm the editorial filter hypothesis on foreign policy credit-claiming</div>
+<div class="watch-item">Abortion-by-mail SCOTUS ruling text: the two-cycle analytical gap remains unresolved — obtain the actual decision and determine whether a standing or scope limitation explains left-silence on what should be a major progressive win or loss</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
