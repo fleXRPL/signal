@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-19 11:15 UTC</title>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-19 11:15 UTC</span>
+    <span class="pill">86 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The United States is in the middle of an active intraparty consolidation campaign being executed through Cabinet-level resources. Today&#x27;s six-state primaries are the visible surface of a deeper structural operation: the Trump administration is systematically eliminating Republican legislators whose independence — not their partisanship — makes them unreliable executive instruments. The Massie primary is not a one-off. It is the live execution of a deterrence model first tested on Cassidy and now institutionalized. A sitting Defense Secretary is campaigning for a Navy SEAL challenger while claiming private citizen status. That claim is not a legal argument — it is a normalization exercise designed to establish Cabinet officials as legitimate tools of intraparty enforcement before any institutional resistance can form.</p>
+<p>Simultaneously, the same executive apparatus is being operationally reoriented. The Pentagon is scrapping the armored brigade rotation to Poland. The DOJ is creating a $1.7 billion fund to compensate Trump political allies under the label &quot;Anti-Weaponization.&quot; DHS enforcement is selective. These are not four separate policy stories — they are a single resource reallocation: military capability and institutional function being redirected from their statutory purposes toward political consolidation. The foreign policy costs of that redirection (Poland, and the called-off Iran strike) are not coincidental. They are the price being paid, and one side of the media ecosystem is systematically preventing that accounting from happening.</p>
+<p>The underlying condition is this: the 2026 midterm calculus is being managed now, in May 2026, through primary enforcement rather than policy performance. Trump&#x27;s approval numbers are not strong enough to guarantee midterm retention on their own, so the strategy is to ensure that the candidates on the ballot are structurally loyal before the general election environment becomes the dominant variable. The primaries today are not a test of Trump&#x27;s grip — they are a mechanism for tightening it.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is operating from a position of institutional strength but declining popular approval. The primary campaign against Massie is not driven by ideology — Massie&#x27;s libertarian record should be broadly compatible with a MAGA coalition. It is driven by Massie&#x27;s specific refusals: Iran war opposition, Epstein file pressure, fiscal resistance to the reconciliation package. These are the three pressure points where executive power most needs legislative deference, and Massie has been publicly uncooperative on all three.</p>
+<p><strong>Pete Hegseth</strong> is the most significant actor in today&#x27;s brief whose role is being systematically misframed. He is not a rogue Cabinet secretary making an enthusiastic campaign stop. He is functioning as the executive&#x27;s enforcement instrument against its own legislative branch. His appearance in Kentucky is the Pentagon being deployed domestically. The same institution withdrawing from Poland is the same institution appearing in Kentucky primaries. That is one story.</p>
+<p><strong>Todd Blanche</strong> is the connective tissue between two operations that are being covered as separate stories: the DOJ Anti-Weaponization Fund and the Massie primary entity cluster. His presence in both is not coincidental. The operational implication is that the DOJ&#x27;s political compensation apparatus and the intraparty enforcement campaign are connected at a personnel level. This requires confirmation, but if accurate, the fund and the primary are not parallel tracks — they are instruments of the same operation with shared staffing.</p>
+<p><strong>John Cornyn</strong> is the next target. The Islamic group donation story is opposition research in editorial form. It follows the pre-seeding pattern observed before Massie: surface a damaging narrative, establish it in the right-media ecosystem, create primary vulnerability, then activate a challenger. The story has no policy news hook — it exists to prime a primary filing. Watch for a MAGA-aligned Texas challenger within 30 days.</p>
+<p><strong>Gulf state allies</strong> exercised direct influence over U.S. military action by requesting the cancellation of a planned Iran strike. This is a significant foreign policy data point: the administration is responsive to Gulf state pressure on military action in a way that contradicts its stated &quot;maximum pressure&quot; posture. The mechanism of that influence, and which specific states intervened, is not currently in the public record.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is suppressing three categories today with notable discipline. First: Trump backing down. The Iran strike cancellation at Gulf ally request is the single most significant story in today&#x27;s dataset. A planned military strike on a sovereign nation was reversed at foreign government request — this should command universal coverage. Its complete absence on right-leaning outlets on the same day primary dominance stories are running wall-to-wall is not editorial indifference. It is active narrative management. The &quot;maximum pressure&quot; and &quot;strength&quot; frames require that this story not exist today.</p>
+<p>Second: quantitative policy consequences. The ACA enrollment drop story is a data story — numbers, not ideology. Right-side silence on verifiable coverage data is explicable only by the reconciliation package timeline. The &quot;big beautiful bill&quot; is moving through Congress with significant ACA implications. Amplifying enrollment drop data now creates a political cost for that legislation. The suppression is tactical.</p>
+<p>Third: violence against Muslim communities in religious settings. The San Diego mosque shooting — three dead, hate crime designation, prior police warning on record — is being absorbed by right outlets into gun policy framing while the religious targeting context is stripped almost entirely. On the same day, right outlets are running a story about Cornyn&#x27;s Islamic group donation as opposition research. Muslim institutions are apparently newsworthy on the right only as political instruments against Republicans, not as targets of violence.</p>
+<p>The left is avoiding two things with equal consistency. Democratic institutional dysfunction is absent: the DNC autopsy demand, blue-state policy failures, and the Clyburn redistricting story are being ignored by left outlets despite representing genuine vulnerabilities. More significantly, the left is not assembling its own immigration coverage into a coherent frame. The white South African refugee admission (10,000 fast-tracked), the DACA coverage, and the women-moving-abroad story are running as three separate pieces. Placed together, they form a discriminatory sorting argument with high political salience. The left is publishing the components but declining to assemble the conclusion — likely because doing so requires confronting coalition math around the administration&#x27;s immigration authority that is uncomfortable to engage directly.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most structurally significant connection in today&#x27;s brief is the Pentagon&#x27;s dual deployment. The same Defense Department apparatus that sent Hegseth to Kentucky to enforce intraparty loyalty is simultaneously withdrawing the armored brigade rotation from Poland. These are running in completely segregated editorial lanes — right covers Poland as a NATO reliability story, left covers Hegseth as a norms violation — but they are the same institution being operationally redirected. If the Pentagon is being redirected toward domestic political enforcement, the Poland withdrawal is not a budget story. It is the foreign policy cost of that redirection.</p>
+<p>The &quot;Anti-Weaponization&quot; framing at DOJ is an inversion worth flagging explicitly. The fund created to compensate Trump political allies is branded to describe the behavior it is performing. The DOJ is being used as a political instrument while being labeled the remedy to political instrumentalization. This is not coincidental franding — it is a preemptive counter-narrative designed to neutralize the accurate description of the mechanism before that description gains traction.</p>
+<p>The simultaneity of Democratic vulnerability stories on right-only outlets today — DNC autopsy, Senate hopeful&#x27;s unearthed posts, blue-state tax exodus, Clyburn redistricting — across four distinct Democratic weaknesses (institutional failure, candidate quality, policy consequences, electoral maps) appearing on the same day as six-state primaries suggests coordinated editorial priority rather than independent news judgment. These stories serve a pre-midterm opposition research function.</p>
+<p>The prediction market Congressional ban story is being underread. When both parties want something suppressed and it still isn&#x27;t happening, the explanation is almost always industry intervention. The co-appearance of Congress, Chicago, and New York in the entity cluster points toward CME Group or equivalent exchange-level lobbying. This story has financial industry implications that have not yet surfaced in political framing, and its bipartisan suppression element makes it worth tracking on its own terms.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Cornyn primary challenger filing (Texas, next 30 days):</strong> The Islamic group story is pre-seeding in progress. The Massie pattern requires approximately 3-6 weeks from opposition research publication to challenger announcement. A MAGA-aligned filing against Cornyn would confirm the deterrence model is being applied to the Senate as well as the House.</p>
+<p><strong>Iran strike cancellation — Gulf ally identification (48 hours):</strong> State Department or Gulf foreign ministry confirmation of which states intervened, on what timeline, and whether the request preceded or was concurrent with today&#x27;s primary cycle. If the foreign policy retreat and domestic consolidation are synchronized within the same news cycle, the combination demands separate analytical treatment.</p>
+<p><strong>Todd Blanche personnel overlap — DOJ Anti-Weaponization Fund distribution list:</strong> The first disbursement recipients will identify the fund&#x27;s operational definition of &quot;Trump ally.&quot; This is the document that converts a political story into a legal accountability question. Watch for the first payment announcement and cross-reference recipient list against the Massie primary entity cluster.</p>
+<p><strong>Mosque shooting — prior warning documentation (48 hours):</strong> The Guardian&#x27;s report of prior warnings to the Islamic Center of San Diego law enforcement is the most consequential undercovered element in today&#x27;s brief. If documented warnings exist and law enforcement did not act, this becomes a federal failure story. Request the specific warning documentation and the responding agency&#x27;s records.</p>
+<p><strong>Hegseth OGC ethics opinion:</strong> Request the Office of General Counsel opinion or ethics clearance, if any, authorizing a sitting Cabinet Secretary to appear at a partisan primary campaign event as a &quot;private citizen.&quot; Its absence is confirmatory evidence. Its existence — if it argues Hegseth can attend as a private individual while holding his office — sets a precedent for all subsequent Cabinet campaign activity.</p>
+<p><strong>ACA enrollment drop data source:</strong> Obtain the specific analysis cited in left-outlet coverage. Determine whether the drop is attributable to administrative barriers, premium increases, or active regulatory changes. The mechanism determines the political accountability question and its relevance to the reconciliation package timeline.</p>
+<p><strong>Abortion-by-mail SCOTUS ruling:</strong> This decision has now been absent from the news environment for three consecutive analytical cycles. At this stakes level, a three-cycle analytical gap is itself anomalous. Either the ruling has been delayed internally, is subject to information management, or the decision has been made and the announcement is being timed. This requires direct SCOTUS docket confirmation.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What is actually happening today is a constitutional stress test being administered quietly. The executive branch is deploying Cabinet resources against its own legislative branch, branding political weaponization as its remedy, withdrawing from NATO commitments while enforcing domestic party loyalty, and building a financial compensation structure for allies while the same apparatus moves against dissidents — all on a primary day designed to demonstrate that resistance within the Republican caucus is electorally fatal. The individual stories are real. The pattern they form is the point. The most important analytical fact in today&#x27;s brief is not any single story but the editorial architecture that keeps these stories from appearing in the same frame: left outlets cover the norms violations, right outlets cover the political victories, and the synthesis — that these are one operation with multiple instruments — is visible only when you look at the whole corpus simultaneously. The official who needs to understand what is happening in American politics right now should understand this: the consolidation phase is not coming. It is in execution, the primary calendar is its operational timeline, and the deterrence effect on Republican legislative independence is the mechanism by which executive power is being expanded without requiring a single new law.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">President Trump actively campaigns to oust libertarian-leaning Rep. Thomas Massie in Kentucky&#x27;s Republican primary, with Defense Secretary Hegseth making an unusual campaign appearance for Trump-backed Navy SEAL challenger Ed Gallrein, as six states hold primaries testing Trump&#x27;s grip on the GOP ahead of 2026 midterms.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (8)</span><span class="bias-badge" style="color:#e0a87a;">center-left (9)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (4)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:21.1;" title="center: 8"></div><div class="bias-segment" style="background:#e0a87a; flex:23.7;" title="center-left: 9"></div><div class="bias-segment" style="background:#e05252; flex:7.9;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:13.2;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:10.5;" title="left: 4"></div><div class="bias-segment" style="background:#a07ae0; flex:7.9;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:15.8;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The factual core is unambiguous: Trump is using the full weight of the executive and his political brand to eliminate a sitting Republican congressman whose independence he finds intolerable, and Hegseth&#x27;s &#x27;private citizen&#x27; campaign appearance is a thin fiction that normalizes Cabinet officials as instruments of intraparty enforcement. What actually matters is not whether Massie survives — it is what his potential defeat signals about the structural space for dissent within the GOP caucus, which directly affects Congress&#x27;s capacity to function as a check on executive power. The Cassidy precedent confirms this is not an isolated case but a pattern with measurable deterrent effect on Republican legislators.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the Massie primary as evidence of Trump&#x27;s authoritarian consolidation of the Republican Party through fear and retribution, casting Massie sympathetically as an independent voice being purged. Hegseth&#x27;s campaign appearance is treated as a serious norm violation. The broader primary day is framed as a referendum on whether any dissent can survive within the GOP. Emotional register: alarm, with implicit sympathy for any Republican willing to break from Trump.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets treat the primaries as a structural political story about intra-party power dynamics, focusing on whether independent-minded Republicans can survive Trump&#x27;s enforcement machine. They acknowledge both the legitimacy of Trump&#x27;s political influence and the cost to institutional independence within the GOP. Cassidy&#x27;s defeat is framed as a &#x27;warning shot&#x27; sending shockwaves. Emotional register: analytical concern, treating GOP capitulation as a documented trend rather than a value judgment.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the primaries as a validation of Trump&#x27;s leadership and a legitimate test of party loyalty, casting Gallrein as the pro-Trump, pro-military conservative alternative. Cassidy&#x27;s defeat is presented as a cautionary but personally principled outcome. Hegseth&#x27;s appearance is framed as righteous reinforcement. The broader primary day is a demonstration of Trump&#x27;s electoral strength. Emotional register: triumphalist, with loyalty to Trump as the implicit moral standard.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: substantive policy critiques of Massie beyond his Trump opposition (his libertarian fiscal record, his specific votes); any framing of Trump&#x27;s primary influence as legitimate democratic party-building; the argument that primary voters have a right to choose candidates aligned with their president&#x27;s agenda; the confirmation of 49 Trump nominees as a governance milestone.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: the norm-breaking nature of a sitting Cabinet secretary campaigning in a congressional primary while claiming private citizen status; Massie&#x27;s specific policy reasons for opposing Trump (Iran war opposition, Epstein files, fiscal restraint); the chilling effect Cassidy&#x27;s defeat may have on GOP senators&#x27; independent judgment; Trump&#x27;s declining approval ratings as a variable affecting midterm risk.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A shooting at the Islamic Center of San Diego killed three people and two teenage suspects were found dead in an apparent hate crime shortly before Friday prayers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core facts are not in serious dispute: a targeted attack on a mosque killed three people, and both teenage suspects are dead. The meaningful divergence is editorial priority — The Guardian treats this as a hate crime against a religious minority with an accountability thread around prior warnings, while Breitbart absorbs the event into a pre-existing gun policy argument, stripping the religious targeting context almost entirely. The prior police warning, if accurate, is the most consequential undercovered detail regardless of political orientation.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes the religious targeting of a Muslim community, the timing relative to Friday prayers as evidence of deliberate religious targeting, the suspects&#x27; youth, and a prior police warning that went unheeded — framing this as a systemic failure to protect a vulnerable minority community.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was provided in this dataset.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Foregrounds the ineffectiveness of California&#x27;s gun control regime, implicitly arguing that restrictive gun laws cannot prevent determined attackers — using the incident as a policy argument rather than a community tragedy.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not lead with gun control policy debate; does not specify victim roles (e.g., security guard vs. worshipper), which could affect the narrative of who was targeted.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Omits the hate crime investigation designation entirely; omits the mother&#x27;s prior warning to law enforcement, which is a significant accountability angle; downplays the religious targeting dimension.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Two unrelated stories from left-leaning outlets were submitted as cross-spectrum coverage of the same event — no actual cross-spectrum analysis is possible.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two sources are covering entirely different stories and cannot be cross-analyzed as coverage of the same event. The submission appears to conflate two separate Guardian/Mother Jones stories under one topic label. Any &#x27;analysis&#x27; produced from this pairing would be fabricated framing, not intelligence. Reliable spectrum analysis requires matched coverage of the same specific event across ideologically distinct outlets.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both outlets frame Trump&#x27;s policies as causing direct harm — to women&#x27;s autonomy and to public safety infrastructure — using expert voices and data points to legitimize urgency.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center coverage was provided. Analysis is not possible from this dataset.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage was provided. Analysis of right framing is not possible from this dataset.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot determine — no right-leaning source was included to establish contrast.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot determine — no right-leaning source was included to establish contrast.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Cross-spectrum analysis inconclusive: the two sources provided cover entirely different events and cannot be compared as coverage of the same story.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This dataset contains a source-matching error: the two outlets are not covering the same event, making direct framing comparison impossible. The voter registration charge is a single criminal case — significant for the individual charged but not evidence of systemic fraud absent corroboration. The Reagan Library fire is a discrete emergency event. Any analysis treating these as &#x27;two sides of one story&#x27; would be epistemically invalid.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided in this dataset. Left coverage of the voter registration story would likely emphasize due process, question selective DOJ enforcement, or contextualize homeless voter disenfranchisement. Left coverage of the fire would likely lead with climate and emergency response.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. Center coverage would likely report the DOJ charge with legal caveats (charged, not convicted) and the fire with straightforward emergency-management framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox frames the voter registration charge as vindication of election integrity concerns and credits the Trump DOJ. Breitbart frames the fire factually but with implicit symbolic weight — the Reagan Library as a cultural landmark under threat.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left sources were included in this dataset.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Neither right-leaning source contextualizes their story against broader patterns: Fox omits base rates of voter fraud prosecutions or the scale of this alleged scheme; Breitbart omits wildfire frequency trends or any climate context.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pentagon</span><span class="entity-tag">Pete Hegseth</span><span class="entity-tag">Poland NATO withdrawal</span></div>
+  <div class="connection-text">The same Defense Department apparatus that deployed Hegseth as a domestic political enforcer against Massie is simultaneously scrapping the US armored brigade rotation to Poland. These appear in completely separate editorial lanes — right covers the Poland withdrawal as a NATO reliability story, left covers Hegseth&#x27;s campaign appearance as a norms violation — but they are the same institution being redirected: away from alliance commitments and toward intraparty consolidation.</div>
+  <div class="connection-sig">↳ If the Pentagon is being operationally redirected toward domestic political enforcement, the Poland withdrawal is not a budget or logistics story — it is the foreign policy cost of that redirection. Neither side is running both stories in the same frame.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Department of Justice</span><span class="entity-tag">Todd Blanche</span><span class="entity-tag">Anti-Weaponization Fund</span><span class="entity-tag">Thomas Massie primary</span></div>
+  <div class="connection-text">Blanche appears in both the DOJ Anti-Weaponization Fund story and the Massie primary entity network. The DOJ is simultaneously creating a $1.7B fund to compensate Trump political allies while the same administration deploys Cabinet officials to eliminate a Republican legislator who votes against executive power. The &#x27;anti-weaponization&#x27; framing is being used to describe the use of the DOJ as a political weapon — the branding inverts the mechanism it describes.</div>
+  <div class="connection-sig">↳ The fund and the Massie campaign are parallel tracks of the same consolidation: reward loyalists, punish dissenters. Covering them as separate stories obscures that they are one operation with two instruments.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">John Cornyn</span><span class="entity-tag">San Diego mosque shooting</span><span class="entity-tag">Report: Sen. Cornyn Funded Islamic Group</span></div>
+  <div class="connection-text">A hate crime killing three people at a San Diego mosque is running with only two sources (left + far-right), while simultaneously right-only outlets are running a story linking Cornyn to an Islamic group. The mosque shooting story strips religious-targeting context on the right; the Cornyn story uses Islamic association as political attack. Both involve Muslim institutions, but the editorial treatment is inverted: the actual violence is decontextualized while the political association is amplified.</div>
+  <div class="connection-sig">↳ This is the Cassidy/Massie pattern applied to Cornyn. The Islamic group story functions as pre-seeding opposition research. Given the Massie primary execution, watch for a Cornyn primary challenger announcement — the story appears timed to create primary vulnerability, not to inform policy.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran</span><span class="entity-tag">Trump</span><span class="entity-tag">Six-state primaries</span></div>
+  <div class="connection-text">Trump called off an Iran strike &#x27;at request of Gulf allies&#x27; — a significant foreign policy retreat — on the same news cycle as six-state primaries testing his domestic political control. The Iran story is left-only. The right is not covering a moment where Trump visibly backed down from military action under allied pressure, while simultaneously amplifying Trump&#x27;s political dominance domestically.</div>
+  <div class="connection-sig">↳ The editorial segregation is not accidental: the right is managing a weakness narrative. An averted military strike requested by Gulf allies undercuts the &#x27;maximum pressure&#x27; posture. Suppressing it on the same day as primary dominance stories preserves the strength frame. The two stories in combination would produce a contradictory portrait.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">White South African refugees</span><span class="entity-tag">DACA generation</span><span class="entity-tag">Women moving abroad</span></div>
+  <div class="connection-text">Three simultaneous left-side demographic displacement stories: 10,000 white South Africans admitted as refugees while DACA recipients in their 30s face instability, and American women relocating abroad. The refugee admission story is the policy contradiction that gives the others analytical weight — the US is simultaneously fast-tracking one demographic&#x27;s asylum claims while threatening another&#x27;s long-term residency. None of these three stories reference each other.</div>
+  <div class="connection-sig">↳ The left is running the pieces but not assembling the frame. The white South African refugee program, covered in isolation, appears as immigration policy. Placed alongside DACA coverage, it becomes a discriminatory sorting story — and that framing would have significantly higher political salience.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Executive branch normalization as partisan instrument: Hegseth campaigns, DOJ funds Trump allies, DHS enforces selectively, the Pentagon withdraws from NATO commitments. These are running as four separate beats (defense, justice, immigration, foreign policy) but share a single structural pattern — Cabinet-level resources redirected from institutional function toward political operation. No outlet is covering all four simultaneously.</div>
+<div class="pattern-item">Segregated Islam coverage: A triple homicide at a mosque runs with minimal sourcing and stripped religious context on the right, while a Senate Republican&#x27;s Muslim group donation runs as right-only opposition research. The asymmetry reveals the editorial logic — Muslim institutions are newsworthy on the right only as political weapons against Republicans, not as targets of violence.</div>
+<div class="pattern-item">Right-side &#x27;retreat and cover&#x27; pattern on foreign policy: Poland withdrawal covered (NATO reliability failure attributable to institutional inertia), Iran strike cancellation not covered (Trump personally backing down at ally request). The filter is not pro-Trump vs. anti-Trump — it is whether the retreat can be framed as systemic rather than personal.</div>
+<div class="pattern-item">Simultaneous Democratic vulnerability seeding: DNC autopsy demand, Dem Senate hopeful&#x27;s unearthed posts, blue-state tax exodus, Clyburn redistricting — four separate stories on right-only outlets, each targeting a different Democratic weakness (institutional failure, candidate quality, policy consequences, electoral maps). The simultaneity suggests coordinated editorial priority rather than independent news judgment.</div>
+<div class="pattern-item">Legal system as parallel theater: Mangione suppression ruling, ActBlue subpoena, anti-weaponization fund, spyware oversight — legal process stories are running simultaneously on opposite sides of the spectrum with no cross-citation. The left covers the state as surveillance threat, the right covers the state as political persecutor. Neither is engaging with the other&#x27;s framing despite covering the same institutional actor.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Iran strike averted story is the single most significant anomaly in today&#x27;s dataset. A planned military strike on a sovereign nation called off at the explicit request of US Gulf allies — involving active military planning, foreign government intervention, and executive reversal — appears only on left outlets. This should command universal coverage regardless of ideological orientation. Its right-side absence is not explicable by editorial indifference; it requires active suppression of a major story on the same day Trump&#x27;s domestic political strength is being amplified across right outlets.</div>
+<div class="anomaly-item">The San Diego mosque shooting has two sources for a triple homicide hate crime committed shortly before Friday prayers. By comparison, the Cornyn/Islamic group story — a donation story with no confirmed victims — has right-only coverage. The disproportion between coverage volume and event severity is stark and directional.</div>
+<div class="anomaly-item">Todd Blanche appearing as a linking entity across the Anti-Weaponization Fund and the Massie primary entity cluster is anomalous. His dual presence suggests the DOJ&#x27;s political compensation apparatus and the intraparty enforcement campaign are operationally connected at a personnel level, not merely thematically parallel. This is worth confirming through personnel tracking.</div>
+<div class="anomaly-item">The ACA coverage steep-drop story is a quantitative data story — the type that historically commands bipartisan coverage because the numbers are not ideologically contestable. Its left-only status today suggests active right-side decision to avoid engaging with healthcare consequence data, likely because the &#x27;big beautiful bill&#x27; reconciliation process makes ACA coverage drops politically costly to amplify.</div>
+<div class="anomaly-item">The prediction market ban story (left-only: &#x27;House holds off&#x27;) has a suspicious entity cluster — Congress, Chicago, New York, U.S. Senate all appear. Prediction markets intersecting with Congress and major financial centers while right outlets are silent suggests this story may have financial industry implications that haven&#x27;t surfaced in political framing yet. The bipartisan &#x27;calls for prohibition&#x27; detail in the headline is the tell — when both parties want something suppressed and it&#x27;s still not happening, the explanation is usually industry intervention.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: Trump backing down (Iran strike), quantitative policy consequences (ACA drop), and violence against minority communities in religious settings (mosque shooting). The avoidance pattern is coherent — each story would disrupt a specific narrative pillar (strength, policy competence, cultural alliance). The left is systematically avoiding Democratic institutional dysfunction (DNC autopsy, blue-state policy failures) and the internal contradictions of its own coalition&#x27;s immigration position (white South African refugees vs. DACA). The left&#x27;s avoidance is defensively motivated — engaging with the DNC autopsy or the refugee asymmetry requires confronting uncomfortable coalition math. Taken together, both sides are protecting their respective &#x27;strength&#x27; narratives on the day of a primary cycle that tests whether those narratives hold.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Women Moving Abroad: ‘It’S Because</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The missing men of the American marriage market</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Steep drop in number of people with Affordable Care Act health coverage, analysis finds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House holds off on prediction market ban despite bipartisan calls for prohibition</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What we know about how the U.S. government uses spyware (and what we don&#x27;t)</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;We&#x27;re not kids anymore&#x27;: The DACA generation hits their 30s with an unstable future</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;There&#x27;s an obsession there,&#x27; Comey says of Trump after 2nd indictment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court sends closely watched Native American voting rights decision back to lower court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump says he&#x27;s called off Iran strike planned for Tuesday at request of Gulf allies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court rejects appeals from drug manufacturers over Medicare price negotiations with government</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice Department announces a $1.7 billion &#x27;Anti-Weaponization Fund&#x27; fund to compensate Trump allies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Redistricting debate shifts to South Carolina as Republicans target Rep. Clyburn&#x27;s seat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Louisiana payout cannot erase pain of Ronald Greene death by police – lawyer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US claims ‘emergency refugee situation’ as it admits 10,000 more white South Africans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Billie Jean King graduates from college at age 82 after leaving for tennis: ‘Yeah baby, only 61 years!’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Donald Trump says he ‘wasn’t involved’ in creation of $1.7bn compensation fund – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nancy Pelosi breaks silence to endorse San Francisco supervisor as successor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota Is Doing What the Federal Government Won’t: Holding ICE Accountable</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One Congresswoman’s Scary Yearlong Fight for Justice After Standing Up to ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Tried to Build Australia’s Tallest Tower. It Didn’t Happen.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alito Said Racism Was Over. Southern States Are Now Rushing to Revive Jim Crow.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Election Scheme Allegedly Fueled Pocket-Change</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Blue-state tax burden fuels Americans fleeing to Republican-led southern states</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poland seeks answers after Pentagon scraps planned US armored brigade rotation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems demand release of hidden DNC autopsy after 2024 collapse: ‘We got our butts kicked’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Unearthed posts show Dem Senate hopeful praising vulgar graffiti, making crude porta potty admission</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Stop Trump’s Slush-Fund Boondoggle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Real ‘Flight 93’ Election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Instead of Taxing the Rich, Let Americans Invest Like Them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who Cares If Homer Nodded?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Collusive ‘Anti-Weaponization Fund’ Takes a Page from the Left’s Playbook</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Stacey Abrams and the Left Redefine Jim Crow</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Sen. Cornyn Funded Islamic Group Linked to Planned Texas Muslim Community, Terrorism, Antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mullin: &#x27;Just Now Hitting a Stride to Go After the Worst of the Worst&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Billionaire Eric Schmidt Wants More AI Tech AND More Immigration</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Cornyn primary challenger announcement: The Islamic group story is opposition research in editorial form — watch for a MAGA-aligned challenger filing in Texas within 30 days, consistent with the Massie pre-seeding pattern observed in prior cycles.</div>
+<div class="watch-item">Iran strike called-off: Obtain confirmation from Gulf state foreign ministries or US State Department on which allies intervened and on what timeline. If the request came before or concurrent with the primary cycle news cycle, the foreign policy retreat and domestic consolidation are synchronized in a way that demands explanation.</div>
+<div class="watch-item">Todd Blanche + DOJ Anti-Weaponization Fund distribution list: The first disbursement recipients will identify who counts as a &#x27;Trump ally&#x27; under the fund&#x27;s operational definition — this is the accountability document that turns the fund from a political story into a legal one.</div>
+<div class="watch-item">Mosque shooting prior police warning: The Guardian&#x27;s detail about prior warnings to the Islamic Center of San Diego is the most consequential undercovered element. If law enforcement had actionable intelligence and did not act, this becomes a federal failure story, not just a local hate crime story.</div>
+<div class="watch-item">Poland NATO brigade rotation: Get the Pentagon&#x27;s stated rationale for scrapping the armored brigade rotation. If the justification is budget-related, cross-reference against the Anti-Weaponization Fund allocation timeline — simultaneous military capability reduction and domestic political compensation fund creation is a resource reallocation story.</div>
+<div class="watch-item">Prediction market Congressional ban: Identify the specific financial industry lobbying activity that caused the House to &#x27;hold off&#x27; despite bipartisan pressure. The Chicago and New York entity co-appearances suggest CME Group or similar exchange-level intervention.</div>
+<div class="watch-item">ACA enrollment drop data source: Obtain the specific analysis cited in the PBS/left coverage and determine whether the drop is attributable to administrative barriers, premium increases, or active policy changes — the mechanism determines the political accountability question.</div>
+<div class="watch-item">Hegseth &#x27;private citizen&#x27; campaign appearance legal basis: Request the OGC opinion or ethics clearance, if any, that authorized a sitting Cabinet Secretary to appear at a partisan primary campaign event. The absence of such documentation would confirm the normalization thesis.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
