@@ -7,7 +7,7 @@
 <style>
   :root {
     --bg: #0d1117; --surface: #161b22; --border: #30363d;
-    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; --gold: #e3b341;
     --mono: 'JetBrains Mono', 'Fira Code', monospace;
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }
@@ -19,13 +19,31 @@
   .wordmark { font-family: var(--mono); font-size: 11px; letter-spacing: .25em;
                color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }
   h1 { font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent); }
-  .container { max-width: 720px; margin: 48px auto; padding: 0 24px; }
-  h2 { font-family: var(--mono); font-size: 13px; letter-spacing: .15em;
-        text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  .container { max-width: 720px; margin: 40px auto; padding: 0 24px; }
+  .summary { font-family: var(--mono); font-size: 12px; letter-spacing: .1em;
+              text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
+  .week-group { margin-bottom: 32px; }
+  .week-header {
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 0 8px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 0;
+  }
   ul { list-style: none; }
-  li { border-bottom: 1px solid var(--border); padding: 14px 0; }
-  a { color: var(--accent); text-decoration: none; font-size: 15px; }
+  li { border-bottom: 1px solid var(--border); padding: 11px 0 11px 16px; }
+  li.weekly-row { padding-left: 0; background: rgba(227,179,65,0.04); }
+  a { text-decoration: none; font-size: 14px; }
+  li.daily-row a { color: var(--accent); }
+  li.weekly-row a { color: var(--gold); font-weight: 500; }
   a:hover { text-decoration: underline; }
+  .badge {
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 10px; font-family: monospace; vertical-align: middle;
+    margin-left: 8px;
+  }
+  .badge-latest { background: #1f6feb; color: #fff; }
+  .badge-week   { background: #6e4c00; color: var(--gold); }
   .back { display: inline-block; margin-top: 32px; font-family: var(--mono);
            font-size: 12px; color: var(--muted); text-decoration: none;
            border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; }
@@ -38,25 +56,29 @@
   <h1>BRIEF ARCHIVE</h1>
 </div>
 <div class="container">
-  <h2>10 daily briefs — most recent first</h2>
-  <ul>
-      <li><a href="reports/brief_20260519_1115.html">2026-05-19 · 11:15 UTC</a> <span style="background:#1f6feb;color:#fff;font-size:10px;padding:2px 8px;border-radius:10px;font-family:monospace;vertical-align:middle;">latest</span></li>
-      <li><a href="reports/brief_20260518_1112.html">2026-05-18 · 11:12 UTC</a></li>
-      <li><a href="reports/brief_20260517_1410.html">2026-05-17 · 14:10 UTC</a></li>
-      <li><a href="reports/brief_20260516_1425.html">2026-05-16 · 14:25 UTC</a></li>
-      <li><a href="reports/brief_20260515_1410.html">2026-05-15 · 14:10 UTC</a></li>
-      <li><a href="reports/brief_20260514_1353.html">2026-05-14 · 13:53 UTC</a></li>
-      <li><a href="reports/brief_20260513_2011.html">2026-05-13 · 20:11 UTC</a></li>
-      <li><a href="reports/brief_20260512_2304.html">2026-05-12 · 23:04 UTC</a></li>
-      <li><a href="reports/brief_20260512_1604.html">2026-05-12 · 16:04 UTC</a></li>
-      <li><a href="reports/brief_20260511_1516.html">2026-05-11 · 15:16 UTC</a></li>
-  </ul>
+  <div class="summary">10 daily briefs · 1 weekly summary — grouped by week</div>
   
-  <h2 style="margin-top:40px;">Weekly Summaries — 2 reports</h2>
-  <ul>
-      <li><a href="reports/weekly_2026W20_20260518_0301.html" style="color:#e3b341;">📊 Weekly Brief — 2026W20</a> <span style="background:#6e4c00;color:#e3b341;font-size:10px;padding:2px 8px;border-radius:10px;font-family:monospace;vertical-align:middle;">latest week</span></li>
-<li><a href="reports/weekly_2026W20_20260515_1629.html" style="color:#e3b341;">📊 Weekly Brief — 2026W20</a></li>
-  </ul>
+  <div class="week-group">
+    <div class="week-header">Week 21 · May 18–24, 2026</div>
+    <ul>
+        <li class="daily-row"><a href="reports/brief_20260519_1115.html">2026-05-19 · 11:15 UTC</a> <span class="badge badge-latest">latest</span></li>
+        <li class="daily-row"><a href="reports/brief_20260518_1112.html">2026-05-18 · 11:12 UTC</a></li>
+    </ul>
+  </div>
+  <div class="week-group">
+    <div class="week-header">Week 20 · May 11–17, 2026</div>
+    <ul>
+        <li class="weekly-row"><a href="reports/weekly_2026W20_20260518_0301.html">📊 Weekly Brief — 2026W20</a> <span class="badge badge-week">latest week</span></li>
+        <li class="daily-row"><a href="reports/brief_20260517_1410.html">2026-05-17 · 14:10 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260516_1425.html">2026-05-16 · 14:25 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260515_1410.html">2026-05-15 · 14:10 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260514_1353.html">2026-05-14 · 13:53 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260513_2011.html">2026-05-13 · 20:11 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260512_2304.html">2026-05-12 · 23:04 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260512_1604.html">2026-05-12 · 16:04 UTC</a></li>
+        <li class="daily-row"><a href="reports/brief_20260511_1516.html">2026-05-11 · 15:16 UTC</a></li>
+    </ul>
+  </div>
   <a href="index.html" class="back">▸ Back to home</a>
 </div>
 </body>

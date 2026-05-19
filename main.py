@@ -291,51 +291,111 @@ def _update_index(
         encoding="utf-8",
     )
 
-    # ── archive.html ──────────────────────────────────────────────────────────
+    # ── archive.html — grouped by ISO week ───────────────────────────────────
+    from datetime import datetime as _dt
+
+    def _iso_week(p: Path) -> str:
+        """Return 'YYYYWNN' for a brief_YYYYMMDD or weekly_YYYYWNN file."""
+        parts = p.stem.split("_")
+        if p.stem.startswith("weekly_"):
+            return parts[1]  # already YYYYWNN
+        try:
+            d = _dt.strptime(parts[1], "%Y%m%d")
+            iso_y, iso_w, _ = d.isocalendar()
+            return f"{iso_y}W{iso_w:02d}"
+        except (IndexError, ValueError):
+            return "unknown"
+
+    def _week_label(iso_wk: str) -> str:
+        """Convert '2026W20' → 'Week 20 · May 11–17, 2026'."""
+        try:
+            year = int(iso_wk[:4])
+            week = int(iso_wk[5:])
+            # ISO weeks start on Monday
+            mon = _dt.fromisocalendar(year, week, 1)
+            sun = _dt.fromisocalendar(year, week, 7)
+            month_fmt = "%b %-d"
+            return f"Week {week} · {mon.strftime(month_fmt)}–{sun.strftime('%-d')}, {year}"
+        except (ValueError, AttributeError):
+            return iso_wk
+
     def _daily_row(p: Path, is_latest: bool) -> str:
         parts = p.stem.split("_")
         try:
             date_str = f"{parts[1][:4]}-{parts[1][4:6]}-{parts[1][6:]}"
-            time_str = f"{parts[2][:2]}:{parts[2][2:]}"
-            label = f"{date_str} · {time_str} UTC"
+            time_str = f"{parts[2][:2]}:{parts[2][2:]} UTC"
+            label = f"{date_str} · {time_str}"
         except IndexError:
             label = p.stem
         badge = (
-            ' <span style="background:#1f6feb;color:#fff;font-size:10px;padding:2px 8px;'
-            'border-radius:10px;font-family:monospace;vertical-align:middle;">latest</span>'
-            if is_latest
-            else ""
+            ' <span class="badge badge-latest">latest</span>'
+            if is_latest else ""
         )
-        return f'<li><a href="reports/{p.name}">{label}</a>{badge}</li>'
+        return f'<li class="daily-row"><a href="reports/{p.name}">{label}</a>{badge}</li>'
 
-    def _weekly_row(p: Path, is_latest: bool) -> str:
+    def _weekly_row_html(p: Path, is_latest: bool) -> str:
         parts = p.stem.split("_")
         try:
-            w_label = parts[1]  # e.g. 2026W20
+            w_label = parts[1]
         except IndexError:
             w_label = p.stem
         badge = (
-            ' <span style="background:#6e4c00;color:#e3b341;font-size:10px;padding:2px 8px;'
-            'border-radius:10px;font-family:monospace;vertical-align:middle;">latest week</span>'
-            if is_latest
-            else ""
+            ' <span class="badge badge-week">latest week</span>'
+            if is_latest else ""
         )
         return (
-            f'<li><a href="reports/{p.name}" style="color:#e3b341;">'
-            f'📊 Weekly Brief — {w_label}</a>{badge}</li>'
+            f'<li class="weekly-row">'
+            f'<a href="reports/{p.name}">📊 Weekly Brief — {w_label}</a>{badge}</li>'
         )
 
-    daily_rows_html = "\n      ".join(
-        _daily_row(p, p == latest_daily) for p in daily_reports
+    # Build a map: iso_week → {daily: [Path], weekly: Path|None}
+    # For weekly reports, deduplicate — keep only latest file per week number
+    weekly_by_week: dict = {}
+    for p in weekly_reports:
+        wk = _iso_week(p)
+        if wk not in weekly_by_week or p.stem > weekly_by_week[wk].stem:
+            weekly_by_week[wk] = p
+
+    daily_by_week: dict = {}
+    for p in daily_reports:
+        wk = _iso_week(p)
+        daily_by_week.setdefault(wk, []).append(p)
+
+    all_weeks = sorted(
+        set(list(weekly_by_week.keys()) + list(daily_by_week.keys())),
+        reverse=True,
     )
 
-    weekly_rows_html = ""
-    if weekly_reports:
-        weekly_rows_html = f"""
-  <h2 style="margin-top:40px;">Weekly Summaries — {len(weekly_reports)} report{"s" if len(weekly_reports) != 1 else ""}</h2>
-  <ul>
-      {chr(10).join(_weekly_row(p, p == latest_weekly) for p in weekly_reports)}
-  </ul>"""
+    week_sections_html = []
+    for wk in all_weeks:
+        label = _week_label(wk)
+        items = []
+
+        # Weekly summary at the top of the group (if it exists for this week)
+        if wk in weekly_by_week:
+            wp = weekly_by_week[wk]
+            is_latest_w = (wp == latest_weekly)
+            items.append(_weekly_row_html(wp, is_latest_w))
+
+        # Daily briefs for this week, most recent first
+        for dp in daily_by_week.get(wk, []):
+            is_latest_d = (dp == latest_daily)
+            items.append(_daily_row(dp, is_latest_d))
+
+        rows = "\n        ".join(items)
+        week_sections_html.append(f"""
+  <div class="week-group">
+    <div class="week-header">{label}</div>
+    <ul>
+        {rows}
+    </ul>
+  </div>""")
+
+    total_daily = len(daily_reports)
+    total_weekly = len(weekly_by_week)
+    summary_line = f"{total_daily} daily brief{'s' if total_daily != 1 else ''}"
+    if total_weekly:
+        summary_line += f" · {total_weekly} weekly summar{'ies' if total_weekly != 1 else 'y'}"
 
     (ROOT / "archive.html").write_text(
         f"""<!DOCTYPE html>
@@ -347,7 +407,7 @@ def _update_index(
 <style>
   :root {{
     --bg: #0d1117; --surface: #161b22; --border: #30363d;
-    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #58a6ff; --gold: #e3b341;
     --mono: 'JetBrains Mono', 'Fira Code', monospace;
     --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   }}
@@ -359,13 +419,31 @@ def _update_index(
   .wordmark {{ font-family: var(--mono); font-size: 11px; letter-spacing: .25em;
                color: var(--muted); text-transform: uppercase; margin-bottom: 4px; }}
   h1 {{ font-family: var(--mono); font-size: 22px; font-weight: 700; color: var(--accent); }}
-  .container {{ max-width: 720px; margin: 48px auto; padding: 0 24px; }}
-  h2 {{ font-family: var(--mono); font-size: 13px; letter-spacing: .15em;
-        text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }}
+  .container {{ max-width: 720px; margin: 40px auto; padding: 0 24px; }}
+  .summary {{ font-family: var(--mono); font-size: 12px; letter-spacing: .1em;
+              text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }}
+  .week-group {{ margin-bottom: 32px; }}
+  .week-header {{
+    font-family: var(--mono); font-size: 11px; font-weight: 700;
+    letter-spacing: .2em; text-transform: uppercase;
+    color: var(--muted); padding: 10px 0 8px;
+    border-top: 1px solid var(--border);
+    margin-bottom: 0;
+  }}
   ul {{ list-style: none; }}
-  li {{ border-bottom: 1px solid var(--border); padding: 14px 0; }}
-  a {{ color: var(--accent); text-decoration: none; font-size: 15px; }}
+  li {{ border-bottom: 1px solid var(--border); padding: 11px 0 11px 16px; }}
+  li.weekly-row {{ padding-left: 0; background: rgba(227,179,65,0.04); }}
+  a {{ text-decoration: none; font-size: 14px; }}
+  li.daily-row a {{ color: var(--accent); }}
+  li.weekly-row a {{ color: var(--gold); font-weight: 500; }}
   a:hover {{ text-decoration: underline; }}
+  .badge {{
+    display: inline-block; font-size: 10px; padding: 2px 8px;
+    border-radius: 10px; font-family: monospace; vertical-align: middle;
+    margin-left: 8px;
+  }}
+  .badge-latest {{ background: #1f6feb; color: #fff; }}
+  .badge-week   {{ background: #6e4c00; color: var(--gold); }}
   .back {{ display: inline-block; margin-top: 32px; font-family: var(--mono);
            font-size: 12px; color: var(--muted); text-decoration: none;
            border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; }}
@@ -378,11 +456,8 @@ def _update_index(
   <h1>BRIEF ARCHIVE</h1>
 </div>
 <div class="container">
-  <h2>{len(daily_reports)} daily brief{"s" if len(daily_reports) != 1 else ""} — most recent first</h2>
-  <ul>
-      {daily_rows_html}
-  </ul>
-  {weekly_rows_html}
+  <div class="summary">{summary_line} — grouped by week</div>
+  {"".join(week_sections_html)}
   <a href="index.html" class="back">▸ Back to home</a>
 </div>
 </body>
