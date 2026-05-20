@@ -50,13 +50,14 @@ def run_weekly_signal(args: argparse.Namespace) -> None:
     console = Console()
     config = load_config()
     days = getattr(args, "days", 7)
+    ga_id = config.get("analytics", {}).get("measurement_id", "")
 
     brief_text, metadata = run_weekly(config, days=days)
 
     console.print("[bold cyan]Generating weekly HTML report...[/bold cyan]")
-    report_path = generate_weekly_report(brief_text, metadata)
+    report_path = generate_weekly_report(brief_text, metadata, ga_measurement_id=ga_id)
 
-    _update_index(latest_daily=None, latest_weekly=report_path)
+    _update_index(latest_daily=None, latest_weekly=report_path, ga_id=ga_id)
 
     console.print("\n[bold green]✓ Weekly brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
@@ -79,6 +80,7 @@ def run_signal(args: argparse.Namespace) -> None:
     config = load_config()
     if args.no_fetch:
         config["collection"]["fetch_full_text"] = False
+    ga_id = config.get("analytics", {}).get("measurement_id", "")
 
     # Init DB
     store.init_db()
@@ -149,10 +151,10 @@ def run_signal(args: argparse.Namespace) -> None:
 
     # Generate report
     console.print("\n[bold cyan]Generating HTML report...[/bold cyan]")
-    report_path = generate_report(brief, clusters, correlation, articles, run_id, model)
+    report_path = generate_report(brief, clusters, correlation, articles, run_id, model, ga_measurement_id=ga_id)
 
     # Update index.html to redirect to the latest report
-    _update_index(latest_daily=report_path, latest_weekly=None)
+    _update_index(latest_daily=report_path, latest_weekly=None, ga_id=ga_id)
 
     console.print("\n[bold green]✓ Brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
@@ -162,8 +164,12 @@ def run_signal(args: argparse.Namespace) -> None:
 def _update_index(
     latest_daily: "Path | None",
     latest_weekly: "Path | None",
+    ga_id: str = "",
 ) -> None:
     """Regenerate index.html and archive.html after any report is generated."""
+    from pipeline.reporter import ga_snippet as _ga_snippet
+    ga_head = _ga_snippet(ga_id)
+
     reports_dir = ROOT / "reports"
 
     # Resolve the latest daily report (use argument or fall back to most recent file)
@@ -216,6 +222,7 @@ def _update_index(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Political Intelligence Pipeline</title>
+{ga_head}
 <style>
   :root {{
     --bg: #0d1117; --surface: #161b22; --border: #30363d;
@@ -404,6 +411,7 @@ def _update_index(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Brief Archive</title>
+{ga_head}
 <style>
   :root {{
     --bg: #0d1117; --surface: #161b22; --border: #30363d;

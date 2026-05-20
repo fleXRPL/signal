@@ -17,6 +17,22 @@ from typing import Any, Dict, List
 
 REPORTS_DIR = Path(__file__).parent.parent / "reports"
 
+
+def ga_snippet(measurement_id: str) -> str:
+    """Return the Google Analytics 4 script tags, or empty string if no ID."""
+    if not measurement_id:
+        return ""
+    mid = html.escape(measurement_id)
+    return (
+        f'<script async src="https://www.googletagmanager.com/gtag/js?id={mid}"></script>\n'
+        f"<script>\n"
+        f"  window.dataLayer = window.dataLayer || [];\n"
+        f"  function gtag(){{dataLayer.push(arguments);}}\n"
+        f"  gtag('js', new Date());\n"
+        f"  gtag('config', '{mid}');\n"
+        f"</script>"
+    )
+
 BIAS_COLORS = {
     "far-left":     "#e05252",
     "left":         "#e07a7a",
@@ -36,6 +52,7 @@ HTML_TEMPLATE = """\
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Political Intelligence Brief {date}</title>
+{ga_snippet}
 <style>
   :root {{
     --bg:       #0d1117;
@@ -805,6 +822,7 @@ def generate_report(
     articles: List[Dict[str, Any]],
     run_id: int,  # noqa: ARG001 — retained for API consistency
     model: str,
+    ga_measurement_id: str = "",
 ) -> Path:
     """
     Generate and write the HTML intelligence brief.
@@ -853,6 +871,7 @@ def generate_report(
         source_count=len(source_names),
         cluster_count=len(multi_clusters),
         model=html.escape(model),
+        ga_snippet=ga_snippet(ga_measurement_id),
         brief_sections=brief_sections_html,
         story_cards=story_cards_html,
         connections_html=connections_html,
@@ -891,6 +910,7 @@ WEEKLY_HTML_TEMPLATE = """\
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Weekly Intelligence Brief {week_label}</title>
+{ga_snippet}
 <style>
   :root {{
     --bg:       #0d1117;
@@ -1182,7 +1202,11 @@ def _render_weekly_sections(brief_text: str) -> str:
     return "\n".join(output)
 
 
-def generate_weekly_report(brief_text: str, metadata: Dict[str, Any]) -> Path:
+def generate_weekly_report(
+    brief_text: str,
+    metadata: Dict[str, Any],
+    ga_measurement_id: str = "",
+) -> Path:
     """
     Generate and write the weekly HTML intelligence brief.
 
@@ -1190,6 +1214,7 @@ def generate_weekly_report(brief_text: str, metadata: Dict[str, Any]) -> Path:
         brief_text: Markdown brief from Pass 6 (weekly synthesis).
         metadata: Dict containing week_start, week_end, day_count,
                   run_ids, generated_at.
+        ga_measurement_id: GA4 Measurement ID (e.g. 'G-XXXXXXXXXX'), or empty to skip.
 
     Returns:
         Path to the generated HTML file.
@@ -1229,6 +1254,7 @@ def generate_weekly_report(brief_text: str, metadata: Dict[str, Any]) -> Path:
         model=html.escape(model_label),
         generated_at=html.escape(generated_at),
         day_chips=day_chips,
+        ga_snippet=ga_snippet(ga_measurement_id),
         brief_sections=brief_sections_html,
     )
 
