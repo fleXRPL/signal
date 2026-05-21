@@ -1,0 +1,41 @@
+---
+description: Signal project context, coding standards, and memory system instructions
+alwaysApply: true
+---
+
+# Signal — Political Intelligence Pipeline
+
+## At the start of every session, read these files
+- `.cursor/memory/state.md` — current project state, what's done, what's next
+- `.cursor/memory/decisions.md` — why key architectural choices were made
+- `.cursor/memory/preferences.md` — how the user likes to work and what to avoid
+- `.cursor/memory/lessons.md` — failures and gotchas not to repeat
+
+## At the end of any session where meaningful work was done, update the relevant memory files.
+
+---
+
+## Project identity
+- **Repo:** `github.com/fleXRPL/signal`
+- **Live site:** `flexrpl.github.io/signal`
+- **Purpose:** Personal daily + weekly political intelligence pipeline. Also a public reference repo showing how to build a production-quality LLM pipeline. Not a commercial product.
+- **Owner:** garotconklin (solo developer)
+
+## Stack
+- Python 3.14, SQLite, launchd (macOS scheduling)
+- LLM: Claude Code CLI (`claude -p`) — default and required for scheduled runs
+- LLM alt: Ollama (`qwen2.5:14b`) — interactive/manual only, never in launchd
+- Publishing: GitHub Pages + GitHub Actions
+- Analytics: GA4 (`G-58PDJM14L7`)
+
+## Code standards
+- Senior-level production Python: passes linting, security, efficiency
+- Minimum Viable Product first — deliver working before polishing
+- No comments that narrate what code does — only explain non-obvious intent
+- All new features on a feature branch; merge to main when stable
+- SonarQube Cloud integration — resolve warnings before declaring done
+
+## Non-negotiables
+- NEVER run Ollama from launchd — causes Metal GPU kernel panics on macOS
+- NEVER push to main from a feature branch during a launchd run (scripts must `git checkout main` first)
+- NEVER commit `signal.db`, `*.log`, `.env`, or `secrets.yaml`
