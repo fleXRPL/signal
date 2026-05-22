@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-22 14:22 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-22 14:22 UTC</span>
+    <span class="pill">93 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics is currently organized around a single structural stress point: Trump&#x27;s personal legal and financial exposure is now actively degrading his own legislative agenda. The Senate immigration bill collapse is the clearest proof of concept. Senate Republicans — including Thune, who controls the floor — walked away from a $70 billion enforcement package they nominally wanted because Trump embedded two personal benefit provisions that made the bill politically untenable to defend. The anti-weaponization fund protects his allies from prosecution. The ballroom security allocation funds his commercial property. Neither has a policy rationale that survives scrutiny. No Republican senator publicly defended either provision. That silence is the signal: even Trump&#x27;s legislative partners cannot hold the line when the ask is this naked.</p>
+<p>The immigration bill failure is not an isolated incident. It fits a pattern across at least three legislative cycles in which Trump or his proxies have inserted personal legal and financial protection into otherwise-passable policy vehicles. The pattern now has a confirmed failure track record. The question going forward is whether this deters future insertions or intensifies them — and whether Senate Republicans will develop a formalized mechanism to strip such provisions before floor consideration, or whether they will continue absorbing the legislative wreckage case by case.</p>
+<p>Simultaneously, two other power centers are independently drawing lines. The Supreme Court&#x27;s conservative bloc fractured on Hamm v. Smith — Kavanaugh and Barrett apparently retreating from an Alito-led position — through a procedural mechanism (dismissal as improvidently granted) that allows retreat without formal dissent from the conservative project. Silicon Valley, covered only on the left, successfully blocked a Trump AI executive order. These are structurally unrelated venues, but the same pattern is observable: institutional actors who nominally align with Trump are quietly refusing specific demands when the political cost becomes visible. This is not organized resistance. It is individual calculation, independently arriving at the same place.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Senate Republican leadership (Thune)</strong> is the decisive actor this cycle. Thune&#x27;s decision to send the chamber on recess without the immigration bill is not passive — it is a managed retreat that preserves Republican deniability while letting Trump&#x27;s most toxic provisions die quietly. The recess creates a negotiating window during which the ballroom provision and anti-weaponization fund can be stripped without a formal floor vote rejecting them. Thune is threading a needle: he cannot openly defy Trump, but he is also not going to burn his caucus on provisions that every senator privately knows are indefensible.</p>
+<p><strong>Trump&#x27;s personal exposure</strong> is functioning as a legislative drag coefficient. His endorsement of Paxton against Cornyn — a direct retaliatory action against a senator from his own party — is now confirmed by Breitbart and other right-friendly sources as a material driver of the bill&#x27;s failure. Trump&#x27;s vendettas are generating structural opposition within his own caucus at the precise moment he needs maximum legislative cohesion for reconciliation. This is not ideological opposition; it is institutional self-preservation by senators who read polling.</p>
+<p><strong>Kavanaugh and Barrett</strong> are the most significant judicial actors. The Hamm v. Smith DIG is their mechanism for not being on record with Alito on a capital case involving intellectual disability. Whether this reflects genuine doctrinal concern about Eighth Amendment standards or strategic avoidance of a politically costly outcome is unresolved. The absence of any written explanation from either justice is conspicuous. Watch for whether either writes separately.</p>
+<p><strong>Thomas Massie&#x27;s elimination</strong> removes the House&#x27;s primary institutional shepherd for War Powers Act enforcement. No successor is identified anywhere in today&#x27;s coverage. This is an absence, not a presence, but it matters more than most presences: the WPA clock has no shepherd precisely when drone warfare legal authorities and Iran tensions are active questions.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is engaged in a coordinated omission of the ballroom security provision. Across every right-leaning outlet analyzed, coverage of the immigration bill collapse focuses exclusively on the anti-weaponization fund while the ballroom allocation — a $1 billion appropriation for a Trump commercial property with zero policy justification — is invisible. This is not an oversight. The provision has no defense, and its absence from right-wing coverage reflects an editorial judgment that acknowledging it would require defending the indefensible or criticizing Trump. The result is that conservative audiences have a systematically incomplete picture of why their senators walked away from their own immigration bill.</p>
+<p>The left is running a parallel but different omission. DHS-reported border statistics — 94% crossing decline, 3 million departures — are almost entirely absent from left and center-left coverage despite being verifiable government data. This is not a contested figure requiring careful framing; it is a government-reported outcome. Its absence suggests left editorial judgment that acknowledging immigration enforcement outcomes contradicts the preferred narrative frame for 2026. The Cuban diaspora&#x27;s response to the Castro indictment — a genuine human interest story with significant political valence in Florida — is similarly absent from left coverage.</p>
+<p>More broadly, left-leaning outlets are entirely absent from every story that complicates their emerging 2026 coalition: Mamdani&#x27;s Goldman Sachs courtship directly contradicts his anti-billionaire framing and is covered only on the right. Military restructuring — Army helicopter cuts, drone procurement realignment, DMZ management changes — is receiving zero left-media accountability coverage despite representing the most consequential long-horizon policy shift in today&#x27;s cycle. The DNC autopsy is self-administered criticism, which is apparently the only kind the left will cover right now.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The personal enrichment insertion pattern is the primary structural finding. Three legislative vehicles across recent cycles have contained provisions that protect Trump&#x27;s personal legal exposure or fund his private interests. All three have generated backlash or failure. This is not opportunism — it is a repeating insertion strategy, and it is now visibly degrading Trump&#x27;s own legislative throughput. If this pattern reappears in the reconciliation bill (watch specifically for the anti-weaponization fund and any security-related line items tied to Trump properties), it confirms a deliberate strategy rather than tactical improvisation. The immigration bill failure is then a data point in a longer sequence, not a one-off.</p>
+<p>The simultaneous fractures — Senate GOP on immigration, Kavanaugh/Barrett on the death penalty case, Silicon Valley on the AI executive order — across three structurally unrelated venues in a single cycle warrant attention. These are not coordinated. There is no evidence of communication between the Senate Republican caucus, the Supreme Court&#x27;s center-right bloc, and the tech industry. But independent actors independently reaching the same calculation in the same window is itself a signal about Trump&#x27;s current political capital. Power brokers in multiple institutions are apparently reading the same ledger and arriving at the same conclusion: his current position does not cover his demands.</p>
+<p>National Review has appeared six times across two consecutive analytical cycles, including a piece explicitly criticizing the Supreme Court&#x27;s death penalty jurisprudence as &quot;a cruel and unusual joke&quot; — an unusual posture for a publication historically deferential to originalist restraint. NR criticizing the Court from the right while Kavanaugh and Barrett are fracturing from Alito suggests the conservative judicial coalition is under stress from multiple directions simultaneously. Editorial transitions at flagship conservative publications historically function as intellectual permission-granting for policy shifts. This warrants direct content review.</p>
+<p>The AI executive order blocking story is covered exclusively by left-leaning outlets despite being a significant story about tech industry defying a Trump executive action. Right-wing outlets — which have been aggressive on AI regulation — are entirely absent. The most likely explanation is that the blocking involved actors the right does not want to credit, potentially Musk-adjacent figures. If Musk participated in blocking a Trump executive action, this is a significant faction fracture that has not been reported as such and needs direct verification.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Senate reconciliation bill draft language</strong> — within the next 72 hours, monitor whether the anti-weaponization fund and ballroom security provisions resurface in reconciliation vehicle language. Their reappearance would confirm a deliberate insertion strategy; their absence would suggest Thune successfully negotiated their removal during recess. This is the single highest-priority item for understanding whether the immigration bill failure changes anything.</p>
+<p><strong>Kavanaugh and Barrett written positions on Hamm v. Smith</strong> — neither justice has explained their apparent retreat from the Alito position. A concurrence or explanatory statement, if it materializes, would clarify whether this is doctrinal instability or strategic avoidance. No statement would itself be informative.</p>
+<p><strong>Silicon Valley AI executive order identification</strong> — determine specifically which executive order was blocked, which entities lobbied against it, and whether any Musk-affiliated companies participated. If Musk was involved in blocking a Trump executive action, the story being suppressed by the right is a faction fracture, not a tech-policy story.</p>
+<p><strong>National Review editorial content</strong> — pull the specific NR pieces driving the six-story anomaly across two cycles. Identify the bylines. Assess whether there is a coordinated editorial posture shift toward criticizing Trump&#x27;s personal enrichment pattern or the Court&#x27;s conservative coalition stability. This is the highest-priority content review item.</p>
+<p><strong>War Powers Act triggering mechanisms</strong> — with Massie gone and no identified successor, monitor whether any House member steps into the institutional role of forcing WPA authorization votes on drone warfare and Iran-related military activity. The structural gap is confirmed; the question is how long it persists before someone exploits or fills it.</p>
+<p><strong>New Mexico DOJ response</strong> — the state has enacted a law barring armed federal agents at polling locations, and a separate HHS confrontation over vaccine policy is active. Monitor for a DOJ legal challenge. New Mexico is emerging as a test-case state for federal-state authority conflicts, and an administration challenge there would be a leading indicator of willingness to escalate into litigation more broadly.</p>
+<p><strong>Mamdani FEC filings</strong> — when Q2 disclosures become available, cross-reference donor lists against Goldman Sachs employees and affiliated entities. The Wall Street courtship story currently has only right-wing coverage and no documentation trail. If the outreach translated to donations, this becomes a governing-credibility story with 2026 implications.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The clearest way to describe the current political moment is this: Trump is operating with a personal-enrichment overlay on his legislative agenda that is now visibly more expensive than his remaining political capital can support. He has always governed this way — self-interest and policy have been indistinguishable since 2017 — but the cost has previously been absorbed by party discipline, Supreme Court deference, and tech industry alignment. All three are simultaneously showing cracks in a single cycle. This does not mean a governing coalition collapse is imminent; Senate Republicans have retreated before and returned, the Court&#x27;s procedural retreat sets no precedent, and one blocked executive order is not a defection. What has changed is that the suppression cost of these fractures is rising — the ballroom provision cannot be defended publicly, the DIG cannot be explained without acknowledging conservative bloc instability, and the AI blocking cannot be covered by the right without naming uncomfortable actors. When the cost of maintaining the public fiction of alignment begins to exceed the cost of visible fracture, political coalitions reorganize. We are not there yet. But the gap between the private calculation of Republican senators, conservative justices, and tech industry executives and their public positioning is now measurably wider than it was sixty days ago.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Senate Republicans left Washington for recess without passing a $70 billion immigration enforcement funding bill after internal GOP objections to a $1.8 billion &#x27;anti-weaponization fund&#x27; for Trump allies and a $1 billion security allocation tied to Trump&#x27;s White House ballroom project.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (12)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (9)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:12.5;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 12"></div><div class="bias-segment" style="background:#e05252; flex:4.2;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:18.8;" title="far-right: 9"></div><div class="bias-segment" style="background:#e07a7a; flex:20.8;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:2.1;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:16.7;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The core fact is clear and cross-confirmed: Senate Republicans spiked their own $70 billion immigration bill over provisions that would directly benefit Trump personally and politically — an unusual and significant intra-party break. The anti-weaponization fund dispute is real, but right-leaning outlets systematically omit the ballroom security provision, which is the more politically embarrassing element because it has no policy rationale. The deeper story — that Trump&#x27;s personal vendettas (Paxton endorsement against Cornyn) are now materially degrading his legislative agenda — is confirmed even by Breitbart and Thune himself, making it one of the more reliably sourced findings across the full spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Republican dysfunction is self-inflicted and rooted in Trump&#x27;s corrupt self-interest — the ballroom security funding and anti-weaponization fund are framed as naked self-dealing at taxpayer expense. GOP senators are portrayed as finally finding a &#x27;red line&#x27; not out of principle but electoral survival. Cuba policy is framed as reckless escalation. The DNC autopsy omitting Gaza is treated as institutional cowardice. Tone: alarm, contempt for hypocrisy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Frames the story primarily as an intra-Republican conflict blocking legislative progress, without strong editorial investment in who is right. Trump&#x27;s primary-electoral grip is noted but vulnerability flagged. The anti-weaponization fund is described factually as the proximate cause of failure. Tone: analytical, conflict-focused.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The anti-weaponization fund is a legitimate remedy for politicized DOJ prosecutions; Senate Republicans who blocked it are prioritizing personal grievances over Trump&#x27;s mandate. Border enforcement numbers are celebrated as historic victories. The Castro indictment is framed as long-overdue justice for Cuban-American victims, not political theater. Democratic scandals (Platner, Galindo, antisemitism) dominate secondary coverage. Tone: grievance, triumphalism on immigration, frustration at GOP defectors.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    DHS-reported border crossing statistics (94% decline, 3M departures) are almost entirely absent from left and center-left coverage despite being verifiable government data. The Cuban diaspora&#x27;s genuine celebration of the Castro indictment — a significant human interest angle — is largely omitted. Breitbart&#x27;s reporting on specific Republican lawmakers&#x27; stated frustrations with Trump&#x27;s Paxton endorsement is more granular than anything in left outlets.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The $1 billion White House ballroom security allocation as a driver of Republican defection is absent from right-wing coverage, which focuses exclusively on the anti-weaponization fund. The specifics of who qualifies for anti-weaponization fund compensation — primarily Trump political allies — are not examined. The war powers vote cancellation by House Republicans to shield Trump from an embarrassing bipartisan rebuke is entirely absent from right coverage. Jeff Flake and other anti-Trump Republicans&#x27; dissent receives no coverage on the right.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Supreme Court dismissed Hamm v. Smith 5-4 as improvidently granted, leaving in place lower court rulings that bar Alabama from executing Joseph Smith on grounds of intellectual disability.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The procedural outcome (DIG) is legally neutral — it sets no precedent — but the 5-4 split and apparent coalition fracture are the most newsworthy elements. If Reason&#x27;s reporting is accurate that Kavanaugh and Barrett initially sided with Alito to reverse, their switch signals meaningful instability in the Court&#x27;s conservative bloc on Eighth Amendment questions. The humanitarian framing from Mother Jones is emotionally accurate but obscures the fragility of the outcome: this was not a reaffirmation of principle, it was a procedural retreat.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    A win for human rights and established constitutional protections for the intellectually disabled. The focus is on the humanitarian stakes — a man&#x27;s life — and conservative justices are cast as the threat that was narrowly defeated.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet represented in this sample.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No traditional right-leaning outlet is represented, but Reason (libertarian) ignores the humanitarian angle entirely and treats this as an inside-baseball legal process story about coalition dynamics and judicial procedure.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones does not explore the internal Supreme Court dynamics — the possibility that Kavanaugh and Barrett defected from an Alito-led majority — which is the most legally significant aspect of how this outcome came about.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason makes no mention of the defendant, Joseph Smith, or the human stakes of execution for an intellectually disabled person, stripping the story of its real-world consequence.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Stephen Colbert ended his 11-year run on CBS&#x27;s Late Show with an apolitical farewell focused on gratitude, as conservative commentators used the moment to critique progressive media culture.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:66.7;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The factual core is simple: a long-running late-night show ended and its host chose a gracious, non-political exit. The divergence in coverage reveals more about each outlet&#x27;s agenda than about the event itself — The Hill reports the news, while National Review uses it as a vehicle for a pre-existing cultural argument about media bias. The meaningful analytical question — whether politically saturated late-night programming hurt CBS&#x27;s ratings or audience breadth — is raised implicitly by the right but never substantiated with evidence.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No explicitly left-leaning outlet is represented in this coverage set. The Hill (center) frames Colbert&#x27;s departure warmly and with respect, emphasizing his graciousness and the significance of his restraint.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats the finale as a straightforward entertainment news event — Colbert chose not to do politics on his last night, which is notable given his brand, and he thanked his team. No broader cultural diagnosis is offered.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review uses Colbert&#x27;s departure as a cultural critique — framing CBS and late-night television broadly as captured by left-wing ideology. The show&#x27;s end is positioned as a symptom of media decay rather than a neutral programming change.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left/center coverage does not engage with the critique that Colbert&#x27;s show reflected ideological capture of mainstream media, nor does it address potential audience alienation from heavy political content.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage does not report the actual content of Colbert&#x27;s finale — the thanks to staff, the emotional farewell — and omits the human interest dimension entirely in favor of cultural commentary.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Senate Republicans</span><span class="entity-tag">Supreme Court conservative bloc</span></div>
+  <div class="connection-text">Both institutions showed simultaneous, independent fractures from Trump on the same day: Senate Republicans blocked personal-enrichment provisions in the immigration bill while Kavanaugh and Barrett apparently retreated on an Eighth Amendment case. These are structurally unrelated venues but the pattern is the same — institutional conservatives are quietly drawing lines around Trump&#x27;s most exposed flanks.</div>
+  <div class="connection-sig">↳ If these fractures are coordinated or mutually reinforcing, it represents the earliest observable signal of a post-legislative-majority recalibration by institutional conservatives. If coincidental, the simultaneous occurrence is still meaningful as a stress indicator.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump (ballroom security provision)</span><span class="entity-tag">Trump (anti-weaponization fund)</span></div>
+  <div class="connection-text">Both provisions in the failed immigration bill were personal benefit vehicles embedded in ostensibly policy-driven legislation. The ballroom provision funds security at a Trump commercial property; the anti-weaponization fund protects Trump allies from prosecution. They share a structural DNA: legislative appropriations laundered through policy framing. This is not opportunism — it is a repeating insertion pattern.</div>
+  <div class="connection-sig">↳ If this insertion pattern recurs in future legislation (reconciliation bill, debt ceiling vehicles), it becomes a predictive model: Trump&#x27;s personal exposure points will map to embedded appropriations that poison otherwise-passable bills. The immigration bill failure is a proof-of-concept for how this dynamic degrades his own agenda.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Zohran Mamdani</span><span class="entity-tag">Goldman Sachs</span></div>
+  <div class="connection-text">Covered exclusively by right-wing outlets, Mamdani&#x27;s Wall Street courtship is being systematically ignored by left-leaning sources despite being a direct contradiction of his campaign&#x27;s anti-billionaire framing. Goldman Sachs&#x27;s presence in both NYC Mamdani stories suggests the outreach was substantive enough to generate multiple coverage hooks.</div>
+  <div class="connection-sig">↳ The left&#x27;s silence on this is a blindspot that will be weaponized if Mamdani advances. More broadly, it mirrors how the right covered early Obama Wall Street donor lists — a story that starts small and becomes a governing-credibility liability. The asymmetric coverage means the left has no rebuttal infrastructure built when this breaks wider.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Thomas Massie</span><span class="entity-tag">War Powers Act clock</span></div>
+  <div class="connection-text">Massie&#x27;s fall — confirmed across two stories today — removes the House&#x27;s most reliable institutional anchor for forcing War Powers authorization votes. No replacement actor is identified in any story. This creates a structural vacuum precisely when Iran tensions and drone warfare legal authorities are active questions.</div>
+  <div class="connection-sig">↳ Previous watch list flagged this as the highest institutional-process risk from Massie&#x27;s elimination. Today&#x27;s confirmation of his fall with zero successor identification means the WPA clock, if triggered, has no shepherd. This is an absence that matters more than most presences in today&#x27;s cycle.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Silicon Valley (AI order)</span><span class="entity-tag">Trump legislative agenda</span></div>
+  <div class="connection-text">Left-only coverage of Silicon Valley successfully blocking Trump&#x27;s AI executive order runs parallel to the Senate GOP blocking his immigration bill for personal enrichment reasons. Two separate power centers — his own party and his tech industry allies — blocked Trump policy vehicles in the same cycle, through entirely different mechanisms.</div>
+  <div class="connection-sig">↳ The convergence of elite defections (Senate GOP on immigration, tech industry on AI) in a single news cycle is either coincidental or reflects a shared read among power brokers that Trump&#x27;s current political capital does not cover his demands. The AI blocking story deserves cross-referencing against Musk&#x27;s status with Trump — if Musk is involved in the AI blocking, this is a faction fight, not a principled stand.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Review</span><span class="entity-tag">Supreme Court death penalty jurisprudence</span></div>
+  <div class="connection-text">National Review appears 6 times in the entity network (previous cycle&#x27;s anomaly persisting) and runs a right-only piece explicitly criticizing the Supreme Court&#x27;s death penalty jurisprudence as &#x27;a cruel and unusual joke&#x27; — an unusual posture for a publication that has historically deferred to originalist judicial restraint. This coincides with the Court&#x27;s conservative bloc fracturing on Hamm v. Smith.</div>
+  <div class="connection-sig">↳ NR criticizing the Court from the right on capital punishment, while Kavanaugh and Barrett apparently broke from Alito, suggests the right&#x27;s judicial coalition is under stress from multiple directions simultaneously. NR&#x27;s 6-story presence continues to warrant direct content review — editorial transitions at flagship conservative publications historically precede intellectual permission-granting for policy shifts.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Personal enrichment as legislative poison: Three distinct stories (ballroom security, anti-weaponization fund, IRS audit immunity from previous cycle) converge on a single structural pattern — Trump inserting personal legal and financial protection into policy vehicles, which then fail or generate backlash. This is not a single scandal; it is an operating mode that is now visibly degrading his legislative throughput.</div>
+<div class="pattern-item">Military restructuring buried in right-only coverage: Army helicopter cuts in favor of drone procurement, DMZ management overhaul in South Korea, and Pentagon budget opacity are all right-only stories. The left&#x27;s complete absence from defense restructuring coverage means a major transformation of U.S. military posture is occurring with essentially no left-media accountability pressure — a significant asymmetry given that these decisions have longer time horizons than most domestic policy.</div>
+<div class="pattern-item">Selective silence on progressive contradictions: Left-leaning outlets are covering the DNC autopsy, rural health gaps, and USAID collapse but are entirely absent from Mamdani&#x27;s Wall Street courtship, Kean&#x27;s 100-vote absence, and the DMZ restructuring. The pattern suggests left media is in a defensive crouch — covering Democratic failures only when self-administered — while ignoring stories that complicate the progressive 2026 messaging frame.</div>
+<div class="pattern-item">Institutional fracture presented as procedural rather than political: Both the Senate immigration bill collapse and the Supreme Court DIG are framed procedurally (recess, improvidently granted) rather than as the institutional breaks they represent. This procedural framing allows actors to retreat without formally declaring opposition, preserving optionality. Watch for the same pattern in upcoming reconciliation votes.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Senate left for recess without passing the immigration bill — the centerpiece of Trump&#x27;s domestic agenda — and no Republican senator is on record defending the ballroom security provision specifically. The silence is total. In prior intra-party fights (ACA repeal, 2017 tax holdouts), there were always identifiable defenders. The complete absence of defense suggests even Trump&#x27;s allies view the ballroom provision as indefensible, which means it will not survive any revised bill either.</div>
+<div class="anomaly-item">Colbert&#x27;s apolitical exit after 11 years of political satire is anomalous on its face. Late-night hosts who built franchises on political content almost never exit that way — they go out swinging. The deliberate depoliticization of the farewell, combined with right-wing outlets using it to relitigate media bias rather than cover the exit itself, suggests Colbert (or CBS) made a calculated institutional decision. The question is what that calculation was: audience repair, CBS corporate pressure, or a genuine read that political comedy is toxically polarizing at exit.</div>
+<div class="anomaly-item">The DNC autopsy is covered by multiple left-leaning outlets but is entirely absent from right-wing coverage. In previous cycles, DNC self-criticism documents have been weaponized by conservative media. The right&#x27;s silence today on the autopsy is anomalous — either the findings are insufficiently embarrassing to weaponize, or right-wing editorial decisions have deprioritized the DNC as a target (possibly because attacking Democratic dysfunction is no longer electorally useful when Republican dysfunction is the dominant story).</div>
+<div class="anomaly-item">New Mexico appears in two structurally unrelated stories — an HHS vaccine activist and a law barring armed federal agents at polls — both of which are about federal authority encroaching on state-administered functions. This is either coincidence or New Mexico is becoming a leading edge test case for federal-state authority conflicts, possibly because its Democratic governor and Democratic legislature make it a high-profile target for federal overreach demonstrations.</div>
+<div class="anomaly-item">The AI executive order blocking by Silicon Valley is covered only by left-leaning outlets despite being a major story about tech industry successfully defying a Trump executive action. Right-wing outlets — which have been aggressive on AI regulation stories — are entirely absent. This suggests either the blocking was achieved by actors the right does not want to credit (possibly Musk-adjacent figures), or the story is being suppressed because it reveals a fracture between Trump and his tech constituency.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left today is systematically avoiding any story that complicates the progressive 2026 electoral coalition: Mamdani&#x27;s Goldman Sachs courtship, military restructuring, and Kean&#x27;s 100-vote absence all go uncovered — the first undermines anti-billionaire messaging, the second requires engaging with defense policy, and the third would require criticizing a vulnerable Republican rather than a safe one. The right is systematically avoiding the ballroom security provision (pure personal enrichment with zero policy rationale), climate deregulation (easing HFC rules creates long-term political liability), and the DNC autopsy (which, if internalized, strengthens Democratic messaging). The combined pattern suggests both sides are in electoral positioning mode for 2026: the left is protecting its emerging candidates and coalition narratives, while the right is suppressing stories that damage Trump personally rather than ideologically.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;We&#x27;ll never know if he could have been saved.&#x27; The gaps in Trump&#x27;s rural health fund</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As voters prioritize cost of living, focus on abortion evolves in midterm elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Takeaways from the DNC&#x27;s &#x27;autopsy&#x27; of the 2024 presidential election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› UN gravely concerned by an Afghan Taliban law that has provisions on child marriage</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Mexico secretary of state explains law barring armed federal agents at polls</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 4 takeaways from the DNC&#x27;s long-awaited 2024 election autopsy report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As losses from scams surge, Congress asks telecoms to do more to prevent them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woman at center of sprawling Minnesota fraud case gets nearly 42-year prison sentence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll shows voter confidence in economy plummeting to a nearly 4-year low</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pressure from Silicon Valley helped block Trump’s expected order on AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What happened under Trump this week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump to ease rule on climate super pollutants, says move will cut costs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tracking who Trump is appointing to fill key administration roles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court dismisses death penalty case on people with mental disabilities</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Local US newspaper workers allege Hearst is trying to ‘destroy unions’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tennessee school board member charged after calling teenage girl ‘hot’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hunting for Johnny Appleseed in the Backroads of America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› HHS Refuses to Say What an Anti-Vaccine Activist Is Doing at the Agency</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump and Elon Musk Crushed USAID. Hunger and Violence Followed.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani&#x27;s Wall Street courtship sparks criticism of anti-billionaire agenda</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Army cuts helicopters, pushes ‘Amazon for war’ as drone combat reshapes military</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NYC GOP hopeful says Mamdani ‘running city into the ground’ as taxes, crime fears fuel backlash</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Tom Kean Jr. says he expects to return to Congress &#x27;in the next couple of weeks&#x27; after missing 100 votes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Speech Police Are Worse Than We Thought</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Max Eastman, Gangster of the Pen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Revive the Railway Safety Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court’s Death Penalty Jurisprudence Is Still a Cruel and Unusual Joke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No, Foreign Officials Do Not Get First Amendment Immunity from U.S. Sanctions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. Seeks to Overhaul DMZ Management in South Korea</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">National Review editorial content directly: Six appearances in the entity network across two cycles is statistically anomalous. Retrieve the specific NR pieces, identify bylines, and assess whether there is a coordinated editorial posture shift toward criticizing Trump&#x27;s personal enrichment pattern or judicial coalition instability. This is the highest-priority content review item.</div>
+<div class="watch-item">Senate reconciliation bill draft language: Now that the immigration bill has failed, watch for whether the anti-weaponization fund and ballroom security provisions are inserted into the reconciliation vehicle. If they reappear, it confirms a deliberate insertion strategy rather than opportunism, and signals the same failure mode will recur.</div>
+<div class="watch-item">Mamdani campaign finance disclosures (FEC): The Goldman Sachs courtship story needs documentation. Pull Mamdani&#x27;s Q2 FEC filings when available and cross-reference donor lists against Goldman Sachs employees and affiliated PACs. If the Wall Street outreach translated to donations, this becomes a governing-credibility story, not just a messaging one.</div>
+<div class="watch-item">Kavanaugh and Barrett&#x27;s written positions on Hamm v. Smith: The apparent switch from siding with Alito to joining the DIG majority needs a paper trail. Monitor whether either justice writes separately to explain the retreat, which would signal either genuine doctrinal instability or a strategic deferral pending a better-constructed case.</div>
+<div class="watch-item">Silicon Valley AI executive order: Identify specifically which order was blocked, which tech companies lobbied against it, and whether any Musk-affiliated entities were involved. If Musk participated in blocking a Trump executive action, this is a significant faction fracture that has not been reported as such.</div>
+<div class="watch-item">Army helicopter program termination and drone procurement contracts: Right-only coverage of a major military posture shift deserves cross-referencing against Pentagon budget documents and contractor filings. Identify which drone programs received the redirected funding and which defense contractors are the primary beneficiaries — this is a multi-billion-dollar procurement story dressed as a doctrine story.</div>
+<div class="watch-item">New Mexico federal-state authority cases: Monitor whether the armed-agents-at-polls law generates a DOJ legal challenge. New Mexico is emerging as a test-case state for federal authority limits, and a DOJ challenge there would be a leading indicator of the administration&#x27;s willingness to escalate federal-state conflicts into litigation.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
