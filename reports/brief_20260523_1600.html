@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-23 16:00 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-23 16:00 UTC</span>
+    <span class="pill">85 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Tulsi Gabbard resigned as Director of National Intelligence after 15 months, citing her husband&#x27;s cancer diagnosis, while Trump navigated a week of electoral wins, legislative friction, and escalating Iran tensions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (3)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:11.1;" title="center: 3"></div><div class="bias-segment" style="background:#e0a87a; flex:29.6;" title="center-left: 8"></div><div class="bias-segment" style="background:#3a8a52; flex:14.8;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:22.2;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:3.7;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:18.5;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The most consequential undercovered story this week is the disputed nature of Gabbard&#x27;s departure: if Reuters&#x27; account is accurate that she was forced out, the official family-illness framing is a face-saving fiction that obscures a significant intelligence leadership rupture. Separately, the convergence of Iran tensions, a new Fed chair, and thin Republican legislative margins creates compounding institutional fragility that neither side&#x27;s framing fully captures — the right celebrates each event in isolation while the left treats each as confirmation of a single authoritarian thesis, both missing the systemic interaction effects. The immigration funding deadlock is the most immediately consequential story for near-term governance: Trump&#x27;s own party is blocking his signature policy priority, and the June 1 deadline may slip with little accountability assigned.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame this week as a portrait of Trumpian authoritarianism fragmenting at the edges: Gabbard was marginalized and forced out despite her loyalty performance; Trump&#x27;s retribution purges of his own party are self-destructive; his Iran and Cuba postures are dangerous executive overreach; and Warsh&#x27;s Fed appointment occurred under political duress. The emotional register is alarm — about democratic norms, institutional integrity, and concentrated executive power operating without accountability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present a factually grounded but editorially skeptical take: Trump&#x27;s week was genuinely mixed, with electoral wins offset by legislative dysfunction and a notable Cabinet departure. The Hill frames his intra-party retribution as a deliberate campaign with real political costs, and raises substantive questions about the Cuba pretext without fully adopting the left&#x27;s alarm framing. The dominant tone is watchful skepticism rather than ideological conviction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump&#x27;s week as decisive executive leadership: the immigration enforcement funding fight is about restoring lawful order; Warsh&#x27;s Fed appointment is a long-overdue conservative correction to monetary policy; Memorial Day gas prices are a foreign-conflict problem, not a domestic policy failure; and grieving American families represent the human cost of Democratic sanctuary policies. Gabbard&#x27;s departure receives minimal critical scrutiny. The emotional register is patriotic urgency — heroes being honored, threats being confronted, loopholes being closed.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely ignore or minimize: the Sheridan Gorman family&#x27;s appearance at the Trump rally and the human-cost argument for stricter immigration enforcement; Trump&#x27;s posthumous Medal of Freedom announcement for 9/11 hero Welles Crowther; the substantive constitutional argument for presidential war powers in the Iran context; and Iran&#x27;s alleged Strait of Hormuz tolling scheme as a genuine threat to global shipping freedom.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely ignore or minimize: Reuters&#x27; reporting that the White House forced Gabbard out rather than accepting a voluntary resignation; the pattern of Gabbard being sidelined from major foreign policy decisions during her tenure; critics&#x27; claims that Cuba invasion justifications are manufactured rather than evidence-based; the systemic risk of Trump&#x27;s retribution campaign depleting his own congressional majority ahead of critical legislative votes; and Kevin Warsh&#x27;s Wall Street background and questions about Fed independence under political pressure.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The Trump administration&#x27;s USCIS issued a rule ending the 50-year practice of &#x27;adjustment of status,&#x27; requiring foreign nationals already in the U.S. to return to their home countries to apply for permanent residency.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:100.0;" title="center-left: 2"></div></div></div>
+  <div class="story-assessment">This is a substantive immigration policy reversal with real procedural consequences for a large number of people currently in the U.S. with pending or eligible green card applications. Both center-left sources confirm the core fact but provide only one side of the policy rationale — the disruption — without meaningfully engaging the administration&#x27;s legal or enforcement argument. The absence of right-leaning or official government sourcing in this brief makes a full spectrum assessment impossible; the &#x27;right_framing&#x27; and &#x27;right_omissions&#x27; fields are inferred, not observed.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both outlets frame the rule as harmful and disruptive — NPR emphasizes surprise and confusion among vulnerable populations; PBS frames it as a deliberate mechanism to make legal immigration harder. Emotional emphasis is on harm to individuals already living in the U.S., with implicit framing that the policy is punitive rather than administrative.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not applicable — both sources provided are center-left. A true center framing would present the mechanics of the policy change neutrally, note both the administrative rationale and the disruption to existing residents, and avoid characterizing intent.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided. Typical right-framing would likely emphasize restoring rule-of-law, reducing visa overstays, ensuring immigrants go through proper consular vetting channels, and framing the 50-year policy as a loophole.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither outlet substantively presents the administration&#x27;s stated legal justification or policy goals. The argument that consular processing provides stronger vetting or that adjustment of status created enforcement gaps is absent. Historical context on how the 50-year policy came to exist and whether it was ever intended as permanent is not explored.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning sources available to assess. Based on left coverage alone: the human impact on individuals with pending cases, the logistical and financial burden of traveling abroad (especially for asylum seekers who may face danger in home countries), and the abrupt implementation timeline are likely underweighted in right-leaning coverage.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Secretary of State Marco Rubio traveled to India for Quad talks while simultaneously signaling cautious progress in U.S.-Iran ceasefire negotiations mediated by Qatar and Pakistan.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">These two outlets are covering different aspects of the same diplomatic trip, creating near-total narrative divergence. The actual news appears to be that Rubio is conducting simultaneous high-stakes diplomacy on two fronts — India/Quad relations and Iran ceasefire talks — both of which are substantive stories. The left buries the Iran progress; the right ignores the India repair context. Readers of either outlet alone have a materially incomplete picture of what U.S. foreign policy is actually doing this week.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Rubio&#x27;s India visit is framed as damage control — the U.S. is arriving hat-in-hand to fix relationships it broke through Trump&#x27;s aggressive tariff policies. The tone implies diplomatic credibility has been squandered and must be rebuilt.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not present in this dataset. NPR leans center-left here, providing structural diplomatic context but with a clear editorial lean toward framing Trump policy as the source of problems.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Rubio is portrayed as an effective diplomat delivering results — progress on Iran, engagement with Quad allies — with no acknowledgment of underlying tensions or what drove the need for a reset. The framing is triumphalist and personality-forward.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR omits entirely the Iran ceasefire talks and Rubio&#x27;s statements signaling progress — a significant diplomatic development happening in parallel with the India visit.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any mention of U.S.-India trade tensions, tariff disputes, or the diplomatic context requiring a &#x27;reset&#x27; — presenting Rubio&#x27;s trip as routine rather than remedial.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A federal judge dismissed criminal human smuggling charges against Kilmar Abrego García, finding the prosecution was retaliatory in response to his successful legal challenge of his deportation to El Salvador.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:100.0;" title="left: 2"></div></div></div>
+  <div class="story-assessment">The core legal fact is not in dispute: a judge applied the vindictive prosecution doctrine and dismissed the case, which requires a high bar — a finding that charges were brought to punish protected legal activity. That is a significant judicial finding about government conduct, not merely a political opinion. However, the available coverage is entirely from left-leaning outlets, making this a one-sided sample; a complete analysis requires right-leaning and center sources to identify what is being omitted or contested from the other direction.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the dismissal as legal vindication and a win for immigrant rights and judicial accountability. Emphasizes the government&#x27;s conduct as punitive and retaliatory toward someone who exercised his legal rights. Abrego García is portrayed sympathetically as a victim of both illegal deportation and prosecutorial abuse.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. Center outlets would likely lead with the procedural ruling itself, note the legal standard for vindictive prosecution, and present the administration&#x27;s stated justification for the charges alongside the court&#x27;s findings without strong moral framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided in this dataset. Right-leaning outlets would likely emphasize the underlying smuggling allegations, question the judge&#x27;s vindictive prosecution standard, and frame the case within broader concerns about illegal immigration and border security rather than civil liberties.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left source meaningfully engages with the substance of the smuggling allegations — whether evidence existed independent of retaliatory motive. The government&#x27;s stated rationale for the charges is largely absent or dismissed without examination.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined from available sources — no right-leaning coverage was provided for comparison.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Tulsi Gabbard</span><span class="entity-tag">Iran negotiations</span></div>
+  <div class="connection-text">Gabbard&#x27;s departure — disputed as forced — coincides precisely with the most sensitive phase of U.S.-Iran ceasefire talks mediated by Qatar and Pakistan. The DNI is the principal consumer and coordinator of intelligence assessments that inform ceasefire verification and compliance monitoring. A leadership rupture at that office during active negotiations is an operational vulnerability, not merely a personnel story.</div>
+  <div class="connection-sig">↳ If Gabbard was pushed out over disagreements with the Iran diplomatic track — or over intelligence assessments about Iranian compliance — her departure is not a family story but a policy fracture story. No outlet is covering the temporal overlap.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Kilmar Abrego García vindictive prosecution ruling</span><span class="entity-tag">USCIS adjustment of status rule</span></div>
+  <div class="connection-text">These two immigration stories are legally mirrored opposites covered by completely different audiences. The Abrego García ruling establishes that courts will apply the vindictive prosecution doctrine when government enforcement is retaliatory against protected legal activity. The new USCIS adjustment of status rule compels people to leave the U.S. to re-apply — a procedural change that will foreseeably be challenged under the same retaliatory enforcement doctrine if applied selectively to people who have filed legal challenges.</div>
+  <div class="connection-sig">↳ The executive is simultaneously expanding enforcement discretion while courts are simultaneously narrowing its immunity from retaliation findings. No outlet is covering these two stories as a legal convergence that will produce litigation.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rubio India/Quad visit</span><span class="entity-tag">Iran ceasefire talks</span></div>
+  <div class="connection-text">Rubio is running simultaneous diplomacy on two tracks that are strategically linked: the Quad framework signals to Iran that U.S. regional alliance posture is hardening while Qatar/Pakistan mediation offers an off-ramp. The asymmetry in sourcing — far-right covers Iran progress, center-left covers India repair — obscures a coherent dual-track strategy being executed in plain sight.</div>
+  <div class="connection-sig">↳ Readers of either outlet believe they are watching a partial story. The actual story is that the administration is using non-traditional mediators (Qatar, Pakistan) precisely because traditional U.S. allies are being mobilized for strategic pressure, not diplomacy. This is a sophisticated operational design that no single outlet is describing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Review</span><span class="entity-tag">Trump reconciliation bill</span></div>
+  <div class="connection-text">NR appears five times in the entity network this cycle with multiple critical pieces on Trump&#x27;s personal enrichment and delegation of authority. This tracks with the previous cycle&#x27;s anomalous NR presence. The magazine&#x27;s editorial posture is hardening against Trump on institutional-integrity grounds precisely as the reconciliation bill hits internal Republican resistance — suggesting NR is signaling to Senate Republicans that opposition has intellectual cover from the conservative establishment.</div>
+  <div class="connection-sig">↳ NR is functioning as a permission structure for Republican dissent. Its editorial volume correlates with legislative friction points, not with news cycles. This is coordinated institutional signaling, not organic commentary.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Silicon Valley AI executive order blockage</span><span class="entity-tag">Gabbard forced departure</span></div>
+  <div class="connection-text">Both stories, if accurate, represent internal coalition actors successfully resisting or reshaping Trump&#x27;s agenda from within. In the same week, tech executives blocked a presidential executive order and a senior intelligence official was reportedly pushed out. These are discrete events but share a structural pattern: the administration&#x27;s formal authority is being constrained by informal power centers — industry lobby and intra-cabinet faction — simultaneously.</div>
+  <div class="connection-sig">↳ The compounding of internal resistance across policy domains (tech regulation, intelligence) in a single week suggests the administration&#x27;s second-term coalition is fracturing along multiple axes at once, not sequentially. That acceleration is the story no single outlet is framing.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Judicial resistance as a recurring counter-narrative: The Abrego García vindictive prosecution dismissal, combined with prior cycle coverage of Kavanaugh/Barrett&#x27;s DIG move and New Mexico federal-state friction, establishes a pattern of courts actively using doctrine — not just ruling on facts — to constrain executive enforcement. This is not three separate legal stories; it is an emerging judicial posture.</div>
+<div class="pattern-item">Immigration policy is being advanced simultaneously through three distinct mechanisms — executive rule change (adjustment of status), criminal prosecution (Abrego García), and legislative funding (reconciliation bill) — and all three are hitting resistance simultaneously from courts, Congress, and legal challenge. The administration appears to be using redundant vectors precisely because each individual track is fragile.</div>
+<div class="pattern-item">The right is running multiple personal-enrichment criticism pieces (NR&#x27;s &#x27;slush fund&#x27; and &#x27;egregious delegation&#x27; stories, plus the Trump Mobile data exposure story) in a week when the left is focused on enforcement harm. These are structurally opposed frames that are each incomplete: the right is developing a rule-of-law critique of Trump from a conservative institutionalist position while simultaneously celebrating enforcement outcomes that may be legally indefensible.</div>
+<div class="pattern-item">Diplomatic progress stories — Iran ceasefire, Rubio India/Quad — are either absent from or buried by left-leaning coverage, while enforcement-resistance stories are absent from right-leaning coverage. Both sides are systematically suppressing facts that would complicate their core narrative, producing not just bias but an information blackout on the actual balance of the week&#x27;s events.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The USCIS adjustment of status rule — a 50-year enforcement reversal affecting hundreds of thousands of people — has zero right-wing sourcing despite being a significant enforcement win. This is anomalous. Possible explanations: (a) right-wing outlets are waiting for legal vulnerability to surface before amplifying, (b) the rule is being kept low-profile to avoid galvanizing legal challenges, or (c) the administration soft-launched it intentionally to test judicial response before building political capital around it. Any of these explanations is more alarming than routine omission.</div>
+<div class="anomaly-item">The Abrego García story is simultaneously a left-only story (dismissal) and a right-only story (DOJ appeal) — the same legal proceeding split across the partisan divide into two non-overlapping narratives. No outlet is covering the full arc: charge, dismissal with judicial finding of retaliation, and appeal. This is not bias; it is functionally a news blackout on a constitutionally significant judicial finding.</div>
+<div class="anomaly-item">The Iran ceasefire progress story has only two sources — one center-left, one far-right — for what should be a flagship diplomatic achievement if genuine. The near-absence of right-wing mainstream amplification of Iran ceasefire progress is suspicious: if the administration has achieved ceasefire progress, right-wing media would normally celebrate it loudly. The suppression suggests either the talks are more fragile than reported, or there is internal disagreement about whether to claim the win, possibly connected to Gabbard&#x27;s departure and conflicting intelligence assessments.</div>
+<div class="anomaly-item">Trump Mobile&#x27;s customer data exposure story appears in the entity network but receives minimal analytical attention relative to its significance: a Trump-branded consumer telecom product potentially exposing customer personal data is simultaneously a consumer protection story, a political liability story, and — given the customer base likely skews toward Trump supporters — a political data security story. It is being covered as a tech story and missing the political intelligence dimension entirely.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three stories that share a common thread: judicial findings of executive overreach (Abrego García dismissal), procedural immigration reversals with legal vulnerability (adjustment of status), and intelligence leadership fracture (Gabbard forced departure). The pattern of avoidance suggests right-leaning outlets are managing a tension between celebrating enforcement outcomes and acknowledging that the legal and institutional scaffolding supporting those outcomes is actively failing. The left is systematically avoiding Iran ceasefire progress, the DOJ&#x27;s appeal of the Abrego García dismissal, and any coverage of Republican institutionalist criticism of Trump (NR&#x27;s personal enrichment pieces). This avoidance pattern suggests left media is suppressing facts that would complicate the authoritarian-consolidation thesis — diplomatic wins and internal conservative dissent both disrupt that narrative. The net effect is that neither audience has the information necessary to evaluate whether the administration is winning or losing the week.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Administration Apply Green Force</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Criminal Against Kilmar Judge Drops</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS says ICE has &#x27;no relationship&#x27; with spyware maker Paragon Solutions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FDA move allowing more e-cigarettes and nicotine pouches into U.S. blindsides officials</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Epstein assistant Sarah Kellen testified before the House committee. Here&#x27;s what we know</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› All-women Senate delegation heads to the Arctic to reassure U.S. allies in the region</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-Proud Boys leader Enrique Tarrio tells PBS News he believes he&#x27;s owed tens of millions from DOJ fund</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› See what artists want to do with Charlottesville’s melted Confederate statue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What else happened under Trump this week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll shows voter confidence in economy plummeting to a nearly 4-year low</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pressure from Silicon Valley helped block Trump’s expected order on AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California: 40,000 people ordered to evacuate over chemical leak fears</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Mobile investigating potential exposure of would-be customers’ personal information</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US green card applicants will now have to return to home countries to apply, DHS says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 911, Please Hold</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Departing Meta Staffer Posts Biting Anti-AI Video Internally Amid Mass Layoffs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Solar Electricity Is Poised to Overtake Coal in—of All Places—Texas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Locals Didn’t Think Roundup Was Being Sprayed Near Lake Tahoe. So I Went to Find Out.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fraudsters abused Biden&#x27;s lax policies to steal billions, financial watchdog claims</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Platner’s brutal attacks on Army soldiers as ‘fat, lazy’ revealed in resurfaced posts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Havana regime in suspense after Castro indictment with Trump pressure on, says Cuban-born GOP Rep.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Military families demand DOJ distribute nearly $800M from French cement company found guilty of bribing ISIS</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ vows to appeal after judge dismisses smuggling charges against Kilmar Abrego Garcia as &#x27;vindictive&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alberta premier sets date for referendum for province to separate from Canada</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mr. Market Does Fair Hopping and Art Pricing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Before His Murder, a Rabbi Addressed the Danger of Hatred</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Taiwan: The Small Superpower</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lionel Jospin and the Dismantling of French Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trump Slush Fund Is an Abuse of Political Power, Not a Legal Wrong</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Egregious Abuse of an Egregious Delegation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Autopsy as Malpractice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The End of the SEC Gag Rule</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC Autopsy Exposes the Left’s ‘Gaza’ Excuse as Nonsense</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kash Patel: FBI&#x27;s Preliminary Crime Data Show &#x27;Single Largest Decreases in Violent Crime and Murder Since 1937&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kyle Busch&#x27;s No.8 to Be Reserved Until His Son Enters NASCAR</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jimmy Kimmel’s Sister-in-Law Accused of Complaining About L.A. Grocer’s ‘Vote Pratt’ Cookies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Apple Legend Steve Wozniak Earns Applause by Telling Graduates &#x27;You Have AI - Actual Intelligence&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Fail: Starbucks Abandons AI-Powered Inventory Tool After Only 9 Months</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">DNI acting appointment: Who fills Gabbard&#x27;s role and what their position on Iran intelligence assessments is — this will reveal whether her departure was a doctrinal purge or personnel friction.</div>
+<div class="watch-item">USCIS adjustment of status rule: Monitor for emergency injunctions from district courts in the 9th or 2nd Circuit within the next 10 days; if courts apply the Abrego García vindictive prosecution framework to this rule, it creates a circuit split with major implications for executive immigration authority.</div>
+<div class="watch-item">Rubio&#x27;s Iran ceasefire framework terms: Qatar and Pakistan as joint mediators is structurally unusual — identify what each is receiving in exchange for facilitating, and whether any side agreement with Pakistan involves Afghanistan or nuclear program discussions.</div>
+<div class="watch-item">NR byline tracking: Identify whether the current wave of NR institutional-critique pieces shares bylines with former Bush-era or Romney-era contributors — this would confirm the pieces represent an organized faction, not individual commentary, and would predict Senate Republican defection patterns on reconciliation.</div>
+<div class="watch-item">Silicon Valley AI executive order: Identify specifically which order was blocked and whether any Musk-affiliated entities (xAI, Grok) stood to benefit from its blockage or were involved in lobbying against it — a Musk-vs-Trump faction fracture on AI regulation would be a tier-one political story.</div>
+<div class="watch-item">Reconciliation bill and June 1 deadline: Watch for whether the anti-weaponization fund and immigration enforcement provisions are reinserted into the reconciliation vehicle after the standalone immigration bill failed — their reappearance would confirm deliberate insertion strategy and predict another failure mode.</div>
+<div class="watch-item">Trump Mobile data exposure: Pull FTC complaint filings and state AG inquiries — if customer data includes location or communication data from politically active users, this becomes a political intelligence story, not a consumer protection story.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
