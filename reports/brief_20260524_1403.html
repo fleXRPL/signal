@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-24 14:03 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-24 14:03 UTC</span>
+    <span class="pill">64 articles</span>
+    <span class="pill">9 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant fact of American politics on May 24, 2026 is that the Trump administration is attempting to execute a foreign policy pivot of historic scale — an Iran nuclear deal — while simultaneously managing three structural vulnerabilities that could collapse the effort: a gutted intelligence oversight apparatus, intra-Republican Senate opposition with genuine teeth, and a Russia-Ukraine war that directly contradicts the &quot;Trump as global peacemaker&quot; frame being constructed in real time. The Iran deal is real enough that Iran came to the table, but not real enough that Iran and Pakistan — the named mediators — are confirming finalization. Trump&#x27;s public declaration that it is &quot;largely negotiated&quot; appears to be getting ahead of the process, possibly to lock parties in through public commitment, possibly because the deal is genuinely close, and possibly because the administration wants the domestic narrative before the terms are fully resolved. All three explanations are consistent with available evidence. None can be ruled out.</p>
+<p>Beneath the Iran story, the administration is executing a parallel immigration enforcement surge across at least three simultaneous mechanisms: repositioning USCIS lawyers inside DOJ to accelerate denaturalization cases, imposing green card restrictions on African nations, and pushing administrative implementation of enforcement provisions that have not moved through the reconciliation bill. The legislative vehicle has stalled; the administrative vehicle has not. This is not improvisation — it is a deliberate strategy of achieving through executive restructuring what cannot be achieved through legislation before courts intervene. The USCIS-to-DOJ repositioning is the structural story; the Africa green card ban is the attention-absorbing action.</p>
+<p>Tulsi Gabbard&#x27;s departure as DNI, attributed publicly to her husband&#x27;s cancer diagnosis, creates a third pressure point that intersects directly with the Iran story in ways no outlet has yet connected. The DNI is the primary synthesizer of intelligence on Iranian nuclear program compliance. Her exit — whatever its true cause — leaves a structural vacuum in treaty-verification architecture at the exact moment such architecture would need to be built. Whether she was pushed because her Iran assessments conflicted with deal optimism, or whether her departure is genuinely personal, the operational consequence is the same: the United States is entering the most consequential Iran negotiations in a generation with degraded independent intelligence review.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Trump is the central driver, but the friction points are coming from within his own coalition. Senators Graham, Wicker, and Cruz represent a genuine hawkish bloc with both ideological and institutional incentives to oppose an Iran deal that does not achieve the campaign&#x27;s stated maximalist goals — complete dismantlement of enrichment capacity, not a managed reduction. Their opposition is not performative. If they believe the deal is insufficient and Senate ratification is required, they have the votes to create real problems. The administration&#x27;s response to this opposition — largely to ignore it in public coverage — suggests either confidence that the deal&#x27;s terms will satisfy them, or a deliberate strategy of fait accompli: announce the deal as done before opponents can organize.</p>
+<p>Pakistan&#x27;s role as co-mediator alongside Qatar is the most underexamined dynamic in today&#x27;s coverage. Pakistan is simultaneously a nuclear state with active Chinese strategic relationships, an Afghan Taliban interlocutor, and a country under significant IMF debt pressure. It does not mediate Iranian nuclear talks for free. Whatever Pakistan extracted — corridor access, debt relief, nuclear technology freezes, or sanctions carve-outs — is entirely opaque in current reporting, and no outlet has asked the question. Pakistan&#x27;s compensation package may be as consequential as the Iran deal terms themselves.</p>
+<p>The CodePink organization is under coordinated institutional pressure from two independent federal vectors simultaneously: DOJ subpoenas targeting its associates over Cuba trips, and an emerging narrative linking left-wing activist infrastructure opposing data centers to Chinese influence operations. CodePink appears as the connective tissue between both stories. The dual-front pressure — legal process plus foreign entanglement accusation — is the operational signature of a delegitimization campaign rather than two independent enforcement actions coinciding by accident. Whether CodePink has actual foreign funding ties is a separate question from whether the pressure campaign is coordinated. Both can be true.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Russia struck Kyiv with a mass hypersonic attack on the same news cycle that Trump declared a diplomatic triumph in Iran. Right-wing media ran zero coverage of the strike. This is not an editorial oversight — a hypersonic mass attack on a capital city is not a story that falls below any newsroom&#x27;s coverage threshold. The editorial decision to suppress it appears coordinated across right-wing outlets and serves a clear purpose: a major Russian escalation directly undermines the &quot;Trump as global peacemaker&quot; frame being assembled across the Iran deal coverage, the military recruitment stories, and the Hegseth-at-West-Point optics. The absence is the signal.</p>
+<p>The right is also running near-blackout coverage of Gabbard&#x27;s DNI departure, despite Gabbard being a right-adjacent figure whose tenure was central to the Trump national security apparatus. The silence is conspicuous on a day when the administration wants to project foreign policy competence — her troubled tenure raises questions about intelligence community dysfunction that complicate the Iran deal narrative, so it is being quietly buried rather than defended.</p>
+<p>The left is systematically ignoring the RFK autism fraud indictment, which supports an administration health official they are ideologically hostile to, and is giving no analytical credit to the proposition that sustained US military and economic pressure on Iran produced the negotiating outcome. Both omissions are telling: the left cannot acknowledge genuine policy results from this administration even when the evidence supports it, and the right cannot acknowledge institutional dysfunction or allied-nation attacks even when the evidence demands it. Neither partisan stream can produce a coherent national security picture today.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most structurally significant pattern today is the simultaneous deployment of a &quot;legitimate dissent versus foreign-backed interference&quot; frame across two entirely unrelated domestic activist contexts. In Utah, local data center opposition is being characterized as Chinese-influenced activist infrastructure. In the DOJ subpoenas targeting Hasan Piker and Medea Benjamin, Cuba-connected activism is being characterized as a foreign influence vector. The two cases use identical rhetorical architecture — genuine-seeming local advocacy reframed as adversarial foreign penetration — and are running simultaneously across different enforcement and narrative channels. This is not independent editorial judgment arriving at the same conclusion twice. This is a coordinated federal narrative strategy with a consistent template.</p>
+<p>China appears in three separate story streams today — the Utah data center accusations, the &quot;China Offered Me Money to Tell a Lie&quot; first-person account, and implicitly in the Iran deal, where China is Iran&#x27;s primary sanctions-evading economic partner with direct material stakes in any Hormuz reopening or sanctions relief. No outlet connects these threads. An Iran deal that affects Chinese oil supply security creates strong Chinese incentives to work both diplomatic and grassroots channels to shape specific deal terms. The simultaneous domestic China-influence stories may be preparatory narrative infrastructure for that argument.</p>
+<p>Three right-side military stories — Army recruiting ahead of schedule, Hegseth at West Point, female troops in combat roles — run on the same day as the Iran deal announcement without any outlet making the explicit argument they collectively support: that Trump negotiated the Iran deal from a position of military strength. The frame is assembled from fragments. No single story states it. The aggregate effect is manufactured without any individual outlet carrying the rhetorical weight. This is sophisticated coordinated framing.</p>
+<p>The USCIS-to-DOJ lawyer repositioning story is being crowded out by the Africa green card ban story in coverage volume and emotional salience. This is consistent with a now-established administration pattern: use high-visibility enforcement actions to generate coverage that obscures quieter restructuring of legal apparatus. The ban is the news; the repositioning is the policy. Courts will eventually rule on the repositioning; the ban may be reversed. Readers following the ban story are watching the wrong variable.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Acting DNI identity and Iran intelligence posture</strong> — Within 72 hours of Gabbard&#x27;s departure, watch for any signal of the acting DNI&#x27;s Iran assessment framework. A hawkish acting DNI validates intelligence-driven deal skepticism; an accommodating one suggests the exit was partly doctrinal. Any deviation from Gabbard&#x27;s posture within this window is the tell.</p>
+<p><strong>Pakistan side agreements</strong> — Monitor Pakistani government statements, Finance Ministry communications, and IMF scheduling for any indication of what Pakistan received for its mediator role. Specifically: Afghanistan corridor access, debt restructuring timelines, or nuclear technology transfer language. If nothing surfaces within 72 hours, that silence is itself informative about the sensitivity of the exchange.</p>
+<p><strong>CodePink organizational response</strong> — Whether CodePink files counter-motions on the Cuba subpoenas, publicly addresses the Chinese data center accusations, or goes quiet is diagnostically important. Organizations under coordinated multi-front pressure that go silent are managing legal strategy, not conceding guilt. Watch for which law firms appear in any counter-filings.</p>
+<p><strong>Graham/Wicker/Cruz Iran deal positioning</strong> — These three senators need to either signal openness to the deal&#x27;s terms or harden their opposition before deal finalization locks them out. Any public statement from their offices in the next 48 hours specifying what terms would make the deal acceptable reveals their actual negotiating posture versus their performative opposition.</p>
+<p><strong>9th and 2nd Circuit filings on USCIS-to-DOJ repositioning</strong> — Emergency injunction applications targeting the denaturalization acceleration are the legal event that transforms this from administrative restructuring into a constitutional confrontation. If courts apply the Abrego García vindictive-prosecution framework, this becomes a circuit-split scenario that lands at the Supreme Court before any Iran deal ratification vote, creating a compound institutional crisis the administration will need to manage simultaneously.</p>
+<p><strong>Right-wing coverage of Kyiv hypersonic strike at 48-hour mark</strong> — If zero right-wing outlet has covered the strike by May 26, coordinated suppression is confirmed. A single major right-wing outlet breaking the blackout signals either an internal factional split on Ukraine policy or a decision that the Iran deal is sufficiently locked to survive the complication.</p>
+<p><strong>NR byline identification on civility and conservative leadership pieces</strong> — Cross-reference against Bush-era and Romney-era contributor lists. If the bylines belong to that establishment conservative faction, National Review is actively building intellectual infrastructure for Senate Republican defection on Iran deal ratification. The timing is not accidental.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that explains today&#x27;s apparent fragmentation is straightforward: the Trump administration is attempting to execute a foreign policy achievement of genuine historical scale while managing the institutional consequences of having systematically degraded the apparatus — intelligence community, diplomatic corps, Senate relationships — that would normally validate and sustain such an achievement. The Iran deal may be real. The question is whether the administration has preserved enough institutional credibility, intra-coalition cohesion, and independent intelligence review to survive the verification phase, the Senate ratification process, and the inevitable Iranian compliance disputes that follow. What looks like a diplomatic triumph today is also a stress test of whether four years of institutional hollowing has left the executive branch capable of executing complex foreign policy at all. The Gabbard vacancy, the Graham-Wicker-Cruz bloc, and the Pakistan opacity are not separate problems — they are all the same problem, manifesting in three different locations simultaneously.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump announced a US-Iran nuclear/diplomatic deal is &#x27;largely negotiated&#x27; and will include reopening the Strait of Hormuz, following a months-long military campaign, but Iran and mediator Pakistan have signaled the deal is not yet finalized.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (8)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#5ab56e;">right (3)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 8"></div><div class="bias-segment" style="background:#e0a87a; flex:4.2;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:8.3;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:20.8;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:20.8;" title="left: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:12.5;" title="right: 3"></div></div></div>
+  <div class="story-assessment">The most consequential factual question — whether a deal is actually close or whether Trump is getting ahead of reality — is genuinely unresolved, and both framings (premature optimism vs. historic breakthrough) are plausible. The intra-Republican opposition from Graham, Wicker, and Cruz is structurally significant: if hawks feel the deal is insufficient, it could collapse or face Senate resistance, which neither pro-Trump nor anti-Trump outlets have fully reckoned with. The war-duration discrepancy (38 days vs. 84 days) is a red flag — outlets are apparently defining the conflict&#x27;s start date to support their preferred narrative about Trump&#x27;s decision-making.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Trump&#x27;s dealmaker identity is being stress-tested: his Iran optimism is framed as possibly delusional given Iranian and Pakistani skepticism, while the broader administration is painted as authoritarian (DOJ erasing Jan 6 records) and chaotic (AI order reversal, anti-weaponization fund overreach). The emotional register is alarm about institutional decay.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Focuses on process dysfunction and downstream consequences: internal White House divisions on AI policy, legal jeopardy from the anti-weaponization fund, domestic economic pain from Hormuz closure ahead of Memorial Day, and the intra-GOP conflict the Iran deal is generating. Neutral on whether the deal itself is good or bad.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Trump is a decisive, results-oriented leader who applied maximum pressure and is now delivering a historic diplomatic breakthrough. Internal GOP dissent is minimized or ignored. The Colbert/culture war coverage serves as victory lap content, reinforcing the base narrative that Trump is winning on all fronts simultaneously.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit acknowledgment that sustained US military and economic pressure may have been the proximate cause of Iran coming to the negotiating table at all — giving Trump no credit for coercive leverage that appears to be working. They also underreport the specific deal terms that would benefit US allies in the Gulf.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets — especially Breitbart and Fox — omit Iranian and Pakistani signals of uncertainty about finalization, omit the hawkish Republican bloc&#x27;s substantive objections (that the deal may not achieve the campaign&#x27;s stated goals), and entirely ignore the DOJ&#x27;s removal of Jan 6 prosecution records and legal controversy over the anti-weaponization fund.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Debate over a proposed 40,000-acre Utah data center escalates into competing narratives about Chinese influence, local opposition, and the line between legitimate dissent and foreign-backed interference.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The two stories are largely talking past each other: one is a specific, verifiable incident (O&#x27;Leary&#x27;s on-air accusation of named individuals) while the other is a broader, pattern-based national security argument. Both can be simultaneously true — local advocates can be innocent while some activist infrastructure has foreign funding — but neither outlet engages with the other&#x27;s actual claim. The real question of whether Chinese influence operations are genuinely embedded in data center opposition, versus whether that framing is being opportunistically weaponized against unrelated local critics, remains entirely unresolved by this coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    A wealthy investor used his Fox News platform to brand local political consultants as foreign agents in retaliation for opposing his commercial project — framed as billionaire intimidation of grassroots dissent, invoking McCarthyism-era red-baiting tactics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet coverage provided in this dataset.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    A convergence of ideologically diverse activist groups — united by anti-Americanism and Chinese financial backing — is deliberately targeting AI data centers as critical infrastructure, framed as a national security emergency requiring vigilance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not engage with the broader question of whether any activist coalitions opposing data centers have documented foreign funding ties, nor does it address the CodePink angle or the national security expert concerns cited by Fox.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage does not mention the specific O&#x27;Leary accusation against named individuals, does not address whether local opposition groups like those in Utah have any verified foreign ties, and omits the retaliatory or commercially-motivated context for such accusations.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Tulsi Gabbard resigned as Director of National Intelligence, citing her husband&#x27;s cancer diagnosis, amid reported difficulties in the role and internal right-wing opposition.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">The factual core is unambiguous: Gabbard resigned citing her husband&#x27;s cancer. What remains genuinely contested is whether that was the full story or a face-saving exit from a role she struggled in. The more analytically significant signal is that Gabbard faced opposition from both left critics and right-wing nationalists simultaneously — suggesting she occupied an ideologically incoherent position that satisfied neither coalition. Editorializing her departure alongside unrelated controversies (NPR) or relitigating her background (Mother Jones) obscures rather than illuminates why the DNI role specifically proved untenable.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Gabbard was unfit, conspiratorial, and her departure was inevitable; her exit is framed as part of a broader pattern of Trump administration dysfunction, linked editorially to the Capitol attacker fund controversy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Focuses on intra-coalition drama: the story is the factional split on the right, not Gabbard&#x27;s fitness or the administration&#x27;s dysfunction. Treats Loomer&#x27;s reaction as newsworthy political signal.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Not directly represented in provided sources; the closest proxy (Loomer via The Hill) frames Gabbard as insufficiently hawkish on Iran — a national security critique from within the right, not a defense of her record.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not engage substantively with the Iran/national security critique Loomer raises — they dismiss right-wing opposition without acknowledging it had its own ideological basis. NPR links Gabbard&#x27;s exit to Trump&#x27;s Capitol attacker fund, a non-sequitur that inflates the story&#x27;s scandal valence.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning outlet in this set defends Gabbard&#x27;s tenure or rebuts the &#x27;ineffective outsider&#x27; narrative. The stated reason for resignation — a spouse&#x27;s serious illness — receives minimal humanizing treatment compared to left outlets.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Tulsi Gabbard</span><span class="entity-tag">Iran nuclear deal</span></div>
+  <div class="connection-text">Gabbard&#x27;s departure as DNI is announced on the same news cycle as Trump&#x27;s claim that an Iran deal is &#x27;largely negotiated.&#x27; The DNI is the primary official responsible for synthesizing intelligence on Iran&#x27;s nuclear program compliance. Her exit creates a structural intelligence oversight vacuum at the exact moment treaty-verification architecture would need to be built. The acting DNI&#x27;s Iran posture — hawkish or accommodating — will effectively determine whether the intelligence community validates or undermines deal terms.</div>
+  <div class="connection-sig">↳ If Gabbard was pushed out partly because her Iran intelligence assessments conflicted with administration deal optimism, her departure is a doctrinal purge of dissenting analysis at a critical juncture, not a personal family matter. This would mean the deal is being negotiated with degraded independent intelligence review.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">CodePink</span><span class="entity-tag">DOJ subpoenas (Piker/Benjamin)</span><span class="entity-tag">Utah data center Chinese influence narrative</span></div>
+  <div class="connection-text">CodePink appears simultaneously in two separate stories: federal subpoenas targeting Hasan Piker and Medea Benjamin over Cuba trips, and the Utah data center story where left-wing data center opposition is accused of Chinese-linked activist infrastructure. CodePink is the organizational connective tissue between both stories — it is being simultaneously pressured via DOJ subpoenas and accused of foreign entanglement in a separate context. This is not coincidental timing.</div>
+  <div class="connection-sig">↳ This looks like a coordinated pressure campaign against a specific activist organization using two separate legal and narrative vectors simultaneously. The dual-front attack (DOJ legal process + Chinese influence accusation) is a classic information operation pattern designed to delegitimize an organization&#x27;s advocacy without requiring a single successful prosecution.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Russia hypersonic attack on Kyiv</span><span class="entity-tag">Trump Iran deal announcement</span></div>
+  <div class="connection-text">Russia&#x27;s mass hypersonic strike on Kyiv is entirely absent from right-wing coverage on the same day Trump announces a major diplomatic achievement in Iran. A major Russian escalation in active warfare directly undermines the &#x27;Trump as global peacemaker&#x27; frame being constructed around the Iran deal. The editorial omission is simultaneous and cross-outlet.</div>
+  <div class="connection-sig">↳ Right-wing media is not failing to cover Russia — it is actively suppressing a story that would complicate a preferred narrative. This is coordinated framing by omission, not editorial accident. The absence is itself the signal.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">USCIS lawyers moved to DOJ</span><span class="entity-tag">green card ban from African nations</span></div>
+  <div class="connection-text">Two immigration enforcement stories are running in parallel: one structural (USCIS legal apparatus being repositioned inside DOJ for denaturalization cases) and one visible enforcement action (Africa travel/green card restrictions). The structural story is far more consequential but is crowded out by the more viscerally provocative travel ban story.</div>
+  <div class="connection-sig">↳ The DOJ repositioning of USCIS lawyers is the permanent institutional change; the Africa ban is the visible action that absorbs public and press attention. This is a consistent pattern in this administration&#x27;s immigration strategy — use high-visibility enforcement actions to create coverage that obscures the quieter restructuring of legal apparatus.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Review</span><span class="entity-tag">U.S. Senate Republican hawks (Graham, Wicker, Cruz)</span></div>
+  <div class="connection-text">NR is running multiple institutional-critique pieces (civility, conservative leadership, Declaration theology) simultaneously with intra-Republican Senate opposition to the Iran deal. These NR pieces are consistent with the faction of establishment conservatives who are ideologically resistant to Trump&#x27;s dealmaking on Iran. NR&#x27;s editorial line and the Graham/Wicker/Cruz bloc occupy the same ideological space.</div>
+  <div class="connection-sig">↳ If NR bylines on these pieces belong to former Bush/Romney-era contributors (per last cycle&#x27;s watch item), the magazine is providing intellectual scaffolding for a Senate Republican defection on Iran deal ratification. The &#x27;civility and conservative leadership&#x27; framing provides cover for opposing a populist president without appearing obstructionist.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">China</span><span class="entity-tag">Iran deal</span><span class="entity-tag">Utah data center</span></div>
+  <div class="connection-text">China appears in three separate stories today: the Utah data center influence accusation, the &#x27;China Offered Me Money to Tell a Lie&#x27; confession piece, and implicitly in the Iran deal (China is Iran&#x27;s primary sanctions-evading economic partner and would be materially affected by any Hormuz reopening or sanctions relief). No outlet connects these dots.</div>
+  <div class="connection-sig">↳ An Iran nuclear deal that reopens the Strait of Hormuz directly affects Chinese oil supply security — China has strong incentives to either facilitate or undermine specific deal terms. The simultaneous Chinese influence stories in domestic activist contexts may be preparation for a broader narrative that China is working both diplomatic and grassroots channels to shape the deal&#x27;s outcome.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A &#x27;legitimate dissent vs. foreign-backed interference&#x27; frame is being applied simultaneously to two unrelated domestic activist contexts — Utah data center opposition (Chinese backing) and CodePink/Cuba activists (DOJ subpoenas). Both cases use the same rhetorical structure: genuine-seeming local advocacy is reframed as a vector for adversarial foreign influence. The pattern&#x27;s simultaneous deployment across unrelated topics suggests a coordinated federal narrative strategy, not independent editorial judgment.</div>
+<div class="pattern-item">Three separate military-positive stories (Army recruiting ahead of schedule, Hegseth at West Point, female troops in combat) are running right-only on the same day as the Iran deal announcement. This constructs a &#x27;negotiating from strength&#x27; frame — the military is thriving, recruitment is up, the deal is made from a position of dominance — without any outlet explicitly making that argument. The frame is assembled from fragments across stories.</div>
+<div class="pattern-item">Immigration enforcement is accelerating across at least three separate mechanisms simultaneously (USCIS-to-DOJ repositioning, Africa green card ban, denaturalization case speed-up) while reconciliation bill fights absorb legislative press attention. The multi-vector simultaneous push suggests these are not independent policy decisions but a coordinated pre-deadline enforcement surge, potentially before court injunctions materialize.</div>
+<div class="pattern-item">The war-duration discrepancy in Iran coverage (38 vs. 84 days) is not a minor factual dispute — it reflects two incompatible narratives about Trump&#x27;s decision-making. The 84-day frame supports &#x27;protracted military pressure led to diplomacy&#x27;; the 38-day frame supports &#x27;swift decisive action produced results.&#x27; Outlets are selecting the start date that validates their preferred theory of Trump&#x27;s strategic competence, meaning neither timeline can be trusted without independent verification.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Russia&#x27;s hypersonic mass attack on Kyiv is covered exclusively by left-leaning outlets on a day when right-wing media is heavily focused on Trump&#x27;s Iran diplomatic achievement. A strike of this scale would normally generate cross-partisan coverage. Its complete absence from right-wing outlets on this specific day is anomalous — the editorial decision appears coordinated to avoid disrupting the &#x27;Trump as peacemaker&#x27; narrative with evidence of simultaneous allied-nation bombardment.</div>
+<div class="anomaly-item">The &#x27;China Offered Me Money to Tell a Lie&#x27; story — apparently a first-person account of a Chinese intelligence approach — appears only in right-wing outlets and generates no cross-partisan pickup. A public confession of attempted foreign intelligence recruitment should be a major bipartisan story. Its confinement to right-wing coverage suggests either the underlying claim is considered insufficiently credible by center/left editors, or it is being treated as a political narrative rather than a genuine counterintelligence event.</div>
+<div class="anomaly-item">Gabbard&#x27;s DNI departure generates almost no right-wing coverage despite Gabbard being a right-adjacent figure and her role being central to the Trump national security apparatus. The near-blackout on the right (only center-left, center, and far-left sources) is conspicuous — it may indicate that the right is avoiding a story that would raise uncomfortable questions about internal dysfunction at a moment when the administration wants to project foreign policy competence.</div>
+<div class="anomaly-item">Pakistan appears as Iran deal mediator with no outlet asking what Pakistan is receiving in exchange. Pakistan is simultaneously a nuclear state, an Afghan Taliban interlocutor, and has complex ties to China. Its role as joint mediator alongside Qatar is structurally unusual and goes entirely unexamined in today&#x27;s coverage — the question of what side agreements Pakistan may have extracted is a significant analytical gap.</div>
+<div class="anomaly-item">The Ebola resurgence/Uganda story and the Africa green card ban story appear in separate coverage streams with no outlet connecting them. If the green card ban is partly justified by health concerns (Uganda is on the list), and Ebola is genuinely resurging, the policy may have a legitimate biosecurity rationale that is being obscured by the broader immigration enforcement framing. Alternatively, the Ebola story is being used as post-hoc justification for a policy with different primary drivers.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding two categories today: Russian military escalation (Kyiv hypersonic strike) and intelligence community dysfunction (Gabbard&#x27;s troubled tenure). Both would complicate the administration&#x27;s preferred foreign policy narrative — you cannot simultaneously claim Trump produced an Iran peace deal and acknowledge that his DNI was viewed as incompetent by her own agency, or that Russia is escalating while he negotiates. The left is systematically avoiding the positive military readiness stories (recruiting, West Point) and the RFK autism fraud indictment — the former because it validates Hegseth&#x27;s tenure, the latter because it supports an administration health official they are ideologically opposed to. The combined effect is that readers of either partisan media stream cannot construct a coherent picture of U.S. national security posture today: the right has a thriving military and a diplomatic triumph with no context about intelligence oversight or allied-nation attacks, and the left has institutional dysfunction and foreign threats with no acknowledgment of genuine policy successes.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Russia uses hypersonic Oreshnik missile in mass attack on Kyiv</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Homeland Security&#x27; has spawned political insecurity since DHS was born</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What redistricting in South Carolina could mean for 17-term Congressman Jim Clyburn</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As war evolves, more female troops make the ultimate sacrifice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California governor declares state of emergency over looming chemical disaster</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US temporarily bans green-card holders from entering country from African nations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Three dead and 18 first responders sickened by apparent fentanyl exposure in New Mexico</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This US island is home to flora found nowhere else. Now, a wildfire threatens extinction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘They’re playing with people’s lives’: the double amputee detained by ICE speaking out at public events</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Populist Paralympian Who Wants to Roll Into the Senate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Once Dismissed As Weeds, Native Plants Are Flying Off the Shelves</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dr. Janette Nesheiwat takes new role at Walter Reed treating Havana Syndrome: &#x27;A profound honor&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Platner’s online past gets raunchier with crude takes on ‘Latin American hookers,’ cheating abroad</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Platner doesn&#x27;t apologize to Purple Heart recipient, voters when confronted on post mocking soldier</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AOC tells New Yorkers to ‘pull up’ to Alabama during rally speech behind bulletproof glass</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Feds subpoena Hasan Piker, Medea Benjamin over Cuba trips</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› RFK Jr announces &#x27;largest autism fraud bust in American history&#x27; with $46.6M Medicaid scheme indictment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US Army hits 2026 recruiting goals four months early, Pete Hegseth announces at West Point commencement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Makes an Excellent Children’s Treasury</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Next Generation of Conservative Leaders Must Embrace Civility</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Often-Overlooked Theology of the Declaration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I’ll Admit It — China Offered Me Money to Tell a Lie</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The BBC Has Fallen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Administration Temporarily Moves USCIS Lawyers to DOJ to Speed Denaturalization Cases</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC LOL: Autopsy Proves Party Still Woke, Elitist, Pro-Open Borders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pinkerton: Pope Leo Sends Stern Message to the Left About Its Past Evils</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Dem Whip Clark Dodges on Need to Lower Spending to Lower Rates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Giants&#x27; Abdul Carter Takes Shot at Jaxson Dart Over Trump Support: ‘Thought This Sh*t Was AI’</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Acting DNI identity and Iran nuclear program intelligence posture: The person filling Gabbard&#x27;s role will determine whether intelligence assessments of Iranian compliance are hawkish or accommodating. Any deviation from Gabbard&#x27;s posture on Iran within 72 hours of her departure confirms doctrinal motivation for the exit.</div>
+<div class="watch-item">CodePink organizational response to dual legal/narrative pressure: Monitor for whether CodePink files counter-motions on the Cuba subpoenas, issues public statements addressing the Chinese data center accusations, or goes quiet. Organizational silence under simultaneous multi-front pressure is a signal of legal strategy, not guilt.</div>
+<div class="watch-item">Pakistan side-agreement disclosure: Watch for any Pakistani government statements or leaks about what was discussed beyond the Iran mediation role — specifically any Afghanistan corridor access, IMF debt restructuring, or nuclear technology transfer freezes that may have been part of the package.</div>
+<div class="watch-item">NR byline identification on civility/leadership pieces: Cross-reference current NR institutional-critique bylines against Bush-era and Romney-era contributor lists to determine whether an organized establishment conservative faction is building intellectual infrastructure for Senate Republican defection on the Iran deal.</div>
+<div class="watch-item">USCIS-to-DOJ repositioning: Track district court filings in the 9th and 2nd Circuits for emergency injunctions targeting the denaturalization speed-up; if courts apply the Abrego García vindictive-prosecution framework, this becomes a circuit-split scenario with major executive authority implications before any Iran deal Senate ratification vote.</div>
+<div class="watch-item">China&#x27;s diplomatic posture on Iran deal: Monitor Chinese Foreign Ministry statements on the Strait of Hormuz reopening and any Iranian sanctions relief — China&#x27;s public response will reveal whether Beijing views the deal as a threat to its preferential Iran access or as an acceptable outcome it helped engineer.</div>
+<div class="watch-item">Russia-Ukraine coverage asymmetry: If the Kyiv hypersonic strike generates zero right-wing coverage for 48+ hours, it confirms coordinated editorial suppression, not independent judgment. A right-wing outlet breaking with the blackout would signal an internal factional split on Ukraine policy.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
