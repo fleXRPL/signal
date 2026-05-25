@@ -82,7 +82,8 @@ def _llm_call_claude(prompt: str, timeout: int) -> str:
         timeout=timeout,
     )
     if result.returncode != 0:
-        raise RuntimeError(result.stderr.strip() or "Claude CLI non-zero exit")
+        detail = result.stderr.strip() or result.stdout.strip() or "Claude CLI non-zero exit"
+        raise RuntimeError(detail)
     return result.stdout.strip()
 
 

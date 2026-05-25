@@ -111,7 +111,8 @@ def _llm_call(prompt: str, config: Dict[str, Any]) -> str:
             timeout=timeout * 2,  # weekly synthesis is a large call
         )
         if result.returncode != 0:
-            raise RuntimeError(result.stderr.strip() or "Claude CLI non-zero exit")
+            detail = result.stderr.strip() or result.stdout.strip() or "Claude CLI non-zero exit"
+            raise RuntimeError(detail)
         return result.stdout.strip()
 
     # Ollama fallback
