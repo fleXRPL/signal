@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-26 11:12 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-26 11:12 UTC</span>
+    <span class="pill">65 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">2 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant structural dynamic in American politics this week is the simultaneous contraction of institutional checks on executive authority across multiple domains. This is not a metaphor — it is happening concretely and in parallel. A sitting U.S. Senator was pepper-sprayed by federal agents while attempting to exercise oversight at a detention facility. A governor was physically denied entry to a federal installation in her own state. The Senate Republican who chairs the Intelligence Committee — the body with primary authority to scrutinize executive foreign intelligence operations — is being primaried with direct White House backing. An Iran nuclear framework is reportedly being negotiated without visible congressional involvement. These are not four stories. They are one story with four data points.</p>
+<p>The Texas Senate primary is the most covered story this week and, in important respects, the least understood. The right is covering it as a loyalty test; the left is covering it as a scandal story. Both framings are accurate and both are incomplete. The operational consequence of a Paxton win — removal of the most institutionally positioned Republican to challenge executive branch conduct in the intelligence and foreign policy domains — is being named by neither side. Cornyn&#x27;s value is not his vote count; it is his committee chairmanship and his four terms of institutional leverage. A compliant replacement eliminates that leverage at the precise moment it is most relevant.</p>
+<p>Memorial Day is functioning this week as a dual-use political instrument rather than a shared civic moment. The right is deploying military and patriotic framing — soldier identification, WWII remains, Indo-Pacific allies — while the left is deploying federal accountability framing, including ICE protests deliberately timed to the holiday. The result is that a factually significant event — federal agents attacking a sitting senator — is being processed through culture-war filters on both sides rather than evaluated on its constitutional merits.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Donald Trump</strong> is operating this week primarily through electoral leverage rather than direct policy action. The Paxton primary is the mechanism. The goal is not Paxton specifically — it is the demonstration effect on every Republican senator watching. If a four-term Senate chairman with Cornyn&#x27;s institutional standing can be successfully primaried for insufficient loyalty, the lesson for every other Republican senator is unambiguous. The Iran deal and the expansion of ICE enforcement discretion both benefit from a Senate caucus that has internalized that lesson before the votes are cast.</p>
+<p><strong>John Cornyn</strong> is the central figure whose significance is being systematically underplayed. His Intelligence Committee chairmanship gives him subpoena authority, access to classified briefings, and the formal power to demand executive branch testimony. If he loses in July, his successor — whoever it is — inherits none of that institutional credibility. The committee itself continues, but its chair will be a first-term senator without the leverage to compel cooperation from an executive branch that has already demonstrated willingness to deny access to sitting governors and pepper-spray senators.</p>
+<p><strong>Ken Paxton</strong> is simultaneously a genuine political force and a deeply compromised candidate. His impeachment by the Texas House, his federal securities fraud indictment, and the $3.3 million misconduct settlement at the AG&#x27;s office are not contested facts — they are documented. His MAGA grassroots support is also genuine. Neither cancels the other, but a general election test of a Paxton candidacy is a risk the right-wing media apparatus covering this race is not pricing in.</p>
+<p><strong>Andy Kim</strong> and <strong>Kathy Sherrill</strong> are, this week, less important as individual political actors than as symbols of a pattern. Their presence at Newark was coordinated and deliberate — Memorial Day timing, elected officials, cameras. The pepper-spray incident elevates this above political theater into constitutional confrontation territory: federal agents used force against a sitting U.S. Senator exercising oversight authority. The political weaponization of that image — whether Democrats treat it as an accountability story or a fundraising asset — will determine its downstream significance.</p>
+<p><strong>The AI sector</strong> is operating this week across at least three simultaneous political relationships: funding Trump-aligned primary candidates through Super PAC infrastructure, preparing blockbuster IPOs that require a favorable regulatory environment, and being threatened with federal pressure over sanctuary city airport policies. This is not a coherent strategic posture — it is an industry in a protection racket dynamic, paying into multiple competing demands simultaneously while hoping none of the contradictions surface.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The pepper-spraying of Senator Andy Kim is absent from Fox News coverage. This is not a framing decision — it is suppression of a verifiable fact about a constitutional confrontation. Federal agents using force against a sitting U.S. Senator while he attempts to exercise congressional oversight authority is not a routine law enforcement incident. Its complete absence from the dominant right-wing outlet on the day it occurred, while that outlet was covering other immigration enforcement stories, is a deliberate editorial decision. The likely reason: the image of a senator being pepper-sprayed at a federal detention facility on Memorial Day is exactly the kind of visual that hardens opposition narratives and complicates the &quot;orderly enforcement&quot; framing the right has built around ICE operations.</p>
+<p>The Iran deal is absent from left-wing coverage. This is equally anomalous in the opposite direction. The left spent years defending the JCPOA and treating Iran nuclear diplomacy as a signature Obama-era achievement. A Republican administration now reportedly negotiating a new Iran framework should generate significant left-wing scrutiny — either validating the diplomatic approach or attacking the terms. The complete silence suggests one of three things: the deal is less substantive than right-wing framing implies; left media has made a tactical decision not to give Trump a foreign policy win by covering it; or the deal&#x27;s content is uncertain enough that no clean frame is available. All three explanations are strategically significant.</p>
+<p>Cuba&#x27;s foreign influence campaign penetrating American civil society — specifically union halls and activist networks — is absent from left-wing coverage. This is the mirror image of the right&#x27;s selective coverage of the Kim pepper-spraying: each side is suppressing a factually credible story that complicates its preferred political coalition. The left protects its activist infrastructure from scrutiny; the right protects its enforcement optics. The compound effect is that both a real foreign influence operation and a real constitutional confrontation are receiving only partial public daylight.</p>
+<p>The AI Super PAC story — deep-pocketed AI sector money funding Trump-aligned primary candidates — is absent from left-wing coverage despite being precisely the kind of campaign finance and regulatory capture story that dominates left media when the donor is from a different industry. The silence almost certainly reflects the tech sector&#x27;s privileged status within progressive media&#x27;s advertiser and readership base.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The executive branch non-accountability pattern is the meta-theme this week. ICE blocking a governor, federal agents pepper-spraying a senator, a Senate oversight chair being primaried, an Iran deal materializing without congressional visibility, and Gabbard&#x27;s FISA declassification are individually framed as an immigration story, a primary story, a foreign policy story, and an intelligence story. They share a single structural throughline: the executive branch is simultaneously asserting non-accountability to state elected officials, congressional oversight mechanisms, treaty consultation norms, and intelligence oversight frameworks — all in the same week.</p>
+<p>The Cornyn-Iran-Paxton triangle is the most underreported structural connection in the current corpus. Cornyn chairs the Senate Intelligence Committee. Trump is simultaneously running a primary to replace him while an Iran deal is being negotiated. The primary is being framed as a loyalty test. The operational effect — if successful — is to remove the most institutionally positioned Republican to scrutinize a Trump-negotiated Iran agreement at the exact moment executive branch foreign policy discretion is expanding. This is not coincidence of timing. It is structural consequence.</p>
+<p>The AI regulatory capture pipeline is forming in real time. AI companies with pending IPOs are funding the installation of Trump-aligned legislators who will set AI policy. The same sector is simultaneously negotiating favorable treatment from federal agencies while being threatened with enforcement action as leverage. The right covers the Super PAC story without naming the conflict of interest; the left doesn&#x27;t cover it at all. The combined result is that the regulatory capture mechanism goes unexamined at the moment it is most legible.</p>
+<p>The Cuba foreign influence and federal facility access stories are inversions of each other that should be in conversation but are not. The right is covering foreign actors gaining inappropriate access to American civil institutions; the left is covering American officials being denied appropriate access to federal facilities. Both stories are about unauthorized access and control. Neither side is asking the combined question: whether the same federal opacity that blocks elected oversight is the opacity that enables foreign influence operations to go undetected.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Cornyn campaign response to Paxton momentum (next 48 hours):</strong> Watch for whether sitting Republican senators issue public statements in support of Cornyn or remain silent. Silence from colleagues confirms the chilling effect is already operational before the vote. Any senator who has previously shown independence from the White House and stays quiet is signaling strategic calculation, not neutrality.</p>
+<p><strong>Senate Intelligence Committee scheduling this week:</strong> Any postponed hearings, staff departures, or reduced committee activity would indicate Cornyn is treating his tenure as potentially terminal. Committee inactivity during an active Iran negotiation and an ongoing oversight confrontation with ICE would be a significant institutional indicator.</p>
+<p><strong>Iran deal specific text or framework leak:</strong> The right-only coverage framing it as &quot;reappearing&quot; suggests a document or negotiating framework exists. Watch for State Department sourcing, Israeli government commentary on deal structure, or congressional Republican requests for briefings. Any of these would confirm the deal has advanced past preliminary stages.</p>
+<p><strong>Andy Kim pepper-spray incident — DHS/CBP response:</strong> Watch for (a) any official agency statement or continued silence, (b) Senate leadership response or absence of response, and (c) whether the incident surfaces in Democratic campaign advertising. The political weaponization timeline reveals whether Democrats are treating this as a constitutional accountability story or a fundraising event. The distinction matters for whether it generates sustained institutional response or dissipates.</p>
+<p><strong>AI Super PAC donor disclosure filings:</strong> The absence of named donors in current coverage suggests filings are pending or under scrutiny. The specific connection between Super PAC donors and OpenAI or AI sector investment portfolios is the key link. Establishment of that link transforms a political spending story into a regulatory capture story with direct IPO implications.</p>
+<p><strong>Gabbard FISA declassification — specific targets named:</strong> The documents or surveillance targets identified in any release will determine whether this is a legitimate civil liberties action or targeted political retaliation. The timing of &quot;last action&quot; framing suggests advance planning; what changed the calculus for release now is the operational question.</p>
+<p><strong>Shangri-La Dialogue official communiqués:</strong> Watch for language about &quot;strategic autonomy&quot; or &quot;hedging&quot; in official statements from Japan, South Korea, Australia, and Philippines delegations. Any such language in formal communiqués confirms Indo-Pacific realignment has moved from analytical inference to stated policy — a significant shift that the domestic political environment is currently too absorbed to process.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic this week is not partisan polarization in the conventional sense — it is the systematic dismantling of the institutional infrastructure through which the legislative branch constrains the executive, happening simultaneously through electoral, administrative, and enforcement mechanisms. The Paxton primary, the Newark incident, the Iran negotiation, and the Gabbard FISA action are not four separate political stories competing for attention. They are concurrent operations across four different domains — electoral, enforcement, diplomatic, and intelligence — all with the same directional effect: reducing the friction between executive intent and executive action. What makes this moment distinctive is not the ambition of the executive branch assertion — that is historically recurring — but the speed at which multiple constraint mechanisms are being tested simultaneously, and the degree to which the media environment on both sides is processing each story in isolation rather than as a composite. An official reading only right-wing coverage this week would believe the primary political story is a loyalty test in Texas. An official reading only left-wing coverage would believe it is a humanitarian crisis at a New Jersey detention facility. Both are real. Neither is the story.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump-endorsed Texas Attorney General Ken Paxton faces four-term incumbent Senator John Cornyn in a Republican Senate primary runoff that doubles as a referendum on Trump&#x27;s control over the GOP.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (11)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:15.8;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:28.9;" title="center-left: 11"></div><div class="bias-segment" style="background:#3a8a52; flex:18.4;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:15.8;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:2.6;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:18.4;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The race is a genuine power test: if Trump successfully primaries a four-term Senate Republican who chairs the Senate Intelligence Committee, it will have a chilling effect on any GOP senator considering independence from the White House. The left&#x27;s scandal framing and the right&#x27;s loyalty framing are both real — Paxton is simultaneously scandal-plagued and genuinely MAGA-energized, and neither fact cancels the other. What neither side is clearly stating: a Paxton win may give Trump more compliant senators but a weaker Senate Republican majority, since Cornyn&#x27;s institutional heft and seniority have real legislative value.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets (Guardian, WaPo) emphasize Paxton&#x27;s legal scandals and cast the race as a warning about Trumpism consuming the Republican Party. The emotional register is alarm — a scandal-plagued extremist threatening institutional norms. Cornyn is portrayed sympathetically as an imperiled institutionalist, not a policy champion.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill and PBS NewsHour treat the race as a power-dynamics story — who controls the GOP and what that means for Senate governance and Trump&#x27;s legislative agenda. Neutral in tone, focused on structural implications rather than hero/villain framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox frames Trump&#x27;s Paxton endorsement as decisive, commanding leadership — a loyalty purge presented approvingly. Cornyn&#x27;s &#x27;disloyalty&#x27; is treated as self-evident justification. The emotional register is confidence: Trump is strong, in control, and reshaping the party in his image. Paxton&#x27;s legal history is absent.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit what specific acts earned Cornyn the &#x27;disloyalty&#x27; label from Trump, giving readers no basis to evaluate whether Trump&#x27;s grievance has any policy substance. They also underweight the genuine grassroots energy behind Paxton, framing his support as purely manufactured by Trump.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit Paxton&#x27;s impeachment by the Texas House, his federal securities fraud indictment, and the Attorney General&#x27;s office misconduct allegations that led to an $3.3 million settlement — facts directly relevant to his fitness for Senate. They also ignore whether a Paxton nomination weakens Republican general-election odds.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Democratic officials gathered outside Newark&#x27;s Delaney Hall ICE detention facility on Memorial Day amid protests over a detainee hunger strike, with Senator Andy Kim pepper-sprayed and Governor Sherrill denied entry to the facility.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:25.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core facts — a senator pepper-sprayed, a governor denied access, and detainees on hunger strike — are serious on their own terms regardless of political framing. Fox&#x27;s omission of the pepper spray incident is a meaningful editorial choice that obscures a factually significant event. The left&#x27;s framing, while sympathetic to protesters, is more complete in its factual reporting. The central accountability question — whether elected officials have legitimate oversight access to federal detention facilities — is being drowned out by the culture-war framing on both sides.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    ICE agents used disproportionate force against peaceful protesters and elected officials. The hunger strike signals humanitarian crisis inside the facility. Democratic officials are standing up for vulnerable detainees. The story is about federal power being wielded against both citizens and immigrants without accountability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Focuses on the newsworthiness of a sitting U.S. Senator being pepper-sprayed and a governor being denied facility access — both treated as institutional tensions between elected officials and federal law enforcement. Raises accountability questions without taking a side on immigration policy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Democratic politicians are grandstanding against immigration enforcement on a federal holiday. The protest is framed as political theater rather than legitimate oversight. The hunger strike and detainee conditions are not addressed. The implicit message is that enforcement of immigration law is being obstructed by partisan actors.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not acknowledge that the elected officials&#x27; presence at an active protest may complicate law enforcement operations, nor does it engage with any argument that the facility is operating within legal authority. The political timing — Memorial Day — is not addressed as a potential optics choice.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not report that Senator Kim was pepper-sprayed — a significant and verifiable fact about a sitting U.S. Senator. It omits the hunger strike entirely, stripping the event of its humanitarian context. It does not report on detainee conditions or the accountability implications of denying a governor access to a federal facility.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Cornyn Senate Intelligence Committee</span><span class="entity-tag">Iran Deal negotiation</span><span class="entity-tag">Paxton primary</span></div>
+  <div class="connection-text">Cornyn chairs the Senate Intelligence Committee — the body with primary oversight authority over executive branch foreign intelligence and treaty negotiations. Trump is simultaneously running a primary to replace him while an Iran deal is reportedly being negotiated. Right-only coverage of the Iran deal and the primary are running in parallel tracks that, when merged, reveal a structural outcome: a Paxton win eliminates the most institutionally positioned Republican to scrutinize a Trump-negotiated Iran agreement.</div>
+  <div class="connection-sig">↳ This is not a coincidence of timing but a structural consequence. The primary is being framed as a loyalty test, but the operational effect — if successful — is to remove independent Intelligence Committee oversight at the exact moment executive branch foreign policy discretion is expanding. Neither the left (focused on Paxton scandals) nor the right (focused on loyalty) is naming this specific consequence.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">AI Super PAC</span><span class="entity-tag">OpenAI IPO</span><span class="entity-tag">Trump-backed primary candidates</span></div>
+  <div class="connection-text">OpenAI appears in both the AI Super PAC political spending story and the tech IPO story in the same news cycle. Deep-pocketed AI money is simultaneously funding Trump-backed primary candidates while the same sector prepares blockbuster public offerings. The regulatory environment for AI will be shaped by the Congress these candidates join.</div>
+  <div class="connection-sig">↳ This is a regulatory capture pipeline forming in real time. AI companies with pending IPOs are funding the installation of Trump-aligned legislators who will set AI policy. The right covers the Super PAC story without naming the conflict of interest; the left doesn&#x27;t cover it at all, despite the campaign finance implications directly relevant to their stated priorities.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Newark ICE detention</span><span class="entity-tag">Congressional oversight</span><span class="entity-tag">Cornyn primary</span></div>
+  <div class="connection-text">A governor denied entry to a federal detention facility and a senator pepper-sprayed by federal agents are happening the same week a four-term senator with institutional seniority is being primaried for insufficient loyalty. These are separate stories, but together they represent a single pattern: elected officials and oversight mechanisms being physically and electorally excluded from federal authority simultaneously.</div>
+  <div class="connection-sig">↳ The executive branch is asserting non-accountability to both congressional oversight (Cornyn&#x27;s committee role being electorally neutralized) and state/local elected officials (Sherrill denied access, Kim pepper-sprayed). These are usually analyzed as distinct issues — Senate politics vs. immigration enforcement. They are not distinct; they are concurrent assertions of executive unilateralism across domains.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">American Battle Monuments Commission</span><span class="entity-tag">Pentagon unknown soldiers</span><span class="entity-tag">Memorial Day timing</span></div>
+  <div class="connection-text">Two left-only stories about unidentified American war dead — WWII remains returned AND a separate story asking why the Pentagon hasn&#x27;t identified thousands of unknown soldiers despite capability — both surface on Memorial Day. The American Battle Monuments Commission appears in both. This is not organic convergence; it reads as coordinated message placement around the holiday.</div>
+  <div class="connection-sig">↳ The left is using Memorial Day to run an institutional accountability narrative about Pentagon failures toward its own fallen soldiers — a frame that inverts the right&#x27;s patriotism-and-sacrifice Memorial Day messaging. The right is not engaging with this framing at all, which means the accountability question (why capable identification technology isn&#x27;t being used) is not getting adversarial scrutiny that would sharpen or deflate the story.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Cuba foreign influence campaign</span><span class="entity-tag">Newark ICE protest</span><span class="entity-tag">Federal facility access</span></div>
+  <div class="connection-text">The right is exclusively covering Cuba&#x27;s foreign influence operations penetrating American civil society (unions, activist networks) while simultaneously the left is exclusively covering federal agents blocking American elected officials from entering federal facilities. Both stories are about unauthorized access and control — but inverted: foreign actors gaining inappropriate access vs. American officials being denied appropriate access.</div>
+  <div class="connection-sig">↳ The asymmetry is ideologically coherent for each side but produces a composite blind spot: neither side is asking the combined question of whether federal facility opacity that blocks oversight is the same opacity that enables foreign influence operations to go undetected. These stories should be in conversation with each other.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Executive branch non-accountability is the meta-theme cutting across today&#x27;s disparate stories: ICE blocking a governor, federal agents pepper-spraying a senator, a Senate oversight chair being primaried, an Iran deal materializing without congressional visibility, and FISA declassification being weaponized. These are individually framed as an immigration story, a primary story, a foreign policy story, and an intelligence story — but they share a single structural throughline of shrinking checks on executive discretion.</div>
+<div class="pattern-item">Memorial Day is being used as a simultaneous political battlefield by both sides, but toward opposite ends: the right deploys it for patriotic-military framing (WWII remains, soldier identification, Indo-Pacific allies) while the left deploys it for federal accountability framing (ICE protests on Memorial Day, Pentagon failure to identify unknown soldiers). The holiday is functioning as a dual narrative amplifier rather than a shared civic moment.</div>
+<div class="pattern-item">Three separate stories (AI Super PAC funding primaries, OpenAI IPO preparation, tech sector sanctuary city airport threats) converge on a single structural question: the tech industry is simultaneously seeking favorable regulatory treatment from the Trump administration while funding its political infrastructure and being threatened by it as leverage. The industry is in a protection racket dynamic that none of the individual stories name.</div>
+<div class="pattern-item">Foreign policy accountability is fragmenting across multiple simultaneous theaters — Iran deal, Ukraine escalation (Russia warning foreign nationals to leave Kyiv), Indo-Pacific ally hedging — while domestic political attention is entirely absorbed by the Texas primary. The Shangri-La Dialogue story (right-only) and the Ukraine attack story together suggest allies are actively recalibrating away from US reliability. This recalibration is happening in a news environment where the audience most likely to demand response (the right) is focused on domestic loyalty politics.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Texas Senate primary story appears as an entity anchor in nearly every single cross-story entity network entry — an artifact that suggests the entity extraction methodology is conflating it with other stories, OR that right-wing media is systematically cross-promoting the primary race as a lens through which to read all other political news. If the latter, this is a narrative saturation strategy: make every story about whether you&#x27;re with Trump or against him.</div>
+<div class="anomaly-item">Fox News omitting the pepper-spraying of Senator Andy Kim is not a framing choice — it is the suppression of a factually verifiable, legally significant event involving a sitting US Senator and federal agents. This is qualitatively different from spin. A senator being pepper-sprayed by agents of the executive branch while exercising oversight authority is a constitutional confrontation, and its absence from the dominant right-wing outlet on Memorial Day, when the network was covering other detention/immigration stories, is a deliberate editorial decision whose purpose is to prevent the event from becoming a rallying image.</div>
+<div class="anomaly-item">The Iran deal is right-only coverage framed as &#x27;disappearing and reappearing.&#x27; An Iran nuclear agreement being actively negotiated by a Republican administration should generate significant cross-spectrum coverage — particularly from a left that spent years defending the JCPOA. The left&#x27;s total silence on the Iran deal today is anomalous and suggests either: (a) the deal is less substantive than right-wing framing implies, (b) left media has made a tactical decision not to give Trump a foreign policy win by covering it, or (c) there is uncertainty about the deal&#x27;s content that makes it difficult to frame. Any of these explanations is strategically significant.</div>
+<div class="anomaly-item">The Tulsi Gabbard FISA declassification story is right-only and framed as a final act against the &#x27;deep state.&#x27; Gabbard&#x27;s FISA move on her way out of government suggests she anticipated being removed or resigned with advance notice — the timing of &#x27;last action&#x27; framing warrants scrutiny. If she had been planning this disclosure for weeks, what was she waiting for, and what changed the calculus now.</div>
+<div class="anomaly-item">Both left-only stories about immigration court speed-up tactics and truck driver license restrictions share a structural characteristic: they describe federal administrative changes affecting specific populations (immigrants, foreign-born commercial drivers) that produce no dramatic confrontation image — unlike the Newark pepper-spray incident. These are process stories about systematic policy implementation that lack the visual event needed to break through, which may explain left-only coverage despite high operational significance.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically ignoring the AI Super PAC story, the Iran deal, and the Cuba foreign influence campaign — three stories that, if covered, would complicate their preferred frames (AI as neutral/progressive, Trump as foreign-policy incompetent, and foreign influence as a Republican-only concern). The right is suppressing the pepper-spraying of Senator Kim and the congressional oversight access story entirely, which suggests a coordinated editorial decision to prevent a Memorial Day visual — federal agents attacking a senator at a detention facility — from becoming the dominant image of the week. The combined avoidance pattern indicates both sides are protecting specific assets: the left is protecting its relationship with the tech sector and its foreign-policy credibility; the right is protecting the optics of federal enforcement behavior on a patriotic holiday.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Immigration courts are using a new tactic to speed up deportations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Some MAHA backers grow frustrated with Trump&#x27;s health policies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Travel industry worries after Trump administration reiterates threat to sanctuary city airports</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Explosion threat at southern California chemical tank eliminated, firefighters say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas officers rescue infant from car trapped in floodwaters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Remains of US soldier killed in WWII returned to Pennsylvania after 80 years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Delivery robots are spreading across LA. Residents ‘both pity and hate them’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Truck drivers say ‘racism’ behind Trump administration’s license restrictions on immigrants</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› These Photos Reveal Strange Sea Creatures Scientists Have Never Seen Before</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Pentagon Could Name Thousands of Unknown Soldiers. Families Want to Know Why It Hasn’t.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside Cuba’s foreign influence campaign: From the Venceremos Brigade of the 1960s to Saturday in a union hall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump-backed candidates score major boost from deep-pocketed AI Super PAC in upcoming primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Battle for Independence Park</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Uncertainty at Shangri-La: Will America’s Indo-Pacific Allies Hedge?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Disappearing Reappearing Iran Deal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tulsi Gabbard&#x27;s Last Action Against the Deep State: What a FISA Court Declassification Could Mean</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AUDIO: ESPN Softball Broadcast Marred by Extremely NSFW Moment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rays&#x27; Wander Franco Found Criminally Responsible on Minor Sex Abuse Charge, Avoids Jail Time</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Cornyn campaign response to Paxton momentum and any Republican senator statements about the race — if sitting senators remain silent, it confirms the chilling effect is already operational before the vote</div>
+<div class="watch-item">Senate Intelligence Committee scheduling and staff activity this week — any postponed hearings or staff departures would indicate Cornyn is treating his tenure as potentially terminal</div>
+<div class="watch-item">Iran deal specific text or framework, if leaked — the right-only coverage suggests a document or negotiating framework exists; watch for State Department or Israeli government sourcing on deal structure</div>
+<div class="watch-item">Andy Kim pepper-spray incident: watch for (a) DHS/CBP statement or silence on the incident, (b) any Senate response or censure motion, and (c) whether the image surfaces in campaign advertising — the political weaponization timeline will reveal whether Democrats are treating this as an accountability story or a fundraising asset</div>
+<div class="watch-item">AI Super PAC donor disclosure filings — the &#x27;deep-pocketed&#x27; framing without named donors in the right-only story suggests filings are pending or being scrutinized; the specific connection between Super PAC donors and OpenAI/AI sector investment portfolios is the key link to establish</div>
+<div class="watch-item">Gabbard FISA declassification: the specific documents or surveillance targets named in any release will determine whether this is a legitimate civil liberties action or targeted political retaliation against named individuals</div>
+<div class="watch-item">Shangri-La Dialogue official statements from Japan, South Korea, Australia, and Philippines delegations — any language about &#x27;strategic autonomy&#x27; or &#x27;hedging&#x27; in official communiqués confirms the Indo-Pacific realignment story has moved from analysis to policy</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
