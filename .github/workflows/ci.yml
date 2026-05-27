@@ -18,6 +18,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Full history required for SonarQube blame data
+          fetch-depth: 0
 
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
@@ -30,3 +33,9 @@ jobs:
 
       - name: Run tests
         run: python -m pytest
+
+      - name: SonarQube Cloud scan
+        if: matrix.python-version == '3.11'
+        uses: SonarSource/sonarqube-scan-action@v5
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

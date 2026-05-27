@@ -1,7 +1,8 @@
 # Signal — Political Intelligence Pipeline
 
 [![CI](https://github.com/flexrpl/signal/actions/workflows/ci.yml/badge.svg)](https://github.com/flexrpl/signal/actions/workflows/ci.yml)
-[![Coverage](https://img.shields.io/badge/coverage-91%25-brightgreen)](tests/README.md)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
 
 [![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
 
