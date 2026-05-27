@@ -456,6 +456,7 @@ class TestLlmCallClaude:
         mock_proc = MagicMock()
         mock_proc.returncode = 1
         mock_proc.stderr = ""
+        mock_proc.stdout = ""
         mock_run.return_value = mock_proc
 
         with pytest.raises(RuntimeError, match="Claude CLI non-zero exit"):
