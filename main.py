@@ -276,6 +276,13 @@ def _update_index(
   .card.weekly .card-title {{ color: var(--gold); }}
   .card-meta {{ font-size: 12px; color: var(--muted); font-family: var(--mono); }}
   .card.archive .card-title {{ color: var(--text); }}
+  .rss-bar {{ margin-top: 36px; text-align: center; }}
+  .rss-link {{ display: inline-flex; align-items: center; gap: 7px;
+               font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+               color: var(--muted); text-decoration: none; border: 1px solid var(--border);
+               border-radius: 6px; padding: 7px 14px; transition: border-color .15s, color .15s; }}
+  .rss-link:hover {{ border-color: #f0822a; color: #f0822a; }}
+  .rss-icon {{ width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }}
 </style>
 </head>
 <body>
@@ -290,6 +297,14 @@ def _update_index(
         <div class="card-label">History</div>
         <div class="card-title">Browse Past Briefs</div>
         <div class="card-meta">All previous reports</div>
+      </a>
+    </div>
+    <div class="rss-bar">
+      <a href="feed.xml" class="rss-link">
+        <svg class="rss-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+        </svg>
+        Subscribe via RSS
       </a>
     </div>
   </div>
@@ -458,6 +473,12 @@ def _update_index(
            font-size: 12px; color: var(--muted); text-decoration: none;
            border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; }}
   .back:hover {{ color: var(--accent); border-color: var(--accent); }}
+  .rss-link {{ display: inline-flex; align-items: center; gap: 7px; margin-top: 12px;
+               font-family: var(--mono); font-size: 11px; letter-spacing: .12em;
+               color: var(--muted); text-decoration: none; border: 1px solid var(--border);
+               border-radius: 6px; padding: 7px 14px; transition: border-color .15s, color .15s; }}
+  .rss-link:hover {{ border-color: #f0822a; color: #f0822a; }}
+  .rss-icon {{ width: 13px; height: 13px; fill: currentColor; flex-shrink: 0; }}
 </style>
 </head>
 <body>
@@ -469,6 +490,12 @@ def _update_index(
   <div class="summary">{summary_line} — grouped by week</div>
   {"".join(week_sections_html)}
   <a href="index.html" class="back">▸ Back to home</a>
+  <a href="feed.xml" class="rss-link">
+    <svg class="rss-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+    </svg>
+    Subscribe via RSS
+  </a>
 </div>
 </body>
 </html>
