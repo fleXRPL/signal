@@ -15,7 +15,3 @@ A few ideas worth considering, roughly in order of value-to-effort:
 1. **Entity frequency tracking** — extend the DB to count how many times each named entity appears across runs, and surface a "Trending Actors" section in the weekly: who appeared in the most stories this week vs. last week. This feeds naturally into the monthly Emerging Actors section.
 
 2. **Sentiment trend chart** — a simple static SVG or JS sparkline on the archive page showing daily sentiment polarity over time. Adds longitudinal visual context that's currently invisible.
-
-**My honest recommendation:** RSS feed and GitHub Actions CI are quick wins that make the reference repo more complete and polished. Entity tracking is the one that adds the most analytical depth to the intelligence hierarchy you're building. The other two are nice-to-have.
-
-Want to tackle any of these, or add them to the roadmap for later?
