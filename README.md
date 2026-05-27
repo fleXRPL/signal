@@ -1,5 +1,9 @@
 # Signal — Political Intelligence Pipeline
 
+[![CI](https://github.com/flexrpl/signal/actions/workflows/ci.yml/badge.svg)](https://github.com/flexrpl/signal/actions/workflows/ci.yml)
+[![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
+
 [![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
 
 A five-pass analysis pipeline that ingests political news across the full spectrum, finds non-obvious patterns and connections, and generates an analyst-style intelligence brief rather than a news summary.
@@ -115,17 +119,25 @@ SELECT count(*), source_name FROM articles GROUP BY source_name;
 
 ```bash
 signal/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml         # pytest on every PR + push to main
+│       └── static.yml     # GitHub Pages deploy on push to main
 ├── config/
 │   └── sources.yaml       # feed list + model config
-├── signal/
+├── pipeline/
 │   ├── __init__.py
 │   ├── store.py           # SQLite persistence
 │   ├── collector.py       # RSS + article scraping
 │   ├── prompts.py         # all LLM prompts
 │   ├── analyzer.py        # 5-pass analysis pipeline
-│   └── reporter.py        # HTML report generation
+│   ├── reporter.py        # HTML report generation
+│   ├── weekly.py          # Pass 6 — weekly synthesis
+│   └── feed.py            # RSS 2.0 feed generator
+├── tests/                 # pytest suite (164 tests, 91% coverage)
 ├── reports/               # output reports (gitignored)
-├── main.py                # entry point + venv bootstrap
+├── main.py                # entry point
+├── pytest.ini
 ├── requirements.txt
 └── signal.db              # runtime database (gitignored)
 ```
