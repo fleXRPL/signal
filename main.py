@@ -222,6 +222,7 @@ def _update_index(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Political Intelligence Pipeline</title>
+<link rel="alternate" type="application/rss+xml" title="Signal — Political Intelligence Pipeline" href="https://flexrpl.github.io/signal/feed.xml">
 {ga_head}
 <style>
   :root {{
@@ -411,6 +412,7 @@ def _update_index(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signal — Brief Archive</title>
+<link rel="alternate" type="application/rss+xml" title="Signal — Political Intelligence Pipeline" href="https://flexrpl.github.io/signal/feed.xml">
 {ga_head}
 <style>
   :root {{
@@ -473,6 +475,10 @@ def _update_index(
 """,
         encoding="utf-8",
     )
+
+    # ── feed.xml ──────────────────────────────────────────────────────────────
+    from pipeline.feed import generate_feed
+    generate_feed()
 
 
 def main() -> None:
