@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-28 13:18 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-28 13:18 UTC</span>
+    <span class="pill">86 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">1 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on May 28, 2026 is operating across three simultaneous axes that are not being analyzed together. First, the United States is conducting active lethal military operations in at least two theaters — strikes against Iran and an ongoing Pacific drug interdiction campaign approaching 200 deaths — without any visible congressional authorization debate, legal framework story, or public accountability mechanism. This is not a rhetorical absence; it is a structural one. The constitutional question is simply not being asked. Second, the domestic electoral architecture for 2026 is being actively redrawn in real time through three distinct mechanisms — candidate selection via Trump-endorsed primaries (Paxton), judicial map-fixing via a pending SCOTUS redistricting case (Alabama), and administrative district redrawing affecting millions of voters — all moving in the same direction simultaneously. Third, institutional credibility is eroding across multiple vectors at once: legacy press under litigation pressure, universities under legislative attack, scientific consensus bodies under a cabinet official whose past statements are about to be tested by a real outbreak.</p>
+<p>Ken Paxton&#x27;s primary victory over John Cornyn is the day&#x27;s most visible story but not its most consequential. The result confirms that Trump&#x27;s endorsement now reliably terminates four-term Senate incumbents. What matters downstream is not the horse race — Texas&#x27;s structural lean makes Talarico a genuine underdog regardless of Paxton&#x27;s baggage — but the signal it sends to every sitting Republican senator: challenge is fatal. That signal reshapes Senate caucus behavior on Iran, on the budget, on NATO, more than any single vote.</p>
+<p>The Iran situation has crossed a threshold. This is no longer a negotiation story with military backdrop. Active strike exchanges are occurring. More critically, Trump&#x27;s reported threat to &quot;blow up&quot; Oman — historically the only functioning back-channel between Washington and Tehran, active since at least 2012 — suggests either the diplomatic off-ramp is being deliberately closed or someone in the administration does not understand what they are threatening. Neither explanation is reassuring. The simultaneous Pentagon drawdown on NATO commitments indicates resource and attention repositioning toward the Middle East that is structural, not rhetorical.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is running two parallel campaigns simultaneously: consolidating Senate composition through primary endorsements (Paxton, and the lesson Cornyn&#x27;s loss sends to every remaining moderate Republican) while using litigation as media pressure (the refiled WSJ/Epstein suit). These are not separate activities. The lawsuit targets the Murdoch empire&#x27;s editorial independence at the precise moment the Wall Street Journal published an anti-tariff editorial. The timing is a message, not a coincidence.</p>
+<p><strong>Ken Paxton</strong> arrives in a general election contest as a uniquely damaged candidate who nonetheless represents a proven template: use the law office as personal shield, survive through aggressive counterattack, leverage loyalty to Trump as the primary credential. His AG tenure in Texas essentially prototyped what Trump is now applying at the federal level. His victory matters less as an electoral event than as a validation of that model.</p>
+<p><strong>J.D. Vance</strong> is conducting the most disciplined 2028 positioning operation currently visible. Every enforcement action — including today&#x27;s federal landlord fraud crackdown — has a dual function: genuine policy action and resume construction. The landlord fraud portfolio is specifically targeted at housing-cost-burdened working-class voters who are, per separate reporting today, showing measurable erosion in Trump support. Vance is building credentials with exactly the constituency showing fatigue with Trump, without triggering national media scrutiny because the stories are landing in right-only outlets.</p>
+<p><strong>RFK Jr.</strong> is entering the most consequential test of his tenure. His past &quot;Ebola scam&quot; comments are surfacing as Ebola spreads. His response in the next 72 hours will either validate or destroy his credibility as a public health official in a way that no amount of prior controversy has managed. The institutional infrastructure around him — public trust in universities, scientific consensus, the broader health authority ecosystem — has been systematically softened by the ambient information environment he helped create. That softening cuts both ways: it may protect him from accountability even if he fails the test.</p>
+<p><strong>Oman</strong> is the actor most worth watching that no one is watching. A small Gulf state serving as the secret U.S.-Iran diplomatic conduit is reportedly being threatened by the U.S. president. If Oman&#x27;s mediating role collapses, there is no quiet channel to de-escalate. The right-media silence on this story is not explainable by ideology alone.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The largest single story not being covered is the simultaneous U.S. military engagement in multiple theaters without congressional debate. The Pacific drug interdiction campaign has killed nearly 200 people. By comparison, Obama-era drone strikes at a fraction of that death toll generated sustained coverage of legal authority, rules of engagement, and oversight. The absence of that framework story here — from any outlet, left or right — is anomalous to the point of being remarkable. Both sides appear to have silently agreed not to raise the authorization question.</p>
+<p>The right is suppressing three categories today: active U.S. military lethality and its legal basis, domestic budget failures under the current administration (homeless veterans funding at zero), and any story that creates accountability friction for Trump&#x27;s foreign policy. Notably, the Jill Biden stroke story — which validates the central Republican 2024 narrative about Biden&#x27;s cognitive fitness — is not being prominently amplified by right-media. This inversion is suspicious. The most plausible explanation is that right-media has moved on from Biden and does not want to revisit 2024, or that amplifying it would introduce sympathetic Jill Biden framing that complicates the preferred &quot;Democrats deliberately hid his decline&quot; narrative.</p>
+<p>The left is covering the Biden concealment story primarily through a sympathetic lens that obscures the institutional accountability question: which Democratic officials knew, when did they know it, and what decisions were made on the basis of concealing it. The left is also not engaging with the NATO drawdown story or its strategic logic — treating it as an isolated Trump preference rather than a coherent repositioning of U.S. military attention toward the Middle East that has operational implications.</p>
+<p>The Google/Polymarket insider trading prosecution is receiving no right-media coverage. Polymarket was aggressively promoted by right-media during 2024 as a superior signal to polls. A DOJ prosecution suggesting its integrity was compromised should be significant news for that constituency. Its absence from right outlets suggests either active management of the story or recognition that its implications for the 2024 election narrative are too uncomfortable.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Paxton primary win, the Alabama SCOTUS redistricting request, and the midterm redistricting coverage all dropped on the same day. These are three distinct mechanisms — candidate selection, judicial map-fixing, and administrative district redrawing — moving in the same direction before 2026. No single outlet is connecting them. Together they represent a comprehensive pre-election reshaping of who votes effectively. Democrats are covering redistricting; Republicans are not, which suggests the GOP is satisfied with the current trajectory and prefers it to proceed without public scrutiny.</p>
+<p>The Trump WSJ lawsuit, the &quot;paid protesters&quot; framing at Delaney Hall, the Fox poll on collapsing faith in higher education, and the Charlie Kirk Heritage Act for schools all appeared today. Each targets a different node in the information production chain: legacy press, protest coverage, universities, K-12 curriculum. This is almost certainly not centrally coordinated, but it produces a coherent pressure environment on the institutions that generate and validate public knowledge. The effect of uncoordinated simultaneous pressure on multiple credibility nodes is structurally similar to coordinated attack.</p>
+<p>The Vance landlord fraud story and the Washington Post working-class Trump erosion story are covering the same underlying economic stress from opposite directions. Neither outlet is synthesizing them. Vance is building credentials with exactly the voters the WaPo story identifies as souring on Trump. This is either very good political intelligence on Vance&#x27;s part or a coincidence — but the pattern has repeated enough times to warrant the former assumption.</p>
+<p>The California billionaire dynamic is a compressed version of the national Democratic tension: Tom Steyer is breaking ad spending records in the governor&#x27;s race on the same day a separate analysis argues billionaire taxes would harm California. A party that nominally supports wealth taxation while its candidates depend on billionaire ad spending faces a visible credibility problem that the California stories, read together, expose clearly.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Oman State Department communications, next 48 hours.</strong> Any formal Omani government response to Trump&#x27;s &quot;blow up&quot; threat, or any U.S. diplomatic walkback, will confirm whether the Iran back-channel is being intentionally closed. The absence of a correction is itself the signal — it means the channel is gone.</p>
+<p><strong>RFK Jr. HHS actions on Ebola, next 72 hours.</strong> Any public health emergency declaration, travel advisory, or agency guidance. His past &quot;scam&quot; comment creates a documented credibility conflict. This is his first real-time outbreak test; watch for institutional response versus political deflection.</p>
+<p><strong>Iran framework document sourcing.</strong> Whether any outlet publishes actual text of a proposed deal framework. Right and left are covering Iran from opposite directions without shared sources. The first document leak will reveal which side of the negotiation is trying to blow it up.</p>
+<p><strong>Cornyn&#x27;s Senate calendar through June 10.</strong> Committee hearing schedules, bipartisan bill co-sponsorships, or staff departures. A four-term incumbent&#x27;s post-defeat posture — lame duck versus legacy-building — is a real governance question that is entirely absent from current coverage and will reveal itself quickly.</p>
+<p><strong>Alabama SCOTUS redistricting.</strong> Any oral argument scheduling or emergency stay decision before the July 4 recess. The outcome directly affects 2026 House math in ways that neither side is currently synthesizing publicly.</p>
+<p><strong>Polymarket DOJ discovery timeline.</strong> Whether the Google insider trading prosecution surfaces evidence of systematic prediction market manipulation during the 2024 cycle. If it does, the political implications are significant for both parties&#x27; 2024 narrative.</p>
+<p><strong>Pacific drug interdiction legal challenge.</strong> Any ACLU filing, progressive caucus letter, or federal court action challenging strike authority. At 200 deaths, litigation is overdue. Its continued absence is a signal that either no one with standing is willing to file, or the cases are being managed before they become public.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that explains today&#x27;s otherwise fragmented picture is this: the United States is operating without functional accountability infrastructure across multiple critical domains simultaneously, and both parties have tacitly accepted this condition for different reasons. The right benefits from unquestioned executive military authority and wants no oversight framework for Iran or the Pacific. The left is institutionally committed to not relitigating Biden-era concealment in a way that implicates Democratic officials. The press is under direct litigation pressure from the WSJ suit. Congress is either pacified by Trump&#x27;s primary demonstration on Cornyn or engaged in 2028 positioning. The result is a moment where active military operations proceed without authorization debate, electoral infrastructure is being redrawn without synthesis coverage, and the one diplomatic off-ramp for the most dangerous foreign policy situation — Oman&#x27;s back-channel role — is being threatened by the president with essentially no public processing. The day&#x27;s noise is about Paxton and Biden&#x27;s health; the signal is that no one with institutional authority is asking the constitutional questions that the current moment requires.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Ken Paxton defeated incumbent Senator John Cornyn in the Texas Republican Senate primary runoff, setting up a general election contest against Democrat James Talarico in fall 2026.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (11)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.2;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:29.7;" title="center-left: 11"></div><div class="bias-segment" style="background:#e05252; flex:5.4;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:18.9;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:18.9;" title="left: 7"></div><div class="bias-segment" style="background:#a07ae0; flex:5.4;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:5.4;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The factual core is straightforward: Trump&#x27;s endorsement powered Paxton to an upset of a four-term incumbent, creating a general election matchup Democrats believe favors them due to Paxton&#x27;s unusually high scandal baggage. Whether that optimism is warranted depends heavily on Latino turnout and whether Paxton&#x27;s controversies override Texas&#x27;s structural Republican lean — a question the data cannot yet answer. Both sides are selectively amplifying the facts that confirm their preferred narrative while suppressing the structural uncertainties that make the race genuinely hard to call.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Paxton&#x27;s win as both a symptom of Republican institutional decay (GOP capitulating to Trump at its own expense) and a Democratic opportunity. Emphasis is on Paxton&#x27;s extensive scandal record, Trump&#x27;s consolidation of party control as a strategic vulnerability, and the historic nature of a potentially competitive Texas Senate race. Emotional register: cautious optimism mixed with alarm at GOP radicalization.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets treat the race as a genuine competitive contest without predetermined outcomes, focusing on structural variables — Latino voter turnout, Paxton&#x27;s controversies, Democratic enthusiasm metrics, and Trump&#x27;s leverage over Senate GOP leadership. The Hill frames both the opportunity for Democrats and the risks neutrally.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Paxton&#x27;s win as a Trump-powered triumph of the MAGA base over the GOP establishment, and pivot quickly to attacking Talarico as culturally out-of-step with Texas and implicitly pro-illegal immigration. Talarico&#x27;s election integrity claims are discredited as pretextual. Emotional register: triumphalism about primary results, preemptive delegitimization of the Democratic nominee.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not report the RNC&#x27;s specific allegation that Talarico supports non-citizen voting, which Fox News uses to frame his election integrity claims. Left outlets also underplay Cornyn&#x27;s actual vote share collapse in quantitative terms, focusing instead on narrative implications.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit substantive coverage of Paxton&#x27;s documented controversies (impeachment, securities fraud accusations, abuse of office allegations) that left and center outlets cite as the primary reason Democrats view him as beatable. Breitbart also omits any mention of record Democratic primary turnout numbers cited by O&#x27;Rourke as a structural signal.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump</span><span class="entity-tag">Wall Street Journal</span><span class="entity-tag">Jeffrey Epstein</span><span class="entity-tag">Ken Paxton</span></div>
+  <div class="connection-text">Trump refiles the WSJ/Epstein lawsuit on the same day Paxton — himself under sustained legal siege — wins a Trump-endorsed Senate primary. Both men have used aggressive litigation as political armor. The WSJ suit is not just about Epstein; it is a pressure campaign on the Murdoch empire&#x27;s remaining editorial independence at the exact moment Trump is installing loyalists in Senate seats. Paxton&#x27;s AG tenure pioneered the &#x27;weaponize the law office as personal shield&#x27; model Trump is now applying federally.</div>
+  <div class="connection-sig">↳ The lawsuit and the primary are not coincident — they are the same playbook at different scales. Watch whether Murdoch&#x27;s outlets (WSJ anti-tariff editorial today) begin softening criticism of Trump as the litigation proceeds.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran</span><span class="entity-tag">Oman</span><span class="entity-tag">Pentagon</span><span class="entity-tag">NATO</span></div>
+  <div class="connection-text">Three foreign policy stories running simultaneously: U.S.-Iran active strikes, Trump threatening Oman (historically the secret U.S.-Iran back-channel since at least 2012), and Pentagon slashing NATO commitments. The Oman threat is the key — it signals either the diplomatic back-channel is dead or is being deliberately destroyed to prevent a negotiated off-ramp. Simultaneous NATO drawdown suggests resources and attention are being repositioned toward the Middle East, not just rhetoric.</div>
+  <div class="connection-sig">↳ If Oman&#x27;s mediating role collapses, the U.S. has no quiet channel to de-escalate with Iran. The right&#x27;s near-total silence on the Oman threat — a left-only story — means the strategic implications are not being publicly processed.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">RFK Jr.</span><span class="entity-tag">Ebola</span><span class="entity-tag">GLP-1s</span><span class="entity-tag">Fox News Poll (higher education)</span></div>
+  <div class="connection-text">Three separate health/science credibility stories running in parallel: RFK Jr.&#x27;s past &#x27;Ebola scam&#x27; comments surfacing as Ebola actually spreads, a long-form piece questioning GLP-1 drugs despite their mainstream adoption, and a Fox poll showing collapsing faith in higher education (where scientific consensus is produced). Together these constitute a systematic erosion of institutional health authority — not from any single actor, but as an ambient information environment.</div>
+  <div class="connection-sig">↳ RFK Jr.&#x27;s credibility is about to be stress-tested by a real outbreak. The other two stories prime audiences to distrust the very institutions that would validate or counter HHS&#x27;s response. This is a structural vulnerability, not a coordinated conspiracy, but the effect is the same.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Alabama</span><span class="entity-tag">Midterm redistricting</span><span class="entity-tag">Ken Paxton</span><span class="entity-tag">Latino turnout</span></div>
+  <div class="connection-text">Alabama is asking SCOTUS to preserve a racially biased map; a separate story notes midterm redistricting has placed millions in new voting districts; Paxton&#x27;s path to victory in November depends heavily on suppressing or peeling Latino turnout. All three stories are about the pre-2026 reshaping of who votes effectively. The redistricting and Alabama SCOTUS stories are left-only — the right is not engaging with the electoral geography mechanics that will determine 2026 outcomes.</div>
+  <div class="connection-sig">↳ The structural condition of 2026 elections is being actively redrawn right now. Democrats are covering it; Republicans are not — suggesting the GOP is satisfied with the trajectory and prefers the changes to happen without scrutiny.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Vance</span><span class="entity-tag">Federal landlord fraud crackdown</span><span class="entity-tag">Emerson College Polling</span><span class="entity-tag">2028</span></div>
+  <div class="connection-text">Vance&#x27;s anti-fraud portfolio expands to the federal government&#x27;s landlord function on the same day polling shows him neck-and-neck with Rubio for 2028. The landlord story is right-only, giving it a narrowcast quality — it builds credentials with the base without triggering national media scrutiny. This is 2028 positioning disguised as enforcement action.</div>
+  <div class="connection-sig">↳ The pattern is consistent: every Vance enforcement story is also a resume item. The specific choice of federal housing/landlord fraud is notable — it targets a constituency (tenants, housing-cost-burdened voters) that overlaps with the white working-class voters currently souring on Trump per the Washington Post story.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">California</span><span class="entity-tag">Tom Steyer</span><span class="entity-tag">Billionaire Tax</span></div>
+  <div class="connection-text">Two California stories on the same day: a billionaire (Steyer) breaking ad spending records in the governor&#x27;s race, and a separate analysis arguing billionaire taxes would make California poorer. The juxtaposition exposes a Democratic Party coalition tension — billionaires funding Democratic campaigns while Democrats nominally endorse billionaire taxation. Steyer&#x27;s ad spending record makes the &#x27;billionaire tax&#x27; argument harder to make credibly.</div>
+  <div class="connection-sig">↳ This is a California-specific version of the national Democratic donor class tension. If Steyer wins the governor&#x27;s race on the back of billionaire ad spending, the party&#x27;s wealth-tax rhetoric becomes visibly performative.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pacific drug boat strikes</span><span class="entity-tag">Iran strikes</span><span class="entity-tag">Two killed</span></div>
+  <div class="connection-text">The U.S. is simultaneously running active military strike campaigns in two separate theaters: Iran and the Pacific (drug interdiction, approaching 200 deaths). The Pacific campaign is left-only and deeply buried. Both involve lethal use of force under contested legal authority. The near-200 death toll in the Pacific is receiving essentially no mainstream coverage relative to its scale.</div>
+  <div class="connection-sig">↳ A military campaign that has killed nearly 200 people with no congressional authorization debate, no prominent right-wing coverage, and no legal framework story is a major accountability gap. The Iran coverage crowds out the Pacific story even among left outlets.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">ELECTORAL INFRASTRUCTURE LOCKDOWN: Paxton primary win, Alabama SCOTUS redistricting request, and midterm redistricting story all dropped simultaneously. Together they represent three distinct mechanisms — candidate selection, judicial map-fixing, and administrative district redrawing — all moving in the same direction before 2026. No single outlet is connecting these three threads.</div>
+<div class="pattern-item">MEDIA INTIMIDATION STACK: Trump&#x27;s WSJ lawsuit, the &#x27;paid protesters&#x27; framing at Delaney Hall, the Fox poll on higher education collapse, and the Charlie Kirk Heritage Act for schools all appeared today. Each targets a different node in the information production chain — legacy press, protest coverage, universities, and K-12 curriculum. The stacking is likely not coordinated but produces a coherent pressure environment.</div>
+<div class="pattern-item">WORKING-CLASS ECONOMIC ANXIETY CONVERGENCE: White working-class souring on Trump, gas prices driving swing voter calculations, and three separate tariff/economic arguments all surface today. The right-only tariff piece and the left-only working-class defection story are covering the same underlying economic stress from opposite directions — neither side is synthesizing them.</div>
+<div class="pattern-item">SIMULTANEOUS MILITARY ESCALATION WITHOUT DEBATE: Iran strikes, Oman threats, Pacific drug boat deaths, and Pentagon NATO drawdown all appeared today without any corresponding congressional authorization or oversight story. The U.S. appears to be conducting active lethal operations in multiple theaters under no visible legal framework debate — and neither side is raising the constitutional question.</div>
+<div class="pattern-item">LEADERSHIP VACUUM NARRATIVE: Jill Biden&#x27;s stroke revelation, Trump&#x27;s working-class base erosion, Cornyn&#x27;s lame-duck status, and Biden cognitive decline confirmation all appeared today. The net effect — regardless of partisan framing — is a picture of leadership failure on both sides simultaneously, which historically precedes either institutional crisis or outsider-candidate emergence (relevant to the 2028 Vance/Rubio polling).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">OMAN THREAT IS LEFT-ONLY AND BURIED: Trump threatening to &#x27;blow up&#x27; Oman — the country that has historically served as the secret diplomatic back-channel for U.S.-Iran negotiations — is one of the most consequential foreign policy stories of the day. It appears only in left outlets and receives no entity-network amplification. If genuine, this is not a diplomatic gaffe; it is the deliberate destruction of the only off-ramp available in the current Iran escalation. Right-side silence is not explainable by ideological preference alone — it suggests either the story is being actively suppressed in right-media or the right&#x27;s Iran hawks want the back-channel closed.</div>
+<div class="anomaly-item">PACIFIC DRUG BOAT DEATH TOLL APPROACHING 200 WITH NO LEGAL FRAMEWORK STORY: An ongoing U.S. military campaign has killed nearly 200 people. It is left-only, receives no entity network amplification, and — critically — has generated zero stories about authorization, rules of engagement, or oversight. By comparison, drone strikes in the Obama era generated sustained legal and political coverage at far lower death tolls. The absence of a legal/oversight story is more anomalous than the strikes themselves.</div>
+<div class="anomaly-item">JILL BIDEN STROKE CLAIM IS COVERED BY LEFT OUTLETS, NOT AMPLIFIED BY RIGHT: A revelation validating the Republican 2024 narrative about Biden&#x27;s cognitive fitness is appearing primarily in center-left and left outlets. Right outlets are not prominently amplifying it. This inversion is suspicious — the story should be catnip for right-media. Possible explanations: (1) right-media has moved on from Biden and doesn&#x27;t want to revisit 2024; (2) the story has a framing element damaging to right-media figures; (3) amplifying it would complicate the &#x27;Democrats hid his decline&#x27; narrative by introducing sympathetic Jill Biden framing.</div>
+<div class="anomaly-item">GOOGLE POLYMARKET INSIDER TRADING STORY HAS NO RIGHT-SIDE PICKUP: A DOJ prosecution of a Google employee for insider trading on Polymarket — a prediction market that became politically significant during 2024 — appears only in left-leaning outlets. Polymarket was heavily promoted in right-media as a more accurate signal than polls during 2024. A story about its integrity being compromised should generate right-media interest. Its absence suggests either the story is being quietly managed or its implications for 2024 election narrative are too uncomfortable.</div>
+<div class="anomaly-item">CORNYN LAME DUCK STATUS IS GENERATING NO GOVERNANCE STORY: Cornyn just lost a Senate primary he was expected to win. He remains a sitting U.S. Senator until January. There is no story today about what he does with his remaining tenure — no committee hearings cancelled, no bipartisan bills accelerated, no staff departure signals. A four-term incumbent&#x27;s immediate post-defeat posture is a real governance question that is entirely absent from coverage.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: active U.S. military lethality (Pacific drug boat deaths, Iran escalation mechanics, Oman back-channel destruction), domestic budget failures under Trump (homeless veterans funding zero, redistricting exposure), and any story that creates accountability friction for the current administration&#x27;s foreign policy. The left is systematically avoiding the full institutional picture of the Biden concealment story — covering it only through a sympathetic Jill Biden lens — and is not engaging with the NATO drawdown or its strategic logic. The combined avoidance pattern suggests both sides have silently agreed not to discuss the simultaneous U.S. military operations in multiple theaters without congressional debate, which is the day&#x27;s largest under-covered story.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Ohio pastor-turned-lawmaker backs a Charlie Kirk American Heritage Act for schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› These swing voters are adding high gas prices into their political calculations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump pledged to house 6,000 homeless vets. His budget funds zero</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s latest immigration move clouds the path to green cards</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Key Sens. Cruz, Cantwell look to break college sports logjam in Congress with a bipartisan bill</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Billionaire Tom Steyer&#x27;s ad spending breaks records in California governor&#x27;s race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama asks Supreme Court to allow use of congressional map helping GOP, despite racial bias ruling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› South African government, Afrikaners reject Trump administration claim of a humanitarian emergency</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Midterm redistricting has placed millions in new voting districts. Here&#x27;s where 6 state efforts stand</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump won big with the White working-class. Now they’re souring on him.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. and Iran trade fresh strikes as Trump holds to maximum demands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US neo-Nazi plotted to kill journalist who reported on him, testimony reveals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump refiles $10bn lawsuit against WSJ over report on alleged Epstein ties</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump threatens to ‘blow up’ US ally Oman amid talks over strait of Hormuz</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Two killed in US strike on another alleged drug boat in Pacific as campaign’s death toll nears 200</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jill Biden says she thought Joe Biden was having a stroke during 2024 debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Everyone’s on GLP-1s. But at What Cost?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fuel and Sewage Leaks Have Made the Potomac One of America’s Most Endangered Rivers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Oh Goody, a Trump Official Once Called Ebola a “Scam”</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal government’s landlord joins Vance fraud crackdown as White House widens hunt: &#x27;Critical force&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon slashes NATO combat commitments as Trump pushes Europe to defend itself</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› RFK Jr. responds to snake-handling critics with new video showing him wrangling a venomous rattlesnake</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump says Delaney Hall protesters are ‘paid’ as clashes escalate outside NJ ICE facility</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Seattle socialist mayor mocked for ‘irony’ as residents build walls to stop out of control shootings</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News Poll: Faith in higher education in the US is collapsing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE VIDEO: Dems slammed for demanding ‘five-star accommodations’ for illegal immigrants at ICE facility</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big loss for Democrat who wanted ‘Zionists’ in camps may still signal big trouble on horizon</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Protecting Humanness from AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Three Arguments Against Tariffs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Hermit Gets Naked, Goes Wild. Plus, the Marvel Called the Thorne Rooms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Government: Now Solving Problems You Didn’t Know You Had</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› MAID Gone Mad in Canada</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Need to Learn How to Fight Each Other</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Data Centers Aren’t the Enemy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Fight Club Briefing for Those Paying Attention: Peter Schweizer and Wynton Hall on AI, China, and the Invisible War for Global Control – May 31</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ICE Arrests Daughter of Cuban Communist Regime &#x27;Old Guard&#x27; General</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Freedom 250 Reveals Martina McBride, Flo Rida to Perform at Great American State Fair</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Oman State Department communications this week: any formal Omani government response to Trump&#x27;s &#x27;blow up&#x27; threat, or any U.S. diplomatic walkback — the presence or absence of a correction will confirm whether the back-channel is intentionally being closed</div>
+<div class="watch-item">Pacific drug interdiction campaign legal authority: ACLU, congressional progressive caucus, or any federal court filing challenging the strike authority — at 200 deaths, litigation is overdue and its absence is itself a signal</div>
+<div class="watch-item">RFK Jr. HHS Ebola response actions in next 72 hours: any public health emergency declaration, travel advisories, or agency guidance — this is his first real-time test and his past &#x27;scam&#x27; comment creates a documented credibility conflict</div>
+<div class="watch-item">Cornyn post-defeat Senate calendar through June 10: committee hearing schedules, any bipartisan bill co-sponsorships, or staff departure announcements that would reveal lame-duck vs. legacy-building posture</div>
+<div class="watch-item">Iran framework document sourcing: whether any outlet publishes actual text of a proposed deal framework — the right and left are covering Iran from opposite directions without shared sources, meaning a document exists and the first leak will reveal which side of the negotiation is trying to blow it up</div>
+<div class="watch-item">Polymarket DOJ case discovery timeline: whether the Google insider trading prosecution surfaces any evidence of systematic manipulation of prediction markets during 2024 election cycle — the political implications would be significant for both sides</div>
+<div class="watch-item">Alabama SCOTUS redistricting ruling timeline: oral arguments or emergency stay decisions expected before July 4 recess — outcome directly affects 2026 House math</div>
+<div class="watch-item">Vance anti-fraud target list: which specific landlords, housing entities, or government contractors are named in the federal landlord fraud crackdown — cross-reference against Paxton&#x27;s past AG litigation targets for overlap that would suggest coordinated legal infrastructure building</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
