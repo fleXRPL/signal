@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-30 13:02 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-30 13:02 UTC</span>
+    <span class="pill">85 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The American political moment as of May 30, 2026 is defined by a single underlying contest: the executive branch is systematically testing which federal institutions can be commandeered without legal consequence, and the judiciary is beginning to push back with enforceable rulings. The Kennedy Center decision is not primarily a cultural story — it is a separation-of-powers ruling that found the executive exceeded its statutory authority over a congressionally chartered institution. That ruling will be tested immediately. The question is not whether the administration agrees with the court; it is whether it will comply, appeal, or simply delay while building a public case against the judge personally. The speed with which right-aligned media moved to profile Judge Eleanor Ross and invoke historical impeachment precedent within hours of the ruling suggests a pre-prepared escalation playbook is already in motion.</p>
+<p>Simultaneously, the Department of Justice is under sustained accountability pressure that it is successfully containing through information control. Attorney General Bondi has refused to answer questions under oath about the Epstein investigation, acknowledged &quot;redaction errors&quot; in released materials, and faces direct demands from survivors for congressional testimony — none of which is receiving coverage in right-aligned media. That blackout is not organic editorial judgment; it is coordinated suppression of a story that would be front-page news under any prior administration. The FBI, under Patel, is providing counter-programming in the form of a high-profile child rescue operation timed to the same news cycle. Whether that timing is coincidental or managed is the single most important verification item in today&#x27;s environment.</p>
+<p>The immigration enforcement picture is fragmenting in ways that serve the administration by preventing synthesis. Three simultaneous ICE stories — a jurisdictional standoff in New Jersey, protester convictions in Washington, and agent misconduct in Minnesota — are covered by mutually exclusive outlet sets. No audience is receiving the full picture. The New Jersey situation is the load-bearing story: a state asserting authority to replace federal agents outside a federal detention facility is a meaningful constitutional escalation, not a local news item. It is being buried under the other two narratives.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The administration</strong> is operating on a theory that institutional capture is reversible only through legal challenge, and that legal challenges can be managed through judicial delegitimization before they reach verdict. The Kennedy Center ruling exposed a vulnerability: courts will enforce statutory text against executive action even in domains — cultural institutions, symbolic naming — the administration did not anticipate as legally contested terrain. The response was immediate and personal, targeting the judge rather than the legal argument, which reveals that the administration either cannot or will not engage the statutory merits.</p>
+<p><strong>Pam Bondi</strong> is the most politically exposed figure in today&#x27;s environment who is not being covered as such. A sitting Attorney General refusing congressional oversight on a high-profile investigation, acknowledged document manipulation, and survivor-driven demands for testimony constitute a genuine accountability crisis — but it is contained entirely within left-aligned media. Her continued tenure depends on that containment holding. The variable is whether any Republican member of the relevant committee breaks ranks to demand testimony; one co-sponsor on the survivors&#x27; request would collapse the firewall.</p>
+<p><strong>Kash Patel</strong> is functioning as a dual-track operator: the FBI child rescue operation provides sympathetic law enforcement optics that inoculate the DOJ brand against the Bondi accountability narrative without requiring Patel to engage it directly. The operational timing — same news cycle as congressional Epstein pressure — is too precise to treat as coincidental without verification.</p>
+<p><strong>New Jersey officials</strong> are the most aggressive state-level actors currently in play. The &quot;give them hell&quot; framing from Bovino is inflammatory theater, but the underlying jurisdictional claim — that state officials can assert authority over federal agent conduct outside a federal facility — is serious legal territory. If New Jersey&#x27;s AG files for an injunction formalizing that claim, it becomes the most consequential sanctuary-state legal action in the current enforcement cycle.</p>
+<p><strong>Josh Blackman</strong> deserves specific attention as an infrastructure actor rather than a commentator. His appearance in both the Kennedy Center coverage and a targeted &quot;What&#x27;s Next for Judge Ross&quot; piece on the same day is not coincidental public intellectualism — it is the construction of academic-legal scaffolding for a judicial targeting campaign. Blackman provides the language that migrates from National Review into congressional floor statements, which then creates the political permission structure for formal action.</p>
+<p><strong>Marco Rubio&#x27;s</strong> presence as the emotional anchor of the Cuba diaspora framing — Cubans risking repression to wish him happy birthday — is a deliberate personalization of a policy pressure campaign. The simultaneous appearance of military interdiction, Southcom diplomatic signaling, and diaspora emotional framing on the same day has the structural signature of a coordinated policy rollout pre-seed. An announcement is likely within five days.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The complete right-media blackout on Epstein-Bondi is the most significant information suppression in today&#x27;s environment. Five right and far-right outlets covered zero of the three separate accountability stories documenting a sitting Attorney General refusing congressional oversight, acknowledging document manipulation, and facing survivor demands for sworn testimony. This is not a framing difference — it is a categorical absence that would constitute a major political scandal under any prior administration. The silence is the story.</p>
+<p>The Pentagon UFC memo — documenting the use of military personnel and resources for White House entertainment — is receiving zero coverage from right-aligned outlets and no legal challenge from any institutional actor. The Kennedy Center ruling created a mechanism for judicial review of executive overreach in cultural institutions; no equivalent mechanism exists for the military context, and the left&#x27;s coverage of the UFC memo, while present, is not generating the institutional response that the Kennedy Center ruling did. The asymmetry reveals a genuine gap: courts can police statutory naming rights, but executive commandeering of military personnel for political entertainment operates in a legal vacuum.</p>
+<p>Iran has dropped entirely from coverage after elevated presence in the previous watch cycle. A full news cycle with no Iran story — no centrifuge updates, no deal-framework movement, no regional proxy activity — is not a natural lull given the pace of prior coverage. It is either a genuine pause ahead of a development, a deliberate information embargo, or both. The absence is a signal that should be tracked, not assumed away.</p>
+<p>The right is missing a genuine political realignment story in the Cuban diaspora coverage — not because the story is wrong, but because their framing of it as emotional validation for Rubio prevents analysis of why immigrant communities with lived experience of authoritarian governance are providing durable coalition support to the current administration. That realignment has 2026 electoral consequences that neither side&#x27;s current framing can accommodate. The left ignores it entirely; the right treats it as triumphalism rather than political analysis.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most significant pattern in today&#x27;s environment is the speed and coordination of judicial delegitimization as an administrative reflex. The Kennedy Center ruling dropped, and within the same news cycle: Breitbart had published the judge&#x27;s appointing president, a targeted &quot;What&#x27;s Next for Judge Ross&quot; piece invoking 2009 impeachment history was circulating, and Josh Blackman commentary was in distribution. This is not organic reaction to an adverse ruling — this is a pre-prepared response playbook executing. The 2009 impeachment reference is the tell: someone researched the last time a federal judge was successfully removed and constructed the argument before the ruling was issued, or immediately upon its release with unusual speed.</p>
+<p>The three-front Cuba narrative is the second most significant pattern. Military interdiction, Southcom diplomatic meeting, and Rubio diaspora emotional framing appearing simultaneously with no single triggering event is the characteristic structure of a policy announcement pre-seed. The Southcom meeting is particularly anomalous given the current coercive pressure posture toward Cuba — diplomatic channels do not open simultaneously with military demonstrations without a negotiating framework being constructed. Watch OFAC and State Department feeds. Something is coming.</p>
+<p>The counter-programming architecture around DOJ accountability is operating with precision. The day Bondi faces congressional pressure over Epstein files, right-aligned outlets publish: FBI child rescue win (Patel&#x27;s DOJ effective), lawfare critique of Carroll-Hoffman (DOJ persecuted), Abrego Garcia skepticism (DOJ justified). None of these stories engage the Epstein substance; all of them cast the department in a favorable or defensive light. The left runs none of the counter-programming; the right runs none of the accountability stories. The result is two completely separate DOJ realities in public discourse.</p>
+<p>The Freedom 250 situation has escalated from a watch item to apparent active collapse. The previous cycle flagged Martina McBride&#x27;s &quot;misleading&quot; language and potential FEC exposure; today&#x27;s &quot;everyone&#x27;s fleeing&quot; framing suggests the event is in genuine operational distress. The critical observation is that formal accountability mechanisms — FEC complaint, contract dispute — have not yet materialized, which means the event may implode before legal action engages. If it does, the political liability distributes to the remaining associated artists, not the administration.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Judge Ross / DOJ compliance decision (72-hour window):</strong> Whether DOJ files an emergency stay or appeal of the Kennedy Center ruling within 72 hours is the single most important near-term indicator. Compliance signals the administration will absorb this loss tactically; an emergency stay signals escalation to a constitutional standoff over congressional naming authority. The circuit assignment of any appeal matters — watch which circuit and which panel.</p>
+<p><strong>Blackman&#x27;s impeachment framing migrating to Congress (48 hours):</strong> If any House Judiciary member repeats the impeachment language about Judge Ross within 48 hours, it transitions from academic commentary to an institutional threat with potential procedural consequences. One congressional statement is the threshold. Monitor House Judiciary Republican public statements and floor remarks.</p>
+<p><strong>Bondi testimony scheduling — Republican break signal (72 hours):</strong> Whether any Republican member of the relevant oversight committee co-sponsors or vocally endorses the survivors&#x27; demand for Bondi to testify under oath. A single Republican break collapses the information containment strategy. Monitor committee member public statements, not just formal filings.</p>
+<p><strong>Patel / FBI child rescue operation — White House amplification (24 hours):</strong> Whether the FBI child rescue operation receives a presidential statement, White House social post, or press secretary mention within 24 hours. Amplification at that level confirms coordinated counter-narrative deployment against the Epstein/Bondi cycle rather than routine law enforcement publicity.</p>
+<p><strong>Cuba policy announcement (5-day window):</strong> Watch State Department statements, OFAC designation feeds, and Rubio public remarks for a Cuba-specific policy action. The three-front same-day coverage is a pre-seed pattern. The Southcom diplomatic meeting specifically suggests a negotiating track is open alongside the coercive track — watch whether the announcement, if it comes, has a carrot or only a stick.</p>
+<p><strong>New Jersey AG injunction filing:</strong> Whether New Jersey&#x27;s Attorney General files formally for an injunction against federal agents operating outside Delaney Hall without state law enforcement coordination. The legal theory deployed would establish precedent applicable to all sanctuary-state ICE operations — this is not a local story if filed.</p>
+<p><strong>Freedom 250 headliner withdrawals (48 hours):</strong> Any additional artist withdrawal announcement in the next 48 hours confirms active collapse. If a withdrawal coincides with or triggers a formal FEC complaint filing, the story upgrades from entertainment news to a campaign finance enforcement matter with direct administration exposure.</p>
+<p><strong>Iran coverage resumption:</strong> Monitor for any Iran story in either corpus within 72 hours. A resumption of coverage after a full cycle blackout typically signals either a development that can no longer be contained or a deliberate announcement sequence beginning.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is best understood as a stress test of institutional compliance with judicial authority, running simultaneously with a stress test of congressional oversight authority over the executive — and both tests are occurring in an information environment so fragmented that the public cannot synthesize the results. The administration has discovered that institutional capture, executive overreach, and accountability evasion are each individually manageable as news stories because no outlet&#x27;s audience receives all three simultaneously. The Kennedy Center ruling is significant not because of what it resolved — a naming dispute — but because it demonstrated that courts will enforce statutory limits on executive action even in domains the administration treated as politically safe terrain. The question for the next 72 hours is whether that ruling produces compliance or escalation, and whether the judicial delegitimization campaign already in motion is preparation for a confrontation the administration has already decided to initiate. If Blackman&#x27;s impeachment framing reaches a congressional floor statement before DOJ files its compliance or appeal response, the sequence of events will indicate that the confrontation has already been chosen.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Clashes between federal ICE agents and protesters outside Newark&#x27;s Delaney Hall detention center escalated into arrests, physical altercations, and a state-federal jurisdictional dispute over policing authority.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:20.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:20.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:40.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The core factual record shows a volatile confrontation with documented misconduct on at least one protester&#x27;s part and credible allegations of excessive force by federal agents — both things can be true simultaneously, which neither side&#x27;s coverage acknowledges. The more structurally significant story is the state-federal jurisdictional standoff: New Jersey asserting authority to replace federal agents outside a federal facility is a meaningful escalation in the ongoing tension between sanctuary-oriented states and federal immigration enforcement. Bovino&#x27;s &#x27;give them hell&#x27; rhetoric, while inflammatory, is a sideshow to that underlying constitutional and operational dispute.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Federal agents are portrayed as a militarized force inflicting violence on peaceful demonstrators exercising constitutional rights. State intervention is cast as heroic resistance to federal overreach. Emotional emphasis is on victim narratives — the man whose foot was run over — to generate moral outrage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill positions itself between the two poles by reporting the inflammatory Bovino rhetoric without endorsing it, acknowledging the protest-enforcement clash without assigning clear blame, and letting the provocative quote carry the story&#x27;s weight.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Protesters are framed as violent criminals and a threat to law enforcement safety. Emphasis is on specific criminal acts (biting agents, death threats) to justify and celebrate federal enforcement actions. The Acting AG&#x27;s swift response is presented as evidence of effective governance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not meaningfully address the protester arrested for biting ICE agents, the FBI arrest of a protester who made explicit death threats against an officer&#x27;s family, or the physical danger posed to federal officers during the confrontations.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage does not address the incident where a demonstrator was shoved into a truck&#x27;s wheel well and had his foot run over, does not examine whether federal force was proportionate, and largely ignores New Jersey&#x27;s state-level jurisdictional response and the legal basis for it.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge ruled that Trump&#x27;s name must be removed from the Kennedy Center within 14 days, finding that only Congress has authority to change the venue&#x27;s statutory name honoring President John F. Kennedy, and separately blocking the administration from closing the building for renovations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#e05252;">far-left (4)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:12.5;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 10"></div><div class="bias-segment" style="background:#e05252; flex:10.0;" title="far-left: 4"></div><div class="bias-segment" style="background:#3a8a52; flex:17.5;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:12.5;" title="left: 5"></div><div class="bias-segment" style="background:#a07ae0; flex:7.5;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:15.0;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The factual core is legally unambiguous: a federal court found that the executive branch exceeded its authority by renaming a congressionally chartered institution, a ruling grounded in separation of powers rather than political preference. The right&#x27;s focus on the judge&#x27;s appointing president is a distraction from the statutory question, which neither Breitbart nor Fox addresses on the merits. The left&#x27;s framing of &#x27;cultural destruction&#x27; conflates the naming dispute with broader operational disruptions at the Center, overstating what the ruling itself resolved. What actually matters is the precedent: courts are increasingly drawing lines on executive unilateralism in areas — cultural institutions, federal naming rights — that the administration may not have anticipated as legally vulnerable terrain.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the ruling as a clear, deserved legal check on executive overreach and political vanity. The emphasis is on institutional protection — the Kennedy Center as a cultural commons being weaponized for personal branding. Mother Jones goes furthest, treating the renaming as cultural vandalism with lasting harm to DC arts life. The Guardian highlights the irony of Trump pivoting from Iran diplomacy to defending a naming dispute.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (NPR, PBS, The Hill) treat the ruling as a newsworthy but procedurally straightforward legal development. PBS frames it as a court protecting a cultural institution; NPR emphasizes the statutory reasoning. Neither editorializes heavily. The Hill does not appear to cover the Kennedy Center ruling in the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News does not cover the Kennedy Center ruling in the provided sources, which is itself significant. Breitbart covers it but leads with judicial overreach and the judge&#x27;s Democratic appointment, framing the ruling as political rather than legal. Trump&#x27;s Truth Social reaction is elevated as a substantive response rather than treated as noise.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not address the substance of the Kennedy Center&#x27;s stated renovation rationale — whether the planned closure for repairs had legitimate operational justification independent of the naming dispute. They also do not engage with the argument that blocking the closure itself (not just the name) may be a more complex judicial intervention.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets (primarily Breitbart) do not engage with the core statutory argument — that Congress, not executive appointees or a presidential board, holds the authority to rename a federally chartered institution. The legal basis for the ruling is treated as secondary to the political identity of the judge. Fox News&#x27;s silence on the story is a notable omission given the story&#x27;s prominence across all other outlets.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Los Angeles Mayor Karen Bass faces a competitive June 2 primary reelection bid amid criticism over her handling of wildfires and homelessness, while outsider candidate Spencer Pratt has emerged as a notable fundraising presence.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Both outlets are covering the same race but effectively different stories: PBS is covering an incumbent&#x27;s accountability moment, Fox is covering an insurgent&#x27;s rise. The material fact both obscure is the same — whether Bass&#x27;s actual policy record warrants reelection. Pratt&#x27;s fundraising edge is a data point worth scrutiny, but Fox&#x27;s framing inflates its electoral meaning while PBS ignores it entirely, leaving readers of either outlet with an incomplete picture of a consequential local race.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS centers the narrative on Bass as a flawed but self-aware leader facing historic challenges, positioning her accountability as political strength and framing the race as a test of whether voters will give a struggling mayor grace for circumstances beyond her control.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinctly center outlet was represented in this sample; PBS NewsHour is classified center-left and functions as the closest proxy, focusing on electoral accountability rather than partisan attack.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox sidesteps Bass&#x27;s incumbency narrative entirely, instead elevating Pratt as a disruptive outsider with real momentum, using fundraising numbers and celebrity endorsements to signal that the establishment is vulnerable — a classic populist-vs-elite frame.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS does not report on Pratt&#x27;s fundraising performance relative to Bass, nor does it engage with the competitive field dynamics that Fox highlights — omitting the possibility that Bass faces a genuinely threatening challenger from outside traditional politics.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not engage with Bass&#x27;s record, the wildfire response, or the homelessness crisis in any substantive way — omitting the actual governing stakes of the race in favor of a celebrity-novelty narrative.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Judge Eleanor Ross</span><span class="entity-tag">Josh Blackman</span><span class="entity-tag">Kennedy Center ruling</span></div>
+  <div class="connection-text">Blackman appears in both the Kennedy Center ruling coverage AND a separate story specifically asking &#x27;What&#x27;s Next for Judge Eleanor Ross?&#x27; that references a 2009 impeachment — this is not coincidence. The right is already constructing the legal-academic scaffolding to target the specific judge who ruled against the administration, using historical impeachment precedent as a template within hours of the ruling.</div>
+  <div class="connection-sig">↳ This is the fastest indicator of whether the administration will comply with the order or escalate to judicial confrontation. The impeachment framing is not idle speculation — it is a pressure tool aimed at the judge personally, intended to signal consequences for future adverse rulings.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Kash Patel</span><span class="entity-tag">Pam Bondi</span><span class="entity-tag">Jeffrey Epstein</span></div>
+  <div class="connection-text">The FBI child predator rescue operation story (right-only, 87 children) runs on the same day as three left-only Epstein/Bondi accountability stories and Bondi&#x27;s refusal to answer questions under oath. This is a counter-narrative deployment: Patel&#x27;s FBI producing a sympathetic child-protection win provides inoculation against the DOJ accountability framing without requiring any engagement with the Epstein substance.</div>
+  <div class="connection-sig">↳ The timing is too precise to be coincidental. Watch whether Patel&#x27;s operation receives White House amplification within 24 hours — if so, it confirms coordinated message management around the Bondi-Epstein pressure cycle rather than organic news.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Cuba</span><span class="entity-tag">U.S. Southern Command</span><span class="entity-tag">Marco Rubio</span></div>
+  <div class="connection-text">Three Cuba stories break on the same day with no single triggering event: US military strikes on a boat in the Pacific (framed as drug interdiction), a Southcom commander meeting with Cuban military officials, AND a diaspora-focused story about Cubans risking repression to wish Rubio happy birthday. These are three distinct narrative registers — military, diplomatic, and emotional/human interest — deployed simultaneously.</div>
+  <div class="connection-sig">↳ This is the signature of a coordinated pressure campaign rollout. The military strike provides coercive backdrop; the Southcom meeting signals a negotiating channel is open; the Rubio birthday story personalizes the stakes for Cuban-American voters. The combination suggests an imminent Cuba policy announcement or escalation being pre-seeded in public narrative.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Newark ICE clash</span><span class="entity-tag">Washington protesters convicted</span><span class="entity-tag">ICE agent arrested (Minnesota)</span></div>
+  <div class="connection-text">Three simultaneous ICE enforcement stories with opposing valences — federal overreach (Newark), protester criminality (Washington), and agent misconduct (Minnesota shooting) — are covered in mutually exclusive partisan silos, preventing any outlet&#x27;s audience from synthesizing the full picture of ICE operational dysfunction.</div>
+  <div class="connection-sig">↳ The fragmentation is functionally useful to the administration: no single story is large enough to constitute a political crisis, yet taken together they document a pattern of systemic breakdown. The jurisdictional standoff in New Jersey is the load-bearing story, but it is being crowded out by the other two narratives in the broader news environment.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pentagon UFC memos</span><span class="entity-tag">Kennedy Center ruling</span></div>
+  <div class="connection-text">Both stories involve the executive branch treating federal institutions — a congressionally chartered cultural venue and the military — as personal/political resources. The Kennedy Center story produced a judicial rebuke; the UFC memo story is left-only and has generated no legal challenge.</div>
+  <div class="connection-sig">↳ The asymmetry reveals a gap in institutional accountability: courts can police statutory naming rights but there is no clear legal mechanism to challenge the commandeering of military personnel for White House entertainment. The UFC memo story is likely to remain a reputational rather than legal problem unless a military ethics complaint or congressional inquiry is filed.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Freedom 250 concerts</span><span class="entity-tag">Martina McBride</span></div>
+  <div class="connection-text">The previous watch list flagged Martina McBride&#x27;s &#x27;misleading&#x27; language and a potential FEC or contract dispute. Today a left-only story reports &#x27;everyone&#x27;s fleeing&#x27; the Freedom 250 concerts — suggesting the event is in active collapse, not merely contested.</div>
+  <div class="connection-sig">↳ If the event fails publicly before FEC or legal action materializes, the political liability shifts from the administration to the artists who remained associated. Watch for any remaining headliners quietly withdrawing in the next 48 hours as the collapse signal strengthens.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Judicial delegitimization as immediate administrative reflex: within the same news cycle as the Kennedy Center ruling, right-leaning outlets are already publishing the judge&#x27;s appointing president, a targeted &#x27;what&#x27;s next for Judge Ross&#x27; piece invoking impeachment history, and Josh Blackman commentary — the speed and coordination suggests a pre-prepared response playbook for adverse court decisions, not organic reaction.</div>
+<div class="pattern-item">Three-front ICE narrative fragmentation: enforcement clashes (Newark), protester convictions (Washington), and agent misconduct (Minnesota) are each covered by non-overlapping outlet sets, ensuring no audience receives the synthesis. This pattern has appeared in prior immigration enforcement cycles and functions as a de facto message management strategy regardless of whether it is deliberately coordinated.</div>
+<div class="pattern-item">Counter-programming around DOJ accountability: on the day Bondi faces congressional pressure over Epstein files, right-aligned outlets publish an FBI child rescue win, a lawfare critique of the Carroll-Hoffman case, and Abrego Garcia skepticism — all DOJ-adjacent stories that cast the department as effective or persecuted rather than evasive. The left runs none of these; the right runs none of the Epstein stories.</div>
+<div class="pattern-item">Cuba pressure campaign across three narrative registers simultaneously: military interdiction, diplomatic signaling, and diaspora emotional framing all appear on the same day, which is the characteristic structure of a policy rollout pre-seeding rather than news-driven coverage.</div>
+<div class="pattern-item">Identity/culture stories cluster on right with zero left uptake: Talarico nonbinary campaign, Maine trans ballot measure, Pope Leo and LinkedIn culture critique, Abdul El-Sayed beard story, and Carroll-Hoffman lawfare all run right-only — suggesting the right&#x27;s editorial focus is on cultural consolidation while the left&#x27;s is on institutional accountability. These are genuinely parallel realities, not just framing differences.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Complete right-media blackout on Epstein/Bondi: three separate left-only stories document Bondi refusing to answer questions under oath, survivors pressing for congressional testimony, and her admission of &#x27;redaction errors&#x27; — this is a sitting Attorney General refusing congressional oversight on a high-profile investigation, and it is receiving zero coverage from any right-aligned outlet. The silence is more newsworthy than the individual stories.</div>
+<div class="anomaly-item">Spencer Pratt as a serious political fundraiser two days before the LA primary: his emergence as a notable fundraising presence in a major-city mayoral race with almost no serious policy profile is anomalous. The most likely explanations are either a protest-vote vehicle being amplified by out-of-market money, or a right-aligned investment in disrupting Bass&#x27;s accountability narrative before the vote — neither possibility is explored in either outlet covering the race.</div>
+<div class="anomaly-item">The &#x27;wildfire smoke affects sperm and embryos&#x27; story (left-only) is conspicuously soft science content in a heavy accountability-news day — its placement in a left-only slot on a day dominated by DOJ, ICE, and judicial stories suggests it may be functioning as engagement/audience-retention content rather than news judgment, which is itself a tell about how left-aligned outlets are managing reader fatigue.</div>
+<div class="anomaly-item">Iran is completely absent from today&#x27;s coverage despite being on the previous watch list for centrifuge/deal-framework tracking — a full news cycle with no Iran story after recent elevated coverage is either a genuine lull or a deliberate information pause ahead of a development. The absence is the signal.</div>
+<div class="anomaly-item">The SOUTHCOM entity appearing in the Kennedy Center entity network (per the system&#x27;s cross-story tagging) is almost certainly an artifact, but it surfaces a real gap: SOUTHCOM&#x27;s Cuba meeting is not being connected by any outlet to the broader judicial/institutional-authority stories of the day, even though both involve executive branch unilateralism in different domains.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding the Epstein-Bondi accountability story (zero coverage across five right/far-right outlets) and the Pentagon UFC memo story, both of which document institutional capture of federal bodies for personal or political use — exactly the kind of executive overreach stories the right would amplify under a Democratic administration. The pattern suggests editorial coordination around protecting the DOJ and military from accountability framing rather than organic news judgment. The left is systematically ignoring the Cuban diaspora stories and the Carroll-Hoffman lawfare critique, missing a genuine ideological story about how the administration is building durable coalitions among immigrant communities who experienced authoritarian governments — a political realignment story with 2026 electoral consequences that the left&#x27;s accountability-focused framing cannot accommodate.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bondi defends handling of Epstein investigation but admits &#x27;redaction errors&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge says New Hampshire must loosen proof-of-citizenship rules for voter registration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Bondi refused to answer any questions about Trump and Epstein files, Rep. Garcia says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Epstein survivors press Comer to interview Bondi under oath, ask about release of files</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s doctor says he is in ‘excellent health’ after latest checkup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon recruiting troops to watch White House UFC fights, memos show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tracking who Trump is appointing to fill key administration roles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What happened under Trump this week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US military strikes another boat in Pacific, bringing death toll above 200</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington state crews find body of another victim in paper mill explosion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas jury convicts Catholic priest of sexual assault after Guardian reporting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ICE agent arrested over shooting of Venezuelan man in Minnesota</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington Protesters Convicted of “Conspiracy to Impede” ICE Agents</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Everyone’s Fleeing Trump’s Freedom 250 Concerts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wildfire Smoke Is Affecting People’s Sperm and Embryos, Studies Show</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Virginia bus crash that killed five involved driver who doesn&#x27;t speak English, Sean Duffy says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem Senate hopeful Abdul El-Sayed recounts smashing vodka bottle after beard criticism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pope Leo vs. the LinkedIn Hollow Men</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tony Blair Speaks Out Against His Party — but Still Won’t Choose Honesty</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOGE Culture Fiasco, a Court Decision, and Rule by ChatGPT</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Kilmar Abrego Garcia Case Still Makes No Sense</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› James Talarico’s Nonbinary Political Campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Cuban Dream Dies by Cuban Hands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Carroll–Hoffman Lawfare Mess</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cubans Risk State Oppression to Wish Marco Rubio Happy Birthday</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Maine Official Invalidates Trans Ballot Measure but Finalizes Wording in Case of Appeal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kash Patel – The FBI Successfully Takes Down Child Predators: 87 Children Rescued in One Operation Alone</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Judge Eleanor Ross compliance deadline (14 days): whether DOJ files an emergency stay or appeal within 72 hours will reveal if the administration plans to comply or escalate to a constitutional standoff over congressional naming authority — circuit assignment of any appeal is the key variable</div>
+<div class="watch-item">Bondi congressional testimony scheduling: whether James Comer sets a firm date for Bondi to testify under oath within the next week, and whether any Republican member breaks with the committee majority to demand it — a single Republican co-sponsor on the survivors&#x27; request would be the escalation signal</div>
+<div class="watch-item">Cuba policy announcement: the three-front same-day coverage (military, Southcom, diaspora) points to an imminent announcement — watch State Department and OFAC feeds for a Cuba-specific action within 5 days, and whether it is a sanctions tightening or a negotiated framework</div>
+<div class="watch-item">Freedom 250 remaining headliners: any artist withdrawal announcement in the next 48 hours confirms collapse; simultaneous FEC complaint filing would upgrade this from entertainment news to campaign finance story</div>
+<div class="watch-item">Judge Ross impeachment language escalation: whether Blackman&#x27;s &#x27;what&#x27;s next&#x27; framing migrates from National Review into congressional Republican statements within 48 hours — if a House Judiciary member repeats the impeachment framing, it becomes an institutional threat rather than academic commentary</div>
+<div class="watch-item">Kash Patel White House amplification timing: whether the FBI child rescue operation receives a White House social post or presidential statement within 24 hours — that confirmation would establish it as a deliberate counter-narrative to the Epstein/Bondi cycle rather than routine law enforcement publicity</div>
+<div class="watch-item">OFAC Cuba sanctions follow-on: the Southcom-Cuba military meeting is anomalous given current pressure posture — watch for any OFAC designation of Cuban military or government entities within 10 days as the enforcement instrument of the diplomatic signaling</div>
+<div class="watch-item">Newark/Delaney Hall federal-state jurisdictional filing: whether New Jersey AG files for an injunction against federal agents operating outside the facility without state law enforcement coordination — the legal theory used would establish precedent applicable to all sanctuary-state ICE operations</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
