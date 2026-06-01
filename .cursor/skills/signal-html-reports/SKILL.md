@@ -7,9 +7,9 @@ description: HTML report generation conventions for Signal. Use when modifying r
 
 ## Two report types
 
-| Type | Template | Filename | Theme accent |
-|---|---|---|---|
-| Daily brief | `HTML_TEMPLATE` | `reports/brief_YYYYMMDD_HHMM.html` | Blue `#58a6ff` |
+| Type           | Template               | Filename                           | Theme accent   |
+| -------------- | ---------------------- | ---------------------------------- | -------------- |
+| Daily brief    | `HTML_TEMPLATE`        | `reports/brief_YYYYMMDD_HHMM.html` | Blue `#58a6ff` |
 | Weekly summary | `WEEKLY_HTML_TEMPLATE` | `reports/weekly_YYYYWNN_HHMM.html` | Gold `#e3b341` |
 
 Both share the same dark background (`#0d1117`) and overall CSS structure. **Do not change the color distinction without asking** — it is intentional.
@@ -30,21 +30,22 @@ rendered = HTML_TEMPLATE.format(
 ```
 
 CSS variables are defined in `:root` and referenced throughout:
+
 ```css
 :root {
-  --bg:       #0d1117;
-  --surface:  #161b22;
-  --border:   #30363d;
-  --text:     #e6edf3;
-  --muted:    #8b949e;
-  --accent:   #58a6ff;   /* blue for daily; gold #e3b341 for weekly */
-  --mono:     'JetBrains Mono', 'Fira Code', monospace;
+  --bg: #0d1117;
+  --surface: #161b22;
+  --border: #30363d;
+  --text: #e6edf3;
+  --muted: #8b949e;
+  --accent: #58a6ff; /* blue for daily; gold #e3b341 for weekly */
+  --mono: "JetBrains Mono", "Fira Code", monospace;
 }
 ```
 
 ## Report generation flow
 
-```
+```text
 brief_text (markdown)
     ↓ _parse_brief_sections()     → Dict[section_name, content]
     ↓ _render_brief_sections()    → HTML string with section divs
@@ -58,12 +59,14 @@ Weekly uses `_render_weekly_sections()` instead of `_render_brief_sections()`.
 
 1. Add the section header to the LLM prompt in `pipeline/prompts.py` (`FINAL_BRIEF`).
 2. Add a style entry to `section_styles` dict in `_render_brief_sections()`:
+
    ```python
    section_styles = {
        "NEW SECTION NAME": ("highlight", "▸"),
        # ...
    }
    ```
+
    CSS classes available: `""` (default), `"highlight"`, `"warn-section"`, `"danger-section"`.
 3. The section will render automatically — no template changes required.
 
@@ -109,7 +112,7 @@ Patch `pipeline.reporter.REPORTS_DIR` with `tmp_path` — never write to the rea
 ```python
 def test_something(self, tmp_path):
     with patch("pipeline.reporter.REPORTS_DIR", tmp_path):
-        path = generate_report(brief_text, clusters, correlation, articles, run_id, model)
+        path = generate_report(brief_text, clusters, correlation, articles, model)
     assert path.exists()
     assert "expected content" in path.read_text()
 ```

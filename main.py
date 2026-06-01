@@ -151,7 +151,12 @@ def run_signal(args: argparse.Namespace) -> None:
 
     # Generate report
     console.print("\n[bold cyan]Generating HTML report...[/bold cyan]")
-    report_path = generate_report(brief, clusters, correlation, articles, run_id, model, ga_measurement_id=ga_id)
+    report_path = generate_report(
+        brief, clusters, correlation, articles, model, ga_measurement_id=ga_id
+    )
+
+    # Generate social cards + post packages (requires playwright + .env credentials)
+    _generate_social_cards(report_path, console)
 
     # Update index.html to redirect to the latest report
     _update_index(latest_daily=report_path, latest_weekly=None, ga_id=ga_id)
@@ -159,6 +164,43 @@ def run_signal(args: argparse.Namespace) -> None:
     console.print("\n[bold green]✓ Brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
     console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
+
+
+def _generate_social_cards(report_path: "Path", console: "Any") -> None:
+    """
+    Render the three social card PNGs and write post-package JSON files.
+
+    Skips gracefully if:
+    - playwright is not installed (optional dep)
+    - brief_data.json was not written (unexpected reporter error)
+    - any individual card fails (logs warning, continues)
+    """
+    import json as _json
+    from datetime import datetime, timezone
+
+    json_path = report_path.with_suffix(".json")
+    if not json_path.exists():
+        console.print("[yellow]⚠  brief_data.json not found — skipping social cards[/yellow]")
+        return
+
+    try:
+        from pipeline.infographic import render_all_cards
+        from pipeline.social import build_post_package
+    except ImportError:
+        console.print("[dim]Social cards skipped — playwright/atproto not installed[/dim]")
+        return
+
+    brief_data = _json.loads(json_path.read_text(encoding="utf-8"))
+    date_slug  = datetime.now(timezone.utc).strftime("%Y%m%d")
+
+    console.print("[bold cyan]Generating social cards...[/bold cyan]")
+    try:
+        card_paths = render_all_cards(brief_data)
+        for slot, card_path in card_paths.items():
+            pkg_path = build_post_package(slot, brief_data, card_path, date_slug)
+            console.print(f"  [green]✓[/green] {slot.upper():4}  {card_path.name}  →  {pkg_path.name}")
+    except Exception as exc:  # noqa: BLE001
+        console.print(f"[yellow]⚠  Social card generation failed: {exc}[/yellow]")
 
 
 def _update_index(
