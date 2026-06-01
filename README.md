@@ -129,35 +129,16 @@ Three cards are generated automatically each morning and posted at scheduled tim
 | Noon | 12:00 PM | Spectrum Breakdown | Top story — how each side covers it |
 | PM | 6:00 PM | Blindspot Analysis | What each side isn't reporting |
 
-### Setup
+**Full command runbook (copy-paste setup, test, launchd, logs):**
+
+- Repo: [docs/social-cards-setup.md](docs/social-cards-setup.md)
+- Wiki: [Social-Cards](https://github.com/fleXRPL/signal.wiki/wiki/Social-Cards)
+
+Quick test after `.env` is configured:
 
 ```bash
-# Install dependencies
-.venv/bin/pip install playwright atproto python-dotenv
-.venv/bin/playwright install chromium
-
-# Configure credentials
-cp .env.example .env
-# Edit .env: add BLUESKY_HANDLE and BLUESKY_APP_PASSWORD
-
-# Load the three launchd posting jobs (one-time)
-cp scripts/com.flexrpl.signal.social.*.plist ~/Library/LaunchAgents/
-launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.am.plist
-launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.noon.plist
-launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.pm.plist
-```
-
-### Manual posting
-
-```bash
-# Dry run — print the post text without posting
 .venv/bin/python post_scheduled.py --slot am --dry-run
-
-# Post a specific slot
-.venv/bin/python post_scheduled.py --slot noon
 ```
-
-See [[Social-Cards]] in the wiki for full setup and troubleshooting.
 
 ## Project structure
 

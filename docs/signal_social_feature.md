@@ -1,5 +1,7 @@
 # Signal — Social Media Posting Feature
 
+> **Operations (all shell commands):** [social-cards-setup.md](social-cards-setup.md) · Wiki: [Social-Cards](https://github.com/fleXRPL/signal.wiki/wiki/Social-Cards)
+
 ## Overview
 
 Extend the existing Signal political intelligence pipeline to automatically generate
@@ -23,11 +25,11 @@ the machine.
 
 ## Post Schedule
 
-| Slot | Time | Card Type | Purpose |
-|------|------|-----------|---------|
-| AM | 7:00 AM | Watch List | Sets the daily agenda — what to track |
+| Slot | Time     | Card Type          | Purpose                                     |
+| ---- | -------- | ------------------ | ------------------------------------------- |
+| AM   | 7:00 AM  | Watch List         | Sets the daily agenda — what to track       |
 | Noon | 12:00 PM | Spectrum Breakdown | Top story, all sides — main analytical post |
-| PM | 6:00 PM | Blindspot Analysis | What your feed missed today |
+| PM   | 6:00 PM  | Blindspot Analysis | What your feed missed today                 |
 
 Each slot is fired by a separate launchd plist. `main.py` generates all three card
 images and post packages in the morning run. The noon and PM jobs simply load
@@ -39,7 +41,7 @@ pre-generated files and post — no model or rendering work at post time.
 
 ### New Files
 
-```
+```bash
 pipeline/
   infographic.py              # Playwright renderer — HTML template → PNG
   social.py                   # Bluesky auth, image upload, post
@@ -57,7 +59,7 @@ launchd/
 
 ### Modified Files
 
-```
+```bash
 main.py                       # Add card generation step after report generation
 requirements.txt              # Add: playwright, atproto, python-dotenv
 .env.example                  # Document required environment variables
@@ -66,7 +68,7 @@ requirements.txt              # Add: playwright, atproto, python-dotenv
 
 ### New Output Structure
 
-```
+```bash
 reports/
   cards/
     am_20260530.png
@@ -91,6 +93,7 @@ date, source count, and the full report URL in the footer.
 **Data source:** `watch_list` array from the brief synthesis output
 
 **Layout:**
+
 - Header bar: Signal branding + date + "Watch List" label
 - Subheader: count of active tracking items + time horizon summary
 - Body: 2-column grid of watch items, each showing:
@@ -103,7 +106,8 @@ date, source count, and the full report URL in the footer.
 - Footer: `flexrpl.github.io/signal` URL + brief stats
 
 **Post text formula:**
-```
+
+```bash
 SIGNAL // {date}
 
 {N} items on today's watch list — from {shortest window} to {longest window}.
@@ -119,6 +123,7 @@ Full brief → flexrpl.github.io/signal
 or highest cross-spectrum coverage — whichever Signal already computes)
 
 **Layout:**
+
 - Header bar: Signal branding + date + article/source counts
 - Story block: Cluster headline with left red border accent
 - Spectrum bar: Visual proportional bar showing source distribution across
@@ -139,7 +144,8 @@ or highest cross-spectrum coverage — whichever Signal already computes)
 - Footer: report URL + "Full brief · {N} story clusters · Watch list inside"
 
 **Post text formula:**
-```
+
+```bash
 SIGNAL // {date}
 
 {Story headline — truncated to ~120 chars if needed}
@@ -157,6 +163,7 @@ Full analysis → flexrpl.github.io/signal
 left-only and right-only story lists
 
 **Layout:**
+
 - Header bar: Signal branding + date + "Blindspot Analysis" label
 - Subheader: Most significant suppression story (the one called out in the
   brief's blindspot narrative, not just any left/right-only item)
@@ -168,7 +175,8 @@ left-only and right-only story lists
 - Footer: report URL + "Cross-spectrum · {N} sources · Full analysis inside"
 
 **Post text formula:**
-```
+
+```bash
 SIGNAL // {date}
 
 Today's blindspot: {one-line description of biggest suppressed story}
@@ -183,6 +191,7 @@ What each side isn't showing you → flexrpl.github.io/signal
 ### `infographic.py`
 
 Responsibilities:
+
 - Accept structured data extracted from the brief (dict)
 - Select the appropriate HTML template for the requested card type
 - Inject data into the template via Jinja2 string substitution or direct
@@ -204,6 +213,7 @@ def render_card(card_type: str, data: dict, output_path: str) -> str:
 ```
 
 Dependencies:
+
 - `playwright` (install via `pip install playwright && playwright install chromium`)
 - Templates are static HTML/CSS files — no JS framework, no build step
 
@@ -212,6 +222,7 @@ Dependencies:
 ### `social.py`
 
 Responsibilities:
+
 - Authenticate to Bluesky using app password (never the real account password)
 - Upload image blob
 - Compose post with text, image, and embedded link card pointing to the report
@@ -226,6 +237,7 @@ def post_to_bluesky(text: str, image_path: str, report_url: str) -> str:
 ```
 
 Authentication:
+
 - Credentials loaded from `.env` via `python-dotenv`
 - Required env vars:
   - `BLUESKY_HANDLE` — the account handle (e.g. `signal.bsky.social`)
@@ -234,6 +246,7 @@ Authentication:
   - Never use the real account password
 
 Dependencies:
+
 - `atproto` — official Bluesky AT Protocol Python client
 
 ---
@@ -251,6 +264,7 @@ python post_scheduled.py --slot pm
 ```
 
 The JSON package format:
+
 ```json
 {
   "slot": "noon",
@@ -299,6 +313,7 @@ All three follow the same pattern as the existing main pipeline plist,
 substituting `post_scheduled.py --slot [am|noon|pm]` as the command.
 
 Standard launchd fields:
+
 - `StartCalendarInterval` with `Hour` and `Minute`
 - `StandardOutPath` and `StandardErrorPath` to slot-specific log files
 - `WorkingDirectory` set to the repo root
@@ -328,7 +343,7 @@ launchctl load ~/Library/LaunchAgents/signal.social.pm.plist
 
 ## `.env.example`
 
-```
+```bash
 BLUESKY_HANDLE=yourhandle.bsky.social
 BLUESKY_APP_PASSWORD=xxxx-xxxx-xxxx-xxxx
 ```

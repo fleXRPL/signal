@@ -26,6 +26,21 @@ _SLOT_LABELS = {
     "pm":   "Blindspot Analysis",
 }
 
+# Bluesky rejects posts over 300 graphemes; use a safe cap when building text.
+_BLUESKY_MAX_GRAPHEMES = 300
+_BLUESKY_SAFE_GRAPHEMES = 295
+
+
+def _fit_bluesky_text(text: str, max_graphemes: int = _BLUESKY_SAFE_GRAPHEMES) -> str:
+    """Trim post body to Bluesky's grapheme limit (conservative char-based trim)."""
+    if len(text) <= max_graphemes:
+        return text
+    trimmed = text[: max_graphemes - 1].rstrip()
+    if " " in trimmed:
+        trimmed = trimmed.rsplit(" ", 1)[0]
+    return trimmed + "…"
+
+
 _POST_TEMPLATES: Dict[str, str] = {
     "am": (
         "SIGNAL // {date}\n\n"
@@ -49,6 +64,8 @@ _POST_TEMPLATES: Dict[str, str] = {
 def _build_post_text(slot: str, brief_data: Dict[str, Any]) -> str:
     """Compose the post text for a given slot from brief_data."""
     date_display = brief_data.get("date", "")
+    if len(date_display) > 10:
+        date_display = date_display[:10]
     report_url   = brief_data.get("report_url", "https://flexrpl.github.io/signal")
 
     watch_items = brief_data.get("watch_items", [])
@@ -76,13 +93,11 @@ def _build_post_text(slot: str, brief_data: Dict[str, Any]) -> str:
 
     top = brief_data.get("top_cluster", {})
     headline = top.get("headline", "")
-    if len(headline) > 120:
-        headline = headline[:117] + "..."
 
     narrative = brief_data.get("blindspot_narrative", "")
-    blindspot_headline = (narrative.split(".")[0].strip() or "coverage gaps detected")[:120]
+    blindspot_headline = narrative.split(".")[0].strip() or "coverage gaps detected"
 
-    return _POST_TEMPLATES[slot].format(
+    text = _POST_TEMPLATES[slot].format(
         date=date_display,
         watch_count=len(watch_items),
         window_summary=window_summary,
@@ -90,6 +105,28 @@ def _build_post_text(slot: str, brief_data: Dict[str, Any]) -> str:
         blindspot_headline=blindspot_headline,
         report_url=report_url,
     )
+
+    if len(text) <= _BLUESKY_SAFE_GRAPHEMES:
+        return text
+
+    # Shrink variable fields until the full post fits (noon/PM are usually longest).
+    for limit in (100, 80, 60, 40):
+        headline_fit = headline[:limit] + ("…" if len(headline) > limit else "")
+        blindspot_fit = blindspot_headline[:limit] + (
+            "…" if len(blindspot_headline) > limit else ""
+        )
+        text = _POST_TEMPLATES[slot].format(
+            date=date_display,
+            watch_count=len(watch_items),
+            window_summary=window_summary,
+            headline=headline_fit,
+            blindspot_headline=blindspot_fit,
+            report_url=report_url,
+        )
+        if len(text) <= _BLUESKY_SAFE_GRAPHEMES:
+            return text
+
+    return _fit_bluesky_text(text)
 
 
 def build_post_package(
@@ -144,6 +181,7 @@ def post_to_bluesky(text: str, image_path: Path, report_url: str) -> str:
         )
 
     img_bytes = Path(image_path).read_bytes()
+    text = _fit_bluesky_text(text)
 
     client = Client()
     client.login(handle, password)
