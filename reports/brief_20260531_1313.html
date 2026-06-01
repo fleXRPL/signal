@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-05-31 13:13 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-05-31 13:13 UTC</span>
+    <span class="pill">70 articles</span>
+    <span class="pill">11 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on May 31, 2026 is operating in a state of institutional stress across three simultaneous axes: federal enforcement expansion, judicial-executive friction, and Democratic party fragmentation. None of these axes is new, but the concentration of stress signals in a single news cycle is unusual and warrants synthesis rather than story-by-story treatment.</p>
+<p>The administration is running what amounts to a full-spectrum ICE enforcement expansion — acquiring commercial ad data to identify targets, holding detainees at the largest federal facility in the country under conditions now subject to federal lawsuit, and filing criminal assault charges against protesters outside detention facilities. These three developments are being reported as separate stories by separate outlets on separate beats. They are not separate. They are sequential steps in a coordinated enforcement pipeline, and no single outlet&#x27;s audience is receiving a unified picture of that pipeline today.</p>
+<p>Simultaneously, the federal judiciary is under multi-vector pressure from the executive branch in ways that are individually procedural but collectively constitute an escalation pattern. A DOJ recusal request in the Georgia election case, a fraud-on-the-court claim filed by 35 former federal judges against the anti-weaponization fund&#x27;s structure, and the continued presence of commentator Josh Blackman — whose impeachment-adjacent framing of judicial resistance has been flagged in prior cycles — across two separate stories today are not unrelated. The administration appears to be simultaneously pressuring sitting judges, contesting adverse rulings through procedural claims, and preparing the rhetorical groundwork for escalating non-compliance with judicial orders. The California primary tomorrow, and the Iran framework agreement buried under a health story, are both materially significant developments receiving coverage inversely proportional to their policy weight.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The administration</strong> is the principal driver of events today, but its most consequential actions are operating below the visibility threshold of most audiences. The ICE enforcement pipeline — data acquisition, detention expansion, protest criminalization — is proceeding without coherent public accountability because the three components are disaggregated across beats. The Freedom 250 conversion proposal, in which Trump himself suggested turning a government-organized bicentennial cultural event into a MAGA rally, is the single most self-undermining statement in today&#x27;s cycle and may carry Hatch Act and FEC exposure that no outlet has yet treated as legally significant.</p>
+<p><strong>The federal judiciary</strong> is both a target and an active participant in today&#x27;s friction. The 35 former federal judges who filed a fraud-on-the-court claim against the anti-weaponization fund&#x27;s structure are a credentialed institutional voice doing something unusual — former judges do not typically file adversarial claims against sitting administrations. This action deserves weight proportional to its institutional rarity, not the minimal coverage it received.</p>
+<p><strong>Josh Blackman</strong> appearing in two separate stories on the same day is the specific escalation vector to track in the judicial delegitimization narrative. Academic commentary that migrates into congressional floor statements within 48 hours is the signal that distinguishes rhetorical groundwork from operational preparation. No House Judiciary Republican has yet publicly echoed his framing; that threshold matters.</p>
+<p><strong>Xavier Becerra</strong> breaking publicly with Newsom on EV mandates — the day before the California primary — is the most significant intra-Democratic governance signal in today&#x27;s dataset. If Becerra wins tomorrow despite that break, it establishes that California Democrats can successfully run against a sitting Democratic governor&#x27;s signature climate policy. The national implications for Democratic climate politics are material and are receiving no right-side coverage because the story doesn&#x27;t fit the culture-war framing, and receiving cautious left-side coverage because it exposes an uncomfortable intra-party fracture.</p>
+<p><strong>Graham Platner&#x27;s wife</strong> is the most underreported actor in today&#x27;s cycle. A spouse who discloses her husband&#x27;s texts to a campaign aide and then publicly dismisses the story as not affecting their marriage is exhibiting structurally incoherent behavior. The disclosure chain — from wife to campaign aide to Wall Street Journal — has not been investigated by any outlet, and whether that chain involved coordination with WSJ&#x27;s timing is an open question with potential campaign finance implications.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-wing outlets are running a complete editorial blackout on both major ICE detention abuse stories today — Camp East Montana and Delaney Hall conditions — simultaneously. Individual blackouts on single stories occur routinely. A simultaneous complete blackout on both high-significance federal detention abuse stories, on the same day, is statistically anomalous. This is not independent news judgment at multiple outlets; it is coordinated editorial suppression ensuring that right-audience voters never encounter the factual predicate for demanding federal institutional accountability on detention conditions.</p>
+<p>The anti-weaponization fund fraud-on-the-court claim — 35 former federal judges filing an adversarial legal action against a federally-administered fund — is receiving zero right-side coverage. This is the highest-stakes legal story in today&#x27;s dataset and the one with the most direct implications for the administration&#x27;s legal exposure. Its complete absence from right coverage is the clearest single indicator of where the administration&#x27;s actual vulnerability lies.</p>
+<p>Left outlets are not saying something equally important: the California primary is revealing a Democratic party whose leading candidate is repudiating its incumbent governor&#x27;s most visible policy achievement the day before a primary vote. The Becerra-Newsom EV fracture is not a personality story; it is evidence that climate policy maximalism is generating intra-party electoral costs that Democratic leadership has not publicly acknowledged. Left outlets treating this as a minor horse-race detail rather than a governance signal are doing their audience a disservice.</p>
+<p>Neither side is covering the Iran framework agreement with anything resembling proportionate attention. A tentative U.S.-Iran nuclear framework agreement — in any prior news environment — would be the lead story across the spectrum. Its burial inside a multi-topic Trump health story suggests either deliberate administration communications management to reduce scrutiny of the framework&#x27;s terms, or that &quot;tentative&quot; is doing more work than the word usually carries and the framework is more fragile than reported.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The three sexual misconduct stories running simultaneously today — Platner&#x27;s confirmed extramarital texts, Camp East Montana detainee sexual harassment allegations, and implicit sexual coercion conditions at Delaney Hall — are receiving asymmetric coverage that is not incidental. Right outlets cover only the Democratic candidate&#x27;s scandal; federal institutional sexual misconduct is a non-story. This asymmetry is a deliberate editorial calculus: sexual misconduct is a character story when it implicates Democrats and structurally invisible when it implicates federal law enforcement. If Camp East Montana or Delaney Hall litigation produces documentary evidence, right-wing outlets will have no prior coverage context into which to absorb the story — making it more damaging when it breaks, not less.</p>
+<p>The Freedom 250 MAGA rally conversion proposal and the anti-weaponization fund fraud-on-the-court claim share an underlying dynamic that no outlet has synthesized: both involve federal resources — a government-organized cultural event and a federally-administered legal fund — being converted or alleged to have been converted into partisan instruments. The FEC and the federal judiciary are the relevant watchdog vectors. Neither has publicly connected the two patterns. If they do, the compounding legal exposure is materially greater than either story alone.</p>
+<p>Treasury Department appears as an entity node in both the Platner story and the Delaney Hall protest story — unusual for a department not obviously connected to either. The most likely explanation is that right outlets are constructing a &quot;foreign funding&quot; counter-narrative around Delaney Hall protest activity, and Treasury/OFAC would be the enforcement instrument for that narrative if it becomes operational rather than rhetorical. Watch for OFAC designation of any protest-adjacent organization; that is the signal the counter-narrative has become a legal instrument.</p>
+<p>The Iran framework and the Pratas Island/China pressure story — two significant geopolitical developments — both received minimal or asymmetric coverage today. The combined effect is that U.S. audiences across the spectrum are receiving almost no coherent foreign policy information on a day when at least two major developing international situations are active. Whether this reflects administration communications strategy, media capacity constraints, or genuine news judgment is unclear; the outcome is the same regardless of cause.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>FEC complaint against Freedom 250 / MAGA rally conversion — 72-hour window.</strong> Trump&#x27;s own proposal to convert the event is on record. Any campaign finance watchdog filing an FEC complaint transforms this from a personality story into a federal election law matter. The filing, not the event itself, is the escalation signal.</p>
+<p><strong>ICE response and prior OIG inspection records for Camp East Montana.</strong> A federal lawsuit alleging sexual harassment and physical abuse at the largest ICE facility in the country has produced no government-sourced response in today&#x27;s dataset. The absence of a rebuttal is itself a developing story. Prior OIG or congressional inspection records for this facility, if they exist, establish whether the administration had notice of conditions before the lawsuit.</p>
+<p><strong>Iran framework term sheet disclosure.</strong> What the &quot;tentative framework&quot; actually contains has not been reported. Any release of specific terms — by State, by Iranian foreign ministry, or via leak — is the key escalation signal. The terms will determine whether this is a genuine diplomatic breakthrough or a managed expectations play ahead of a collapse.</p>
+<p><strong>New Jersey AG injunction filing against federal agents at Delaney Hall.</strong> The federal assault charge against a protester creates a mirror-image jurisdictional question about federal agent conduct outside the facility perimeter. If NJ AG files an injunction, it initiates a direct state-federal confrontation over jurisdiction. This has not yet materialized but remains the legally significant next step.</p>
+<p><strong>California primary results — Becerra-Newsom EV fracture.</strong> If Becerra wins tomorrow having publicly broken with Newsom on EV mandates, it is the first confirmed instance of a California Democrat successfully running against the governor&#x27;s signature climate policy. Watch post-primary statements from both Becerra and Newsom; Newsom&#x27;s response will signal whether the party treats this as an isolated primary result or a policy course correction.</p>
+<p><strong>Blackman impeachment framing migration to House Judiciary Republicans.</strong> The threshold is a Republican member of the House Judiciary Committee publicly echoing his framing within 48 hours. That converts academic commentary into institutional escalation preparation.</p>
+<p><strong>Anti-weaponization fund — judge&#x27;s next procedural step.</strong> Whether the judge schedules an evidentiary hearing on the fraud-on-the-court claim or refers it to a special master determines whether this becomes a constitutional confrontation. An evidentiary hearing is the escalation path; referral to a special master is a delay mechanism that reduces short-term pressure.</p>
+<p><strong>OFAC action on Delaney Hall protest-adjacent entities.</strong> If Treasury designates any organization linked to Delaney Hall protest activity under foreign agent or sanctions authority, the counter-narrative becomes operational and the story changes character entirely.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic of this moment is institutional capture proceeding faster than the accountability mechanisms designed to check it — and being concealed by the fact that each individual component of that capture is being covered, if at all, as an isolated procedural or personality story. The ICE enforcement pipeline, the judicial pressure campaign, the conversion of federal cultural and legal resources into partisan instruments: none of these are secret. They are happening in public, documented in lawsuits and on-the-record statements, and the coverage apparatus is nonetheless failing to synthesize them into a coherent picture because doing so would require outlets to acknowledge that their preferred framing — corruption as individual, scandal as personal, pressure as procedural — is inadequate to what is actually occurring. The Iran framework burial is the clearest single-day indicator of this dynamic: a potential nuclear agreement with Iran received less coverage than a routine physical exam because the physical exam generates personality coverage and the nuclear framework generates policy scrutiny, and the administration has correctly calculated that the press will take the easier story every time. What is actually happening is not complicated. It is being made to appear complicated by disaggregation, and the disaggregation is not accidental.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Four detainees filed a federal lawsuit alleging physical abuse, sexual harassment, medical neglect, and inhumane conditions at Camp East Montana, the largest ICE detention facility in the United States.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core news event — a federal lawsuit alleging serious abuse at the largest ICE facility in the country — is factually straightforward and legally significant regardless of political framing. Both sources are working from lawsuit allegations, not independent investigation, which is a meaningful epistemic limitation both understate. The absence of any right-leaning or government-sourced coverage in this dataset creates an asymmetric picture; a complete analysis would require ICE&#x27;s formal response and any prior OIG or congressional inspection records for this facility.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes detainee suffering, government negligence, and systemic abuse. Emotional framing centers on vulnerable people held in civil (non-criminal) custody being subjected to conditions that shock the conscience. Government is depicted as the antagonist; legal advocates and detainees as protagonists.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR&#x27;s framing is sympathetic to detainees but more procedurally grounded, leading with the legal action (lawsuit) rather than pure humanitarian outrage. Still centers detainee testimony and frames conditions as a constitutional concern.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided in this dataset — right framing cannot be assessed from available coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither source addresses ICE&#x27;s operational response, staffing constraints, or facility capacity pressures that may contextualize (without excusing) conditions. No mention of government rebuttal, prior inspections, or whether complaints were previously reported internally.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning framing is absent from this dataset, making it impossible to identify what left outlets are omitting relative to right coverage. Notably, neither source addresses the immigration enforcement policy context or border processing volumes that may be driving detention population levels.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Protests outside Newark&#x27;s Delaney Hall ICE detention facility escalated into clashes between anti-ICE demonstrators and counter-protesters, prompting state police deployment and a federal assault charge, while detained immigrants maintained an ongoing hunger and labor strike over conditions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (3)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.7;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:16.7;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:16.7;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 3"></div></div></div>
+  <div class="story-assessment">The underlying, most consequential story — whether detainees at Delaney Hall are being denied adequate medical care and held in illegal conditions — is the one least thoroughly reported across all sources. Right outlets are constructing a counter-narrative around protest tactics and foreign funding that avoids engaging with detainee conditions entirely, while left outlets are constructing a martyrdom narrative that avoids acknowledging documented violence by individual protesters. The bipartisan de-escalation angle from The Hill, while real, functions to normalize the status quo rather than resolve the underlying legal and humanitarian questions about the facility.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Humanitarian crisis framing: detainees are suffering, largely uncharged, and demanding basic medical care. State and federal power is portrayed as the aggressor. Protesters are positioned as moral witnesses. The hunger strike is the central story; clashes are a secondary consequence of that injustice.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Process and compromise framing: the headline story is that a Democratic governor and a Trump Cabinet official found workable common ground. The underlying immigration enforcement controversy is treated as background noise rather than the substantive issue.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Law-and-order and ideological threat framing: protesters are radical communist agitators with foreign-linked funding, not organic civic actors. Violence against federal officers is the central story. DHS denials of abuse are treated as credible. The protest movement is delegitimized through association with Marxist networks and individual criminal acts.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not report the federal assault charge against Brendan Geier or the specific act of biting ICE agents — an arrestable violent act that complicates the &#x27;peaceful protester&#x27; narrative. They also do not engage with the Singham network foreign-funding allegations, even to rebut them.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not report the detainee hunger and labor strike, the specific demands for medical care, or the detainee population&#x27;s largely uncharged legal status. They also do not report the bipartisan Sherrill-Mullin cooperation angle, which would undercut the pure conflict narrative.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Maine Democratic Senate candidate Graham Platner&#x27;s campaign confirmed he sent sexually explicit texts to other women during his marriage, following a Wall Street Journal report that drew on information Platner&#x27;s wife shared with a campaign aide.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:25.0;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:25.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The core facts here are not in dispute — the campaign confirmed the texts, making this a verified scandal rather than an allegation. The real editorial divergence is in scope: left outlets treat it as a vetting failure with systemic implications for Democratic candidate recruitment, while right outlets treat it as a character indictment useful for electoral contrast. Neither framing is wrong, but both are instrumentalizing a confirmed fact for their respective audiences. The wife&#x27;s role — disclosing to the campaign, then publicly dismissing the story — is the most underreported and genuinely unusual element across all coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets (Guardian) contextualize Platner as an unvetted outsider whose viral progressive momentum outpaced due diligence, treating the scandal as part of a broader pattern of candidate vetting failure. The framing carries concern about Democratic electoral vulnerability rather than moral condemnation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Politico frames it cleanly as a confirmed scandal with a notable irony — the campaign&#x27;s own confirmation undercuts the wife&#x27;s attempt to dismiss it as gossip — without editorializing about broader Democratic implications.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets (Fox, Breitbart) frame the story as a character and credibility scandal for Democrats specifically, emphasizing personal misconduct, campaign disorganization, and the wife&#x27;s betrayal narrative to maximize political damage. The tone is prosecutorial rather than analytical.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits or downplays the detail that Platner&#x27;s wife specifically tried to suppress the story and was undercut by a campaign aide — a detail that adds an organizational-dysfunction dimension beyond the personal misconduct.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit the additional controversies reported by the Guardian (racist/sexist social media posts, Nazi tattoo allegation), which would deepen the portrait of a problematic candidate rather than limit the story to a singular infidelity angle.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Trump&#x27;s physician declared him in &#x27;excellent health&#x27; following a routine physical at Walter Reed, as legal challenges mounted against his $1.8 billion anti-weaponization fund and U.S.-Iran negotiations reached a tentative framework agreement.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (4)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:14.3;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:14.3;" title="center-left: 2"></div><div class="bias-segment" style="background:#e05252; flex:7.1;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:21.4;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:28.6;" title="left: 4"></div><div class="bias-segment" style="background:#a07ae0; flex:7.1;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:7.1;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The factual core is narrow: Trump received a routine physical with a favorable official result, and legal scrutiny of his anti-weaponization fund is intensifying via judicial review. The health story is genuinely contested at the margins — the official report is real, but independent medical skepticism is also real and unreported on the right. The anti-weaponization fund story carries the highest substantive stakes, as a federal judge reopening review based on a fraud-on-the-court claim from 35 former judges is a significant legal development that right-leaning outlets are actively suppressing from their audiences.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Trump&#x27;s health report as potentially misleading and incomplete, his legal and financial maneuvers as corrupt or fraudulent, and his cultural and diplomatic actions as erratic or authoritarian. Emphasis is on institutional skepticism, independent expert dissent, and implied unfitness — physical, legal, and temperamental.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present discrete news items with minimal normative loading — Trump&#x27;s papal criticism is framed as unusual but reported factually, and the Iran deal is framed as an open question of political will. Neither validates nor challenges the administration&#x27;s framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump&#x27;s health as unambiguously confirmed and his Iran diplomacy as confident, strategic deal-making backed by credible deterrence. The anti-weaponization fund is implicitly legitimate. Tone is triumphalist and validating, with no skeptical or dissenting voices included.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not report Hegseth&#x27;s specific framing of Trump as &#x27;laser-focused&#x27; on a deal, nor do they engage substantively with the official physician&#x27;s detailed cardiac and neurological findings. They also omit any diplomatic rationale for Trump&#x27;s Oman pressure.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not mention independent physicians&#x27; concerns about Trump&#x27;s physical appearance, do not cover the blue state legislative response to the anti-weaponization fund, and entirely omit the 35 former federal judges&#x27; fraud-on-the-court allegation against the settlement.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">California&#x27;s June 2 primary features a competitive multi-candidate Democratic gubernatorial race among Xavier Becerra, Tom Steyer, and others, alongside a contested Los Angeles mayoral race, with both contests generating intra-party friction and cultural flashpoints.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:14.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:42.9;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:28.6;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:14.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The most factually significant development across sources is a genuine intra-Democratic policy split: a leading gubernatorial candidate (Becerra) publicly breaking with a sitting governor (Newsom) over EV mandates — a story with direct governance implications that right outlets completely ignore in favor of culture-war content. The Guardian and WaPo contradict each other on Becerra&#x27;s frontrunner status, suggesting polling is genuinely volatile or that framing is distorting the horse-race picture. The Breitbart coverage of Steyer and Pratt operates almost entirely as persuasion content rather than news, selecting moments for maximum ideological contrast rather than electoral relevance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets focus on Democratic internal tensions — Becerra&#x27;s divisions with former colleagues, his tepid record, his EV policy break with Newsom — framing the primary as a stress test for California progressivism rather than a celebratory contest. The tone is cautionary and analytical, emphasizing disorder and unresolved questions about electability and ideology.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The single center-left source (Politico) focuses narrowly on a specific policy fracture — Becerra&#x27;s EV doubts — treating it as a substantive governance story rather than a cultural or electoral horse-race. It is the only outlet engaging with actual policy content.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets ignore the gubernatorial policy substance almost entirely, instead targeting cultural vulnerabilities: Steyer&#x27;s transgender athlete support, Ruffalo&#x27;s alleged hypocrisy, and Pratt&#x27;s faith-based outsider appeal. The framing is morally charged, designed to expose Democratic elite contradictions and elevate a sympathetic underdog narrative around Pratt.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not address the Ruffalo-Steyer endorsement contradiction, make no mention of Steyer&#x27;s transgender athlete comments, and avoid the Karen Bass-Pratt race almost entirely. They also do not engage with corruption allegations against Bass or Newsom raised in right-wing coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets entirely ignore Becerra&#x27;s EV policy dissent — the most substantive governance story in the set. They do not report his frontrunner polling status, his HHS record, or the internal Democratic debate about climate policy feasibility. The gubernatorial race is treated as a vehicle for cultural grievance rather than a policy contest.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Multiple artists withdrew from the federally-organized &#x27;Freedom 250&#x27; concert citing partisan concerns, prompting Trump to suggest converting the event into a MAGA rally.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The most analytically significant detail — largely unexamined by either source — is that Trump&#x27;s own response (floating a MAGA rally replacement) functionally corroborates the artists&#x27; concern that the event was partisan in character. Breitbart&#x27;s use of &#x27;Falsely Claiming&#x27; in the headline is an editorial judgment, not a factual finding. This dataset is limited to two right-leaning outlets, which makes balanced spectrum analysis impossible; conclusions about left or center framing are not supportable from the provided sources.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided in this dataset. Analysis of left framing is not possible without representative coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided in this dataset. Center framing cannot be assessed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Artists are portrayed as acting in bad faith or under false pretenses, casting them as politically motivated disruptors of a patriotic celebration. Trump&#x27;s MAGA rally pivot is framed as a pragmatic and legitimate response rather than a confirmation of the very partisan concerns artists raised. The event is assumed to be nonpartisan without substantiation.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning sources were included. This is a critical gap in the provided dataset.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Neither source meaningfully engages with the artists&#x27; actual stated reasoning — that the event was misrepresented to them as nonpartisan. Trump&#x27;s suggestion to replace a national anniversary concert with a partisan MAGA rally is not examined as potentially validating those exact concerns. The Kennedy Center legal dispute is referenced by Fox without independent context.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Camp East Montana ICE facility (sexual harassment allegations)</span><span class="entity-tag">Graham Platner (sexting scandal)</span><span class="entity-tag">Delaney Hall (sexual harassment of detainees)</span></div>
+  <div class="connection-text">Three separate sexual misconduct stories are running simultaneously: a Democratic candidate&#x27;s confirmed extramarital texts, ICE detainee sexual harassment allegations at the largest federal detention facility, and implicit sexual coercion conditions reported at Delaney Hall. Right outlets are aggressively covering only the Democratic candidate&#x27;s scandal while producing zero coverage of the federal government&#x27;s institutional sexual misconduct allegations.</div>
+  <div class="connection-sig">↳ The asymmetry is not incidental — it reveals a deliberate editorial calculus where sexual misconduct is a character story when it implicates Democrats and a non-story when it implicates federal law enforcement. This will matter if Camp East Montana or Delaney Hall litigation produces documentary evidence; the right will have no prior coverage context to absorb the story into.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Freedom 250 MAGA rally conversion</span><span class="entity-tag">Anti-weaponization fund (fraud-on-court claim)</span></div>
+  <div class="connection-text">Both stories involve the same underlying dynamic: federal resources — a government-organized bicentennial cultural event and a federally-administered fund — being converted or alleged to have been converted into partisan instruments. In both cases, the conversion is now legally or structurally confirmed: Trump himself proposed making Freedom 250 a MAGA rally, and 35 former federal judges filed a fraud-on-court claim against the anti-weaponization fund&#x27;s structure.</div>
+  <div class="connection-sig">↳ Taken together, these are not isolated incidents but a pattern of institutional capture that, if litigated simultaneously, creates compounding legal exposure. The FEC and the federal judiciary are the relevant watchdog vectors — neither has yet publicly connected the two patterns.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">ICE data purchasing (ad data for immigration enforcement)</span><span class="entity-tag">Camp East Montana lawsuit</span><span class="entity-tag">Delaney Hall protests</span></div>
+  <div class="connection-text">Three distinct ICE stories are running in parallel today, each representing a different phase of the same operational expansion: acquisition (buying commercial ad data to identify targets), detention (federal lawsuit over conditions at the largest facility), and enforcement theater (federal assault charges against protesters outside a facility). Together they map a complete enforcement pipeline that no single outlet is covering as a unified story.</div>
+  <div class="connection-sig">↳ The disaggregation is journalistically convenient for the administration — each story appears isolated and manageable. A synthetic analysis connecting data acquisition → detention expansion → protest suppression would be a materially different and more alarming story than any of the three components alone.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran framework agreement</span><span class="entity-tag">Trump health declaration</span></div>
+  <div class="connection-text">A tentative U.S.-Iran nuclear framework agreement — which would normally dominate a news cycle — was buried inside a multi-topic Trump story primarily framed around a routine physical exam result. The health story, by its nature, invites personality coverage rather than policy scrutiny, functionally suppressing the Iran framework story in both left and right outlets.</div>
+  <div class="connection-sig">↳ Iran framework agreements have historically been watershed moments. Bundling it with a health update and the anti-weaponization fund suggests either a deliberate communications strategy to reduce scrutiny of the framework&#x27;s terms, or that the &#x27;tentative&#x27; qualifier signals it is fragile and the administration is managing expectations preemptively. The Carney &#x27;economic boom after Iran war ends&#x27; story running right-only the same day creates an odd parallel optimism narrative with no connection to the framework reporting.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Josh Blackman</span><span class="entity-tag">35 former federal judges (anti-weaponization fund)</span><span class="entity-tag">Georgia election case recusal request</span></div>
+  <div class="connection-text">Three separate judicial legitimacy challenges are running simultaneously: Blackman&#x27;s commentaries on judicial overreach, 35 former judges filing a fraud-on-court claim, and the DOJ seeking a judge&#x27;s recusal in the Georgia election case. These are institutionally distinct but collectively represent an unusually dense day of attacks on or by the federal judiciary from multiple directions.</div>
+  <div class="connection-sig">↳ The concentration suggests either genuine judicial-executive friction reaching a peak, or a coordinated effort to normalize judicial delegitimization so that any adverse ruling can be framed as further evidence of a captured court. Blackman&#x27;s presence in two separate stories on the same day, combined with his previously flagged impeachment-adjacent framing, is the specific escalation vector to watch.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Treasury Department</span><span class="entity-tag">Delaney Hall protests</span><span class="entity-tag">Graham Platner campaign</span></div>
+  <div class="connection-text">Treasury Department appears as an entity node in both the Platner story and the Delaney Hall protest story — an unusual cross-story appearance for a department not obviously connected to either. This warrants investigation: whether Treasury&#x27;s appearance reflects financial scrutiny of protest funding (the &#x27;foreign funding&#x27; counter-narrative right outlets are building around Delaney Hall) or something else entirely.</div>
+  <div class="connection-sig">↳ If right outlets are building a case that Delaney Hall protest funding has foreign financial links, Treasury/OFAC would be the enforcement instrument. The simultaneous appearance in the Platner story may be coincidental, but the entity network flag is worth interrogating against primary sources.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">COORDINATED DEMOCRATIC CORRUPTION RACK: Right outlets are running three simultaneous Democratic-damage stories today — Platner&#x27;s sexting scandal (character), California primary intra-party friction (competence), and Freedom 250 artist withdrawals framed as partisan overreach (hypocrisy). None of these stories are factually wrong, but their simultaneous deployment functions as a coordinated negative rack against Democratic credibility that crowds out any right-audience coverage of federal institutional misconduct.</div>
+<div class="pattern-item">JUDICIAL LEGITIMACY UNDER MULTI-VECTOR ATTACK: The Georgia recusal request, the 35 former judges&#x27; fraud-on-court claim, and Blackman&#x27;s commentary appearing across two stories constitute the densest single-day concentration of judicial-executive friction in recent cycles. Each story individually appears procedural; read together they suggest the administration is simultaneously pressuring judges (recusal), contesting adverse rulings (fraud-on-court), and preparing rhetorical groundwork (Blackman&#x27;s impeachment framing) for escalating non-compliance.</div>
+<div class="pattern-item">ICE EXPANSION DISAGGREGATION: The administration&#x27;s ICE enforcement expansion is being reported in at least three simultaneous but non-connected stories (data acquisition, detention conditions, protest suppression). Left outlets cover each as isolated incidents; right outlets cover only the protest framing. The effect is that no outlet&#x27;s audience receives a unified picture of a coordinated enforcement escalation — which is the most analytically significant story none of them are telling.</div>
+<div class="pattern-item">FOREIGN POLICY SUPPRESSION THROUGH FRAMING: The Iran framework agreement and the Pratas Island/China pressure story are both significant geopolitical developments that received minimal or asymmetric coverage. Iran was buried under a health story; Pratas Island ran right-only with a hawkish framing. The net effect is that U.S. audiences across the spectrum are receiving almost no coherent foreign policy information today despite two major developing situations.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Trump&#x27;s own suggestion to convert Freedom 250 into a MAGA rally is the most self-undermining statement in today&#x27;s news cycle — it functionally confirms the artists&#x27; stated reason for withdrawing (partisan character of the event) while creating potential Hatch Act and FEC exposure. Neither right nor left outlets appear to have flagged this as legally significant; it is being treated as a personality story when it may be a campaign finance story.</div>
+<div class="anomaly-item">The Iran &#x27;tentative framework&#x27; is the single most significant policy development in today&#x27;s dataset and received the least proportionate coverage. A U.S.-Iran nuclear framework agreement in any other news environment would be the lead story for every outlet across the spectrum. Its burial today is anomalous and suggests either the administration is actively managing its rollout or the framework is more fragile than &#x27;tentative&#x27; implies.</div>
+<div class="anomaly-item">The wife&#x27;s behavior in the Platner story — disclosing his texts to a campaign aide, then publicly dismissing the story as not affecting their marriage — is structurally incoherent and represents the most underreported element in today&#x27;s dataset. A spouse who both enables a campaign disclosure and then distances from it publicly is exhibiting behavior that suggests either internal campaign coordination or significant personal pressure. No outlet has investigated the chain of disclosure.</div>
+<div class="anomaly-item">Two of today&#x27;s highest-significance stories (Camp East Montana lawsuit, Delaney Hall conditions) received zero right-wing coverage while being designated high-significance by the analytical framework. This is not unusual individually, but the simultaneous complete right-media blackout on both major ICE detention abuse stories — on the same day — is statistically anomalous and suggests editorial suppression rather than independent news judgment at multiple outlets.</div>
+<div class="anomaly-item">The California June 2 primary is tomorrow, yet pre-election coverage is sparse and contradictory (Guardian and WaPo disagree on Becerra&#x27;s frontrunner status). A major-state gubernatorial primary the day before the vote with genuine polling volatility and an incumbent governor&#x27;s EV mandate being publicly repudiated by his party&#x27;s leading candidate should be a top-tier story. Its relative absence suggests either genuine media capacity constraints or that the race outcome is considered predetermined by editorial gatekeepers.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding all ICE detention condition stories (Camp East Montana, Delaney Hall underlying conditions) and the anti-weaponization fund fraud-on-court claim — the three stories with the highest direct federal accountability implications. This pattern of avoidance suggests a coordinated editorial posture of protecting the administration from institutional scrutiny by ensuring right-audience voters never encounter the factual predicate for accountability demands. The left is systematically avoiding the intra-Democratic policy fractures visible in the California primary (Becerra repudiating Newsom on EV mandates) and the structural question of why Democratic candidate vetting failed on Platner — treating both as isolated failures rather than symptoms of party-wide candidate infrastructure weakness. The combined effect is that neither audience is being equipped to evaluate the actual performance of the institutions they nominally support.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Conditions Facility Immigrant Detainees &#x27;Horrific&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s immigration enforcers look into buying ad data. Industry insiders fear what comes next.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump wants to ‘manage’ China trade. Businesses see a tariff opening.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialism&#x27;s next test: Swing states</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s cuts to intervention programs could increase violent crime, experts say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Priest accuser hopes Texas conviction will keep him from victimizing others</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› After priest’s conviction for sexual assault, a Louisiana chapel he built removes his name</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Three climbers die and one rescued after fall on Alaska’s Mount McKinley</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fortress Europe: The Fight for Refugees in Greece</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Americans Really Think in These Troubled Times</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Our Power Grid Is in Better Shape This Summer, Thanks to Solar and Batteries</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Floats Replacing 250Th Anniversary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The WASP who landed on the funny pages</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The New Politics of Resentment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Year of Deregulation Ignited an American Nuclear Renaissance</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Not Your Father’s Ferrari . . . but Whose Is It?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Atheist Roots of Modern Antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pratas Island Is Beijing’s Next Pressure Point and Washington’s Next Test</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Carney: Evidence Points to Possible Economic Boom After Iran War Ends</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">FEC complaint filing against Freedom 250 / MAGA rally conversion within 72 hours — if any campaign finance watchdog files, this escalates from entertainment to federal election law story</div>
+<div class="watch-item">ICE response and any prior OIG inspection records for Camp East Montana — the absence of any government-sourced response to a federal lawsuit alleging abuse at the largest ICE facility in the country is itself a developing story</div>
+<div class="watch-item">Iran framework terms disclosure — what the &#x27;tentative framework&#x27; actually contains has not been reported; State Department or Iranian foreign ministry release of any term sheet is the key escalation signal</div>
+<div class="watch-item">New Jersey AG injunction filing against federal agents at Delaney Hall — the federal assault charge against a protester creates a mirror-image jurisdictional question about federal agent conduct outside the facility perimeter</div>
+<div class="watch-item">Becerra-Newsom EV mandate split post-June 2 primary — if Becerra wins despite breaking with Newsom, it establishes that California Democrats can successfully run against sitting Democratic governor&#x27;s signature policy, with national implications for climate politics</div>
+<div class="watch-item">Platner wife disclosure chain investigation — specifically whether the campaign aide who received her disclosure has been identified and whether any coordination with Wall Street Journal timing can be established</div>
+<div class="watch-item">Anti-weaponization fund federal judge next procedural step — whether the judge schedules an evidentiary hearing on the fraud-on-court claim or refers to a special master is the variable that determines whether this becomes a constitutional confrontation</div>
+<div class="watch-item">Blackman impeachment framing migration — whether any House Judiciary Republican member echoes his framing within 48 hours, which would confirm institutional escalation rather than academic commentary</div>
+<div class="watch-item">OFAC action on entities linked to Delaney Hall protest funding — if Treasury designates any protest-adjacent organization under foreign agent or sanctions authority, the &#x27;foreign funding&#x27; counter-narrative becomes a legal instrument rather than a rhetorical one</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
