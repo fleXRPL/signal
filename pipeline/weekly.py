@@ -105,7 +105,7 @@ def _llm_call(prompt: str, config: Dict[str, Any]) -> str:
         claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
         timeout = llm_cfg.get("claude", {}).get("timeout", 180)
         result = subprocess.run(
-            [claude_bin, "-p", prompt, "--print"],
+            [claude_bin, "-p", prompt, "--print", "--no-stream"],
             capture_output=True,
             text=True,
             timeout=timeout * 2,  # weekly synthesis is a large call
