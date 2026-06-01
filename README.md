@@ -124,7 +124,7 @@ SELECT count(*), source_name FROM articles GROUP BY source_name;
 Three cards are generated automatically each morning and posted at scheduled times:
 
 | Slot | Time | Card | Content |
-|------|------|------|---------|
+| ---- | ---- | ---- | ------- |
 | AM | 7:00 AM | Watch List | Time-coded items flagged for monitoring |
 | Noon | 12:00 PM | Spectrum Breakdown | Top story — how each side covers it |
 | PM | 6:00 PM | Blindspot Analysis | What each side isn't reporting |

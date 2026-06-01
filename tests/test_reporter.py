@@ -182,7 +182,6 @@ class TestGenerateReport:
                     "recommended_watch": ["Topic A"],
                 },
                 articles=sample_articles,
-                run_id=1,
                 model="qwen2.5:14b",
             )
         assert path.exists()
@@ -199,7 +198,6 @@ class TestGenerateReport:
                     "_left_only": [], "_right_only": [], "recommended_watch": [],
                 },
                 articles=sample_articles,
-                run_id=1,
                 model="qwen2.5:14b",
             )
         content = path.read_text()
@@ -216,7 +214,6 @@ class TestGenerateReport:
                     "_left_only": [], "_right_only": [], "recommended_watch": [],
                 },
                 articles=sample_articles,
-                run_id=1,
                 model="qwen2.5:14b",
                 ga_measurement_id="G-TEST123",
             )
@@ -233,7 +230,6 @@ class TestGenerateReport:
                     "_left_only": [], "_right_only": [], "recommended_watch": [],
                 },
                 articles=sample_articles,
-                run_id=1,
                 model="qwen2.5:14b",
                 ga_measurement_id="",
             )
@@ -250,7 +246,6 @@ class TestGenerateReport:
                     "_left_only": [], "_right_only": [], "recommended_watch": [],
                 },
                 articles=[],
-                run_id=1,
                 model="test",
             )
         assert path.name.startswith("brief_")

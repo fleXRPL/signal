@@ -151,7 +151,9 @@ def run_signal(args: argparse.Namespace) -> None:
 
     # Generate report
     console.print("\n[bold cyan]Generating HTML report...[/bold cyan]")
-    report_path = generate_report(brief, clusters, correlation, articles, run_id, model, ga_measurement_id=ga_id)
+    report_path = generate_report(
+        brief, clusters, correlation, articles, model, ga_measurement_id=ga_id
+    )
 
     # Generate social cards + post packages (requires playwright + .env credentials)
     _generate_social_cards(report_path, console)

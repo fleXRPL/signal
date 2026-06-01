@@ -902,7 +902,6 @@ def generate_report(
     clusters: List[Dict[str, Any]],
     correlation: Dict[str, Any],
     articles: List[Dict[str, Any]],
-    run_id: int,  # noqa: ARG001 — retained for API consistency
     model: str,
     ga_measurement_id: str = "",
 ) -> Path:
@@ -914,7 +913,6 @@ def generate_report(
         clusters: Analyzed story clusters from Pass 3.
         correlation: Cross-story correlation from Pass 4.
         articles: All collected articles.
-        run_id: Pipeline run id (retained for API consistency).
         model: Ollama model used.
 
     Returns:
