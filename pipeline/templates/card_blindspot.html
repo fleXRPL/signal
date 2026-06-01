@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117; --card: #181c24; --card2: #1e2330; --border: #2a2f3e;
+    --purple: #a855f7; --purple-dim: #3b1a5e;
+    --muted: #64748b; --text: #e2e8f0; --text-dim: #94a3b8;
+    --mono: 'IBM Plex Mono', monospace; --sans: 'IBM Plex Sans', sans-serif;
+  }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); }
+  .card {
+    width: 1200px; height: 630px; background: var(--card);
+    border: 1px solid var(--border); display: flex; flex-direction: column;
+    position: relative;
+  }
+  .card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; border-bottom: 1px solid var(--border);
+    background: #13161e; flex-shrink: 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 10px var(--purple); }
+  .brand-name { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--purple); text-transform: uppercase; }
+  .brand-sep { color: var(--border); margin: 0 2px; }
+  .brand-sub { font-family: var(--mono); font-size: 13px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+  .header-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .card-story {
+    padding: 16px 24px 12px; border-left: 4px solid var(--purple);
+    margin: 14px 24px 0; background: #1a1e28; border-radius: 0 3px 3px 0; flex-shrink: 0;
+  }
+  .story-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .story-headline { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .blindspot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 24px; flex: 1; min-height: 0; }
+  .blindspot-col { border-radius: 4px; padding: 12px 16px; display: flex; flex-direction: column; gap: 8px; overflow: hidden; }
+  .bs-left  { background: #0a1424; border: 1px solid #1e3a5f; }
+  .bs-right { background: #1a0a0a; border: 1px solid #4a1616; }
+  .bs-header { display: flex; align-items: center; gap: 8px; }
+  .bs-icon { font-size: 13px; }
+  .bs-label { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+  .bs-left  .bs-label { color: #60a5fa; }
+  .bs-right .bs-label { color: #f87171; }
+  .bs-count { font-family: var(--mono); font-size: 11px; margin-left: auto; padding: 2px 8px; border-radius: 2px; }
+  .bs-left  .bs-count { color: #60a5fa; background: #0f1e30; }
+  .bs-right .bs-count { color: #f87171; background: #1f0e0e; }
+  .bs-story { font-family: var(--sans); font-size: 12px; line-height: 1.45; padding: 6px 9px; border-radius: 2px; }
+  .bs-left  .bs-story { color: #94b8d4; background: #0d1824; border-left: 2px solid #3b82f6; }
+  .bs-right .bs-story { color: #d4a0a0; background: #180d0d; border-left: 2px solid #ef4444; }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; border-top: 1px solid var(--border);
+    background: #0d1018; flex-shrink: 0;
+  }
+  .footer-url { font-family: var(--mono); font-size: 11px; color: var(--purple); letter-spacing: 0.05em; opacity: 0.8; }
+  .footer-right { display: flex; align-items: center; gap: 14px; }
+  .footer-stats { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+  .footer-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: var(--purple); border: 1px solid var(--purple-dim); padding: 3px 8px; border-radius: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Signal</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-sub">Blindspot Analysis</span>
+    </div>
+    <span class="header-meta">{{ date }} · What each side isn't saying</span>
+  </div>
+
+  <div class="card-story">
+    <div class="story-label">Information Gap Detection</div>
+    <div class="story-headline">{{ blindspot_headline }}</div>
+  </div>
+
+  <div class="blindspot-grid">
+    <div class="blindspot-col bs-left">
+      <div class="bs-header">
+        <span class="bs-icon">👁</span>
+        <span class="bs-label">Left-Only</span>
+        <span class="bs-count">{{ left_count }} stories</span>
+      </div>
+      {% for story in left_only %}
+      <div class="bs-story">{{ story }}</div>
+      {% endfor %}
+    </div>
+    <div class="blindspot-col bs-right">
+      <div class="bs-header">
+        <span class="bs-icon">👁</span>
+        <span class="bs-label">Right-Only</span>
+        <span class="bs-count">{{ right_count }} stories</span>
+      </div>
+      {% for story in right_only %}
+      <div class="bs-story">{{ story }}</div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <span class="footer-url">flexrpl.github.io/signal</span>
+    <div class="footer-right">
+      <span class="footer-stats">Cross-spectrum · {{ source_count }} sources · Full analysis inside</span>
+      <span class="footer-badge">Signal</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

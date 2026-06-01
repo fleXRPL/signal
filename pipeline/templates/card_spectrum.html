@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117; --card: #181c24; --card2: #1e2330; --border: #2a2f3e;
+    --cyan: #38bdf8; --cyan-dim: #1e4a6e; --red: #ef4444;
+    --muted: #64748b; --text: #e2e8f0; --text-dim: #94a3b8;
+    --mono: 'IBM Plex Mono', monospace; --sans: 'IBM Plex Sans', sans-serif;
+  }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); }
+  .card {
+    width: 1200px; height: 630px; background: var(--card);
+    border: 1px solid var(--border); display: flex; flex-direction: column;
+    position: relative;
+  }
+  .card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; border-bottom: 1px solid var(--border);
+    background: #13161e; flex-shrink: 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+  .brand-name { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--cyan); text-transform: uppercase; }
+  .brand-sep { color: var(--border); margin: 0 2px; }
+  .brand-sub { font-family: var(--mono); font-size: 13px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+  .header-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .card-story {
+    padding: 16px 24px 12px; border-left: 4px solid var(--red);
+    margin: 14px 24px 0; background: #1a1e28; border-radius: 0 3px 3px 0; flex-shrink: 0;
+  }
+  .story-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .story-headline { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .spectrum-section { padding: 12px 24px 8px; flex-shrink: 0; }
+  .section-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }
+  .spectrum-bar { display: flex; height: 7px; border-radius: 4px; overflow: hidden; gap: 1px; margin-bottom: 7px; }
+  .seg { border-radius: 1px; }
+  .seg-fl  { background: #7c3aed; }
+  .seg-l   { background: #3b82f6; }
+  .seg-cl  { background: #60a5fa; }
+  .seg-c   { background: #94a3b8; }
+  .seg-cr  { background: #fb923c; }
+  .seg-r   { background: #ef4444; }
+  .seg-fr  { background: #991b1b; }
+  .spectrum-labels { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 9px; color: var(--muted); letter-spacing: 0.04em; }
+  .coverage-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; padding: 0 24px; flex: 1; min-height: 0; }
+  .coverage-col { background: var(--card2); border-radius: 4px; padding: 10px 13px; display: flex; flex-direction: column; gap: 6px; overflow: hidden; }
+  .col-header { display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
+  .col-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+  .col-title { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .col-text { font-family: var(--sans); font-size: 12px; color: var(--text-dim); line-height: 1.45; flex: 1; }
+  .col-left  .col-dot   { background: #3b82f6; }
+  .col-left  .col-title { color: #60a5fa; }
+  .col-center .col-dot  { background: #94a3b8; }
+  .col-center .col-title { color: #94a3b8; }
+  .col-right  .col-dot  { background: #ef4444; }
+  .col-right  .col-title { color: #f87171; }
+  .not-said-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 8px 24px; flex-shrink: 0; }
+  .not-said-col { background: #13161e; border-radius: 4px; padding: 8px 13px; display: flex; gap: 8px; align-items: flex-start; }
+  .ns-label { font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; white-space: nowrap; padding-top: 1px; flex-shrink: 0; }
+  .ns-text { font-family: var(--sans); font-size: 11px; color: #64748b; line-height: 1.4; }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; border-top: 1px solid var(--border);
+    background: #0d1018; flex-shrink: 0;
+  }
+  .footer-url { font-family: var(--mono); font-size: 11px; color: var(--cyan); letter-spacing: 0.05em; opacity: 0.8; }
+  .footer-right { display: flex; align-items: center; gap: 14px; }
+  .footer-stats { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+  .footer-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: var(--cyan); border: 1px solid var(--cyan-dim); padding: 3px 8px; border-radius: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Signal</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-sub">Political Intelligence</span>
+    </div>
+    <span class="header-meta">{{ date }} · {{ article_count }} articles · {{ source_count }} sources</span>
+  </div>
+
+  <div class="card-story">
+    <div class="story-label">Story Cluster</div>
+    <div class="story-headline">{{ top_cluster.headline }}</div>
+  </div>
+
+  <div class="spectrum-section">
+    <div class="section-label">Coverage Spectrum — {{ top_cluster.article_count }} articles across outlet categories</div>
+    <div class="spectrum-bar">
+      {% for bias, flex in spectrum_segments %}
+      <div class="seg seg-{{ bias }}" style="flex:{{ flex }}"></div>
+      {% endfor %}
+    </div>
+    <div class="spectrum-labels">
+      <span>Far-Left</span><span>Left</span><span>Center-Left</span><span>Center</span><span>Center-Right</span><span>Right</span><span>Far-Right</span>
+    </div>
+  </div>
+
+  <div class="coverage-grid">
+    <div class="coverage-col col-left">
+      <div class="col-header"><div class="col-dot"></div><span class="col-title">Left Frame</span></div>
+      <div class="col-text">{{ top_cluster.left_framing }}</div>
+    </div>
+    <div class="coverage-col col-center">
+      <div class="col-header"><div class="col-dot"></div><span class="col-title">Center Frame</span></div>
+      <div class="col-text">{{ top_cluster.center_framing }}</div>
+    </div>
+    <div class="coverage-col col-right">
+      <div class="col-header"><div class="col-dot"></div><span class="col-title">Right Frame</span></div>
+      <div class="col-text">{{ top_cluster.right_framing }}</div>
+    </div>
+  </div>
+
+  <div class="not-said-row">
+    <div class="not-said-col">
+      <span class="ns-label">Left omits</span>
+      <span class="ns-text">{{ top_cluster.left_omissions }}</span>
+    </div>
+    <div class="not-said-col">
+      <span class="ns-label">Right omits</span>
+      <span class="ns-text">{{ top_cluster.right_omissions }}</span>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    <span class="footer-url">flexrpl.github.io/signal</span>
+    <div class="footer-right">
+      <span class="footer-stats">Full brief · {{ cluster_count }} story clusters · Watch list inside</span>
+      <span class="footer-badge">Signal</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

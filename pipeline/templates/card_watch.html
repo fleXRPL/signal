@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #0f1117; --card: #181c24; --card2: #1e2330; --border: #2a2f3e;
+    --amber: #f59e0b; --muted: #64748b; --text: #e2e8f0; --text-dim: #94a3b8;
+    --mono: 'IBM Plex Mono', monospace; --sans: 'IBM Plex Sans', sans-serif;
+  }
+  html, body { width: 1200px; height: 630px; overflow: hidden; background: var(--bg); }
+  .card {
+    width: 1200px; height: 630px; background: var(--card);
+    border: 1px solid var(--border); display: flex; flex-direction: column;
+    position: relative;
+  }
+  .card::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 10;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  }
+  .card-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 24px; border-bottom: 1px solid var(--border);
+    background: #13161e; flex-shrink: 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; }
+  .brand-mark { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px var(--amber); }
+  .brand-name { font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.2em; color: var(--amber); text-transform: uppercase; }
+  .brand-sep { color: var(--border); margin: 0 2px; }
+  .brand-sub { font-family: var(--mono); font-size: 13px; letter-spacing: 0.15em; color: var(--muted); text-transform: uppercase; }
+  .header-meta { font-family: var(--mono); font-size: 12px; color: var(--muted); letter-spacing: 0.06em; }
+  .card-story {
+    padding: 18px 24px 14px; border-left: 4px solid var(--amber);
+    margin: 14px 24px 0; background: #1a1e28; border-radius: 0 3px 3px 0; flex-shrink: 0;
+  }
+  .story-label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; margin-bottom: 6px; }
+  .story-headline { font-family: var(--sans); font-size: 17px; font-weight: 600; color: var(--text); line-height: 1.4; }
+  .watch-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 12px 24px; flex: 1; min-height: 0; }
+  .watch-item { background: var(--card2); border-radius: 4px; padding: 10px 13px; display: flex; flex-direction: column; gap: 6px; }
+  .watch-window {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.1em;
+    text-transform: uppercase; padding: 2px 7px; border-radius: 2px; width: fit-content;
+  }
+  .w-24hr { color: #ef4444; background: #1f0e0e; border: 1px solid #4a1616; }
+  .w-48hr { color: #f97316; background: #1c1108; border: 1px solid #4a2a08; }
+  .w-72hr { color: #f59e0b; background: #1c1608; border: 1px solid #4a3808; }
+  .w-5d   { color: #22c55e; background: #081a0e; border: 1px solid #0f3a1a; }
+  .watch-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; }
+  .w-24hr .watch-dot { background: #ef4444; }
+  .w-48hr .watch-dot { background: #f97316; }
+  .w-72hr .watch-dot { background: #f59e0b; }
+  .w-5d   .watch-dot { background: #22c55e; }
+  .watch-text { font-family: var(--sans); font-size: 12px; color: var(--text-dim); line-height: 1.45; }
+  .card-footer {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 24px; border-top: 1px solid var(--border);
+    background: #0d1018; flex-shrink: 0;
+  }
+  .footer-url { font-family: var(--mono); font-size: 11px; color: var(--amber); letter-spacing: 0.05em; opacity: 0.8; }
+  .footer-right { display: flex; align-items: center; gap: 14px; }
+  .footer-stats { font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 0.05em; }
+  .footer-badge { font-family: var(--mono); font-size: 9px; letter-spacing: 0.14em; color: var(--amber); border: 1px solid #4a3808; padding: 3px 8px; border-radius: 2px; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="card-header">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <span class="brand-name">Signal</span>
+      <span class="brand-sep">//</span>
+      <span class="brand-sub">Watch List</span>
+    </div>
+    <span class="header-meta">{{ date }} · Active tracking items</span>
+  </div>
+
+  <div class="card-story">
+    <div class="story-label">72-Hour Forward Intelligence</div>
+    <div class="story-headline">{{ watch_count }} items flagged for monitoring — {{ window_summary }}</div>
+  </div>
+
+  <div class="watch-grid">
+    {% for item in watch_items %}
+    <div class="watch-item">
+      <span class="watch-window w-{{ item.window }}"><span class="watch-dot"></span>{{ item.window | replace('hr', ' hr') | replace('5d', '5 day') }}</span>
+      <div class="watch-text">{{ item.text }}</div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="card-footer">
+    <span class="footer-url">flexrpl.github.io/signal</span>
+    <div class="footer-right">
+      <span class="footer-stats">Full brief · source breakdown · blindspot analysis</span>
+      <span class="footer-badge">Signal</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

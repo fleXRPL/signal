@@ -6,27 +6,27 @@
 
 [![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
 
-A five-pass analysis pipeline that ingests political news across the full spectrum, finds non-obvious patterns and connections, and generates an analyst-style intelligence brief rather than a news summary.
+A fully automated political intelligence pipeline. Ingests RSS feeds across the full political spectrum, runs a five-pass analysis, and publishes a daily HTML brief to GitHub Pages. Automatically posts three social cards to Bluesky each day — watch list, spectrum breakdown, and blindspot analysis.
 
 ## What it does
 
 ```text
-[RSS Feeds across 18 sources] 
+[RSS Feeds — 18 sources across the full political spectrum]
          ↓
-[Pass 1] Entity extraction per article (people, orgs, legislation, locations)
+[Pass 1] Entity extraction per article
          ↓
-[Pass 2] Algorithmic clustering (same story, multiple sources)
+[Pass 2] Algorithmic clustering (same story, multiple outlets)
          ↓
-[Pass 3] Per-cluster framing analysis (how left vs right vs center covers it)
+[Pass 3] Per-cluster framing analysis (left vs center vs right)
          ↓
-[Pass 4] Cross-story correlation (non-obvious connections, patterns, anomalies)
+[Pass 4] Cross-story correlation (hidden connections, patterns, anomalies)
          ↓
-[Pass 5] Final brief synthesis (analyst narrative, not news summary)
+[Pass 5] Brief synthesis + brief_data.json (structured card data)
          ↓
-[HTML report — open in any browser]
+[HTML report → GitHub Pages]    [3 social cards → Bluesky at 7AM / noon / 6PM]
 ```
 
-Everything runs locally via Ollama. Nothing leaves your machine.
+Everything runs locally. Nothing leaves your machine except the GitHub Pages deploy and Bluesky posts.
 
 ## Requirements
 
@@ -69,7 +69,11 @@ outperforms 8b models on the correlation and synthesis passes.
 
 Each run generates:
 
-- `reports/brief_YYYYMMDD_HHMM_runN.html` — self-contained HTML report
+- `reports/brief_YYYYMMDD_HHMM.html` — self-contained HTML report
+- `reports/brief_YYYYMMDD_HHMM.json` — structured brief data (used by social cards)
+- `reports/cards/am_YYYYMMDD.png` — Watch List card (posted at 7:00 AM)
+- `reports/cards/noon_YYYYMMDD.png` — Spectrum Breakdown card (posted at noon)
+- `reports/cards/pm_YYYYMMDD.png` — Blindspot Analysis card (posted at 6:00 PM)
 - `signal.db` — SQLite database with all articles, clusters, and analyses
 
 The HTML report includes:
@@ -115,31 +119,82 @@ sqlite3 signal.db
 SELECT count(*), source_name FROM articles GROUP BY source_name;
 ```
 
+## Social cards (Bluesky)
+
+Three cards are generated automatically each morning and posted at scheduled times:
+
+| Slot | Time | Card | Content |
+|------|------|------|---------|
+| AM | 7:00 AM | Watch List | Time-coded items flagged for monitoring |
+| Noon | 12:00 PM | Spectrum Breakdown | Top story — how each side covers it |
+| PM | 6:00 PM | Blindspot Analysis | What each side isn't reporting |
+
+### Setup
+
+```bash
+# Install dependencies
+.venv/bin/pip install playwright atproto python-dotenv
+.venv/bin/playwright install chromium
+
+# Configure credentials
+cp .env.example .env
+# Edit .env: add BLUESKY_HANDLE and BLUESKY_APP_PASSWORD
+
+# Load the three launchd posting jobs (one-time)
+cp scripts/com.flexrpl.signal.social.*.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.am.plist
+launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.noon.plist
+launchctl load ~/Library/LaunchAgents/com.flexrpl.signal.social.pm.plist
+```
+
+### Manual posting
+
+```bash
+# Dry run — print the post text without posting
+.venv/bin/python post_scheduled.py --slot am --dry-run
+
+# Post a specific slot
+.venv/bin/python post_scheduled.py --slot noon
+```
+
+See [[Social-Cards]] in the wiki for full setup and troubleshooting.
+
 ## Project structure
 
 ```bash
 signal/
 ├── .github/
 │   └── workflows/
-│       ├── ci.yml         # pytest on every PR + push to main
-│       └── static.yml     # GitHub Pages deploy on push to main
+│       ├── ci.yml               # pytest on every PR + push to main
+│       └── static.yml           # GitHub Pages deploy on push to main
 ├── config/
-│   └── sources.yaml       # feed list + model config
+│   └── sources.yaml             # feed list + model config
 ├── pipeline/
 │   ├── __init__.py
-│   ├── store.py           # SQLite persistence
-│   ├── collector.py       # RSS + article scraping
-│   ├── prompts.py         # all LLM prompts
-│   ├── analyzer.py        # 5-pass analysis pipeline
-│   ├── reporter.py        # HTML report generation
-│   ├── weekly.py          # Pass 6 — weekly synthesis
-│   └── feed.py            # RSS 2.0 feed generator
-├── tests/                 # pytest suite (164 tests, 91% coverage)
-├── reports/               # output reports (gitignored)
-├── main.py                # entry point
+│   ├── store.py                 # SQLite persistence
+│   ├── collector.py             # RSS + article scraping
+│   ├── prompts.py               # all LLM prompts
+│   ├── analyzer.py              # 5-pass analysis pipeline
+│   ├── reporter.py              # HTML report + brief_data.json
+│   ├── weekly.py                # Pass 6 — weekly synthesis
+│   ├── feed.py                  # RSS 2.0 feed generator
+│   ├── infographic.py           # Playwright HTML → PNG card renderer
+│   ├── social.py                # Bluesky auth, upload, post
+│   └── templates/
+│       ├── card_watch.html      # AM watch list card template
+│       ├── card_spectrum.html   # Noon spectrum breakdown template
+│       └── card_blindspot.html  # PM blindspot analysis template
+├── tests/                       # pytest suite (164 tests, 91% coverage)
+├── reports/
+│   ├── cards/                   # generated PNG card images
+│   └── posts/                   # pre-generated JSON post packages
+├── scripts/                     # launchd plists
+├── post_scheduled.py            # CLI dispatcher for social posts
+├── main.py                      # entry point
+├── .env.example                 # credential template
 ├── pytest.ini
 ├── requirements.txt
-└── signal.db              # runtime database (gitignored)
+└── signal.db                    # runtime database (gitignored)
 ```
 
 ## Infographic

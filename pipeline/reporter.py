@@ -10,6 +10,7 @@ Dark theme, clear section hierarchy, bias indicators, source attribution.
 from __future__ import annotations
 
 import html
+import json
 import re
 from datetime import datetime, timezone
 from pathlib import Path
@@ -815,6 +816,87 @@ def _render_side_coverage(titles: List[str]) -> str:
     )
 
 
+_WINDOW_PATTERNS = [
+    (r"\b24.?h(our)?s?\b|\bnext 24\b", "24hr"),
+    (r"\b48.?h(our)?s?\b|\bnext 48\b", "48hr"),
+    (r"\b72.?h(our)?s?\b|\b3.day\b|\bnext 72\b", "72hr"),
+    (r"\b(5|7).day\b|\bweek\b|\bmonth\b", "5d"),
+]
+
+
+def _parse_watch_window(text: str) -> str:
+    """Infer a time-window badge from watch-item text; default to 48hr."""
+    lower = text.lower()
+    for pattern, label in _WINDOW_PATTERNS:
+        if re.search(pattern, lower):
+            return label
+    return "48hr"
+
+
+def _extract_brief_data(
+    clusters: List[Dict[str, Any]],
+    correlation: Dict[str, Any],
+    articles: List[Dict[str, Any]],
+    report_path: Path,
+    date_str: str,
+) -> Dict[str, Any]:
+    """
+    Extract the structured data needed by the three social cards.
+
+    Returns a dict written to brief_data.json alongside the HTML report.
+    """
+    source_names = {a["source_name"] for a in articles}
+
+    # Watch list — attach parsed time windows
+    raw_watch = correlation.get("recommended_watch", [])
+    watch_items = [
+        {"window": _parse_watch_window(item), "text": item}
+        for item in raw_watch[:6]
+    ]
+
+    # Top cluster — first high/medium significance multi-source cluster
+    multi = [c for c in clusters if not c.get("singleton") and c.get("analysis")]
+    multi_sorted = sorted(
+        multi,
+        key=lambda c: {"high": 0, "medium": 1, "low": 2}.get(
+            c.get("analysis", {}).get("significance", "medium"), 1
+        ),
+    )
+    top = multi_sorted[0] if multi_sorted else {}
+    top_analysis = top.get("analysis", {})
+    top_cluster = {
+        "headline": top_analysis.get("headline", top.get("story_title", "")),
+        "bias_spread": top.get("bias_spread", {}),
+        "article_count": len(top.get("articles", [])),
+        "left_framing": top_analysis.get("left_framing", ""),
+        "center_framing": top_analysis.get("center_framing", ""),
+        "right_framing": top_analysis.get("right_framing", ""),
+        "left_omissions": top_analysis.get("left_omissions", ""),
+        "right_omissions": top_analysis.get("right_omissions", ""),
+    }
+
+    # Blindspot
+    left_only = correlation.get("_left_only", [])
+    right_only = correlation.get("_right_only", [])
+
+    report_url = (
+        f"https://flexrpl.github.io/signal/reports/{report_path.name}"
+    )
+
+    return {
+        "date": date_str,
+        "article_count": len(articles),
+        "source_count": len(source_names),
+        "cluster_count": len(multi),
+        "report_url": report_url,
+        "watch_items": watch_items,
+        "top_cluster": top_cluster,
+        "blindspot_narrative": correlation.get("blindspot_analysis", ""),
+        "left_only": [str(t) for t in left_only[:5]],
+        "right_only": [str(t) for t in right_only[:5]],
+    }
+
+
 def generate_report(
     brief_text: str,
     clusters: List[Dict[str, Any]],
@@ -886,6 +968,13 @@ def generate_report(
 
     out_path = REPORTS_DIR / f"brief_{file_date}.html"
     out_path.write_text(rendered, encoding="utf-8")
+
+    brief_data = _extract_brief_data(
+        clusters, correlation, articles, out_path, date_str
+    )
+    json_path = out_path.with_suffix(".json")
+    json_path.write_text(json.dumps(brief_data, indent=2), encoding="utf-8")
+
     return out_path
 
 
