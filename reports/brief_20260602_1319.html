@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-02 13:19 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-02 13:19 UTC</span>
+    <span class="pill">80 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">2 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on June 2, 2026 is operating in a pre-midterm tension state where the administration is simultaneously absorbing institutional setbacks and executing compensatory control measures. The DOJ&#x27;s compliance with a federal court order blocking the $1.776 billion anti-weaponization fund is a genuine rule-of-law data point — a court found grounds, the administration yielded — but the administration&#x27;s simultaneous signaling that it is &quot;reconsidering&quot; the fund&#x27;s structure indicates the compliance is tactical, not principled. The constitutional confrontation is deferred, not resolved. The press ban at the Pentagon, occurring in the same news cycle, is not coincidental: when executive reach is constrained by courts, access restrictions tighten elsewhere. This is a substitution pattern, not a coincidence.</p>
+<p>The Iran diplomacy track is the most consequential and least coherently covered story in today&#x27;s environment. Trump is actively mediating between Israel and Hezbollah as a precondition for a broader Iran nuclear framework, while organized conservative resistance — anchored by National Review — is forming against any deal before terms are disclosed. Secretary of State Rubio is simultaneously the operational lead on the most sensitive negotiation in the current foreign policy portfolio and a named 2028 presidential contender. Those two facts are being analyzed in completely separate registers. Whether the Iran framework succeeds or collapses in the next two to four weeks will define Rubio&#x27;s political trajectory more than any poll or primary.</p>
+<p>The Democratic Party&#x27;s handling of Maine Senate candidate Graham Platner — managing documented racist, misogynistic, and sexually explicit conduct as a messaging problem rather than a threshold disqualifier — is the clearest current signal of structural candidate accountability failure. The parallel to Ken Paxton in Texas is analytically honest: both parties have normalized misconduct management as the operational response to disqualifying conduct. This is not a symmetry deployed for rhetorical effect. It reflects a genuine institutional failure in both parties&#x27; candidate vetting and accountability mechanisms, and it is accelerating.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The administration</strong> is operating in a dual-track mode: accepting judicial constraints where resistance would cost more than compliance (anti-weaponization fund) while expanding informational control where judicial constraint is not yet operative (Pentagon press ban). The &quot;reconsidering&quot; language on the fund is the tell — this is not an administration that accepts permanent constraint; it routes around it. The Iran diplomacy is Trump&#x27;s most significant foreign policy initiative and the one where his personal mediation style has the highest leverage, which also means it is the initiative most vulnerable to collapse if he disengages or if Israeli military action outpaces diplomatic sequencing.</p>
+<p><strong>Marco Rubio</strong> is the actor whose dual position — active Secretary of State in live negotiations, named 2028 contender — creates the most underappreciated risk. A successful Iran framework makes him a serious presidential candidate with a foreign policy credential no Republican has had in a generation. A collapsed deal, in an environment where National Review is already preemptively positioning against any agreement, makes him the official who failed and gave Iran legitimacy without result. His career is riding on a two-to-four week diplomatic window, and neither political coverage nor diplomatic coverage is tracking this as a single story.</p>
+<p><strong>Senate Republicans</strong> provided the decisive pressure that killed the anti-weaponization fund — the bipartisan objection was not incidental, it was load-bearing. This signals that on fiscal and constitutional overreach questions, there remains a threshold of Republican Senate resistance. That threshold has not been reliably mapped. The fund&#x27;s collapse under combined court and Senate pressure is the clearest recent instance of the institutional resistance mechanism functioning.</p>
+<p><strong>National Review and the institutional conservative press</strong> are running an active pressure campaign against the Iran framework before it is disclosed. This is organized intra-right opposition to a Trump foreign policy initiative — a structural fact that left-leaning outlets are not covering and right-leaning outlets are not reconciling with their own editorial alignment. The dog that is not barking is the conservative foreign policy establishment&#x27;s active resistance to a deal Trump wants.</p>
+<p><strong>Graham Platner</strong> is the Democrats&#x27; most acute near-term electoral liability, but the party&#x27;s management of it as a messaging problem rather than a candidacy question suggests they believe the Maine seat is structurally winnable regardless of candidate quality, or that the replacement options are worse. Both conclusions carry significant risk.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is not claiming the DOJ compliance with the court order as a rule-of-law win. A federal court successfully pausing a $1.8 billion executive fund with DOJ non-resistance is an extraordinary institutional event by any historical measure. The absence of a &quot;institutions are holding&quot; framing from the left — even as a provisional claim — suggests either they do not trust the compliance as durable, or they are conserving narrative capital for a confrontation they believe is coming. Either interpretation indicates the left does not believe this is over.</p>
+<p>The right is not covering the Pentagon press ban. This is a publication-freedom story that implicates the military&#x27;s relationship with accountability journalism during an active diplomatic and military engagement. The right&#x27;s stated commitments to press freedom and military transparency are directly in tension with the ban, and the absence of right-leaning coverage of it is a clean editorial suppression — not an accident of the news cycle.</p>
+<p>Neither side is connecting the ICE detainee disappearance story in Maine to the Platner Senate race in Maine. ICE enforcement activity in a competitive Senate state during a primary cycle shapes electoral terrain. The Maine geography appearing three times in today&#x27;s feed — Platner, ICE detainee disappearances, and the organizational Democratic story — is not coincidental, and no outlet is treating it as a unified picture of a single contested political environment.</p>
+<p>The Iowa mass shooting — six family members killed — is generating essentially no coverage in a news cycle where Iowa appears three times for political reasons. A six-fatality family massacre would normally dominate regional and national coverage for days. Its near-total absence suggests a collective editorial decision, not an oversight. Domestic gun violence does not currently fit any major outlet&#x27;s active political frame, and that editorial consensus is itself a significant political fact.</p>
+<p>The Kushner overseas anti-corruption investigation is appearing in right-leaning coverage framed as a foreign instability story, while left-leaning outlets — which spent years covering Kushner conflict-of-interest — are absent from it entirely. The framing inversion means neither side is covering the story the other side would recognize, and the actual anti-corruption investigation is not the story either side is telling.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most structurally significant pattern today is the <strong>opacity infrastructure</strong>: Pentagon press ban, ICE detainee disappearances generating no accountability coverage, and the difficulty of mass citizenship stripping each reduce the accountability surface area for executive enforcement action. They are being covered as three separate stories by three separate outlets. They are not three separate stories. They are the operational components of a unified approach to reducing the documentation of executive enforcement activity during a period when that enforcement is under judicial scrutiny.</p>
+<p>The <strong>anti-weaponization fund and the Scott Adams FBI Twitter data story</strong> are appearing in the same news cycle for a reason. The Adams story — the FBI&#x27;s historical data request targeting a right-aligned figure — provides the concrete grievance the anti-weaponization fund was ostensibly designed to remedy. The fund&#x27;s collapse therefore does not resolve the grievance; it documents its persistence while removing the institutional response. This creates a usable narrative loop: the grievance remains live, the remedy was killed by courts and Senate Republicans, the grievance can be reframed as evidence of ongoing weaponization. Expect this framing.</p>
+<p>The <strong>timing of the National Review Iran piece</strong> relative to Trump&#x27;s active mediation is not an op-ed. It is an opening position in an intra-conservative negotiation about what terms are acceptable. If additional National Review pieces follow in the next 72 hours, this is a coordinated pressure campaign to constrain the framework before it firms up. The publication&#x27;s influence on Senate Republican foreign policy staffers makes this operationally significant, not just editorially interesting.</p>
+<p>The <strong>Freedom 250 fuel spill on the National Mall</strong> exists in the same news cycle as the anniversary &quot;resilient discontent&quot; polling. The right is using the anniversary to document public dissatisfaction with current conditions; it simultaneously had an organizational incident at the anniversary event. The left is covering neither. The fuel spill triggers EPA notification requirements — whether those were filed is a direct test of whether environmental regulations apply to administration-affiliated events, and no outlet is asking the question.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>National Review editorial volume on Iran, next 72 hours.</strong> If two or more additional pieces appear opposing the framework, this is a coordinated conservative pressure campaign, not an isolated editorial. The implication is that organized resistance is attempting to constrain Senate Republican support for any deal before terms are disclosed. Monitor for Senate Republican statements on Iran in parallel.</p>
+<p><strong>DOJ anti-weaponization fund reconstitution language.</strong> The &quot;reconsidering&quot; signal means the administration is already drafting a structural workaround. Any new executive order or modified fund mechanism in the next two weeks is the actual constitutional confrontation event — the court order compliance was not the resolution.</p>
+<p><strong>Rubio public statements on Iran framework timeline.</strong> If Rubio publicly associates himself with a term sheet or framework disclosure, his 2028 positioning accelerates and the deal becomes his to own. If the deal collapses before disclosure, watch for whether National Review&#x27;s preemptive opposition becomes the dominant framing that allows the right to attribute the failure to the framework rather than to Trump&#x27;s mediation.</p>
+<p><strong>Pentagon press ban scope clarification.</strong> Whether the ban applies to all credentialed journalists or only specific outlets determines whether this is a general access restriction or a targeted political exclusion. The distinction matters for its legal vulnerability and for whether it applies during active diplomatic coverage of the Iran negotiation.</p>
+<p><strong>Maine ICE enforcement activity relative to Platner primary timeline.</strong> Any ICE operation in competitive Maine districts before the primary creates an electoral terrain story that would force both the Platner campaign and the state Democratic Party to respond on immigration simultaneously. Monitor for DHS enforcement activity in the state.</p>
+<p><strong>Iowa mass shooting investigative coverage, 72-to-120-hour window.</strong> If sustained investigative coverage emerges, the story was deprioritized in the initial cycle for identifiable editorial reasons. If it disappears entirely, it confirms that a six-fatality domestic killing does not currently fit any major outlet&#x27;s political narrative architecture — which is itself a consequential press freedom and editorial accountability story.</p>
+<p><strong>EPA notification status, Freedom 250 fuel spill.</strong> Whether the required notifications for 30+ gallons of fuel on federal land were filed on time is a direct test of regulatory application to administration-affiliated events. No outlet has asked. File a FOIA or press inquiry through EPA public affairs within 48 hours before any records are reclassified as routine maintenance.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that explains today&#x27;s otherwise fragmented picture is this: the administration has internalized that judicial and legislative resistance is episodic and containable, and is operating accordingly — accepting individual constraints while systematically narrowing the accountability mechanisms that would make those constraints durable. The press ban, the ICE detainee opacity, the citizenship stripping legal complexity, the anti-weaponization fund workaround signal: these are not separate stories. They are a single operational posture. The institutional resistance is real — courts are issuing orders, Senate Republicans are applying genuine pressure, DOJ is complying — but the resistance is fragmented, celebrated by no one, and followed by no sustained accountability infrastructure. The left is not building a durable &quot;institutions are holding&quot; narrative because it does not believe the institutions are holding; it believes this is halftime. The right is not acknowledging the costs of the opacity infrastructure because doing so would require reconciling their stated values with their actual tolerance for executive control. What you are watching is not a constitutional crisis and not a functioning democracy in full health. It is a system under sustained stress, with intermittent resistance, where the decisive question — whether the resistance accumulates or dissipates before November — has not yet been answered.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Maine Democratic Senate candidate Graham Platner faces compounding personal scandals while Trump&#x27;s anti-weaponization fund collapses under legal and bipartisan Republican pressure, as fragile US-Iran peace talks hang on Trump&#x27;s mediation between Israel and Hezbollah.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (8)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:21.1;" title="center: 8"></div><div class="bias-segment" style="background:#e0a87a; flex:26.3;" title="center-left: 10"></div><div class="bias-segment" style="background:#3a8a52; flex:13.2;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:15.8;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:5.3;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:18.4;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The Platner story is the clearest signal here: a Democratic candidate with a documented pattern of racist, misogynistic, and now sexually explicit conduct is being managed by his own party as a messaging problem rather than a disqualifying one, which carries real electoral risk in Maine. The anti-weaponization fund collapse is significant because it reveals a meaningful limit on Trump&#x27;s ability to use executive power for direct political patronage when even Senate Republicans balk — the fund&#x27;s demise under bipartisan legal and political pressure is a rare instance of institutional resistance working. On Iran, the fundamental unresolved question that no outlet fully addresses is whether the US has a coherent strategy that reconciles Israeli military action with simultaneous diplomatic engagement with Tehran.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Platner&#x27;s scandals as real but survivable, subordinating personal conduct to electoral stakes and Susan Collins&#x27;s voting record. On Iran, the emphasis is diplomatic failure and US-Israeli contradictions undermining peace. The anti-weaponization fund is cast as nakedly corrupt patronage for January 6 participants. ICE protests are framed as state aggression against legitimate dissent. The overarching theme is institutional damage from Trump&#x27;s norm violations.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets treat the anti-weaponization fund&#x27;s collapse as a pragmatic unblocking of budget reconciliation, with bipartisan Republican opposition as the notable finding. Iran coverage centers congressional frustration across party lines at lack of transparency. The Platner story is framed as a bipartisan rebuke, including from Trump-aligned voices. The Hill presents Jan. 6 narrative consolidation as a completed factual shift in GOP orthodoxy, neither endorsing nor condemning it.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump as a commanding dealmaker personally salvaging Iran negotiations, and the anti-weaponization fund withdrawal as a clean legislative reset rather than a defeat. Platner&#x27;s scandals are amplified as evidence of Democratic moral relativism — the party protecting a flawed candidate for power. The Newark protests are framed as manufactured chaos enabled by Democratic governance. Fox emphasizes Spencer Pratt&#x27;s insurgent momentum as proof Republican energy is breaking Democratic strongholds.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: the severity of Platner&#x27;s pattern of misconduct as a disqualifying character issue rather than a political obstacle to manage; the genuine public safety concerns raised by Mullin&#x27;s CBP airport withdrawal proposal; and the extent of Republican discomfort with the anti-weaponization fund as a principled fiscal objection rather than pure political calculation.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: the constitutional basis for court rulings against the transgender military ban and anti-weaponization fund; the bipartisan congressional alarm about lack of authorization and transparency in the Iran military engagement; and the documented pattern of ICE detaining U.S. citizens and legal residents, which Reason&#x27;s libertarian coverage surfaces but Fox ignores entirely.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Justice Department agreed to comply with a federal court order temporarily blocking a $1.776–1.8 billion &#x27;anti-weaponization&#x27; compensation fund while legal challenges proceed.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:100.0;" title="center-left: 2"></div></div></div>
+  <div class="story-assessment">The core event is unambiguous: the DOJ agreed to honor a court order pausing a large federal fund. The real analytical gap is the absence of right-leaning coverage, which makes a full-spectrum comparison impossible. What both outlets share — and what matters — is that a federal court found sufficient legal grounds to pause executive action, and the administration did not resist, which is a meaningful but not extraordinary data point about the rule of law under this administration.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The fund is framed as a suspect political instrument — a potential &#x27;slush fund&#x27; — and the court order is cast as a necessary democratic guardrail against executive overreach. The emphasis is on the fund&#x27;s legitimacy problem, not merely the legal process.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both sources are rated center-left. PBS leans more procedural — compliance is a normal legal event. NPR leans more evaluative — the fund&#x27;s purpose and critics are foregrounded.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided in this dataset. Analysis of right framing is not possible without that coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Without right-leaning sources, this field cannot be fully assessed. However, both outlets omit: the administration&#x27;s stated rationale for creating the fund, who specifically would be compensated, and the legal theory under which the fund was established.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning sources were provided. Notably, both center-left outlets omit detailed defense of the fund&#x27;s purpose or any framing sympathetic to the administration&#x27;s intent.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pentagon press ban</span><span class="entity-tag">DOJ anti-weaponization fund compliance</span></div>
+  <div class="connection-text">Both events occurred on the same news cycle: the administration lost an institutional battle (courts forcing DOJ compliance) and simultaneously won an information-control battle (barring press from Pentagon). These are not coincident — the press ban forecloses the accountability mechanism that would otherwise scrutinize the fund&#x27;s collapse and any reconstitution attempt.</div>
+  <div class="connection-sig">↳ The pattern suggests a substitution dynamic: when executive overreach is judicially constrained in one domain, access restrictions are tightened in another. The press ban is the administration&#x27;s asymmetric response to a rule-of-law setback — and it is only being covered by left-leaning outlets, meaning the right is not connecting these two events either.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Graham Platner</span><span class="entity-tag">Ken Paxton</span></div>
+  <div class="connection-text">The explicit &#x27;populists&#x27; scandal dilemma&#x27; framing linking Platner and Paxton is the most structurally honest story in today&#x27;s feed. Both men have documented disqualifying conduct; both parties are treating that conduct as a messaging problem rather than a threshold issue. The symmetry is not rhetorical — it reflects a genuine structural failure in both parties&#x27; candidate accountability mechanisms.</div>
+  <div class="connection-sig">↳ If both parties consistently manage rather than disqualify scandal-laden candidates, the practical effect is that documented misconduct no longer functions as a political disqualifier. The Maine Senate race and the Texas AG race are thus not outliers — they are the new baseline.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran negotiations</span><span class="entity-tag">National Review &#x27;We Don&#x27;t Need a Deal&#x27;</span></div>
+  <div class="connection-text">Trump is actively mediating between Israel and Hezbollah to enable Iran diplomacy while National Review — a flagship institutional conservative outlet — is publishing explicit opposition to any Iran deal. This is an intra-right fracture that receives zero cross-coverage: left outlets are not covering the conservative opposition to Trump&#x27;s Iran diplomacy, and right outlets are not reconciling Trump&#x27;s actual diplomatic posture with their own editorial line.</div>
+  <div class="connection-sig">↳ Macron&#x27;s &#x27;must be seized now&#x27; language (from the previous cycle) and the active US-Iran engagement suggest a deadline. National Review&#x27;s piece landing now is either a pressure campaign against the framework before it firms up, or a preemptive positioning move if the deal collapses — either way, it represents organized conservative resistance to a Trump foreign policy initiative, which is the dog that is not barking in mainstream coverage.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">ICE detainee disappearances (Maine)</span><span class="entity-tag">Pentagon press ban</span><span class="entity-tag">Citizenship stripping story</span></div>
+  <div class="connection-text">Three separate stories — ICE detainees vanishing in Maine, DoD barring journalists, and the difficulty of mass citizenship stripping — all share a common operational logic: reducing the accountability surface area for executive enforcement action. They are covered exclusively by left-leaning outlets, meaning the right is not connecting them either, and the left is covering them as separate stories rather than as a unified opacity infrastructure.</div>
+  <div class="connection-sig">↳ The Maine geography is notable: Maine is also the state where the Platner Senate race is unfolding. ICE activity in a competitive Senate state during a primary cycle is not coincidental — it shapes the electoral terrain for the race that is simultaneously a national Democratic messaging problem.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Scott Adams FBI Twitter data request</span><span class="entity-tag">Anti-weaponization fund</span></div>
+  <div class="connection-text">The FBI&#x27;s historical Twitter data request for Scott Adams — a right-aligned figure — and the anti-weaponization fund&#x27;s collapse are nominally unrelated, but they both map onto the same underlying narrative about selective federal surveillance of political opponents. The Adams story, covered by Reason (libertarian), provides the right with a concrete case of the very conduct the anti-weaponization fund was ostensibly designed to remedy. The fund&#x27;s collapse therefore removes the institutional response to the grievance the Adams story exemplifies.</div>
+  <div class="connection-sig">↳ This creates a feedback loop: the fund collapses, the grievance it was meant to address remains documented in the news cycle, and the collapse can be reframed as evidence of ongoing &#x27;weaponization&#x27; rather than a legal and institutional failure of the fund itself.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Jared Kushner overseas resort</span><span class="entity-tag">Fox News</span></div>
+  <div class="connection-text">The Kushner anti-corruption story is appearing in right-leaning/Fox News coverage rather than left-leaning coverage — a reversal of the expected pattern. Left outlets that spent years covering Kushner conflicts of interest are absent from this story. The likely explanation is that the story&#x27;s framing centers on violent protests surrounding the resort rather than on Kushner&#x27;s ethics, making it a foreign instability story for the right rather than a corruption story for the left.</div>
+  <div class="connection-sig">↳ The framing inversion means neither side is covering the story that the other side would recognize. The left is missing a Kushner corruption angle; the right is using foreign protests as the hook. The actual anti-corruption investigation is not the story either side is telling.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Institutional resistance as an isolated phenomenon: courts, Senate Republicans, and legal challenges each constrain executive action in separate domains (anti-weaponization fund, citizenship stripping), but no story today connects these into a systemic pattern of institutional pushback. Each resistance event is reported as a one-off. The absence of a &#x27;institutions are holding&#x27; meta-narrative — even in left-leaning coverage — is itself a narrative choice.</div>
+<div class="pattern-item">Scandal symmetry deployed asymmetrically: the Platner/Paxton parallel is available to both sides as a &#x27;both parties have a problem&#x27; frame, but right-leaning outlets are using it to attack the left on Platner while not revisiting Paxton&#x27;s continued institutional normalization. The symmetry in the framing is a rhetorical move, not an analytical one.</div>
+<div class="pattern-item">The 250th anniversary as a discontent vessel: the Fox News &#x27;resilient discontent&#x27; poll and the Freedom 250 fuel spill both attach to the anniversary framing. The right is using the anniversary to document public dissatisfaction (Fox poll) while simultaneously having an organizational incident at the anniversary event (fuel spill). Left outlets are not covering either — avoiding both the discontent data and the organizational failure.</div>
+<div class="pattern-item">Iowa as a microcosm under suppression: a mass shooting killing six family members in Iowa is competing in the same news cycle as an Iowa Democratic &#x27;we are not in disarray&#x27; organizational story and national Trump/Platner coverage. The shooting receives no cross-spectrum engagement, suggesting the violence-as-political-context frame is not available to either side at the moment — the left needs the organizational health story, the right does not want domestic gun violence foregrounded.</div>
+<div class="pattern-item">Misinformation and poll credibility as parallel but non-intersecting fights: the left is running an election security/misinformation story (threat to elections from disinformation), while the right is running a poll methodology attack (Latino support poll funded by advocacy group). Both are information credibility stories, but they operate in completely separate registers and neither side is engaging with the other&#x27;s framing, preventing any synthesis of what the actual information environment looks like.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Iowa mass shooting — a gunman killing six relatives — is generating essentially no cross-spectrum coverage in a news cycle where Iowa appears three times for political reasons. A six-fatality family mass shooting would normally dominate a regional and national news cycle for days. Its burial suggests either active narrative suppression or a collective editorial decision that domestic gun violence does not serve any current partisan frame.</div>
+<div class="anomaly-item">The DOJ compliance with the court order blocking the anti-weaponization fund is being covered only by center-left outlets and is not being claimed as a rule-of-law victory by anyone — not Democrats, not civil society groups, not legal commentators. A federal court successfully pausing a $1.8 billion executive fund with DOJ non-resistance is an extraordinary institutional event. Its absence as a &#x27;win&#x27; narrative on the left is anomalous and suggests the left either does not trust the compliance or does not want to appear to be celebrating a temporary injunction as a durable constraint.</div>
+<div class="anomaly-item">The Kushner anti-corruption investigation story is right-only coverage — a structural inversion of the expected alignment. If the story involves a genuine anti-corruption investigation of a senior former administration official&#x27;s overseas financial dealings, the absence of left-outlet coverage is a significant editorial blind spot, and its presence in Fox News coverage requires explanation: either the story&#x27;s framing (foreign protests) makes it a right-side story, or the investigation lacks the credibility threshold that would prompt left-outlet pickup.</div>
+<div class="anomaly-item">Marco Rubio appearing simultaneously in a 2028 presidential contender ranking and in the active Iran diplomacy coverage creates a split-screen anomaly: Rubio is being evaluated as a future candidate while operating as the current Secretary of State in the most sensitive ongoing negotiation. The 2028 ranking story does not appear to engage with how the Iran negotiation outcome will define his candidacy viability — the political and diplomatic tracks are being analyzed in isolation.</div>
+<div class="anomaly-item">The Pentagon press ban&#x27;s timing — occurring as Iran negotiations are at a sensitive juncture and as the anti-weaponization fund is collapsing — is suspiciously clean. Restricting journalist access to DoD press offices during an active diplomatic negotiation involving military posture (Israel-Hezbollah-Iran) eliminates the primary accountability mechanism for real-time reporting on whether US military and diplomatic postures are coordinated or contradictory.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left today is systematically avoiding three things: the Fox News &#x27;resilient discontent&#x27; poll data (which, if accurate, has direct implications for 2026 midterm modeling they are otherwise covering), the Kushner overseas anti-corruption story (which fits their established corruption frame but is absent, suggesting either editorial skepticism about the sourcing or a deliberate avoidance of stories that mix Trump-adjacent corruption with foreign instability), and any acknowledgment that the DOJ&#x27;s compliance with the anti-weaponization court order represents a genuine institutional win rather than a temporary reprieve. The right is systematically avoiding the Pentagon press ban (which implicates their own stated commitment to press freedom and military transparency), the ICE detainee disappearance story (which has direct legal and electoral implications in a competitive state), and the internal contradiction between Trump&#x27;s active Iran diplomacy and National Review&#x27;s simultaneous opposition to any Iran deal. The pattern of avoidance suggests both sides are in pre-midterm narrative conservation mode: the left is protecting a fragile &#x27;institutions are holding&#x27; frame by not celebrating partial wins or engaging with discontent data, while the right is protecting Trump&#x27;s diplomatic flexibility by not surfacing the intra-conservative fracture on Iran or the press freedom costs of DoD access restrictions.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Court Order Justice Department Abide</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Stripping U.S. citizenship en masse is harder than Trump vowed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› For veterans, a place where peace can take root</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Political parties once avoided primaries. In many places, that&#x27;s changed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› With competitive midterm elections, Iowa Democrats say they&#x27;re not in disarray</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New report shows misinformation is a threat to election security</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump faces a new inflation warning from the bond market, adding to his midterm challenges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AP report: Trump is reconsidering $1.8 billion &#x27;anti-weaponization&#x27; fund as DOJ temporarily pauses it</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: South Carolina Republican gubernatorial candidates meet for debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ranking the 2028 Republican presidential contenders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› First Thing: Defense department bars reporters from Pentagon press room</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas jury to consider sentence for Catholic priest convicted of sexual assault</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iowa shootings: gunman suspected of killing six relatives then himself</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon bars journalists from entering its press office citing re-designation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› White Castle adds veggie burger to menu as plant-based eating grows</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› They Were Detained by ICE. Then They Vanished.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Senator Who Won’t Shut Up about Climate Change</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› LA business leader says crime, wildfire fallout fueling Pratt surge as voters seek change: &#x27;People are angry&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jared Kushner&#x27;s overseas luxury resort project faces anti-corruption investigation amid violent protests</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News Poll: &#x27;Resilient discontent&#x27; defines the US mood at 250th anniversary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will Putin Lose Transnistria, Too?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Britain’s Illiberal Mistake on Speech</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America Doesn’t Want to Know About Abortion Pills</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Insane Climate Bureaucracy That Never Was</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Is Ali Velshi Talking About?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Don’t Need a Deal with Iran</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Farage: &#x27;White Lives Matter Too&#x27;: Outrage Builds as Police Dump Henry Nowak Handcuff Footage in Middle of Night</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kamala Harris&#x27;s LGBTQ+ Pride Month Message: &#x27;Ongoing Fight&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll Claiming Trump Losing Latino Support Sponsored by Left-Wing Advocacy Group</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Over 30 Gallons of Fuel Spilled onto National Mall Following Freedom 250</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Breitbart Business Digest: The AI Boom Hiding in the Backrooms of Census Bureau Data</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">National Review editorial posture on Iran in the next 72 hours: if additional pieces appear opposing the framework, this is a coordinated conservative pressure campaign against a deal before it firms up, not an isolated op-ed</div>
+<div class="watch-item">Maine ICE enforcement activity relative to Platner campaign timeline: any ICE operation in competitive Maine congressional or Senate districts between now and the primary creates an electoral terrain story that neither side is currently framing</div>
+<div class="watch-item">DoD press ban scope clarification: whether the ban applies to all credentialed journalists or only to specific outlets will determine if this is an access restriction or a targeted exclusion with specific political implications</div>
+<div class="watch-item">Rubio calendar for Iran framework disclosure: if Rubio is publicly associated with a term sheet or framework announcement, it accelerates his 2028 positioning as a foreign policy principal; if the deal collapses, the National Review opposition position becomes the dominant conservative frame and Rubio absorbs the failure</div>
+<div class="watch-item">Iowa mass shooting investigative coverage emergence: if the six-fatality family shooting generates sustained investigative coverage in 3-5 days, it was deprioritized editorially in the initial cycle; if it disappears entirely, it confirms that domestic gun violence does not currently fit any major outlet&#x27;s political narrative frame</div>
+<div class="watch-item">Kushner anti-corruption investigation: identify the specific country, the investigating authority, and whether the protests are connected to the project itself — this determines whether the story is a foreign policy story (right framing) or a corruption story (left framing) and which side will eventually be forced to cover it</div>
+<div class="watch-item">DOJ anti-weaponization fund reconstitution attempt: Trump is reportedly &#x27;reconsidering&#x27; the fund structure; any new executive order or modified fund mechanism in the next two weeks would indicate the administration found a workaround to the court order, which is the real constitutional confrontation event</div>
+<div class="watch-item">FEC and environmental agency response to Freedom 250 fuel spill on the National Mall: 30+ gallons of fuel on federal land triggers EPA notification requirements; whether those notifications were filed and whether any enforcement action follows is a direct test of whether environmental regulations apply to administration-affiliated events</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
