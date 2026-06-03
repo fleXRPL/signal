@@ -4,7 +4,7 @@
 Signal — Scheduled social post dispatcher.
 
 Loads the pre-generated post package for a given slot and posts it to Bluesky.
-Called by three launchd jobs at 7 AM, 12 PM, and 6 PM.
+Called by three launchd jobs at 8 AM, 12 PM, and 6 PM.
 
 Usage:
     python post_scheduled.py --slot am

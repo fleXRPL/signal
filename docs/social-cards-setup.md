@@ -56,7 +56,7 @@ git status
 
 ## 3. Generate cards and post packages
 
-Cards are built during the **daily** pipeline run (5:00 AM launchd job), not at post time.
+Cards are built during the **daily** pipeline run (4:00 AM launchd job), not at post time.
 
 **Full pipeline** (articles + analysis + HTML + cards + post JSON):
 
@@ -165,9 +165,9 @@ Expected (exit code `0` in the second column = last run OK):
 
 | Job                              | Schedule                                    |
 | -------------------------------- | ------------------------------------------- |
-| `com.flexrpl.signal`             | Daily 5:00 AM — pipeline + cards + git push |
+| `com.flexrpl.signal`             | Daily 4:00 AM — pipeline + cards + git push |
 | `com.flexrpl.signal.weekly`      | Monday 6:00 AM — weekly brief               |
-| `com.flexrpl.signal.social.am`   | Daily 7:00 AM — post Watch List             |
+| `com.flexrpl.signal.social.am`   | Daily 8:00 AM — post Watch List             |
 | `com.flexrpl.signal.social.noon` | Daily 12:00 PM — post Spectrum              |
 | `com.flexrpl.signal.social.pm`   | Daily 6:00 PM — post Blindspot              |
 

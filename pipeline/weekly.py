@@ -96,24 +96,34 @@ def _build_watch_list_evolution(runs: List[Dict[str, Any]]) -> str:
     return "\n".join(lines) if lines else "Insufficient data for watch list evolution."
 
 
+def _llm_call_claude(prompt: str, timeout: int, attempts: int = 2) -> str:
+    """Call Claude Code CLI; retry once on stream idle timeout (long weekly synthesis)."""
+    claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
+    last_error = ""
+    for attempt in range(attempts):
+        result = subprocess.run(
+            [claude_bin, "-p", prompt, "--print"],
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+        )
+        if result.returncode == 0:
+            return result.stdout.strip()
+        detail = result.stderr.strip() or result.stdout.strip() or "Claude CLI non-zero exit"
+        last_error = detail
+        if "Stream idle timeout" not in detail or attempt >= attempts - 1:
+            raise RuntimeError(detail)
+    raise RuntimeError(last_error)
+
+
 def _llm_call(prompt: str, config: Dict[str, Any]) -> str:
     """Dispatch the weekly synthesis LLM call to the configured provider."""
     llm_cfg = config.get("llm", {})
     provider = os.environ.get("SIGNAL_LLM_PROVIDER", llm_cfg.get("provider", "claude"))
 
     if provider == "claude":
-        claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
         timeout = llm_cfg.get("claude", {}).get("timeout", 180)
-        result = subprocess.run(
-            [claude_bin, "-p", prompt, "--print", "--no-stream"],
-            capture_output=True,
-            text=True,
-            timeout=timeout * 2,  # weekly synthesis is a large call
-        )
-        if result.returncode != 0:
-            detail = result.stderr.strip() or result.stdout.strip() or "Claude CLI non-zero exit"
-            raise RuntimeError(detail)
-        return result.stdout.strip()
+        return _llm_call_claude(prompt, timeout=timeout * 3)
 
     # Ollama fallback
     ollama_cfg = llm_cfg.get("ollama", {})

@@ -46,17 +46,18 @@ Edit the `StartCalendarInterval` block in `scripts/com.flexrpl.signal.plist`:
 </dict>
 ```
 
-**Current schedule: 5:00 AM local time daily.**
+**Current schedule: 4:00 AM local time daily.**
 
-5am was chosen to catch overnight wire content and early-morning news cycle updates before
-the bulk of daily traffic hits news servers.
+4am was chosen to finish the pipeline before the 8:00 AM social AM post while still
+catching overnight wire content and early-morning news cycle updates.
 
 Common alternatives:
 
 | Time                  | Hour  | Minute |
 | --------------------- | ----- | ------ |
 | 12:01 AM              | 0     | 1      |
-| **5:00 AM (current)** | **5** | **0**  |
+| **4:00 AM (current)** | **4** | **0**  |
+| 5:00 AM               | 5     | 0      |
 | 6:00 AM               | 6     | 0      |
 | 7:00 AM               | 7     | 0      |
 | 8:00 AM               | 8     | 0      |

@@ -7,7 +7,7 @@ use the tmp_db fixture from conftest.py for isolation.
 from __future__ import annotations
 
 from datetime import datetime, timedelta, timezone
-from unittest.mock import patch
+from unittest.mock import MagicMock, patch
 
 import pytest
 
@@ -15,6 +15,7 @@ from pipeline.weekly import (
     _build_daily_data,
     _build_watch_list_evolution,
     _extract_section,
+    _llm_call_claude,
     run_weekly,
 )
 import pipeline.store as store
@@ -49,6 +50,35 @@ class TestExtractSection:
         result = _extract_section(brief, "SECTION A")
         assert "B content" not in result
         assert "A content." in result
+
+
+# ── _llm_call_claude ──────────────────────────────────────────────────────────
+
+class TestLlmCallClaude:
+    @patch("pipeline.weekly.subprocess.run")
+    def test_returns_stdout_on_success(self, mock_run):
+        mock_run.return_value = MagicMock(returncode=0, stdout="Weekly brief text", stderr="")
+        assert _llm_call_claude("prompt", timeout=60) == "Weekly brief text"
+
+    @patch("pipeline.weekly.subprocess.run")
+    def test_retries_stream_idle_timeout(self, mock_run):
+        mock_run.side_effect = [
+            MagicMock(
+                returncode=1,
+                stdout="",
+                stderr="API Error: Stream idle timeout - partial response received",
+            ),
+            MagicMock(returncode=0, stdout="Recovered brief", stderr=""),
+        ]
+        assert _llm_call_claude("prompt", timeout=60) == "Recovered brief"
+        assert mock_run.call_count == 2
+
+    @patch("pipeline.weekly.subprocess.run")
+    def test_raises_other_errors_without_retry(self, mock_run):
+        mock_run.return_value = MagicMock(returncode=1, stdout="", stderr="auth failed")
+        with pytest.raises(RuntimeError, match="auth failed"):
+            _llm_call_claude("prompt", timeout=60)
+        assert mock_run.call_count == 1
 
 
 # ── _build_daily_data ─────────────────────────────────────────────────────────
