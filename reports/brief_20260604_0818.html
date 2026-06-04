@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-04 08:18 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-04 08:18 UTC</span>
+    <span class="pill">96 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The week of June 4, 2026 is not a news cycle — it is a consolidation cycle. Three institutional capture moves landed simultaneously: a presidential loyalist is being installed as Attorney General, an IRS immunity provision is advancing that shields the president from financial accountability, and a major television network has fired a journalist who alleged that editorial control was being ceded to political actors. Each of these, taken alone, is a defensible institutional action. Taken together, they form a legal-financial-media protection architecture: the AG removes DOJ as an enforcement backstop, IRS immunity removes financial accountability, and the CBS precedent signals to every remaining major outlet what compliance looks like. The architecture is only visible at the aggregate level, and that is precisely why the stories are dropping together.</p>
+<p>Against this backdrop, Congress passed a war powers resolution 215-208 directing the president to end military operations against Iran — a vote with four Republican defectors that is constitutionally real and practically toothless. The resolution requires Senate passage and a veto-proof majority that does not exist. It will not stop anything. What it does do is create a formal legislative record of objection at the precise moment the enforcement mechanisms for that objection — an independent AG, an accountable press, financial oversight — are being removed. The war powers vote is a paper check written on a bank account that is being closed.</p>
+<p>The broader picture is this: executive authority is being extended across military, financial, civil service, and media domains in a single week while the formal oversight mechanisms — congressional, judicial, journalistic, gubernatorial — are each generating their own story about their own ineffectiveness. A governor is physically blocked from a detention facility. A journalist is fired for alleging editorial interference. A war powers vote lacks enforcement teeth. Eight thousand senior civil servants lose federal employment protections. These are not separate stories. They are simultaneous stress tests of every accountability channel, and in this cycle, every channel is reporting strain.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Todd Blanche is the central figure of this cycle whether or not his name is in the headline. His confirmation as permanent AG is the load-bearing event: it determines whether any subsequent legal challenge — to the Iran operation&#x27;s legality, to the IRS immunity provision, to civil service reclassification, to press freedom claims — encounters an independent DOJ or a loyalist one. The speed of his confirmation track relative to any pending DOJ decisions on Iran legal authority is the single most consequential timing question in Washington right now. If confirmation completes before a court challenge to Iran operations is filed, the window for independent DOJ review may not reopen.</p>
+<p>The four Republican war powers defectors are anomalous and unnamed in current coverage. In any prior Congress, named Republican crossovers on a war vote would generate immediate primary threat reporting and donor pressure stories. The absence of that accountability loop — either as intimidation or as consequence — is itself a data point. Their identity, district profiles, and donor bases would reveal whether the 215-208 vote is an isolated protest or the first visible edge of a Republican fracture bloc. The fact that no outlet has named them prominently suggests either coordinated protection or coordinated pressure, and the distinction matters.</p>
+<p>Iowa Governor-elect Zach Lahn is an underappreciated actor. He defeated a Trump-endorsed sitting congressman by 0.8% in a race where the explanatory frame — anti-Trump fatigue versus anti-H-1B populism — is genuinely contested and genuinely consequential. If his coalition is anti-H-1B, he is a bellwether for economic nationalism running ahead of Trump&#x27;s own position. If it is anti-Trump, he is a data point on endorsement power decay. He is now governor-elect of a competitive state and his positioning on immigration, tariffs, and the Iran war will be a leading indicator for what post-Trump Republican identity looks like in the midwest.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The IRS immunity provision is the most significant underreported story of this cycle. A provision shielding the president from IRS accountability — if accurately characterized by available coverage — represents an unprecedented use of executive authority for personal financial protection. Under any prior administration, and under standard conservative fiscal accountability principles, this provision would be a flagship outrage story on the right. Its near-total absence from right-media cannot be explained by ideological oversight. The options are coordinated editorial suppression or editorial capture, and neither is a benign explanation. The left is covering it, but with insufficient depth: the legislative vehicle matters (standalone bill, reconciliation, or executive order), and that detail determines the durability of the provision and the speed of any legal challenge.</p>
+<p>The right is suppressing three accountability stories that would require applying its own stated principles against the current administration: the IRS provision&#x27;s self-dealing implications, the substantive detainee conditions at Delaney Hall (as opposed to protest optics), and the Pentagon&#x27;s hiring of a convicted January 6 participant into a sensitive counterterrorism role. The last item is the most structurally anomalous. A convicted participant in an attack on the Capitol holding a counterterrorism clearance combines the law-and-order frame the right routinely deploys with a genuine security vetting failure. The right&#x27;s total silence on this story cannot be explained by ideology alone.</p>
+<p>The left is suppressing the triggering context in two separate stories — what Mullin said before Green&#x27;s outburst, and what specifically CBS management instructed that Pelley found objectionable — because in both cases the cause would complicate the preferred framing of the effect. The left is also not covering Trump&#x27;s endorsement of a Colombian presidential candidate, a foreign political intervention with real geopolitical implications that is being ignored at precisely the moment that Trump&#x27;s domestic endorsement record is showing cracks. Both ecosystems are actively curating partial context. This is not coincidence; it is synchronized editorial behavior on the same day.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The simultaneous appearance of the Blanche nomination, the IRS immunity provision, and the Pelley firing in a single news cycle has the structural signature of deliberate saturation. Each story individually would dominate a slow news day. Together, they collectively reduce scrutiny depth on any single item. The IRS provision — potentially the most legally significant of the three — is buried deepest. This is not a conspiracy claim; it is an observation that the architecture of the week&#x27;s news flow is protective of its most consequential element.</p>
+<p>There is a coordinated right-media counter-narrative running this week that assembles a mosaic of Democratic dysfunction: Green&#x27;s outburst, Sherrill&#x27;s protest optics, Jill Biden&#x27;s book, Becerra&#x27;s California loss. Each story is real. Their simultaneous selection and emphasis is not random — they collectively redirect from the Iowa endorsement loss, the war powers defectors, and the Kean absence, which together constitute visible intra-Republican fracture. The right-media apparatus is running a narrative coordination play precisely because the underlying GOP fracture data is real.</p>
+<p>The oversight-resistance theme is the invisible connective tissue of the cycle. A governor is blocked from a detention facility. A journalist is fired for alleging editorial interference. A war powers resolution is passed with no enforcement mechanism. A congressman&#x27;s absence raises questions about his political positioning. In each case, a formal oversight mechanism — gubernatorial, press, legislative, congressional — is either blocked, nullified, or contested. This is not a policy; it is a posture that is now normalized enough to be occurring simultaneously at multiple agencies and institutions without generating a unified analytical response from any major outlet.</p>
+<p>Immigration is functioning as the operational front through which executive authority is being extended and tested. The Iowa primary framing, the Newark detention facility access battle, the DHS hearing confrontation, and ICE-adjacent enforcement stories are each a probe of where institutional resistance exists and where it doesn&#x27;t. The pattern across these stories is not about immigration policy — it is about using immigration enforcement as the instrument through which the boundaries of executive authority are being redrawn in real time.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>The four Republican war powers defectors</strong>: Names, districts, donor bases, and whether any face primary challenges. This determines whether 215-208 is a one-time anomaly or the visible edge of a durable bloc. If they remain unnamed in major coverage 48 hours out, that silence is itself a story.</p>
+<p><strong>Blanche confirmation timeline vs. pending DOJ decisions</strong>: Specifically whether any court challenge to the Iran operation&#x27;s legal authority is filed before confirmation completes. Once a loyalist AG is seated, the window for independent DOJ review on Iran legal authority, IRS immunity challenge, or civil rights cases narrows permanently.</p>
+<p><strong>IRS immunity provision legislative vehicle</strong>: Whether it is standalone, embedded in reconciliation, or executive order. The vehicle determines durability and the speed of legal challenge. This is the highest-priority open question in this cycle that no outlet appears to be actively pursuing.</p>
+<p><strong>CBS internal communications and Pelley departure terms</strong>: Specifically whether a non-disparagement agreement exists and its scope. If NDA terms are broad, the &quot;breach of trust&quot; framing is a legal construct, not a conduct finding. Pelley&#x27;s allegations are specific and uncontested; the absence of a CBS rebuttal with specifics is itself evidence.</p>
+<p><strong>Pentagon Jan. 6 hire clearance chain</strong>: Which office adjudicated the security clearance and whether that office reports to a political appointee. The accountability chain determines whether this is a vetting failure or a deliberate decision. This story should escalate: the single-case framing is holding and no investigative follow-up has yet pulled additional names from the same hiring tranche.</p>
+<p><strong>Zach Lahn&#x27;s positioning on H-1B, immigration enforcement, and the Iran war</strong>: He is now governor-elect of a competitive state who defeated a Trump endorsee. His first public statements on federal policy will be the bellwether for what the populist-but-not-MAGA Republican lane actually looks like in 2026.</p>
+<p><strong>Delaney Hall federal court filings</strong>: Any habeas petitions or civil rights complaints filed by detained individuals create a paper record of conditions independent of the access-denial political battle. These filings, if they exist, are the only source of detainee testimony that does not require gubernatorial access.</p>
+<p><strong>Colombia&#x27;s de la Espriella poll numbers and primary date</strong>: A Trump-endorsed presidential candidate in Latin America is a foreign policy story currently invisible to every outlet likely to scrutinize it.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The political moment is best understood as a consolidation phase following an expansion phase. The past 18 months established new operational norms for executive authority — in immigration enforcement, civil service structure, military deployment, and media relations. This week&#x27;s moves are not establishing new territory; they are installing the infrastructure to hold and defend what has already been claimed. The loyalist AG removes the most dangerous accountability backstop. The IRS immunity removes financial exposure. The CBS precedent establishes what institutional compliance looks like for everyone watching. The war powers rebuke is allowed to pass because it lacks teeth, and its passage is actually useful — it creates a congressional record of objection that substitutes for action, absorbs political energy, and allows individual members to vote against the executive without threatening it. The deepest confusion in current political coverage stems from analysts treating each of these moves as a separate policy decision rather than as components of a single institutional architecture being assembled in real time. When you look at the full week as a unit, the architecture is legible. The question that is not yet answerable is whether the opposition — congressional, journalistic, judicial, or electoral — retains enough structural integrity to mount a coherent response, or whether each accountability channel has been sufficiently degraded that challenges will remain isolated and ineffective. Iowa and the war powers defectors suggest fracture within the coalition; Blanche and IRS immunity suggest the coalition knows it and is hardening the perimeter accordingly.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The House passed a 215-208 war powers resolution directing Trump to end U.S. military operations against Iran, with four Republicans crossing the aisle, as the administration simultaneously navigated the Blanche AG nomination, an Israel-Lebanon ceasefire, and escalating domestic policy moves.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (13)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (6)</span><span class="bias-badge" style="color:#e07a7a;">left (15)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:4.2;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:27.1;" title="center-left: 13"></div><div class="bias-segment" style="background:#e05252; flex:4.2;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:12.5;" title="far-right: 6"></div><div class="bias-segment" style="background:#e07a7a; flex:31.2;" title="left: 15"></div><div class="bias-segment" style="background:#a07ae0; flex:6.2;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:14.6;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The factual core of this news cycle is real and significant: a bipartisan House majority passed a war powers rebuke, a loyalist lawyer is being installed as permanent AG, and the president removed civil service protections from thousands of senior bureaucrats in a single week — all while an active military conflict in Iran remains legally and diplomatically unresolved. The left and right are not so much disagreeing about what happened as about whether these actions represent democratic erosion or efficient executive governance. The most underreported story across the entire spectrum is the IRS immunity provision, which — if accurately characterized by Reason and WaPo — represents an unprecedented self-dealing use of executive authority that has received almost no right-side scrutiny.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the week as a cascade of authoritarian consolidation: Trump is purging the civil service, installing loyalists at DOJ and DNI, immunizing himself from IRS accountability, and waging an unauthorized war. The bipartisan war powers vote is celebrated as a rare, heroic democratic check. Omissions and dehumanization (aliens.gov) are foregrounded as evidence of systemic norm erosion. Emotional register: alarm, moral urgency, validation of resistance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, NPR, PBS) present procedural facts with mild editorial texture — noting bipartisan defection as notable, flagging intra-Republican tensions on ICE funding, and reporting Democratic corruption concerns about the Trump Jr. loan without fully endorsing them. The framing is conflict-forward but stops short of rendering verdicts. Emotional register: neutral-to-cautious, process-focused.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump as decisive and results-oriented — nominating a trusted AG, achieving a ceasefire, uncovering government waste. The war powers vote is acknowledged but immediately contextualized as symbolic and unlikely to matter. Democratic behavior at hearings (shoe questions, videos of Trump) is framed as bad-faith circus politics. Internal Republican dissent (Ukraine, Iran) is noted as defiance of leadership rather than principled policy disagreement. Emotional register: confidence, dismissiveness toward critics, loyalty signaling.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: Trump&#x27;s framing of the Iran ceasefire as a diplomatic win requiring allied cooperation on the Strait of Hormuz; positive Serbian-American investment signals; any substantive treatment of anti-fraud findings; the internal Republican debate over whether the Iran campaign had tactical military merit before the ceasefire.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: McConnell&#x27;s public opposition to Pulte as DNI; legal expert criticism of the IRS immunity deal; the civil service protection angle of the 8,000-worker EO (Fox did not cover it); the $1 billion ballroom security provision that was dropped; the rising death toll from Pacific drug-boat strikes; the constitutional questions around Rubio&#x27;s &#x27;over&#x27; declaration while hostilities continued.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Scott Pelley was fired from &#x27;60 Minutes&#x27; after CBS News cited a breach of trust, while Pelley alleges the network capitulated to Trump administration pressure by compromising editorial standards.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The core factual dispute is whether CBS fired Pelley for internal conduct reasons or to appease the Trump administration — and Pelley&#x27;s letter makes specific, serious allegations (injecting falsehoods, politician-controlled interviews) that CBS has not publicly rebutted with specifics. The right&#x27;s choice to not cover those allegations at all, and to redirect to Acosta, is itself a telling editorial decision. The story matters because it is a direct test case for whether major news organizations are making editorial decisions under political duress.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    CBS is framed as an institution that betrayed its own editorial mission to appease a hostile political administration. Pelley is cast as a whistleblower and martyr for press freedom. The emotional register is outrage and mourning for institutional journalism.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill centers the network&#x27;s own stated justification — a trust breach — without taking a position on whether political pressure was involved. It treats the firing as an internal personnel and editorial standards matter.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart sidesteps the Pelley story itself and pivots to discrediting Jim Acosta&#x27;s broader media consolidation claims — implicitly defending pro-Trump ownership changes by painting critics as partisan CNN alumni with no credibility.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not engage with CBS&#x27;s specific stated rationale (trust breach) or consider whether Pelley&#x27;s own conduct may have contributed to internal friction independent of political pressure.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage entirely avoids reporting on Pelley&#x27;s actual allegations — that CBS instructed staff to allow falsehoods and cede editorial control to politicians — which are the most newsworthy and verifiable claims at the center of the story.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">New Jersey Governor Mikie Sherrill claims ICE blocked her from inspecting Newark&#x27;s Delaney Hall detention facility amid allegations of unsafe conditions and rights violations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#5ab56e; flex:100.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The core factual dispute — whether a sitting governor was denied access to a federal detention facility and what conditions exist inside — is being eclipsed by a secondary framing battle over protest legitimacy. The substantive allegations about detainee treatment at Delaney Hall remain unaddressed by right-leaning sources, while the access denial itself raises a real federalism and oversight question that neither source fully examines. The story that matters most is whether federal detention conditions meet legal standards, not who is to blame for street protests.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not directly represented in the provided sources, but implied context suggests left outlets would frame this as a civil liberties and government accountability story — a governor exercising oversight being stonewalled by federal immigration enforcement hiding potential abuses.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-aligned sources were provided in this dataset — assessment cannot be made.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Democratic politicians, including Sherrill, are performing partisan grandstanding and irresponsibly inflaming tensions around ICE facilities. The focus is on protest disruption and Democratic complicity in civil unrest rather than the underlying detention conditions.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage likely omits or downplays the nature and intensity of the protests, any law enforcement safety concerns at facilities, and whether some protesters have crossed legal lines.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits substantive engagement with the specific allegations — denied medical care, unsafe conditions, coerced paperwork — that motivated Sherrill&#x27;s visit. It also omits the legal question of whether a sitting governor has oversight standing to inspect a federal detention facility.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Businessman Zach Lahn defeated Trump-endorsed Rep. Randy Feenstra by 0.8% in Iowa&#x27;s Republican gubernatorial primary, marking a rare loss for Trump&#x27;s endorsement record.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The factual core is unambiguous: a Trump-endorsed incumbent lost a low-margin primary to an outsider. What is genuinely contested is *why* — each outlet has selected the explanatory frame most useful to its audience (anti-Trump fatigue vs. anti-H-1B populism), and both may be partially correct given a 0.8% margin where multiple factors can be decisive. The more analytically significant story is that an outsider beat a sitting congressman with a presidential endorsement, which is objectively rare regardless of the ideological explanation assigned to it.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR frames the result as a meaningful rebuke of Trump&#x27;s political influence, connecting it to broader voter anxiety about tariffs and foreign policy (Iran war), suggesting cracks in GOP unity that could foreshadow general election vulnerability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet was represented in this coverage set; insufficient data to characterize.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the result as a grassroots populist victory validating anti-immigration (H-1B) sentiment against a donor-class establishment candidate, positioning it as proof that the Republican base wants harder-line economic nationalism even beyond Trump&#x27;s explicit preferences.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR makes no mention of H-1B visa policy as a campaign issue, omitting what Breitbart presents as the central ideological driver of Lahn&#x27;s coalition.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart does not acknowledge Trump&#x27;s endorsement loss as a notable political event or discuss voter concerns about tariffs and the Iran war that NPR identifies as motivating factors.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Rep. Al Green and DHS Secretary Markwayne Mullin clashed verbally during a House Homeland Security Committee budget hearing, with Green calling Mullin a &#x27;racist&#x27; and repeatedly telling him to &#x27;shut up.&#x27;</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core factual exchange — Green called Mullin a racist and told him to shut up — is not in dispute. However, both available sources are right-leaning and cover only one side of the provocation chain: we know what Green said, not what Mullin said that prompted it. The analytical gap here is significant: a &#x27;racist&#x27; accusation during a budget hearing almost certainly has a triggering context that neither outlet chose to report, because reporting it would complicate the &#x27;unhinged aggressor&#x27; narrative.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided. Left framing cannot be assessed from available coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. Center framing cannot be assessed from available coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both outlets frame Green as the aggressor committing an unprovoked racial attack, and Mullin as a dignified victim defending himself. Fox leans on &#x27;meltdown&#x27; language to suggest Green was emotionally unhinged. Breitbart adds Mullin&#x27;s Cherokee heritage to delegitimize the racism charge itself — implying the accusation is not only unfair but factually absurd.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left sources provided. Cannot determine what left outlets are omitting.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Neither outlet provides context for what provoked Green&#x27;s accusation — what Mullin said or did prior to Green&#x27;s response that led Green to characterize him as racist. The underlying policy or rhetorical trigger that sparked the confrontation is absent from both accounts, making the exchange appear unprovoked.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Blanche AG nomination</span><span class="entity-tag">IRS immunity provision</span><span class="entity-tag">CBS/Pelley firing</span></div>
+  <div class="connection-text">Three simultaneous institutional capture moves — loyalist AG installation, IRS self-dealing immunity, and editorial capitulation at a major network — drop in the same news cycle, each individually defensible as routine but collectively forming a legal-financial-media protection triangle that is structurally interdependent.</div>
+  <div class="connection-sig">↳ A loyalist AG removes DOJ as enforcement backstop for press freedom or tax-law violations. IRS immunity removes financial accountability. CBS precedent signals to other networks what compliance looks like. None of these stories individually reveals the architecture; only the simultaneous timing does.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">War Powers Resolution (215-208)</span><span class="entity-tag">Blanche AG confirmation track</span><span class="entity-tag">Iran conflict legal status</span></div>
+  <div class="connection-text">The war powers rebuke is constitutionally symbolic — it requires Senate passage and survives a veto only with 2/3 majority, neither of which exists. But it was passed the same week a loyalist AG is being seated who would control any legal challenge to executive war authority. The legislative check and the judicial check on executive military action are being neutralized in parallel.</div>
+  <div class="connection-sig">↳ Congress has created a paper record of objection while the executive simultaneously removes the enforcement mechanism for that objection. The Iran conflict may remain legally unresolved indefinitely with no viable remedy.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iowa Trump endorsement loss</span><span class="entity-tag">4 Republican war powers defectors</span><span class="entity-tag">Rep. Tom Kean Jr. absence</span></div>
+  <div class="connection-text">Three separate data points on intra-Republican fracture in the same cycle: a Trump endorsee loses a primary, four House Republicans cross on war powers, and a vulnerable Republican congressman is absent from votes raising questions about his political positioning. These are not covered as a connected pattern by any outlet.</div>
+  <div class="connection-sig">↳ The right-media apparatus is treating each as isolated; the left is covering Kean&#x27;s absence and redistricting but not connecting it to the primary result or war powers defections. A coherent GOP fracture narrative would require connecting all three, which neither side has incentive to do right now.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DHS/Mullin hearing</span><span class="entity-tag">Sherrill detention facility access denial</span><span class="entity-tag">Pentagon Jan. 6 hire</span></div>
+  <div class="connection-text">DHS and the Pentagon are each generating oversight-resistance stories in the same cycle: Mullin escalates verbally with a congressman during budget oversight, a governor is physically blocked from a federal facility, and a convicted Jan. 6 participant holds a sensitive counterterrorism role. All three involve federal security apparatus personnel resisting or circumventing normal oversight channels.</div>
+  <div class="connection-sig">↳ Treated separately, each is a one-day story. Treated as a pattern, they suggest a posture across the security apparatus — not a policy, but a culture of oversight resistance that is now normalized enough to occur simultaneously at multiple agencies.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pelley/CBS triggering context suppression</span><span class="entity-tag">Green/Mullin triggering context suppression</span></div>
+  <div class="connection-text">Both stories — one left-covered, one right-covered — share an identical structural omission: the triggering event that preceded the newsworthy response is absent from all available coverage. CBS has not rebutted Pelley&#x27;s specific allegations; right outlets have not reported what Mullin said before Green&#x27;s outburst.</div>
+  <div class="connection-sig">↳ This is not coincidence or laziness — it is a systematic editorial choice on both sides to report effects without causes when the cause would complicate the preferred framing. The pattern suggests both ecosystems are actively curating partial context on the same day.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Colombia presidential candidate de la Espriella</span><span class="entity-tag">Trump endorsement loss in Iowa</span><span class="entity-tag">Trump war powers rebuke</span></div>
+  <div class="connection-text">Trump&#x27;s domestic endorsement record took a rare loss (Iowa) and his Iran policy took a bipartisan congressional rebuke in the same week — yet his foreign endorsement of a Colombian presidential candidate goes uncovered by left outlets. The international projection of Trump&#x27;s political brand is expanding precisely as its domestic grip shows cracks.</div>
+  <div class="connection-sig">↳ The Colombia story is right-only, meaning the left is not tracking Trump&#x27;s foreign political interventions at the moment those interventions are becoming more active. A Trump-endorsed Latin American presidential candidate is a geopolitical development with real policy implications that is being ignored entirely by the side most likely to scrutinize it.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">The right is running a coordinated &#x27;Democratic disorder&#x27; counter-narrative this week — Green&#x27;s outburst, Sherrill&#x27;s protest optics, Jill Biden&#x27;s book drama, Becerra&#x27;s California loss — assembling a mosaic of Democratic dysfunction at precisely the moment Republicans face their own visible fractures (Iowa loss, war powers defectors, Kean absence). The timing is too clean to be organic; right outlets appear to be selecting stories that collectively redirect from intra-GOP division.</div>
+<div class="pattern-item">Multiple high-significance stories are dropping in a single cycle in a pattern consistent with deliberate news saturation: Iran war powers, Blanche nomination, IRS immunity, civil service reclassification, and Pelley firing all compete for the same bandwidth. Each story individually would dominate a slow news day; together they collectively reduce scrutiny depth on any single item. The IRS immunity provision — potentially the most legally significant — is buried deepest.</div>
+<div class="pattern-item">The oversight-access theme cuts across otherwise unrelated stories: a governor blocked from a detention facility, a journalist fired for alleging editorial interference, a congressman&#x27;s absence raising questions about his visibility, and a war powers resolution that lacks enforcement teeth. Every formal oversight mechanism — press, legislative, gubernatorial, judicial — appears in a story this cycle, and in each case its effectiveness is being actively contested or reduced.</div>
+<div class="pattern-item">Immigration enforcement is the invisible connective tissue linking stories that appear unrelated: Iowa primary framing (anti-H-1B vs. anti-Trump), NJ detention facility access, DHS hearing confrontation, World Cup visa weaponization (left-only), and ICE-adjacent Alligator Alcatraz story. Immigration is not just a policy debate — it is functioning as the operational front through which executive authority is being extended and tested across multiple domains simultaneously.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The IRS immunity provision has received effectively zero right-side coverage despite being a direct presidential self-dealing measure. In any prior administration — and under standard conservative small-government principles — executive IRS immunity would be a flagship outrage story. Its complete absence from right-media suggests either coordinated suppression or editorial capture; neither explanation is benign.</div>
+<div class="anomaly-item">The 4 Republican war powers defectors are not being named prominently in any coverage reviewed. In prior Congresses, named Republican crossovers on war powers votes would generate immediate primary threat coverage and donor pressure reporting. The absence of that accountability loop — either as intimidation or as follow-through — is anomalous and warrants identification of the four members and their vulnerability profiles.</div>
+<div class="anomaly-item">Scott Pelley&#x27;s firing drops the same week Blanche&#x27;s AG nomination advances, yet no outlet has connected these two events through the lens of: what legal recourse exists for editorial pressure by the executive if the AG is a presidential loyalist? The question has not been publicly posed, which is itself anomalous given that Pelley&#x27;s allegations are specific and uncontested.</div>
+<div class="anomaly-item">The Iowa primary upset — a Trump endorsee losing to an outsider by 0.8% — is covered by only 2 sources despite being objectively rare. Trump&#x27;s endorsement record in primaries is a closely watched political metric. Minimal coverage of this loss, particularly from right outlets that have extensively covered his endorsement wins, suggests deliberate downplaying to protect the endorsement-power narrative ahead of other contested primaries.</div>
+<div class="anomaly-item">The Pentagon Jan. 6 hire story remains left-only. A convicted participant in an attack on the Capitol holding a sensitive counterterrorism clearance should generate bipartisan national security concern — it combines the &#x27;law and order&#x27; frame favored by the right with a genuine security vetting failure. The right&#x27;s total absence from this story cannot be explained by ideology alone and suggests active editorial avoidance.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: (1) the IRS immunity provision and its self-dealing implications, (2) the substantive detainee conditions at Delaney Hall rather than the protest optics, and (3) the Jan. 6 Pentagon hire&#x27;s national security implications — all three involve accountability questions that would require applying conservative principles (fiscal integrity, rule of law, security vetting) against the current administration. The left is systematically avoiding: (1) what Mullin actually said to provoke Green, because the triggering context might complicate the &#x27;racist&#x27; framing; (2) the Colombia Trump endorsement and its geopolitical implications; and (3) the Iowa primary result&#x27;s genuine ambiguity — the left wants it to be an anti-Trump signal but it may equally be an anti-H-1B populist signal, which is a less comfortable story. The shared avoidance pattern — both sides suppressing triggering context when it complicates their narrative — is the most structurally significant editorial behavior of this cycle.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› People with cancer or HIV could lose Medicaid under new work rules, advocates say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› President Trump seeks control of science funding</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dissecting what the latest primary races mean for November elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republican Rep. Tom Kean Jr.&#x27;s absence raises broader questions about Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans won the redistricting battle. Now voters will decide whether they win Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombian presidential candidate de la Espriella thanks Trump for endorsing his campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Biden official Deb Haaland wins New Mexico primary for governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Ogles deletes homophobic tweet, blames staff amid rare GOP pushback</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon hires convicted Jan. 6 rioter for sensitive counterterrorism job</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tracking who Trump is appointing to fill key administration roles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Centrist Democrats launch new pledge: ‘We are capitalist, not socialist’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› “We Are Being Made to Look Like Fools”: How Trump Is Weaponizing World Cup Visas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Alabama, the Roberts Court Hands Republicans Yet Another Shocking Gerrymandering Win</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Congratulated Him on His Freedom. Alligator Alcatraz Left Him With a Stroke.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Six States Are Suing the Trump Administration Over Its Deal to Kill an Offshore Wind Project</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Revolutionary Roots That Inspired Tupac Shakur</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mikie Sherrill Accuses Denying Access</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Green Tells Homeland Security Mullin</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bessent flips script on Dem senator with reminder about his son&#x27;s past ties to Epstein</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former primary rival resurfaces to challenge scandal-plagued Graham Platner in Maine Senate race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Claudia Sheinbaum Leads Mexico into Confrontation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spencer Pratt’s Uphill Climb</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Real Adam Hamawy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Decades After Tiananmen, General Xu Qinxian’s Quiet Defiance Still Echoes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The U.K.’s Dumb Exclusion of Left-Wing Influencers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &lt;i&gt;Ladies First&lt;/i&gt;, Comedy Last</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Malawi to Bring Citizens Home After Deadly South African Anti-Immigrant Riots</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Identity of the 4 Republican war powers defectors: their districts, donor bases, and whether any face primary challenges — this determines whether the 215-208 vote is a one-time anomaly or the leading edge of a bloc</div>
+<div class="watch-item">Blanche AG confirmation timeline vs. any pending DOJ decisions on Iran legal authority or civil rights cases: if confirmation completes before any court challenge to Iran ops is filed, the window for independent DOJ review closes permanently</div>
+<div class="watch-item">IRS immunity provision legislative text: specifically whether it is standalone, embedded in the reconciliation package, or executive order — the vehicle determines its durability and the speed of any legal challenge</div>
+<div class="watch-item">CBS internal communications or NDA terms for Pelley departure: if a non-disparagement agreement exists, its scope would confirm whether the &#x27;breach of trust&#x27; framing is a legal construct rather than a conduct finding</div>
+<div class="watch-item">Iowa&#x27;s Lahn: his specific position on H-1B visas, federal immigration enforcement, and whether he has taken any position on the war powers vote — he is now a governor-elect of a competitive state who defeated a Trump endorsee and his positioning will be a bellwether for post-Trump Republican identity</div>
+<div class="watch-item">DHS budget hearing full transcript for the Mullin exchange with Green: the triggering context is the actual news story; the outburst is the distraction</div>
+<div class="watch-item">Delaney Hall detainee legal filings in federal court: any habeas petitions or civil rights complaints filed by detained individuals would create a paper record of conditions independent of the access-denial political battle</div>
+<div class="watch-item">Colombia&#x27;s de la Espriella poll numbers and primary date: a Trump-endorsed presidential candidate in Latin America is a foreign policy story disguised as a domestic political footnote</div>
+<div class="watch-item">Pentagon personnel security clearance review process for the Jan. 6 hire: specifically which office adjudicated the clearance and whether that office reports to a political appointee — the accountability chain determines whether this is a vetting failure or a deliberate decision</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
