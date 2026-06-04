@@ -21,6 +21,7 @@ from __future__ import annotations
 
 import argparse
 import logging
+import subprocess
 import sys
 from pathlib import Path
 
@@ -35,13 +36,29 @@ logging.basicConfig(
 log = logging.getLogger("post_scheduled")
 
 
+def _git_publish(message: str, *paths: str) -> None:
+    """Push post-state (or other) file changes to main when the index changed."""
+    script = ROOT / "scripts" / "git_publish_if_changed.sh"
+    result = subprocess.run(
+        ["bash", str(script), message, *paths],
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    output = (result.stdout or "") + (result.stderr or "")
+    if result.returncode != 0:
+        log.warning("Git publish failed (exit %s): %s", result.returncode, output.strip())
+    elif "Pushed to GitHub" in output:
+        log.info("Pushed post state to GitHub")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Signal scheduled social post dispatcher")
     parser.add_argument(
         "--slot",
         required=True,
         choices=["am", "noon", "pm"],
-        help="Which card slot to post (am=7AM watch list, noon=spectrum, pm=blindspot)",
+        help="Which card slot to post (am=8AM watch list, noon=spectrum, pm=blindspot)",
     )
     parser.add_argument(
         "--date",
@@ -76,6 +93,10 @@ def main() -> int:
     try:
         uri = post_slot(args.slot, date_slug=date_slug)
         log.info("✓ Posted [%s] → %s", args.slot.upper(), uri)
+        _git_publish(
+            f"signal: {args.slot} bluesky post {date_slug}",
+            "reports/posts/",
+        )
         return 0
     except FileNotFoundError:
         log.exception("Post package missing")

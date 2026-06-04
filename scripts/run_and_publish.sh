@@ -47,16 +47,9 @@ fi
 # Run the pipeline (venv already exists, skip setup)
 "$PYTHON" main.py --no-venv
 
-# Stage report, index, and archive
-git add reports/ index.html archive.html
-
-# Only commit + push if something actually changed
-if git diff --cached --quiet; then
-    echo "No changes to commit — skipping push."
-else
-    git commit -m "signal: daily brief $(date +%Y-%m-%d)"
-    git push origin main
-    echo "Pushed to GitHub Pages."
-fi
+# Stage report, index, archive, and RSS feed
+bash "$REPO/scripts/git_publish_if_changed.sh" \
+    "signal: daily brief $(date +%Y-%m-%d)" \
+    reports/ index.html archive.html feed.xml
 
 echo "Signal run complete: $(date)"

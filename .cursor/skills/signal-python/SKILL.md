@@ -16,9 +16,13 @@ Pass 3  analyze_clusters()     — per-cluster LLM framing analysis
 Pass 4  correlate_stories()    — cross-story LLM correlation
 Pass 5  synthesize_brief()     — final LLM brief synthesis
 Pass 6  run_weekly()           — weekly synthesis from DB (weekly.py)
+
+Post-pipeline (main.py):
+  _extract_brief_data()        — brief_*.json for cards
+  infographic.render_all_cards() — PNG cards + social.build_post_package()
 ```
 
-Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`.
+Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`, `post_scheduled.py` for Bluesky.
 
 ## Module responsibilities
 
@@ -28,22 +32,21 @@ Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`.
 | `pipeline/collector.py` | RSS feed fetching, article normalization, freshness filtering |
 | `pipeline/analyzer.py` | All five daily passes + LLM dispatch (`_llm_call`) |
 | `pipeline/weekly.py` | Pass 6 only. Reads from DB, one LLM call, saves result. |
-| `pipeline/reporter.py` | HTML generation only. No DB access, no LLM calls. |
+| `pipeline/reporter.py` | HTML + `brief_*.json` generation. No DB access, no LLM calls. |
+| `pipeline/infographic.py` | Social card PNGs via Jinja2 + Playwright (lazy import). |
+| `pipeline/social.py` | Bluesky post packages and posting (lazy atproto/dotenv imports). |
+| `pipeline/feed.py` | RSS `feed.xml` generation. |
 | `pipeline/prompts.py` | Prompt constants only (`ENTITY_EXTRACTION`, `CLUSTER_ANALYSIS`, `CORRELATION_ANALYSIS`, `FINAL_BRIEF`, `WEEKLY_BRIEF`). |
-| `main.py` | CLI, orchestration, `_update_index()` for GitHub Pages. |
+| `main.py` | CLI, orchestration, `_update_index()`, social card wiring. |
+| `post_scheduled.py` | launchd social dispatcher + git publish post state. |
 
 ## LLM dispatch pattern
 
-All LLM calls go through `_llm_call()` in the calling module (not a shared util). `analyzer.py` and `weekly.py` each have their own `_llm_call`.
+All LLM calls go through `_llm_call()` in the calling module (not a shared util). `analyzer.py` and `weekly.py` each have their own dispatch.
 
-```python
-def _llm_call(prompt: str, model: str, base_url: str, timeout: int, provider: str = "ollama") -> str:
-    if provider == "claude":
-        return _llm_call_claude(prompt, timeout)
-    return _llm_call_ollama(prompt, model, base_url, timeout)
-```
+Weekly Claude call uses `_llm_call_claude()` with `-p --print` only (no `--no-stream`), **3× config timeout**, and **one retry** on `Stream idle timeout`.
 
-Provider is resolved from `SIGNAL_LLM_PROVIDER` env var, falling back to `config["llm"]["provider"]`.
+Provider resolved from `SIGNAL_LLM_PROVIDER` env var, falling back to `config["llm"]["provider"]`.
 
 **Non-negotiable:** Never invoke Ollama from a `launchd` context — causes macOS Metal GPU kernel panics. Scheduled runs always use `claude`.
 
@@ -100,9 +103,11 @@ def test_something(self, mock_llm, tmp_db, mock_entity_response):
 
 **Always use `tmp_db` for any test touching the database** — it patches `store.DB_PATH` to a temp file.
 
-**Never let a test write to the real `reports/` directory** — patch `pipeline.reporter.REPORTS_DIR` with `tmp_path`.
+**Never let a test write to the real `reports/` directory** — patch `pipeline.reporter.REPORTS_DIR`, `pipeline.infographic.CARDS_DIR`, or `pipeline.social.POSTS_DIR` with `tmp_path`.
 
-**LLM responses in conftest.py:** `mock_entity_response`, `mock_cluster_analysis_response`, `mock_correlation_response`, `mock_brief_response` are shared fixtures. Add new ones to `conftest.py` rather than inline in test files.
+**Social/infographic tests:** mock `atproto.Client`, `dotenv.load_dotenv` (lazy import — not `pipeline.social.load_dotenv`), and `infographic._screenshot`. Align assertions with production behavior; do not change production code to pass tests.
+
+**LLM fixtures in conftest.py:** `mock_entity_response`, `mock_cluster_analysis_response`, `mock_correlation_response`, `mock_brief_response` — add new shared fixtures there, not inline.
 
 Run tests: `.venv/bin/python -m pytest`
 Run without coverage: `.venv/bin/python -m pytest --no-cov`

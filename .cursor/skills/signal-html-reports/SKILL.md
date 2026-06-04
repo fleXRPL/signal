@@ -51,9 +51,16 @@ brief_text (markdown)
     ↓ _render_brief_sections()    → HTML string with section divs
     ↓ HTML_TEMPLATE.format(...)   → complete HTML page string
     ↓ out_path.write_text(...)    → reports/brief_YYYYMMDD_HHMM.html
+    ↓ _extract_brief_data()       → reports/brief_YYYYMMDD_HHMM.json (social cards)
 ```
 
+`generate_report(brief_text, clusters, correlation, articles, model, ga_measurement_id="")` — no `run_id` parameter.
+
 Weekly uses `_render_weekly_sections()` instead of `_render_brief_sections()`.
+
+## Social card templates (separate from reports)
+
+Social cards use **Jinja2** in `pipeline/templates/card_{watch,spectrum,blindspot}.html`, rendered by `infographic.py` via Playwright — not the f-string templates in this file. Each template needs a `<title>` tag (SonarQube). Google Fonts CDN links are intentional for Playwright screenshots.
 
 ## Adding a new section to the daily brief
 
@@ -121,4 +128,6 @@ def test_something(self, tmp_path):
 
 - `reports/brief_*.html` and `reports/weekly_*.html` — **tracked** (served via GitHub Pages)
 - `index.html` and `archive.html` — **tracked** (landing and archive pages)
-- Prettier ignores all of the above (see `.prettierignore`) — never run Prettier on generated HTML
+- `feed.xml` — **tracked**; included in daily `run_and_publish.sh` git push
+- `reports/cards/*.png`, `reports/posts/*.json` — **tracked** (social artifacts)
+- Prettier ignores generated HTML (see `.prettierignore`) — never run Prettier on generated HTML

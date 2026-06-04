@@ -15,6 +15,7 @@ alwaysApply: true
 - `.cursor/skills/signal-python/SKILL.md` — pipeline architecture, store patterns, LLM dispatch, testing conventions
 - `.cursor/skills/signal-html-reports/SKILL.md` — report template structure, theming, adding sections
 - `.cursor/skills/signal-yaml-config/SKILL.md` — sources.yaml schema, adding sources, config keys
+- `.cursor/skills/signal-social/SKILL.md` — Bluesky cards, Playwright, launchd social jobs, git publish
 
 ## At the end of any session where meaningful work was done, update the relevant memory files.
 
@@ -28,10 +29,20 @@ alwaysApply: true
 
 ## Stack
 - Python 3.14, SQLite, launchd (macOS scheduling)
-- LLM: Claude Code CLI (`claude -p`) — default and required for scheduled runs
+- LLM: Claude Code CLI (`claude -p --print`) — default and required for scheduled runs
 - LLM alt: Ollama (`qwen2.5:14b`) — interactive/manual only, never in launchd
-- Publishing: GitHub Pages + GitHub Actions
+- Social: Playwright (card PNGs), atproto (Bluesky), python-dotenv (`.env` credentials)
+- Publishing: GitHub Pages + GitHub Actions; `scripts/git_publish_if_changed.sh` for automated commits
 - Analytics: GA4 (`G-58PDJM14L7`)
+
+## Launchd schedule (local Mac)
+| Job | Time | Script |
+|-----|------|--------|
+| Daily pipeline | 4:00 AM | `run_and_publish.sh` → `main.py` |
+| Weekly synthesis | Mon 6:00 AM | `run_weekly_and_publish.sh` |
+| Social AM | 8:00 AM | `post_scheduled.py --slot am` |
+| Social noon | 12:00 PM | `post_scheduled.py --slot noon` |
+| Social PM | 6:00 PM | `post_scheduled.py --slot pm` |
 
 ## Code standards
 - Senior-level production Python: passes linting, security, efficiency
@@ -44,3 +55,4 @@ alwaysApply: true
 - NEVER run Ollama from launchd — causes Metal GPU kernel panics on macOS
 - NEVER push to main from a feature branch during a launchd run (scripts must `git checkout main` first)
 - NEVER commit `signal.db`, `*.log`, `.env`, or `secrets.yaml`
+- NEVER add `--no-stream` to Claude CLI calls — flag is not supported on installed CLI
