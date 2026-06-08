@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-08 12:08 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-08 12:08 UTC</span>
+    <span class="pill">62 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">2 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics is currently operating in two simultaneous crises that are being reported in parallel but not analyzed together: a domestic accountability vacuum and an acute foreign policy test. Trump walked out of a nationally televised interview when pressed on January 6 and election fraud claims — not because the questions were unfair, but because he could not answer them with evidence. This is not a media story. It is a data point about the President&#x27;s relationship with verifiable fact under direct pressure. Simultaneously, Trump is actively attempting to position himself as a dealmaker restraining Israeli retaliation against Iran, while Iran has already broken a ceasefire and Israel has defied his direct appeal. The gap between the &quot;no new wars&quot; brand and the actual Middle East situation is now measurable in real time.</p>
+<p>The domestic media environment is itself a story. The Bari Weiss–CBS dispute represents a broader contest over who controls institutional editorial standards, and it is being covered almost exclusively by left-leaning outlets treating a fired anchor&#x27;s unverified allegations as established fact. This is not journalism; it is factional warfare conducted through press outlets. The absence of right-leaning engagement with the Pelley allegations — given that Weiss is a figure they celebrate — is notable and suggests either strategic silence or a story not yet fully broken.</p>
+<p>The political moment is one of accelerating institutional stress across multiple domains simultaneously: executive accountability, press freedom and editorial independence, and foreign policy credibility. None of these are being treated by coverage as a single coherent pattern. They are.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the central actor under simultaneous pressure on three fronts: the walkout reveals vulnerability on January 6 accountability; the Middle East situation tests whether his dealmaking claims have real leverage; and the CBS dispute involves a figure (Weiss) he has aligned with ideologically. He is attempting to run a foreign policy track that restrains Israel while the domestic track suppresses inconvenient accountability questions. These two tracks are in tension — the walkout makes him look weak precisely when he needs to project strength to Netanyahu.</p>
+<p><strong>Israel (Netanyahu)</strong> is the actor most directly defying Trump right now. The decision to act after a direct presidential appeal for restraint is a concrete measure of how much actual leverage Trump has. This is more significant than the interview walkout and is being dramatically underreported on the right.</p>
+<p><strong>Iran</strong> broke the ceasefire first. This is a material fact that left-leaning coverage is minimizing. Whoever controls the framing of who started the current exchange will shape how the eventual diplomatic outcome is assigned credit or blame.</p>
+<p><strong>Bari Weiss</strong> is a proxy battle figure. The Pelley dispute is less about one segment on Renee Good and more about whether CBS News undergoes the same kind of editorial reorientation that the New York Times&#x27; opinion section has experienced. The institutional stakes are larger than the coverage reflects.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning coverage is systematically suppressing two facts: that Trump walked out of the interview specifically because he was challenged on January 6 and election fraud with evidence he could not rebut, and that Israel defied his direct diplomatic appeal. Both facts undermine core brand claims — that January 6 is settled and that Trump has unique leverage with foreign leaders. The suppression is not incidental; it is protective.</p>
+<p>Left-leaning coverage is suppressing or minimizing that Iran broke the ceasefire first, which matters enormously for any honest assessment of the current exchange. They are also not crediting Trump&#x27;s concrete, active effort to prevent Israeli retaliation — an action that, if successful, would represent genuine de-escalation. Giving him credit for a potential success contradicts the preferred &quot;warmonger&quot; narrative.</p>
+<p>On the CBS story, nobody is asking the underlying factual question: what actually happened to Renee Good, and was the original segment accurate? Both sides are treating editorial process as the story when the substantive factual dispute is the actual issue. This is a characteristic failure mode of press coverage about press coverage.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The walkout and the Israel defiance story are connected by a single thread: Trump&#x27;s credibility under factual pressure. In the interview, he cannot defend his claims when pressed. In the Middle East, he cannot get his ally to comply with a direct request. Both expose the gap between assertion and demonstrable leverage. The fact that right-leaning media is suppressing both simultaneously is not coincidence — it reflects coordinated brand protection.</p>
+<p>The CBS–Weiss story connects to the broader pattern of institutional editorial capture that has accelerated since 2022. The LA mayoral race, while seemingly local, is a leading indicator for which faction of the Democratic Party has sustainable coalition appeal in diverse, high-cost urban environments. A Bass-Raman runoff — both progressive candidates — suggests the center-left consolidation strategy is failing in its own strongholds.</p>
+<p>The timing of the Pelley story alongside the Iran-Israel escalation is worth watching. Stories about press editorial control tend to break when there is significant news that someone wants to complicate or distract from. That may be coincidence. It may not be.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Israel&#x27;s next military action, 48 hours</strong>: Whether Israel conducts a second strike after Iran&#x27;s ballistic missile launch will determine whether Trump&#x27;s restraint appeal has any practical effect. A second Israeli strike would constitute a visible, documented failure of Trump&#x27;s stated dealmaking leverage.</p>
+<p><strong>Trump&#x27;s public response to Israel defiance</strong>: Watch whether he publicly criticizes Israel, stays silent, or reframes the situation. His framing choice will signal how the administration is managing the gap between &quot;no new wars&quot; and current reality.</p>
+<p><strong>CBS/Weiss rebuttal</strong>: Weiss and CBS management have not yet issued a substantive public response to Pelley&#x27;s allegations. When they do — and they will — watch whether right-leaning outlets amplify a defense that left-leaning outlets are ignoring. The asymmetric coverage pattern will either correct or harden.</p>
+<p><strong>LA runoff polling</strong>: First post-primary polling on Bass vs. Raman will indicate whether this is a close race or a consolidation. The national Democratic Party&#x27;s response — who they endorse and how quickly — is a proxy for internal coalition priorities.</p>
+<p><strong>Congressional response to Iran ceasefire collapse</strong>: Watch whether any Republican senators with hawkish foreign policy profiles (Cotton, Graham) break with White House messaging on Israel. Any daylight there is significant.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic of this moment is a stress test on the gap between assertion and verification — applied simultaneously to the President, to press institutions, and to foreign policy claims. Trump&#x27;s political model has always relied on the ability to assert facts without being forced to defend them with evidence; the interview walkout is a visible instance of that model breaking down under direct pressure. The Middle East situation is the same dynamic at geopolitical scale: claiming leverage without being able to demonstrate it. The CBS dispute is a version of the same contest — who controls what gets called true in institutional media. These are not three separate stories. They are three manifestations of the same fundamental question about whether American institutions retain the capacity to enforce a shared evidentiary standard. Right now, the answer is genuinely unclear, and that uncertainty is itself the most significant political fact of the moment.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump walked out of an NBC Meet the Press interview after being pressed on election claims, as Iran broke a ceasefire by firing ballistic missiles at Israel and the LA mayoral primary narrowed to a Bass-Raman runoff with Spencer Pratt eliminated.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (6)</span><span class="bias-badge" style="color:#e07a7a;">left (9)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:6.7;" title="center-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:20.0;" title="far-right: 6"></div><div class="bias-segment" style="background:#e07a7a; flex:30.0;" title="left: 9"></div><div class="bias-segment" style="background:#a07ae0; flex:6.7;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:16.7;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The core verifiable news is threefold: Trump walked out of a nationally televised interview under factual pressure, Iran broke a two-month ceasefire by firing on Israel, and Trump is actively attempting to broker restraint while Israel acted against his direct wishes. The walkout and the &#x27;no new wars&#x27; redefinition are the most politically significant domestic elements and are largely suppressed in right-leaning coverage. The Iran-Israel exchange is real and serious regardless of framing — what matters is that a ceasefire collapsed, Israel defied a presidential appeal, and the outcome of Trump&#x27;s dealmaking claim is now being tested in real time.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Trump is volatile, dishonest, and diplomatically weak — he fled journalist scrutiny, redefined his own campaign promises, left the door open to rewarding rioters who attacked police, and failed to stop an Israeli escalation that defied his direct appeal. The Iran situation is framed as spiraling toward a broader regional war that Trump cannot control.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The interview covered Iran, the anti-weaponization fund, and other topics and was notable for its tension and breadth. The LA race is a factual horse-race story. Iran&#x27;s missile strike is a destabilizing provocation threatening a fragile ceasefire. Bolton&#x27;s proliferation warning is presented as a serious strategic concern.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Trump is a pragmatic dealmaker actively working to prevent wider war by restraining Netanyahu while holding firm on Iran pressure. The Iran ceasefire break is Iran&#x27;s fault. California&#x27;s election system is broken or corrupt, as evidenced by the slow Pratt count. The LA result is framed through celebrity spectacle and ballot-count suspense.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets give minimal credit to Trump&#x27;s active, concrete effort to restrain Israeli retaliation — a potentially de-escalatory move. They largely omit that Iran was the first to break the ceasefire. The Platner coverage focuses on Democratic discomfort rather than the substantive candidate viability question.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit the walkout itself and its circumstances — the specific claims Trump was challenged on (January 6, election fraud) and his inability to provide evidence. They do not report Trump&#x27;s on-record redefining of his &#x27;no new wars&#x27; promise. Israel defying Trump&#x27;s direct appeal — a concrete measure of his diplomatic leverage — is downplayed or absent.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Former 60 Minutes anchor Scott Pelley alleges CBS News editor-in-chief Bari Weiss pressured producers to misrepresent a segment on the police shooting of Minneapolis protester Renee Good, resulting in his dismissal.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This story rests almost entirely on Scott Pelley&#x27;s unverified account from someone with an obvious grievance, and both outlets treat his allegations as established fact rather than allegations requiring corroboration. The analytically important question — what actually happened to Renee Good and was the original segment accurate — goes unexamined. With only two ideologically aligned sources, a true cross-spectrum assessment is not possible; the absence of right-leaning coverage is itself a data point about how this story is being selectively amplified.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames this as a clear-cut case of politically motivated censorship — a Trumpian media operative (Weiss) corrupting a journalistic institution to serve an immigration enforcement narrative. Pelley is cast as a principled truth-teller martyred for his integrity. The story is told entirely from Pelley&#x27;s perspective with no serious engagement with CBS management&#x27;s account.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources were provided. Cannot characterize.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided. Absent that coverage, right framing cannot be characterized — this is a significant analytical gap.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither outlet seriously interrogates Pelley&#x27;s own account — he is an interested party who was just fired. Neither explores whether the underlying factual question (Good&#x27;s actions at the time of the shooting) is genuinely disputed. Neither presents CBS management&#x27;s or Weiss&#x27;s rebuttal. Mother Jones in particular uses an inflammatory pull-quote headline that presupposes guilt.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot assess — no right-leaning coverage was included in the dataset. This is a material limitation: the story involves Bari Weiss, a figure celebrated on the right, and right-leaning outlets likely frame this very differently, possibly defending editorial changes as correcting liberal bias.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Scott Pelley Weiss Wanted Minutes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A big win for Trump&#x27;s deportation agenda, with another fight looming</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› On X, influencers are using prediction markets to sow distrust about election results</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Initial results show Kurti&#x27;s party wins most votes in Kosovo&#x27;s early election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Biden official Deb Haaland wins New Mexico primary for governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-CIA official accused of stealing $40m in gold bars reportedly created fake spy program</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Search for suspects continues after 12 people shot near festival in Toledo, Ohio</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Case of Texas woman on death row over grisly murder back in spotlight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside Delaney Hall’s Black Box</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Humans Are Raiding Whales’ Food Supply for Dietary Supplements and Animal Feed</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Walz administration ignored fraud warnings as billions vanished, House oversight report alleges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘AI Obsession’ Is a Big Nothing Burger</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What the Columbia Riot Decision Gets Wrong About Civil Rights</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Scott Pelley Meltdown Is Revealing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rolling Back Safetyism Requires Parents — and Policymakers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› British Historian Schama Blasts Hegseth&#x27;s &#x27;Invasion&#x27; Warning, Chides &#x27;Little People&#x27; Who Oppose Mass Migration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Starmer Hosts Zelensky, Merz, and Macron for Downing Street Ukraine Talks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sheriff: Intruder Armed with Shotgun Killed in Shootout with California Homeowner</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Target Recalls Baby Wipes Due to Potential Microbial Contamination</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
