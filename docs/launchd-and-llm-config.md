@@ -48,7 +48,7 @@ Edit the `StartCalendarInterval` block in `scripts/com.flexrpl.signal.plist`:
 
 **Current schedule: 4:00 AM local time daily.**
 
-4am was chosen to finish the pipeline before the 8:00 AM social AM post while still
+4am was chosen to finish the pipeline before the 9:00 AM social AM post while still
 catching overnight wire content and early-morning news cycle updates.
 
 Common alternatives:
@@ -60,6 +60,7 @@ Common alternatives:
 | 5:00 AM               | 5     | 0      |
 | 6:00 AM               | 6     | 0      |
 | 7:00 AM               | 7     | 0      |
+| **9:00 AM (social AM)** | **9** | **0**  |
 | 8:00 AM               | 8     | 0      |
 
 After editing, apply the change with the commands in the section above.

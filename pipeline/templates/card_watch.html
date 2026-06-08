@@ -55,7 +55,8 @@
   .w-48hr .watch-dot { background: #f97316; }
   .w-72hr .watch-dot { background: #f59e0b; }
   .w-5d   .watch-dot { background: #22c55e; }
-  .watch-text { font-family: var(--sans); font-size: 12px; color: var(--text-dim); line-height: 1.45; }
+  .watch-title { font-family: var(--sans); font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.35; }
+  .watch-text { font-family: var(--sans); font-size: 11px; color: var(--text-dim); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .card-footer {
     display: flex; align-items: center; justify-content: space-between;
     padding: 10px 24px; border-top: 1px solid var(--border);
@@ -88,6 +89,7 @@
     {% for item in watch_items %}
     <div class="watch-item">
       <span class="watch-window w-{{ item.window }}"><span class="watch-dot"></span>{{ item.window | replace('hr', ' hr') | replace('5d', '5 day') }}</span>
+      {% if item.title %}<div class="watch-title">{{ item.title }}</div>{% endif %}
       <div class="watch-text">{{ item.text }}</div>
     </div>
     {% endfor %}
