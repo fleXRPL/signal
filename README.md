@@ -23,7 +23,7 @@ A fully automated political intelligence pipeline. Ingests RSS feeds across the 
          ↓
 [Pass 5] Brief synthesis + brief_data.json (structured card data)
          ↓
-[HTML report → GitHub Pages]    [3 social cards → Bluesky at 8AM / noon / 6PM]
+[HTML report → GitHub Pages]    [3 social cards → Bluesky at 9AM / noon / 6PM]
 ```
 
 Everything runs locally. Nothing leaves your machine except the GitHub Pages deploy and Bluesky posts.
@@ -71,7 +71,7 @@ Each run generates:
 
 - `reports/brief_YYYYMMDD_HHMM.html` — self-contained HTML report
 - `reports/brief_YYYYMMDD_HHMM.json` — structured brief data (used by social cards)
-- `reports/cards/am_YYYYMMDD.png` — Watch List card (posted at 8:00 AM)
+- `reports/cards/am_YYYYMMDD.png` — Watch List card (posted at 9:00 AM)
 - `reports/cards/noon_YYYYMMDD.png` — Spectrum Breakdown card (posted at noon)
 - `reports/cards/pm_YYYYMMDD.png` — Blindspot Analysis card (posted at 6:00 PM)
 - `signal.db` — SQLite database with all articles, clusters, and analyses
@@ -125,7 +125,7 @@ Three cards are generated automatically each morning and posted at scheduled tim
 
 | Slot | Time | Card | Content |
 | ---- | ---- | ---- | ------- |
-| AM | 8:00 AM | Watch List | Time-coded items flagged for monitoring |
+| AM | 9:00 AM | Watch List | Time-coded items flagged for monitoring |
 | Noon | 12:00 PM | Spectrum Breakdown | Top story — how each side covers it |
 | PM | 6:00 PM | Blindspot Analysis | What each side isn't reporting |
 

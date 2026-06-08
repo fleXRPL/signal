@@ -833,12 +833,56 @@ def _parse_watch_window(text: str) -> str:
     return "48hr"
 
 
+def _watch_lines_from_brief(section: str) -> List[str]:
+    """Extract raw WATCH LIST lines from Pass 5 markdown."""
+    lines: List[str] = []
+    for line in section.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith("- "):
+            lines.append(line[2:].strip())
+        elif re.match(r"\*\*.+\*\*", line):
+            lines.append(line)
+    return lines
+
+
+def _build_watch_item(raw: str) -> Dict[str, str]:
+    """Normalize a watch string or markdown line into card fields."""
+    line = raw.strip()
+    window_source = line
+    text = line
+    title = ""
+
+    bold = re.match(r"\*\*(.+?)\*\*(?:\s*:\s*(.+))?$", line)
+    if bold:
+        title = bold.group(1).strip()
+        detail = (bold.group(2) or "").strip()
+        window_source = title
+        text = detail if detail else title
+    elif ": " in line:
+        head, _, tail = line.partition(": ")
+        if len(head) <= 100 and tail:
+            title = head.strip()
+            text = tail.strip()
+            window_source = line
+
+    item: Dict[str, str] = {
+        "window": _parse_watch_window(window_source),
+        "text": text,
+    }
+    if title and title != text:
+        item["title"] = title
+    return item
+
+
 def _extract_brief_data(
     clusters: List[Dict[str, Any]],
     correlation: Dict[str, Any],
     articles: List[Dict[str, Any]],
     report_path: Path,
     date_str: str,
+    brief_text: str = "",
 ) -> Dict[str, Any]:
     """
     Extract the structured data needed by the three social cards.
@@ -847,12 +891,20 @@ def _extract_brief_data(
     """
     source_names = {a["source_name"] for a in articles}
 
-    # Watch list — attach parsed time windows
+    # Watch list — Pass 4 JSON first; fall back to Pass 5 WATCH LIST markdown, then blindspot sides
     raw_watch = correlation.get("recommended_watch", [])
-    watch_items = [
-        {"window": _parse_watch_window(item), "text": item}
-        for item in raw_watch[:6]
-    ]
+    if not raw_watch and brief_text:
+        sections = _parse_brief_sections(brief_text)
+        raw_watch = _watch_lines_from_brief(sections.get("WATCH LIST", ""))
+    if not raw_watch:
+        raw_watch = [
+            str(t)
+            for t in (
+                correlation.get("_left_only", [])[:3]
+                + correlation.get("_right_only", [])[:3]
+            )
+        ]
+    watch_items = [_build_watch_item(item) for item in raw_watch[:6]]
 
     # Top cluster — first high/medium significance multi-source cluster
     multi = [c for c in clusters if not c.get("singleton") and c.get("analysis")]
@@ -968,7 +1020,7 @@ def generate_report(
     out_path.write_text(rendered, encoding="utf-8")
 
     brief_data = _extract_brief_data(
-        clusters, correlation, articles, out_path, date_str
+        clusters, correlation, articles, out_path, date_str, brief_text
     )
     json_path = out_path.with_suffix(".json")
     json_path.write_text(json.dumps(brief_data, indent=2), encoding="utf-8")

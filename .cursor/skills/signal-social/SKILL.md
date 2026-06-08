@@ -14,7 +14,7 @@ description: Bluesky social cards for Signal — card generation, post packages,
         → 3 post packages (social.py → reports/posts/)
         → run_and_publish.sh → git push (reports/, index, archive, feed.xml)
 
-8 AM / noon / 6 PM  post_scheduled.py --slot {am|noon|pm}
+9 AM / noon / 6 PM  post_scheduled.py --slot {am|noon|pm}
         → load reports/posts/{slot}_YYYYMMDD.json
         → post_to_bluesky() via atproto
         → git push reports/posts/
@@ -43,7 +43,7 @@ Bluesky max **300 graphemes**. `social.py` uses `_BLUESKY_SAFE_GRAPHEMES = 295` 
 | Label | Time | Slot |
 |-------|------|------|
 | `com.flexrpl.signal` | 4:00 AM | pipeline + cards |
-| `com.flexrpl.signal.social.am` | 8:00 AM | `--slot am` |
+| `com.flexrpl.signal.social.am` | 9:00 AM | `--slot am` |
 | `com.flexrpl.signal.social.noon` | 12:00 PM | `--slot noon` |
 | `com.flexrpl.signal.social.pm` | 6:00 PM | `--slot pm` |
 
@@ -84,4 +84,4 @@ tail -20 logs/social_am.log logs/social_noon.log logs/social_pm.log
 tail -20 logs/cron.log
 ```
 
-Common AM failure: `Post package not found` — pipeline not finished before 8 AM job. Check pipeline finish time in `cron.log`.
+Common AM failure: `Post package not found` — pipeline not finished before 9 AM job, or Playwright card generation failed. Check pipeline finish time and Playwright errors in `cron.log`.

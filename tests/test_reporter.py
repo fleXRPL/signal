@@ -13,11 +13,14 @@ import pytest
 
 from pipeline.reporter import (
     BIAS_COLORS,
+    _build_watch_item,
+    _extract_brief_data,
     _md_to_html,
     _parse_brief_sections,
     _render_brief_sections,
     _render_list_items,
     _render_weekly_sections,
+    _watch_lines_from_brief,
     ga_snippet,
     generate_report,
     generate_weekly_report,
@@ -105,6 +108,64 @@ class TestParseBriefSections:
     def test_empty_string(self):
         sections = _parse_brief_sections("")
         assert isinstance(sections, dict)
+
+
+# ── watch list extraction for social cards ────────────────────────────────────
+
+class TestWatchLinesFromBrief:
+    def test_parses_bold_lead_lines(self):
+        section = (
+            "**Israel's next military action, 48 hours**: Whether Israel conducts a second strike.\n"
+            "**Trump's public response to Israel defiance**: Watch whether he publicly criticizes Israel."
+        )
+        lines = _watch_lines_from_brief(section)
+        assert len(lines) == 2
+        assert lines[0].startswith("**Israel's next military action")
+
+    def test_parses_bullet_lines(self):
+        section = "- Monitor congressional response\n- Track LA runoff polling"
+        assert _watch_lines_from_brief(section) == [
+            "Monitor congressional response",
+            "Track LA runoff polling",
+        ]
+
+
+class TestBuildWatchItem:
+    def test_brief_markdown_splits_title_and_detail(self):
+        item = _build_watch_item(
+            "**Israel's next military action, 48 hours**: Whether Israel conducts a second strike."
+        )
+        assert item["window"] == "48hr"
+        assert item["title"] == "Israel's next military action, 48 hours"
+        assert "second strike" in item["text"]
+
+    def test_correlation_string_splits_on_colon(self):
+        item = _build_watch_item(
+            "Maine Democratic primary result for Platner: the margin of loss or win will reveal whether the story was decisive"
+        )
+        assert "Platner" in item["title"]
+        assert "margin of loss" in item["text"]
+
+
+class TestExtractBriefDataWatchFallback:
+    def test_uses_pass5_watch_list_when_correlation_empty(self, sample_articles):
+        brief_text = (
+            "## WATCH LIST\n"
+            "**Israel strike timeline, 48 hours**: Watch for a second Israeli strike.\n"
+            "**CBS/Weiss rebuttal**: Watch for management response.\n"
+        )
+        data = _extract_brief_data(
+            clusters=[],
+            correlation={"recommended_watch": [], "_left_only": [], "_right_only": []},
+            articles=sample_articles,
+            report_path=Path("reports/brief_20260101_1200.html"),
+            date_str="2026-01-01 12:00 UTC",
+            brief_text=brief_text,
+        )
+        assert len(data["watch_items"]) == 2
+        assert data["watch_items"][0]["window"] == "48hr"
+        assert "second Israeli strike" in data["watch_items"][0]["text"]
+        assert data["watch_items"][0]["title"] == "Israel strike timeline, 48 hours"
 
 
 # ── _render_brief_sections ────────────────────────────────────────────────────

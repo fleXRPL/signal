@@ -27,7 +27,7 @@ the machine.
 
 | Slot | Time     | Card Type          | Purpose                                     |
 | ---- | -------- | ------------------ | ------------------------------------------- |
-| AM   | 8:00 AM  | Watch List         | Sets the daily agenda — what to track       |
+| AM   | 9:00 AM  | Watch List         | Sets the daily agenda — what to track       |
 | Noon | 12:00 PM | Spectrum Breakdown | Top story, all sides — main analytical post |
 | PM   | 6:00 PM  | Blindspot Analysis | What your feed missed today                 |
 
@@ -52,7 +52,7 @@ pipeline/
 
 post_scheduled.py             # CLI dispatcher: --slot [am|noon|pm]
 launchd/
-  signal.social.am.plist      # 8:00 AM launchd job
+  signal.social.am.plist      # 9:00 AM launchd job
   signal.social.noon.plist    # 12:00 PM launchd job
   signal.social.pm.plist      # 6:00 PM launchd job
 ```
@@ -305,7 +305,7 @@ structure to what each card template needs. It should live in `infographic.py`.
 Three new plists in `launchd/` for local reference. The user loads them manually
 into `~/Library/LaunchAgents/`.
 
-**`signal.social.am.plist`** — fires at 8:00 AM
+**`signal.social.am.plist`** — fires at 9:00 AM
 **`signal.social.noon.plist`** — fires at 12:00 PM
 **`signal.social.pm.plist`** — fires at 6:00 PM
 
