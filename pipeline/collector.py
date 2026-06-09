@@ -158,7 +158,7 @@ def collect_feeds(config: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any
             progress.update(task, description=f"[cyan]{source_name}")
 
             try:
-                feed = feedparser.parse(url, request_headers={"User-Agent": "signal/0.1"})
+                feed = feedparser.parse(url, request_headers={"User-Agent": "signal/0.1"}, socket_timeout=30)
             except Exception as exc:  # noqa: BLE001
                 console.print(f"  [red]✗[/red] {source_name}: {exc}")
                 progress.advance(task)
