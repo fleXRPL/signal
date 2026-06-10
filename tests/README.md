@@ -37,6 +37,7 @@ To skip coverage (faster feedback loop during development):
 | `test_analyzer.py` | Entity extraction, clustering, cluster analysis (`pipeline/analyzer.py`) |
 | `test_reporter.py` | HTML report generation, GA snippet, markdown rendering (`pipeline/reporter.py`) |
 | `test_weekly.py` | Pass 6 weekly synthesis logic (`pipeline/weekly.py`) |
+| `test_monthly.py` | Pass 7 monthly synthesis logic (`pipeline/monthly.py`) |
 
 ## Key fixtures (`conftest.py`)
 
@@ -54,15 +55,15 @@ To skip coverage (faster feedback loop during development):
 ## Conventions
 
 **Mocking LLM calls.** All tests that exercise code which calls an LLM use
-`@patch("pipeline.analyzer._llm_call")` (or the equivalent in `weekly.py`).
+`@patch("pipeline.analyzer._llm_call")` (or the equivalent in `weekly.py` / `monthly.py`).
 Never let a test make a real subprocess call to Claude or an Ollama request.
 
 **Database isolation.** Any test that touches the database must use the
 `tmp_db` fixture. It patches `pipeline.store.DB_PATH` to a `tmp_path` file
 scoped to the test, so tests never read from or write to `signal.db`.
 
-**File system isolation.** Tests for `generate_report()` and
-`generate_weekly_report()` patch `pipeline.reporter.REPORTS_DIR` with
+**File system isolation.** Tests for `generate_report()`, `generate_weekly_report()`, and
+`generate_monthly_report()` patch `pipeline.reporter.REPORTS_DIR` with
 `tmp_path` so no files are written to the real `reports/` directory.
 
 ## Adding a new test
@@ -88,8 +89,10 @@ scoped to the test, so tests never read from or write to `signal.db`.
 | `analyzer.py` | **100%** | All passes, helpers, LLM dispatch, and error paths covered |
 | `store.py` | 94% | Missing lines are error-path branches in JSON decode |
 | `collector.py` | 92% | Missing: `load_config()` (reads real YAML), `_fetch_full_text` edge cases |
-| `weekly.py` | 82% | Missing: Ollama provider branch (lines 101–127) — intentionally untested since Ollama is disabled in scheduled runs |
-| `reporter.py` | 79% | Missing: large HTML template formatting helpers; covered by snapshot-style output assertions |
+| `weekly.py` | 86% | Missing: Ollama provider branch — intentionally untested since Ollama is disabled in scheduled runs |
+| `monthly.py` | 98% | Pass 7 synthesis and partial month detection |
+| `reporter.py` | 84% | Missing: large HTML template formatting helpers; daily, weekly, and monthly covered by output assertions |
+| **Overall** | **~93%** | 239 tests |
 
 The remaining gaps are either intentional (Ollama branch in `weekly.py`) or
 low-value boilerplate (`load_config` reading the real YAML on disk). The

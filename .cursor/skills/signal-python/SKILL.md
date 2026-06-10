@@ -1,13 +1,13 @@
 ---
 name: signal-python
-description: Python coding conventions, pipeline architecture, store patterns, LLM dispatch, and testing conventions for the Signal political intelligence pipeline. Use when writing or reviewing Python code in this project, adding a new pipeline pass, extending the store, writing tests, or working with the analyzer/collector/reporter/weekly modules.
+description: Python coding conventions, pipeline architecture, store patterns, LLM dispatch, and testing conventions for the Signal political intelligence pipeline. Use when writing or reviewing Python code in this project, adding a new pipeline pass, extending the store, writing tests, or working with the analyzer/collector/reporter/weekly/monthly modules.
 ---
 
 # Signal — Python Conventions
 
 ## Pipeline architecture
 
-Five-pass daily pipeline + one weekly synthesis pass:
+Five-pass daily pipeline + weekly and monthly synthesis passes:
 
 ```
 Pass 1  extract_entities()     — per-article LLM entity extraction
@@ -16,13 +16,14 @@ Pass 3  analyze_clusters()     — per-cluster LLM framing analysis
 Pass 4  correlate_stories()    — cross-story LLM correlation
 Pass 5  synthesize_brief()     — final LLM brief synthesis
 Pass 6  run_weekly()           — weekly synthesis from DB (weekly.py)
+Pass 7  run_monthly()           — monthly synthesis from DB (monthly.py)
 
 Post-pipeline (main.py):
   _extract_brief_data()        — brief_*.json for cards
   infographic.render_all_cards() — PNG cards + social.build_post_package()
 ```
 
-Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`, `post_scheduled.py` for Bluesky.
+Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`, `run_monthly()` in `monthly.py`, `post_scheduled.py` for Bluesky.
 
 ## Module responsibilities
 
@@ -32,17 +33,18 @@ Entry points: `run_pipeline()` in `analyzer.py`, `run_weekly()` in `weekly.py`, 
 | `pipeline/collector.py` | RSS feed fetching, article normalization, freshness filtering |
 | `pipeline/analyzer.py` | All five daily passes + LLM dispatch (`_llm_call`) |
 | `pipeline/weekly.py` | Pass 6 only. Reads from DB, one LLM call, saves result. |
+| `pipeline/monthly.py` | Pass 7 only. Reads daily + weekly data from DB, one LLM call, saves result. |
 | `pipeline/reporter.py` | HTML + `brief_*.json` generation. No DB access, no LLM calls. |
 | `pipeline/infographic.py` | Social card PNGs via Jinja2 + Playwright (lazy import). |
 | `pipeline/social.py` | Bluesky post packages and posting (lazy atproto/dotenv imports). |
 | `pipeline/feed.py` | RSS `feed.xml` generation. |
-| `pipeline/prompts.py` | Prompt constants only (`ENTITY_EXTRACTION`, `CLUSTER_ANALYSIS`, `CORRELATION_ANALYSIS`, `FINAL_BRIEF`, `WEEKLY_BRIEF`). |
+| `pipeline/prompts.py` | Prompt constants only (`ENTITY_EXTRACTION`, `CLUSTER_ANALYSIS`, `CORRELATION_ANALYSIS`, `FINAL_BRIEF`, `WEEKLY_BRIEF`, `MONTHLY_BRIEF`). |
 | `main.py` | CLI, orchestration, `_update_index()`, social card wiring. |
 | `post_scheduled.py` | launchd social dispatcher + git publish post state. |
 
 ## LLM dispatch pattern
 
-All LLM calls go through `_llm_call()` in the calling module (not a shared util). `analyzer.py` and `weekly.py` each have their own dispatch.
+All LLM calls go through `_llm_call()` in the calling module (not a shared util). `analyzer.py`, `weekly.py`, and `monthly.py` each have their own dispatch (monthly reuses weekly's `_llm_call`).
 
 Weekly Claude call uses `_llm_call_claude()` with `-p --print` only (no `--no-stream`), **3× config timeout**, and **one retry** on `Stream idle timeout`.
 

@@ -239,6 +239,25 @@ launchctl start com.flexrpl.signal
 
 ---
 
+## Weekly and monthly jobs
+
+See `scripts/run_weekly_and_publish.sh` and `scripts/run_monthly_and_publish.sh`. Weekly runs Monday 6:00 AM; monthly runs on the 1st at 7:00 AM (previous calendar month). Full schedule: wiki Scheduling page.
+
+```bash
+# Weekly — mirrors launchd
+bash scripts/run_weekly_and_publish.sh
+tail -f logs/weekly.log
+
+# Monthly — mirrors launchd
+bash scripts/run_monthly_and_publish.sh
+tail -f logs/monthly.log
+
+python3 main.py --weekly
+python3 main.py --monthly --month 2026-05
+```
+
+---
+
 ## Troubleshooting
 
 **launchd job not running:**

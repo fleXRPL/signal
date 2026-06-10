@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.flexrpl.signal.monthly</string>
+
+    <!-- Claude is required for scheduled runs; Ollama causes Metal GPU kernel panics -->
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>SIGNAL_LLM_PROVIDER</key>
+        <string>claude</string>
+    </dict>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/garotconklin/garotm/fleXRPL/signal/scripts/run_monthly_and_publish.sh</string>
+    </array>
+
+    <!-- Run on the 1st of each month at 7:00 AM — after daily (4 AM) and weekly (Mon 6 AM) -->
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Day</key>
+        <integer>1</integer>
+        <key>Hour</key>
+        <integer>7</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>StandardOutPath</key>
+    <string>/Users/garotconklin/garotm/fleXRPL/signal/logs/monthly.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/garotconklin/garotm/fleXRPL/signal/logs/monthly.log</string>
+
+    <key>RunAtLoad</key>
+    <false/>
+</dict>
+</plist>

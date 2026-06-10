@@ -87,11 +87,11 @@ Group sources in the file with comments by bias tier. Maintain spectrum balance 
 
 | Bias tier | Sources |
 |---|---|
-| Center | AP Politics, Reuters Politics, C-SPAN, The Hill, Axios Politics |
+| Center | AP Politics, Reuters Politics, C-SPAN, The Hill, Axios |
 | Center-left | NPR Politics, PBS NewsHour, Politico |
 | Left | Washington Post Politics, The Guardian US |
 | Far-left | Mother Jones |
-| Center-right | Wall Street Journal Politics, RealClearPolitics |
+| Center-right | WSJ Opinion, RealClearPolitics |
 | Right | Fox News Politics, Washington Examiner, National Review |
 | Far-right | Breitbart |
 | Libertarian | Reason |

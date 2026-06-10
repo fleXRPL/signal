@@ -16,6 +16,7 @@ import shutil
 import subprocess
 import sys
 import venv
+from datetime import datetime, timezone
 from pathlib import Path
 
 
@@ -60,6 +61,30 @@ def run_weekly_signal(args: argparse.Namespace) -> None:
     _update_index(latest_daily=None, latest_weekly=report_path, ga_id=ga_id)
 
     console.print("\n[bold green]✓ Weekly brief complete[/bold green]")
+    console.print(f"  Report: [underline]{report_path}[/underline]")
+    console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
+
+
+def run_monthly_signal(args: argparse.Namespace) -> None:
+    """Monthly synthesis pipeline — reads DB, runs Pass 7, writes HTML report."""
+    from rich.console import Console
+    from pipeline.collector import load_config
+    from pipeline.monthly import run_monthly
+    from pipeline.reporter import generate_monthly_report
+
+    console = Console()
+    config = load_config()
+    month = args.month
+    ga_id = config.get("analytics", {}).get("measurement_id", "")
+
+    brief_text, metadata = run_monthly(config, month=month)
+
+    console.print("[bold cyan]Generating monthly HTML report...[/bold cyan]")
+    report_path = generate_monthly_report(brief_text, metadata, ga_measurement_id=ga_id)
+
+    _update_index(latest_daily=None, latest_weekly=None, latest_monthly=report_path, ga_id=ga_id)
+
+    console.print("\n[bold green]✓ Monthly brief complete[/bold green]")
     console.print(f"  Report: [underline]{report_path}[/underline]")
     console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
 
@@ -207,6 +232,7 @@ def _update_index(
     latest_daily: "Path | None",
     latest_weekly: "Path | None",
     ga_id: str = "",
+    latest_monthly: "Path | None" = None,
 ) -> None:
     """Regenerate index.html and archive.html after any report is generated."""
     from pipeline.reporter import ga_snippet as _ga_snippet
@@ -223,6 +249,10 @@ def _update_index(
     weekly_reports = sorted(reports_dir.glob("weekly_*.html"), reverse=True)
     if latest_weekly is None and weekly_reports:
         latest_weekly = weekly_reports[0]
+
+    monthly_reports = sorted(reports_dir.glob("monthly_*.html"), reverse=True)
+    if latest_monthly is None and monthly_reports:
+        latest_monthly = monthly_reports[0]
 
     # ── index.html ────────────────────────────────────────────────────────────
     daily_card = ""
@@ -255,6 +285,24 @@ def _update_index(
         <div class="card-label">Weekly Summary</div>
         <div class="card-title">Weekly Intelligence Brief</div>
         <div class="card-meta">{w_label}</div>
+      </a>"""
+
+    monthly_card = ""
+    if latest_monthly:
+        m_rel = latest_monthly.relative_to(ROOT)
+        m_parts = latest_monthly.stem.split("_")
+        try:
+            m_key = m_parts[1]
+            m_label = f"{m_key[:4]}-{m_key[4:6]}"
+            if "partial" in latest_monthly.stem:
+                m_label += " (partial)"
+        except IndexError:
+            m_label = latest_monthly.stem
+        monthly_card = f"""
+      <a href="{m_rel}" class="card monthly">
+        <div class="card-label">Monthly Summary</div>
+        <div class="card-title">Monthly Intelligence Brief</div>
+        <div class="card-meta">{m_label}</div>
       </a>"""
 
     (ROOT / "index.html").write_text(
@@ -311,11 +359,13 @@ def _update_index(
            backdrop-filter: blur(6px); }}
   .card:hover {{ border-color: var(--accent); }}
   .card.weekly:hover {{ border-color: var(--gold); }}
+  .card.monthly:hover {{ border-color: #a371f7; }}
   .card-label {{ font-family: var(--mono); font-size: 10px; letter-spacing: .2em;
                  text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
   .card-title {{ font-size: 17px; font-weight: 600; color: var(--accent);
                  margin-bottom: 8px; }}
   .card.weekly .card-title {{ color: var(--gold); }}
+  .card.monthly .card-title {{ color: #a371f7; }}
   .card-meta {{ font-size: 12px; color: var(--muted); font-family: var(--mono); }}
   .card.archive .card-title {{ color: var(--text); }}
   .rss-bar {{ margin-top: 36px; text-align: center; }}
@@ -335,6 +385,7 @@ def _update_index(
     <div class="cards">
       {daily_card}
       {weekly_card}
+      {monthly_card}
       <a href="archive.html" class="card archive">
         <div class="card-label">History</div>
         <div class="card-title">Browse Past Briefs</div>
@@ -413,6 +464,48 @@ def _update_index(
             f'<a href="reports/{p.name}">📊 Weekly Brief — {w_label}</a>{badge}</li>'
         )
 
+    def _monthly_row_html(p: Path, is_latest: bool) -> str:
+        parts = p.stem.split("_")
+        try:
+            month_key = parts[1]
+            label = f"{month_key[:4]}-{month_key[4:6]}"
+            if "partial" in p.stem:
+                label += " (partial)"
+        except IndexError:
+            label = p.stem
+        badge = (
+            ' <span class="badge badge-month">latest month</span>'
+            if is_latest else ""
+        )
+        return (
+            f'<li class="monthly-row">'
+            f'<a href="reports/{p.name}">📅 Monthly Brief — {label}</a>{badge}</li>'
+        )
+
+    latest_monthly_resolved = latest_monthly
+    monthly_by_key: dict = {}
+    for p in monthly_reports:
+        parts = p.stem.split("_")
+        key = parts[1] if len(parts) > 1 else p.stem
+        if key not in monthly_by_key or p.stem > monthly_by_key[key].stem:
+            monthly_by_key[key] = p
+
+    monthly_section_html = ""
+    if monthly_by_key:
+        rows = []
+        for key in sorted(monthly_by_key.keys(), reverse=True):
+            mp = monthly_by_key[key]
+            is_latest_m = latest_monthly_resolved and mp == latest_monthly_resolved
+            rows.append(_monthly_row_html(mp, is_latest_m))
+        monthly_rows = "\n        ".join(rows)
+        monthly_section_html = f"""
+  <div class="week-group">
+    <div class="week-header">Monthly Summaries</div>
+    <ul>
+        {monthly_rows}
+    </ul>
+  </div>"""
+
     # Build a map: iso_week → {daily: [Path], weekly: Path|None}
     # For weekly reports, deduplicate — keep only latest file per week number
     weekly_by_week: dict = {}
@@ -458,9 +551,12 @@ def _update_index(
 
     total_daily = len(daily_reports)
     total_weekly = len(weekly_by_week)
+    total_monthly = len(monthly_by_key)
     summary_line = f"{total_daily} daily brief{'s' if total_daily != 1 else ''}"
     if total_weekly:
         summary_line += f" · {total_weekly} weekly summar{'ies' if total_weekly != 1 else 'y'}"
+    if total_monthly:
+        summary_line += f" · {total_monthly} monthly summar{'ies' if total_monthly != 1 else 'y'}"
 
     (ROOT / "archive.html").write_text(
         f"""<!DOCTYPE html>
@@ -500,9 +596,11 @@ def _update_index(
   ul {{ list-style: none; }}
   li {{ border-bottom: 1px solid var(--border); padding: 11px 0 11px 16px; }}
   li.weekly-row {{ padding-left: 0; background: rgba(227,179,65,0.04); }}
+  li.monthly-row {{ padding-left: 0; background: rgba(163,113,247,0.06); }}
   a {{ text-decoration: none; font-size: 14px; }}
   li.daily-row a {{ color: var(--accent); }}
   li.weekly-row a {{ color: var(--gold); font-weight: 500; }}
+  li.monthly-row a {{ color: #a371f7; font-weight: 500; }}
   a:hover {{ text-decoration: underline; }}
   .badge {{
     display: inline-block; font-size: 10px; padding: 2px 8px;
@@ -511,6 +609,7 @@ def _update_index(
   }}
   .badge-latest {{ background: #1f6feb; color: #fff; }}
   .badge-week   {{ background: #6e4c00; color: var(--gold); }}
+  .badge-month  {{ background: #3d1f6e; color: #a371f7; }}
   .back {{ display: inline-block; margin-top: 32px; font-family: var(--mono);
            font-size: 12px; color: var(--muted); text-decoration: none;
            border: 1px solid var(--border); border-radius: 6px; padding: 6px 14px; }}
@@ -530,6 +629,7 @@ def _update_index(
 </div>
 <div class="container">
   <div class="summary">{summary_line} — grouped by week</div>
+  {monthly_section_html}
   {"".join(week_sections_html)}
   <a href="index.html" class="back">▸ Back to home</a>
   <a href="feed.xml" class="rss-link">
@@ -564,6 +664,7 @@ Examples:
   python main.py                       # daily run
   python main.py --weekly              # weekly synthesis (reads DB, no fetching)
   python main.py --weekly --days 5     # weekly synthesis over past 5 days
+  python main.py --monthly --month 2026-05   # monthly synthesis (partial OK)
   python main.py --model qwen2.5:14b
   python main.py --no-fetch --model llama3.1:8b
   python main.py --collect-only
@@ -584,17 +685,33 @@ Examples:
         default=7,
         help="Number of days to include in weekly synthesis (default: 7)",
     )
+    parser.add_argument(
+        "--monthly",
+        action="store_true",
+        help="Generate monthly intelligence summary from DB (no fetching)",
+    )
+    parser.add_argument(
+        "--month",
+        type=str,
+        default=datetime.now(timezone.utc).strftime("%Y-%m"),
+        help="Calendar month for monthly synthesis as YYYY-MM (default: current month)",
+    )
     args = parser.parse_args()
 
     if args.no_venv:
-        if args.weekly:
+        if args.monthly:
+            run_monthly_signal(args)
+        elif args.weekly:
             run_weekly_signal(args)
         else:
             run_signal(args)
     else:
         python = setup_venv()
         cmd = [str(python), str(Path(__file__).resolve()), "--no-venv"]
-        if args.weekly:
+        if args.monthly:
+            cmd.append("--monthly")
+            cmd += ["--month", args.month]
+        elif args.weekly:
             cmd.append("--weekly")
             cmd += ["--days", str(args.days)]
         else:

@@ -228,3 +228,56 @@ What should a well-informed observer be most concerned about or watching most cl
 
 Write in plain, direct English. Be willing to make calls. \
 The value of a weekly brief is exactly the perspective that daily coverage cannot provide."""
+
+MONTHLY_BRIEF = """\
+You are a senior political intelligence analyst writing a MONTHLY briefing. \
+You have been given weekly intelligence summaries and condensed daily briefs from \
+{month_label} ({month_start} through {month_end}). \
+{partial_note}
+
+This is NOT a summary of summaries. Your job is to identify patterns, trajectories, \
+and accountability that only become visible across a full month of political coverage.
+
+WEEKLY SUMMARIES FROM THIS MONTH:
+{weekly_summaries}
+
+CONDENSED DAILY INTELLIGENCE ({day_count} days):
+{daily_data}
+
+WATCH LIST EVOLUTION ACROSS THE MONTH:
+{watch_list_evolution}
+
+Write the monthly brief with exactly these section headers (use markdown ## headers):
+
+## MONTH IN REVIEW
+2-4 paragraphs. The dominant political dynamic of the month as a whole. What was this \
+month actually about beneath the daily noise? What trajectory became clear only in hindsight?
+
+## STORY ARC TRACKER
+For each of the 3-5 most significant stories of the month: how did it enter coverage, \
+peak, evolve, resolve, or vanish? Be specific about timing and framing shifts across weeks.
+
+## WATCH LIST SCORECARD
+Review watch list items from early in the month. Which materialized? Which did not? \
+Which were underweighted in subsequent coverage? This is an accountability section — \
+be honest about what the intelligence flagged correctly and what it missed.
+
+## COVERAGE PATTERN ANALYSIS
+Recurring blindspots across the month: what did left-aligned outlets consistently omit? \
+What did right-aligned outlets consistently omit? What patterns persisted all month?
+
+## EMERGING ACTORS
+People, institutions, or factions that appeared repeatedly across the month and gained \
+(or lost) political significance. Who emerged as a force? Who faded?
+
+## WATCH LIST: NEXT MONTH
+Specific items to monitor in the coming month. Name entities, votes, deadlines, or \
+developments. Explain why each is likely to move. Be concrete.
+
+## ANALYST NOTE
+One paragraph. Your honest assessment of where American politics stands after a full \
+month of data — trajectory, risks, and what a well-informed observer should watch most closely.
+
+Write in plain, direct English. Be willing to make calls. \
+The value of a monthly brief is longitudinal perspective that neither daily nor weekly \
+coverage can provide alone."""

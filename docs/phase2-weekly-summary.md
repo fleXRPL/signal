@@ -1,5 +1,7 @@
 # Phase 2 — Weekly Intelligence Summary
 
+> **Note:** Historical design spec from May 2026. Implemented schedule is **Monday 6:00 AM** (not Sunday 11:00 PM). See wiki Weekly-Reports and Scheduling pages for current docs.
+
 ## Concept
 
 At the end of each week, synthesize all daily briefs into a single weekly report.

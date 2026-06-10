@@ -23,6 +23,7 @@ from pipeline.reporter import (
     _watch_lines_from_brief,
     ga_snippet,
     generate_report,
+    generate_monthly_report,
     generate_weekly_report,
 )
 from tests.conftest import make_article
@@ -360,6 +361,59 @@ class TestGenerateWeeklyReport:
             )
         content = path.read_text()
         assert "#0d1117" in content or "0d1117" in content
+
+
+# ── generate_monthly_report ───────────────────────────────────────────────────
+
+class TestGenerateMonthlyReport:
+    def _metadata(self, partial: bool = True) -> dict:
+        return {
+            "month": "2026-05",
+            "month_label": "May 2026",
+            "month_start": "2026-05-11",
+            "month_end": "2026-05-31",
+            "day_count": 21,
+            "weekly_count": 2,
+            "run_ids": [1, 2, 3],
+            "generated_at": "2026-06-10 18:00 UTC",
+            "partial": partial,
+        }
+
+    def test_creates_html_file(self, tmp_path, tmp_db):
+        with patch("pipeline.reporter.REPORTS_DIR", tmp_path):
+            path = generate_monthly_report(
+                brief_text="## MONTH IN REVIEW\nMay summary.",
+                metadata=self._metadata(),
+            )
+        assert path.exists()
+        assert path.suffix == ".html"
+
+    def test_partial_filename_suffix(self, tmp_path, tmp_db):
+        with patch("pipeline.reporter.REPORTS_DIR", tmp_path):
+            path = generate_monthly_report(
+                brief_text="## MONTH IN REVIEW\nMay summary.",
+                metadata=self._metadata(partial=True),
+            )
+        assert "_partial_" in path.name
+        assert "monthly_202605" in path.name
+
+    def test_full_month_no_partial_suffix(self, tmp_path, tmp_db):
+        meta = self._metadata(partial=False)
+        meta["month_start"] = "2026-05-01"
+        with patch("pipeline.reporter.REPORTS_DIR", tmp_path):
+            path = generate_monthly_report(
+                brief_text="## MONTH IN REVIEW\nMay summary.",
+                metadata=meta,
+            )
+        assert "_partial_" not in path.name
+
+    def test_partial_badge_in_html(self, tmp_path, tmp_db):
+        with patch("pipeline.reporter.REPORTS_DIR", tmp_path):
+            path = generate_monthly_report(
+                brief_text="## MONTH IN REVIEW\nMay summary.",
+                metadata=self._metadata(partial=True),
+            )
+        assert "Partial Coverage" in path.read_text()
 
 
 # ── BIAS_COLORS ───────────────────────────────────────────────────────────────

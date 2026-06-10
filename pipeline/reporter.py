@@ -1417,3 +1417,216 @@ def run_id_to_date(run_id: int) -> str:
     except Exception:  # noqa: BLE001
         pass
     return f"run-{run_id}"
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Monthly report
+# ─────────────────────────────────────────────────────────────────────────────
+
+MONTHLY_SECTION_STYLES: Dict[str, tuple] = {
+    "MONTH IN REVIEW":            ("highlight", "🗓"),
+    "STORY ARC TRACKER":          ("", "📈"),
+    "WATCH LIST SCORECARD":       ("warn-section", "✓"),
+    "COVERAGE PATTERN ANALYSIS":  ("danger-section", "🔍"),
+    "EMERGING ACTORS":            ("", "👤"),
+    "WATCH LIST: NEXT MONTH":     ("warn-section", "👁"),
+    "ANALYST NOTE":               ("highlight", "🧠"),
+}
+
+MONTHLY_HTML_TEMPLATE = """\
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Monthly Intelligence Brief {month_title}</title>
+{ga_snippet}
+<style>
+  :root {{
+    --bg: #0d1117; --surface: #161b22; --border: #30363d; --text: #c9d1d9;
+    --muted: #8b949e; --accent: #a371f7; --warn: #58a6ff; --danger: #f85149;
+    --mono: 'JetBrains Mono', 'Fira Code', monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{ background: var(--bg); color: var(--text); font-family: var(--sans);
+          font-size: 15px; line-height: 1.65; padding-bottom: 80px; }}
+  .header {{ background: linear-gradient(180deg, #1a1225 0%, var(--bg) 100%);
+             border-bottom: 1px solid var(--border); padding: 40px 48px 32px; }}
+  .header-top {{ display: flex; justify-content: space-between; align-items: flex-start; }}
+  .monthly-badge {{ display: inline-block; background: rgba(163,113,247,0.15);
+                    border: 1px solid rgba(163,113,247,0.4); color: var(--accent);
+                    font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+                    text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
+                    margin-bottom: 12px; }}
+  .partial-badge {{ display: inline-block; background: rgba(248,81,73,0.12);
+                    border: 1px solid rgba(248,81,73,0.35); color: var(--danger);
+                    font-family: var(--mono); font-size: 10px; letter-spacing: 0.15em;
+                    text-transform: uppercase; padding: 4px 12px; border-radius: 4px;
+                    margin-left: 8px; }}
+  .wordmark {{ font-family: var(--mono); font-size: 11px; letter-spacing: 0.25em;
+               color: var(--muted); text-transform: uppercase; margin-bottom: 8px; }}
+  h1 {{ font-family: var(--mono); font-size: 26px; font-weight: 700; color: var(--accent);
+        letter-spacing: -0.02em; }}
+  .meta-pills {{ display: flex; gap: 8px; flex-wrap: wrap; margin-top: 20px; }}
+  .pill {{ background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
+           padding: 4px 14px; font-size: 12px; font-family: var(--mono); color: var(--muted); }}
+  .pill.accent {{ border-color: rgba(163,113,247,0.4); color: var(--accent); }}
+  .container {{ max-width: 860px; margin: 0 auto; padding: 40px 48px; }}
+  .brief-section {{ background: var(--surface); border: 1px solid var(--border);
+                     border-radius: 10px; padding: 28px 32px; margin-bottom: 24px; }}
+  .brief-section.highlight {{ border-left: 4px solid var(--accent); }}
+  .brief-section.warn-section {{ border-left: 4px solid var(--warn); }}
+  .brief-section.danger-section {{ border-left: 4px solid var(--danger); }}
+  .section-label {{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.2em;
+                    text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }}
+  .brief-section h2 {{ font-size: 18px; font-weight: 600; margin-bottom: 16px; color: var(--text); }}
+  .brief-section p {{ margin-bottom: 12px; color: var(--text); line-height: 1.7; }}
+  .analyst-note {{ background: linear-gradient(135deg, rgba(163,113,247,0.08), rgba(163,113,247,0.02));
+                   border: 1px solid rgba(163,113,247,0.3); border-radius: 10px;
+                   padding: 24px 28px; margin: 32px 0; }}
+  .analyst-note-header {{ font-family: var(--mono); font-size: 10px; letter-spacing: 0.25em;
+                          text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }}
+  .watch-item {{ background: var(--surface); border: 1px solid var(--border);
+                 border-left: 4px solid var(--warn); border-radius: 6px; padding: 12px 16px;
+                 margin-bottom: 10px; font-size: 14px; font-family: var(--mono); color: var(--warn); }}
+  .days-covered {{ background: var(--surface); border: 1px solid var(--border); border-radius: 8px;
+                   padding: 16px 20px; margin: 24px 0; display: flex; gap: 8px; flex-wrap: wrap; }}
+  .day-chip {{ background: rgba(163,113,247,0.1); border: 1px solid rgba(163,113,247,0.3);
+               border-radius: 4px; padding: 4px 10px; font-size: 12px; font-family: var(--mono);
+               color: var(--accent); }}
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="monthly-badge">Monthly Summary{partial_badge}</div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>MONTHLY INTELLIGENCE BRIEF</h1>
+      <div style="font-size:18px; color:var(--muted); margin-top:8px;">{month_title}</div>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px;">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 {month_start} → {month_end}</span>
+    <span class="pill">{day_count} days · {weekly_count} weekly summaries</span>
+    <span class="pill">🤖 {model}</span>
+    <span class="pill">generated {generated_at}</span>
+  </div>
+</div>
+<div class="container">
+  <div class="days-covered">
+    <span style="font-size:12px; color:var(--muted); font-family:var(--mono); margin-right:4px;">
+      DAYS INCLUDED</span>
+    {day_chips}
+  </div>
+  {brief_sections}
+</div>
+</body>
+</html>
+"""
+
+
+def _render_monthly_sections(brief_text: str) -> str:
+    """Render monthly brief sections into styled HTML."""
+    sections = _parse_brief_sections(brief_text)
+    output = []
+
+    for name, content in sections.items():
+        if name == "preamble" or not content:
+            continue
+
+        style_class, icon = MONTHLY_SECTION_STYLES.get(name, ("", "▸"))
+        content_html = _md_to_html(content)
+
+        if name == "ANALYST NOTE":
+            output.append(f"""
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note — Monthly Assessment</div>
+  {content_html}
+</div>""")
+        elif name == "WATCH LIST: NEXT MONTH":
+            items = [
+                line.strip().lstrip("-• ").strip()
+                for line in content.split("\n")
+                if line.strip() and not line.strip().startswith("#")
+            ]
+            watch_html = (
+                "\n".join(
+                    f'<div class="watch-item">{html.escape(item)}</div>'
+                    for item in items
+                    if item
+                )
+                if items
+                else content_html
+            )
+            output.append(f"""
+<div class="brief-section warn-section">
+  <div class="section-label">{icon} Forward Watch</div>
+  <h2>{html.escape(name)}</h2>
+  {watch_html}
+</div>""")
+        else:
+            output.append(f"""
+<div class="brief-section {style_class}">
+  <div class="section-label">{icon} Monthly Brief</div>
+  <h2>{html.escape(name)}</h2>
+  {content_html}
+</div>""")
+
+    return "\n".join(output)
+
+
+def generate_monthly_report(
+    brief_text: str,
+    metadata: Dict[str, Any],
+    ga_measurement_id: str = "",
+) -> Path:
+    """Generate and write the monthly HTML intelligence brief."""
+    REPORTS_DIR.mkdir(exist_ok=True)
+
+    month_key = metadata["month"].replace("-", "")
+    month_label = metadata["month_label"]
+    month_start = metadata["month_start"]
+    month_end = metadata["month_end"]
+    day_count = metadata["day_count"]
+    weekly_count = metadata.get("weekly_count", 0)
+    generated_at = metadata.get("generated_at", "")
+    run_ids = metadata.get("run_ids", [])
+    partial = metadata.get("partial", False)
+    file_date = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M")
+
+    import os
+    llm_provider = os.environ.get("SIGNAL_LLM_PROVIDER", "claude")
+    model_label = "Claude" if llm_provider == "claude" else "Ollama"
+
+    partial_suffix = "_partial" if partial else ""
+    partial_badge = ' <span class="partial-badge">Partial Coverage</span>' if partial else ""
+    month_title = f"{month_label}{' (Partial)' if partial else ''}"
+
+    day_chips = "\n".join(
+        f'<span class="day-chip">{run_id_to_date(rid)}</span>'
+        for rid in run_ids
+    )
+    brief_sections_html = _render_monthly_sections(brief_text)
+
+    rendered = MONTHLY_HTML_TEMPLATE.format(
+        month_title=html.escape(month_title),
+        month_start=month_start,
+        month_end=month_end,
+        day_count=day_count,
+        weekly_count=weekly_count,
+        model=html.escape(model_label),
+        generated_at=html.escape(generated_at),
+        partial_badge=partial_badge,
+        day_chips=day_chips,
+        ga_snippet=ga_snippet(ga_measurement_id),
+        brief_sections=brief_sections_html,
+    )
+
+    out_path = REPORTS_DIR / f"monthly_{month_key}{partial_suffix}_{file_date}.html"
+    out_path.write_text(rendered, encoding="utf-8")
+    return out_path

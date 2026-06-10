@@ -98,6 +98,18 @@ def init_db() -> None:
             created_at  TEXT NOT NULL
         );
 
+        CREATE TABLE IF NOT EXISTS monthly_briefs (
+            id           INTEGER PRIMARY KEY AUTOINCREMENT,
+            month_label  TEXT NOT NULL,
+            month_start  TEXT NOT NULL,
+            month_end    TEXT NOT NULL,
+            run_ids      TEXT NOT NULL,
+            weekly_ids   TEXT NOT NULL,
+            brief_text   TEXT NOT NULL,
+            partial      INTEGER NOT NULL DEFAULT 0,
+            created_at   TEXT NOT NULL
+        );
+
         CREATE INDEX IF NOT EXISTS idx_articles_run ON articles(run_id);
         CREATE INDEX IF NOT EXISTS idx_clusters_run ON clusters(run_id);
         CREATE INDEX IF NOT EXISTS idx_articles_url  ON articles(url);
@@ -428,6 +440,98 @@ def get_weekly_briefs() -> List[Dict[str, Any]]:
     conn = get_connection()
     rows = conn.execute(
         "SELECT id, week_start, week_end, created_at FROM weekly_briefs ORDER BY id DESC"
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+# ── Monthly briefs ────────────────────────────────────────────────────────────
+
+def get_runs_for_month(year: int, month: int) -> List[Dict[str, Any]]:
+    """Return complete runs for a calendar month, one per date (latest per day)."""
+    month_prefix = f"{year:04d}-{month:02d}"
+    conn = get_connection()
+    rows = conn.execute(
+        """
+        SELECT r.id, r.started_at, r.article_count, r.cluster_count
+        FROM runs r
+        WHERE r.status = 'complete'
+          AND r.started_at LIKE ? || '%'
+          AND EXISTS (SELECT 1 FROM briefs b WHERE b.run_id = r.id)
+        ORDER BY r.started_at
+        """,
+        (month_prefix,),
+    ).fetchall()
+    conn.close()
+
+    seen_dates: dict = {}
+    for row in rows:
+        date_key = row["started_at"][:10]
+        seen_dates[date_key] = dict(row)
+    return list(seen_dates.values())
+
+
+def get_weekly_briefs_for_month(year: int, month: int) -> List[Dict[str, Any]]:
+    """Return weekly briefs whose date range overlaps the given calendar month."""
+    from calendar import monthrange
+
+    _, last_day = monthrange(year, month)
+    month_start = f"{year:04d}-{month:02d}-01"
+    month_end = f"{year:04d}-{month:02d}-{last_day:02d}"
+
+    conn = get_connection()
+    rows = conn.execute(
+        """
+        SELECT id, week_start, week_end, brief_text, created_at
+        FROM weekly_briefs
+        WHERE week_start <= ? AND week_end >= ?
+        ORDER BY week_start
+        """,
+        (month_end, month_start),
+    ).fetchall()
+    conn.close()
+    return [dict(r) for r in rows]
+
+
+def save_monthly_brief(
+    month_label: str,
+    month_start: str,
+    month_end: str,
+    run_ids: List[int],
+    weekly_ids: List[int],
+    brief_text: str,
+    partial: bool = False,
+) -> int:
+    """Save a monthly brief and return its id."""
+    conn = get_connection()
+    cur = conn.execute(
+        """INSERT INTO monthly_briefs
+           (month_label, month_start, month_end, run_ids, weekly_ids,
+            brief_text, partial, created_at)
+           VALUES (?,?,?,?,?,?,?,?)""",
+        (
+            month_label,
+            month_start,
+            month_end,
+            json.dumps(run_ids),
+            json.dumps(weekly_ids),
+            brief_text,
+            1 if partial else 0,
+            now_utc(),
+        ),
+    )
+    monthly_id = cur.lastrowid
+    conn.commit()
+    conn.close()
+    return monthly_id
+
+
+def get_monthly_briefs() -> List[Dict[str, Any]]:
+    """Return all monthly briefs in reverse chronological order."""
+    conn = get_connection()
+    rows = conn.execute(
+        """SELECT id, month_label, month_start, month_end, partial, created_at
+           FROM monthly_briefs ORDER BY id DESC"""
     ).fetchall()
     conn.close()
     return [dict(r) for r in rows]

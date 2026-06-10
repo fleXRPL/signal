@@ -6,7 +6,7 @@
 
 [![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
 
-A fully automated political intelligence pipeline. Ingests RSS feeds across the full political spectrum, runs a five-pass analysis, and publishes a daily HTML brief to GitHub Pages. Automatically posts three social cards to Bluesky each day — watch list, spectrum breakdown, and blindspot analysis.
+A fully automated political intelligence pipeline. Ingests RSS feeds across the full political spectrum, runs a five-pass daily analysis, synthesizes weekly and monthly intelligence summaries, and publishes HTML briefs to GitHub Pages. Automatically posts three social cards to Bluesky each day — watch list, spectrum breakdown, and blindspot analysis.
 
 ## What it does
 
@@ -24,6 +24,9 @@ A fully automated political intelligence pipeline. Ingests RSS feeds across the 
 [Pass 5] Brief synthesis + brief_data.json (structured card data)
          ↓
 [HTML report → GitHub Pages]    [3 social cards → Bluesky at 9AM / noon / 6PM]
+
+Weekly (Pass 6):  python main.py --weekly          → reads DB, synthesizes past 7 days
+Monthly (Pass 7): python main.py --monthly --month YYYY-MM  → reads DB, partial OK
 ```
 
 Everything runs locally. Nothing leaves your machine except the GitHub Pages deploy and Bluesky posts.
@@ -52,6 +55,12 @@ python main.py --model qwen2.5:14b
 
 # Skip full article fetch (faster, less context)
 python main.py --no-fetch
+
+# Weekly synthesis (reads DB, no fetching)
+python main.py --weekly
+
+# Monthly synthesis (reads DB, partial months OK)
+python main.py --monthly --month 2026-05
 ```
 
 ## Model recommendations (M1 Max 32GB)
@@ -158,6 +167,7 @@ signal/
 │   ├── analyzer.py              # 5-pass analysis pipeline
 │   ├── reporter.py              # HTML report + brief_data.json
 │   ├── weekly.py                # Pass 6 — weekly synthesis
+│   ├── monthly.py               # Pass 7 — monthly synthesis
 │   ├── feed.py                  # RSS 2.0 feed generator
 │   ├── infographic.py           # Playwright HTML → PNG card renderer
 │   ├── social.py                # Bluesky auth, upload, post
@@ -165,11 +175,14 @@ signal/
 │       ├── card_watch.html      # AM watch list card template
 │       ├── card_spectrum.html   # Noon spectrum breakdown template
 │       └── card_blindspot.html  # PM blindspot analysis template
-├── tests/                       # pytest suite (164 tests, 91% coverage)
+├── tests/                       # pytest suite (239 tests, ~93% coverage)
 ├── reports/
+│   ├── brief_*.html             # daily reports
+│   ├── weekly_*.html            # weekly reports
+│   ├── monthly_*.html           # monthly reports
 │   ├── cards/                   # generated PNG card images
 │   └── posts/                   # pre-generated JSON post packages
-├── scripts/                     # launchd plists
+├── scripts/                     # launchd plists + publish wrappers
 ├── post_scheduled.py            # CLI dispatcher for social posts
 ├── main.py                      # entry point
 ├── .env.example                 # credential template
