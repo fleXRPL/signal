@@ -14,6 +14,7 @@ import pytest
 
 from pipeline.collector import (
     _article_is_fresh,
+    _fetch_feed,
     _parse_date,
     _strip_html,
     collect_feeds,
@@ -139,11 +140,11 @@ def _make_config(
 
 
 class TestCollectFeeds:
-    @patch("pipeline.collector.feedparser.parse")
-    def test_returns_articles_from_feed(self, mock_parse):
+    @patch("pipeline.collector._fetch_feed")
+    def test_returns_articles_from_feed(self, mock_fetch_feed):
         mock_feed = MagicMock()
         mock_feed.entries = [_make_feed_entry()]
-        mock_parse.return_value = mock_feed
+        mock_fetch_feed.return_value = mock_feed
 
         articles = collect_feeds(_make_config())
         assert len(articles) == 1
@@ -151,42 +152,49 @@ class TestCollectFeeds:
         assert articles[0]["source_name"] == "Test Source"
         assert articles[0]["bias"] == "center"
 
-    @patch("pipeline.collector.feedparser.parse")
-    def test_deduplicates_by_url(self, mock_parse):
+    @patch("pipeline.collector._fetch_feed")
+    def test_deduplicates_by_url(self, mock_fetch_feed):
         """Two entries with the same URL should yield only one article."""
         entry = _make_feed_entry()
         mock_feed = MagicMock()
         mock_feed.entries = [entry, entry]
-        mock_parse.return_value = mock_feed
+        mock_fetch_feed.return_value = mock_feed
 
         articles = collect_feeds(_make_config())
         assert len(articles) == 1
 
-    @patch("pipeline.collector.feedparser.parse")
-    def test_respects_max_per_source(self, mock_parse):
+    @patch("pipeline.collector._fetch_feed")
+    def test_respects_max_per_source(self, mock_fetch_feed):
         entries = [
             _make_feed_entry(title=f"Article {i}", link=f"https://example.com/{i}")
             for i in range(10)
         ]
         mock_feed = MagicMock()
         mock_feed.entries = entries
-        mock_parse.return_value = mock_feed
+        mock_fetch_feed.return_value = mock_feed
 
         articles = collect_feeds(_make_config(fetch_full=False))
         assert len(articles) <= 5
 
-    @patch("pipeline.collector.feedparser.parse")
-    def test_skips_feed_on_exception(self, mock_parse):
-        mock_parse.side_effect = Exception("Connection refused")
+    @patch("pipeline.collector._fetch_feed")
+    def test_skips_feed_on_exception(self, mock_fetch_feed):
+        mock_fetch_feed.side_effect = Exception("Connection refused")
+        articles = collect_feeds(_make_config())
+        assert articles == []
+
+    @patch("pipeline.collector._fetch_feed")
+    def test_skips_feed_on_timeout(self, mock_fetch_feed):
+        import httpx as _httpx
+        mock_fetch_feed.side_effect = _httpx.ReadTimeout("timed out")
         articles = collect_feeds(_make_config())
         assert articles == []
 
     @patch("pipeline.collector._fetch_full_text")
-    @patch("pipeline.collector.feedparser.parse")
-    def test_full_text_fetch_called_when_enabled(self, mock_parse, mock_fetch):
+    @patch("pipeline.collector._fetch_feed")
+    def test_full_text_fetch_called_when_enabled(self, mock_fetch_feed, mock_fetch):
         mock_feed = MagicMock()
         mock_feed.entries = [_make_feed_entry()]
-        mock_parse.return_value = mock_feed
+        mock_fetch_feed.return_value = mock_feed
         mock_fetch.return_value = "Full article body text."
 
         articles = collect_feeds(_make_config(fetch_full=True))
@@ -194,22 +202,55 @@ class TestCollectFeeds:
         mock_fetch.assert_called_once()
         assert articles[0]["full_text"] == "Full article body text."
 
-    @patch("pipeline.collector.feedparser.parse")
-    def test_empty_sources_returns_empty_list(self, mock_parse):
+    @patch("pipeline.collector._fetch_feed")
+    def test_empty_sources_returns_empty_list(self, mock_fetch_feed):
         articles = collect_feeds(_make_config(sources=[]))
         assert articles == []
-        mock_parse.assert_not_called()
+        mock_fetch_feed.assert_not_called()
 
     @patch("pipeline.collector._fetch_full_text")
-    @patch("pipeline.collector.feedparser.parse")
-    def test_full_text_fallback_to_empty_on_none(self, mock_parse, mock_fetch):
+    @patch("pipeline.collector._fetch_feed")
+    def test_full_text_fallback_to_empty_on_none(self, mock_fetch_feed, mock_fetch):
         mock_feed = MagicMock()
         mock_feed.entries = [_make_feed_entry()]
-        mock_parse.return_value = mock_feed
+        mock_fetch_feed.return_value = mock_feed
         mock_fetch.return_value = None
 
         articles = collect_feeds(_make_config(fetch_full=True))
         assert articles[0]["full_text"] == ""
+
+
+# ── _fetch_feed (unit) ────────────────────────────────────────────────────────
+
+class TestFetchFeed:
+    @patch("pipeline.collector.httpx.get")
+    def test_fetches_with_timeout_and_parses(self, mock_get):
+        rss = (
+            b'<?xml version="1.0"?><rss version="2.0"><channel>'
+            b"<title>T</title><item><title>A</title>"
+            b"<link>https://example.com/a</link></item></channel></rss>"
+        )
+        mock_resp = MagicMock()
+        mock_resp.content = rss
+        mock_get.return_value = mock_resp
+
+        feed = _fetch_feed("https://example.com/rss")
+        assert len(feed.entries) == 1
+        assert feed.entries[0].link == "https://example.com/a"
+        assert mock_get.call_args.kwargs["timeout"] == 30
+        assert mock_get.call_args.kwargs["follow_redirects"] is True
+
+    @patch("pipeline.collector.httpx.get")
+    def test_raises_on_http_error(self, mock_get):
+        import httpx as _httpx
+        mock_resp = MagicMock()
+        mock_resp.raise_for_status.side_effect = _httpx.HTTPStatusError(
+            "503", request=MagicMock(), response=MagicMock()
+        )
+        mock_get.return_value = mock_resp
+
+        with pytest.raises(_httpx.HTTPStatusError):
+            _fetch_feed("https://example.com/rss")
 
 
 # ── _fetch_full_text (unit) ───────────────────────────────────────────────────

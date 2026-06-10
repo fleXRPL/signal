@@ -103,6 +103,23 @@ def _fetch_full_text(url: str, timeout: int = 10) -> Optional[str]:
         return None
 
 
+def _fetch_feed(url: str, timeout: int = 30) -> Any:
+    """
+    Fetch an RSS feed over HTTP with a hard timeout, then parse the bytes.
+
+    feedparser's own URL fetching has no timeout (a stalled server hung the
+    pipeline for 7 hours on 2026-06-09), so networking goes through httpx.
+    """
+    resp = httpx.get(
+        url,
+        timeout=timeout,
+        follow_redirects=True,
+        headers={"User-Agent": "signal/0.1"},
+    )
+    resp.raise_for_status()
+    return feedparser.parse(resp.content)
+
+
 def _article_is_fresh(published_at: Optional[str], max_age_hours: int) -> bool:
     """Return True if article is within the max age window."""
     if not published_at:
@@ -158,7 +175,7 @@ def collect_feeds(config: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any
             progress.update(task, description=f"[cyan]{source_name}")
 
             try:
-                feed = feedparser.parse(url, request_headers={"User-Agent": "signal/0.1"}, socket_timeout=30)
+                feed = _fetch_feed(url)
             except Exception as exc:  # noqa: BLE001
                 console.print(f"  [red]✗[/red] {source_name}: {exc}")
                 progress.advance(task)
