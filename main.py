@@ -251,6 +251,8 @@ def _update_index(
         latest_weekly = weekly_reports[0]
 
     monthly_reports = sorted(reports_dir.glob("monthly_*.html"), reverse=True)
+    if latest_monthly is not None and not latest_monthly.exists():
+        latest_monthly = None
     if latest_monthly is None and monthly_reports:
         latest_monthly = monthly_reports[0]
 
