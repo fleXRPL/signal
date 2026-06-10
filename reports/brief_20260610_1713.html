@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-10 17:13 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-10 17:13 UTC</span>
+    <span class="pill">93 articles</span>
+    <span class="pill">10 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The United States is simultaneously prosecuting a shooting war against Iran, passing the largest domestic enforcement funding bill in its history, and restructuring the editorial architecture of its two largest cable news networks — all within the same legislative and news cycle. These are not three separate stories. They represent a single coherent pattern: an administration using a favorable congressional window to lock in durable institutional changes across military, domestic enforcement, and information domains before political conditions shift. The Iran war is the most consequential of these and receives the least analytical scrutiny. A live military conflict generating measurable inflation (CPI at 4.2%, third consecutive monthly increase, explicitly attributed to Iran in left-leaning coverage) is being treated as background furniture by the entire media spectrum. That normalization is not accidental and is not explained by news judgment alone.</p>
+<p>The $70 billion ICE funding bill — signed into law — is the domestic story with the longest institutional tail. It triples the prior annual ICE budget, contains no oversight amendments, no body camera requirements, no use-of-force standards, and creates bureaucratic infrastructure with its own momentum. Enforcement agencies funded at this level do not shrink when political winds shift; they expand their mandate to justify their budgets. This is a structural change to domestic enforcement capacity that will constrain the options of successor administrations regardless of party.</p>
+<p>Layered on top of these two dominant dynamics is a quieter but significant consolidation of editorial power. The reported Weiss/CNN editorial arrangement — exclusively covered by far-right and libertarian outlets, conspicuously absent from center-left media — would place a single editor in effective gatekeeping control across CNN and CBS News simultaneously, during an active shooting war whose coverage has already been inadequate. The media consolidation story and the war story are not coincidentally adjacent. They are causally linked: whoever controls editorial framing on Iran during the next escalation phase shapes what the American public understands about their country&#x27;s military engagement.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The administration</strong> is operating with coherent strategic intent across domains that appear disconnected in coverage. The Lincoln Memorial arch, Penn Station redesign, Iran strikes, Cuba pressure campaign, and ICE funding bill share a structural feature: they are all difficult to reverse. Physical monuments require acts of Congress to remove. Infrastructure bears the president&#x27;s name. Enforcement bureaucracies have institutional inertia. Military strikes create facts on the ground. This clustering of irreversibility in a single legislative window is a legacy-locking strategy, not a series of coincidences.</p>
+<p><strong>Pete Hegseth</strong> is the actor most actively expanding the military&#x27;s operational footprint. His Cuba visit, framed as a readiness inspection, was a military signal layered on an existing economic coercion campaign (sanctions plus oil blockade) that most of the press corps failed to synthesize. His firing of military officials — documented in left coverage as context for a South Carolina congressional race — suggests he is simultaneously reshaping the senior military command structure. His simultaneous management of the Iran strikes, Cuba posturing, and internal Pentagon personnel changes makes him the most consequential cabinet official whose full portfolio is not being covered as a unified story.</p>
+<p><strong>Bari Weiss</strong> is either a proxy for a media ownership consolidation play that is not about her ideology at all, or she is the specific editorial choice of principals who have mapped her priors onto their preferred Iran/domestic policy framing. The evidence does not yet distinguish between these. What is documentable is that Scott Pelley — a CBS anchor with institutional standing — is generating internal pushback, suggesting the arrangement is not merely theoretical. Her actual editorial track record on Iran, foreign policy, and executive power should be examined before this arrangement is treated as settled.</p>
+<p><strong>The House Oversight Committee</strong> is running what looks like a multi-track accountability theater: closed-door Gates-Epstein testimony, a Walz DOJ referral, and an SPLC indictment track, all simultaneously. The pattern of closed-door proceedings means none of these are producing public outputs despite the appearance of active oversight. The Gates hearing matters if the 2011-2014 correspondence documents financial transfers or introductions to minors — neither side has disclosed what the documented record actually shows.</p>
+<p><strong>Graham Platner</strong> appears in four story clusters without a direct profile in mainstream coverage. His cross-story density — midterm primaries, the Epstein-Gates probe, SPLC, and a fourth context — is statistically anomalous for a figure at his current coverage tier. He warrants direct research as a potential connective node in right-aligned organizing.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is not covering the Weiss/CNN consolidation story. This is the most significant single coverage gap in today&#x27;s environment. Left and center-left outlets are typically aggressive on media consolidation stories; their complete absence here suggests either the story lacks confirmation from trusted sources, or there is editorial reluctance to engage a narrative that could accelerate the consolidation by drawing attention to it, or — most concerning — the story is solid and is being spiked. The most likely explanation is the first, but the silence of 48 more hours from the Times, Post, or Atlantic would itself be informative.</p>
+<p>The right is not covering the economic costs of the Iran war. Left coverage explicitly documents CPI at 4.2% driven by Iran war effects. Right coverage covers drug price decreases and Social Security insolvency projections. No right-leaning outlet is publishing the war-inflation linkage, which means right-coalition voters are receiving a military-strength frame with no fiscal downside attached to it. This is not neutral omission — it is the specific suppression of the information most relevant to evaluating the war&#x27;s compound costs.</p>
+<p>Neither side is covering the absence of an Authorization for the Use of Military Force debate. In every prior military engagement of this scale — Syria 2017, Libya 2011 — AUMF debates generated immediate congressional coverage. The complete absence of that debate from both media and documented congressional action suggests either a bipartisan consensus to not raise the question, or that the question is being raised in channels not visible to public coverage. Either interpretation is significant.</p>
+<p>No outlet across the full spectrum is publishing a unified fiscal stress picture: war-driven inflation compressing real wages, Social Security insolvency projected for 2032, and a $70 billion enforcement expenditure. Separately, each story fits a partisan frame. Together, they describe compound fiscal pressure that neither coalition&#x27;s voters are equipped to evaluate.</p>
+<p>The Cuba pressure campaign&#x27;s full dimensions — simultaneous sanctions, oil blockade, and military signaling — are not being synthesized by any single outlet. Three active theaters of U.S. military pressure (Iran, Cuba, Guantánamo posturing) are running simultaneously with no geographic synthesis story.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most important structural pattern is what this brief calls the <strong>executive permanence sprint</strong>: at least four simultaneous actions are structurally difficult to reverse — the $70B enforcement bureaucracy, the Lincoln arch, the Penn Station name-bearing infrastructure, and the Iran strikes creating facts on the ground. Administrations that anticipate electoral or legal vulnerability tend to accelerate legacy-locking moves. The clustering of irreversibility across physical, symbolic, fiscal, and military domains in a single news cycle is a pattern, not a coincidence.</p>
+<p>The <strong>information control theme</strong> cuts across three apparently unrelated stories: the RFK maternal health data suppression (a federal agency hiding public health data), the Weiss editorial consolidation (a single individual gaining cross-network gatekeeping power), and the Gates-Epstein closed-door testimony (congressional oversight producing no public output). Each story individually is about one actor controlling one information flow. Together they describe a moment in which institutional information processes — federal health reporting, broadcast editorial standards, congressional transparency — are being replaced by individual gatekeepers. This is the more important frame than the ideological valence of any individual actor.</p>
+<p>The <strong>timing of the Gates-Epstein hearing relative to the Me Too story</strong> is consistent with deliberate narrative layering. On the same day closed-door Gates testimony generates cross-spectrum elite-accountability coverage, right-aligned outlets are running a standalone story about Democratic failures on Me Too accountability — exclusively right-sourced. The Epstein hearing provides the legitimate hook; the Me Too story provides a gendered-progressive-hypocrisy amplifier aimed at the opposite coalition. This pattern has appeared in prior cycles and tends to produce secondary narratives that outlast the primary event. Watch for whether the Me Too framing migrates to center outlets in the next week.</p>
+<p>The <strong>Iran war inflation nexus</strong> is now fully documented in the coverage record: CPI at 4.2%, three consecutive monthly increases, causally attributed to the Iran war in left coverage. The previous watch list flagged this as a transmission mechanism to monitor. It has now materialized and is measurable. The question is no longer whether the war has economic costs — it does, and they are in the record — but whether the administration&#x27;s internal messaging shifts from &quot;temporary&quot; to a new frame, which would signal that economic pressure is registering internally.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Iran AUMF — Senate floor or committee action</strong>: The absence of war authorization debate from coverage does not mean it is absent from Capitol Hill backchannels. Any procedural move on war powers authorization — committee hearing, floor amendment, even a letter from ranking members — would be a significant signal that the bipartisan silence is breaking. Monitor Armed Services and Foreign Relations committees specifically.</p>
+<p><strong>Bari Weiss/CNN — center-left outlet confirmation or denial (48-hour window)</strong>: If the Times, Post, or Atlantic publish either a confirming or denying story in the next 48 hours, that resolves the sourcing question. Continued silence from those outlets beyond 48 hours is itself informative and should be logged as a data point, not a null result.</p>
+<p><strong>June CPI release — administration messaging shift</strong>: The May reading (4.2%) is in the record. Watch the timing and framing of the June CPI release and whether White House messaging shifts from &quot;Iran costs are temporary&quot; to any alternative frame. A framing change would indicate internal acknowledgment that the inflation transmission is durable, not transient.</p>
+<p><strong>Gates-Epstein testimony leaks — 48-72 hour window</strong>: This is the peak window for closed-door testimony leaks. The specific content to watch for: whether leaked details involve post-2014 correspondence (beyond the documented 2011-2014 window), and whether any financial transaction details surface. The nature of what leaks will reveal committee strategy and what the majority believes is the most damaging documented material.</p>
+<p><strong>SPLC-DOJ case — career vs. political appointee assignment</strong>: DOJ now appears in the entity network alongside SPLC and Capitol Hill, suggesting the case has moved from initial indictment to active federal engagement. Whether the case is assigned to career prosecutors or political appointees is the critical distinction: it will determine whether this is a genuine prosecution or a pressure campaign with a predictable outcome.</p>
+<p><strong>Social Security legislative response — migration from right-only framing</strong>: The 2032 insolvency projection is currently covered exclusively by right-aligned outlets. Watch for whether any Democratic senator introduces a response bill or makes a floor statement, and whether the story migrates to center outlets. If it remains right-only after 72 hours, it is functioning as a political attack vehicle rather than a genuine policy debate.</p>
+<p><strong>Graham Platner — direct profile research</strong>: His appearance across four story clusters at his current coverage tier warrants direct research. Determine whether he holds a formal or informal role in the Epstein investigation, the SPLC hearing, or the immigration enforcement framework. His cross-story density is unexplained and should be explained before the next brief cycle.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The defining feature of the current political moment is not any individual story but the structure of attention itself: a live shooting war with measurable economic consequences is being treated as background context while architectural aesthetics, congressional testimony theater, and media personality profiles consume the analytical bandwidth of the press corps across the entire ideological spectrum. This is not explained by partisan bias alone — both sides are doing it, which means the deprioritization of the Iran war is either a universal editorial judgment failure or a deliberate normalization in which the war has been successfully framed as a settled condition rather than an ongoing choice. The compound risk facing the country — simultaneous military escalation, historically unprecedented domestic enforcement expansion, and the concentration of editorial gatekeeping power in fewer hands during both — is not visible to any single media audience because its components are distributed across partisan outlets that share no readers. What is most worth tracking is not the next development in any individual story, but the moment when one of these threads forces its way into coverage in a way that breaks the current containment — most likely through an Iran escalation event, an inflation reading that crosses a threshold that triggers congressional response, or a Gates-Epstein leak that proves too significant to keep off front pages.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The House Oversight Committee conducted a closed-door interview with Bill Gates regarding his relationship with Jeffrey Epstein, while Congress passed and Trump signed a $70 billion immigration enforcement funding bill, and U.S. military strikes against Iran continued amid stalled nuclear talks.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (13)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:12.8;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 13"></div><div class="bias-segment" style="background:#e05252; flex:7.7;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:7.7;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:15.4;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:2.6;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:20.5;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The Gates-Epstein hearing is real oversight producing real testimony, but its significance depends on what the documented 2011–2014 correspondence actually shows — something neither side has fully disclosed to the public. The $70B ICE bill is the more immediately consequential story: it locks in historically unprecedented enforcement funding with no oversight amendments, a structural change that will outlast the current news cycle. The Iran strikes represent a genuine shooting war with escalatory dynamics that is receiving disproportionately little analytical attention relative to its stakes.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the Epstein probe as a legitimate accountability process centered on justice for survivors, not on scrutinizing Gates. The ICE funding bill is portrayed as a civil liberties threat enabled by a partisan vote that blocked reasonable oversight reforms. Iran is framed as dangerous escalation. Surveillance of protesters, Hegseth&#x27;s purge of military officials, and Pulte&#x27;s ODNI appointment are framed as systemic institutional threats by an authoritarian executive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets report procedurally — the Epstein probe as an oversight proceeding, the ICE bill as a legislative accomplishment with Democratic opposition noted, Iran as an escalatory situation with a potential diplomatic off-ramp. Little editorializing; events are presented as facts in motion.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the Epstein probe as legitimate scrutiny of a powerful liberal figure with documented ties to a convicted pedophile, letting the facts speak darkly. The ICE bill is a heroic law enforcement victory. Iran strikes are justified retaliation against aggression. The ActBlue Fifth Amendment invocation is treated as near-confession of criminal fraud. Trump-backed candidates winning primaries signals a healthy political movement.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: the ActBlue CEO&#x27;s Fifth Amendment invocation before Congress; the specific documented extent of Gates-Epstein correspondence (2011–2014 contact detailed in DOJ documents); Platner&#x27;s Nazi tattoo and domestic abuse allegations; Comer&#x27;s planned interviews with Blanche and Dershowitz as substantive investigative steps.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: ICE&#x27;s surveillance of passive bystanders observing immigration enforcement, including license plate tracking; the rejection of Democratic amendments requiring body cameras and use-of-force standards for ICE; the firing of military officials by Hegseth as context for the South Carolina congressional race; the scale of the ICE budget increase (3x prior annual budget); Jeffries&#x27;s concerns about Pulte&#x27;s qualifications.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Bari Weiss is reportedly set to take editorial control of CNN following a Paramount-Warner Bros. Discovery merger, while simultaneously facing internal pushback at CBS News from anchor Scott Pelley.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The core factual event is a corporate media consolidation play in which one editor — Bari Weiss — is being positioned to exert unusual editorial control across multiple major networks simultaneously. The real story is less about Weiss&#x27;s ideology and more about the concentration of editorial gatekeeping power in a single figure during a major merger. Both outlets are using Weiss as a proxy for their preferred media narrative rather than scrutinizing the structural media ownership dynamics at play.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not represented in the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Weiss is a centrist reformer being brought in to fix ideologically captured legacy media; CNN is portrayed as a corrupt far-left institution that even Weiss may be unable to save. Tone is sardonic skepticism toward mainstream media with grudging hope.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The right-leaning source does not meaningfully engage with concerns about editorial independence or the chilling effect Weiss&#x27;s consolidation of power may have on journalists — the internal dissent at CBS is minimized.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason does not address the broader merger context or Ellison&#x27;s reported plan to extend Weiss&#x27;s influence to CNN, focusing only on the CBS drama and omitting the larger structural media consolidation story.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two unrelated stories dominate center-left and left coverage: Penn Station&#x27;s $8B classical redesign bearing Trump&#x27;s name, and U.S. legal barriers facing climate-displaced asylum seekers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two sources are covering entirely different stories, making direct comparative analysis impossible — a methodological flaw in this brief. The Penn Station story is primarily symbolic (classical aesthetics, presidential branding) with real infrastructure stakes. The climate refugee story addresses a genuine legal gap — environmental displacement is not recognized under the 1951 Refugee Convention — but without cross-spectrum sourcing, the framing cannot be stress-tested.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames U.S. immigration enforcement as a moral and humanitarian failure, centering the suffering of climate-displaced people who fall through legal cracks. Emotional register is sympathetic to refugees, critical of policy indifference.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS treats the Penn Station story as straightforward infrastructure news — classical design, cost, and Trump branding reported without strong editorial valence. Matter-of-fact tone.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided. Cannot assess.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not cover the Penn Station story at all. It omits any infrastructure or domestic policy wins that could complicate a pure critique of the administration.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source provided — omissions cannot be assessed. This is a significant analytical gap.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Trump administration&#x27;s Lincoln Memorial renovations — including a reflecting pool paint job and a proposed 250-foot triumphal arch — are proceeding, with the arch now subject to FAA safety lighting requirements.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Two distinct Trump monument initiatives are being covered in isolation: the completed reflecting pool renovation and the proposed triumphal arch. The FAA safety-light requirement is a real regulatory constraint but unlikely to be a fatal obstacle to the arch. The more substantive story — whether permanent alterations to the National Mall area reflect appropriate use of executive authority over public heritage — is not being directly examined by either source.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left framing (PBS) treats the paint job as an unusual or disruptive imposition on a national landmark, using the word &#x27;paint job&#x27; with subtle skepticism. The timelapse format implicitly documents an episode of governmental overreach on public heritage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats the arch as a regulatory/bureaucratic matter, reporting the FAA finding neutrally without editorializing on whether the arch is desirable, tasteful, or appropriate — focusing on a concrete procedural constraint.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is represented in this sample, so right framing cannot be characterized.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS coverage does not mention the broader arch proposal or the FAA complication, limiting the story to the reflecting pool and omitting the larger monument agenda.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage present to assess; center coverage (The Hill) omits any framing of the reflecting pool renovation and its public reception.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Defense Secretary Hegseth visited Guantánamo Bay and warned Cuba against weapons acquisition, framing the trip as military readiness amid a broader U.S. pressure campaign involving sanctions and an oil blockade.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core verifiable event is a U.S. defense secretary visiting a U.S. military installation and issuing a warning to a neighboring country — unremarkable on its face. What matters is the context The Hill buries: the U.S. appears to be running a coordinated pressure campaign (sanctions + oil blockade) against Cuba, and Hegseth&#x27;s visit is a military signal layered on top of that economic coercion. The Mother Jones absence is itself a data point — far-left outlets are either deprioritizing Cuba coverage or choosing to cover internal Pentagon politics instead, leaving the military posturing story largely unchallenged from the left.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The U.S. posture toward Cuba is aggressive and harmful — the oil blockade carries human costs, the warning signals potential regime-change ambitions, and Hegseth&#x27;s visit is evidence of militarized foreign policy. Emotion: alarm and moral concern for Cuban civilians.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Descriptive and rhetoric-forward — reports what Hegseth said (&#x27;any possible contingency&#x27;) without interrogating the pressure campaign, the oil blockade, or the human stakes. Treats military posturing as newsworthy on its face.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No explicitly right-leaning source was provided. The closest available (The Hill, center) frames the visit as responsible deterrence — the U.S. military is prepared, Hegseth is projecting strength, and Cuba is the actor that must be warned.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not address whether Cuba has taken any concrete provocative action that prompted the visit, nor does it acknowledge any legitimate U.S. security interest in the region.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The Hill omits entirely: the existence of an oil blockade, the humanitarian dimension, the broader sanctions escalation, and any framing that might contextualize the visit as part of a coercive campaign rather than neutral readiness.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Bari Weiss/CNN consolidation</span><span class="entity-tag">Iran strikes coverage gap</span></div>
+  <div class="connection-text">The Iran war is simultaneously under-covered as a news story AND the editorial apparatus that would cover it is being restructured. The Weiss/CNN consolidation story is covered only by far-right and libertarian outlets — meaning the left, which would normally scrutinize media ownership changes, is not tracking a structural shift in who controls the narrative on a live shooting war.</div>
+  <div class="connection-sig">↳ If the merger proceeds and Weiss assumes editorial gatekeeping across CNN/CBS simultaneously with an ongoing Iran war, the editorial framing of escalation risk will be shaped by a figure whose ideological priors on Iran are not yet documented. The concentration of editorial power story and the undercovered war story are causally linked, not coincidental.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">$70B immigration enforcement bill</span><span class="entity-tag">Iran strikes</span><span class="entity-tag">Hegseth Cuba warnings</span></div>
+  <div class="connection-text">Three simultaneous executive power expansions — domestic enforcement with no oversight amendments, a shooting war with no visible AUMF debate in coverage, and military posturing against a third country layered on economic coercion — are each being covered in isolation. No outlet is synthesizing them as a unified expansion of unchecked executive action across military and domestic enforcement simultaneously.</div>
+  <div class="connection-sig">↳ The structural pattern matters more than any individual story: all three lock in executive authority in ways that are either irreversible (funding levels) or create facts on the ground (ongoing strikes, military signaling) that constrain future administrations. The absence of a unified frame for this pattern is itself a coverage failure.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran war</span><span class="entity-tag">US inflation at 4.2%</span><span class="entity-tag">Social Security insolvency by 2032</span></div>
+  <div class="connection-text">The inflation story explicitly attributes the third consecutive monthly increase to the Iran war. The Social Security insolvency story projects a 2032 shortfall. These are being covered by opposite partisan outlets (left covers inflation, right covers Social Security) so no single readership receives the full fiscal stress picture: war-driven inflation compressing real wages while the primary retirement safety net approaches structural failure.</div>
+  <div class="connection-sig">↳ The distributed coverage creates a situation where neither coalition&#x27;s voters understand the compound economic risk they face. This is not necessarily coordinated but it is functionally equivalent to suppression — the parts don&#x27;t add up to a whole in any single media diet.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Gates-Epstein hearing</span><span class="entity-tag">Democrats Bury the Me Too Movement (right-only story)</span></div>
+  <div class="connection-text">On the same day closed-door Gates-Epstein testimony is generating cross-spectrum coverage, the right is running a standalone story about Democratic failures on Me Too accountability — which is exclusively right-sourced. The Epstein hearing is providing a legitimate elite-accountability frame while the Me Too story adds a gendered-progressive-hypocrisy sub-narrative. The timing is consistent with deliberate narrative layering: the Epstein hearing provides the hook, the Me Too story provides the amplifier.</div>
+  <div class="connection-sig">↳ This pattern — using a real oversight event to anchor a parallel accountability narrative aimed at the opposite coalition — has appeared in prior cycles and tends to precede a media phase where the secondary narrative outlasts the primary event.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lincoln Memorial triumphal arch</span><span class="entity-tag">Penn Station classical redesign</span><span class="entity-tag">$70B immigration bill</span></div>
+  <div class="connection-text">Three structurally permanent or difficult-to-reverse changes are advancing simultaneously: a monument that will require an act of Congress to remove, an infrastructure redesign bearing the president&#x27;s name, and a funding level that creates enforcement bureaucracy with institutional momentum. These are being covered as aesthetics/symbolism stories rather than as a coordinated legacy-permanence strategy.</div>
+  <div class="connection-sig">↳ Administrations that anticipate electoral vulnerability often accelerate legacy-locking moves. The clustering of irreversibility across physical, symbolic, and fiscal domains in a single news cycle warrants tracking as a pattern, not three separate stories.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">RFK maternal health data suppression (left-only)</span><span class="entity-tag">Bari Weiss editorial consolidation</span><span class="entity-tag">Gates-Epstein closed-door testimony</span></div>
+  <div class="connection-text">Three separate stories all involve the control, suppression, or centralization of information: a federal health agency hiding data, a single editor gaining cross-network gatekeeping power, and congressional testimony conducted without public disclosure. The information-control theme is present across all three but no outlet is connecting them as a pattern.</div>
+  <div class="connection-sig">↳ Information architecture stories — who controls what data, who sets editorial gates, what testimony stays classified — tend to matter more in aggregate than individually. The simultaneous appearance of three such stories suggests this is a productive analytical frame for the current moment.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">ESCALATION NORMALIZATION: The Iran war appears in 5 story clusters but is treated as background context rather than the lead story. Inflation is explicitly attributed to it (&#x27;third consecutive increase since start of Iran war&#x27;), yet no outlet frames this as an accountability question about war costs. A live military conflict is being naturalized into the news furniture.</div>
+<div class="pattern-item">EXECUTIVE PERMANENCE SPRINT: At least four stories involve actions that are structurally difficult to reverse — the $70B enforcement bill, the Lincoln arch, the Penn Station redesign, the Iran strikes creating facts on the ground. The pattern suggests an administration using a favorable legislative window to embed durable institutional changes before political conditions shift.</div>
+<div class="pattern-item">DISTRIBUTED ECONOMIC BLINDNESS: Left outlets cover inflation (war-driven), right outlets cover drug price decreases (Trump win) and Social Security insolvency. No single outlet is publishing a unified economic stress picture. The result is that each partisan audience receives a selectively incomplete economic frame — neither fully alarming nor fully reassuring, but incompatible with the other.</div>
+<div class="pattern-item">INSTITUTIONAL ACCOUNTABILITY THEATER: The Gates-Epstein hearing is closed-door, the Walz DOJ referral is unacknowledged, the SPLC indictment status is unclear, and Iran strike authorization is uncovered. Multiple formal accountability mechanisms are active simultaneously but none are producing public-facing outputs. The performance of oversight is running ahead of its substance.</div>
+<div class="pattern-item">SINGLE-ACTOR EDITORIAL CONCENTRATION: The Weiss/CNN story, the RFK data suppression story, and the closed-door Gates testimony all involve a single actor controlling information flow to a mass audience. This pattern — individual gatekeepers replacing institutional processes — cuts across media, public health, and legislative domains.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Iran war, described in the brief&#x27;s own assessment as a &#x27;genuine shooting war with escalatory dynamics,&#x27; generates less analytical coverage than a Penn Station architectural redesign. This is not a partisan gap — it is a universal deprioritization across the entire source spectrum that has no obvious editorial explanation. The normalization is the anomaly.</div>
+<div class="anomaly-item">Graham Platner appears in 4 story clusters simultaneously — midterm primaries, the Epstein/Gates probe, SPLC, and a fourth context. For a figure not in the top-tier of national political coverage, this density of co-appearance is statistically unusual and suggests either a data artifact or that Platner is functioning as a connective node in right-aligned political organizing that has not yet received direct profile coverage.</div>
+<div class="anomaly-item">The Bari Weiss/CNN consolidation story — a structural media ownership change affecting the two largest cable news networks — is covered exclusively by far-right and libertarian outlets. Left and center-left outlets, which are typically aggressive on media consolidation stories, are completely absent. This is the most anomalous single coverage gap in today&#x27;s brief; the most likely explanation is that the story lacks confirmation from sources those outlets trust, but it warrants tracking regardless.</div>
+<div class="anomaly-item">No story in today&#x27;s brief addresses Congressional authorization for the Iran strikes. In prior military engagements (Syria 2017, Libya 2011), AUMF debates generated immediate coverage. The absence of that debate from today&#x27;s news environment — not just from Congress but from media coverage of Congress — suggests either a bipartisan consensus to not raise the question or a deliberate editorial choice across the spectrum to avoid it.</div>
+<div class="anomaly-item">The Cuba pressure campaign (sanctions + oil blockade + Hegseth military visit) is being run simultaneously with Iran strikes and Guantánamo posturing, but no outlet is mapping the geographic scope of simultaneous U.S. military pressure operations. Three theaters — Iran, Cuba, and implicitly the broader Caribbean — are active at once with no synthesis story.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding the Weiss/CNN media consolidation story (a structural threat to left-aligned editorial culture), all positive economic indicators (drug prices, any war-economy tradeoff framing that might credit the administration), and the Cuba pressure campaign&#x27;s military dimensions — suggesting left editorial priorities today are running a pure domestic-grievance frame (immigration courts, AI facial recognition errors, maternal health data) rather than engaging foreign policy or media structure. The right is systematically avoiding the Iran war&#x27;s inflation costs (explicitly documented in left coverage as the causal driver of the third consecutive CPI increase), the triumphal arch&#x27;s regulatory complications, and any story that would surface the fiscal costs of the $70B enforcement bill — suggesting right outlets are maintaining a &#x27;strength projection&#x27; frame in which military and enforcement actions have no economic downside. Together, these avoidances mean neither coalition&#x27;s media diet contains the information needed to evaluate the compound costs of simultaneous military escalation and domestic enforcement expansion.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› York&#x27;S Station Billion Remodel Columns,</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› San Francisco immigration court shuts down, striking at heart of historic advocacy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Nevada, Trump&#x27;s policies are making things tough for Republican Gov. Joe Lombardo</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House approves bill to speed up union contract negotiations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 5 takeaways from the latest midterm primaries, with Platner&#x27;s win and mixed results for Trump support</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inflation rises to a 3-year high on spiking gas prices, highlighting affordability challenges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump rails at Gov. Moore over pace of Jack Nicklaus golf course project</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Biden official Deb Haaland wins New Mexico primary for governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida lawsuit alleges wrongful arrest after police AI facial recognition error</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trial underway for ex-NYC comptroller Brad Lander after immigration court arrest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Anger is a part of healing’: a witchcraft retreat in the Irish woods is attracting US women to speak to the dead</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Actor Tyler Mane reveals he is having treatment for rare male breast cancer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US inflation jumped to 4.2% in May, the third consecutive increase since start of Iran war</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Chicago Grand Jury Wasn’t Buying the Case Against ICE Protesters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Most New US Data Centers Are Slated for Drought-Plagued Areas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› RFK’s Answer to the Maternal Health Crisis: Hide the Data</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Heather Cox Richardson on the Real Genius of America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lawmakers Demand Answers After We Revealed Forest Service Spraying Roundup All Over Public Lands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gwyneth Paltrow Just Goopified Drone Warfare</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FIRST ON FOX: SPLC&#x27;s tax-exempt status under threat after fiery Capitol Hill hearing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Emergency action seeks to prevent erasure of &#x27;mother&#x27; and &#x27;father&#x27; in code of largest US town</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Europe&#x27;s $116B fighter jet &#x27;failure&#x27; raises fresh doubts about ability to defend itself without US</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &lt;i&gt;The Little Sister&lt;/i&gt;, Festival-Circuit Ninja</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Trump’s Second Term, Things Start to Fall Apart</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Bury the Me Too Movement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Memoriam, Gordon S. Wood</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Tragedy Ireland Repressed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Israel Isn’t the Problem, Mr. President</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Perverse Genocide Charge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Charlie Kirkovich’: Serbians Honor Assassinated Conservative Leader with Belgrade Street Art Murals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› REPORT: Karmelo Anthony Placed in Isolation for His Own Safety</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Social Security Projected to Be Insolvent by 2032, Risking 22 Percent Benefit Cuts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Drug Prices Fall For the Third Straight Month, Showing Progress on Key Trump Promise</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Video: Kamala Harris Prompts 2028 Run Chatter After Appearing in Netflix Doc &#x27;The American Experiment&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Equality Law&#x27; Used to Block Middle Class White Men From Govt Internship</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Iran war AUMF: Watch for any Senate floor action or committee hearing on war powers authorization — the absence of this debate from coverage does not mean it is absent from Capitol Hill backchannels, and a surprise procedural move on war authorization would be a significant signal.</div>
+<div class="watch-item">Bari Weiss/CNN confirmation: Monitor whether center-left outlets (NYT, WaPo, Atlantic) publish confirming or denying coverage of the Warner Bros. Discovery-Paramount merger editorial terms. Silence from those outlets in the next 48 hours would itself be informative.</div>
+<div class="watch-item">Iran war CPI trajectory: The May figure is 4.2% (third consecutive increase). The June CPI release date and whether administration messaging shifts from &#x27;Iran costs are temporary&#x27; to a new frame will indicate whether economic pressure is registering internally.</div>
+<div class="watch-item">Gates-Epstein testimony leaks: The 48-72 hour window for closed-door testimony leaks is opening. Watch specifically for whether leaked details involve post-2014 correspondence (the documented 2011-2014 window) or any financial transactions — the nature of what leaks will reveal committee strategy.</div>
+<div class="watch-item">SPLC DOJ status: The DOJ appeared in the entity network alongside SPLC and Capitol Hill. Watch for any career vs. political appointee assignment of the SPLC case — that distinction will signal whether this is a genuine prosecution or a pressure campaign.</div>
+<div class="watch-item">Graham Platner role clarification: His appearance across four story clusters warrants a direct profile search. Determine whether he has a formal or informal role in the Epstein investigation, SPLC hearing, or immigration enforcement framework — his cross-story density is unexplained.</div>
+<div class="watch-item">Social Security legislative response: The 2032 insolvency projection is right-only today. Watch for whether any Democratic senator introduces a response bill or whether the story migrates to center outlets — migration timing will indicate whether this becomes a bipartisan fiscal issue or remains a right-framed political attack.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
