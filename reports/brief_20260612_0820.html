@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-12 08:20 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-12 08:20 UTC</span>
+    <span class="pill">118 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The United States is operating in a simultaneous intelligence vacuum across three reinforcing dimensions, and the public discourse is not treating this as the unified crisis it is. FISA Section 702 — the primary legal authority for foreign signals intelligence collection — has lapsed. A nominee with no intelligence background is being installed to lead the Intelligence Community. And the administration&#x27;s central foreign policy claim this week — that Iran agreed to a deal framework, justifying the cancellation of imminent strikes — has not been confirmed by Iran. These three conditions did not coincide accidentally. They describe a moment where the United States has degraded its capacity to verify its own diplomatic achievements at the precise moment verification is most consequential.</p>
+<p>The Iran situation demands the sharpest scrutiny. The canceled-strikes story has been absorbed by virtually all coverage as a real diplomatic development, but the foundational claim — that a deal exists — has not been independently confirmed by the Iranian side. The administration has a documented pattern of announcing deal frameworks before they exist, using the announcement itself as a negotiating instrument. If Iran formally denies the framework in the next 48 hours, every outlet that ran with the cancellation as settled news will have functioned as amplification infrastructure for a potentially false diplomatic achievement. The canceled strikes are downstream of the deal claim; the deal claim remains unverified.</p>
+<p>Simultaneously, the Democratic Party is fracturing at three distinct levels on the same day — federal, municipal, and intra-coalition — and no outlet is treating these as a unified structural failure. A senior Biden official publicly indicted the administration&#x27;s signature domestic policy legacy. An establishment congressional caucus chair is polling behind a progressive challenger backed by a newly elected NYC mayor. A sitting Los Angeles mayor is in a runoff against a council member who once endorsed her, driven by wildfire response failures. These stories are being covered as isolated accountability moments. They are not isolated. They are concurrent symptoms of a party that has no functional ideological center and no coherent post-Biden political identity.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Trump is operating across three domains simultaneously — trade, war powers, and intelligence community leadership — and in each domain is asserting or consolidating executive authority without meaningful institutional resistance. The appellate court has temporarily blessed the universal tariff structure. The war powers claim that he personally resolved a military standoff via an undisclosed deal has been accepted at face value. And Jay Clayton&#x27;s nomination to DNI is proceeding without the kind of institutional pushback that a non-intelligence appointment of this significance would historically generate. The through-line is not competence or ideology — it is the systematic expansion of unilateral executive authority across unrelated policy domains in a single news cycle.</p>
+<p>Clayton&#x27;s nomination is not primarily a personnel story. It is a governance story about who controls the intelligence product the president receives. The reported false claims about California election fraud, which right-side outlets have suppressed entirely, are relevant not as a political embarrassment but as a signal about the appointee&#x27;s relationship to factual assessment — which is, operationally, the core competency required for the job. Installing a figure with a documented willingness to assert claims unsupported by evidence into the role responsible for distinguishing real intelligence from fabrication is a structural problem regardless of party.</p>
+<p>The Democratic establishment&#x27;s response to progressive primary pressure is increasingly financial rather than ideological. BOLD PAC&#x27;s emergency mobilization against Avila Chevalier is a bet that money can substitute for a compelling counter-argument. Mamdani&#x27;s backing of the challenger signals that his NYC mayoralty intends to project electoral power beyond city limits immediately — this is a 2028 coalition-building move disguised as a local primary intervention. The Espaillat race is a test of whether establishment spending remains determinative in progressive urban primaries; if it doesn&#x27;t, the structural balance of power inside the Democratic Party shifts materially.</p>
+<p>Salazar&#x27;s memoir is more operationally significant than it appears. He was not a peripheral Biden figure — he was the trusted bilateral relationship manager for the U.S.-Mexico relationship during a period when immigration was the administration&#x27;s most damaging political liability. His decision to publish now, 18 months after the election he might have influenced, and his acknowledgment that he considered a primary challenge, are not acts of historical record-keeping. The timing — during active 2028 positioning — and the subject matter — the Democratic Party&#x27;s most contested 2028 fault line — suggest this is coordinated centrist-lane positioning rather than personal legacy work.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Neither side is treating the simultaneous degradation of U.S. intelligence infrastructure as a unified governance crisis. The left is running the Iran story as diplomatic theater — canceled strikes, deal announcement, Trump&#x27;s credibility — without engaging the operational consequence of having no functioning 702 authority and an uninstalled DNI during an active standoff with a nuclear-adjacent adversary. The right is celebrating the surface optics of avoided war without reporting Iranian leadership&#x27;s explicit denial of a final agreement, which is the most material fact in the story. Both sides have tacitly agreed to cover this as a political drama rather than an institutional failure.</p>
+<p>The tariff appellate ruling is receiving virtually no coverage from right-side outlets, which is anomalous. A federal appeals court temporarily validating Trump&#x27;s signature economic policy is exactly the kind of development that typically generates immediate right-side amplification. The silence is almost certainly explained by awareness that celebrating a temporary stay draws attention to the underlying merits vulnerability — the stay is not a ruling on the merits, and the full briefing schedule will determine whether the tariff structure survives. Amplifying the stay invites scrutiny of what happens next. The pattern of right-side silence on Trump trade policy contradictions has now extended across multiple news cycles and is editorial coordination, not coincidence.</p>
+<p>The FISA 702 expiration is being buried inside the Iran/Clayton story cluster rather than receiving standalone treatment. This is the most significant immediate governance failure in the current news cycle and is functioning as a footnote to diplomatic theater. The real-world intelligence gap is operational and immediate — not theoretical — and bipartisan blame is warranted. Congressional bandwidth was consumed by the One Big Beautiful Bill Act; 702 reauthorization was the collateral damage of that triage decision. Neither side is stating this plainly because the left wants to frame 702 lapse as a civil liberties stand and the right wants to change the subject.</p>
+<p>The Steve Buyer pardon is receiving almost no coverage beyond far-left and center outlets, and no outlet covering it is naming the operative pattern: pardons are being used to neutralize GOP figures who might otherwise become prosecutorial liabilities. Buyer was a convicted congressman whose cooperation agreements, if any existed or were sought, are now foreclosed. This is the fourth or fifth iteration of this pattern and it is still not being named as a pattern by any outlet in this dataset.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The most significant pattern in this dataset is a verification failure loop operating at the national security level. The administration announced a diplomatic achievement — the Iran deal — that Iran has not confirmed. The authority that would enable the intelligence community to independently assess whether that deal is real has lapsed. The official being installed to lead the intelligence community has no intelligence background and a documented willingness to assert unsupported claims. These three conditions together mean there is no functioning institutional mechanism to surface or act on the discrepancy between what Trump announced and what Iran may have actually agreed to. This is not a coincidence of timing. It is a structural intelligence vacuum at the moment of maximum need.</p>
+<p>The One Big Beautiful Bill Act is functioning as a rhetorical container for multiple unrelated policy agendas rather than as discrete legislation. It appears in energy, immigration, and intelligence stories simultaneously, which means it is simultaneously absorbing legislative bandwidth (explaining the 702 lapse), serving as a conservative policy vehicle across unrelated domains, and generating cross-cutting political pressure that makes it difficult for individual members to oppose any single provision without appearing to oppose the whole. This is sophisticated legislative architecture, and it is not being covered as such.</p>
+<p>The Salazar memoir, the Espaillat primary, and the Bass-Raman runoff are being siloed by every outlet in this dataset. Left outlets are covering each as an isolated accountability story. Right outlets are covering each as an isolated socialist-threat narrative. No outlet is running the synthesis: the Democratic Party is experiencing simultaneous multi-level coalition fractures — federal, municipal, intra-caucus — on the same day, driven by the same underlying condition: the absence of a coherent post-Biden ideological center. The failure to aggregate these stories is not editorial oversight. It is editorial incentive. The left suppresses the synthesis because it is damaging; the right suppresses it because the systemic-weakness narrative is more valuable to them parsed out individually than stated plainly.</p>
+<p>The timing of two executive power expansions — the tariff appellate blessing and the Buyer pardon — in the same cycle, with zero cross-coverage between them, and right-side silence on the tariff ruling, suggests editorial bandwidth has been deliberately concentrated on the Iran story. This may be intentional message management: the Iran cancellation story is ambiguous in its implications (potential strength or potential fabrication) and is therefore more controllable than a tariff ruling that draws attention to legal vulnerability or a pardon that draws attention to corruption normalization.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Iranian Foreign Ministry formal statement on the deal framework, next 48 hours.</strong> Specifically watch for whether Iranian officials use the words &quot;framework,&quot; &quot;agreement,&quot; or explicitly deny Trump&#x27;s characterization. A formal denial does not just undercut the canceled-strikes story — it retroactively reframes the entire diplomatic episode as a fabricated pretext for de-escalation, with no actual agreement in place. This is the single highest-consequence development to monitor.</p>
+<p><strong>Jay Clayton Senate confirmation hearing scheduling.</strong> FISA 702 has already lapsed. Every day between now and Clayton&#x27;s confirmation is a day the IC operates with acting leadership during an active Iran standoff. Any delay beyond two weeks is a governance signal about either Senate resistance or administration scheduling priorities. Watch specifically for whether any Republican appropriators link confirmation timing to the 702 reauthorization question.</p>
+<p><strong>FISA 702 emergency reauthorization bill introduction.</strong> Watch for which members introduce it, whether it is standalone or attached to the BBBA, and — critically — whether the intelligence community publicly requests expedited action. Silence from the IC on the lapse would itself be anomalous and would suggest either institutional capture or a deliberate decision by acting leadership to avoid drawing attention to the gap.</p>
+<p><strong>BOLD PAC vs. Avila Chevalier fundraising totals, next FEC filing period.</strong> If Mamdani&#x27;s backing closes the financial gap despite BOLD PAC mobilization, it signals that establishment spending is no longer determinative in NYC-area progressive primaries. This has implications that extend well beyond the Espaillat race — it would confirm that the 2025 Mamdani victory was the beginning of a durable electoral infrastructure shift, not an anomaly.</p>
+<p><strong>Federal appellate court full merits briefing schedule on the tariff case.</strong> The temporary stay is not a ruling on the merits. The timeline for full briefing determines whether this resolves before or after the July 1 USMCA review deadline. If the two tracks converge — a merits hearing concurrent with USMCA review — the administration faces simultaneous legal and diplomatic pressure on its entire trade architecture. This remains completely dark across all coverage despite being 19 days out.</p>
+<p><strong>Ken Salazar book tour schedule and which 2028 Democratic figures amplify the memoir.</strong> The promotional infrastructure will reveal whether this is a personal legacy project or a coordinated centrist-lane positioning effort. Specific watch: whether any potential 2028 candidate quotes or amplifies the memoir&#x27;s criticism of Biden&#x27;s border policy, which would signal explicit 2028 differentiation strategy rather than coincidental timing.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is best understood not as a series of discrete governance crises but as a systematic stress-test of institutional verification mechanisms — the question at the center of every major story today is whether anyone with the authority and capacity to check a claim actually will. An unverified Iran deal is being treated as real because no one with standing has denied it loudly enough yet. A 702 lapse is being treated as a footnote because no intelligence official is publicly characterizing the operational consequences. A non-intelligence DNI nominee is advancing because institutional resistance has not materialized. A convicted congressman received a pardon because the pattern has been normalized across enough iterations that it no longer triggers reactive coverage. The Democratic Party is fracturing at three levels simultaneously because there is no institution — no leader, no platform, no shared intellectual framework — with the credibility to impose coherence. What is actually happening in American politics right now is the simultaneous erosion of the checking mechanisms that would otherwise surface the distance between stated reality and actual conditions — and the erosion is proceeding quietly, across unrelated-appearing domains, on a day when the primary story is itself a claim that may not be true.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump canceled planned Iran strikes on June 11, 2026, claiming a deal framework was reached, while nominating Jay Clayton as permanent DNI as FISA Section 702 expired amid congressional deadlock.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (13)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:26.0;" title="center: 13"></div><div class="bias-segment" style="background:#e0a87a; flex:10.0;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:6.0;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:6.0;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:14.0;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:20.0;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:6.0;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:12.0;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The most consequential facts in this news cycle are genuinely uncertain: Iran has not confirmed the deal Trump announced, meaning the central claim driving the &#x27;canceled strikes&#x27; story is unverified. The Clayton nomination is a real governance development — a credentialed appointment after a damaging interim pick — but his lack of intelligence experience and reported election fraud claims are substantive concerns largely suppressed on the right. FISA 702 expiration is the most underreported significant development: both sides are spinning causation, but the real-world intelligence gap is immediate and bipartisan blame is warranted.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Trump&#x27;s Iran announcements as a chaotic pattern of unverified, premature deal claims rather than genuine diplomacy. Clayton&#x27;s nomination is cast as a loyalty appointment of a legally credentialed but intelligence-inexperienced loyalist who spreads election misinformation, offered only after the Pulte controversy inflicted political damage. FISA expiration is framed as a legitimate protest against unqualified intelligence leadership. Military strikes on Iranian water infrastructure are presented as potential war crimes. The overall tone is alarm at institutional erosion and executive recklessness.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets apply consistent skepticism to Trump&#x27;s Iran deal claims, noting the abrupt reversals, lack of confirmed details, and Iranian denials while acknowledging a framework may exist. Clayton is assessed as a credentialing upgrade over Pulte with legitimate concerns about inexperience flagged. FISA expiration is treated as a bipartisan governance failure driven by political standoff. The overall posture is cautious, evidence-based uncertainty rather than either alarm or celebration.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump as a decisive, results-oriented dealmaker whose combination of military strikes and diplomatic outreach is forcing Iranian compliance. Clayton is presented uncritically as a prestigious, respected legal figure. FISA expiration is Democrats&#x27; fault for politicizing national security. The Platner tattoo story dominates as evidence of Democratic moral failure. Fox and Breitbart treat Trump&#x27;s Iran claims at face value, emphasizing imminent victory rather than uncertainty.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit the strategic logic behind Trump&#x27;s &#x27;maximum pressure&#x27; military-diplomatic combination as a negotiating tool. They do not report the claim that the U.S. military was hours from a strike when halted, which — if accurate — changes the diplomatic stakes. They give limited attention to Democratic role in FISA expiration as a national security cost, preferring to emphasize the civil liberties rationale.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit Clayton&#x27;s reported false claims about California election fraud entirely. They do not report Iranian leadership&#x27;s explicit denial of any final agreement, which directly undercuts Trump&#x27;s deal announcement. Fox and Breitbart omit the war crimes assessment regarding strikes on Iranian water infrastructure and civilian harm. Right outlets also omit that the Pulte controversy — which they largely ignored — was the proximate cause of Clayton&#x27;s nomination.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A federal appeals court temporarily allowed Trump&#x27;s 10% global tariff to remain in effect while legal challenges continue, in a separate development from Trump&#x27;s pardon of convicted former GOP Rep. Steve Buyer.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">This dataset has a structural problem: the two sources are covering two different news events, making direct comparative framing analysis impossible. What can be observed is that center coverage focuses on consequential economic policy (tariffs affecting all imported goods), while far-left coverage pivots to a corruption narrative via a pardon story. The tariff ruling is the higher-stakes development — a preliminary appellate blessing of executive trade authority with broad economic consequences — but it receives no ideological heat here because the left outlet chose a different story.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones is not covering the tariff ruling at all. Instead it is running a pardon story with open sarcasm (&#x27;You Will Be Shocked&#x27;), framing Trump as systematically corrupt and his pardons as a protection racket for Republican allies. Emotion: contempt and performative outrage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats the tariff ruling as a straightforward legal/procedural development, presenting both the appeals court&#x27;s temporary approval and the lower trade court&#x27;s prior finding of unlawfulness without editorializing. Neutral and process-focused.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this dataset. Analysis is incomplete.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones makes no mention of the tariff litigation or its economic implications. It is running an entirely different story, suggesting editorial prioritization of corruption narrative over trade policy.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source provided — this field cannot be accurately assessed. Notably absent from this dataset entirely.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">LA City Council member Nithya Raman advanced to a November runoff against incumbent Mayor Karen Bass in the Los Angeles mayoral primary.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The factual core is straightforward: a sitting council member who once backed Bass now believes she has underperformed and is running against her. The meaningful political question — whether this is healthy democratic accountability or a symptom of one-party dysfunction — is legitimate, but RealClearPolitics conflates ideological labeling with that structural argument. The race matters primarily as a test of whether LA voters prioritize crisis-response competence over ideological alignment in the aftermath of the January 2026 wildfires.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Focuses on intra-Democratic accountability — a progressive challenger holding an establishment incumbent responsible for governance failures, particularly lack of urgency. Emphasizes Raman&#x27;s credibility as a former Bass ally, casting her criticism as earned rather than opportunistic.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No true center outlet represented; NPR leans center-left and covers this as a standard political accountability story without significant ideological editorializing beyond its framing choices.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the race as evidence of one-party urban dysfunction, warning that socialist primary challengers will destabilize already-struggling coastal cities. Uses the contest to indict the Democratic monopoly on LA politics rather than evaluate the candidates on the merits.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR does not engage with the broader argument that one-party cities produce dysfunctional political incentives — it treats this purely as a local performance accountability story, ignoring structural governance critiques.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    RealClearPolitics omits that Raman&#x27;s criticism is grounded in specific governance failures (e.g., wildfire response urgency), not ideological purity. It also omits that Raman previously endorsed Bass, which undermines the &#x27;radical left insurgency&#x27; framing.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Former Biden Ambassador to Mexico Ken Salazar publicly criticizes the Biden administration&#x27;s border policy in a memoir, revealing he considered a 2024 presidential run over the issue.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">The core fact is damaging regardless of framing: a senior Biden official trusted with the U.S.-Mexico relationship privately concluded the administration&#x27;s border policy was bad enough to warrant a primary challenge. The Politico framing attempts to rehabilitate this as mentorship rather than indictment, but the memoir&#x27;s existence and the presidential consideration detail undercut that spin. For Biden&#x27;s legacy and 2028 Democratic positioning on immigration, this is a meaningful on-the-record data point from inside the tent.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Salazar is a credible Democratic insider offering useful lessons to prevent future electoral mistakes. The emphasis is on party improvement and constructive criticism, softening the severity of the indictment against Biden.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats the presidential consideration as the newsworthy hook, framing Biden&#x27;s border handling as a documented failure serious enough to fracture loyalty among senior officials — more damaging to Biden&#x27;s legacy than Politico suggests.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is represented in this dataset.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Politico buries the presidential run consideration, which is arguably the most newsworthy detail. It also avoids framing this as evidence of systemic Biden failure, instead focusing on Salazar&#x27;s constructive intent.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source present to assess. Notably absent from the dataset — right outlets would likely emphasize this as validation of longstanding Republican criticism of Biden&#x27;s border record.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Congressional Hispanic Caucus&#x27;s BOLD PAC is mobilizing significant financial resources to protect Rep. Adriano Espaillat&#x27;s seat from a democratic socialist primary challenger backed by NYC Mayor Zohran Mamdani, amid polling showing Espaillat trailing.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:66.7;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The core news is straightforward: an incumbent congressional caucus chair is polling behind a well-funded progressive challenger in a New York primary, and the establishment is counter-mobilizing. Right-leaning outlets are using the Mamdani connection and Avila Chevalier&#x27;s past posts to turn a standard primary race into a broader socialist-threat narrative, while the center source stays focused on the electoral horse race. The Virginia/DOJ story appearing as a &#x27;right&#x27; source for this topic is a category error — it covers a separate federal-state legal conflict and provides zero relevant coverage of the Espaillat race.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this sample. The absence is itself notable — left outlets would likely frame this as grassroots progressive energy challenging entrenched establishment Democrats, with BOLD PAC spending as evidence of institutional resistance to the left.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios treats this as a conventional establishment-vs-insurgent primary battle, focusing on electoral mechanics — polling, spending, and the structural vulnerability of a sitting caucus chair. Neutral on ideology, emphasizes competitive dynamics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames Mamdani and Avila Chevalier as a radical, anti-American socialist movement threatening mainstream Democratic politics. Uses DHS Secretary condemnation and resurfaced posts to paint the NYC left as extremists. Treats this as a culture-war story about radicalism, not an intra-Democratic power struggle.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage (absent here) would likely omit or downplay the inflammatory content of Avila Chevalier&#x27;s resurfaced posts, and would not foreground DHS/federal law enforcement perspectives as relevant to a congressional primary.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the electoral mechanics entirely — the poll showing Espaillat trailing, the specific dollar amounts BOLD PAC is spending, and any substantive policy differences between the candidates. It also omits that Espaillat is himself a Democrat, framing this purely as a radical threat rather than an intra-party contest with real stakes for the caucus&#x27;s institutional power.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FISA Section 702 expiration</span><span class="entity-tag">Jay Clayton DNI nomination</span><span class="entity-tag">Iran deal unverified</span></div>
+  <div class="connection-text">Three simultaneous events are degrading U.S. intelligence capacity at the same moment it is most needed: the primary foreign surveillance authority lapsed, an unqualified nominee is being installed at DNI, and the administration&#x27;s central diplomatic claim — a deal that would justify canceled strikes — has not been confirmed by Iran. The country is operationally blind precisely when it needs to verify its own foreign policy achievement.</div>
+  <div class="connection-sig">↳ This is not coincidence of timing — it is a structural intelligence vacuum. If Iran has not agreed to what Trump announced, the absence of functioning 702 authority and a credentialed DNI means there is no institutional mechanism to surface or act on that discrepancy quickly. The three stories together describe a verification failure loop.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Federal appeals court tariff ruling</span><span class="entity-tag">Iran strike cancellation</span><span class="entity-tag">Jay Clayton DNI</span></div>
+  <div class="connection-text">In a single news cycle, executive authority was expanded or validated in three distinct domains: trade (appellate blessing of universal tariffs), war powers (unilateral claim to have resolved a military standoff via undisclosed deal), and intelligence community leadership (appointing a non-intelligence figure to lead the IC without apparent institutional resistance). No single story signals a pattern; all three together suggest a coordinated stress-test of executive autonomy across separate branches of national security policy.</div>
+  <div class="connection-sig">↳ Each story individually looks like routine governance or routine conflict. Collectively they represent the most significant single-cycle expansion of unchecked executive authority since the prior AUMF debates — and it is receiving almost no treatment as a unified development.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Ken Salazar memoir</span><span class="entity-tag">BOLD PAC vs. Espaillat</span><span class="entity-tag">LA Bass vs. Raman</span></div>
+  <div class="connection-text">Three simultaneous Democratic coalition fracture events at three different levels: a senior Biden appointee publicly repudiating the administration&#x27;s signature policy legacy from within; the House Hispanic establishment fighting a democratic socialist challenger with emergency spending; and a sitting Los Angeles mayor facing a primary challenge from her own former endorser. These stories are being covered as isolated local or personal dramas but they are structurally a single story: the Democratic Party has no coherent post-Biden ideological center and the fractures are now simultaneous and multi-directional.</div>
+  <div class="connection-sig">↳ The usual framing treats each race or memoir as an isolated accountability moment. The analyst read is that they are concurrent symptoms of a party without a functional centripetal mechanism — not three stories, but one disintegration visible at federal, state, and municipal levels on the same day.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Steve Buyer pardon</span><span class="entity-tag">tariff appellate ruling</span></div>
+  <div class="connection-text">Both events expand or validate executive power — one in trade policy, one in clemency — but they appear in entirely different source clusters with zero cross-coverage. The right ignores the Buyer pardon (corruption narrative); the right also provides almost no coverage of the tariff ruling (which they should be celebrating). The absence of right-side triumphalism on the tariff ruling — a ruling they should be amplifying — is unexplained and worth flagging.</div>
+  <div class="connection-sig">↳ Right outlets selectively amplifying executive power wins is normal. Not amplifying a major appellate validation of Trump&#x27;s signature economic policy is anomalous and suggests either editorial coordination around a different dominant story (Iran) or awareness that celebrating the ruling draws attention to its fragility on appeal.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">One Big Beautiful Bill Act</span><span class="entity-tag">FISA 702 expiration</span><span class="entity-tag">Congressional deadlock</span></div>
+  <div class="connection-text">The BBBA appears in three separate stories while Congress simultaneously failed to reauthorize 702. This juxtaposition reveals a legislature that is functional enough to advance a sprawling domestic spending and tax bill but dysfunctional enough to allow a core foreign intelligence authority to lapse. The bill is absorbing all available congressional bandwidth, and 702 expiration is the collateral damage of that prioritization.</div>
+  <div class="connection-sig">↳ This is the operative political explanation for the 702 lapse that neither side is stating plainly: it was not a principled civil liberties stand or a partisan power play — it was legislative triage, and the triage decision was made in favor of the BBBA.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Unverified claims treated as established facts: Trump&#x27;s Iran deal announcement is structurally identical to the administration&#x27;s pattern of announcing outcomes before they are confirmed. Coverage across the ideological spectrum accepted the claim as sufficiently real to explain the canceled strikes, despite Iran&#x27;s silence. This mirrors earlier patterns with USMCA &#x27;deal&#x27; announcements, where the assertion of a framework substitutes for the framework itself.</div>
+<div class="pattern-item">Democratic Party fracture stories are being siloed rather than aggregated: Salazar, Espaillat, and Bass are each covered as isolated accountability races or memoir news. No outlet — left, center, or right — is running the synthesis that these are simultaneous multi-level coalition failures. Left outlets suppress the synthesis because it is damaging; right outlets suppress it because they are covering it as individual socialist-threat narratives rather than systemic Democratic weakness.</div>
+<div class="pattern-item">Intelligence and surveillance infrastructure degradation is the day&#x27;s most significant underreported throughline: FISA 702 expired, a non-intelligence figure is being installed as DNI, and the U.S. is operating on an unverified Iran deal. These are not three intelligence stories — they are a single story about the deliberate or incidental dismantling of the institutional intelligence framework, and it is receiving less aggregate coverage than the LA mayoral primary.</div>
+<div class="pattern-item">Executive clemency as corruption insulation: The Steve Buyer pardon, covered only by far-left and center, fits a pattern where pardons are used to neutralize GOP figures who might otherwise become accountability liabilities. Buyer was a convicted congressman; his pardon closes off any prosecutorial leverage that might have produced cooperation agreements. This pattern — pardon as preemptive witness elimination — appears in the data but is not named by any outlet covering it.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Iran has not confirmed the deal Trump used to justify canceling strikes, yet no major outlet has assigned this the weight of a potential fabrication. The baseline assumption across coverage is that a deal exists or is close. If Iran formally denies the framework in the next 48 hours, every outlet that ran with the cancellation story as settled news will have amplified a false diplomatic achievement. The non-confirmation is the story; the canceled strikes are downstream of it.</div>
+<div class="anomaly-item">The timing of the Salazar memoir is analytically suspicious: it surfaces in June 2026 — after the 2024 election, after Biden&#x27;s departure, during an active Democratic primary environment, and at the precise moment immigration is the party&#x27;s most contested policy fault line for 2028 positioning. Salazar is not a random figure; he was the trusted U.S.-Mexico relationship manager. The memoir&#x27;s publication now, rather than in 2024 when it could have influenced the election, suggests it is calibrated for 2028 primary positioning rather than historical record.</div>
+<div class="anomaly-item">Right-side outlets are completely absent from coverage of the tariff appellate ruling. A major federal court has temporarily validated Trump&#x27;s signature economic policy — the kind of ruling that typically produces immediate right-side amplification. The silence is anomalous and likely explained by awareness that celebrating a temporary stay draws attention to the underlying merits vulnerability, or by editorial bandwidth consumed by the Iran story.</div>
+<div class="anomaly-item">FISA 702 expiration is structurally buried inside the Iran/Clayton story cluster rather than being covered as a standalone development. This means the real-world intelligence gap — immediate, bipartisan in cause, concrete in consequence — is not receiving independent editorial treatment. It is the most significant governance failure in today&#x27;s news cycle and is functioning as a footnote to the diplomatic theater story.</div>
+<div class="anomaly-item">The One Big Beautiful Bill Act appears in three separate story contexts, none of which are about the bill&#x27;s passage prospects. It is being used as a framing device in energy, immigration, and intelligence stories simultaneously — which suggests it is functioning as a rhetorical container for multiple unrelated policy agendas rather than as discrete legislation with a defined scope.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding the verification gap at the center of the Iran deal story — running with canceled strikes as a real diplomatic development without demanding Iranian confirmation — and is almost entirely absent from covering the tariff appellate ruling, which has broader immediate economic consequences than most stories they are covering. The right is systematically suppressing the Clayton qualifications story, the Buyer pardon&#x27;s corruption implications, and any aggregation of simultaneous Democratic coalition fractures into a unified systemic narrative. The pattern of avoidance on both sides converges on a shared blind spot: neither side is treating the simultaneous degradation of U.S. intelligence infrastructure — 702 lapse, unqualified DNI, unverified Iran claim — as a unified and urgent governance crisis, because the left wants to cover Trump&#x27;s diplomatic theater and the right wants to celebrate it.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ousted South Korean President Yoon given prison term for drone flights over Pyongyang</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump signs proclamation opening more protected ocean areas to commercial fishing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› News Wrap: Apparent anti-Trump message etched into National Mall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;The Department of Revenge&#x27; explores Trump&#x27;s use of DOJ to settle political scores</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Pentagon list overhaul puts Mormon church&#x27;s Christian identity back in the spotlight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge acquits Democratic congressional candidate arrested at New York immigration court protest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What to know about Trump&#x27;s $100,000 H-1B visa fee, and the legal rebuke that followed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: First lady Melania Trump announces new investment accounts for foster youth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man pleads guilty to killing a Minnesota lawmaker and her husband while posing as an officer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The small-town voters deciding the UK’s future are demanding change, our focus group found</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lee Zeldin on rising gas prices, energy dominance and AI data centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Knicks are the (only) talk of the town</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Oil executives warn White House that gas prices will get worse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California officials find body of missing five-year-old girl swept out to sea</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Karmelo Anthony and the Futility of Claiming Self-Defense While Black</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Deportation Machine Is Still Targeting Pro-Palestinian Protesters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› My Half-Baked Attempt to Cook Through the World Cup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Need to Talk About Black Women and Uterine Cancer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In the United States, Solar Energy is Outpacing Coal for the First Time Ever</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Secret Recording Exposes Claims of Toxic Leadership After a Marine’s Suicide</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Rocky’ and the Love of America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is That All From the GOP Congress?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Revolt of Britain’s Defenders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Newsom’s California Health Tax Gambit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big Brother Is Watching the Sky</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Time Runs Out for the Alarm Clock</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Welfare Grants in the Collection Box</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Transgender madness&#x27; under fire after Congress lets taxpayer funding ban lapse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Flip flop&#x27;: Democrat firefighter in tight House race blasts popular Trump policy his national union supports</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court Holds the Line Against Judicially Invented Lawsuits and Legislative History as Law</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Economists Against Economics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Left’s &lt;i&gt;Citizens United&lt;/i&gt; Dishonesty Continues</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Absurd Reflecting Pool Freak-Out</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Before the Ambulance Came for Henry Nowak</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A 16th-Century Astronomer’s Warning to Modern Central Bankers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nathan Hale, Roger Sherman, and One Noble Scot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive--Report Alleges CMS Gave Democrat-Led Areas Faster Approval for Hospital Funding</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE: Illegal Alien Mom Deported After Attempting to Give Away Baby for Smuggling Fees, Says ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Administration Slashes Ties with over 3 Dozen Progressive Groups</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mellon Foundation Funding a Fight Against Civics Schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› China&#x27;s Currency Manipulation Warps World Economy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dear Sen. Cornyn, Do the Right Thing, Help Pass SAVE America Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Contradictions of 1776</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Merkel, Germany and EU&#x27;s Latest Censorship Effort</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Kids Are Obsessed With Squishy Toys</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Erika Kirk Lays Out a Vision for Women</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When the Bottom Stories Are the Real News</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Iranian Foreign Ministry formal response to Trump&#x27;s deal claim — specifically whether they use the word &#x27;framework,&#x27; &#x27;agreement,&#x27; or explicitly deny the characterization; any of these produces a different second-order story than the current coverage assumes</div>
+<div class="watch-item">Jay Clayton Senate confirmation hearing scheduling — given FISA 702 has already lapsed, the timeline for Clayton&#x27;s confirmation determines how long the IC operates with acting leadership during an active Iran standoff; any delay beyond two weeks is a governance signal</div>
+<div class="watch-item">FISA 702 emergency reauthorization bill introduction — watch for which members introduce it, whether it is standalone or attached to BBBA, and whether the intelligence community publicly requests expedited action; silence from the IC on the lapse would itself be anomalous</div>
+<div class="watch-item">Ken Salazar book tour schedule and which Democratic 2028 figures or donors are amplifying the memoir — the promotional infrastructure around the book will reveal whether this is a personal legacy project or a coordinated 2028 positioning effort by the centrist Democratic wing</div>
+<div class="watch-item">Federal appellate court full merits briefing schedule on the tariff case — the temporary stay is not a ruling on the merits; the timeline for full briefing will indicate whether this resolves before or after the July 1 USMCA review deadline, creating potential compounding trade policy uncertainty</div>
+<div class="watch-item">BOLD PAC fundraising totals vs. Avila Chevalier fundraising totals for the next FEC filing period — if Mamdani&#x27;s backing closes the financial gap despite BOLD PAC mobilization, it signals that establishment spending is no longer determinative in NYC-area progressive primaries</div>
+<div class="watch-item">Congressional Hispanic Caucus member statements on the One Big Beautiful Bill Act — given the Espaillat primary pressure from the left, any CHC member who deviates from opposition to BBBA becomes a target in their own primary, creating a coordination trap between legislative and electoral strategy</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
