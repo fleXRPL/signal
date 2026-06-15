@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-15 08:20 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-15 08:20 UTC</span>
+    <span class="pill">117 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on June 15, 2026 is being shaped by a single dominant event — the US-Iran ceasefire and Strait of Hormuz reopening — that is simultaneously the most important story and the most poorly covered one. The deal is real enough to move oil markets and reopen a critical global shipping lane. It is not yet stable. Iran has not publicly confirmed deal terms that match Trump&#x27;s description, Israel struck Beirut hours before the signing window, and Senator Graham — the administration&#x27;s most credible Senate foreign policy ally — has explicitly flagged an interpretive gap between Washington and Tehran on the MOU&#x27;s operative language. The deal may hold. It may also collapse within 48 hours on definitional grounds, and the media ecosystem covering it is not equipped to see that coming because right-side outlets are running triumph framing and left-side outlets are running corruption framing, and neither is reading the primary-source Iranian response.</p>
+<p>Domestically, two structural shifts are underway that are being covered as isolated stories but are in fact parts of the same realignment. The Democratic left is winning. AOC&#x27;s endorsement infrastructure has now backed four House primary winners in a month, Mamdani is running a credible left-populist mayoral campaign in New York, and Democrats hold a five-point generic ballot advantage. At the same time, the Republican institutional establishment is contracting: McConnell is hospitalized at 84 with no disclosed condition or timeline, the DNI seat remains vacant during active foreign intelligence operations, and FISA reauthorization is held hostage to a voting-bill condition Trump attached. The party in power is running on spectacle — a UFC White House event, an 80th birthday framing campaign, a ceasefire triumph — while its governance infrastructure shows visible gaps.</p>
+<p>The economic transition is being almost entirely missed. Kevin Warsh is now at the Federal Reserve. The Strait of Hormuz is reopening. These two facts are in immediate collision: Warsh&#x27;s first major policy signal will be set not by his own agenda but by the commodity market response to a geopolitical event, and no outlet — left or right — has connected them. Whoever frames that collision first will control the economic narrative for the next news cycle.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is in a strong short-term position and a fragile medium-term one. The ceasefire, if it holds, is a genuine foreign policy accomplishment that no Democratic administration achieved. The birthday spectacle consolidated the base. But the crypto payment mechanism at the UFC event is an unexamined self-dealing story, the ceasefire&#x27;s terms are unverified by the counterparty, and his own chosen Senate validator (Graham) is already hedging publicly. Trump&#x27;s current posture is credit-maximizing before the deal&#x27;s terms are stress-tested.</p>
+<p><strong>Graham</strong> is now the de facto Republican Senate voice on Iran, McConnell being hospitalized at the worst possible moment. His public flagging of interpretive divergence is the most important signal in this story. He is not opposing the deal — he is pre-positioning himself to not be blamed if it fails, while leaving open the option to claim credit if it holds. His next 48 hours of public statements are the single most important thing to watch.</p>
+<p><strong>AOC</strong> is functioning as a party-within-a-party primary enforcement mechanism. Her endorsements are not symbolic — they are translating into wins, and incumbents who voted against progressive priorities are being systematically targeted. The establishment is not effectively resisting. Wasserman Schultz&#x27;s vulnerability is a signal, not an outlier.</p>
+<p><strong>Kevin Warsh</strong> enters the Fed as a monetary policy actor whose first test is determined by geopolitics, not economics. His prior record is hawkish. If oil normalizes post-Hormuz and he signals rate cuts anyway, he will be seen as politically accommodating Trump. If he holds rates, the ceasefire&#x27;s economic dividend is suppressed. He has no good first move, and he will have to make one immediately.</p>
+<p><strong>McConnell&#x27;s absence</strong> is under-weighted. He is one of very few Republican senators with both the institutional standing and the hawkish credibility to publicly challenge the Iran deal&#x27;s terms if they diverge from what Trump claims. With him hospitalized, Graham becomes the ceiling of Republican Senate dissent — a significantly lower ceiling.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The actual text of the Iran ceasefire MOU does not exist in public coverage. A deal consequential enough to reopen the Strait of Hormuz and move global oil markets has zero primary-source coverage of its operative clauses. Every outlet is reporting Trump&#x27;s characterization of the deal. No outlet is reporting the deal. This is either deliberate information management by the administration during a fragile signing window, or a collective editorial failure of historic proportion. The correct answer matters enormously: if it is deliberate control, the terms will emerge and may diverge significantly from public claims; if it is editorial failure, the press has abdicated its most basic accountability function during an active military ceasefire.</p>
+<p>The right is not covering: the Democratic five-point generic ballot lead, Georgia&#x27;s election administration restructuring, Iran&#x27;s failure to confirm deal terms, Graham&#x27;s divergence warning, or the crypto self-dealing at the UFC event. These omissions are defensive — each would destabilize a current coalition narrative.</p>
+<p>The left is not covering: Kevin Warsh and the Fed transition, Iranian civilian suffering as a moral dimension of the ceasefire, military family morale, or the economic costs of progressive urban governance. These omissions are ideological — each requires engaging terrain where the right has a more developed frame and the left lacks a ready counter-argument.</p>
+<p>The asymmetry that matters: the right&#x27;s avoidances are protective of a president; the left&#x27;s avoidances are protective of an ideology. Protective-of-president avoidance is more immediately fragile because it depends on the president not generating new facts. The Iran deal&#x27;s interpretive gap is exactly the kind of new fact that collapses that protection.</p>
+<p>Nobody is covering the FISA-Iran-DNI confluence: surveillance reauthorization authority is in legislative jeopardy, there is no confirmed Director of National Intelligence, and an intelligence-intensive ceasefire operation is in its most fragile window. These three facts are running simultaneously with zero connective coverage.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The McConnell hospitalization and the Iran signing window are not being read together. They should be. McConnell is the last institutionalist Senate hawk with standing to publicly challenge interpretive divergence between Washington and Tehran. His removal from the board — undisclosed condition, undisclosed timeline — happens precisely when the deal needs credible Republican institutional scrutiny to be durable. Whether coincidental or not, the effect is the same: Graham is now the ceiling of GOP Senate foreign policy engagement, not the floor.</p>
+<p>The right is running two separate stories on Platner simultaneously — one defending Collins for raising concerns, one arguing the concerns lead to the wrong conclusions. This is a sophisticated two-track confirmation defense: establish the critic as principled while invalidating the critique&#x27;s conclusions. It is coordinated, it is being run through opinion media rather than Senate hearings, and the simultaneous publication makes the coordination visible.</p>
+<p>The Brunson tax story (right-only) is functioning as economic counter-programming to Mamdani&#x27;s NYC mayoral campaign without naming him. Right outlets are building a tax-burden frame around a popular New York athlete at the same moment a left-populist candidate with explicit high-earner tax policy is gaining traction. This is policy priming through sports celebrity — establishing the frame before the candidate gets wider national attention.</p>
+<p>AOC&#x27;s primary wins and the Democratic five-point generic ballot lead are being covered as separate phenomena. They are in potential structural tension. Progressive primary victories in deep-blue districts do not automatically translate to general election strength in competitive ones. The unasked question — whether AOC&#x27;s kingmaker role improves or degrades the Democrats&#x27; ability to convert a polling advantage into actual seat gains — is the most important strategic question in 2026 cycle coverage that no outlet is currently asking.</p>
+<p>The age-legitimacy question is simultaneously active in three separate story threads: Trump&#x27;s 80th birthday framing (&#x27;ageless&#x27;), McConnell&#x27;s hospitalization (suppressed), and &#x27;The Generational Disaster&#x27; right-side critique. The right is managing all three through different lenses — amplify Trump&#x27;s vitality, minimize McConnell&#x27;s fragility, and frame aging leadership as a bipartisan failure that predates Trump. The three-thread structure on a single day is not coincidental.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Iranian Foreign Ministry formal statement on MOU language</strong> — specifically whether Tehran characterizes the agreement as a &#x27;framework,&#x27; &#x27;understanding,&#x27; &#x27;ceasefire,&#x27; or &#x27;agreement.&#x27; Any terminological divergence from Trump&#x27;s public framing during the active signing window is the cascade trigger for the deal&#x27;s collapse. Watch for this in the next 24 hours; if it does not come, the silence itself is informative.</p>
+<p><strong>Graham&#x27;s public statements over the next 48 hours</strong> — he is now the de facto leading GOP Senate foreign policy voice. His next posture determines whether Republican support for the deal holds or whether he begins building a pre-emptive blame-Tehran narrative. A shift in his tone is more significant than any White House statement.</p>
+<p><strong>McConnell discharge timeline and condition disclosure</strong> — identify which Senate votes and committee actions fall within the next 10 days. The majority arithmetic question is not speculative; it is a concrete legislative planning issue. The absence of any outlet pursuing this is a gap to fill.</p>
+<p><strong>Kevin Warsh&#x27;s first public statement on commodity markets</strong> — his monetary policy framing in response to Hormuz oil normalization will signal whether he intends to operate independently of Trump&#x27;s economic preferences or in alignment with them. Either answer has major implications.</p>
+<p><strong>FISA reauthorization vote scheduling</strong> — specifically whether Trump&#x27;s attached condition (the SAVE America Act) produces a legislative standoff coincident with the Iran deal&#x27;s ratification window. A FISA lapse and an active Iran MOU with no confirmed DNI is a governance risk no outlet has scoped.</p>
+<p><strong>Georgia special session scheduling on vote-counting ban</strong> — the ban is currently in effect with no legislative fix. A special session date or its deliberate absence signals whether the restriction will be in place for 2026. This is an election administration story, not merely a procedural one.</p>
+<p><strong>UFC/White House crypto bonus transaction specifics</strong> — wallet address, token type, transaction amount. An FOIA request or financial disclosure filing is the logical next investigative step. The absence of follow-on coverage is anomalous for what would normally be a significant self-dealing story.</p>
+<p><strong>Platner confirmation hearing date and witness list</strong> — the coordinated two-story right-media defense pattern suggests an imminent hearing; monitor for whether Collins&#x27;s stated concerns translate into formal questioning or are neutralized by the narrative scaffolding already in place.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic of this political moment is a simultaneous test of two different kinds of institutional capacity: the administration&#x27;s ability to claim a durable foreign policy win, and the opposition&#x27;s ability to build durable electoral infrastructure. Both tests are live right now, both are uncertain in outcome, and both are being systematically misread by the media covering them. The Iran deal is being reported as either a triumph or a corruption story depending on partisan lens, when the actual question — whether the parties share a common understanding of what they signed — remains unanswered and is the only question that matters. The Democratic electoral momentum is being reported as either a progressive victory or an incumbent vulnerability story, when the actual question — whether primary-driven leftward movement helps or hurts in a general election — is the one that determines whether a five-point polling lead becomes a House majority or doesn&#x27;t. The administration is currently winning the spectacle contest while losing the governance infrastructure contest; the opposition is currently winning the organizational contest while losing the narrative contest. Which of those asymmetries resolves first will determine the shape of 2026.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump announced a US-Iran ceasefire deal reopening the Strait of Hormuz and hosted UFC fights at the White House on his 80th birthday, while Israel&#x27;s strikes on Beirut threatened to derail the agreement hours before signing.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (14)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (10)</span><span class="bias-badge" style="color:#e07a7a;">left (16)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:23.0;" title="center: 14"></div><div class="bias-segment" style="background:#e0a87a; flex:16.4;" title="center-left: 10"></div><div class="bias-segment" style="background:#e05252; flex:3.3;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:16.4;" title="far-right: 10"></div><div class="bias-segment" style="background:#e07a7a; flex:26.2;" title="left: 16"></div><div class="bias-segment" style="background:#a07ae0; flex:4.9;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:9.8;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The Iran ceasefire is the substantively significant event — oil markets reacted immediately and a three-and-a-half-month conflict appears paused, but the deal&#x27;s durability hinges on two unresolved fault lines: Iran&#x27;s internal confirmation of terms and Israel&#x27;s willingness to halt operations in Lebanon. Graham&#x27;s concern about interpretive divergence between Washington and Tehran is the most important underreported detail in this coverage. The UFC spectacle is analytically minor but politically revealing — the crypto bonus mechanism deserves scrutiny as a novel form of executive self-dealing that crosses partisan framing into concrete financial fact.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the Iran deal as a strategic retreat — Trump abandoned maximalist regime-change goals and got a fragile ceasefire with the nuclear program intact. The UFC event is framed as an unprecedented corruption of public property, with Trump&#x27;s family crypto company financially benefiting from bonuses paid to fighters. Trump&#x27;s anger at Netanyahu is portrayed as performative given continued US military support for Israel. The overall picture is of a president substituting spectacle for governance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets report the deal with cautious optimism while flagging genuine uncertainties: differing US-Iran interpretations (Graham&#x27;s concern), Israel&#x27;s destabilizing strikes, and unresolved nuclear issues. The UFC event is noted as historically unusual without strong editorial condemnation. Economic market response is treated as real signal. Anthropic conflict covered as a corporate-political dispute with concrete stakes for AI policy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the Iran deal as a historic personal triumph — Trump ended a war, reopened a critical waterway, and delivered immediate economic relief through lower oil prices. The UFC event is framed as a patriotic celebration of American strength and culture. Trump&#x27;s criticism of Netanyahu is presented as decisive deal-making leadership rather than diplomatic rupture. The emphasis is on outcomes delivered, world leaders praising the agreement, and Trump defying age and critics alike.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit: the concrete economic benefit of falling oil prices as a genuine policy win; the diplomatic complexity and actual mediator countries involved; the positive cultural reception of World Cup visitors experiencing America; the substance of Vance&#x27;s claims about the deal&#x27;s security guarantees; and the significance of reopening a waterway that had throttled global oil supply for months.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit: Iran&#x27;s failure to publicly confirm deal terms matching Trump&#x27;s description; Sen. Graham&#x27;s explicit warning about interpretive gaps in the MOU; the for-profit crypto payment mechanism benefiting the Trump family at a White House event; the protests against the UFC event and their corruption framing; Israel&#x27;s continued strikes on Lebanon as an ongoing threat to the deal; and the Reason-flagged constitutional question of whether Congress ever authorized the war.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">AOC&#x27;s selective endorsements have backed four winning progressive House candidates in a month, while multiple Democratic incumbents including Wasserman Schultz face serious 2026 primary challenges.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The underlying reality is that a coordinated progressive electoral strategy, with AOC as its most visible validator, is materially threatening multiple Democratic incumbents in 2026. Axios correctly identifies AOC&#x27;s growing kingmaker role but softens the systemic implications; Fox correctly identifies incumbent fragility but strips out the strategic agency driving it. The meaningful story is that the Democratic Party&#x27;s left flank has built a durable primary infrastructure that is now winning races — regardless of what either side chooses to emphasize.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No explicitly left-leaning source was provided in this sample.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames AOC as a shrewd political operator navigating intra-left tensions, emphasizing her calculated selectivity as a sign of growing power. The story is about AOC&#x27;s rise and strategy, not Democratic collapse. Emotional register: analytical admiration with a note of caution about divisiveness.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox frames this as Democratic chaos and institutional decay — incumbents fighting for survival signals a party in disarray. The emphasis is on vulnerability and internal revolt, with a subtext that the Democratic establishment is being repudiated by its own base. Emotional register: schadenfreude and instability.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Axios does not highlight the severity of incumbent vulnerability or the breadth of the anti-establishment wave — it keeps the focus on AOC as an individual actor rather than a systemic shift.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not credit the organized progressive infrastructure (AOC&#x27;s endorsements, small-dollar fundraising networks) that is driving challenger viability — presenting the incumbents as simply failing rather than being strategically targeted.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Former Senate Majority Leader Mitch McConnell, 84, was hospitalized Sunday for an undisclosed health condition; his office reports he is receiving care.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The factual core is thin: an 84-year-old active senator was hospitalized for an undisclosed reason. Everything beyond that is editorial inference. The right&#x27;s &#x27;excellent care&#x27; framing launders a press office statement as medical reassurance; the left&#x27;s capacity-to-serve framing outruns the available evidence. The genuine public interest question — whether an active senator&#x27;s undisclosed health condition affects his ability to fulfill his duties — is neither answered nor fairly examined by any outlet.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes a pattern of declining health and raises implicit questions about his fitness to complete his Senate term — framing the hospitalization as part of a broader trajectory rather than an isolated event.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Provides sympathetic but measured context, acknowledging his health history and long service without editorial speculation about his capacity or future — closest to neutral observation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Treats the hospitalization as a routine news update, anchors coverage in his historic legacy, and leads with his office&#x27;s reassuring language — minimizing concern and emphasizing institutional stature.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Does not prominently feature the office&#x27;s reassuring &#x27;excellent care&#x27; statement, which is the only direct on-record information from those with access to McConnell.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Does not engage with McConnell&#x27;s documented pattern of public health episodes or the legitimate public interest in the fitness of an active senator — treating prior incidents as irrelevant context.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A NBC News poll shows Democrats leading Republicans by 5 points on congressional preference, while right-leaning coverage pivots entirely to an unrelated sporting tradition.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The most analytically significant finding here is not the poll itself but the complete substitution of story by the right-leaning outlet: Fox News does not rebut the Democratic polling advantage — it simply does not cover it, replacing the news cycle with an unrelated feel-good story about Republican athletic wins. This is a classic avoidance framing technique. The NBC poll is a legitimate data point but generic ballot polls at this stage carry well-documented volatility; the 5-point margin is notable but not predictive on its own.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet was included in this sample.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents the NBC News poll as a straightforward data point — a 5-point Democratic advantage — without predicting outcomes or assigning blame. Neutral in tone, anchored in a specific, named source.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News sidesteps the poll entirely, redirecting audience attention to a lighthearted human-interest story about the Congressional Baseball Game — one Republicans have dominated for five years. The implicit message: GOP is winning where it counts. The poll is treated as if it does not exist.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left outlet represented. The Hill (center) does not contextualize the poll against historical accuracy of generic ballot polling or discuss enthusiasm gaps.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News omits the NBC poll entirely. There is no acknowledgment of the Democratic lead, no counter-poll cited, and no attempt to dispute the methodology. The story selected has no topical overlap with the polling news.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">McConnell hospitalization</span><span class="entity-tag">Iran ceasefire signing window</span></div>
+  <div class="connection-text">McConnell is one of the last institutionalist Senate hawks with standing to publicly challenge the interpretive gap Graham flagged between Washington and Tehran. His hospitalization — undisclosed condition, undisclosed timeline — removes the most credible GOP dissenting voice precisely during the deal&#x27;s most fragile 48-hour confirmation window.</div>
+  <div class="connection-sig">↳ If the ceasefire collapses on interpretive grounds, the absence of McConnell&#x27;s institutional weight from the debate leaves Graham as the sole serious GOP interlocutor — a significantly weaker check. The timing is either coincidental or an underreported story about Senate foreign policy capacity during active negotiations.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Kevin Warsh / Federal Reserve</span><span class="entity-tag">Iran ceasefire / Strait of Hormuz</span></div>
+  <div class="connection-text">Warsh&#x27;s arrival at the Fed is framed by right-only outlets as a monetary policy transition story. But the Strait of Hormuz reopening is an immediate oil supply shock with direct inflation implications — Warsh&#x27;s first major policy test arrives on day one, set by geopolitics, not his own agenda. No outlet connects these two stories.</div>
+  <div class="connection-sig">↳ The Fed&#x27;s first rate signal under Warsh will be read through the lens of oil price normalization post-ceasefire. If Warsh moves dovishly while oil rebounds, it creates a stagflation narrative the right has not pre-positioned. If he holds, the ceasefire&#x27;s economic dividend gets suppressed. Either way, the Iran deal is Warsh&#x27;s inaugural constraint and nobody is writing that story.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">AOC endorsement infrastructure</span><span class="entity-tag">Democratic +5 generic ballot</span></div>
+  <div class="connection-text">These two stories are being covered as separate phenomena — electoral mechanics vs. polling — but they are in structural tension. AOC&#x27;s endorsed candidates are winning in deep-blue primaries. A +5 generic ballot advantage is a national signal. If progressive primary wins replace electable incumbents in swing-adjacent districts, the polling advantage does not translate to seats. Neither side is examining whether the progressive primary strategy is net-positive or net-negative for the November number.</div>
+  <div class="connection-sig">↳ The left is celebrating the infrastructure win; the right is attacking incumbents&#x27; vulnerability. Neither is asking the strategic question: does AOC&#x27;s kingmaker role improve or degrade the Democrats&#x27; ability to hold a +5 advantage into actual seat gains? This gap is the most important unasked question in 2026 cycle coverage.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump 80th birthday &#x27;ageless&#x27; framing</span><span class="entity-tag">McConnell (84) hospitalization</span></div>
+  <div class="connection-text">The right is simultaneously running &#x27;Ageless Trump Laughs in the Faces of His Naysayers&#x27; and suppressing the McConnell health story. Both involve elderly Republican men in power; the framing is inverted depending on political utility. The UFC spectacle is the vehicle for the Trump age-reversal narrative, while McConnell&#x27;s hospitalization gets a single press office statement.</div>
+  <div class="connection-sig">↳ This is coordinated narrative management around Republican aging — amplify one story, minimize the other. The contrast makes visible that &#x27;senior leadership health&#x27; is treated as a partisan asset or liability depending on the individual, not as a consistent governance accountability question.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FIFA/FISA story (left-only blindspot)</span><span class="entity-tag">Iran ceasefire / intelligence community</span></div>
+  <div class="connection-text">The FIFA/FISA wordplay story in left-only coverage appears to be about FISA surveillance reauthorization. Trump&#x27;s own watch list note (&#x27;Trump won&#x27;t back FISA renewal without his SAVE America Act voting bill&#x27;) confirms FISA is an active legislative negotiation. The Iran ceasefire is an intelligence-intensive operation conducted without a confirmed DNI (Jay Clayton vacancy). These two threads — surveillance authority expiration and an active foreign intelligence operation — are running simultaneously with no confirmed intelligence leadership in place.</div>
+  <div class="connection-sig">↳ A FISA lapse or politicized renewal during active Iran negotiations is not a coincidence to dismiss. The left is covering FIFA distraction; the right is covering the ceasefire triumph. Neither is covering the legal surveillance authority underpinning the intelligence that made the ceasefire possible.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Platner (2 right-only stories)</span><span class="entity-tag">Susan Collins</span></div>
+  <div class="connection-text">Two separate right-leaning outlets are running Platner stories on the same day — one defending Collins for raising his past, one drawing &#x27;wrong lessons&#x27; from the Platner/Paxton pairing. This is coordinated narrative management: establish that scrutiny of Platner is legitimate (via Collins defense) while simultaneously arguing the scrutiny leads to the wrong conclusions. The double-story structure inoculates a nominee against criticism by pre-framing the critic (Collins) as principled while invalidating the critique&#x27;s conclusions.</div>
+  <div class="connection-sig">↳ This is a sophisticated two-track confirmation defense being run through opinion media rather than through Senate hearings. The coordination is visible in the simultaneous publication and opposing-but-complementary framing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Georgia vote-counting ban (left-only)</span><span class="entity-tag">Brian Kemp endorsement (left-only)</span></div>
+  <div class="connection-text">Both Georgia stories appear in left-only coverage on the same day. One is about election infrastructure (vote-counting method banned, no legislative fix yet); the other is about the Republican gubernatorial succession fight (Kemp backing Jones). These are not unrelated: the entity who controls the governorship controls election administration. The left is covering both threads but not connecting them. The right is covering neither.</div>
+  <div class="connection-sig">↳ Georgia election infrastructure is being restructured during an active succession fight over who will administer it. The right&#x27;s complete silence on both stories — not rebuttal, just absence — mirrors the Fox/polling avoidance pattern and suggests deliberate non-engagement with Georgia election process stories.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Mamdani (NYC mayoral)</span><span class="entity-tag">Jalen Brunson tax story</span></div>
+  <div class="connection-text">Mamdani&#x27;s NYC mayoral campaign has explicitly targeted high-earner tax policy. Brunson&#x27;s tax story — right-only — is framed around a specific high-earning New York athlete&#x27;s tax burden. The timing suggests the Brunson story is functioning as an economic counter-argument to Mamdani&#x27;s platform without naming him: &#x27;here is what progressive New York taxation does to the people you admire.&#x27;</div>
+  <div class="connection-sig">↳ This is policy priming through sports celebrity — building the tax-burden frame before Mamdani&#x27;s platform gets wider national attention. The Mamdani/DC story appearing the same day (progressive-city policy spillover) confirms his candidacy is generating coordinated right-side counter-narrative across multiple news categories.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Spectacle as diplomatic cover: The UFC White House event and Trump birthday framing consumed significant right-side coverage on the same day as a fragile ceasefire signing — the spectacle is functioning as a news-cycle management tool during a period when any Iranian interpretive divergence could produce a rapid credibility collapse. Domestically, the party base is kept celebratory while the actual diplomatic risk (Graham&#x27;s divergence concern) is buried in center-right coverage only.</div>
+<div class="pattern-item">Avoidance symmetry: The right avoids the Democratic +5 poll and Georgia election infrastructure; the left avoids Kevin Warsh, Iranian civilian suffering, and military family morale. These are not random gaps — they are each side declining to legitimize a frame that destabilizes their current coalition narrative. The pattern is visible precisely because the avoidances are categorical, not partial.</div>
+<div class="pattern-item">Progressive infrastructure normalization: AOC endorsements, Mamdani&#x27;s rise, the &#x27;Two Styles of American Masculinity&#x27; framing (right-only), and the Wasserman Schultz primary challenge are all separately covered but collectively represent a single story: the American left is building durable political infrastructure that is now winning elections at multiple levels simultaneously. No outlet is writing the aggregate story.</div>
+<div class="pattern-item">Age and legitimacy management: Three separate story threads — Trump&#x27;s 80th birthday, McConnell&#x27;s hospitalization, and &#x27;The Generational Disaster of Trump Bush and Clinton&#x27; (right-only) — are all engaging the question of whether aging leadership retains legitimacy, but each through a different partisan lens and none in conversation with the others. The simultaneous emergence of all three age-legitimacy threads on the same day is not coincidental.</div>
+<div class="pattern-item">Iran deal credit-risk separation: Right-side outlets are running both ceasefire triumph stories AND &#x27;The Iranian People Are Forgotten&#x27; and &#x27;Thank You For Your Patience on Iran&#x27; simultaneously — claiming the diplomatic win while pre-positioning a blame-the-regime frame if the deal fails. This is hedged credit-taking: absorb the upside, pre-assign the downside.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">No outlet — left, right, or center — has published the actual text or specific terms of the Iran ceasefire MOU. A deal significant enough to move oil markets and reopen a global shipping chokepoint has zero primary-source coverage of its operative clauses. This is either a controlled information environment (the terms are being withheld by design during the signing window) or a collective editorial failure of historic proportion. Either answer is significant.</div>
+<div class="anomaly-item">The crypto bonus mechanism at the UFC White House event is described in the lead story assessment as &#x27;a novel form of executive self-dealing that crosses partisan framing into concrete financial fact&#x27; — yet it appears in zero follow-up stories, no right-side coverage, and no left-side investigative thread. A president receiving cryptocurrency payments through a White House-hosted sporting event on his 80th birthday would normally be a major story. Its near-total absence from follow-on coverage is anomalous.</div>
+<div class="anomaly-item">McConnell&#x27;s hospitalization is covered by exactly three outlets — one each from center-left, left, and right — with identical informational content (a press office statement). The symmetry of coverage depth suggests either a coordinated restraint (don&#x27;t speculate on a living senator&#x27;s health) or that the story broke too late for deeper investigation. Given the political stakes of Senate majority arithmetic, the absence of any outlet pursuing the &#x27;capacity to serve&#x27; question is unusual.</div>
+<div class="anomaly-item">Kevin Warsh&#x27;s arrival at the Federal Reserve is covered exclusively by right-leaning outlets despite being one of the most consequential economic appointments in years. The left&#x27;s complete silence on Warsh — who was a George W. Bush appointee with a documented hawkish record — is inconsistent with historical left-media attention to Fed appointments. This silence either reflects a strategic decision not to amplify a story that helps the right, or an editorial blind spot about monetary policy that has persisted for multiple news cycles.</div>
+<div class="anomaly-item">The World Cup is generating substantial left-only coverage (multiple stories) while right-only coverage ignores it entirely despite the U.S. hosting and the diplomatic/soft-power implications. Given that the U.S. is the host nation and FIFA relations are an active foreign policy question (see previous watch list on visa backlogs), the right&#x27;s categorical silence on World Cup coverage is conspicuous — particularly since any visa or diplomatic failure would be an administration accountability story.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: Democratic electoral momentum (both the generic ballot poll and the AOC infrastructure story), Georgia election administration changes, and any granular examination of the Iran deal&#x27;s terms — preferring spectacle and triumph framing over treaty accountability. The left is systematically avoiding: Kevin Warsh and the Fed transition, Iranian civilian suffering as a moral dimension of the ceasefire, military family morale, and economic critiques of progressive urban governance. The asymmetry that matters most is this: the right&#x27;s avoidances are primarily defensive (protecting Trump&#x27;s image, suppressing bad polling), while the left&#x27;s avoidances are primarily ideological (declining to engage on monetary policy, national security culture, or the costs of progressive economics). Defensive avoidance produces fragility when avoided stories break through; ideological avoidance produces vulnerability on persuadable-voter terrain that the right is actively cultivating.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Georgia&#x27;s vote-counting method will soon be banned. Lawmakers will try to find a fix this week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Zealand’s diplomatic breakaway</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why can’t we win it? Inside the Japanese embassy for Sunday’s World Cup opener.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Brian Kemp endorses Burt Jones in Georgia’s gubernatorial runoff</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› FIFA or ... FISA?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The countless control rooms running the World Cup in New York and New Jersey</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside the Croatian government&#x27;s World Cup event with John Malkovich and Luka Modrić</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Perceived corruption of World Cup countries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pilot and 11 skydiving passengers killed in private plane crash in Missouri</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A year after ICE raids terrorized Los Angeles, a rattled city counts its scars: ‘The arrests never really stopped’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota woman rescued after being trapped in mud pit for several days</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nature No Longer Smells So Natural—and That’s Our Fault</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Opinion: Happy Birthday to Free Expression</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Kevin Warsh Era Begins at the Federal Reserve</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jalen Brunson’s Tax Wisdom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington, D.C., May Get a Mamdani Moment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Switzerland Rejects a Population Cap</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Can Do Math, but Is It Really Math?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As Kevin Warsh Arrives, Expect Him to Move Slowly</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Race for Hypersonic Missiles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia’s Stark Election Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Biden-appointed judge orders Trump to restore slavery, climate change references at national parks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Iranian People Are Forgotten</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s (Literal) D.C. Cleanup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Media ‘Pounce’ on Susan Collins for Having the Temerity to Notice Platner’s Past</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Cook in the Wild</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Morale of Military Families Needs Our Attention</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Yes, We Should Teach Students What to Think</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Other Side of Down Syndrome</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thank You For Your Patience on Iran, America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump &#x27;Really Uncomfortable&#x27; With Aging at 80</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ageless Trump Laughs in the Faces of His Naysayers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Generational Disaster of Trump, Bush and Clinton</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Religious Liberty at 250: America&#x27;s Most Radical Idea</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Right Tries to Crush Talarico&#x27;s Progressive Christianity</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Wrong Lessons to Take From Platner and Paxton</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The ABA Is Unfit To Accredit Law Schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems Put Forward Two Styles of American Masculinity</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Self-Destructive Pillars of the Left Finally Begin To Fall</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Iranian Foreign Ministry formal statement on MOU language — specifically whether Tehran uses &#x27;framework,&#x27; &#x27;understanding,&#x27; &#x27;agreement,&#x27; or any characterization that diverges from Trump&#x27;s public framing; any divergence during the active signing window is a cascade trigger</div>
+<div class="watch-item">Graham public statements on Iran deal interpretive gap — he is now the de facto leading GOP Senate foreign policy voice with McConnell hospitalized; his next 48-hour posture determines whether Republican support for the deal holds or fractures</div>
+<div class="watch-item">McConnell&#x27;s discharge timeline and the specific condition disclosed — Senate majority arithmetic and any scheduled votes in the next 10 days are directly contingent on his availability; identify which committee assignments and floor votes require his presence</div>
+<div class="watch-item">Kevin Warsh&#x27;s first public statement on oil price normalization post-Hormuz — his monetary policy framing in response to the ceasefire&#x27;s commodity market effect will signal his policy independence from both Trump and prior Fed orthodoxy</div>
+<div class="watch-item">FISA reauthorization vote scheduling — specifically whether the &#x27;SAVE America Act&#x27; condition Trump attached produces a legislative standoff during the Iran deal&#x27;s ratification window; a FISA lapse and an Iran MOU happening simultaneously with no confirmed DNI is a governance risk no outlet has scoped</div>
+<div class="watch-item">Platner confirmation hearing date and witness list — the coordinated two-story right-media defense suggests an imminent hearing; monitor for whether Collins&#x27;s stated concerns translate into formal questioning or are neutralized by the narrative scaffolding already constructed</div>
+<div class="watch-item">Georgia legislative special session on vote-counting method — the ban is in effect with no fix yet; a special session date or its absence is a concrete signal of whether Republican leadership intends to restore or leave in place the counting restriction before 2026</div>
+<div class="watch-item">Mamdani NYC polling and fundraising numbers post-primary — his appearance in two separate right-side story categories (tax policy, urban governance) in one day suggests the right is beginning systematic counter-positioning; the speed of that mobilization will calibrate how seriously they view his national implications</div>
+<div class="watch-item">UFC/White House crypto bonus transaction details — the specific mechanism (wallet address, token type, transaction amount) would confirm or refute the executive self-dealing characterization; an FOIA request or financial disclosure filing is the next logical step any investigative outlet should pursue</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
