@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-17 08:19 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-17 08:19 UTC</span>
+    <span class="pill">117 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The administration is running a coordinated federal enforcement architecture against Democratic-aligned targets, and the press is failing to demand the predicate for any of it. Three separate federal actions landed in the same news cycle — a DOJ investigation into Gavin Newsom, federal conspiracy charges against antifa-affiliated protesters in Minnesota, and export control enforcement against Anthropic — and in each case the specific legal authority or conduct at issue has been withheld from public view. This is not coincidence. When three high-significance enforcement actions share the same information void simultaneously, the void is the instrument: the administration generates maximum political signal (Democrat under investigation; antifa arrested; Democratic-donor tech firm targeted) while insulating the legal basis from examination. Political damage accrues before accountability can.</p>
+<p>On the Republican side, two stories today document real internal fracture that the party&#x27;s right-wing media apparatus is actively suppressing. In Georgia, a billionaire&#x27;s $100 million override of a presidential endorsement in the governor&#x27;s race demonstrates that Trump&#x27;s endorsement authority has a price ceiling. In Ohio, a Republican governor who co-authored his state&#x27;s death penalty law forty-five years ago publicly called for its abolition — a major ideological rupture on a core conservative policy pillar. Neither story appears in Breitbart in substantive form. The editorial substitution is documented: Breitbart replaced the DeWine story with race-coded crime content, a pattern that reveals a deliberate suppression strategy rather than simple editorial discretion.</p>
+<p>The Georgia Senate race is now the highest-stakes electoral contest to watch heading into November. Republicans enter with Mike Collins as their nominee — a candidate whose abortion positioning Trump&#x27;s own team privately questioned before endorsing him — against Jon Ossoff, a Democratic incumbent with a large financial advantage. The structure of that race, combined with the structural demonstration that presidential endorsement power can be purchased away in down-ballot primaries, means the Republican path to flipping that seat is considerably more uncertain than either party&#x27;s public posture suggests.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>JD Vance</strong> is the most active message architect in today&#x27;s environment, appearing across ostensibly unrelated story categories — the Georgia Senate race and the MLB/Bible verse cultural grievance story — running the same rhetorical operation in both. His invocation of &quot;Trump Won&quot; framing in response to a minor sports-religion uniform dispute is not a non sequitur; it is a rehearsal of the move Republicans intend to run in the Collins-Ossoff race: convert every perceived institutional slight against conservatives into validation of Trump&#x27;s electoral mandate, and make every Senate contest a referendum on that mandate. Watch where this framing migrates in the next two weeks.</p>
+<p><strong>Gavin Newsom</strong> is the clearest 2028 Democratic target in the current environment, and his team knows it. The pre-emptive martyrdom framing his operation deployed immediately — before any charges, before any public subpoena targets, before any substantive legal filing — is sophisticated political positioning, not a spontaneous reaction. It simultaneously inoculates him with the Democratic base (DOJ as political weapon), frames a potential prosecution as confirmation of his importance (they only target the real threats), and forces the press to cover the political context of the investigation rather than its substance. Whether the investigation has legal merit is almost irrelevant to the 2028 dynamic: the political damage is being structured now, during the period before the party has any organizing apparatus around a potential primary field.</p>
+<p><strong>Rick Jackson</strong> is a structural fact that the Republican Party has not yet processed publicly. A self-funding billionaire defeated a sitting lieutenant governor carrying a presidential endorsement. The implication — that sufficient money can route around presidential endorsement power in Republican primaries — has consequences beyond Georgia if it is absorbed by other billionaire-class potential candidates considering 2026 or 2028 races.</p>
+<p><strong>Mike DeWine</strong> is isolated but not irrelevant. A Republican governor calling for abolishing capital punishment is not a bolt from the blue — it reflects a strain of religious conservative thought that has been building for years — but it is being deliberately quarantined from right-wing media audiences who have no framework to process Republican dissent on the issue. The quarantine will hold until it doesn&#x27;t: when death penalty legislation reaches a state floor vote, the suppressed debate will reassert itself with compounded force.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is avoiding three categories today, each of which reveals a different form of narrative management. First: Republican primary results that produced mixed signals for Trump&#x27;s endorsement power. The Jones loss in Georgia is either absent or minimized across right-sourced coverage, which means the right&#x27;s audience is consuming a systematically distorted picture of Republican primary terrain heading into November. Second: Republican policy dissent. The DeWine death penalty story is effectively nonexistent in right-wing media, replaced by editorial content that serves a different emotional function. Third — and most anomalous — the Minnesota antifa charges. Federal conspiracy charges against antifa-affiliated individuals interfering with ICE enforcement is precisely the story right-wing media would normally amplify at maximum volume. Its near-total absence from right-sourced coverage today is an inversion of expected editorial behavior that requires explanation. The most plausible: someone died during the ICE enforcement operation that preceded these charges, and uncritical amplification of the arrests becomes legally and narratively awkward when the enforcement action itself resulted in a fatality. If that is the explanation, right-wing media is self-censoring a story it would otherwise celebrate because the collateral damage undercuts the enforcement-as-clean-win frame.</p>
+<p>The left is avoiding its own category of uncomfortable truths. Left-leaning coverage of the Newsom investigation focuses almost entirely on the political context — DOJ politicization, Trump&#x27;s history of targeting opponents — without substantively examining what the investigation may actually be about. The possibility of legitimate investigative grounds receives no serious attention. On the Minnesota charges, left outlets contextualize the enforcement action aggressively but avoid engaging with the specific conduct alleged against the 15 individuals — what actions constituted &quot;impeding&quot; agents — which is the load-bearing legal question that determines whether these charges are robust or prosecutorial overreach. On Georgia, left outlets underreport the Alabama Senate race as a clean Trump endorsement success, because doing so would complicate the &quot;Trump influence is waning&quot; narrative they&#x27;re running on the Jones story.</p>
+<p>The combined pattern of avoidance produces an environment where both audiences are being insulated from the same underlying reality: federal enforcement is being deployed in ways that raise genuine legal and accountability questions, but those questions are inconvenient from both directions.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The three federal enforcement actions — Newsom, Minnesota, Anthropic — are not just thematically related. They share an operational structure: each targets an entity associated with Democratic-aligned politics or opposition to administration policy, and in each case the legal predicate is publicly invisible. This is not how normal federal enforcement works. Major DOJ investigations of prominent political figures generate immediate documentation of the investigative theory; federal conspiracy charges come with indictments specifying the conduct; export control enforcement actions cite the statutory authority. The simultaneous absence of all three predicates, across three separate enforcement contexts, on the same day, indicates deliberate information management rather than press failure alone.</p>
+<p>Vance&#x27;s rhetorical work across the MLB story and the Georgia Senate coverage is a single campaign with two current test environments. He is building the architecture that will be deployed in Collins-Ossoff: every cultural conflict becomes evidence of institutional bias against conservatives, and every Senate race becomes the mechanism for resolving that bias by returning a Republican majority. The MLB/Bible verse story is trivial on its own terms; its value is as a carrier frequency for the &quot;Trump Won&quot; message in a context where the political stakes are low enough that the framing can be established without serious pushback.</p>
+<p>The Rick Jackson and DeWine stories, taken together, document a Republican Party being overridden simultaneously from two different directions — money from below, conscience from within — while the party&#x27;s media apparatus manages perception of unity in both cases. The editorial suppression of both stories in right-wing media appears coordinated: the tactic is to substitute emotionally satisfying content (crime stories, cultural victories) rather than engage with structural Republican weakness. This works as a short-term perception management strategy and fails as a long-term analytical tool: the underlying structural facts will reassert themselves when Collins faces Ossoff in November and when Republican death penalty consensus is tested in a floor vote.</p>
+<p>The Newsom investigation&#x27;s three-source coverage despite a &quot;high&quot; significance rating is statistically anomalous. Major DOJ investigations of prominent political figures generate immediate multi-outlet pile-ons. The restraint suggests the story broke too recently for editorial response, or outlets are holding for substantive legal filings before committing resources. The second possibility deserves monitoring: if there is an informal editorial consensus to wait for filings, the political damage will be structurally complete before the press fully engages.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Minnesota ICE operation casualty record</strong> — specifically whether a death occurred during the enforcement action preceding the conspiracy charges. This is the single most important unverified factual claim in today&#x27;s environment. If confirmed, it transforms the prosecution narrative from clean enforcement to contested-force context, and explains the right-wing media silence on a story it would otherwise amplify.</p>
+<p><strong>Newsom subpoena targets</strong> — the first public filing or leak specifying what financial transactions or relationships are actually under investigation. The political damage is already being structured; the subpoena target will determine whether this investigation has a plausible legal theory or is purely a political exposure operation. Watch for this in the next two weeks, not days.</p>
+<p><strong>Collins abortion positioning</strong> — any public statement from the Georgia Senate nominee before November that attempts to resolve the contradiction Trump&#x27;s team privately identified. Collins won the primary; he now faces an electorate where abortion positioning matters differently. The moment he adjusts his positioning, the primary-to-general transition becomes a liability narrative Ossoff can run.</p>
+<p><strong>Right-wing media coverage of Minnesota charges in the next 48 hours</strong> — specifically whether coverage emerges with or without the enforcement death context. If it emerges with that context omitted, that confirms deliberate editorial management. If it emerges with that context included, watch how outlets handle the &quot;deadly crackdown&quot; framing from their own enforcement-positive posture.</p>
+<p><strong>DeWine death penalty response from Ohio Republican legislative leadership</strong> — whether state Senate or House Republican leadership engages with or suppresses his position. Engagement means the debate is real and will produce a floor vote. Suppression confirms the Breitbart editorial pattern is a coordinated rather than idiosyncratic strategy and reveals how much internal party pressure the DeWine position is actually generating.</p>
+<p><strong>Anthropic legal response</strong> — specifically the statutory citation they challenge and whether they frame their challenge in civil liberties or trade law terms. A First Amendment or due process framing in a federal filing changes the political valence of the entire dispute from a tech-trade story to a speech-and-research-freedom story, which has a much larger potential coalition.</p>
+<p><strong>JD Vance&#x27;s next public statement on Georgia</strong> — watch for whether &quot;Trump Won&quot; framing migrates from the cultural grievance context (MLB) into explicit campaign messaging for Collins-Ossoff. The migration date is when the test run ends and the actual campaign architecture activates.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is best understood as a period of structured ambiguity being deliberately maintained by actors on both sides for different reasons. The administration is deploying federal enforcement authority against Democratic-aligned targets in a way that maximizes political signal while withholding the legal predicate — a strategy that works precisely because neither the press nor the opposition has successfully forced public articulation of what specific conduct is under investigation. The Democratic opposition is responding with pre-emptive martyrdom framing that is politically sophisticated but analytically evasive: it converts every investigation into evidence of persecution without requiring engagement with whether the persecution has a legitimate legal basis. The result is an environment in which the actual question — is the federal government using law enforcement as a political weapon, or is it enforcing law against people who happen to be politically connected — cannot be honestly examined by either partisan audience, because honest examination is inconvenient for both. What cuts through this is not more coverage but specificity: subpoena targets, statutory citations, indictment conduct descriptions. Until those specifics are public, the political operation will continue to run inside the information void, and analysis based on anything other than the underlying legal documents will be, to varying degrees, participating in the operation rather than examining it.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">In Georgia&#x27;s Republican primary runoffs, Trump-endorsed Lt. Gov. Burt Jones lost the governor&#x27;s race to self-funding billionaire Rick Jackson, while Rep. Mike Collins won the Senate runoff with a late Trump endorsement and will face Democratic incumbent Jon Ossoff in November.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (13)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.8;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:24.5;" title="center-left: 13"></div><div class="bias-segment" style="background:#7ae09b; flex:5.7;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:5.7;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:13.2;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:11.3;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:1.9;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:17.0;" title="right: 9"></div></div></div>
+  <div class="story-assessment">The factual record shows a split outcome: Trump&#x27;s governor endorsement lost to money, but his Senate endorsement contributed to a win, and Alabama was a clean success — making &#x27;Trump&#x27;s endorsement power is fading&#x27; and &#x27;Trump&#x27;s endorsement power is dominant&#x27; both selective readings. The more consequential story is the Collins-Ossoff Senate race, where Republicans enter with a nominee whose abortion positioning their own president privately questioned, against an incumbent with a large financial advantage. The Georgia governor&#x27;s race demonstrates that $100M in self-funding can override a presidential endorsement in a down-ballot primary, which is a structural fact worth noting regardless of party spin.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets emphasize Trump&#x27;s endorsement failure in the governor&#x27;s race as evidence his political influence has quantifiable limits (&#x27;$100M ceiling&#x27;), frame Collins as a dangerous far-right candidate, and position Ossoff as a principled incumbent defending Democratic gains. The subtext is that Trump&#x27;s grip on the GOP is purchasable and therefore fragile.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets treat the governor&#x27;s race loss as a genuine but contextually limited data point — a &#x27;blow&#x27; to Trump but not a collapse. The Senate runoff result is framed as a competitive setup for November with real stakes for Senate control. The overall takeaway is mixed results for Trump rather than a clear win or loss.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets split the narrative: the governor&#x27;s race loss is acknowledged but minimized as an anomaly explained by Jackson&#x27;s extraordinary self-funding, while Moore&#x27;s Alabama win and Collins&#x27; Senate win are foregrounded as proof of Trump&#x27;s continued endorsement strength. The Collins-Ossoff race is framed as a Republican offensive opportunity, not a defensive challenge.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit the Alabama Moore win as a clean Trump endorsement success, which would complicate the &#x27;Trump influence is waning&#x27; narrative. They also underplay that Trump&#x27;s late Senate endorsement of Collins likely mattered in a close runoff.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets omit or downplay Trump&#x27;s private doubts about Collins&#x27; electability on abortion — a detail that reveals internal GOP tension on a key general-election liability. They also avoid substantive discussion of Republican fundraising deficits versus Ossoff heading into November, which center-left outlets flag as a serious structural problem.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The DOJ is investigating California Governor Gavin Newsom and his wife Jennifer Siebel Newsom, with federal agents reportedly questioning associates and subpoenaing financial records.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The core fact — a DOJ investigation exists — is not seriously disputed, but everything surrounding it is contested narrative. Newsom&#x27;s team is running an aggressive pre-emptive political strategy, framing legal exposure as martyrdom before any charges or findings emerge; this is smart politics but it also obscures whether there is legitimate legal substance. The single most important unknown — what conduct is actually under investigation — is absent from all three outlets, which means audiences across the spectrum are consuming political spin rather than the underlying story.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR frames the investigation as politically motivated targeting of a rising Democratic presidential contender by a Trump DOJ, amplifying Newsom&#x27;s own framing and treating his characterization of abuse with implied credibility. The emotional register is one of institutional threat to democratic norms.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios takes the most balanced analytical posture: it reports Newsom&#x27;s team&#x27;s political messaging strategy to congressional Democrats while explicitly noting a DOJ source pushes back on the White House-directed narrative. It treats the story as both a legal matter and a political strategy story simultaneously.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    RealClearPolitics treats the investigation as straightforward political accountability news — a prominent Democrat facing legal scrutiny. The framing emphasizes Newsom&#x27;s vulnerability rather than the investigation&#x27;s legitimacy or origins, implying earned scrutiny rather than weaponization.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning coverage does not substantively explore what the investigation may actually be about — the underlying conduct or predicate — focusing instead on the political context. The possibility of legitimate investigative grounds receives little attention.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage does not engage with the documented pattern of Trump-era DOJ investigations targeting political opponents, nor does it note the lack of any public evidence establishing the legal basis for the probe. Context about DOJ politicization goes unmentioned.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Federal prosecutors charged 15 people in Minnesota with conspiracy to impede federal immigration enforcement agents, with the government characterizing targets as antifa-affiliated.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core fact is clear and undisputed: 15 people face serious federal conspiracy charges tied to resistance during an immigration enforcement operation. The legitimate analytical dispute is not whether charges were filed but whether the underlying enforcement context — including any deaths or injuries — is relevant to how the charges are understood. Both available outlets are left-leaning, so the coverage gap is substantial: there is no right-sourced account to cross-check the antifa characterization, the specifics of the alleged interference, or whether the &#x27;controversial and deadly&#x27; framing of the crackdown is accurate and material.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Skeptical of government narrative. Emphasizes the &#x27;controversial and deadly&#x27; nature of the underlying enforcement as context for why people resisted, and foregrounds that the antifa label is a prosecutorial claim — not an independently verified fact. The charges are presented as downstream of aggressive enforcement, not unprovoked lawbreaking.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS presents the charges factually and relays the government&#x27;s antifa characterization without endorsing or dismissing it. The implicit framing — &#x27;politically motivated crackdown&#x27; — surfaces through word choice and context, but the report leads with the legal action rather than the enforcement controversy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided. Inferred likely framing: the charges validate law enforcement&#x27;s account of organized interference with legitimate federal operations; the antifa label would be treated as credible; emphasis would fall on obstruction of lawful immigration enforcement rather than on the nature of the crackdown itself.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left-leaning outlet engages with the specific conduct alleged against the 15 individuals — what actions constituted &#x27;impeding&#x27; agents. This omission makes it harder to assess whether the charges are legally robust or overreach. The Guardian in particular focuses on the enforcement context without detailing the alleged interference itself.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right source present, but both available outlets omit: any detail on enforcement deaths or injuries that underpin The Guardian&#x27;s &#x27;deadly&#x27; characterization, any independent assessment of the antifa organizational claims, and the legal standard required to prove conspiracy to impede federal officers.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Ohio Republican Governor Mike DeWine, a co-author of the state&#x27;s 1981 death penalty law, publicly called for abolishing capital punishment, citing lack of deterrent effect and moral objections.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core event is unambiguous and agreed upon by both mainstream outlets: a Republican governor is calling for abolishing a law he helped write. The more telling story is Breitbart&#x27;s editorial non-coverage — substituting an unrelated race-coded crime story rather than cover a prominent Republican undermining a conservative policy pillar. This is a meaningful data point about how far-right media manages ideological dissent within the GOP.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes irony and moral arc — the man who built the machine is now dismantling it. Positions DeWine as a figure of conscience, implicitly validating abolitionist arguments as the mature, evolved position.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was provided in this dataset.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Neutralizes the ideological tension by foregrounding evidence and personal conviction rather than partisan defection. Allows conservative readers to accept the position as principled rather than as a capitulation to the left.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not engage with counterarguments from victims&#x27; rights advocates or conservatives who support capital punishment — the story is presented without meaningful opposition voice.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not mention DeWine&#x27;s direct role in authoring the 1981 law, which is arguably the most newsworthy element — it significantly deepens the significance of his reversal and would be uncomfortable for a conservative audience.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">MLB warned three San Francisco Giants pitchers for writing Bible verses on their Pride Night caps, violating uniform rules, prompting offers from Rob Schneider to pay any fines and criticism from Republican politicians.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core factual dispute is whether MLB applied a neutral uniform rule or selectively targeted religious expression — a question neither outlet seriously investigates. MLB&#x27;s uniform rules predate Pride Night and prohibit all unauthorized cap modifications; without evidence of selective non-enforcement for other messages, the &#x27;discrimination&#x27; framing is assertion, not established fact. The Republican political response — particularly Vance&#x27;s &#x27;Trump Won&#x27; framing — is the more newsworthy element, as it signals an intent to use cultural grievances as leverage against corporate policies, which has tangible implications for sports leagues navigating political pressure.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources are represented in this coverage set, so no left framing can be assessed from available data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center sources are represented in this coverage set, so no center framing can be assessed from available data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both right-leaning outlets frame MLB&#x27;s uniform enforcement as targeted anti-Christian discrimination, casting the players as sympathetic religious dissenters and Republican politicians as defenders of faith against corporate progressive overreach. Breitbart amplifies the &#x27;post-Trump cultural victory&#x27; narrative via Vance&#x27;s quote.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left sources present — omissions cannot be assessed.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right outlets omit that MLB&#x27;s uniform rules are longstanding and apply equally to all messaging — political, commercial, and otherwise. Neither outlet notes whether these same players or others have been similarly warned for non-religious uniform modifications. The rules exist independent of Pride Night.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">One person was killed and another wounded in a shooting inside Wilmington Hospital in Delaware on June 16, 2026, with the male suspect remaining at large.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core facts are not in dispute: one dead, one wounded, male suspect at large in a Delaware hospital. The ideological divergence is entirely in framing — The Guardian uses the incident as a hook into systemic gun violence in healthcare settings, while Breitbart isolates the crime from any policy dimension. Neither outlet adds significant factual detail the other lacks; this is a narrative contest, not a factual one.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes systemic public safety failure — hospital shootings as a recurring American crisis rather than an isolated incident. Focuses on vulnerability of healthcare spaces and persistent danger to staff and patients.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet represented in this sample.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Straight crime report framing — who, what, where. Deliberately avoids mentioning the weapon type or any gun policy angle, consistent with Second Amendment editorial posture that decouples shootings from firearms discourse.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not specify the sex of the suspect, which Breitbart includes. Left coverage also does not detail victim count with the same clinical specificity.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any broader context about hospital violence trends, systemic safety concerns, or policy implications — framing this as a standalone criminal event with no structural dimension.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DOJ/Newsom investigation</span><span class="entity-tag">Minnesota antifa charges</span><span class="entity-tag">Anthropic export controls</span></div>
+  <div class="connection-text">Three simultaneous federal enforcement actions — one against a likely 2028 Democratic presidential candidate, one against anti-ICE protesters, one against an AI company with deep Democratic-donor ties — share a structural feature: in each case, the specific legal authority or conduct at issue is entirely absent from public coverage. Audiences know the action exists but not its substantive basis.</div>
+  <div class="connection-sig">↳ When three high-significance federal enforcement actions all share the same information void simultaneously, the void itself becomes the story. Either the administration is deliberately withholding the predicate for each action (maximizing political signal while minimizing legal accountability), or the press is systematically failing to demand it. Both explanations are alarming for different reasons.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">JD Vance</span><span class="entity-tag">MLB/Giants Bible verse story</span><span class="entity-tag">Georgia primary results</span></div>
+  <div class="connection-text">Vance appears in both the Georgia Senate story and the MLB cultural grievance story. His invocation of &#x27;Trump Won&#x27; framing in response to a minor uniform violation — a story with zero electoral content — represents a deliberate choice to link cultural grievances to claims of electoral mandate. This is the same framing architecture being built around the Collins-Ossoff race in Georgia.</div>
+  <div class="connection-sig">↳ Vance is rehearsing a rhetorical move: convert any perceived institutional slight against conservatives into validation of Trump&#x27;s electoral authority. If this framing takes hold before November, every cultural controversy becomes an argument for why Republicans must hold the Senate seat in Georgia. The MLB story is a test run.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rick Jackson ($100M self-funder, Georgia governor)</span><span class="entity-tag">Republican Party structural integrity</span><span class="entity-tag">DeWine death penalty dissent</span></div>
+  <div class="connection-text">Two Republican stories today show the party being overridden from different directions simultaneously: a billionaire&#x27;s money defeats a presidential endorsement in Georgia, and a sitting Republican governor publicly repudiates a core conservative policy pillar. Neither story is covered by far-right media, and they are not discussed together anywhere.</div>
+  <div class="connection-sig">↳ The simultaneous suppression of both stories in right-wing media suggests a coordinated editorial posture: protect the appearance of party unity at the cost of honest analysis. But the underlying structural fact — that both presidential endorsement power and policy consensus are more fragile than the base is being told — will reassert itself in November when Collins faces Ossoff and when death penalty legislation comes to a floor vote.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Minnesota antifa charges</span><span class="entity-tag">Right-wing media coverage gap</span></div>
+  <div class="connection-text">Federal conspiracy charges against antifa-affiliated individuals interfering with ICE enforcement is precisely the story right-wing media would normally amplify loudly. Its near-total absence from right-sourced coverage today is an inversion of expected editorial behavior.</div>
+  <div class="connection-sig">↳ The most plausible explanations are: (1) the &#x27;deadly&#x27; enforcement context — someone died during the ICE operation — makes uncritical amplification legally or politically awkward for outlets that have defended enforcement; (2) the story broke too late for right-side editorial cycles; or (3) the specific charges, if examined closely, reveal something about the enforcement operation that contradicts the preferred narrative. Option 1 is most likely and most significant — it would mean right-wing media is self-censoring a story it would otherwise celebrate because the collateral damage undercuts the enforcement-as-clean-win frame.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Newsom DOJ investigation</span><span class="entity-tag">2028 presidential primary landscape</span></div>
+  <div class="connection-text">The Newsom investigation has only 3 sources despite a &#x27;high&#x27; significance rating — an unusual ratio. Newsom is the most visible potential 2028 Democratic candidate. The investigation&#x27;s timing, coming while the party has no clear post-Biden organizing structure, creates maximum disruption to any potential primary field consolidation.</div>
+  <div class="connection-sig">↳ Whether or not the investigation has legal merit, its political function is to preemptively define Newsom as legally compromised before he can build a national fundraising and endorsement operation. His team&#x27;s aggressive martyrdom framing suggests they recognize this dynamic. The 3-source coverage gap may reflect editors waiting for substantive legal filings before committing — but by the time those filings emerge, the political damage will already be structured.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Federal enforcement as political architecture: Three separate federal enforcement actions today (Newsom DOJ, Minnesota antifa charges, Anthropic export controls) are unified by a shared structural feature — each targets an entity associated with Democratic-aligned politics or opposition to administration policy, and in each case the specific legal predicate is withheld from public scrutiny. This is not three coincidental stories; it is a pattern of using federal authority to generate political signal while insulating the legal basis from examination.</div>
+<div class="pattern-item">Republican internal fracture being systematically suppressed: Two stories document meaningful Republican dissent — DeWine on capital punishment, Jones&#x27;s loss to a self-funding billionaire overriding a presidential endorsement — and both are absent or distorted in far-right coverage. The editorial suppression is itself coordinated: Breitbart substitutes a race-coded crime story for the DeWine story rather than engaging with it. The party&#x27;s right flank is managing perception of unity rather than processing real internal disagreement.</div>
+<div class="pattern-item">Cultural grievance as electoral leverage: The MLB/Bible verse story and the Georgia primary results both feature Vance prominently. The rhetorical move — invoking &#x27;Trump Won&#x27; in a sports-religion context — is a preview of how Republicans intend to run the Collins-Ossoff race: frame every cultural conflict as requiring a Republican Senate majority to resolve. Three superficially unrelated stories (sports, primaries, Vance&#x27;s public positioning) are actually one coordinated pre-campaign message.</div>
+<div class="pattern-item">Left-side primary saturation vs. right-side primary absence: Left-only coverage dominates primary live results across Oklahoma, Alabama, DC, California special election, and multiple Senate runoffs. Right-side outlets are not covering primary results they did not dominate or that produced mixed signals. This is not just an editorial preference — it means the right-leaning audience is receiving a systematically distorted picture of the Republican primary landscape heading into November.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Newsom investigation carries a &#x27;high&#x27; significance rating but has only three sources — fewer than any other high-significance story today. This is statistically anomalous. High-significance DOJ investigations of prominent political figures almost always generate immediate multi-outlet pile-ons. The restraint suggests either the story is very newly broken (no time for editorial response), outlets are awaiting substantive filings before committing, or there is an informal editorial consensus to hold. The third possibility deserves monitoring.</div>
+<div class="anomaly-item">The Wilmington, Delaware hospital shooting — one dead, suspect at large — is covered only by The Guardian and Breitbart. A hospital shooting with an active at-large suspect in a small state capital would ordinarily generate AP wire pickup and regional cascade. Biden&#x27;s home state, a hospital setting, an unresolved public safety situation: all three factors should drive coverage volume upward. The sparse sourcing is unexplained and warrants attention to whether the suspect&#x27;s identity or circumstances become relevant.</div>
+<div class="anomaly-item">Minnesota antifa charges are covered only by left-leaning outlets — a complete inversion of the expected coverage pattern. This story is right-wing media&#x27;s ideal content: federal conspiracy charges, antifa branding, ICE enforcement context. Its absence from the right in today&#x27;s blindspot summary is the single most anomalous editorial pattern of the day and points toward something in the story&#x27;s details that creates discomfort for pro-enforcement narratives.</div>
+<div class="anomaly-item">The death penalty story reveals that Breitbart&#x27;s editorial response to Republican ideological dissent is to substitute unrelated race-coded crime content rather than rebut or engage. This is a documented editorial tactic, not just a one-day omission, and it means far-right audiences are being structurally prevented from processing genuine conservative policy debate — which has downstream consequences for how Republican primary electorates will respond when the dissent inevitably becomes impossible to suppress.</div>
+<div class="anomaly-item">Iran appears in four entity network stories but none of today&#x27;s six analyzed stories directly address the Iran MOU. The entity network entries (&#x27;The Fog of the Iran MOU,&#x27; &#x27;The Middle East Power Paradox,&#x27; &#x27;Trump&#x27;s Coercive Diplomacy&#x27;) are all right-only coverage. The previous watch item — Graham&#x27;s framing in the 72 hours post-announcement — is now overdue, and the silence from the left on Iran today may reflect a strategic decision not to criticize a deal that polls favorably with Democratic-leaning audiences on non-proliferation grounds.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three categories today: Republican primary results that produced mixed or negative signals for Trump&#x27;s endorsement power, Republican policy dissent (DeWine), and any factual engagement with what the Minnesota antifa charges actually allege — suggesting the enforcement context around those charges is uncomfortable. The left is systematically avoiding any legitimacy examination of the Newsom team&#x27;s pre-emptive martyrdom framing, the specific conduct actually under DOJ scrutiny, and any acknowledgment that federal conspiracy charges against protesters represent a real legal development warranting more than contextualizing coverage. The combined pattern of avoidance produces a media environment where both audiences are being insulated from the same underlying truth: that federal enforcement is being used in ways that raise genuine legal and political accountability questions, but those questions are inconvenient for different reasons depending on which side is asking them.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› People Minnesota Immigration Crackdown Federal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Haitian immigrants ask Supreme Court to toss case in light of new evidence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Oklahoma begins choosing a new U.S. senator and governor in crowded primary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Oklahoma midterm primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: District of Columbia midterm primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Alabama midterm primary runoffs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: California special primary election to replace Eric Swalwell</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: Jay Clayton testifies at confirmation hearing for national intelligence director</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Robert White wins DC delegate primary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› South Carolina GOP isn’t sold on Trump’s candidate. He may endorse a second.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A UFC watch party in Pennsylvania shows the fallout from the Iran war</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› CBS reaches agreement over Stephen Colbert’s use of Peanuts music on The Late Show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Investigation into deadly B-52 bomber crash could take months, US officials say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Disability Shaped American Citizenship</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bible Schneider Offers Fines Players</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Border Enforcement Does Affect American Workers’ Wallets</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Does Trump Hate Anthropic?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Calling Trump’s Bluff on FISA</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Constitution vs. ‘Disparate Impact’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When Schools Try to Cover Up Their Failures</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Government vs. AI Profits?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Whip Grade Inflation Now</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Russian Economy Looks More Vulnerable Each Day</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Notable &amp; Quotable: JD Vance on the Teamsters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Democrats’ Patriotism Gap</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court Should Take Another Crack at Limiting Runaway Agencies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The End of Rec League</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Our Ability to Fight Foreign Terrorism Just Got Weaker</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Bill of Rights’ Missing Amendment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Real America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Middle East Power Paradox</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Fog of the Iran MOU</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Welfare Trillionaire Is Born</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Elon Musk and the American Spirit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Did  Spielberg Get So Dark?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s Coercive Diplomacy Exactly How To Neuter Iran</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Minnesota ICE operation casualty record — specifically whether a death occurred during the enforcement action that preceded the conspiracy charges; this is the load-bearing fact that determines whether the federal prosecution narrative holds or collapses under scrutiny</div>
+<div class="watch-item">Newsom investigation conduct specification — what financial transactions or relationships are actually subpoenaed; the first public filing or leak of a subpoena target will define whether this is a legitimate investigation or a politically-constructed exposure operation</div>
+<div class="watch-item">Collins (Georgia) abortion positioning — watch for any specific public statement before the November Ossoff race that attempts to resolve the contradiction Trump&#x27;s team privately identified; this is where the primary victory may unravel</div>
+<div class="watch-item">DeWine death penalty position and any Republican legislator response — specifically whether Ohio Senate or House Republican leadership engages or suppresses; suppression confirms the Breitbart editorial pattern is coordinated rather than idiosyncratic</div>
+<div class="watch-item">Anthropic legal filing response to export controls — specifically the statutory citation they challenge and whether they invoke First Amendment or due process grounds alongside trade law; a civil-liberties framing in a federal filing changes the political valence of the entire dispute</div>
+<div class="watch-item">Right-wing media coverage of Minnesota antifa charges in the next 48 hours — if coverage emerges with the enforcement death context omitted, that confirms editorial management; if it emerges with that context included, watch how the &#x27;deadly crackdown&#x27; framing is handled</div>
+<div class="watch-item">JD Vance&#x27;s next public statement on Georgia Senate race and whether &#x27;Trump Won&#x27; framing migrates from the cultural grievance context (MLB) into explicit campaign messaging for Collins-Ossoff</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
