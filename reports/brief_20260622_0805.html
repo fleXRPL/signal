@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-22 08:05 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-22 08:05 UTC</span>
+    <span class="pill">82 articles</span>
+    <span class="pill">13 sources</span>
+    <span class="pill">0 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      <p style='color:var(--muted)'>No multi-source clusters identified.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump threatens to &#x27;hit Iran very hard again&#x27; while Vance is in Switzerland for talks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump claims vandals damaged D.C. Reflecting Pool, and says it will be drained again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Week in politics: continued negotiations with Iran; G7 summit; Reflecting Pool issues</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› With the opening of the Obama Presidential Center, NPR&#x27;s Don Gonyea looks back on covering the former president</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As Vance meets top Iranian officials in Switzerland, Trump threatens Tehran from afar</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› For cash-strapped farmers, deal to end Iran fighting comes too late</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump news at a glance: President threatens to restart attacks on Iran even as Vance cites progress in talks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› LA firefighters battle warehouse blaze amid concerns over billowing smoke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At least seven people killed in Chicago shootings as Trump renews military call</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Planes were just 300ft apart in Boston airport near miss, expert says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump says repair work to begin ‘immediately’ on beleaguered reflecting pool</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Utah wildfire forces evacuation of small town as extreme heat roasts US west</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man falls to his death during Madison Square Garden concert, police say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Native children belong in Native communities’: tribes decry New Mexico drug-exposed newborn rule</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Ukrainian family built a community in Cleveland. Now, they face deportation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump faces fresh bipartisan criticism on Iran deal as Vance hails peace talks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Threatens Iran as JD Vance Announces “Great Progress” on Ceasefire</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› “Willful Neglect”: A New Report on the State of Fatherhood Pulls No Punches</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› “Super El Niño” Is Terrible News for Farmers Around the World</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia Joins the Latin Right Turn</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Donald Trump and JD Vance Echo the Anti-Israel Left</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bankruptcy and Higher Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A ‘Sirius’ World Cup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran and Trump Blame Israel First</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Double Fault for Britain’s Tax Man</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Rise of the Democratic Socialists</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Do Bible Passages Belong in English Class?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chronicle of Cuba’s Ruin Foretold</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s Iran gamble divides GOP hawks and &#x27;America First&#x27; conservatives over what victory looks like</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College sports sees pivotal moment as Senate looks to move legislation on NIL, transfers across goal line</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Obama Center visitors say project symbolic of &#x27;Black excellence,&#x27; claim scandal-free legacy while Trump ripped</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration probe could upend widely used transgender youth treatment guidelines</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chinese AI models raise ‘sleeper agent’ fears after report finds more vulnerable code for US users</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Angel Dads face another Father&#x27;s Day without children killed by illegal immigrants: &#x27;She should be graduating&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialism Is on the March</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Age of Trump Could Use the Wisdom of John Quincy Adams</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Benjamin Franklin’s Presence at the Creation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› From Concertos to Cage Matches, America Can Do It All</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sports Journalists Jettison Their Affection for Silent Protest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› End the Dad Slander</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Past Is a Guide — and It Points Toward Freedom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive — Leading UN Secretary General Candidate Macky Sall Backs ‘Peace Builder’ Donald Trump’s Push for Reforms: ‘Make the UN Great Again’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll: 78 Percent of Americans Want Conflict with Iran to End Now</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Graham: Diplomatic Solution in Iran Is Going to Fail</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Predicts UK&#x27;s Starmer Will Resign After Having &#x27;Failed Badly&#x27; on Immigration and Energy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Rep. Ilhan Omar&#x27;s Husband Was a Business Failure in 2025, Living Off His Wife&#x27;s Salary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: New York Knicks Fan Dumps Trash to Steal Hand-Painted Can</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Ruben Gallego Used Campaign Donations for Babysitting and Luxury Family Trips, Including Disneyland, Disney World, Super Bowl</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH — Baptist Pastor Breaks Unofficial World Record by Preaching for 96 Hours: &#x27;Jesus Is Worthy&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Cindy Hyde-Smith: We Can Worship, Pursue What We Want in America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vance Lands in Switzerland for Iran Talks as Strait of Hormuz Tensions Boil</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Free and Prosper</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Solstice of Our Discontent</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› You Can&#x27;t Be a Superpower Without Allies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Is Poised to Overplay Its Hand</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Has the US-Israel Relationship Changed Forever?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Here&#x27;s What We Achieved</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California&#x27;s Self-Sabotage Is a National Disgrace</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can It Be Unhealthy To Be Obsessed With Health?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialism Is Back In Vogue. Wait for Reality To Set In</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Trump&#x27;s First-Year Blitzkrieg Stalled Out</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
