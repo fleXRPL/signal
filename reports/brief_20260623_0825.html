@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-23 08:25 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-23 08:25 UTC</span>
+    <span class="pill">101 articles</span>
+    <span class="pill">13 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The defining event of the day is judicial, not legislative or electoral: a federal judge in Minnesota found that the Trump DOJ&#x27;s grand jury subpoenas against Gov. Tim Walz and other state officials were issued in bad faith, explicitly to &quot;coerce and retaliate,&quot; and blocked them. On the same day, a separate federal judge blocked the administration&#x27;s SNAP soda-ban waiver. Neither ruling is being read against the other by any outlet in today&#x27;s corpus, but together they constitute a same-day pattern of judicial pushback against executive action across two unrelated policy domains — immigration-adjacent political retaliation and food-assistance regulation. That pattern, not either ruling individually, is the most consequential and least-reported fact of the cycle.</p>
+<p>Around that core story, the administration is running two parallel deflection plays. VP Vance is claiming diplomatic progress with Iran — inspectors reportedly being readmitted — a claim that is plausible but unverified by any independent body. Trump, separately, is pushing an unsubstantiated vandalism narrative around the failed Reflecting Pool renovation, substituting a sabotage story for accountability on what looks like a contractor or engineering failure. Both moves follow the same logic: convert an unflattering fact (a court loss, a failed public-works project) into a contest over framing rather than substance.</p>
+<p>Beneath this, Los Angeles is quietly absorbing two real institutional crises — a multi-day fire the city has struggled to contain, and the resignation of LAUSD Superintendent Alberto Carvalho after months on leave tied to an FBI search of his home — and a UK government, separately, has lost its Prime Minister. None of these are getting proportionate coverage. The volume of total reporting is overwhelmingly captured by the Trump/Vance omnibus story, which by itself draws more coverage than every other story in the dataset combined. That concentration is itself a signal: the news ecosystem is in a high-conflict, high-volume mode that is starving bipartisan, procedural, and second-tier accountability stories of attention.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>DOJ / Trump administration</strong> — issuing subpoenas a federal judge has now found were retaliatory in intent. The administration&#x27;s own stated rationale (a Somali-community fraud investigation) may be genuine, but the court&#x27;s finding of coercive intent and the administration&#x27;s silence on that finding suggest the legal predicate was being used as a vehicle for political pressure on Walz specifically. Watch for whether the DOJ treats this as an isolated loss or escalates.</p>
+<p><strong>JD Vance</strong> — positioning himself as the administration&#x27;s diplomatic face on Iran. Claiming &quot;great progress&quot; on inspector readmission gives him a foreign-policy credential independent of Trump, ahead of an unverified outcome. The gap between his claimed win and actual verification (IAEA-level confirmation) is the tell here.</p>
+<p><strong>Gov. Tim Walz</strong> — the incidental beneficiary of a court ruling that vindicates him as a target of bad-faith federal action. Expect this to be used politically regardless of how the underlying Somali-fraud investigation resolves.</p>
+<p><strong>Trump</strong> — running the same playbook twice in one cycle: an unsubstantiated &quot;vandalism&quot; claim deflecting from the Reflecting Pool&#x27;s failure, and a broader administration posture that treats court losses as illegitimate obstruction rather than judicial review functioning as designed.</p>
+<p><strong>Right-leaning outlets</strong> — not avoiding unfavorable news, but out-publishing on it. The Minnesota/Iran/Reflecting Pool story draws more total right-leaning coverage volume (22 sources) than left-leaning (16), despite containing a court loss for the administration. This is an active framing-control strategy: flood volume to shape interpretation rather than cede the story.</p>
+<p><strong>Left-leaning outlets</strong> — conversely under-covering their own coalition friction (Bill Maher publicly mocking the Obama Presidential Library; a reported &quot;mess&quot; in Maine Democratic politics) and soft-pedaling foreign-policy stories with ambiguous outcomes, such as the Iran inspector claim and a lethal Caribbean strike, where unambiguous administration fault isn&#x27;t available.</p>
+<p><strong>Carvalho / LAUSD</strong> — an open federal investigation with an unknown predicate. The most specific claim in circulation — an AI chatbot contractor connection — comes from a single right-leaning outlet using hedged language (&quot;reportedly&quot;) and has no independent corroboration. Treat as an unconfirmed lead, not a fact.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning coverage omits or softens: the judge&#x27;s explicit finding that the Minnesota subpoenas were meant to &quot;coerce and retaliate&quot;; reporting that federal agents killed two U.S. citizens during the related immigration enforcement surge; on-the-ground reporting that most people detained near the Reflecting Pool were tourists or debris-collectors, not vandals; and skeptical expert commentary (including from Israel, the WSJ, and National Review) questioning whether the Iran framework secures any verified nuclear concession at all.</p>
+<p>Left-leaning coverage omits or softens: the DOJ&#x27;s stated investigative rationale (a Somali-community fraud probe) and the donor/political ties of the suspect at the center of it; the Minnesota fraud-scandal context that critics use against Walz; and the specifics of Vance&#x27;s claimed diplomatic win, engaging with it mostly to dismiss rather than examine.</p>
+<p>Both sides are ignoring the LA fire as a story of governance failure — it is covered exclusively on the left and entirely absent on the right, despite being a textbook setup for a &quot;California dysfunction&quot; narrative the right normally seizes on. Nobody has reported what the federal investigation into Carvalho actually concerns. Live economic-anxiety data — an Axios-Ipsos poll showing health-affordability concerns shaping midterm sentiment — is buried under a backward-looking debate over Greenspan&#x27;s legacy, even though the polling is the more immediately actionable signal. A bipartisan Senate housing-affordability bill is getting almost no coverage from either side, because it fits neither side&#x27;s preferred conflict frame.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>Two federal judges ruled against the administration on the same day — the Minnesota subpoenas and the SNAP soda-ban waiver — and no outlet in the dataset connects them. Read together, they suggest an emerging and currently invisible pattern of judiciary-versus-executive friction spanning unrelated policy areas, not an isolated Minnesota dispute.</p>
+<p>Los Angeles has two live institutional crises on the same day — an uncontained fire and a superintendent&#x27;s resignation under FBI investigation — that are being covered as unrelated local stories rather than as a single &quot;LA governance under strain&quot; narrative.</p>
+<p>Mother Jones is the single connective thread across three otherwise unrelated stories today (a Utah primary involving Trump endorsements and pardons, a GM sodium-ion battery piece, and the Minnesota/Iran omnibus), meaning a meaningful share of left-leaning framing today traces back to one outlet rather than independent reporting.</p>
+<p>The SAVE America Act surfaces in two places — inside the Trump/Vance omnibus coverage and as the vehicle right-leaning commentary wants stripped of Section 702 FISA surveillance renewal. That is a real, under-the-radar civil-liberties fight developing beneath the louder court-and-diplomacy cycle.</p>
+<p>Iran is being used simultaneously as a domestic political reference point in two countries — bolstering Vance&#x27;s diplomatic-win narrative in the U.S. and surfacing in UK commentary criticizing Starmer&#x27;s foreign-policy record — independent of what is actually happening on the ground in the negotiation.</p>
+<p>AI is the most cross-cutting theme of the day — midterm election influence, a gas-price-collusion lawsuit, China&#x27;s AI industrial blueprint, an AI-quality op-ed, and the unconfirmed AI-chatbot-contractor thread in the LAUSD scandal — yet left and right are processing it through entirely disconnected frames (election integrity and consumer protection on one side, geopolitical competition and deregulation on the other) with zero narrative overlap. This is a live policy area being argued in two sealed rooms.</p>
+<p>Three leadership exits — Starmer, Carvalho, and arguably Greenspan as the close of an economic era — land on the same calendar day, and each gets thin, asymmetric coverage. That points to under-resourced same-day reporting on transition stories even when the procedural stakes (UK succession by September, an open LAUSD superintendency) are real.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p>1. <strong>DOJ appeal of the Minnesota subpoena ruling.</strong> Whether the administration escalates or absorbs the loss will indicate how it intends to handle judicial constraint generally going forward.</p>
+<p>2. <strong>Independent confirmation of Iran&#x27;s inspector readmission.</strong> Vance&#x27;s claim is currently unverified by any neutral body (IAEA or equivalent) — this is the line between a real diplomatic step and a rhetorical one.</p>
+<p>3. <strong>What the Carvalho/LAUSD federal investigation actually concerns</strong>, and whether the single-sourced AI chatbot contractor claim gets independently corroborated.</p>
+<p>4. <strong>UK Labour&#x27;s leadership contest.</strong> A successor must be chosen by September; watch who emerges and whether it signals a centrist correction or a leftward pull within Labour.</p>
+<p>5. <strong>Section 702 FISA renewal and its relationship to the SAVE America Act.</strong> Whether the two get bundled or deliberately decoupled is a live surveillance-powers fight with direct civil-liberties stakes.</p>
+<p>6. <strong>The SNAP soda-ban ruling&#x27;s appeal status.</strong> A second data point on the administration-vs-judiciary pattern; watch whether DOJ pursues it in parallel with the Minnesota appeal.</p>
+<p>7. <strong>Colombia&#x27;s election certification dispute</strong>, as de la Espriella&#x27;s rival continues to contest results.</p>
+<p>8. <strong>AI-driven spending disclosures in Utah&#x27;s new blue congressional-seat primary</strong> — an early test case for automated political spending at scale, currently being tracked by only one outlet.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The fragmentation in today&#x27;s coverage is not primarily a story of suppression — it&#x27;s a story of triage. Both media blocs have committed nearly all of their reporting capacity to a single high-conflict storyline (the Minnesota ruling, Iran, the Reflecting Pool) because it is the one narrative each side&#x27;s audience is primed to consume, and the right in particular is choosing to out-publish on unfavorable news rather than concede the frame. That leaves almost nothing in reserve for the stories that don&#x27;t sort cleanly into a partisan conflict: a same-day pattern of judicial pushback across two unrelated policy areas, a major city absorbing two institutional crises at once, a bipartisan housing bill, live economic-anxiety polling, and a brewing surveillance-powers fight tied to the SAVE America Act. The picture that emerges is of a press ecosystem optimized for refighting yesterday&#x27;s culture-war battles — using a Fed chairman&#x27;s death and a foreign PM&#x27;s resignation as ammunition for unrelated domestic arguments — while the actual mechanics of governance, courts checking the executive, Congress quietly negotiating surveillance authority, a state institution managing a corruption investigation, are happening almost entirely off-camera.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">A federal judge in Minnesota blocked Trump administration grand jury subpoenas targeting Gov. Tim Walz and other state officials as politically motivated, while VP JD Vance announced progress in U.S.-Iran nuclear talks and Trump faced scrutiny over unsubstantiated vandalism claims amid ongoing Lincoln Memorial Reflecting Pool repairs.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (9)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (4)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#5ab56e;">right (13)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:19.1;" title="center: 9"></div><div class="bias-segment" style="background:#e0a87a; flex:17.0;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:8.5;" title="center-right: 4"></div><div class="bias-segment" style="background:#e05252; flex:2.1;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:10.6;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:14.9;" title="left: 7"></div><div class="bias-segment" style="background:#5ab56e; flex:27.7;" title="right: 13"></div></div></div>
+  <div class="story-assessment">Strip away the spin and three distinct, factually solid events remain: a federal court found the Trump DOJ&#x27;s Minnesota subpoenas were issued in bad faith and blocked them; Iran agreed to readmit nuclear inspectors after VP Vance&#x27;s talks, a genuine if unverified diplomatic step; and the Reflecting Pool&#x27;s renovation failed on its own engineering merits, with Trump&#x27;s vandalism narrative substituting for accountability. Each side amplifies the framing that flatters its priors — courts-as-check vs. courts-as-overreach, diplomatic win vs. hollow concession, sabotage vs. incompetence — while omitting inconvenient details (DOJ&#x27;s stated rationale and donor ties on the right; enforcement deaths and verification risks on the left).</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes judicial checks on executive overreach — the Minnesota subpoenas as retaliatory coercion against Democratic officials (with Guardian noting federal agents killed two U.S. citizens during the related immigration surge), and the Reflecting Pool saga as evidence of a botched, costly renovation with Trump&#x27;s vandalism claims framed as evidence-free deflection. Coverage of Iran talks is comparatively muted and cautious rather than celebratory.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Reports the Minnesota subpoena ruling and Iran talks relatively even-handedly — Axios and The Hill note the judge&#x27;s finding of political motivation without strong editorializing, while also relaying Vance&#x27;s &#x27;major milestone&#x27; characterization largely at face value. PBS&#x27;s analysis frames the broader moment as intra-party rifts (Trump vs. GOP hawks on Iran; Democratic establishment vs. progressives in NY primaries) rather than a one-sided crisis narrative.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames Vance as a competent dealmaker delivering real progress on Iran (while batting down &#x27;snub&#x27; reports as foreign disinformation) and casts the Minnesota subpoenas through the DOJ&#x27;s corruption-investigation rationale even while reporting the judge&#x27;s rebuke. On the Reflecting Pool, suggests the vandalism suspect&#x27;s Democratic donor ties indicate political motive, and frames Walz&#x27;s mockery of Trump as hypocritical given a prior Minnesota fraud scandal.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Largely omits the DOJ&#x27;s stated &#x27;Somali corruption&#x27; investigation rationale for the Minnesota subpoenas, the charged suspect&#x27;s ActBlue/Obama donation history, and the Minnesota fraud-scandal context used to criticize Walz; also omits or downplays Vance&#x27;s specific &#x27;great progress&#x27; claims and the administration&#x27;s framing of the Iran talks as a success story.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Largely omits or softens the judge&#x27;s explicit finding that the subpoenas were intended to &#x27;coerce and retaliate&#x27; against officials, omits reporting that federal agents killed two U.S. citizens during the related immigration enforcement surge, and omits on-the-ground reporting that most people detained near the Reflecting Pool were tourists or debris-collectors rather than vandals; also omits skeptical expert/ally concerns (Israel, WSJ, National Review) that the Iran framework grants relief without verified nuclear commitments.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Former Federal Reserve Chairman Alan Greenspan, who led the U.S. central bank for nearly two decades and shared a decades-long friendship with Ayn Rand, died at age 100, prompting retrospectives on his economic legacy.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (3)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:60.0;" title="center-left: 3"></div><div class="bias-segment" style="background:#7ae09b; flex:20.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:20.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The only hard facts agreed upon are biographical: Greenspan died at 100 after nearly 20 years running the Fed and a lifelong friendship with Ayn Rand. Everything else is interpretive legacy-building — center-left outlets are eulogizing a celebrated technocrat while right-leaning commentary is using his death to relitigate 2008 blame and argue for structurally constraining the Fed going forward. The National Review piece in particular isn&#x27;t really obituary coverage at all; it&#x27;s a policy argument loosely hung on the same news peg.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left outlets (NPR, PBS) frame Greenspan&#x27;s death as an occasion for warm, human-interest retrospective — emphasizing his &#x27;legendary&#x27; and &#x27;maestro&#x27; status, his stewardship of long economic booms, and the personal, intellectually formative friendship with Ayn Rand. Criticism of his record is present but secondary and softened (PBS notes his views &#x27;drew criticism&#x27; rather than assigning blame).
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour offers the most balanced framing of the group — explicitly crediting Greenspan with presiding over sustained prosperity while also noting that his free-market convictions drew real criticism after the financial crisis, without fully endorsing or rejecting either narrative.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning coverage (WSJ Opinion, National Review) is skeptical and policy-focused, treating the &#x27;maestro&#x27; narrative as overstated or mythical and tying Greenspan-era monetary policy directly to the 2008 crisis. National Review extends this into a present-tense argument that the Fed&#x27;s mandate itself is flawed and should be narrowed, framing inflation as actively harming &#x27;working families.&#x27;
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Center-left coverage largely omits sustained scrutiny of Greenspan&#x27;s culpability for the 2008 crisis and does not engage with current legislative debates (like mandate reform) that use his record as a cautionary example.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits the human/biographical dimension entirely — no mention of the Ayn Rand friendship or his personal formation — and does not acknowledge the extended periods of low inflation and economic growth widely credited to his tenure.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">LAUSD Superintendent Alberto Carvalho resigned after roughly four months on paid leave during a federal investigation that involved an FBI search of his home.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The verified core is narrow: Carvalho resigned after months on paid leave tied to a federal investigation that included an FBI search of his home. Everything beyond that — particularly the alleged AI chatbot contractor angle — comes from a single outlet using qualified language (&#x27;reportedly&#x27;), so it should be treated as an unconfirmed lead rather than established fact. The real story still missing from both accounts is what the federal investigation is actually about, which neither outlet has nailed down.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not distinctly represented; PBS NewsHour, used here as the center-left source, treats the resignation as closing an open accountability question, emphasizing the long gap between the FBI search and his eventual departure as the newsworthy element.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinct centrist (non-left, non-right) outlet was provided; PBS&#x27;s coverage functions as the most neutral account available, sticking to confirmed timeline facts (paid leave, FBI search, resignation) without speculating on the investigation&#x27;s substance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the story as an ongoing corruption scandal, foregrounding the FBI raid on Carvalho&#x27;s home, raising specific allegations about a contractor tied to a failed AI chatbot venture, and casting Carvalho&#x27;s own account of his tenure as self-serving spin obscuring unresolved federal allegations.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS omits the specific allegation Breitbart raises about Carvalho&#x27;s connection to a contractor behind a failed AI chatbot venture, and does not characterize the matter as a corruption scandal.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits PBS&#x27;s framing of the resignation as a resolution point in an accountability timeline and does not engage with any institutional or district-level context PBS provides around the leave-to-resignation gap.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">U.K. Prime Minister Keir Starmer resigned following heavy local election losses, with Labour required to select a new leader by September.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The only undisputed fact across both sources is that Starmer resigned amid instability; everything beyond that diverges by editorial purpose — Axios stays close to reportable mechanics, while National Review uses the event as a launchpad for an opinion piece on voter culpability rather than engaging with the specific causes of this resignation. Readers relying solely on the right-leaning piece would miss the concrete electoral trigger and succession timeline; readers relying solely on the center piece would miss the broader historical pattern of U.K. leadership turnover.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this set, so left-of-center framing cannot be directly assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the resignation as a straightforward political crisis story — driven by electoral defeat and party turmoil — emphasizing institutional mechanics (succession timeline, party process) over ideological interpretation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review frames the event as a symptom of deeper dysfunction caused by voter behavior and political culture, using Starmer&#x27;s ouster as one data point in a broader indictment of the British electorate&#x27;s judgment, with a tone of moral/cultural criticism rather than focus on the immediate political mechanics.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined; no left-leaning source was provided in this set for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    National Review omits the specific proximate trigger (disastrous local election losses) and the concrete succession mechanics (Labour&#x27;s September leadership deadline) that Axios reports, instead using the event as a springboard for a broader cultural argument about voters.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Los Angeles</span><span class="entity-tag">United States</span></div>
+  <div class="connection-text">LA is the site of two simultaneous institutional crises today — a multi-day fire the city has struggled to extinguish, and the LAUSD superintendent&#x27;s resignation amid an FBI home search — but both surface only as thin, tangential mentions rather than being read together as a broader &#x27;LA governance under strain&#x27; story.</div>
+  <div class="connection-sig">↳ Fragmented coverage means neither outlet bloc is connecting what could be a larger pattern of municipal/institutional dysfunction in one of the country&#x27;s largest cities.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Mother Jones</span><span class="entity-tag">Utah</span></div>
+  <div class="connection-text">Mother Jones is the connective thread across three otherwise unrelated stories (Utah&#x27;s Trump-endorsement/pardon primary, the GM sodium-ion battery piece, and the Minnesota/Iran/Reflecting Pool omnibus), indicating a single outlet is disproportionately shaping left-leaning coverage across disparate beats today.</div>
+  <div class="connection-sig">↳ Thin, single-source dependency on stories with otherwise low overall coverage raises framing-concentration risk.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">SAVE America Act</span><span class="entity-tag">Congress</span></div>
+  <div class="connection-text">The SAVE America Act surfaces both inside the Trump/Vance omnibus story and as the legislative vehicle right-leaning commentary wants decoupled from Section 702 FISA surveillance renewal.</div>
+  <div class="connection-sig">↳ A consequential civil-liberties/surveillance fight is brewing beneath the dominant court-and-diplomacy news cycle and is at risk of being missed.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran</span><span class="entity-tag">Keir Starmer</span></div>
+  <div class="connection-text">Iran appears both in the U.S. diplomatic-progress framing (Vance&#x27;s nuclear talks) and embedded in UK commentary on Starmer&#x27;s foreign-policy failures, meaning Iran is being used as a comparative political cudgel in two countries&#x27; domestic narratives simultaneously.</div>
+  <div class="connection-sig">↳ Suggests Iran diplomacy is becoming a transatlantic partisan reference point independent of the actual negotiation outcome.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump administration</span><span class="entity-tag">Congress</span></div>
+  <div class="connection-text">Two unrelated federal judges ruled against Trump administration policy on the same news day — the Minnesota grand jury subpoenas and a separate SNAP soda-ban waiver block — a pattern visible only by cross-referencing the entity network, since no single story names both rulings together.</div>
+  <div class="connection-sig">↳ An emerging pattern of same-day judicial pushback across unrelated policy domains is currently invisible in mainstream framing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Barack Obama</span><span class="entity-tag">Chicago</span></div>
+  <div class="connection-text">Bill Maher (a left-leaning comedian) publicly mocking the Obama Presidential Library in Chicago is the one piece of intra-left friction surfacing the same day as heavy anti-Trump court coverage.</div>
+  <div class="connection-sig">↳ Shows Democratic-aligned commentary isn&#x27;t fully unified even during a news cycle favorable to anti-Trump framing.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning outlets repeatedly use unrelated news pegs (Greenspan&#x27;s death, Starmer&#x27;s resignation, the Reflecting Pool repairs) as launchpads for ideological arguments — Fed restructuring, anti-progressive-governance critique, sabotage narratives — rather than reporting the underlying facts of those specific events.</div>
+<div class="pattern-item">AI is a dominant cross-cutting theme today (midterm election influence, a gas-price-collusion lawsuit, China&#x27;s AI blueprint, an AI-quality-testing op-ed, and a possible AI-chatbot-contractor angle in the LAUSD scandal) but left and right cover it through entirely disconnected frames — election integrity/consumer protection vs. geopolitical competition/deregulation — with no narrative overlap.</div>
+<div class="pattern-item">Bipartisan or procedurally significant developments (the Senate&#x27;s housing affordability bill, Iran&#x27;s inspector readmission, the Minnesota ruling itself) are consistently dwarfed in coverage volume by the partisan-coded Trump/Vance omnibus story, which alone draws more total sources than every other story combined.</div>
+<div class="pattern-item">Multiple leadership-exit stories cluster on the same day (Starmer, Carvalho, and arguably Greenspan as an era&#x27;s end) but each receives thin, asymmetric coverage (1-2 outlets), suggesting under-resourced same-day reporting on transition stories even when the procedural stakes are high (UK succession by September; an open LAUSD superintendency).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Minnesota/Iran/Reflecting Pool omnibus story draws its heaviest coverage from right-leaning outlets (22 right-leaning vs. 16 left-leaning source counts) despite containing a court loss for the Trump administration, suggesting the right is out-publishing on unfavorable news to control framing rather than ceding the cycle.</div>
+<div class="anomaly-item">A multi-day LA fire with a slow response — normally tailor-made for a &#x27;California dysfunction&#x27; narrative — is covered exclusively by left-leaning sources, with conspicuous total absence on the right.</div>
+<div class="anomaly-item">An FBI search of a sitting superintendent&#x27;s home has produced almost no substantive reporting on what the underlying federal investigation actually concerns, despite the gravity of the act, with only two outlets covering it at all.</div>
+<div class="anomaly-item">Real-time economic-anxiety polling (Axios-Ipsos on health affordability shaping the midterms) sits buried in the entity network rather than treated as a top story, while a backward-looking Greenspan legacy debate dominates economic commentary — an inversion of news values on a day when affordability is reportedly a live midterm issue.</div>
+<div class="anomaly-item">Two separate federal judges ruled against Trump administration policies on the same day (Minnesota subpoenas; SNAP soda-ban waiver), yet no outlet in the dataset appears to connect these as a pattern.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is avoiding straight-news engagement with stories reflecting institutional or administration failure (the Minnesota ruling, the LA fire response, the unsubstantiated vandalism claim), instead redirecting volume into culture-war/historical features or using unrelated obituaries and resignations as vehicles for institutional-power arguments. The left is underplaying its own coalition friction (Maher vs. Obama, the Maine Democratic &#x27;mess&#x27;) and soft-pedaling foreign-policy stories with ambiguous outcomes (Iran inspector readmission, a lethal Caribbean strike), preferring frames where Trump-aligned actors are unambiguously at fault. Both sides converge on under-covering procedural or bipartisan news that fits neither side&#x27;s preferred conflict narrative — the Senate housing bill and the SNAP ruling chief among them.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI and tech are trying to influence the midterm elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voters weigh what kind of Democrat they want for Utah&#x27;s new, blue congressional seat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. strike on an alleged drug boat kills 2, leaves 6 survivors, in the Caribbean</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 3 things I&#x27;ve learned talking with Americans about the country&#x27;s 250th birthday</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump-endorsed de la Espriella holds a slim lead in Colombia&#x27;s election as his rival challenges vote</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A fire in LA has been burning for days. What’s taking so long to put it out?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Plan to auction over 100 Titanic artifacts faces US government opposition</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California drivers sue gas stations for allegedly using AI to inflate prices</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Two killed and several injured as tornado rips through southern Illinois</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Southern Baptist Convention Was Going Mainstream. Then the Christian Nationalists Weighed In.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In This Utah Primary, Trump Endorsed One Candidate, Pardoned the Other</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why GM Is Betting on a Future With Sodium-Ion Battery Storage</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America’s Immigrant Soccer Team</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chuck Schumer’s Chip Shortage</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› China’s Ambitious AI Blueprint</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Scenes From an Ordination</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At the New York Times, the Culture War Never Ends</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Needs Public Quality Testing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Did Lafayette Become America’s Favorite Frenchman?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Hold Section 702 Renewal Hostage to the SAVE America Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Are We Going to &lt;i&gt;Re&lt;/i&gt;fund Planned Parenthood?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Ivy League’s Testing Turnaround Proves the SAT Is Still an Engine for Upward Mobility</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Local News Anchor Exits Industry After Calling Out &#x27;Sanitized&#x27; Journalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AMERICAN SOUNDTRACK: Shot 10 Times in Afghanistan, Singer-Songwriter Scotty Hasting Finds Healing in Music with Nashville Hitmakers Joe Leathers and Skip Black in ‘The Story’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Steve Scalise: America Has a Responsibility to Lead in a Dangerous World</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive—Craig Shirley: An ‘Honored Madam’: Remembering George Washington’s Mother</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Larry Krasner &#x27;Finds Out&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cruel Britannia: Why No PM Can Get Traction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Ravaging of Britain--and Media Attempts To Bury It</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How New Orleans Turned Around Its Failing Schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Nadler Is Still Campaigning</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GLP-1s, MAHA Driving a Seismic Shift in Snacking</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia Voters Cement Latin America&#x27;s Rightward Shift</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Where Did It Go Wrong for Starmer?</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">DOJ&#x27;s expected appeal of the Minnesota grand jury subpoena ruling</div>
+<div class="watch-item">Independent confirmation of Iran&#x27;s readmission of nuclear inspectors following Vance&#x27;s talks</div>
+<div class="watch-item">What the federal investigation into Alberto Carvalho/LAUSD actually concerns, and whether the single-sourced &#x27;AI chatbot contractor&#x27; detail gets corroborated</div>
+<div class="watch-item">UK Labour&#x27;s leadership contest ahead of the September succession deadline</div>
+<div class="watch-item">Whether Section 702 FISA renewal gets attached to or decoupled from the SAVE America Act</div>
+<div class="watch-item">Colombia&#x27;s election certification as de la Espriella&#x27;s rival continues to challenge the vote</div>
+<div class="watch-item">The separate federal SNAP soda-ban ruling as a second data point in the emerging administration-vs-judiciary pattern</div>
+<div class="watch-item">AI-driven spending in Utah&#x27;s new blue congressional seat primary</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
