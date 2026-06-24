@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-24 10:37 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-24 10:37 UTC</span>
+    <span class="pill">122 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>Both major parties are mid-fracture at the same time, and neither side&#x27;s coverage is framing it that way. On the Democratic side, Mamdani-backed DSA candidates swept three New York congressional primaries, ousting two sitting incumbents (Goldman and Espaillat among them), confirming that the party&#x27;s energetic base is moving left faster than its institutional leadership and is now willing to spend that energy on primarying its own. On the Republican side, Trump&#x27;s endorsement machine had a mixed night — wins in some House and gubernatorial primaries, but a notable miss in South Carolina&#x27;s governor&#x27;s race where his initial pick lost outright and he had to hedge with a late co-endorsement — while a 50-48 Senate vote passed a war-powers resolution rebuking his Iran policy, with enough Republican defections to pass. That vote landed on the same news cycle Trump&#x27;s camp was celebrating primary wins, which is an unusual day to take a public swing at the president from inside his own coalition.</p>
+<p>The more consequential and least-discussed thread is institutional: a federal judge dismissed a DOJ lawsuit seeking Maryland voter data, the third instance in recent weeks (after a Minnesota grand jury subpoena and the SNAP soda-ban rulings) of the judiciary slapping down an administration legal theory. Each has been covered as a standalone local story. Taken together, they&#x27;re a pattern of courts actively constraining DOJ&#x27;s expansive use of federal power, and it&#x27;s happening with almost no strategic-level commentary from either side.</p>
+<p>Underneath both of those is a harder-edged story getting almost no attention: eight or nine defendants in Texas were sentenced to decades in federal prison — one to 100 years — on terrorism-conspiracy charges for a shooting that wounded a police officer during an anti-ICE protest at the Prairieland detention facility. This is the kind of story that normally gets amplified hard by one side or the other — and right now it&#x27;s barely being covered by anyone outside the left, where the framing is skeptical of whether the sentence is proportionate. That asymmetry, on a story with an actual shot police officer, is worth treating as a real gap rather than noise.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Mamdani and the DSA bench</strong> are now the dominant force reshaping the Democratic Party&#x27;s near-term trajectory, not through persuasion of the establishment but through primary attrition — taking out incumbents rather than waiting for them to retire. This is generating an immediate and organized opposition-research response (see below), which is itself a sign the establishment and the right both view the Mamdani bloc as the most electorally dangerous element in the current cycle, more than any other Democratic figure.</p>
+<p><strong>Trump&#x27;s endorsement operation</strong> is not the uniform force its supporters present it as — the South Carolina misstep shows real limits, and it matters that this is happening at the same moment Senate Republicans are willing to break with him on Iran. Notably, the omitted detail in left coverage that Marjorie Taylor Greene and Tucker Carlson have moved away from the GOP/Trump orbit — almost certainly tied to Iran/interventionism — suggests the war-powers vote is not an isolated elected-official phenomenon. It extends into Trump&#x27;s own media and base coalition. The Senate vote is the visible tip of a larger rift over Hormuz and Iran that includes libertarian-leaning commentary disputing his authority to impose &quot;tolls&quot; on the Strait and at least one right-only piece framing his Iran conduct as a pattern of retreats.</p>
+<p><strong>DOJ</strong> is the actor losing the most in the institutional arena right now — three separate adverse rulings in different states on different legal theories in a short window — but is facing almost no public accountability narrative for it, because the stories are being covered as disconnected local items rather than a department-wide pattern.</p>
+<p><strong>A right-wing opposition-research apparatus</strong> appears to be running an organized rapid-response operation against insurgent progressives, timed precisely to their electoral wins: three distinct hit pieces on Mamdani (&quot;slumlord,&quot; &quot;silence on antisemitism,&quot; his House picks) and a recurring Platner Reddit-comments story, all surfacing in the same cycle as the NY sweep. This has the signature of coordinated messaging keyed to a moment of demonstrated strength, not new reporting driven by new facts.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not engaging, at all, with any story where courts or due-process findings constrain the administration: the Maryland dismissal, the SCOTUS green-card due-process ruling, a Rastafarian RLUIPA case, DHS civil-rights scrutiny, EPA/Monsanto ghostwriting allegations, Epstein-related transcripts, and a question about whether Trump got special access to a weight-loss drug (Retatrutide). That last item is particularly strange — it&#x27;s the kind of personal-conduct story that normally either gets amplified hard by the left or actively rebutted by the right. Instead it&#x27;s sitting with essentially one outlet carrying it and silence on both sides. That&#x27;s worth tracking specifically because near-total silence on a Trump personal-conduct claim is itself an unusual signal.</p>
+<p>The left is mirroring this by avoiding anything that complicates its own rising stars or hands a win to the global right: the Mamdani and Platner controversies, Bernie Sanders fact-checks, Keir Starmer&#x27;s full collapse, the ten-year Brexit retrospective, and Colombia&#x27;s rightward shift are all getting built into a coherent &quot;global right is ascendant&quot; narrative on the right with zero left-side engagement.</p>
+<p>Nobody on either side is putting the Texas 100-year sentence next to the 8-year sentence given to the Kavanaugh assassination-attempt defendant, even though that comparison directly tests each side&#x27;s stated commitment to consistent punishment for politically motivated violence against the other side&#x27;s targets. Avoiding that juxtaposition is convenient for both.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Mamdani opposition-research cluster and the Platner story are not isolated pieces — they cluster in the same window as the primary wins, which reads as a triggered response rather than organic coverage of new facts about either candidate.</p>
+<p>The administration-vs-judiciary losses (Maryland, Minnesota, SNAP) are forming a real trend that nobody is reporting as a trend. Each ruling individually looks like routine litigation; together they describe a DOJ whose expansive legal theories are getting rejected at an unusual rate.</p>
+<p>The Senate&#x27;s Iran vote isn&#x27;t an isolated legislative event — it sits alongside right-of-center commentary openly disputing Trump&#x27;s Hormuz toll authority and a &quot;Trump&#x27;s Three Retreats&quot; piece from the right itself. That&#x27;s a wider band of GOP-aligned discomfort with his Iran conduct than the Senate floor vote alone would suggest, and it lines up with the MTG/Carlson departure noted above.</p>
+<p>Texas is a simultaneous flashpoint in three separate institutional arenas right now — Supreme Court redistricting litigation, the Prairieland terrorism sentencing, and ordinary primary politics — and no outlet on either side is treating the state&#x27;s role as one connected story, even though the throughline (federal power vs. state-level political conflict) is the same.</p>
+<p>A meaningful share of the apparent &quot;spectrum coverage&quot; in this dataset is concentration, not breadth: a handful of outlets (Mother Jones on the left; Reason, Daily Caller, and writers like Robby Soave and Amber Duke on the right) are anchoring multiple unrelated stories. That inflates the appearance of independent ideological coverage where it may just be a few prolific voices recurring.</p>
+<p>Two unconnected threads — the Reflecting Pool&#x27;s repeated failure after a Trump-ordered renovation, and Joy Reid&#x27;s comments on Fourth of July sentiment — are quietly converging into an unstated &quot;is the 250th anniversary going well&quot; storyline that hasn&#x27;t been named as such by anyone yet, with the actual cause of the pool&#x27;s failure (vandalism vs. construction defects) still unverified by either side nearly a week in.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>House vote on the Senate&#x27;s Iran war-powers resolution.</strong> The Senate passed it 50-48; whether the House takes it up, how many Republicans defect, and whether Trump vetoes (and whether an override is even mathematically plausible) will show whether this is symbolic friction or a real check on his Iran authority.</p>
+<p><strong>Legal challenges to Trump&#x27;s claimed Hormuz &quot;toll&quot; authority.</strong> Right-of-center commentary is already disputing the legal basis; a court challenge or formal DOJ guidance would clarify whether this is a real policy or a rhetorical claim with no legal footing.</p>
+<p><strong>Whether DOJ appeals the Maryland voter-data dismissal.</strong> An appeal (or non-appeal) is the next data point in the three-state pattern of judicial pushback on DOJ legal theories.</p>
+<p><strong>The 8-vs-9 convicted discrepancy in the Texas Prairieland sentencing</strong>, and whether any right-leaning outlet picks the story up at all. Its continued absence from right-wing coverage is itself diagnostic — either a real and telling omission or a sampling gap worth closing.</p>
+<p><strong>Whether the Mamdani opposition-research pieces escalate into a sustained campaign</strong> ahead of the general election, which would confirm this is organized rather than incidental.</p>
+<p><strong>Corroboration or retraction of the Retatrutide access claim.</strong> Its current near-silence is unusual enough that any movement — amplification or formal denial — will be informative.</p>
+<p><strong>Independent verification of the Reflecting Pool&#x27;s failure cause</strong> before July 4 events begin; this is a resolvable factual question that remains open a week in.</p>
+<p><strong>Graham Platner&#x27;s polling in the Maine Senate primary</strong> following the renewed Reddit-comments story, as a read on whether the opposition-research push is actually moving numbers.</p>
+<p><strong>Pentagon senior leadership departures.</strong> Another general&#x27;s planned exit is sitting unexamined in the data; a third or fourth departure in short succession would turn this from a footnote into a story.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The dominant feature of the current moment is that both parties are experiencing genuine, simultaneous internal breakdowns — Democrats losing institutional incumbents to an insurgent left, Republicans losing public discipline over Iran policy from inside their own coalition — and the media apparatus on each side is using the other party&#x27;s fracture as proof of collapse while suppressing or ignoring its own. That is not a new phenomenon, but the degree of symmetry here is unusually clean: matched opposition-research timing, matched judiciary pushback being under-aggregated into a trend, matched avoidance of inconvenient sentencing comparisons, and matched silence on a sitting president&#x27;s personal-conduct question. The most consequential thing actually happening — a real, multi-state pattern of courts checking DOJ&#x27;s legal reach — is the thing getting the least strategic attention from anyone, because it doesn&#x27;t serve either side&#x27;s preferred story about who is winning.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">On primary election night, Mamdani-backed democratic-socialist candidates swept three New York congressional primaries (ousting two Democratic incumbents), Trump-endorsed candidates won several House and gubernatorial primaries elsewhere with mixed results, and the Senate passed a symbolic war powers resolution against Trump&#x27;s Iran policy amid rising GOP friction with him.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (18)</span><span class="bias-badge" style="color:#e0a87a;">center-left (17)</span><span class="bias-badge" style="color:#7ae09b;">center-right (7)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (9)</span><span class="bias-badge" style="color:#5ab56e;">right (10)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.4;" title="center: 18"></div><div class="bias-segment" style="background:#e0a87a; flex:23.9;" title="center-left: 17"></div><div class="bias-segment" style="background:#7ae09b; flex:9.9;" title="center-right: 7"></div><div class="bias-segment" style="background:#e05252; flex:4.2;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:9.9;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:12.7;" title="left: 9"></div><div class="bias-segment" style="background:#5ab56e; flex:14.1;" title="right: 10"></div></div></div>
+  <div class="story-assessment">The hard facts—who won which primaries, vote margins, and the Senate&#x27;s 50-48 war powers vote—are not in dispute across the spectrum; what differs entirely is the meaning assigned to a Democratic establishment losing three NY seats to Mamdani-backed candidates. The real story is twofold: an accelerating leftward generational shift inside the Democratic Party (mirrored by uneven Trump endorsement outcomes inside the GOP) and a noteworthy, if largely symbolic, bipartisan Senate pushback against Trump&#x27;s Iran war conduct. Both parties are experiencing real, simultaneous internal fractures that each side&#x27;s coverage prefers to attribute only to the other.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets frame the NY primaries as a triumphant, organic grassroots validation of Mamdani&#x27;s progressive coalition and a generational/establishment power shift, emphasizing incumbents&#x27; vulnerabilities (e.g., Goldman&#x27;s pro-Israel record) and downplaying ideological &#x27;radicalism&#x27; language. Coverage of Iran and deportation rulings emphasizes human costs, due-process concerns, and bipartisan unease with Trump&#x27;s unilateral actions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) largely report primary results as horse-race outcomes with minimal ideological editorializing, while still acknowledging the results as a setback for Democratic establishment figures and a test of Mamdani&#x27;s and Trump&#x27;s respective influence over their parties&#x27; primaries.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets frame the same primary results as a radical socialist/Marxist &#x27;takeover&#x27; or &#x27;insurgency&#x27; threatening the Democratic Party, using alarmed language (&#x27;far-left surge,&#x27; &#x27;anti-American rhetoric,&#x27; &#x27;dirtbag left&#x27;) and amplifying intra-Democratic panic (citing CNN&#x27;s Van Jones). On Iran, right outlets credit Trump with tangible wins (lower gas prices, ending the war) while framing the Senate&#x27;s war powers vote as an improper encroachment on his authority rather than a legitimate check.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits or downplays language framing the DSA-aligned winners as &#x27;socialist,&#x27; &#x27;radical,&#x27; or holding &#x27;anti-American&#x27; views, and does not engage with Republican claims that Goldman&#x27;s and Espaillat&#x27;s losses signal a dangerous leftward lurch; it also omits coverage of MTG and Tucker Carlson&#x27;s departure from the GOP and largely avoids crediting Trump&#x27;s Iran deal with any economic benefit (e.g., gas prices).
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right and far-right coverage omits Trump&#x27;s own endorsement misstep in the South Carolina governor&#x27;s race (where his initial pick lost and he had to hedge with a late co-endorsement), largely ignores the bipartisan housing bill&#x27;s passage, and gives little attention to Republican senators&#x27; (Sheehy, Risch&#x27;s opposition aside) substantive criticisms of the Iran negotiation strategy that center-right outlets (WSJ, RCP) themselves report.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The coverage actually spans two unrelated events: a federal judge dismissed a DOJ lawsuit seeking detailed voter data from Maryland, while separately eight or nine Texas protesters were sentenced to decades in federal prison — one to 100 years — for a shooting that wounded a police officer during an anti-ICE protest at the Prairieland detention facility.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">What&#x27;s packaged as one &#x27;story&#x27; is actually two unconnected events, and the supplied &#x27;spectrum&#x27; is not a spectrum at all — it&#x27;s three left-of-center outlets (center-left, left, far-left) with no center-right or right counterpart. The one substantive throughline with real public-safety stakes is the Texas sentencing: a police officer was shot, the shooter got 100 years, and accomplices got decades under terrorism-conspiracy charges, but even the two left-leaning sources covering it can&#x27;t agree on how many people were convicted (eight vs. nine), and the dispute is fundamentally about whether harsh terrorism charges for violence against police reflect just accountability or political prosecution of protesters.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both the Guardian (left) and Mother Jones (far-left) cover the Texas sentencing as the central story, emphasizing the severity and unusualness of the punishment, casting doubt on the antifa-terrorism designation as a prosecutorial tool to criminalize protest, and foregrounding sympathy for defendants over the police officer who was shot. Mother Jones goes further, framing the case explicitly as government overreach via &#x27;sweeping conspiracy charges.&#x27;
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS (center-left), the only outlet covering the Maryland case, frames the dismissal in institutional/rule-of-law terms — as another in a series of judicial checks on the Trump administration&#x27;s attempts to obtain state voter data — rather than addressing the Texas sentencing story at all.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No center-right or right-leaning outlet is included in this set, so right-leaning framing cannot be assessed from the provided coverage. This is itself a notable gap given the prompt&#x27;s claim of &#x27;full political spectrum&#x27; coverage — all three sources (center-left, left, far-left) sit on one side of the spectrum.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Coverage of the Texas case downplays or omits sustained focus on the fact that a police officer was shot and wounded, the specific evidentiary basis prosecutors used for the terrorism/conspiracy charges, and any DOJ rationale for the antifa designation. None of the three sources include any rebuttal or context from a right-leaning outlet.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in the provided coverage to compare against. Based on the gap alone: a right-leaning framing would likely emphasize the shooting of a police officer and treat the sentences as deserved accountability, but this is inference, not something present in the supplied data.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">UK Prime Minister Keir Starmer has departed from power, prompting right-leaning commentators to debate both the causes of his fall and its political aftermath, particularly the opening it creates for Nigel Farage.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This dataset contains only right-of-center opinion pieces reacting to the same event from different angles — one retroactively justifying Starmer&#x27;s fall on ideological grounds, the other speculating on the resulting opportunity for Farage — rather than a genuine left-right contrast. The underlying fact, that Starmer has lost power and a political realignment is underway, appears solid, but the &#x27;deserved&#x27; framing and Farage&#x27;s odds are interpretive claims that would need neutral or left-leaning sourcing to verify or balance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not determinable from the provided data — no left-leaning outlet is included in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not determinable from the provided data — no center outlet is included in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review (right) frames Starmer&#x27;s fall as a moral comeuppance, emphasizing that his government&#x27;s divisive, &#x27;spiteful&#x27; class-warfare approach earned its own downfall — a vindication narrative. Breitbart (far-right) frames the same event forward-looking and strategically, casting it as a hard-won opportunity for populist leader Nigel Farage, emphasizing promise tempered by acknowledged obstacles.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be directly assessed without a left-leaning source for comparison. Based on the provided right-leaning coverage alone, it omits any defense of Starmer&#x27;s policy rationale, broader economic/social context for his government&#x27;s decisions, and any critical scrutiny of Farage/Reform as a political alternative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be directly assessed without a left-leaning source for comparison, since no left coverage was provided in this set.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two unrelated items were grouped under one story: a Pew Research survey showing most respondents across 36 countries have little confidence in Trump and see the U.S. as a less favorable, less reliable partner, and a separate National Review opinion piece arguing the U.S. should tie support for Venezuela (via the GE power grid deal and further energy investment) to market reforms.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These are not two perspectives on the same event — they are separate stories that happen to share a subject (the Trump administration&#x27;s foreign policy) but cover unrelated topics: one is empirical polling data on global sentiment, the other is a policy proposal for one country. Treating them as &#x27;coverage of the same story across the spectrum&#x27; is a category error; any apparent contrast between center and right framing reflects topic selection, not ideological disagreement over the same facts. A genuine comparison would require right- and left-leaning coverage of either the Pew survey specifically or the Venezuela policy proposal specifically.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this set; only center (Axios) and right (National Review) coverage is available, so left framing cannot be assessed from the provided material.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames new Pew polling data as a warning sign, emphasizing declining international confidence in Trump and growing perceptions of the U.S. as unreliable, framing this as a tangible cost of current foreign policy conduct.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review frames U.S.-Venezuela policy as a strategic and economic opportunity, emphasizing leverage and conditionality — urging the administration to use existing investment deals as bargaining chips for market reforms rather than extending unconditional support. The tone is pragmatic and policy-prescriptive, not focused on Trump&#x27;s global image.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    National Review&#x27;s piece does not engage with or acknowledge the broader narrative of declining global confidence in Trump or U.S. reliability that the Axios/Pew story raises; it treats Venezuela policy in isolation from the wider international-reputation question.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Supreme Court issued two distinct rulings this term: one holding that RLUIPA (a federal funding-conditions statute) does not allow individuals to sue prison officials for money damages — leaving a Rastafarian prisoner who was forcibly shaved without a remedy — and a separate, unanimous (9-0) ruling that drug use alone, specifically marijuana, does not automatically justify stripping someone of Second Amendment gun rights.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:25.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:25.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These are two unrelated rulings being narratively fused by ideology rather than law: the RLUIPA case is a remedies/standing question (can you sue for damages, not whether the underlying religious-liberty right exists) and the gun case is a unanimous, narrow constitutional limit on drug-status-based rights stripping. The real story is that WSJ and Reason agree on the gun case&#x27;s facts despite differing on its breadth, while Mother Jones&#x27; framing inflates a procedural RLUIPA gap into a sweeping anti-Congress, anti-victim narrative without engaging the legislative-fix argument both WSJ pieces raise. Significance is moderate: it reshapes prisoner civil-rights remedies and adds to gun-rights doctrine, but is not the broad institutional realignment the most dramatic framing suggests.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones casts the RLUIPA decision as part of a broader, alarming pattern of the Court stripping Congress of regulatory teeth, emphasizing the human cost to a religious prisoner left with no legal recourse — the emotional and institutional stakes (victims, eroded oversight) are foregrounded over any procedural nuance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    WSJ (the closest to a centrist voice here) splits the story into two narrow, technical legal questions rather than a unified narrative, stressing the 9-0 consensus on guns-and-marijuana as evidence of cross-ideological agreement while treating the prisoner&#x27;s loss as a legislative drafting gap rather than a constitutional crisis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ and Reason (center-right and libertarian respectively) treat the gun-rights ruling as a vindication of individual constitutional rights against drug-war overreach, emphasizing unanimity as proof the outcome is uncontroversial; WSJ separately treats the religious-liberty loss not as judicial overreach but as a legislative failure, urging Congress — not the Court — to act.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones omits the unanimous Second Amendment/marijuana ruling entirely, including its 9-0 cross-ideological vote count — a detail that complicates a narrative of an aggressively partisan Court, and omits WSJ&#x27;s framing that the RLUIPA gap is congressionally fixable rather than permanent.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ and Reason omit Mother Jones&#x27; broader claim that the RLUIPA ruling diminishes Congress&#x27;s general power to enforce funding-law conditions via private suits beyond this one case, and neither right-leaning outlet engages with the systemic argument that victims of federally-funded civil-rights violations now lack a remedy as a class.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">The Lincoln Memorial Reflecting Pool is being drained for a second time after water quality and liner problems emerged following a Trump-ordered renovation ahead of America&#x27;s 250th anniversary.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree the Reflecting Pool is failing again after renovation work tied to Trump, but they diverge sharply on causation: PBS points to documented physical mismanagement evidence, while Trump&#x27;s &#x27;vandals&#x27; claim — reported skeptically even by a libertarian outlet — lacks corroboration. The dispute is less about whether the pool is broken and more about who or what is to blame, with no neutral verification of either the vandalism claim or the full extent of construction defects.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left coverage (PBS) frames this as a botched renovation story, emphasizing tangible evidence of mismanagement — algae growth, debris, and a damaged liner — as the direct consequence of a Trump-ordered project, without addressing any vandalism claim.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour presents the story primarily as a factual, process-focused account of recurring infrastructure failure tied to a high-profile renovation, focusing on physical evidence (algae, liner damage) over political blame.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No traditional right-leaning outlet is included in this set. The libertarian outlet (Reason) is the closest available and is not deferential to the administration: it reports Trump&#x27;s &#x27;vandals&#x27; explanation but frames it skeptically, suggesting government mismanagement is the more likely cause.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS&#x27;s coverage, as summarized, does not mention Trump&#x27;s &#x27;vandals&#x27; explanation or any administration pushback on the mismanagement narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason&#x27;s coverage, as summarized, does not detail the specific technical evidence (algae, debris, liner damage, chemical treatments) that PBS uses to support the mismanagement narrative.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Zohran Mamdani</span><span class="entity-tag">Graham Platner</span><span class="entity-tag">Breitbart News</span><span class="entity-tag">Mamdani-backed candidates</span></div>
+  <div class="connection-text">The same news cycle that produced bipartisan-covered NY primary wins for Mamdani-backed candidates also produced three right-only opposition-research pieces (&#x27;Slumlord,&#x27; &#x27;Silence in the Face of Antisemitism,&#x27; Mamdani&#x27;s House picks) plus a recurring Platner Reddit-comments controversy story — a rapid-response negative-coverage cluster aimed at insurgent progressive candidates timed to their electoral wins.</div>
+  <div class="connection-sig">↳ Suggests organized opposition messaging keyed to the moment progressives show electoral strength, rather than coverage driven by new facts about either candidate.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Texas</span><span class="entity-tag">Prairieland detention facility</span><span class="entity-tag">Wannabe Kavanaugh Killer sentencing</span></div>
+  <div class="connection-text">Left-leaning outlets cover the 100-year sentence given to a Texas anti-ICE protester (questioning if it&#x27;s disproportionate/political), while right-leaning outlets (Nolte/Breitbart) cover the 8-year sentence given to the Kavanaugh assassination-attempt defendant (arguing it&#x27;s too lenient) — mirror-image sentencing stories used by opposite sides to make opposite points about proportionality of punishment for politically motivated violence.</div>
+  <div class="connection-sig">↳ Neither side puts these two sentences side-by-side, avoiding the obvious question of internal consistency on &#x27;tough on political violence&#x27; standards.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Maryland</span><span class="entity-tag">Trump administration</span><span class="entity-tag">DOJ</span></div>
+  <div class="connection-text">The federal judge&#x27;s dismissal of DOJ&#x27;s Maryland voter-data lawsuit is the latest in a string of judiciary rebuffs of administration legal theories (following the previously flagged Minnesota grand jury subpoena and SNAP soda-ban rulings).</div>
+  <div class="connection-sig">↳ A pattern of courts checking DOJ overreach is forming across multiple states/policy areas, but it&#x27;s being reported as isolated local stories rather than a trend.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Strait of Hormuz</span><span class="entity-tag">Senate war powers resolution</span><span class="entity-tag">Trump&#x27;s Three Retreats</span></div>
+  <div class="connection-text">A right-only/libertarian op-ed denying Trump authority to impose Hormuz tolls, the bipartisan 50-48 Senate war-powers vote against his Iran policy, and a right-only &#x27;Trump&#x27;s Three Retreats&#x27; piece all surfaced the same cycle — convergent right-of-center unease with Trump&#x27;s Iran/Hormuz conduct beyond just the Senate floor.</div>
+  <div class="connection-sig">↳ Indicates the GOP friction in the primary story isn&#x27;t confined to elected officials — it extends into right-leaning commentary, a broader signal than the Senate vote alone suggests.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Mother Jones</span><span class="entity-tag">Reason</span><span class="entity-tag">Daily Caller</span><span class="entity-tag">Robby Soave</span><span class="entity-tag">Amber Duke</span></div>
+  <div class="connection-text">Mother Jones anchors 7 of the &#x27;left&#x27; tags and the Reason/Daily Caller/Soave/Duke cluster anchors several &#x27;right&#x27; tags across unrelated stories (DHS civil rights, Alaska law, RLUIPA ruling on one side; Khanna-Musk, Joy Reid comments, Reflecting Pool on the other).</div>
+  <div class="connection-sig">↳ What reads as broad ideological-spectrum coverage is partly a handful of prolific outlets/writers recycled across topics — a sampling artifact that can overstate how much independent left or right coverage actually exists.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">SCOTUS green card due-process ruling</span><span class="entity-tag">Texas anti-ICE sentencing</span><span class="entity-tag">Maryland voter-data suit</span></div>
+  <div class="connection-text">Three separate hard-news pegs today touch immigration-enforcement due process, and all three cluster as left-only coverage with zero right-leaning engagement on the due-process angle specifically.</div>
+  <div class="connection-sig">↳ Right-leaning outlets are not contesting or even acknowledging the due-process framing of immigration enforcement today, despite ample news hooks to do so.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lincoln Memorial Reflecting Pool</span><span class="entity-tag">Joy Reid Fourth of July comments</span></div>
+  <div class="connection-text">A physical-infrastructure embarrassment story (pool failing again post-Trump-ordered renovation) and a racial-sentiment story about enthusiasm for the Fourth of July both surface in the run-up to America&#x27;s 250th anniversary (July 4, 2026).</div>
+  <div class="connection-sig">↳ Two unrelated threads are converging into an emerging &#x27;is the 250th going well&#x27; storyline that no outlet has yet connected explicitly.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning outlets are independently building a &#x27;global rightward shift&#x27; narrative arc today — Starmer&#x27;s fall/Farage&#x27;s opening, a positive 10-years-after-Brexit retrospective, and Colombia&#x27;s rightward shift — entirely uncovered by left-leaning outlets, none framed as connected but all reinforcing the same macro-theme same-day.</div>
+<div class="pattern-item">Both major parties&#x27; internal fractures (Democratic establishment losses to Mamdani-style candidates; uneven Trump primary endorsement results plus Senate GOP defections on Iran) are being reported by each side as proof the *other* party is collapsing, rather than as the simultaneous two-sided phenomenon the underlying vote data actually shows.</div>
+<div class="pattern-item">Several &#x27;stories&#x27; in this set are actually two unrelated items stitched together under one heading (Maryland/Texas; Pew survey/Venezuela op-ed; RLUIPA/gun-rights rulings) — a recurring aggregation artifact that creates false impressions of thematic connection or spectrum disagreement where none exists.</div>
+<div class="pattern-item">Texas is a simultaneous flashpoint across three unconnected institutional arenas today — SCOTUS redistricting, federal sentencing of anti-ICE protesters, and primary politics — without any outlet treating the state&#x27;s role as a unified storyline.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Texas Prairieland anti-ICE shooting sentencing (100 years for the shooter) has zero center-right or right-wing source coverage in this dataset, despite being exactly the kind of &#x27;harsh consequences for anti-ICE violence&#x27; story conservative media typically amplifies — worth verifying whether this is a true coverage gap or a sampling artifact.</div>
+<div class="anomaly-item">&#x27;Did Trump Get Special Access to Retatrutide?&#x27; is carried by essentially one outlet with no cross-spectrum pickup — a Trump-personal-conduct story that historically would generate either rapid amplification or rapid suppression; its near-total silence is itself notable.</div>
+<div class="anomaly-item">At least several Senate Republicans crossed party lines to pass a war-powers rebuke of Trump&#x27;s Iran policy on the same news day as Trump-endorsed primary wins were being celebrated — an unusual willingness to publicly break with the President on the very day his camp had wins to tout.</div>
+<div class="anomaly-item">&#x27;Another top general set to depart Pentagon&#x27; appears only in the entity network, not as an analyzed story — a continuing senior military leadership turnover pattern that is under-examined relative to its potential significance.</div>
+<div class="anomaly-item">No outlet in this set appears to have corroborated either the Reflecting Pool &#x27;vandalism&#x27; claim or the full extent of construction defects — a factual question with a clear answer that remains unresolved across all sides nearly a week into the controversy.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding stories where courts or due-process findings constrain the Trump administration (Maryland DOJ dismissal, green-card due-process ruling, Rastafarian RLUIPA case, EPA/Monsanto ghostwriting, DHS civil rights scrutiny, Epstein-related transcripts, Trump drug-access questions), while the left is avoiding stories that complicate its own rising stars or favor the global right (Mamdani/Platner controversies, Bernie Sanders fact-checks, Starmer&#x27;s fall, Brexit&#x27;s anniversary, Colombia&#x27;s rightward shift). The pattern suggests both sides are optimizing for narrative protection of their own institutional and electoral winners rather than engaging inconvenient accountability stories about them.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal Judge Dismisses Justice Department</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When falling housing prices are good news — and when they&#x27;re not</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› People fired over Charlie Kirk posts get big payouts for First Amendment retaliation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Read the House transcripts of Bill Gates and Lesley Groff&#x27;s interviews in Epstein probe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Listen Again: The stories we tell ourselves about America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court says Rastafarian can’t sue prison officials over shorn dreadlocks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California teen plotted Columbine-type shooting at library that left two dead, officials say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› SCOTUS Gave the Government a “Blank Check” to Weaken Due Process for Green Card Holders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The EPA Relied on an Influential Glyphosate Study Even After Learning Monsanto Was a “Ghost Writer”</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS Still Has a Civil Rights Team. Aliya Rahman Is Testing It.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Did Trump Get Special Access to Retatrutide?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Mother Jones Investigation Helped Spur a New Alaska Law Protecting Vulnerable Kids</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Starmer Deserved Marlow: Ouster Paves</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Latest Whoppers From Bernie Sanders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will the World Cup Make America Love Soccer?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Zohran Mamdani, Slumlord</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Orders From Teachers Union Headquarters: No School Choice for You</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court Weighs the Right to Sue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Three Retreats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ten Years After Brexit, Britain Is Better Off</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America Is a Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The President Has No Authority to Impose Tolls on the Strait of Hormuz</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Graham Platner Hit with Yet Another Controversy Over Graphic Reddit Comments</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nolte: Eight-Year Sentence and Pronouns Respected for Wannabe Kavanaugh Killer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani&#x27;s Picks Take Key House Primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani&#x27;s Silence in the Face of Antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Slow Death of the Prestige Career</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ivy League Miseducation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia Voters Cement Latin America&#x27;s Rightward Shift</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A German Fan Shows What Loving U.S. Is All About</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether the House takes up the Senate&#x27;s Iran war-powers resolution and how many House Republicans defect; whether Trump vetoes and if there&#x27;s override math</div>
+<div class="watch-item">Legal status of Trump&#x27;s claimed authority to impose &#x27;tolls&#x27; on the Strait of Hormuz — court challenges or DOJ guidance</div>
+<div class="watch-item">Whether DOJ appeals the Maryland voter-data dismissal (third data point in the administration-vs-judiciary pattern alongside Minnesota subpoena and SNAP soda-ban rulings)</div>
+<div class="watch-item">Resolution of the 8-vs-9 convicted discrepancy in the Texas Prairieland sentencing, and whether right-leaning outlets pick up the story belatedly</div>
+<div class="watch-item">Whether the Mamdani opposition-research pieces (slumlord, antisemitism silence) escalate into a sustained campaign ahead of the general election</div>
+<div class="watch-item">Corroboration (or retraction) of the &#x27;Did Trump Get Special Access to Retatrutide?&#x27; claim</div>
+<div class="watch-item">Independent verification of either the Reflecting Pool &#x27;vandalism&#x27; claim or contractor liability before the July 4, 2026 250th anniversary events</div>
+<div class="watch-item">Graham Platner&#x27;s polling trajectory in the Maine Senate primary following the renewed Reddit-comments controversy</div>
+<div class="watch-item">Continued Pentagon senior leadership departures and whether a pattern/explanation emerges</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
