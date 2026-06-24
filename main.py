@@ -45,6 +45,7 @@ def run_weekly_signal(args: argparse.Namespace) -> None:
     """Weekly synthesis pipeline — reads DB, runs Pass 6, writes HTML report."""
     from rich.console import Console
     from pipeline.collector import load_config
+    from pipeline.ops import SignalAbort, preflight_llm, send_alert
     from pipeline.weekly import run_weekly
     from pipeline.reporter import generate_weekly_report
 
@@ -53,7 +54,28 @@ def run_weekly_signal(args: argparse.Namespace) -> None:
     days = getattr(args, "days", 7)
     ga_id = config.get("analytics", {}).get("measurement_id", "")
 
-    brief_text, metadata = run_weekly(config, days=days)
+    try:
+        console.print("[dim]Pre-flight LLM check...[/dim]")
+        preflight_llm(config)
+        console.print("[green]✓[/green] LLM ready\n")
+        brief_text, metadata = run_weekly(config, days=days)
+    except SignalAbort as exc:
+        console.print(f"[red]{exc}[/red]")
+        send_alert(
+            "Signal weekly aborted",
+            str(exc),
+            config=config,
+            tags=["signal", "weekly"],
+        )
+        raise SystemExit(1) from exc
+    except Exception as exc:
+        send_alert(
+            "Signal weekly failed",
+            str(exc),
+            config=config,
+            tags=["signal", "weekly"],
+        )
+        raise
 
     console.print("[bold cyan]Generating weekly HTML report...[/bold cyan]")
     report_path = generate_weekly_report(brief_text, metadata, ga_measurement_id=ga_id)
@@ -69,6 +91,7 @@ def run_monthly_signal(args: argparse.Namespace) -> None:
     """Monthly synthesis pipeline — reads DB, runs Pass 7, writes HTML report."""
     from rich.console import Console
     from pipeline.collector import load_config
+    from pipeline.ops import SignalAbort, preflight_llm, send_alert
     from pipeline.monthly import run_monthly
     from pipeline.reporter import generate_monthly_report
 
@@ -77,7 +100,28 @@ def run_monthly_signal(args: argparse.Namespace) -> None:
     month = args.month
     ga_id = config.get("analytics", {}).get("measurement_id", "")
 
-    brief_text, metadata = run_monthly(config, month=month)
+    try:
+        console.print("[dim]Pre-flight LLM check...[/dim]")
+        preflight_llm(config)
+        console.print("[green]✓[/green] LLM ready\n")
+        brief_text, metadata = run_monthly(config, month=month)
+    except SignalAbort as exc:
+        console.print(f"[red]{exc}[/red]")
+        send_alert(
+            "Signal monthly aborted",
+            str(exc),
+            config=config,
+            tags=["signal", "monthly"],
+        )
+        raise SystemExit(1) from exc
+    except Exception as exc:
+        send_alert(
+            "Signal monthly failed",
+            str(exc),
+            config=config,
+            tags=["signal", "monthly"],
+        )
+        raise
 
     console.print("[bold cyan]Generating monthly HTML report...[/bold cyan]")
     report_path = generate_monthly_report(brief_text, metadata, ga_measurement_id=ga_id)
@@ -96,6 +140,7 @@ def run_signal(args: argparse.Namespace) -> None:
     from pipeline import store
     from pipeline.collector import collect_feeds, load_config
     from pipeline.analyzer import run_pipeline
+    from pipeline.ops import SignalAbort, preflight_llm, send_alert
     from pipeline.reporter import generate_report
 
     console = Console()
@@ -115,8 +160,16 @@ def run_signal(args: argparse.Namespace) -> None:
     # Collect
     articles = collect_feeds(config)
     if not articles:
-        console.print("[red]No articles collected. Check feeds / network.[/red]")
-        sys.exit(1)
+        store.finish_run(run_id, 0, 0)
+        msg = "No articles collected. Check feeds / network and logs/feed_health.log."
+        console.print(f"[red]SIGNAL_ABORT: no_articles[/red] — {msg}")
+        send_alert(
+            "Signal daily: no articles",
+            msg,
+            config=config,
+            tags=["signal", "daily"],
+        )
+        raise SystemExit(1)
 
     article_db_ids = store.save_articles(run_id, articles)
 
@@ -125,45 +178,29 @@ def run_signal(args: argparse.Namespace) -> None:
         store.finish_run(run_id, len(articles), 0)
         return
 
-    # Determine provider (env var overrides config)
     import os
-    llm_cfg  = config.get("llm", {})
+    llm_cfg = config.get("llm", {})
     provider = os.environ.get("SIGNAL_LLM_PROVIDER", llm_cfg.get("provider", "ollama"))
 
-    if provider == "claude":
-        claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
-        console.print("[dim]Checking Claude Code CLI...[/dim]")
-        try:
-            result = subprocess.run(
-                [claude_bin, "--version"], capture_output=True, text=True, timeout=10
-            )
-            if result.returncode != 0:
-                raise RuntimeError(result.stderr.strip())
-            console.print(f"[green]✓[/green] {result.stdout.strip()}\n")
-        except Exception as exc:
-            console.print(f"[red]✗[/red] Cannot reach Claude CLI: {exc}")
-            console.print("  Install via: [bold]npm install -g @anthropic-ai/claude-code[/bold]")
-            sys.exit(1)
-        model = "claude"
-    else:
-        import ollama as _ollama
-        ollama_cfg = llm_cfg.get("ollama", {})
-        model      = ollama_cfg.get("model", "qwen2.5:14b")
-        base_url   = ollama_cfg.get("base_url", "http://localhost:11434")
-        console.print(f"[dim]Checking Ollama ({model})...[/dim]")
-        try:
-            client    = _ollama.Client(host=base_url)
-            available = [m.model for m in client.list().models]
-            if not any(model in m for m in available):
-                console.print(f"\n[yellow]⚠[/yellow]  Model [bold]{model}[/bold] not found.")
-                console.print(f"    Available: {', '.join(available) or 'none'}")
-                console.print(f"    Run: [bold]ollama pull {model}[/bold]\n")
-                sys.exit(1)
+    try:
+        console.print("[dim]Pre-flight LLM check...[/dim]")
+        preflight_llm(config)
+        if provider == "claude":
+            console.print("[green]✓[/green] Claude ready\n")
+            model = "claude"
+        else:
+            model = llm_cfg.get("ollama", {}).get("model", "qwen2.5:14b")
             console.print(f"[green]✓[/green] Ollama ready with {model}\n")
-        except Exception as exc:
-            console.print(f"[red]✗[/red] Cannot reach Ollama: {exc}")
-            console.print("  Start it with: [bold]ollama serve[/bold]")
-            sys.exit(1)
+    except SignalAbort as exc:
+        store.finish_run(run_id, len(articles), 0)
+        console.print(f"[red]{exc}[/red]")
+        send_alert(
+            "Signal daily aborted",
+            str(exc),
+            config=config,
+            tags=["signal", "daily"],
+        )
+        raise SystemExit(1) from exc
 
     # Run analysis pipeline
     brief, clusters, correlation = run_pipeline(
