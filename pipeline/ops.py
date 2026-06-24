@@ -17,6 +17,20 @@ import httpx
 
 ROOT = Path(__file__).parent.parent
 FEED_HEALTH_LOG = ROOT / "logs" / "feed_health.log"
+_dotenv_loaded = False
+
+
+def _load_env() -> None:
+    """Load .env so launchd jobs can pick up SIGNAL_ALERT_URL without plist secrets."""
+    global _dotenv_loaded
+    if _dotenv_loaded:
+        return
+    env_path = Path(os.environ.get("SIGNAL_ENV_FILE", str(ROOT / ".env")))
+    if env_path.is_file():
+        from dotenv import load_dotenv
+
+        load_dotenv(env_path)
+    _dotenv_loaded = True
 
 
 class SignalAbort(Exception):
@@ -34,6 +48,7 @@ def resolve_llm_provider(config: Dict[str, Any]) -> str:
 
 
 def resolve_alert_url(config: Optional[Dict[str, Any]] = None) -> Optional[str]:
+    _load_env()
     env_url = os.environ.get("SIGNAL_ALERT_URL", "").strip()
     if env_url:
         return env_url

@@ -40,6 +40,19 @@ class TestResolveAlertUrl:
     def test_empty_when_unconfigured(self, sample_config):
         assert resolve_alert_url(sample_config) is None
 
+    def test_loads_from_env_file(self, monkeypatch, tmp_path, sample_config):
+        import pipeline.ops as ops_module
+
+        env_file = tmp_path / ".env"
+        env_file.write_text(
+            "SIGNAL_ALERT_URL=https://ntfy.sh/from-dotenv\n",
+            encoding="utf-8",
+        )
+        monkeypatch.delenv("SIGNAL_ALERT_URL", raising=False)
+        monkeypatch.setenv("SIGNAL_ENV_FILE", str(env_file))
+        monkeypatch.setattr(ops_module, "_dotenv_loaded", False)
+        assert resolve_alert_url(sample_config) == "https://ntfy.sh/from-dotenv"
+
 
 class TestSendAlert:
     @patch("pipeline.ops.httpx.post")
@@ -64,7 +77,12 @@ class TestSendAlert:
         assert send_alert("Title", "Body", config=sample_config) is False
 
     @patch("pipeline.ops.httpx.post")
-    def test_no_op_when_unconfigured(self, mock_post, sample_config):
+    def test_no_op_when_unconfigured(self, mock_post, monkeypatch, sample_config):
+        import pipeline.ops as ops_module
+
+        monkeypatch.delenv("SIGNAL_ALERT_URL", raising=False)
+        monkeypatch.setenv("SIGNAL_ENV_FILE", "/nonexistent/.env")
+        monkeypatch.setattr(ops_module, "_dotenv_loaded", False)
         assert send_alert("Title", "Body", config=sample_config) is False
         mock_post.assert_not_called()
 
