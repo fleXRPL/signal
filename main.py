@@ -18,6 +18,7 @@ import sys
 import venv
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 
 ROOT = Path(__file__).parent
@@ -229,7 +230,7 @@ def run_signal(args: argparse.Namespace) -> None:
     console.print(f"  Open:   [dim]open {report_path}[/dim]\n")
 
 
-def _generate_social_cards(report_path: "Path", console: "Any") -> None:
+def _generate_social_cards(report_path: Path, console: Any) -> None:
     """
     Render the three social card PNGs and write post-package JSON files.
 
