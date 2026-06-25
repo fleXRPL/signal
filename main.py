@@ -21,6 +21,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).parent
+_PREFLIGHT_CHECK_MSG = "[dim]Pre-flight LLM check...[/dim]"
 
 
 def setup_venv() -> Path:
@@ -55,7 +56,7 @@ def run_weekly_signal(args: argparse.Namespace) -> None:
     ga_id = config.get("analytics", {}).get("measurement_id", "")
 
     try:
-        console.print("[dim]Pre-flight LLM check...[/dim]")
+        console.print(_PREFLIGHT_CHECK_MSG)
         preflight_llm(config)
         console.print("[green]✓[/green] LLM ready\n")
         brief_text, metadata = run_weekly(config, days=days)
@@ -101,7 +102,7 @@ def run_monthly_signal(args: argparse.Namespace) -> None:
     ga_id = config.get("analytics", {}).get("measurement_id", "")
 
     try:
-        console.print("[dim]Pre-flight LLM check...[/dim]")
+        console.print(_PREFLIGHT_CHECK_MSG)
         preflight_llm(config)
         console.print("[green]✓[/green] LLM ready\n")
         brief_text, metadata = run_monthly(config, month=month)
@@ -183,7 +184,7 @@ def run_signal(args: argparse.Namespace) -> None:
     provider = os.environ.get("SIGNAL_LLM_PROVIDER", llm_cfg.get("provider", "ollama"))
 
     try:
-        console.print("[dim]Pre-flight LLM check...[/dim]")
+        console.print(_PREFLIGHT_CHECK_MSG)
         preflight_llm(config)
         if provider == "claude":
             console.print("[green]✓[/green] Claude ready\n")
