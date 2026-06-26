@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-26 08:31 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-26 08:31 UTC</span>
+    <span class="pill">129 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The Trump administration is running an executive-power expansion across three simultaneous fronts — immigration adjudication, prison-system oversight, and voter-roll control — and each is being covered as an isolated story rather than what it actually is: a coordinated test of how far unilateral authority extends when Congress is slow and courts are mixed. The clearest data point this cycle is the Supreme Court&#x27;s twin 6-3 rulings clearing the way to end Temporary Protected Status for Haitian and Syrian migrants and to revive a border policy that turns back asylum seekers before they reach U.S. soil. Both rulings overturned lower courts and both confirm the same underlying trend: at the Supreme Court level, the administration&#x27;s claims to expanded executive authority are currently winning. That trend does not hold at the district court level, where a separate Trump executive order asserting federal control over voter-roll data was just halted by a federal judge. The administration is getting through the front door at the top of the judiciary and getting stopped at the bottom — a venue-dependent pattern, not a doctrinal one, and it is worth tracking as more of these cases work through the appellate pipeline.</p>
+<p>On the legislative side, the SAVE Act is being pushed hard by right-leaning outlets as a voter-eligibility-verification bill that Senate Republicans ignore &quot;at their peril,&quot; running concurrently with the now-blocked executive order that does much of the same thing by fiat. No outlet in this set treats these as the same fight. That is itself informative: the legislative and executive tracks on voter-roll control are functionally one strategy, and the fact that they&#x27;re being narrated as two unrelated stories, split cleanly along which audience is told about which half, suggests the administration benefits from neither side seeing the whole picture.</p>
+<p>Domestically, the other live story is the consolidation of democratic-socialist power in New York City — Mamdani and Lander&#x27;s primary wins, now backed by an actual policy artifact (a rent freeze covering roughly a million units) — running directly into a same-day, multi-outlet counter-narrative on the right portraying the wealth-redistribution wing of the Democratic Party as elite-driven and hypocritical (Sherrod Brown&#x27;s donor ties, the California billionaire-tax measure, a Reason piece on the limits of wealth taxes, and the Lander/Mamdani &quot;elite-driven&quot; framing all landed together). This is the most electorally significant thing happening on the left this cycle, and it is being met with a synchronized attack line rather than four independent news judgments.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The administration</strong> is the primary mover. It is pursuing executive authority simultaneously over immigration status determinations (TPS termination, asylum turn-backs), the federal prison system, and voter-roll data — three different bureaucratic levers pulled at once. The pattern reads as deliberate sequencing: push everywhere a court might be friendly or slow, and accept that some pushes (the voter-list order) will get checked while others (the SCOTUS immigration rulings) succeed.</p>
+<p><strong>The Supreme Court&#x27;s 6-3 majority</strong> is currently the most reliable vehicle for that strategy. Both immigration rulings broke the same way, overruling lower courts both times. <strong>District courts</strong>, by contrast, are the friction point — the voter-list order is blocked there, and that ruling is the one to watch for an appeal.</p>
+<p><strong>Mamdani, Lander, and the NYC democratic-socialist bloc</strong> are the actors with the most actual new power this cycle — an electoral win plus a concrete policy (the rent freeze) rather than just messaging. <strong>Sherrod Brown and Bernie Sanders</strong> have been pulled into an adjacent fight not of their making: a coordinated right-side narrative using their donor relationships and the California billionaire-tax measure to undercut the NYC wins by proxy, timed to land the same week.</p>
+<p><strong>Pete Hegseth and the Pentagon</strong> present a quieter but real warning sign. A pattern of senior military departures has gone unaddressed publicly by DoD or by right-leaning outlets that would normally cover personnel turmoil, and it now sits alongside a 275-case flu outbreak at a Texas base serious enough to force reinstated vaccine mandates for recruits. Neither story is being connected to the other, but together they read as institutional strain at the building level, not two unrelated items.</p>
+<p><strong>AOC</strong> is a watch item by absence: Senate-bid speculation against Chuck Schumer is circulating only on right-leaning outlets, with no confirmation, denial, or even acknowledgment yet from the left. That asymmetry — the right talking about a Democratic primary fight the left won&#x27;t discuss — is itself a signal about where the right thinks Democratic vulnerability lies.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is not covering: the SAVE Act and its voter-roll mechanics, the Sherrod Brown/billionaire-hypocrisy attack line, and anything in the China-threat space (drone/CCP spying, the Chinese open-source AI model accelerating hacking capability, religious-persecution reporting). All three would complicate a &quot;Democratic strength&quot; narrative or hand ammunition to the opposing coalition&#x27;s framing, and all three are simply absent rather than rebutted.</p>
+<p>The right is not covering: the federal judge blocking Trump&#x27;s voter-list executive order, Trump&#x27;s conspicuous absence from the World Cup while potential 2028 Democratic contenders make appearances, and any humanitarian or judicial-overreach critique of the TPS/asylum rulings — including Sotomayor&#x27;s dissent, which goes unmentioned in right-leaning coverage entirely. These are the stories that show executive power being checked or Trump politically diminished, and they are being dropped rather than argued against.</p>
+<p>Both sides are nearly silent on a concrete, dated development: a federal judge has given DOJ until July 2 to unredact and produce additional Epstein files or justify withholding them. Epstein stories are normally bipartisan magnets. The near-total silence here — only two center sources are covering it at all — is conspicuous enough to flag on its own; it suggests either genuine information scarcity or a rare moment where neither coalition sees upside in raising it.</p>
+<p>Separately, a real public-health story is being downgraded into lifestyle content: the European heat wave has killed dozens, but the only available treatment of it that engages French cultural resistance to air conditioning (WSJ) omits the death toll and any climate framing entirely, treating a mortality event as cultural color.</p>
+<p>Finally, a cluster of previously tracked stories has simply vanished from coverage with no resolution reported: the USPS mail-ballot rule and which states are non-compliant, Texas&#x27;s new top elections official and voter-roll data-sharing decisions, the House Iran war-powers vote, Venezuela earthquake aid, and DOJ&#x27;s three active litigation fronts (the California Glock ban, New York trans medical-records case, and a race-discrimination suit). None of these were resolved on the record in this corpus — they just stopped being mentioned. That is worth distinguishing from &quot;resolved.&quot;</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The SAVE Act and the voter-list executive order are the same fight artificially split in half by ideological silo — legislative and executive tracks toward the same end (centralized control over voter eligibility data), covered as two unconnected stories because each side&#x27;s outlets only follow the track that fits their framing.</p>
+<p>The Brown/Sanders/California-ballot-measure/Reason/Mamdani-Lander cluster is a synchronized attack line, not four independent editorial judgments — it lands the same week as the NYC primary wins it&#x27;s designed to undercut, and it is concentrated entirely on right-leaning and libertarian outlets.</p>
+<p>The Hegseth departure pattern and the Texas base flu outbreak are not being connected by any outlet, but read together they constitute the same signal: institutional strain inside DoD that no single story currently captures.</p>
+<p>The World Cup has become an asymmetric proxy battlefield for 2028 positioning — at least six left-leaning stories track Trump&#x27;s absence against appearances by Harris, Vance, and Mamdani-adjacent figures, while right-leaning coverage produces a single unrelated piece and never engages the absence narrative. That gap is itself data: the left is visibly more anxious about 2028 positioning right now than the right is willing to treat as newsworthy.</p>
+<p>The SCOTUS/district-court split (winning on immigration, blocked on voter rolls) is the cleanest evidence this cycle that the administration&#x27;s near-term success rate on executive-power claims tracks which judicial tier hears the case, not the legal merits — a pattern that will either solidify or break as the voter-list case moves up on appeal.</p>
+<p>One caution against over-reading the data: entities like &quot;Alexandra Koch,&quot; &quot;Reflecting Pool,&quot; and &quot;Connecticut&quot; surface as repeat connections across unrelated stories, but these are almost certainly artifacts of stock-photo credits and generic datelines, not real narrative links. Worth naming so they don&#x27;t get treated as signal in the next cycle.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>July 2, 2026</strong> — DOJ&#x27;s deadline to produce unredacted Epstein files or justify withholding them. Watch whether compliance happens, and whether the near-total media silence (both flanks) breaks once there&#x27;s a concrete outcome.</li>
+<li><strong>SAVE Act floor status and the voter-list EO appeal</strong> — watch for Senate Republicans to either move the bill or for DOJ to appeal the district court block; either move would confirm the legislative/executive tracks are coordinated rather than coincidental.</li>
+<li><strong>TPS termination and border turn-back implementation</strong> — the SCOTUS rulings clear the legal path; watch for actual removals/turn-backs on the ground versus further emergency litigation attempting to slow implementation.</li>
+<li><strong>NYC rent freeze rollout</strong> — watch for landlord legal challenges and whether other Democratic-run cities cite it as a model; this is the policy proof point for the DSA wing&#x27;s primary wins.</li>
+<li><strong>AOC/Schumer Senate speculation</strong> — currently a right-only narrative with no left-side confirmation or denial. A formal statement from either AOC&#x27;s office or Schumer&#x27;s would resolve whether this is a real primary threat or a manufactured storyline.</li>
+<li><strong>DoD senior-officer departures + Texas base flu outbreak (275 cases)</strong> — watch for the first on-record DoD response to either thread; continued silence on both would harden the institutional-strain read.</li>
+<li><strong>China-threat trifecta (drone/spying ban, open-source AI hacking model, religious-persecution reporting)</strong> — watch for legislative or sanctions action tying the three together; right-only coverage so far means no confirmation this is driving policy versus narrative.</li>
+<li><strong>Confirm status of dropped threads</strong> — USPS mail-ballot rule and non-compliant states, Texas&#x27;s top elections official on voter-roll data sharing, the House Iran war-powers vote, Venezuela earthquake aid, and DOJ&#x27;s Glock-ban/NY trans-records/race-discrimination litigation. Each went silent with no reported resolution; need to establish whether they resolved quietly or coverage simply moved on.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline this cycle is not any single ruling or bill but the fact that both coalitions are now operating their coverage as narrative defense rather than event reporting — stories get amplified when they help a side&#x27;s current story and dropped when they complicate it, almost without regard to actual significance. That is why the SCOTUS immigration rulings, the most consequential development of the week, get covered by both sides without either engaging the other&#x27;s strongest argument, while a dated federal court order on Epstein files draws bipartisan silence and a coordinated attack on Democratic wealth politics lands the same week as the left&#x27;s biggest electoral win with no acknowledgment from the left that it&#x27;s happening. The administration is exploiting exactly this dynamic: by running its voter-roll strategy on two tracks (legislative and executive) that map cleanly onto separate ideological media silos, it ensures neither audience sees the full strategy, and that is more dangerous to clear-eyed oversight than any single ruling or outbreak of institutional strain at DoD. The operative assumption for this brief should be that silence from one side is not evidence of non-newsworthiness — it is increasingly evidence of inconvenience.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The U.S. Supreme Court issued two related 6-3 rulings clearing the way for the Trump administration to end Temporary Protected Status for Haitian and Syrian migrants and to revive a border policy that turns back asylum seekers before they cross into U.S. territory.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (13)</span><span class="bias-badge" style="color:#e0a87a;">center-left (19)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (5)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:18.6;" title="center: 13"></div><div class="bias-segment" style="background:#e0a87a; flex:27.1;" title="center-left: 19"></div><div class="bias-segment" style="background:#7ae09b; flex:8.6;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:7.1;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:7.1;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:14.3;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:7.1;" title="libertarian: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:10.0;" title="right: 7"></div></div></div>
+  <div class="story-assessment">Beneath the partisan framing, the core legal facts are not actually in dispute: the Court, in two 6-3 rulings, expanded executive authority over immigration by ending TPS for Haitians/Syrians and reviving a border turn-back policy, with lower courts overruled both times. The real disagreement is normative — whether this is a lawful restoration of statutory text and border sovereignty (right) or a humanitarian and potentially discriminatory rollback of protections enabled by judicial deference (left) — and neither side&#x27;s coverage seriously engages the other&#x27;s strongest argument.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and far-left outlets (Guardian, Mother Jones, WaPo) emphasize the human toll — over a million people facing deportation or loss of status — and frame the rulings as a harmful, ideologically driven &#x27;betrayal of values&#x27; or even racially motivated judicial overreach. They foreground Sotomayor&#x27;s dissent and quote Democratic officials and advocacy groups condemning the decisions as harsh and discriminatory.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (NPR, PBS, Axios, The Hill) describe the rulings primarily in procedural and legal terms — what the Court decided, the 6-3 vote breakdown, and which lower-court orders were overturned — while also noting the scale of human impact (over a million people) without adopting strong advocacy language on either side.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets (Fox, National Review, Breitbart) frame the rulings as a vindication of the plain text of immigration law and a &#x27;clean sweep&#x27; for lawful executive authority and border sovereignty. They emphasize DHS/legal officials&#x27; approval, treat dissenting warnings as overstated, and cast Democratic/blue-state resistance to the rulings as politically motivated overreach.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the textualist legal reasoning right-leaning outlets emphasize (e.g., statutory bars on judicial review, the argument that the rulings simply apply Congress&#x27;s plain language) and rarely engages with DHS&#x27;s enforcement rationale or claims of fraud/abuse in the asylum system that underpin the administration&#x27;s position.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the substantive human-impact reporting and dissent arguments emphasized on the left — such as the specific number and circumstances of TPS holders, the legal critique that the TPS decision exempts executive determinations from meaningful judicial review, and Sotomayor&#x27;s detailed dissent explaining why the majority&#x27;s reasoning was strained.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A severe heat wave swept across Europe, contributing to dozens of deaths, while commentary contrasted the public health emergency with Europeans&#x27; (especially French) cultural reluctance to adopt air conditioning.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The two pieces aren&#x27;t really describing the same story: one is hard news about a deadly climate-linked heat emergency, the other is a lifestyle opinion piece using the same weather event as a cultural anecdote. The substantive fact, that low AC adoption intersects with rising extreme heat to create real mortality risk, is acknowledged by Axios but is entirely absent from WSJ&#x27;s lighter treatment, which risks normalizing a vulnerability that is becoming more dangerous as heat waves intensify.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this coverage set, so left framing cannot be assessed from the provided data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the heat wave as an urgent public-health emergency, emphasizing scientific attribution to climate change and a rising death toll, positioning the event within the broader pattern of climate-driven extreme weather.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion treats European AC-avoidance as a charming, stubborn cultural eccentricity — closer to a lifestyle anecdote than a crisis story — implicitly holding up American practicality and comfort-seeking as the sensible contrast, with a wry, indulgent tone rather than alarm.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion omits the death toll, the climate-change attribution, and any framing of the heat wave as a public-health emergency, treating the AC-avoidance angle as cultural color rather than a consequence of a dangerous climate trend.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge ordered the DOJ to produce and unredact additional pages of Epstein-related files (or explain by July 2 why it cannot) in a lawsuit alleging noncompliance with prior disclosure obligations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:100.0;" title="center: 2"></div></div></div>
+  <div class="story-assessment">The confirmed development is narrow and procedural: a court has compelled the DOJ to either release more unredacted Epstein material or justify withholding it by a set deadline, rather than any new substantive disclosure about Epstein&#x27;s conduct, associates, or the underlying allegations. The two center sources agree on the core mechanism but diverge on secondary details (injunction type, plaintiff identity, statutory basis, deadline), suggesting some reporting gaps rather than ideological spin. Without left- or right-leaning sources in this sample, it&#x27;s impossible to assess how partisan media are framing the political stakes of this ruling.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this dataset, so left-wing framing cannot be characterized from the coverage provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both center outlets treat this as a procedural legal-accountability story rather than a substantive scandal update — emphasizing the court&#x27;s authority to compel DOJ action, compliance deadlines, and process mechanics over speculation about what the unredacted files might reveal.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this dataset, so right-wing framing cannot be characterized from the coverage provided.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not assessable — no left-leaning source provided.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not assessable — no right-leaning source provided.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Democratic-socialist-aligned candidates, including Brad Lander, posted strong primary wins in New York City races, prompting debate over whether the movement reflects a grassroots realignment or an elite-driven phenomenon.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The two outlets aren&#x27;t fully describing the same event — they highlight different races and candidates within a broader NYC trend of democratic-socialist primary wins, which limits direct comparison. The substantive dispute is interpretive: Mother Jones reads the wins as proof of growing grassroots-left power, while Reason reads similar wins as evidence the movement is elite-driven and demographically narrow, with neither source independently verified against the other&#x27;s specific claims here.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones frames the results triumphantly, as evidence of ideological realignment in the Democratic Party — left-wing, DSA-backed challengers unseating establishment incumbents, emphasizing the scale of the margin as a mandate for the party&#x27;s progressive wing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned outlet is included in this coverage set, so center framing cannot be characterized from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The only available source (Reason, libertarian) frames DSA&#x27;s success skeptically, as a phenomenon confined to wealthy, highly educated elites rather than a broad-based or immigrant-driven movement; it uses this to rebut a conservative talking point about immigration importing socialism, while still portraying the winning candidates as ideologically extreme. No outlet from the traditional institutional right is included in this set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones omits any discussion of the demographic or socioeconomic composition of DSA&#x27;s voter base (wealth, education) and does not engage with claims about who is actually driving these results.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason omits any mention of the Lander-Goldman race, its 30-point margin, or the broader &#x27;establishment defeated&#x27; narrative that Mother Jones treats as the headline story.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">These two articles do not cover the same event: one concerns a California billionaire-tax ballot measure, the other a deadlocked jury in a Palisades Fire arson trial — they appear to have been mismatched under a single garbled story title.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two articles cannot be meaningfully compared as &#x27;coverage of the same event&#x27; — they are about unrelated subjects (a tax ballot initiative vs. a criminal arson trial) that appear to have been paired by a topic-matching error, likely caused by the ambiguous/garbled combined headline &#x27;California&#x27;s Proposed Billionaire Reaches Impasse.&#x27; Any attempt to manufacture consensus, contested points, or comparative framing between them would fabricate a relationship that does not exist in reality. Each story should be analyzed separately with same-event sources from multiple political orientations before a legitimate spectrum comparison can be made.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the billionaire tax ballot qualification as a grassroots progressive win gaining national momentum, foregrounding supporter voices (e.g., Sanders) and treating billionaire-funded opposition as a secondary hurdle rather than a central conflict.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-source coverage was provided for either underlying story, so no center framing can be assessed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the Palisades Fire arson case as an open-and-shut prosecution against a clearly guilty defendant, characterizing the jury&#x27;s deadlock as an exasperating procedural delay rather than a sign of legitimate reasonable doubt.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian piece contains no mention of the Palisades Fire arson trial; it is simply a different story, not an omission within the same narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The Breitbart piece contains no mention of the billionaire tax ballot measure; it is simply a different story, not an omission within the same narrative.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">SAVE Act</span><span class="entity-tag">Trump federal voter list executive order</span><span class="entity-tag">Senate Republicans</span></div>
+  <div class="connection-text">These are the same underlying fight — control over voter-roll data and eligibility verification — but split into two &#x27;unrelated&#x27; stories along ideological lines: right-only outlets cover the SAVE Act push and warn Senate Republicans to act (&#x27;Ignore SAVE Act at Their Peril&#x27;, the Scanlon fact-check), while left-only outlets cover a federal judge halting Trump&#x27;s parallel voter-list executive order. No outlet in this set connects the legislative and executive tracks as one coordinated voter-roll strategy.</div>
+  <div class="connection-sig">↳ If SAVE Act and the executive order are in fact a two-pronged strategy (legislative + executive) to centralize voter-roll data, neither audience is being shown the full picture — readers on each side see only the half of the story that fits their priors.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Sherrod Brown</span><span class="entity-tag">Bernie Sanders</span><span class="entity-tag">Zohran Mamdani</span><span class="entity-tag">Reason</span></div>
+  <div class="connection-text">Four nominally separate stories — Brown&#x27;s Wall Street donor exposé, the California billionaire-tax ballot measure, Reason&#x27;s &#x27;Even a Global Wealth Tax Can&#x27;t Solve This Problem,&#x27; and the Lander/Mamdani &#x27;elite-driven&#x27; framing — all run same-day on right-leaning/libertarian outlets and converge on a single thesis: Democratic wealth-redistribution politics is hypocritical or astroturfed.</div>
+  <div class="connection-sig">↳ This is a coordinated (or at least synchronized) narrative push rather than four independent news events; it&#x27;s timed to directly undercut the NYC socialist primary wins that are this cycle&#x27;s biggest story for the left.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pete Hegseth</span><span class="entity-tag">Department of Defense</span><span class="entity-tag">Texas base flu outbreak</span></div>
+  <div class="connection-text">Hegseth links a carried-over watch item (pattern of senior military departures, never addressed publicly by DoD or right-leaning outlets) to a new, unrelated-seeming story: 275 flu cases at a Texas base forcing reinstated vaccine mandates for recruits.</div>
+  <div class="connection-sig">↳ Personnel attrition at the top and a disease outbreak in basic training simultaneously suggest institutional strain at DoD that no single story captures alone.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">World Cup</span><span class="entity-tag">Kamala Harris</span><span class="entity-tag">Usha Vance</span></div>
+  <div class="connection-text">Left-leaning outlets are running at least six distinct World Cup stories that use attendance/absence as a 2028 proxy battle (Trump&#x27;s absence, Harris/Vance/Mamdani-adjacent appearances, a &#x27;2028er attendee leaderboard&#x27;). Right-leaning coverage of the World Cup is limited to a single unrelated piece on Scottish fans and never engages the absence narrative.</div>
+  <div class="connection-sig">↳ This is an asymmetric attention pattern: the left is visibly more anxious about/invested in 2028 positioning right now than the right is willing to acknowledge as newsworthy.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Supreme Court</span><span class="entity-tag">U.S. District Court</span><span class="entity-tag">Trump administration</span></div>
+  <div class="connection-text">The same week, the administration&#x27;s executive-power expansion succeeds at the Supreme Court (6-3, overruling lower courts on TPS/asylum) but is checked at the district court level (voter-list executive order halted). Outcomes diverge sharply by which judicial tier engages.</div>
+  <div class="connection-sig">↳ Suggests the administration&#x27;s near-term win rate on power-expansion claims is a function of venue, not legal consistency — a pattern worth tracking as more challenges move up the appellate chain.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Alexandra Koch</span><span class="entity-tag">Connecticut</span><span class="entity-tag">Reflecting Pool</span></div>
+  <div class="connection-text">These register as &#x27;entities appearing in 2+ unrelated stories&#x27; but are almost certainly extraction artifacts — &#x27;Alexandra Koch&#x27; resembles a stock-photo contributor credit, &#x27;Reflecting Pool&#x27; a recurring D.C. photo backdrop, and &#x27;Connecticut&#x27; a generic dateline — not substantive cross-story links.</div>
+  <div class="connection-sig">↳ Flagging this prevents false-positive narrative-building; any analysis treating these as meaningful connections would be chasing noise in the entity-linking pipeline.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A three-front executive-power-consolidation story (immigration courts via SCOTUS, prison system oversight via &#x27;He Went to Prison. Now He Is in Charge of Them,&#x27; and election/voter-list control via the SAVE Act + executive order) is unfolding simultaneously but is being covered as three unrelated items, each in its own ideological silo.</div>
+<div class="pattern-item">Right-leaning media ran a same-day, multi-story &#x27;billionaire/wealth-tax hypocrisy&#x27; attack line (Sherrod Brown, CA ballot measure, Reason wealth-tax piece, Mamdani/Lander &#x27;elite&#x27; framing) timed against the left&#x27;s biggest win of the cycle (NYC socialist primaries).</div>
+<div class="pattern-item">A &#x27;China threat trifecta&#x27; — drone/CCP spying, AI-accelerated hacking via a Chinese open-source model, and religious persecution (&#x27;China&#x27;s War Against Faith&#x27;) — appears exclusively in right-leaning coverage, reinforcing one composite threat frame across military, cyber, and religious-freedom domains without any center or left counterpart.</div>
+<div class="pattern-item">The World Cup is being used almost exclusively by left-leaning outlets as a proxy battlefield for 2028 Democratic positioning and as a vehicle for highlighting Trump&#x27;s absence, while right-leaning outlets decline to engage with the absence narrative at all.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Epstein files story — a federal judge compelling the DOJ to unredact/produce more material or justify withholding by July 2 — is covered by only two center sources with zero left or right amplification. Epstein stories are normally bipartisan lightning rods; this near-total silence from both flanks on a concrete, dated court order is conspicuous.</div>
+<div class="anomaly-item">The European heat-wave story splits into a hard-news mortality piece (Axios, center) and a WSJ lifestyle/opinion piece on French AC reluctance that omits the death toll entirely — an unusual soft-pedaling of a public-health emergency by normalizing it as cultural quirk.</div>
+<div class="anomaly-item">Two unrelated stories (a California billionaire-tax ballot measure and a deadlocked Palisades Fire arson jury) were merged under one garbled headline, and entity-linking compounded the error by tying them together via &#x27;U.S. District Court&#x27; and &#x27;Bernie Sanders&#x27; — a pipeline/aggregation failure rather than a real narrative connection.</div>
+<div class="anomaly-item">Despite the SCOTUS TPS/asylum ruling being the day&#x27;s highest-significance story with broad spectrum coverage, none of the listed sources substantively engage the opposing side&#x27;s strongest argument — both &#x27;lawful restoration of statutory authority&#x27; (right) and &#x27;discriminatory rollback enabled by judicial deference&#x27; (left) go unaddressed by the other camp, per the assessment itself.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding stories that complicate its preferred narrative of Democratic strength: the SAVE Act/voter-roll mechanics, the Sherrod Brown/billionaire-hypocrisy framing, and China-threat coverage all go uncovered on the left. The right is systematically avoiding stories that show executive overreach being checked or Trump politically diminished: the blocked voter-list executive order, Trump&#x27;s World Cup absence, and the humanitarian critique of the TPS/asylum ruling are right-side blind spots. The pattern suggests each side&#x27;s coverage decisions are increasingly organized around narrative defense rather than event significance — stories get amplified or dropped based on whether they help or hurt a coalition&#x27;s current story, not their newsworthiness.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump is pushing to institutionalize homeless people. That may include veterans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The new housing bill is historic. Experts say it may fall short for renters most in need</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal judge halts Trump&#x27;s election executive order seeking to create a federal voter list</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who&#x27;s who from the Trump administration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Usha Vance, Kamala Harris and Hasan Piker walk into a ... stadium</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Potential 2028er World Cup attendee leaderboard</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Usha Vance to attend match</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats grapple uncomfortably with World Cup success</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Canada&#x27;s biggest fan may be its biggest problem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Orange gush: KC mayor parties with the Dutch</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How much longer can Donald Trump go missing from the World Cup?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic socialists cemented power in New York. Next, the rest of the country?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Las Vegas youth pastor dies days after being charged in wife’s fatal fall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New evidence casts doubt on RFK Jr testimony before Senate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› They Found Tom Kean Jr.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Stunning Photojournalism That Made Mother Jones</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Women’s Work: My Barrier-Breaking Early Years at Mother Jones</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exploding Cars, Office Monkeys, Watergate: The Origins of Mother Jones</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Opinion: Who is Andy Burnham, the U.K.&#x27;s &#x27;King of the North&#x27;?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Tartan Army Takes America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Reconquest of Mainline Protestantism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The House Sides With Unions Over Workers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› French citizen who illegally cast ballot in 2022 midterms says New Jersey automatically registered him to vote</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems put on blast over poll that shows record-low patriotism in US: &#x27;Tear our society apart&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Red state gov bans July Fourth fireworks statewide over wildfire concerns ahead of America&#x27;s 250th anniversary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: AOC won&#x27;t rule out Senate bid after New York progressives notch primary wins: &#x27;Inspired and encouraged&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chinese drone monopoly put on notice amid concerns over CCP spying: &#x27;Strategic mistake&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Road Map to the Next Middle East War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 1776? The American Revolution Really Started in the 1600s</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› China’s War Against Faith</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fact Check: Democrat Mary Gay Scanlon Claims SAVE Act Would Disenfranchise Half of Pennsylvania Voters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sherrod Brown Took Nearly $4.9M from Wall Street-Affiliated and Billionaire Donors While Railing Against Them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Banks Protect More Than Money—They Safeguard American Prosperity and Security</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Todd Young: Americans Are Free, Proud, and Bow to No One</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Progressives Get Very Different Primary Results Outside NY</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems in Panic Mode, GOP &#x27;in Revolt&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Piety and Patriotism in a Public School</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At This Point, the Reflecting Pool Deserves an Emmy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› He Went to Prison. Now He Is in Charge of Them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jan Brady, We Need You</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Didn&#x27;t Win</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate Republicans Ignore SAVE Act at Their Peril</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">DOJ Epstein-files compliance deadline of July 2 — watch whether DOJ produces unredacted pages or explains non-compliance, and whether left/right coverage finally engages once a concrete outcome lands</div>
+<div class="watch-item">SAVE Act legislative status and any explicit linkage/trade against the federal voter-list executive order now that the order has been judicially halted — watch for appeal of the district court ruling</div>
+<div class="watch-item">Implementation timeline for TPS termination (Haitian/Syrian migrants) and the revived border turn-back policy — actual removals/turn-backs vs. further litigation</div>
+<div class="watch-item">Mamdani&#x27;s NYC rent freeze (1 million units) — legal challenges, landlord pushback, and whether it becomes a national model/flashpoint as &#x27;democratic socialists cemented power&#x27; coverage suggests</div>
+<div class="watch-item">AOC Senate-bid speculation vs. Chuck Schumer — watch for any formal announcement or denial, currently amplified only by right-leaning outlets</div>
+<div class="watch-item">Hegseth/DoD: cumulative senior-officer departure count plus the Texas base flu outbreak (275 cases) — watch for first on-record DoD or right-leaning response to either thread</div>
+<div class="watch-item">China-threat trifecta (drone ban/CCP spying, open-source AI hacking model, religious-persecution reporting) — watch for any legislative or sanctions follow-through tying the three together</div>
+<div class="watch-item">Carried over, still unresolved: USPS mail-ballot rule finalization and named non-compliant states; Texas&#x27;s new top voting official&#x27;s actions on voter-roll data sharing; House vote on Iran war-powers resolution; Venezuela earthquake aid response (dropped off entirely this cycle — confirm whether resolved or simply uncovered); DOJ&#x27;s CA Glock-ban, NY trans medical-records, and race-discrimination litigation fronts (also dropped off — check for quiet docket movement)</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
