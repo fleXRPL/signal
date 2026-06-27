@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-27 08:28 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-27 08:28 UTC</span>
+    <span class="pill">126 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant event of the cycle is the first U.S. military strike on Iranian territory since the ceasefire took hold — triggered by an Iranian drone attack on a Singapore-flagged cargo ship in the Strait of Hormuz, answered by U.S. strikes on Iranian missile, drone-storage, and coastal radar sites. The factual sequence is not contested. What is contested is interpretation: the administration and its allies are framing this as proportionate, justified self-defense that proves the ceasefire&#x27;s deterrent logic still holds; critics are framing it as the start of an escalation spiral that the ceasefire was supposed to prevent. Underneath both framings sits a fact nobody is foregrounding — Congress has taken no action, and shown no inclination to take action, on war-powers oversight despite a second round of strikes against a sovereign state. That is the most consequential single fact in today&#x27;s news cycle and the least discussed.</p>
+<p>Beneath the Iran story, a domestically significant move is landing almost unnoticed: Trump&#x27;s Religious Liberty Commission presented the president a draft report recommending the U.S. abandon strict church-state separation for a &quot;bridge-building&quot; model. This is a serious proposed break from decades of legal doctrine, delivered in the same Oval Office news cycle as the Iran strikes, and it is getting a fraction of the scrutiny it would otherwise draw. Whether that timing was deliberate or simply fortunate for the administration, the effect is identical: a high-salience military story is absorbing the oxygen that would normally go to a domestic legal change of this magnitude.</p>
+<p>A third, quieter thread is the early positioning for 2028. Two plausible Democratic contenders — Pete Buttigieg and JB Pritzker — are getting markedly different treatment, and a corresponding asymmetry is showing up in what each side chooses to cover at all. Meanwhile, an under-examined policy shift — relaxed export controls letting Anthropic license its frontier model broadly, justified in part by China&#x27;s cheaper competing models eroding U.S. leverage — is moving forward with no partisan fight whatsoever, which is itself unusual for an AI/national-security story of this size.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the central node today on two fronts simultaneously — ordering retaliatory strikes on Iran and receiving the Religious Liberty Commission&#x27;s draft report — and the pairing of these two events in the same Oval Office cycle is doing real work for the administration: the military story crowds out scrutiny of the legal one.</p>
+<p><strong>Congress</strong>, collectively, is the dynamic that should be getting attention and isn&#x27;t. Neither party is asserting a war-powers role in the renewed Iran conflict. This is not partisan asymmetry — it&#x27;s bipartisan abdication, and it&#x27;s being ignored by coverage on both sides because it doesn&#x27;t fit either side&#x27;s preferred story (right: justified strikes; left: reckless escalation). A genuine institutional check is simply not being exercised, and no one is covering its absence as news.</p>
+<p><strong>John Bolton</strong> is a Trump critic and Iran hawk who pled guilty to retaining classified information on the same cycle as the new strikes. This is a ready-made attack line for right-leaning outlets against a prominent administration critic, and it is being left almost entirely alone by them. The likely reason: Bolton&#x27;s hawkish criticism of the ceasefire complicates a clean &quot;restrained, justified strike&quot; narrative, and amplifying his legal trouble risks reopening the hawks-vs-restraint argument inside the right&#x27;s own coalition rather than scoring a clean win.</p>
+<p><strong>Buttigieg and Pritzker</strong> represent the opening moves of the invisible 2028 Democratic primary, and right-leaning media is already showing its hand on whom it considers the bigger threat. Pritzker is being actively attacked on tax policy (&quot;Junk Tax Spree&quot; framing). Buttigieg&#x27;s CPS story — built almost entirely on his own account, with no independent confirmation from CPS, police, or the anonymous caller — is being left alone by the right, most plausibly because attacking a sympathetic, uncorroborated personal story carries more risk than reward right now.</p>
+<p><strong>Elizabeth Warren and Bernie Moreno</strong> are an odd pairing worth tracking structurally rather than as a daily story: an Ohio Republican senator adopting Warren-style economic populism signals a cross-partisan populist convergence forming independently of the standard Trump-era left/right axis.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The single largest omission, present on both sides, is Congress&#x27;s non-engagement on war-powers oversight following renewed strikes on Iran. Reason&#x27;s coverage flags this from a libertarian angle; no one else picks it up. This is the rare omission that isn&#x27;t ideological — it&#x27;s an institutional failure neither party benefits from highlighting.</p>
+<p>On the right: no coverage at all of the Religious Liberty Commission&#x27;s actual policy recommendation, despite it being a favorable, made-to-order story for religious-right audiences. No coverage of Bolton&#x27;s guilty plea, despite it being a free attack on a prominent Trump critic. No coverage of Buttigieg&#x27;s CPS story, despite Buttigieg being a habitual target. All three look like deliberate narrative discipline — none of them risk the &quot;justified, restrained Iran response&quot; frame, and two of them (Bolton, Buttigieg) carry a real chance of generating sympathy for the subject if engaged directly.</p>
+<p>On the left: no coverage of the substantive Supreme Court wins on guns and the border that right-leaning outlets are covering — left coverage of the Court this cycle is confined to expansion talk and internal tensions, a completely different subject, not a different spin on the same subject. No engagement with the national-security argument around loosening AI export controls to Anthropic. Limited counter-programming to the right&#x27;s pre-July 4th patriotic content wave — essentially one skeptical piece against a coordinated slate of founding-era and patriotism content on the right.</p>
+<p>Both sides: total silence on the DOJ&#x27;s Epstein-files compliance deadline, now five days out (July 2, 2026). Total silence on TPS terminations except on the right, where the story remains alive but uncontested. Total silence on the ACA enrollment drop&#x27;s actual causal mechanism — both sides are running the same underlying data through opposite, non-intersecting frames (&quot;fraud crackdown success&quot; vs. &quot;GOP let prices skyrocket&quot;) without engaging the other&#x27;s claim at all.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Iran strikes and the Religious Liberty Commission report converging on the same Oval Office news cycle is the clearest case of a bigger story providing cover for a smaller-but-more-legally-significant one. Whether engineered or coincidental, the effect on public attention is the same, and it&#x27;s worth treating any future pattern of &quot;major Trump initiative announced same-day as military action&quot; as a signal to look harder at the smaller story.</p>
+<p>The Bolton plea and the Iran strikes landing the same day is very likely not coincidental in effect, even if not engineered: it is the single cleanest example in this corpus of a side declining to use available ammunition because doing so would undercut its own preferred narrative elsewhere.</p>
+<p>The Buttigieg/Pritzker asymmetry is an early, genuinely useful signal — track relative right-wing coverage volume between the two as a real-time proxy for who the right currently fears more in 2028. Right now, that&#x27;s Pritzker, by a wide margin.</p>
+<p>State Department messaging is quietly pairing Venezuela with Iran in the same briefing, despite Venezuela not being the day&#x27;s driving story. This is left-only coverage and is worth flagging as a possible early indicator of escalating posture toward Caracas before it becomes a headline in its own right.</p>
+<p>The pre-July 4th content asymmetry — a coordinated-looking slate of patriotic/founding-themed pieces on the right against a single skeptical entry on the left — is a useful baseline for how lopsided &quot;soft&quot; ideological programming can get even when there&#x27;s no breaking news driving it.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Congress, war-powers response to the new Iran strikes.</strong> No action taken yet by either chamber or party. Watch for any resolution, hearing request, or statement in the next 72 hours — its absence is itself the story.</li>
+<li><strong>Religious Liberty Commission, final (non-draft) report release.</strong> The draft has had zero right-leaning coverage. The first right-leaning reaction once the final version is public will reveal how the administration intends to sell — or quietly shelve — the church-state recommendation.</li>
+<li><strong>Anthropic&#x27;s &quot;Claude Mythos&quot; export license, recipient list and Commerce Department guardrails.</strong> Watch for whether any re-export controls to China-linked entities are attached; this is the detail that will determine whether this becomes a partisan fight or stays a center-only story.</li>
+<li><strong>Christopher Ballard contempt sanctions/appeal and Tyler Robinson trial scheduling.</strong> Death penalty remains on the table; watch for sentencing-track decisions in the Kirk assassination prosecution.</li>
+<li><strong>John Bolton&#x27;s sentencing date.</strong> The real test of whether the right&#x27;s current silence is strategic discipline or genuine disinterest — once a concrete penalty is set, watch whether right-leaning outlets engage at all.</li>
+<li><strong>DOJ Epstein-files compliance deadline, July 2, 2026 — five days out.</strong> Completely dark in current coverage on both sides. A deadline this close getting zero advance coverage is itself notable and should break one way or another within the window.</li>
+<li><strong>State Department&#x27;s Venezuela posture.</strong> Watch for whether Venezuela messaging continues to be folded into Iran-adjacent briefings or breaks out as its own story.</li>
+<li><strong>TPS terminations (Haitian/Syrian).</strong> Still alive only in right-leaning coverage; watch for any court action or left-side pickup.</li>
+<li><strong>Relative right-wing coverage volume, Buttigieg vs. Pritzker.</strong> Continue tracking as an early marker of 2028 targeting priorities.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The defining feature of this cycle is not spin — it&#x27;s disciplined omission. Both coalitions are demonstrating they can sit on stories that would otherwise be irresistible (Bolton&#x27;s plea, the Religious Liberty Commission&#x27;s actual recommendation, Buttigieg&#x27;s CPS episode) when those stories threaten to complicate a cleaner narrative running in parallel. That kind of restraint is harder to pull off than amplification, and its presence here suggests more centralized message coordination on both sides than the surface chaos implies. The most important fact of the day — that Congress has once again declined to assert any war-powers check on a second round of strikes against Iran — is also the fact that serves no one&#x27;s narrative, which is exactly why it is being passed over in silence by everyone simultaneously. That silence, not the Iran strikes themselves, is the more durable story.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The U.S. military struck Iranian missile, drone-storage, and coastal radar sites after Iran attacked a Singapore-flagged cargo ship with drones in the Strait of Hormuz, marking the first U.S. strikes on Iran since the recent ceasefire took effect.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (13)</span><span class="bias-badge" style="color:#e0a87a;">center-left (11)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (4)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (4)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 13"></div><div class="bias-segment" style="background:#e0a87a; flex:21.2;" title="center-left: 11"></div><div class="bias-segment" style="background:#7ae09b; flex:11.5;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:5.8;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:3.8;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:7.7;" title="left: 4"></div><div class="bias-segment" style="background:#a07ae0; flex:7.7;" title="libertarian: 4"></div><div class="bias-segment" style="background:#5ab56e; flex:17.3;" title="right: 9"></div></div></div>
+  <div class="story-assessment">There is solid factual agreement on the sequence — an Iranian drone strike on a cargo ship followed by U.S. retaliatory strikes on Iranian military sites, the first such exchange since the ceasefire. The real divide is interpretive: justified self-defense versus reckless escalation, with Iran&#x27;s denial of wrongdoing almost entirely confined to left coverage. The most consequential point getting the least attention across the spectrum is Reason&#x27;s observation that Congress took no effective action to check executive war-making, regardless of which side one takes on the strikes&#x27; merits.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the strikes as a perilous escalation, foregrounding Vance&#x27;s combative rhetoric and Iran&#x27;s competing account of the ceasefire to question the legitimacy and stability of the truce rather than treating the U.S. response as self-evidently justified.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) report the strikes largely through official government and military statements, presenting them as a proportionate tit-for-tat response and emphasizing the procedural significance of this being the first breach of the ceasefire, with little editorializing on escalation risk.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The Hill, Axios, Breitbart, and National Review frame the strikes as a measured, justified retaliation against unambiguous Iranian aggression, centering official U.S. military rationale, casting Iran as the clear ceasefire violator, and (via National Review) using the episode to argue that diplomatic engagement with Tehran is fundamentally naive.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the specific military targets struck, the &#x27;first strike since the ceasefire MOU&#x27; framing stressed by center outlets, and the right&#x27;s argument that the episode discredits negotiation with Iran outright; it also leaves out Reason&#x27;s libertarian critique of congressional inaction.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits Iran&#x27;s own legal claim that it did not violate the ceasefire, broader concern about uncontrolled escalation, and Reason&#x27;s critique that Congress failed to exercise its constitutional war-powers check on the strikes.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Trump&#x27;s Religious Liberty Commission presented a draft final report to the president in the Oval Office calling for replacing strict church-state separation with a &#x27;bridge-building&#x27; approach between religious and government institutions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core fact: a Trump-appointed commission is recommending the U.S. move away from strict church-state separation toward a &#x27;bridge-building&#x27; model, and both flag this as a significant break from legal precedent. The analysis is limited by the absence of any right-leaning outlet in this sample, making it impossible to assess ideological spin or omissions across the full spectrum — only center and center-left framing can be compared here, and they are largely aligned.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is present in this set; only center-left (PBS) coverage is available.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both center-left (PBS) and center (The Hill) outlets frame the story primarily as straight factual reporting on a notable break from constitutional precedent, emphasizing the Commission&#x27;s recommendation and its reversal of established church-state separation doctrine without editorializing for or against the policy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this coverage set, so right-wing framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source is present for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present for comparison; right-leaning framing (e.g., emphasis on religious freedom restoration, criticism of &#x27;separation&#x27; as a misreading of the Constitution, or praise for the administration) is absent from this set entirely.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The U.S. government relaxed export restrictions to let Anthropic license its advanced &#x27;Claude Mythos&#x27; model to over 100 companies, a move unfolding against a backdrop of mounting concern that China&#x27;s cheaper, increasingly capable AI models are eroding America&#x27;s export-control leverage and AI diplomacy.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:100.0;" title="center: 2"></div></div></div>
+  <div class="story-assessment">Only center-positioned outlets are represented here, so no genuine left-right contrast can be drawn — claims of partisan framing differences would be fabricated. What&#x27;s verifiable from these two pieces is a single underlying thread: U.S. policymakers are loosening export controls on frontier AI models (like Anthropic&#x27;s) partly because China&#x27;s cheaper, capable alternatives are reducing the leverage those controls once provided. The real story is the erosion of U.S. export-control strategy as a tool of AI dominance, not a left-right dispute.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set, so left framing cannot be assessed from the available coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both center outlets treat this as a policy/competitiveness story rather than a partisan one. The Hill frames the export ban reversal as routine regulatory news enabling commercial expansion, while Axios frames China&#x27;s AI advances as exposing deeper strategic weaknesses in U.S. export-control and alliance-building efforts — together suggesting center coverage sees this as a pragmatic, competitiveness-driven story rather than an ideological one.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right framing cannot be assessed from the available coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is present in the provided coverage to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in the provided coverage to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Pete Buttigieg says he and his young children were briefly separated during a child protective services and police investigation triggered by an anonymous report alleging child endangerment, which authorities later determined to be false or unsubstantiated.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">All three sources rely almost entirely on Buttigieg&#x27;s own account, with no independent confirmation from CPS, police records, or the caller&#x27;s identity/motive — meaning the &#x27;false report&#x27; framing, while plausible, is currently uncorroborated by primary documentation in any of the coverage. The main variance among these three left-of-center-to-center sources is intensity of emotional framing (Guardian highest, Hill lowest) rather than any factual disagreement, and a right-leaning perspective is needed to assess whether the story is being used to question CPS/swatting-report processes more broadly or to attack/defend Buttigieg politically.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the episode as a weaponized harassment campaign (&#x27;hoax,&#x27; &#x27;swatting&#x27;-style attack) against Buttigieg&#x27;s family, emphasizing acute emotional trauma and victimhood with dramatic language (&#x27;darkest hours&#x27;). NPR, while still sympathetic and centering Buttigieg&#x27;s personal distress, is comparatively more measured and procedural in tone.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents a brief, fact-forward account relaying Buttigieg&#x27;s statements with minimal embellishment, framing it as a personal-safety violation against a public figure&#x27;s family while still adopting his &#x27;swatting&#x27; characterization.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet was included in the provided coverage set, so right-leaning framing cannot be characterized from the available data.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source was provided for comparison, so it&#x27;s not possible to identify what right-leaning coverage includes that left coverage omits.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source was provided in this dataset to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A Utah judge held deputy county attorney Christopher Ballard in contempt for violating a pre-trial gag order in the Tyler Robinson murder case (the Charlie Kirk shooting prosecution), while separately denying the defense&#x27;s motion to take the death penalty off the table.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets report the same two underlying rulings — a contempt citation against the prosecutor and a denial of the defense&#x27;s bid to strike the death penalty — but each side selects which ruling to foreground based on ideological resonance: the Guardian highlights prosecutorial accountability, Breitbart highlights the preserved capital punishment option. Neither outlet provides much detail on the substance of the gag order violation itself, leaving readers without full context on what Ballard actually said or did.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the story through a judicial-accountability lens, presenting the contempt ruling against the prosecutor as a check on prosecutorial misconduct, while noting the judge nonetheless preserved the strength of the case against Robinson by keeping the death penalty in play. The tone is measured and balances both rulings as roughly equal news.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned outlet was included in this coverage set, so a center framing cannot be assessed from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart leads with the death penalty survival as the central &#x27;win,&#x27; framing the outcome as vindication for accountability and the integrity of capital punishment in the case, while treating the contempt finding against the prosecutor as a secondary, almost incidental footnote (&#x27;despite finding the prosecutor in civil contempt&#x27;).
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian&#x27;s framing does not emphasize the death-penalty outcome as a standalone &#x27;victory&#x27; angle or specify the contempt as civil in nature, details Breitbart foregrounds.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart downplays or omits the broader &#x27;judicial accountability over prosecutorial misconduct&#x27; framing that the Guardian uses to contextualize why the contempt finding against the prosecutor matters independent of the death-penalty ruling.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pete Buttigieg</span><span class="entity-tag">JB Pritzker</span><span class="entity-tag">Illinois</span></div>
+  <div class="connection-text">Two likely 2028 Democratic contenders surface in the same cycle with sharply different media treatment: Buttigieg&#x27;s CPS story is covered almost entirely through his own sympathetic account with no right-wing engagement, while Pritzker&#x27;s tax policy is being attacked on the right (&#x27;Junk Tax Spree&#x27;). The asymmetry in which contender gets attacked vs. shielded is itself a signal of which one right-wing media currently treats as the bigger threat.</div>
+  <div class="connection-sig">↳ Suggests early right-wing media targeting priorities in the invisible primary are already diverging, with Pritzker drawing fire while Buttigieg is currently being left alone — possibly because attacking a false-CPS-report story risks generating sympathy.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">John Bolton</span><span class="entity-tag">Iran</span><span class="entity-tag">Trump</span></div>
+  <div class="connection-text">Bolton&#x27;s guilty plea on retaining classified information broke the same news cycle as the first U.S. strikes on Iran since the ceasefire — yet only left outlets covered the plea. Bolton is also the highest-profile Iran-hawk critic of Trump&#x27;s ceasefire diplomacy, so a clean right-wing &#x27;vindication&#x27; narrative around his legal trouble would complicate the administration&#x27;s framing of restrained, justified strikes.</div>
+  <div class="connection-sig">↳ A Trump-critic&#x27;s legal jeopardy that should be ripe for right-wing amplification is being passed over, suggesting strategic narrative discipline to keep Iran coverage focused on &#x27;justified strike&#x27; messaging rather than reopening Bolton-era hawk-vs-restraint debates.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump</span><span class="entity-tag">Oval Office</span><span class="entity-tag">Religious Liberty Commission</span><span class="entity-tag">Iran strikes</span></div>
+  <div class="connection-text">The Religious Liberty Commission&#x27;s draft report — a significant proposed break from church-state separation — was presented to Trump in the Oval Office in the same news cycle as the Iran strikes, a story with far higher attention-pulling power.</div>
+  <div class="connection-sig">↳ A major domestic legal/constitutional policy shift is landing with minimal scrutiny because a high-salience foreign policy story is absorbing nearly all cross-spectrum attention — whether engineered or coincidental, the effect is the same.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Elizabeth Warren</span><span class="entity-tag">Bernie Moreno</span></div>
+  <div class="connection-text">Warren (progressive populist) and Moreno (Ohio Republican senator) are linked via a &#x27;left turn&#x27; story describing Moreno adopting Warren-style economic populism.</div>
+  <div class="connection-sig">↳ Signals a cross-partisan economic-populism convergence forming beneath the foreign-policy and culture-war headlines — worth tracking as a structural trend independent of the Trump-era left/right axis.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Venezuela</span><span class="entity-tag">Iran</span><span class="entity-tag">State Department</span></div>
+  <div class="connection-text">A State Department spokesman briefing pairs Venezuela response with Iran negotiations in the same left-only-covered piece, even though the day&#x27;s major story is Iran strikes, not Venezuela.</div>
+  <div class="connection-sig">↳ Suggests Venezuela is quietly being folded into the same diplomatic/military risk conversation as Iran, with zero right-leaning visibility — a potential early signal of escalating posture toward Caracas that isn&#x27;t yet being contested or amplified by either side.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump administration</span><span class="entity-tag">Republicans</span><span class="entity-tag">Democrats</span></div>
+  <div class="connection-text">The ACA enrollment drop is covered as a &#x27;fraud crackdown&#x27; success (right) and as &#x27;GOP let prices skyrocket&#x27; harm (left) — same underlying data, mirror-image framing, each side ignoring the other&#x27;s causal story entirely.</div>
+  <div class="connection-sig">↳ A textbook same-fact/opposite-frame pair that will likely resurface as a midterms talking point; neither side currently engages with the other&#x27;s framing, leaving voters with two non-overlapping factual narratives.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A pre-July 4th &#x27;America 250&#x27; content cluster is heavily asymmetric: right-leaning outlets are running a coordinated-looking slate of patriotic/founding-themed pieces (multiple &#x27;American Tributes&#x27; entries, Jefferson, baseball-as-America, patriotism-vs-cynicism), while the left&#x27;s counter-programming is limited to a single skeptical &#x27;Has America Lived Up to Its Founding Promise?&#x27; piece.</div>
+<div class="pattern-item">Both &#x27;big Trump-admin news of the day&#x27; stories (Iran strikes, Religious Liberty Commission report) cluster around the Oval Office on the same cycle, with the bigger story (military strikes) likely crowding out scrutiny of the smaller but legally significant one (church-state separation).</div>
+<div class="pattern-item">The Iran story is already generating dueling pre-emptive spin pieces about outcome — a right-leaning &#x27;Ridiculous to Suggest Iran Is Stronger Today&#x27; opinion piece versus left-leaning focus on negotiations/State Department framing — both shaping interpretation before independent assessment of the strikes&#x27; effectiveness is possible.</div>
+<div class="pattern-item">Supreme Court coverage is fully bifurcated by topic, not just tone: left covers court-expansion talk and internal justice tensions, right covers substantive wins (guns, border) — each side selectively covering only the SCOTUS angle that serves its narrative, with no overlap in subject matter at all.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Religious Liberty Commission&#x27;s recommendation to dismantle strict church-state separation — a historically significant proposed legal shift — has zero right-leaning coverage in this sample, despite being a Trump-administration initiative that would seemingly be favorable content for religious-right outlets.</div>
+<div class="anomaly-item">The Anthropic export-control relaxation story, despite touching both AI-labor concerns (left) and China-national-security concerns (right), drew coverage only from center outlets — an unusual ideological silence on a high-significance tech/national-security policy decision.</div>
+<div class="anomaly-item">Pete Buttigieg&#x27;s CPS investigation story has drawn no right-wing coverage at all, despite Buttigieg being a frequent right-wing target — the silence itself looks like deliberate non-engagement to avoid amplifying a story that currently reads sympathetically toward him.</div>
+<div class="anomaly-item">The Tyler Robinson/Charlie Kirk prosecution contempt ruling — a development in the year&#x27;s most prominent assassination case — was picked up only by the Guardian and Breitbart; center, center-left, and mainstream right outlets all skipped it.</div>
+<div class="anomaly-item">John Bolton&#x27;s guilty plea on classified-information retention, a ready-made cudgel against a prominent Trump critic, generated no right-leaning coverage — odd timing given it lands the same day as the administration&#x27;s first post-ceasefire Iran strikes, an area where Bolton has been a vocal hawkish critic.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are avoiding stories that would complicate a clean &#x27;strong, justified Iran response&#x27; narrative (Bolton&#x27;s plea, Buttigieg&#x27;s sympathetic CPS story) while simultaneously running heavy proactive content on religious liberty and founding-era patriotism without touching the Commission&#x27;s actual, more controversial policy recommendation. Left-leaning outlets are avoiding the substantive SCOTUS wins (guns, border) and the national-security implications of loosening AI export controls, focusing instead on court-packing chatter and emotionally-framed narratives. Both sides are conspicuously ignoring Congress&#x27;s total non-engagement on war-powers oversight despite a second round of Iran strikes — the most consequential and least partisan-coded omission of the day.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 5 million have dropped ACA insurance after Trump and the GOP let prices skyrocket</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› State Department spokesman on Venezuela response, Iran negotiations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› She posted about ICE. Five months later, DHS agents told her to take her post down</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC plans weekend of local events to focus on affordability concerns under Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump threatens 100% tax on European imports if countries impose tax on digital services</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump speaks at Faith and Freedom Coalition policy conference</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Disagreements between Supreme Court justices bubble into public view as major rulings loom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Your Social Security benefits could be cut by a quarter in 2032. Here&#x27;s what to know</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-national security adviser John Bolton pleads guilty to illegally retaining classified information</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran set to progress at World Cup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The “Pride Match” that wasn’t</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Belgium’s prime minister isn’t cheering on the Red Devils</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spot the pol!</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A drag queen, a rainbow festival and a game beyond FIFA&#x27;s control</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Envoy&#x27;s pharaoh well party</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pete Buttigeig targeted by false abuse allegation in Michigan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump tries out midterms message that focuses on ‘communists’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Polygamous sect leader guilty of abuse after girls found in trailer on highway</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Utah under historic ‘red flag’ weather warning amid dangerous wildfires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Michigan parents charged with murder in death of seven-year-old son weighing 250lbs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Call for inquiry into Alligator Alcatraz’s ‘abuse of Everglades’ despite closure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Has America Lived Up to Its Founding Promise?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kylie Jenner and Meta Deserve Each Other</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› These Dudes Don’t Think It’s Safe to Be a Straight White Woman in the WNBA</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Jared Kushner and Ivanka Trump Sparked a Movement to Overthrow the Government of Albania</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Mighty Colorado Is Vanishing, and the Fixes Are Getting Weird</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Free Expression on the Weekend: Can Patriotism Survive Cynicism?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Low-Tax Case for Tariffs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hawaii Can’t Ban Guns by Default</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pritzker Goes on a Junk Tax Spree</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Immigrants From France Built a Great American Company</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump admin cracks down on estimated $10 billion in Obamacare fraud, boots millions from rolls</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Death of great-grandmother brutally killed on train triggers federal action</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas’s proposed social studies curriculum teaching ‘brutal’ Islam sparks political battle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Temporary Immigration Program That’s Been Forever</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Pro-Trans Movement Has No Credibility Left. Time to Say ‘Game Over’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Week: The Art of the MOU</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &lt;i&gt;Toy Story 5&lt;/i&gt; vs. &lt;i&gt;Drunken Noodles&lt;/i&gt;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bernie Moreno’s Left Turn</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thomas Jefferson’s True Masterpiece</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› James Talarico Says Black Churches Understand Jesus Better than White Churches</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America 250 Miracle? Reflecting Pool Looking &#x27;Magnificent, Like You Want to Swim in It&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jayapal: Dems &#x27;Absolutely&#x27; Talking About Expanding Supreme Court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Seventh-Year Ph.D Student Darializa Avila Chevalier Sad She Can&#x27;t Afford to Live in NYC</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Josh Hawley: &#x27;Religious Liberty Invented America&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dylan Gwinn: You Can Celebrate America’s Birthday, But Not Without Celebrating Baseball</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Brandon Gill: Americans Have the Grit, Will to Achieve the Impossible</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Border Victory the SCOTUS Liberals Can&#x27;t Spin</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ridiculous To Suggest Iran Is Stronger Today</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› World Cup: Can Sports Events Bring Us Together? Yes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Tough Bastard Who Turned Baseball Into America&#x27;s Game</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congress&#x27; Housing Bill: Modest But Meaningful</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› On or Off Campus, Students Stress Over Housing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Higher Education Is Not Altruistic. It&#x27;s Business</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Most Important Founder You&#x27;ve Never Heard Of</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether Congress takes any war-powers action following the new Iran strikes — previously flagged as ignored, now directly tested by renewed military action</div>
+<div class="watch-item">Final (non-draft) Religious Liberty Commission report release and the first right-leaning outlet reaction once it&#x27;s public</div>
+<div class="watch-item">Anthropic &#x27;Claude Mythos&#x27; export license recipient list and any Commerce Department guardrails against re-export to China-linked entities</div>
+<div class="watch-item">Christopher Ballard contempt sanctions/appeal and Tyler Robinson trial scheduling given the preserved death-penalty option</div>
+<div class="watch-item">John Bolton sentencing date and whether right-leaning outlets engage once a concrete penalty is set</div>
+<div class="watch-item">DOJ Epstein-files compliance deadline, July 2, 2026 — five days out, still unaddressed in coverage</div>
+<div class="watch-item">State Department&#x27;s Venezuela posture for signs it&#x27;s escalating in parallel with, or independent of, the Iran track</div>
+<div class="watch-item">TPS program status (Haitian/Syrian terminations) — still alive only in right-leaning coverage</div>
+<div class="watch-item">Relative right-wing coverage volume of Buttigieg vs. Pritzker as an early proxy for 2028 Democratic-primary targeting priorities</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
