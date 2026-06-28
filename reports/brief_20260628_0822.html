@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-06-28 08:22 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-06-28 08:22 UTC</span>
+    <span class="pill">88 articles</span>
+    <span class="pill">13 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant, loud story right now is Trump&#x27;s continued consolidation of control over the Republican Party machinery, paired with a coordinated immigration-enforcement messaging push timed to the run-up to July 4. Julia Letlow&#x27;s Trump-endorsed win in the Louisiana Senate runoff to replace ousted Senator Bill Cassidy is being read on the right as vindication of Trump&#x27;s ability to purge dissenters and install loyalists; the nomination of Lance Schroyer to run ICE the same day extends that signal into the enforcement apparatus. These are not contested facts — both sides agree on what happened — but the volume and packaging of the coverage around them, especially the immigration cluster (SAVE Act statistics, Haiti framing, TPS) running through a small number of Salem/Breitbart-linked voices, looks more like an amplification campaign than an organic news cycle.</p>
+<p>Underneath that loud story sits a much quieter one that matters more in raw terms: a magnitude disaster in Venezuela (1,430+ dead, tens of thousands missing, a SOUTHCOM deployment and a new nine-figure aid commitment) and the largest active wildfire in the United States (Utah&#x27;s Cottonwood fire, 92,000+ acres, zero containment) are both nearly invisible outside left-of-center outlets, and in the wildfire&#x27;s case verified by essentially one source. Neither is a partisan story by nature; both are being starved of cross-spectrum attention while character-driven and identity-driven content fills the volume gap. A genuine vulnerability is also opening up around JD Vance on Iran/Israel, being probed independently and on the same day by ideologically opposite outlets — a pattern that often precedes a more concentrated story.</p>
+<p>The structural picture is two media ecosystems that are barely talking about the same things. The right&#x27;s volume is concentrated on Democratic disarray (Mamdani, Jeffries, Letitia James), patriotic anniversary content, and demographic-anxiety culture-war pieces; the left&#x27;s volume is concentrated on disaster response, legal procedure, and a reframing of the anniversary as a protest moment. Where they do overlap — Letlow, Schroyer, the Alaska ballot ruling — the facts converge but the interpretation diverges completely. And on one specific point, both sides are identically silent: the DOJ&#x27;s Epstein-files compliance deadline, now four days away, does not appear anywhere in today&#x27;s sample on either side.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> remains the central organizing force. The Cassidy ouster and Letlow installation is a personnel and loyalty story more than a policy story — it signals that crossing Trump (Cassidy&#x27;s impeachment vote) carries a price that the party apparatus will enforce. The Schroyer ICE nomination extends that personnel leverage into the enforcement bureaucracy at a moment when an entire pre-existing immigration messaging cluster needed a hard news peg to attach to.</p>
+<p><strong>Lance Schroyer</strong> is currently a blank slate in terms of public scrutiny — his law-enforcement and Marine background is being presented uncritically as straightforward qualification on the right, with no visible vetting yet of his specific record on deportation operations. Watch for opposition research to surface once a confirmation process begins.</p>
+<p><strong>JD Vance</strong> is being squeezed from two directions on the same axis at the same time: a right-leaning narrative asking whether he&#x27;s being set up as the fall guy for a struggling Iran arrangement, and a separate, unconnected left-tracked piece noting pro-Israel influencers turning on him even as evangelical support holds. Neither story cites the other. That kind of independent convergence from opposite media ecosystems is a leading indicator, not a coincidence — it usually means both sides have independently identified the same actual point of exposure.</p>
+<p><strong>Dan Sullivan (incumbent) vs. Dan Sullivan (reinstated namesake)</strong> is a low-volume story with outsized stakes: a ranked-choice election with a confusable namesake candidate on the ballot is a textbook vote-splitting mechanism, and it threatens a sitting Republican senator directly. No outlet has produced evidence of coordinated intent behind the second candidacy, but the mechanism doesn&#x27;t require intent to do damage — it only requires confused voters in a ranked-choice system.</p>
+<p><strong>Marco Rubio and Kash Patel</strong> appearing at World Cup matches in Miami is minor on its own, but it fits a broader pattern this week of administration figures using sports nationalism as a backdrop alongside America250 messaging — soft-power optics layered onto patriotic-anniversary optics.</p>
+<p><strong>Mamdani, Jeffries, and Letitia James</strong> are the subjects of a one-sided &quot;Democratic Party in disarray&quot; narrative running exclusively on the right with no visible counter-coverage from the left. That absence could mean the left considers the framing not worth engaging, or it could mean the left is ceding the frame by default — there&#x27;s no way to tell which from this sample, and that uncertainty itself is worth flagging.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The single most conspicuous silence is the DOJ&#x27;s Epstein-files compliance deadline, July 2, 2026 — now four days out — which appears nowhere in today&#x27;s coverage on either side. A deadline of that political sensitivity going unmentioned across the entire ideological spectrum simultaneously is not normal; it suggests neither side wants to be the first to raise it before there&#x27;s an outcome to react to, win, or attack.</p>
+<p>The Venezuela earthquake and the resulting SOUTHCOM deployment are receiving essentially no right-leaning coverage at all, despite the right&#x27;s typical interest in military deployments and Latin America. That absence is louder than it looks — it was previously flagged as a posture to watch for escalation signals, and instead it has materialized as a humanitarian story the right isn&#x27;t touching.</p>
+<p>Utah&#x27;s Cottonwood fire — the largest active wildfire in the country — is verified by essentially a single outlet. That&#x27;s not evidence the story is wrong, but it means the most objectively significant event of the day has had almost no independent cross-checking.</p>
+<p>On Iran, the only substantive U.S. coverage frames Congress&#x27;s response as &quot;theater&quot; — a pre-emptive dismissal that forecloses the war-powers debate before it happens rather than engaging with it. That is a continuation of a pattern already flagged previously: the issue is being sidestepped, not debated.</p>
+<p>Several previously tracked threads — the Religious Liberty Commission report, Ballard/Robinson trial scheduling, Bolton&#x27;s sentencing, the TPS program, and the Buttigieg-vs-Pritzker 2028 proxy fight — have dropped out of the cycle entirely. That doesn&#x27;t mean they&#x27;re resolved; it means attention has rotated elsewhere, and their actual status should be checked rather than assumed.</p>
+<p>The Anthropic/Commerce Department export-license question for Claude Mythos remains completely unaddressed even as a Fable 5 release scoop continues to generate coverage. The regulatory question and the product-release hype are running on separate tracks with no visible connection in coverage.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Vance/Iran convergence described above is the most analytically interesting pattern today: two ideologically opposed ecosystems independently probing the same official&#x27;s same weak spot, on the same day, without referencing each other. That kind of parallel discovery typically precedes a unified, more damaging story once the threads connect.</p>
+<p>The immigration-enforcement cluster — Schroyer&#x27;s nomination, SAVE Act statistics, Haiti framing, and a &quot;Islamists/LGBTQIA+ anti-MAGA alliance&quot; piece — traces back through the same host and network combination, Alex Marlow on Salem Radio/Salem News Channel, repackaged through Breitbart into what looks like three or four separate stories. This is very likely a single radio segment fragmented into multiple articles to inflate apparent volume and diversity on a topic that otherwise has no hard news peg today.</p>
+<p>Coverage volume is being driven by narrative fit, not stakes. Letlow&#x27;s Trump-endorsement win drew roughly 29 sources; the Alaska ballot ruling, which directly threatens a sitting Republican senator&#x27;s seat, drew three. The story that flatters a &quot;Trump is winning&quot; frame got nearly ten times the coverage of the story that&#x27;s arguably more consequential to actual Senate control.</p>
+<p>America250 is producing a near-total partisan split-screen six days before July 4 — at least eight right-leaning pieces frame the anniversary as patriotic vindication, one left-side piece reframes it as a protest moment, and there is almost no neutral or center coverage filling the space between them. The World Cup appearances by Rubio and Patel fit into this same pattern: nationalist sports optics paired deliberately with anniversary messaging.</p>
+<p>Finally, disaster coverage and identity/culture-war coverage are substituting for each other in this cycle. The right&#x27;s volume on Minnesota school boards, French demographic anxiety, and &quot;anti-MAGA alliances&quot; is occupying space that, in a normal cycle, might go to the Venezuela earthquake or the Utah wildfire. That&#x27;s not proof of intentional suppression, but it is a real substitution effect worth naming.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Epstein-files DOJ compliance deadline, July 2, 2026</strong> — four days out, zero coverage across the spectrum. Watch for a last-minute compliance filing, a delay request, or a sudden coverage burst right before or after the date.</li>
+<li><strong>Cottonwood Fire containment</strong> — currently 92,000+ acres, 0% contained. Watch whether center or right outlets begin covering it as acreage grows, or whether it remains a single-source story.</li>
+<li><strong>Venezuela earthquake toll and SOUTHCOM deployment scope</strong> — 1,430+ dead, tens of thousands missing. Watch for death-toll reconciliation and whether any right-leaning outlet engages at all.</li>
+<li><strong>JD Vance&#x27;s Iran/Israel positioning</strong> — watch for the right&#x27;s &quot;fall guy&quot; framing and the left-tracked pro-Israel influencer criticism to merge into a single, coordinated &quot;Vance is exposed&quot; story.</li>
+<li><strong>Alaska&#x27;s Dan Sullivan ballot case</strong> — watch for an appeal of the reinstatement ruling and any national GOP intervention before the August primary; the ranked-choice spoiler risk to the incumbent is real regardless of intent.</li>
+<li><strong>Lance Schroyer&#x27;s ICE confirmation process</strong> — watch the Senate timeline and whether opposition research on his deportation-campaign record surfaces once hearings begin.</li>
+<li><strong>Congress&#x27;s Iran war-powers resolution</strong> — watch for whether it produces an actual recorded floor vote, since current right-leaning coverage has pre-emptively dismissed it as theater.</li>
+<li><strong>Anthropic Claude Mythos export-license status</strong> — watch for any Commerce Department disclosure alongside continued Fable 5 release coverage; the regulatory question remains open.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic this cycle is that media volume and actual significance have come apart from each other almost completely. A record wildfire, a mass-casualty earthquake triggering a U.S. military deployment, and an imminent DOJ deadline on one of the most politically combustible document sets in recent memory are all running at near-zero coverage, while a Trump-endorsed primary win, a personnel nomination, and a cluster of demographic-anxiety culture-war pieces — several of them traceable to a single repackaged radio segment — are dominating volume. This isn&#x27;t necessarily centrally directed; some of it is two separate media ecosystems independently selecting for what flatters their existing narrative (Trump winning, on the right; Democratic disarray ignored, on the left, while disasters get top billing). But the Marlow/Salem/Breitbart repackaging evidence shows at least part of today&#x27;s apparent volume is manufactured rather than organic, and the shared, simultaneous silence on the Epstein deadline shows that absence itself can be a coordinated signal even across opposed ecosystems. The official reading this brief should treat today&#x27;s headline volume as a poor proxy for today&#x27;s actual stakes.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Utah&#x27;s Cottonwood fire grew overnight to more than 92,000 acres with 0% containment, becoming the largest active wildfire in the US; no right-leaning or center outlet in this set actually covered the event.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This is not a case of competing political narratives on the same event — it&#x27;s a case of one side covering a real, escalating wildfire disaster and the other side&#x27;s sample article being entirely unrelated. The mismatch itself is the finding: it suggests either a gap in right-leaning outlets&#x27; wildfire coverage at this moment or a sampling artifact, not an ideological dispute over facts. Any claim of &#x27;bias&#x27; here would be unsupported; the only verifiable fact is the Guardian&#x27;s uncorroborated report of fire size and containment.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the fire as an escalating natural disaster and emphasizes scale, firefighter strain, and extreme weather conditions, avoiding blame or political framing — a straightforward disaster-reporting angle.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-source coverage was provided for this story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Not applicable to this story. The Breitbart piece supplied is an unrelated &#x27;America 250&#x27; tribute featuring Sen. Mike Lee on the nation&#x27;s founding; it contains no mention of the Cottonwood fire, wildfires, or related policy (e.g., land management, climate, disaster response).
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Since the right-side source does not address the fire, there is no right-coverage content (e.g., land/forest management policy, climate-attribution debate, government response critique) for the left to be omitting by comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning source omits the Cottonwood fire entirely — no acknowledgment of the disaster, its scale, containment status, or human/economic impact, despite it being an active, escalating crisis at the time of the Guardian&#x27;s report.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">President Trump&#x27;s endorsed candidate Julia Letlow won the Louisiana GOP Senate runoff to succeed ousted Sen. Bill Cassidy, while Trump separately nominated former Oklahoma state trooper and Marine Lance Schroyer to be the next director of ICE.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (8)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:26.7;" title="center: 8"></div><div class="bias-segment" style="background:#e0a87a; flex:26.7;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:6.7;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:3.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:3.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:16.7;" title="left: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:16.7;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The underlying facts are uncontested across the spectrum: Letlow won the Louisiana GOP runoff with Trump&#x27;s backing after Cassidy&#x27;s ouster, and Trump nominated Schroyer to lead ICE. The real divide is interpretive — left outlets read both events as signs of Trump&#x27;s outsized, even punitive, control over the GOP and a controversial immigration enforcement posture, while right outlets read them as vindication of Trump&#x27;s political instincts and a tougher stance on illegal immigration. Neither side disputes the core events; they dispute what those events mean.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets frame the ICE nomination as installing a hardline enforcer with an aggressive deportation record, set against unresolved controversy over ICE detention abuses and &#x27;aggressive tactics.&#x27; The Louisiana runoff is framed less as Letlow&#x27;s own achievement and more as evidence of Trump&#x27;s &#x27;complete domination&#x27; over the GOP, with Cassidy&#x27;s removal cast as punishment for his impeachment vote — emphasizing concern about intra-party intimidation over policy substance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets largely stick to descriptive, horse-race-style reporting: straightforward results tracking of the runoff, attributing Letlow&#x27;s win to Trump&#x27;s endorsement without strong editorializing, and neutral reporting of Schroyer&#x27;s nomination that emphasizes his law-enforcement and military credentials while noting the Trump-Cassidy rift as backdrop.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets frame the ICE nomination enthusiastically, leaning on Trump&#x27;s own quotes to portray Schroyer as a &#x27;battle-tested&#x27; law enforcement veteran uniquely suited to crack down on illegal immigration. The Louisiana runoff is framed as another personal endorsement win proving Trump&#x27;s command of the GOP base, while the Democratic nominee&#x27;s win is treated as a near-futile formality given the state&#x27;s red lean.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Right-leaning coverage largely omits or downplays the framing that ICE has faced sustained scrutiny over aggressive tactics and detention abuses, omits scrutiny of Schroyer&#x27;s specific deportation-campaign record, and presents Cassidy&#x27;s primary loss as a straightforward endorsement effect rather than retaliation for his impeachment vote.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Left-leaning coverage rarely engages with Schroyer&#x27;s law-enforcement and military background as a straightforward positive qualification, omits framing of the Louisiana result as a legitimate expression of GOP voter preference, and gives little attention to Letlow&#x27;s own candidacy or merits independent of Trump&#x27;s endorsement.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">An Alaska Superior Court judge ruled that a second candidate named Dan Sullivan, who was previously disqualified by the state&#x27;s Division of Elections, must be reinstated on the August primary ballot alongside incumbent U.S. Senator Dan Sullivan.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">All three outlets agree on the core legal outcome: a previously disqualified namesake candidate was reinstated to the ballot. The divergence is in emphasis rather than fact — center-left coverage sticks to the legal procedure, left coverage flags unverified motive concerns, and right coverage highlights tactical risk to the incumbent under ranked-choice voting. None of the outlets provide hard evidence of intent behind the second candidacy, so the &#x27;good faith&#x27; question remains speculative across all coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames this as a procedural legal story about ballot access, while still surfacing the underlying suspicion that the namesake candidacy may be a bad-faith political tactic, without explicitly endorsing that suspicion as fact.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour frames the story narrowly as a legal/procedural matter, emphasizing that the judge&#x27;s decision rested on the elections division&#x27;s failure to ground its exclusion in constitutional, statutory, or regulatory authority — avoiding speculation about political motive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the ruling through the lens of practical political consequences for the incumbent senator, emphasizing how name confusion could dilute or split votes under Alaska&#x27;s ranked-choice system, implicitly framing the namesake candidate as a strategic threat or nuisance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Washington Post and PBS do not emphasize the specific mechanics of how ranked-choice voting could amplify voter confusion or strategically disadvantage the incumbent senator, a detail central to Fox&#x27;s coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News does not raise or engage with the &#x27;good faith&#x27; allegation about the second candidate&#x27;s motives that Washington Post explicitly surfaces, instead treating the candidacy as a neutral fact of the race.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Following a major earthquake in Venezuela that has killed at least 1,430 people with tens of thousands still missing, the U.S. is deploying additional military resources via Southern Command and committing a new nine-figure aid package on top of $150 million already pledged.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree the disaster is worsening and the U.S. response is expanding, but they emphasize different instruments of that response — The Hill highlights military logistics (SOUTHCOM, rapid response unit) while the Post highlights financial aid totals and precise casualty counts. Neither piece corroborates the other&#x27;s specific figures (missing persons count vs. exact death toll, unit deployment vs. dollar amount), suggesting fragmented reporting rather than contradictory narratives. The absence of right-leaning coverage in this sample limits any assessment of politically polarized framing.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames this primarily as a humanitarian aid story, emphasizing the magnitude of U.S. financial generosity (stacking new funds on top of $150 million already committed) and quantifying the human toll precisely (1,430 dead), positioning the U.S. as a responsive, large-scale donor.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames this as an unfolding military/security response to a worsening disaster, emphasizing the deployment of a specialized rapid response unit and the scale of the crisis (rising deaths, tens of thousands missing), foregrounding U.S. operational/military action over dollar amounts.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet was included in this sample, so right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Washington Post coverage omits any mention of the rapid response unit or Southern Command&#x27;s specific operational deployment, focusing instead on dollars committed rather than military assets or personnel involved.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was provided for comparison, so omissions relative to right-wing coverage cannot be determined.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">JD Vance</span><span class="entity-tag">Iran</span></div>
+  <div class="connection-text">Vance is being scrutinized simultaneously from opposite ends of the spectrum on the same day: a right-leaning piece asks whether he is being set up as the &#x27;fall guy&#x27; for a beleaguered Iran deal, while a left-only piece notes pro-Israel influencers criticizing him even as evangelicals stay supportive. Neither references the other, but both independently converge on Vance&#x27;s Iran/Israel positioning as a point of vulnerability.</div>
+  <div class="connection-sig">↳ When two ideologically opposed media ecosystems independently start probing the same official&#x27;s weak spot on the same day without coordinating, it often precedes a more concentrated story — worth tracking whether this becomes a unified &#x27;Vance is exposed on Iran&#x27; narrative.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lance Schroyer/ICE nomination</span><span class="entity-tag">SAVE Act / Haiti immigration coverage</span></div>
+  <div class="connection-text">Trump&#x27;s ICE director nomination lands the same day as a cluster of right-only immigration-enforcement stories (SAVE Act opposition stats, &#x27;Haiti First! Democrats Prioritize Aliens&#x27;) that otherwise have no hard news peg today.</div>
+  <div class="connection-sig">↳ Suggests coordinated messaging amplification around an immigration-enforcement personnel move rather than organic news developments — a personnel announcement being used to anchor a pre-existing narrative push.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Alaska (Dan Sullivan ballot ruling)</span><span class="entity-tag">Louisiana (Letlow runoff)</span></div>
+  <div class="connection-text">Both are same-day intra-GOP Senate legitimacy stories, but coverage volume is wildly asymmetric: Letlow&#x27;s Trump-endorsed win drew broad cross-spectrum coverage (29 sources), while the Sullivan namesake-reinstatement, which directly threatens an incumbent GOP senator via ranked-choice vote-splitting, drew only 3 total sources.</div>
+  <div class="connection-sig">↳ A story that is arguably more consequential to actual GOP Senate control (a sitting senator&#x27;s seat at risk) is being under-covered relative to a symbolic Trump-endorsement victory lap — suggests narrative selection is being driven by &#x27;Trump winning&#x27; framing rather than competitive-race significance.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Alex Marlow</span><span class="entity-tag">Salem Radio Network</span><span class="entity-tag">Salem News Channel</span><span class="entity-tag">Breitbart News</span></div>
+  <div class="connection-text">The same host/network combination (Alex Marlow + Salem Radio/News Channel) appears across three nominally separate stories today — the Haiti/immigration piece, the SAVE Act statistic piece, and the &#x27;Islamists, LGBTQIA+ Form Anti-MAGA Alliance&#x27; piece — all bylined through Breitbart.</div>
+  <div class="connection-sig">↳ What appears as three independent stories may be a single radio segment repackaged into multiple articles, artificially inflating the apparent volume and diversity of the immigration/culture-war narrative cluster in today&#x27;s sample.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Marco Rubio</span><span class="entity-tag">Kash Patel</span><span class="entity-tag">World Cup</span></div>
+  <div class="connection-text">Senior administration officials (Secretary of State, FBI/intel-adjacent figure) are shown attending World Cup matches in Miami alongside other World Cup-as-political-theater stories (Trump ally &#x27;El Tigre&#x27; victory lap, Uzbekistan &#x27;winning Washington&#x27;s attention&#x27;).</div>
+  <div class="connection-sig">↳ The 2026 World Cup is being used as a soft-power/photo-op backdrop by the administration during a week dominated by America250 patriotic messaging — likely a deliberate pairing of sports nationalism with the anniversary narrative.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anthropic (Fable 5)</span><span class="entity-tag">Trump administration</span></div>
+  <div class="connection-text">A tech-scoop story about Anthropic&#x27;s Fable 5 model returning soon is tagged to &#x27;Trump administration&#x27; in the entity graph, the only visible thread connecting to the previously flagged Claude Mythos export-license watch item.</div>
+  <div class="connection-sig">↳ No mention of Commerce Department guardrails or export-license recipients appears in today&#x27;s set — the regulatory question remains unaddressed even as model-release news continues to surface.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">America&#x27;s 250th anniversary (July 4 semiquincentennial, six days out) is producing a coordinated split-screen: at least eight right-leaning stories frame it as patriotic vindication (&#x27;Trump&#x27;s Lost Cause,&#x27; &#x27;Left Sends Regrets,&#x27; Founding Father retrospectives on Jefferson/Adams/Washington/Grassley) while the lone left-side entry reframes it as a protest moment to &#x27;reimagine the next 250 years.&#x27; Almost no neutral/center coverage of the anniversary exists in this sample.</div>
+<div class="pattern-item">A three-story right-only cluster (Minnesota school board clerk, French lawmaker &#x27;celebrating&#x27; white demographic decline, Islamist/LGBTQIA+ &#x27;anti-MAGA alliance&#x27;) is built around a single &#x27;the left celebrates white/Christian decline&#x27; framing, run through the same Breitbart/Salem pipeline rather than reflecting three independently newsworthy events.</div>
+<div class="pattern-item">Right-only coverage is building a &#x27;Democratic Party in disarray&#x27; throughline — Mamdani as a liability in NYC, Jeffries &#x27;welcoming&#x27; democratic socialists, Letitia James&#x27;s Medicaid-fraud record — with zero left-side rebuttal or counter-coverage in today&#x27;s sample.</div>
+<div class="pattern-item">Immigration enforcement is the connective tissue across an otherwise disconnected set of right-leaning stories (ICE director nomination, SAVE Act, Haiti, prior TPS coverage), suggesting an organized messaging emphasis independent of any single news trigger.</div>
+<div class="pattern-item">Two genuinely high-stakes disaster stories (Utah&#x27;s largest active wildfire, Venezuela&#x27;s earthquake with US military deployment) are nearly invisible outside left/center coverage, while culture-war and anniversary stories dominate right-side volume — a striking substitution of identity narrative for disaster reporting in the same news cycle.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Cottonwood Fire — rated the highest-significance story today (92,000+ acres, 0% containment, largest active US wildfire) — is effectively covered by a single outlet (the Guardian); the only other tagged source is unrelated far-right content, meaning the most objectively significant event of the day has almost no real cross-spectrum verification.</div>
+<div class="anomaly-item">Zero right-leaning coverage of the Venezuela earthquake and SOUTHCOM/military aid deployment is conspicuous given the right&#x27;s typical interest in military deployments and Latin America — especially since the previous watch list flagged Venezuela posture as a developing story to monitor for escalation signals.</div>
+<div class="anomaly-item">The DOJ Epstein-files compliance deadline (July 2, 2026) is now only four days away and is completely absent from today&#x27;s story set across every ideological bucket — a bipartisan silence that is itself notable given the deadline&#x27;s proximity.</div>
+<div class="anomaly-item">Iran&#x27;s only substantive U.S. coverage today is a right-only piece framing Congress&#x27;s response as &#x27;Theater&#x27; — a pre-emptive dismissal of any war-powers action rather than engagement with the substance, consistent with the previous cycle&#x27;s pattern of the issue being sidestepped rather than debated.</div>
+<div class="anomaly-item">Several &#x27;entity overlaps&#x27; in the network data (e.g., Mother Jones appearing across an Italy heat-wave piece, a Zuckerberg gambling piece, and the Trump/Louisiana Senate piece) reflect shared bylines/outlets rather than substantive topical connections — a reminder that raw entity co-occurrence counts can manufacture false pattern signals.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left&#x27;s sample shows no engagement with the Democratic Party&#x27;s internal-disarray storylines that dominate right-only coverage today (Mamdani as liability, Jeffries and democratic socialists, James&#x27;s Medicaid-fraud record), while the right&#x27;s sample almost entirely ignores two real unfolding disasters (the Utah wildfire and Venezuela earthquake/military response) in favor of America250 patriotic content and demographic-anxiety culture-war pieces. Both sides converge on the same blind spot: total silence on the imminent Epstein-files DOJ deadline, now just four days out, suggesting neither ecosystem wants to be first to raise it before there&#x27;s a concrete outcome to react to.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What would George Washington say? It&#x27;s a busy year for people who portray him</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the World Cup became a victory lap for Trump ally El Tigre</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Palestinian flags fly in Texas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Dallas booboys</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rubio, Patel at Miami match</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tartan Army party over</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spot the pol!</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Uzbekistan can’t win the World Cup. But it’s already won Washington’s attention.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pro-Israel influencers criticize Vance, but evangelicals remain open to him</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Four people have died from flash floods in Kentucky, governor says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘This isn’t about any one administration’: protests in DC reimagine the next 250 years in the US</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California officials unearth 117 dog bodies, many with bullet fragments, at ‘no-kill’ shelter</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Foodie in Fairbanks: the unexpected culinary scene in the middle of Alaska</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Appeals court rejects Trump EPA bid to abandon rule restricting deadly soot pollution</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mark Zuckerberg Sure Sounds Eager to Get Young People Hooked on Online Gambling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How to Survive a Brutal Heat Wave in Italy</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani&#x27;s suited pool plunge overshadowed by political clash with GOP gubernatorial candidate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NY AG hopeful blasts Letitia James as Medicaid fraud recoveries collapse: &#x27;She&#x27;s not doing the job&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jeffries welcomes democratic socialists into the fold as critics warn party is revealing &#x27;exactly who it is&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former House intel leader points to Dem rhetoric &#x27;encouraging&#x27; violence; eighth man charged in UFC terror plot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Theater of Congress’s Iran War Votes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Sweden’s Attempt to Course-Correct on Migration Shows the West</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Golden Opportunity to Destabilize Planned Parenthood</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘America Bad’ Isn’t the Right Theme for America’s 250th</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrat Reveals Shocking Statistic That Explains Party&#x27;s Opposition to the Save Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;You Lost!&#x27; Leftist French Lawmaker Celebrates Demographic Decline of White Population</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Haiti First! Democrats Prioritize Aliens as Americans Suffer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leftist Minnesota School Board Clerk Wants Dogs to &#x27;P**s on White Corpses&#x27; at Christian Cemeteries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Islamists, LGBTQIA+ Form Anti-MAGA Alliance</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen. Dave McCormick Steps Up to Undo Cancelation of Pennsylvania Participation in America 250 Fair</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive—Dinesh D’Souza: How Thomas Jefferson Made America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Chuck Grassley: Americans Govern Themselves in the Freest System in the World</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I Co-Founded Wikipedia. Now I&#x27;m Banned for Life</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Harvey Mansfield: America Is 250 Years Young</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America&#x27;s 250th Celebration Is Trump&#x27;s Lost Cause</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Left Sends Regrets on America&#x27;s Birthday</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Even in Heavily Dem NYC, Mamdani Agenda a Hard Sell</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Divided?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is Vance the Fall Guy for Beleaguered Iran Deal?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Liberty or Force? John Quincy Adams on Foreign Policy</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Cottonwood Fire containment progress and whether center/right outlets pick up coverage as acreage grows past 92,000</div>
+<div class="watch-item">Venezuela earthquake death/missing toll reconciliation and SOUTHCOM deployment scope — watch for right-leaning outlets to engage at all</div>
+<div class="watch-item">DOJ Epstein-files compliance deadline, July 2, 2026 — now 4 days out with zero coverage across the spectrum; watch for last-minute compliance, delay, or a sudden coverage burst</div>
+<div class="watch-item">JD Vance&#x27;s Iran/Israel positioning — simultaneous left (&#x27;pro-Israel influencers criticize Vance&#x27;) and right (&#x27;is Vance the fall guy&#x27;) scrutiny on the same day</div>
+<div class="watch-item">Alaska Dan Sullivan ballot case ahead of the August primary — ranked-choice spoiler risk to the incumbent senator, currently under-covered relative to its stakes</div>
+<div class="watch-item">Lance Schroyer&#x27;s ICE director confirmation process alongside continued SAVE Act/TPS enforcement messaging</div>
+<div class="watch-item">Whether Congress&#x27;s Iran war-powers question moves beyond the right&#x27;s &#x27;theater&#x27; framing into an actual recorded vote</div>
+<div class="watch-item">Volume and framing of America250 coverage as July 4 approaches — track whether center outlets start covering it or it remains a right-vs-left-only split</div>
+<div class="watch-item">Anthropic Claude Mythos export-license/Commerce Department guardrail status — still unaddressed despite continued Fable 5 model-release coverage</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
