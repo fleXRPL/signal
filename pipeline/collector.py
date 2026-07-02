@@ -22,6 +22,8 @@ from dateutil import parser as dateparser
 from rich.console import Console
 from rich.progress import BarColumn, Progress, SpinnerColumn, TextColumn
 
+from pipeline.ops import log_feed_health
+
 console = Console()
 CONFIG_PATH = Path(__file__).parent.parent / "config" / "sources.yaml"
 
@@ -157,6 +159,7 @@ def collect_feeds(config: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any
 
     seen_urls: set[str] = set()
     articles: List[Dict[str, Any]] = []
+    feed_health: List[Dict[str, Any]] = []
 
     with Progress(
         SpinnerColumn(),
@@ -178,6 +181,14 @@ def collect_feeds(config: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any
                 feed = _fetch_feed(url)
             except Exception as exc:  # noqa: BLE001
                 console.print(f"  [red]✗[/red] {source_name}: {exc}")
+                feed_health.append(
+                    {
+                        "source": source_name,
+                        "status": "error",
+                        "articles": 0,
+                        "error": str(exc),
+                    }
+                )
                 progress.advance(task)
                 continue
 
@@ -220,7 +231,16 @@ def collect_feeds(config: Optional[Dict[str, Any]] = None) -> List[Dict[str, Any
                 )
                 count += 1
 
+            feed_health.append(
+                {
+                    "source": source_name,
+                    "status": "ok" if count > 0 else "empty",
+                    "articles": count,
+                    "error": None,
+                }
+            )
             progress.advance(task)
 
+    log_feed_health(feed_health, context="collect")
     console.print(f"\n[green]✓[/green] Collected [bold]{len(articles)}[/bold] articles from {len(sources)} sources")
     return articles

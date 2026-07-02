@@ -140,6 +140,11 @@ def _make_config(
 
 
 class TestCollectFeeds:
+    @pytest.fixture(autouse=True)
+    def _mock_feed_health(self):
+        with patch("pipeline.collector.log_feed_health"):
+            yield
+
     @patch("pipeline.collector._fetch_feed")
     def test_returns_articles_from_feed(self, mock_fetch_feed):
         mock_feed = MagicMock()

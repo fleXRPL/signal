@@ -36,7 +36,10 @@ fi
 export SIGNAL_LLM_PROVIDER="${SIGNAL_LLM_PROVIDER:-claude}"
 
 # Run the weekly synthesis pipeline
-"$PYTHON" main.py --weekly --no-venv
+if ! "$PYTHON" main.py --weekly --no-venv; then
+    "$PYTHON" -c "from pipeline.ops import send_alert; send_alert('Signal weekly run failed', 'Check logs/weekly.log', tags=['signal','weekly'])" || true
+    exit 1
+fi
 
 # Stage weekly report, updated index, and archive
 git add reports/weekly_*.html index.html archive.html

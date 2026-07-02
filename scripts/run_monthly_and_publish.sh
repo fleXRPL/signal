@@ -39,7 +39,10 @@ export SIGNAL_LLM_PROVIDER="${SIGNAL_LLM_PROVIDER:-claude}"
 PREV_MONTH=$(date -v-1m +%Y-%m)
 
 # Run the monthly synthesis pipeline
-"$PYTHON" main.py --monthly --month "$PREV_MONTH" --no-venv
+if ! "$PYTHON" main.py --monthly --month "$PREV_MONTH" --no-venv; then
+    "$PYTHON" -c "from pipeline.ops import send_alert; send_alert('Signal monthly run failed', 'Check logs/monthly.log', tags=['signal','monthly'])" || true
+    exit 1
+fi
 
 # Stage monthly report, updated index, and archive
 git add reports/monthly_*.html index.html archive.html

@@ -45,7 +45,10 @@ if [ "$SIGNAL_LLM_PROVIDER" = "ollama" ]; then
 fi
 
 # Run the pipeline (venv already exists, skip setup)
-"$PYTHON" main.py --no-venv
+if ! "$PYTHON" main.py --no-venv; then
+    "$PYTHON" -c "from pipeline.ops import send_alert; send_alert('Signal daily run failed', 'Check logs/cron.log', tags=['signal','daily'])" || true
+    exit 1
+fi
 
 # Stage report, index, archive, and RSS feed
 bash "$REPO/scripts/git_publish_if_changed.sh" \
