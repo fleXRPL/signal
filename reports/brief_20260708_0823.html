@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-08 08:23 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-08 08:23 UTC</span>
+    <span class="pill">125 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">11 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The United States is simultaneously managing two crisis tracks that the current news environment is treating as separate but which are structurally connected: an escalating military confrontation with Iran that has already crossed into direct exchange of strikes on U.S. military installations, and a NATO summit at which Trump extracted bilateral concessions from Turkey while generating documented allied anxiety about American commitment to collective defense. These are not parallel stories. They are a single strategic picture: an administration conducting transactional dealmaking at the alliance level while simultaneously absorbing Iranian counter-strikes on U.S. personnel in Bahrain and Kuwait — a combination that puts enormous pressure on Gulf partners whose security relationships with Washington are the load-bearing infrastructure of U.S. regional posture.</p>
+<p>Domestically, the political environment is absorbing two simultaneous institutional credibility shocks. The Democratic Party&#x27;s Senate nominee in Maine has collapsed under credible sexual assault allegations, a documented Nazi tattoo, and what appears to be a catastrophically cheap three-day vetting process in a race that was their best Senate pickup opportunity this cycle. This is not primarily a scandal story — it is an institutional failure story about a party that entered a critical cycle without the basic infrastructure to vet candidates in competitive races. Separately, a federal judge blocked the Trump administration from obtaining Georgia election workers&#x27; personal data, a ruling that fits a consistent pattern of executive branch pressure on electoral infrastructure that continues to receive fragmented rather than systematic coverage.</p>
+<p>The oil market registered a 5 percent move on reimposed Iran sanctions. That number encodes more geopolitical risk than most of the coverage does. Markets are pricing something the public record is only partially acknowledging: that the exchange of strikes between the U.S. and Iran is real, ongoing, and not contained.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is operating across multiple pressure fronts simultaneously and extracting tangible bilateral concessions — Turkey sanctions lifted, F-35 access signaled, Erdoğan bilateral secured — while the characterization of his NATO posture as purely destabilizing misses the transactional logic. He is not breaking NATO; he is renegotiating its terms in ways that benefit specific bilateral relationships (Turkey, potentially Saudi Arabia) at potentially diffuse cost to collective cohesion. The Greenland demand is not rhetorical at this point; it has persisted across summit contexts long enough to be treated as policy intent.</p>
+<p><strong>Erdoğan</strong> emerges as the immediate winner of the Ankara summit. Sanctions relief and F-35 access are not minor concessions — they represent a significant recalibration of U.S.-Turkey relations that Turkey has been pursuing for years. The price Erdoğan paid, if any, is not visible in current reporting, which is itself a signal worth noting.</p>
+<p><strong>Iran&#x27;s IRGC</strong> made the decision to violate a ceasefire MOU with commercial shipping attacks in the Strait of Hormuz. This is not a rogue action — IRGC operations at this scale require authorization at the highest levels of the Iranian government. The question of whether the subsequent counter-strikes on 80+ U.S. installations in Bahrain and Kuwait represent a controlled escalation or a decision to accept direct military confrontation with the United States is the most consequential open question in the current environment, and it is receiving asymmetric coverage.</p>
+<p><strong>Maine Democrats</strong> face a structural problem beyond Platner himself: the speed and cost of their vetting process ($6,250, three days) reflects resource and infrastructure constraints in a party that is simultaneously trying to contest a difficult Senate map. The individual operatives and donors who advanced Platner are not being named publicly — which means accountability is landing on the party generally rather than on the specific people who made the decision. That protects the network.</p>
+<p><strong>Republican operatives</strong> have already committed $8 million in ad spending targeting Platner&#x27;s replacement, which confirms the strategic calculation: the goal is not to hold Platner accountable but to destabilize whatever replaces him and make the Maine seat unwinnable for Democrats regardless of nominee.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The most significant single suppressed fact in the current environment is the reported Iranian counter-strike on more than 80 U.S. military installations in Bahrain and Kuwait. If this reporting — attributed to the Washington Post — is accurate, American service members have been under fire from Iranian forces at dozens of locations simultaneously. That is not a proportionate exchange or a contained escalation. Right-leaning outlets&#x27; failure to engage with this fact is not explicable as partisan framing; it is an omission that serves a narrative in which U.S. military action against Iran is consequence-free and domestically popular. The gap between what the market is pricing (5% oil move, sustained) and what the political coverage is saying (managed escalation, administration in control) is the most important analytical signal available right now.</p>
+<p>On the Democratic side, the Platner vetting failure is being absorbed as a candidate scandal rather than a structural failure. The specific individuals responsible for the vetting process — who authorized a three-day, $6,250 background check on a Senate nominee in a pickup race — are not visible in any coverage surveyed. This is standard protective behavior for political networks, but it means the party will not fix the underlying problem because the people responsible for the problem are not being identified.</p>
+<p>On NATO, neither left nor right coverage is honestly engaging with the net calculus of Trump&#x27;s Ankara summit: real bilateral gains with Turkey alongside real allied anxiety about collective defense commitments. Left coverage needs Trump to be purely destructive; right coverage needs him to be purely triumphant. The actual outcome — transactional gains that may carry long-term institutional costs — fits neither frame, so neither frame engages with it seriously.</p>
+<p>The Georgia election worker data ruling is being treated as an isolated legal story. It is not isolated. It is one data point in a sustained pattern of executive branch pressure on the electoral infrastructure, personnel, and oversight mechanisms — a pattern that only becomes visible when stories are read across time rather than in isolation.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Iran escalation and the NATO summit are not separate foreign policy tracks. The Trump administration is lifting sanctions on Turkey and signaling F-35 sales — to a NATO member with historically ambivalent relationships with both the alliance and with Iran — at the precise moment it is conducting direct military exchanges with Tehran. Gulf partners watching U.S. credibility on Iran will also be watching U.S. credibility on NATO commitments. These audiences overlap. The message they are receiving is that the U.S. will strike Iran but may or may not honor collective defense obligations — a combination that incentivizes every regional actor to hedge independently rather than rely on American guarantees.</p>
+<p>The Platner collapse and the Republican $8 million ad buy targeting his replacement reveal coordinated strategic logic: the goal is to deny Democrats any viable path to the Maine Senate seat regardless of who runs, not to hold a specific individual accountable. The timing of opposition research release — Politico, followed rapidly by a second allegation and the Nazi tattoo story — has the signature of sequenced, not simultaneous, opposition research deployment. This is a campaign, not a news cycle.</p>
+<p>The pattern of information asymmetry on Iran — right outlets not reporting counter-strikes, left outlets not reporting transactional Trump wins at NATO — suggests both sides are constructing parallel realities from the same underlying events. This is not new, but the stakes are higher when the underlying events include military exchanges on U.S. bases. Decision-makers operating from partisan media will have materially different pictures of U.S. military risk exposure right now.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Iran strikes on U.S. installations (48 hours):</strong> The Washington Post report of counter-strikes on 80+ U.S. military installations in Bahrain and Kuwait requires corroboration or contradiction from DoD, CENTCOM, or allied governments. If confirmed, the casualty question becomes unavoidable. Watch for DoD briefings, congressional notifications under the War Powers Act, and whether the administration seeks AUMF consultation. Absence of official acknowledgment is itself a data point.</p>
+<p><strong>Maine Senate replacement timeline:</strong> The Democratic Party faces a hard deadline on replacing Platner. Watch for who the state party and national DSCC coalesce behind — the speed of that coalition will reveal whether the institutional networks that backed Platner remain in place or have fractured. A slow or contested replacement process hands Republicans additional weeks of open-field ad spending.</p>
+<p><strong>Oil markets and Strait of Hormuz traffic (72 hours):</strong> The 5% price move on sanctions reimposition will be amplified or dampened by whether commercial shipping continues transiting the Strait of Hormuz. Watch Lloyd&#x27;s of London war risk premium announcements and whether major shippers announce route changes. These are leading indicators of whether the military exchange is being treated by markets as contained.</p>
+<p><strong>Turkey-NATO allied response:</strong> Watch for public statements from Germany, France, and Poland on the Ankara summit outcomes — specifically whether any NATO members characterize the F-35/sanctions package as a bilateral deal that bypassed alliance consultation. Any public allied criticism of the Turkey concessions would signal deeper cohesion fractures than current coverage reflects.</p>
+<p><strong>Georgia election worker data case:</strong> Watch for the administration&#x27;s appellate posture on the blocked data request. Whether they appeal immediately or absorb the ruling reveals whether this was a test case for a broader data acquisition strategy or an isolated effort.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The current political moment is defined by the simultaneous operation of two dynamics that normally don&#x27;t coexist: genuine consequential action and near-total institutional dysfunction in the systems designed to evaluate it. The Trump administration is producing real outcomes — military exchanges, alliance reconfiguration, sanctions policy — at a pace and across a range of fronts that exceeds the capacity of partisan media, congressional oversight, and in some cases the executive branch itself to coherently track. The result is that the American public and its elected representatives are receiving heavily filtered, structurally incomplete pictures of events that include active military confrontation with a regional power, a potential NATO credibility crisis, and a domestic political party that cannot vet a Senate candidate. The most dangerous feature of this environment is not that the two sides disagree about what these events mean — that is normal — but that they are disaggregating into parallel realities with different underlying facts, particularly on Iran, where the gap between what is being reported on the left and right is not interpretive but empirical. Intelligence analysis under these conditions has to treat the information environment itself as a variable, not a given.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Maine Democratic Senate nominee Graham Platner faces calls to withdraw after a former girlfriend accused him of rape in a Politico report, followed by a second allegation of non-consensual condom removal, while prior reports of physical abuse and a Nazi SS tattoo compound the crisis and collapse his institutional support.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (9)</span><span class="bias-badge" style="color:#7ae09b;">center-right (5)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:15.6;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:28.1;" title="center-left: 9"></div><div class="bias-segment" style="background:#7ae09b; flex:15.6;" title="center-right: 5"></div><div class="bias-segment" style="background:#e05252; flex:3.1;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:21.9;" title="left: 7"></div><div class="bias-segment" style="background:#5ab56e; flex:15.6;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The core facts are not seriously in dispute across the spectrum: a credible sexual assault allegation, a second misconduct allegation, a Nazi tattoo, and a catastrophically inadequate vetting process all converged on a candidate who was nonetheless the Democrats&#x27; best Senate pickup opportunity in a cycle where the chamber is in play. The genuine news here is an institutional failure — a party advanced a nominee without basic due diligence — and the political consequence is real regardless of partisan framing. The split is not about what happened but about what it means: left outlets treat it as a vetting and accountability failure the party must manage, while right outlets treat it as proof of systemic Democratic hypocrisy and moral unfitness to govern. Both framings are partially correct and both obscure the same thing: the women who made the allegations are largely peripheral to coverage across the entire spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets emphasize Democratic strategic damage and electoral consequences — the Maine race&#x27;s importance for Senate control, the party&#x27;s vetting failure, and the collapse of an underdog narrative. The accuser&#x27;s experience is acknowledged but secondary to the political fallout. The Washington Post foregrounds voter abandonment as a moral threshold story. The Guardian emphasizes Platner&#x27;s threat to party unity. Mother Jones is the sharpest outlier, naming Democratic complicity directly and treating the Nazi tattoo as equally disqualifying.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios, RealClearPolitics) treat the story as a procedural and strategic crisis. The Hill flags the campaign&#x27;s attempt to influence its own replacement process as a procedural integrity concern. Axios focuses on Republican tactical positioning. RealClearPolitics frames it as a test of Democratic credibility and as succession planning. The center largely avoids both the moral condemnation tone of the left&#x27;s strongest voices and the partisan schadenfreude of the right.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the story almost entirely as Democratic hypocrisy and institutional incompetence — a party that campaigns on women&#x27;s rights enabling a candidate with rape allegations and a Nazi tattoo through a rushed $6,250 vetting process. Fox News amplifies the scandals with escalating language (&#x27;FUCKING IDIOTS,&#x27; &#x27;explosive&#x27;) and uses individual Democrat enablers like Ruben Gallego to illustrate a pattern of poor judgment. National Review calls for personnel accountability. The victims are invoked primarily as evidence of Democratic failure, not as the central subjects.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely avoid naming the individual Democratic operatives, donors, or endorsers who backed Platner despite pre-existing red flags. The speed and cheapness of the vetting process (three days, $6,250) is largely absent from left and center-left coverage. The Nazi tattoo, while mentioned, receives less editorial weight in left coverage than in Fox News and WSJ Opinion.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not substantively report on the accusers&#x27; accounts or center their experiences. The Republican $8 million ad blitz targeting Platner&#x27;s replacement — which reveals strategic opportunism rather than genuine outrage — is reported only by the center (Axios). Right coverage does not engage with Susan Collins&#x27;s own political record or the structural dynamics that make vetting failures more likely in insurgent progressive campaigns with limited establishment infrastructure.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">President Trump attended the NATO summit in Ankara, meeting with Erdoğan and pushing defense spending demands while renewing calls to acquire Greenland and announcing sanctions relief for Turkey alongside signals of F-35 sales.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (4)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:40.0;" title="center-left: 4"></div><div class="bias-segment" style="background:#7ae09b; flex:10.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:10.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:10.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:10.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The summit produced verifiable, consequential policy outcomes — Turkey sanctions lifted, F-35 access signaled, defense spending pressure intensified — that will reshape alliance dynamics regardless of how Trump&#x27;s style is characterized. The Greenland demand is real and documented across the spectrum, but the claimed troop withdrawal threat rests on a single source and should be treated cautiously. The core analytical tension is not whether Trump is destabilizing or dealmaking — he appears to be doing both simultaneously — but whether the bilateral gains with Turkey come at net cost to broader NATO cohesion, a question neither left nor right framing honestly confronts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets cast Trump as a destabilizing actor using territorial demands and implied troop withdrawal threats as coercive leverage against European allies, while characterizing his NATO posture as driven by personal grievance, hostility toward multilateral institutions, and a decade-long pattern of undermining the alliance&#x27;s cohesion.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets focus on specific, concrete policy moves — the F-35 signal, the Turkey sanctions lift, Israeli concerns about regional military balance — and identify the Iran conflict aftermath as explanatory context for Trump&#x27;s alliance friction, without clearly endorsing or condemning his approach.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Trump as a results-oriented dealmaker projecting strength — lifting sanctions, opening F-35 talks, and forcing burden-sharing reforms — with Breitbart amplifying a Democrat&#x27;s partial agreement to suggest even opponents concede Trump&#x27;s core NATO demands are reasonable.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit or underweight the concrete transactional outcomes Trump achieved (sanctions relief, F-35 access signal, bilateral meetings with Zelenskyy and al-Sharaa), which complicates a pure destabilization narrative. They also do not engage with the bipartisan acknowledgment that NATO underspending is a legitimate grievance.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely ignore Greenland demands, the troop withdrawal threat, allied displeasure over the Iran pressure campaign, and the broader institutional anxiety about U.S. commitment to collective defense — all of which are substantiated across multiple non-partisan and center sources.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Iran&#x27;s IRGC attacked three commercial ships in the Strait of Hormuz within 24 hours, violating a recent ceasefire MOU; the U.S. responded with strikes on Iranian military facilities, Iran counter-struck over 80 U.S. installations in Bahrain and Kuwait, and the Trump administration revoked Iran&#x27;s oil sanctions waiver, sending oil prices up 5 percent.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:40.0;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:10.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:10.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:20.0;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:20.0;" title="left: 2"></div></div></div>
+  <div class="story-assessment">The core kinetic facts are well-corroborated: Iran attacked commercial shipping, violated a ceasefire MOU, the U.S. struck back, and economic sanctions were reimposed with immediate market impact. The critical gap is the Washington Post claim of Iranian counter-strikes on 80+ U.S. military installations — if accurate, this is the most consequential single fact in the story and its absence from right-leaning outlets is a significant omission. The asylum seeker lawsuit is a legitimate and serious story, but its placement alongside the Hormuz coverage by left outlets creates an implicit framing that conflates two separate issues to maximize negative characterization of both governments simultaneously.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets foreground two distinct humanitarian crises simultaneously — the military escalation cycle and the alleged domestic betrayal of Iranian asylum seekers. The Washington Post coverage emphasizes the scope of Iranian counter-strikes on U.S. facilities, reinforcing a narrative of dangerous, open-ended escalation with no off-ramp. The asylum seeker story is framed as U.S.-Iranian collusion against the most vulnerable, which serves to complicate any pro-U.S. framing by depicting cooperation between the two governments in a damning context.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets provide the most factually grounded scaffolding — documenting the sequence of events (MOU, attacks, strikes, sanctions, price spike) without strong emotive framing. Axios in particular threads diplomatic fragility into the narrative, noting the MOU was less than three weeks old, which raises the cost of the breakdown without assigning blame in a partisan direction. The Hill focuses on the concrete market consequence, keeping the story economic.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame the U.S. response as justified, proportionate, and consequences-based — a logical reaction to an adversary that broke a ceasefire. Breitbart&#x27;s language (&#x27;Powerful Strikes&#x27;) signals approval rather than alarm. The MOU violation is the load-bearing fact: Iran broke the deal, so U.S. action is legitimate. There is no humanitarian complexity, no diplomatic fragility, and no acknowledgment of Iranian counter-strikes on U.S. installations.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely omit the ceasefire-violation framing that is central to right and center-right coverage — the fact that Iran broke a specific, recently signed agreement weakens the &#x27;dangerous U.S. escalation&#x27; narrative and is treated as secondary or absent. Left coverage also does not address the specific Iranian military assets struck or why those targets were selected.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets entirely ignore the asylum seeker lawsuit — a story in which the U.S. government is alleged to have cooperated with Iran against Iranian dissidents, which would complicate the clean &#x27;U.S. vs. Iran aggressor&#x27; framing. They also make no mention of Iranian counter-strikes hitting over 80 U.S. military facilities, which if accurate represents a significant escalation that undermines any &#x27;proportionate response&#x27; narrative.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">An ICE officer fatally shot Lorenzo Salgado Araujo during a traffic stop in Houston, Texas on July 7, 2026, with ICE claiming self-defense after the man allegedly used his vehicle as a weapon.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:25.0;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:25.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core factual dispute is narrow but consequential: did Lorenzo Salgado Araujo actually use his vehicle as a weapon, and is ICE&#x27;s self-defense claim credible without independent evidence? The Guardian&#x27;s invocation of prior incidents where video contradicted ICE is the most analytically significant detail — it establishes a pattern question, not just an isolated incident. The more revealing signal here is what Fox News chose to run instead: a noncitizen voting case that validates immigration enforcement broadly, avoiding a story that requires scrutinizing it. The Reason piece, covering a separate ICE-retaliation-for-speech incident, suggests a broader pattern of ICE operating with reduced accountability constraints — making the unanswered questions in the Houston shooting more, not less, significant.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian emphasizes institutional unaccountability and suspects official narrative: ICE&#x27;s self-defense claim is treated as unverified, the victim is named and humanized (Lorenzo Salgado Araujo), and the incident is placed in a pattern of prior ICE shootings where agency accounts were later disproven. The emotional register is skepticism toward state violence.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill covers the Houston shooting as a straight law enforcement news item: factual, sourced to ICE&#x27;s official statement, no editorializing. The victim is not named. No pattern or precedent is invoked. The framing is procedural — an event occurred, authorities responded.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News does not cover the Houston shooting at all. Instead it runs a story about a noncitizen voting fraud arrest in Louisiana — a different story entirely. The editorial choice to redirect the immigration enforcement news cycle toward election integrity framing, rather than engage with a lethal-force incident, is itself a significant framing decision. The implicit message: immigration enforcement is necessary and justified; accountability stories are not the frame.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not engage with whether the decedent had any prior record, immigration status details ICE may have cited as context for the stop, or the operational specifics ICE provided about why this individual was targeted.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News omits the Houston shooting entirely. By not covering it, right-leaning audiences receive no information about the lethal-force incident, the victim&#x27;s identity, the absence of corroborating evidence for ICE&#x27;s self-defense claim, or the First Amendment retaliation case (covered by Reason) that suggests a pattern of ICE overreach.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Two distinct Supreme Court stories are in circulation simultaneously: justices preparing for a rare congressional appearance, and a series of Second Amendment rulings expanding gun rights.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These two sources are not covering the same story — they are covering two entirely different Supreme Court developments, which is itself analytically significant. The Washington Post focuses on a procedural/accountability moment, while Reason focuses on substantive Second Amendment jurisprudence. A reader consuming only one outlet would have a severely incomplete picture of what the Court is doing. The gun rulings are arguably the higher-impact story given their immediate policy consequences, but the congressional appearance raises structural questions about judicial independence and oversight that matter long-term.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes institutional process and the novelty of judicial accountability to Congress; tone is observational rather than advocacy-driven. The bipartisan pairing of Kagan and Barrett is foregrounded, implicitly suggesting the Court can still function across ideological lines.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source is present in this sample.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No explicitly right-leaning source is present in this sample.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post coverage makes no mention of the active Second Amendment rulings, which represent some of the Court&#x27;s most impactful recent decisions. Readers get the procedural story but miss the substantive legal shifts happening simultaneously.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason makes no mention of the congressional testimony story, which raises questions about judicial accountability and ethics oversight — topics with direct relevance to libertarian concerns about institutional power and checks and balances.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Two separate incidents — DHS&#x27;s $1.5B purchase of California detention facilities and ICE&#x27;s alleged intimidation of a private citizen critic — both raise questions about federal immigration enforcement evading accountability.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These are two legally and factually distinct stories linked only by theme: ICE/DHS resisting external accountability, whether from state governments or individual critics. The facility purchase story is the higher-stakes item — $1.5B in federal spending structured in a way that may permanently remove facilities from state inspection regimes affects thousands of detainees. The Streever lawsuit, if FIRE&#x27;s account holds up in court, would represent a more direct constitutional violation but affects one person. Taken together, they suggest a pattern of institutional resistance to oversight rather than isolated incidents.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    DHS is using federal purchasing power as a tool to deliberately neutralize California&#x27;s progressive detention oversight laws, framing this as an abuse of executive authority and an attack on transparency and immigrant rights.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was provided for this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided. The libertarian Reason frames ICE as an authoritarian agency willing to suppress individual speech through intimidation, emphasizing the chilling effect on First Amendment freedoms — a critique that cuts across traditional left-right lines.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones makes no mention of individual citizens being directly targeted or intimidated for political speech — a dimension that would strengthen the broader civil liberties argument and appeal beyond progressive readers.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason makes no mention of the $1.5B facility purchase or the structural question of federal preemption of state detention oversight — an arguably larger systemic issue than the single Streever incident.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Former U.S. Ambassador Rahm Emanuel is scheduled to deliver a speech at Tel Aviv University criticizing Israeli Prime Minister Benjamin Netanyahu&#x27;s leadership and warning the U.S.-Israel relationship is unsustainable in its current form.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:66.7;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">The core event is real and significant: a former senior U.S. official is publicly breaking with Netanyahu in Netanyahu&#x27;s own backyard, which is diplomatically unusual regardless of political framing. The PBS/Hill gap in sourcing obscures that Netanyahu is simultaneously running his own counter-narrative against American critics, suggesting a coordinated rather than one-sided shift. What actually matters is whether Emanuel&#x27;s speech signals a genuine realignment in how Democratic establishment figures position themselves on Israel ahead of 2026 and 2028 — that question goes unexamined by all three sources.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS frames Emanuel&#x27;s dissent as legitimate, even courageous — a respected insider breaking ranks in a way that validates growing mainstream skepticism of Netanyahu. The emphasis is on the political courage of criticism and the idea that the pro-Israel establishment is fracturing from within.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents the story as a straightforward news event — a notable public figure delivering a notable speech — while also platforming Netanyahu&#x27;s own counter-offensive against a different critic (Mamdani), implicitly presenting Netanyahu as capable of defending himself rather than being cornered.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided in this dataset. Based on the gap, right-leaning coverage would likely frame Emanuel&#x27;s speech as a betrayal of a key ally, politically motivated, or as emboldening Israel&#x27;s enemies — consistent with how similar criticisms have been treated by right outlets.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS does not engage with Netanyahu&#x27;s active pushback against American critics (the Mamdani exchange), which suggests Netanyahu is not passive in this dynamic. It also omits any consideration that Emanuel&#x27;s speech, delivered on Israeli soil, could be seen as foreign political interference in Israeli domestic politics.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage (absent here) would likely omit or minimize the substantive policy critique Emanuel is making — that the structure of U.S.-Israel relations has produced poor outcomes — focusing instead on the messenger&#x27;s motives rather than the message&#x27;s merits.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Michigan Democratic Senate candidates Abdul El-Sayed and Rep. Haley Stevens debated in a reshuffled primary field as audio emerged appearing to contradict El-Sayed&#x27;s denial of past support for defunding police.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The core factual question — whether El-Sayed made a specific, categorical denial and whether the 2020 audio directly contradicts it — is independently verifiable and neither confirmed nor denied by the center source. Breitbart&#x27;s framing as outright deception is likely overstated, but the underlying contradiction, if the denial was specific and the audio is in full context, is a legitimate news story that center and left outlets appear to be underplaying. Michigan is a genuine swing state and this Senate seat matters nationally, making the primary outcome consequential beyond its local framing.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is represented in this coverage set. Based on available center framing, the likely left angle would emphasize El-Sayed&#x27;s progressive credentials and the stakes of the Senate seat for the Democratic majority, potentially contextualizing 2020 policing rhetoric as era-appropriate.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the debate as a consequential horse-race moment — who is positioned to win, what McMorrow&#x27;s exit means for the field, and what&#x27;s at stake for Democrats in a must-win Senate seat. Policy disputes are secondary to electoral dynamics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames El-Sayed as a far-left candidate deliberately deceiving voters by disavowing a position he clearly held, using the audio as proof of character dishonesty rather than engaging with the substance of his current platform or the debate context.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The existence and content of the 2020 audio, and El-Sayed&#x27;s apparent denial of ever holding a defund-police position — a factual claim that is independently verifiable and politically significant regardless of framing.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    McMorrow&#x27;s campaign suspension and its effect on the primary dynamic; Stevens&#x27; positions and record; the full debate context; any substantive policy contrast between the two remaining candidates beyond the policing flashpoint.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. Mitch McConnell has been hospitalized for at least three weeks, prompting Republican leadership to publicly vouch for his condition while online speculation about his future accelerates.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The core factual gap neither outlet fills is the actual diagnosis and prognosis — everything downstream (leadership messaging, Massie speculation) is a response to that vacuum. Axios is covering the information control operation; Reason is covering what that control operation is trying to suppress. The Massie angle is speculative and likely low-probability, but its circulation signals that McConnell&#x27;s Kentucky seat is already being treated as politically in play. The more significant story is whether a three-week hospitalization with no public medical disclosure is consistent with a senator capable of serving.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this analysis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames this as an institutional crisis-management story: GOP leadership is running a coordinated, synchronized messaging operation to contain speculation before it destabilizes the caucus. The story centers on process and optics — who said what, how detailed their statements were, and how deliberately timed the rollout appeared.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No traditional right-leaning source was included in this analysis.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not determinable from available sources.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Axios omits the Massie succession speculation entirely, avoiding any content that could amplify instability narratives. It also does not characterize the hospitalization as &#x27;unexplained,&#x27; instead implicitly validating leadership&#x27;s account.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two separate Florida speech/media stories: DeSantis signed a budget ban on NewsGuard-based ad blacklists while a federal appeals court struck down Florida&#x27;s Stop WOKE Act university speech restrictions 2-1.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These are two distinct Florida stories that together reveal a contradictory pattern: DeSantis used state budget authority to protect certain media outlets from private-sector accountability tools, while a federal court simultaneously ruled his administration overstepped in restricting what university professors may say. The right-leaning outlet highlights the legislative win while ignoring the judicial loss; the libertarian outlet covers the court victory on free speech grounds without examining whether the same logic applies to the NewsGuard provision. The net picture is a Florida executive branch that is selectively pro-speech depending on whose speech is being protected.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in this source set. A left-leaning outlet would likely frame the NewsGuard provision as DeSantis weaponizing state budgets to protect right-wing media, and would frame the Stop WOKE Act ruling as a necessary check on state-sponsored viewpoint discrimination.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not directly represented. A center outlet would likely cover both stories with attention to legal mechanics and institutional precedent rather than ideological stakes.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    RealClearPolitics frames the NewsGuard ban as a principled, courageous stand against ideologically motivated censorship of conservative media by corporate ad-tech intermediaries — DeSantis as defender of press freedom.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left sources present. What is absent from right/libertarian coverage: any examination of whether the NewsGuard provision itself suppresses market signals that advertisers use to avoid misinformation; the fiscal or contracting scope of the budget provision.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right source covers the Stop WOKE Act ruling at all — a significant federal appellate loss for DeSantis&#x27;s legislative agenda goes unmentioned in the RealClearPolitics piece. Reason does not cover the NewsGuard story.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">A federal judge blocked the Trump administration from obtaining Georgia election workers&#x27; personal data, while separate stories cover anti-wind energy policy impacts on workers and a UK parliamentary ethics controversy involving Nigel Farage.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:33.3;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">This sample is analytically incoherent for cross-spectrum comparison: the three outlets are covering three separate, unrelated news events, making it impossible to identify how different ideological outlets frame the same facts. The only story matching the stated headline — the Georgia election worker data ruling — is covered by a single source. Any conclusions drawn about &#x27;left vs. right framing&#x27; here would be fabricated, since no two outlets are reporting on the same subject.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones centers human cost and economic harm from Trump&#x27;s energy policy, using worker testimonials to personalize abstract policy decisions. The &#x27;personal vendetta&#x27; framing casts the administration as irrational and reckless, prioritizing emotional resonance over institutional or legal analysis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS presents the Georgia election worker ruling as a clean legal outcome — judicial check on executive action — without framing it as a win or loss for either side. Tone is procedural and restrained.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this sample. The libertarian outlet (Reason) focused on UK politics entirely — Farage&#x27;s ethics scandal — with skeptical framing toward the political maneuver rather than defending or attacking any U.S. policy position.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones and PBS offer no coverage of the Farage UK ethics story. Mother Jones omits any legal or procedural framing of the wind energy orders — no court rulings, regulatory process, or opposing economic arguments are mentioned.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning U.S. outlet is present in this sample. The Reason piece covers no U.S. domestic stories at all, leaving the Georgia election worker ruling and wind energy impacts entirely unaddressed from a libertarian or right-leaning American perspective.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New lawsuit alleges U.S. shared asylum application details with Iran</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet &#x27;Project 2029&#x27; — and its war on the annoyance economy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Heirs of &#x27;odious&#x27; 169-year-old Supreme Court ruling see modern parallels</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gov. Sherrill ran on freezing electricity rates. Can she bring relief to New Jersey?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New student loan rules could limit funding for some graduate programs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge rejects Justice Department&#x27;s &#x27;unreasonable&#x27; attempt to get names of 2020 election workers in Fulton County</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s EEOC abandons key tool for combating workplace discrimination</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wisconsin Supreme Court refuses to release voter records sought by conservative activist</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› North Dakota leaders talk Trump &amp;amp; Teddy Roosevelt over bison burgers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Karmelo Anthony seeks new trial after 35-year sentence in killing of Austin Metcalf</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Prosecutors say video shows suspect in Charlie Kirk killing climbing on to roof</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Arizona toddler declared dead after near-drowning was alive for hours in ‘cold room’, records say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› More than 400 people arrested at Fourth of July ‘TikTok takeover’ in California</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Manhattan building sparks evacuations after two structural columns buckle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Absolutely bananas’: San Francisco homes sell for $1m above asking price amid AI boom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Palantir Has a Hand in NIH’s Most Ambitious Health Initiative</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Author and Poet Victoria Chang Learned From Trees</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Are Young People So Risk-Averse?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Jersey Makes a Medicaid Money Grab</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› French Lawfare and Marine Le Pen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Crypto Impeachment?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tocqueville Deserves a Washington Statue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ukraine Is Redefining Modern Warfare</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialism and the Decline of the Black Family</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Abbott orders probe after Texas hospital advertises &#x27;birth packages&#x27; in Mexico: &#x27;Citizenship is not for sale&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration plans new ICE holding facility near Louisiana deportation flight hub</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hochul says Stefanik would&#x27;ve been tougher GOP opponent than Blakeman in surprising swipe at rival</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Abigail Spanberger’s Virginia a ‘hotbed’ for illegal immigrant crime, DHS says after latest rape charge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Does the WNBA Not Like Caitlin Clark?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Shouldn’t Delist Syria Without Conditions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No Country for Nihilism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Pentagon Must Undertake Its Own Transformation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How U.S. Climate Advocacy Gives China an Edge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How to Fight Fraud in Reconciliation 3.0</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Democrat Dismisses Antisemitism in Modern Times Because ‘All the Jews Are Rich’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama Case Spotlights Reality of Noncitizens Voting in U.S. Elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Moderate’ Iowa Democrat Josh Turek Voted Against Bills Targeting DEI Programs in Schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Controversy Explodes After Disallowed Goal in Egypt-Argentina World Cup Game: &#x27;Not Why VAR Was Brought Into the Game&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AMERICAN SOUNDTRACK: Hit Songwriters Billy Montana and David Tolliver&#x27;s Small Town Anthem &#x27;Sounds Like America&#x27; Captures Her Character for the 250th</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – Roger Wicker: America Is the Most Successful Experiment in Self-Government</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Vetted Platner, Signed Off on All His Baggage</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America 250 Showed the Pride and Joy in the U.S.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump and Teddy Roosevelt: Lost in the Badlands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Young Washington: History&#x27;s Ultimate Gritty Origin Story</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
