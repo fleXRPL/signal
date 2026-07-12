@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-12 10:24 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-12 10:24 UTC</span>
+    <span class="pill">89 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">8 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on July 12, 2026 is defined by a single underlying dynamic: the executive branch is simultaneously expanding its use of legal process as a weapon against accountability while the press, the opposition party, and foreign policy oversight mechanisms are each failing in distinct and compounding ways. The DOJ&#x27;s grand jury subpoenas to at least four New York Times journalists — delivered to their homes, not their newsrooms — combined with a sitting president&#x27;s explicit public threat against a named journalist constitute not two press freedom incidents but a single coordinated intimidation operation with parallel legal and extralegal prongs. Home delivery serves no procedural function that standard service does not. Its purpose is psychological. This is happening in the same news cycle in which the executive branch appears to be actively insulating its relationship with Qatar from scrutiny through the same legal instrument being used to suppress the reporting.</p>
+<p>The Senate is quietly reshaping itself. Lindsey Graham&#x27;s death — the first sitting senator to die in the current congressional term — is a concrete constitutional event triggering gubernatorial appointment, committee reassignments, and potentially procedural votes, yet it is receiving near-blackout coverage. South Carolina Governor Henry McMaster will fill the seat by appointment within weeks, insulating the Republican position immediately. On the same cycle, Maine Democrats lost their most viable challenger to Susan Collins after a vetting collapse that internal campaign staff reportedly flagged and were overruled on. Neither party loses a net Senate seat, but Democrats lose months of recruitment runway while Republicans lose none. The coverage treats these as unrelated human-interest events rather than what they are: simultaneous shifts in 2026 Senate math that disproportionately favor Republicans.</p>
+<p>The third major story being systematically underreported is the West Bank detention of Representative Ro Khanna by armed Israeli settlers carrying U.S.-manufactured M4 rifles, with IDF soldiers initially siding with the settlers against a sitting U.S. congressman. This is a diplomatic incident by any normal standard. No story in today&#x27;s cycle reports a State Department response, a formal protest, or even a spokesperson statement. The absence of a government response — and the near-total absence of coverage noting that absence — is more anomalous than the incident itself.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>The DOJ under the current administration is operating simultaneously as the story&#x27;s suppressor and as the oversight body nominally responsible for investigating executive branch misconduct at institutions like the Kennedy Center. That institutional conflict is invisible when each story is covered in isolation. The grand jury process is being used not merely to investigate leaks but to create legal jeopardy and chilling effect on sources — the criminal exposure question (are journalists targets or merely vehicles to reach sources?) remains unresolved and is the most consequential legal distinction in the press freedom story.</p>
+<p>Governor Henry McMaster is now the most immediately consequential actor in Senate math. His appointment decision — loyalist versus a 2026 primary contender — and its timeline will determine whether Graham&#x27;s seat becomes a vehicle for intraparty Republican positioning or a clean hold. Watch for committee chairmanship cascades from any appointment, which can shift legislative leverage in ways that receive almost no coverage relative to their procedural significance.</p>
+<p>The Democratic Party&#x27;s Maine recruitment failure reflects a specific structural problem: Platner was a political newcomer recruited under intense national progressive pressure to field *someone* against Collins, and that urgency appears to have allowed internal vetting flags to be dismissed. The question of whether the overrule decision came from outside activists or internal campaign leadership is unresolved and matters because it determines where accountability and corrective pressure should land before the July 27 filing deadline.</p>
+<p>Israel operates as a contested actor across three separate stories today — the Khanna detention, the Norway-led FIFA Israel suspension campaign, and the suppressed reporting orbit of the Qatar Air Force One story — yet no outlet is synthesizing these threads. The IDF&#x27;s conduct in the West Bank, backing settlers against a U.S. congressman while those settlers carried American weapons, is a test of whether the U.S.-Israel relationship has any accountability floor. The current evidence suggests it does not: the State Department has not responded, right-leaning outlets have not covered it, and the story is being contained editorially rather than diplomatically.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the DOJ journalist subpoenas or Trump&#x27;s direct threat to Haberman. These are stories that would ordinarily trigger government overreach outrage from outlets that treat executive branch targeting of individuals as a defining issue. The selective non-application of that principle here is not ideological inconsistency — it is a deliberate editorial choice to protect specific relationships: the Qatar relationship, the Israel relationship, and the Senate math. Right outlets are also not covering the Khanna West Bank detention, which involves American civilians (settlers) carrying American weapons detaining an American congressman while American-allied soldiers backed them. The silence is not explicable on ideological grounds; it is explicable only as protection of a specific alliance.</p>
+<p>The left is not covering the Graham death with anything approaching proportionate gravity. A sitting senator&#x27;s death is a constitutional event. The left&#x27;s silence on it is anomalous and likely reflects the story&#x27;s unfavorable angle: McMaster&#x27;s appointment insulates the Republican seat immediately, there is no Democratic pickup opportunity, and amplifying the story draws attention to a Republican advantage rather than a vulnerability. The left is also not engaging with the FIFA Israel suspension campaign despite covering the Khanna story — the FIFA story would extend the Israel accountability argument into international institutional terms, but it requires treating Norway as a serious geopolitical actor and engaging with processes the left is not currently covering.</p>
+<p>The single most significant editorial absence in today&#x27;s cycle is Iran. The previous watch window flagged Hormuz commercial shipping and the post-deadline 72-hour window as the highest-stakes developing story. Iran appears nowhere in today&#x27;s entity network. A story tracking toward potential military escalation does not simply disappear from the news cycle — it is either quietly de-escalating or being actively managed out of coverage. The DOJ press suppression window provides at least a structural incentive to manage other high-stakes stories downward. Verify against maritime insurance premium adjustments and Lloyd&#x27;s of London war-risk designations before concluding the situation has stabilized.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Qatar Air Force One story and the Khanna West Bank detention are not adjacent stories. They are two halves of a single pattern: the U.S. government is actively suppressing accountability for its Gulf state relationships via grand jury process while remaining silent on accountability for its Israeli relationship via diplomatic non-response. Both suppression mechanisms are operating simultaneously on the same geopolitical fault line. Neither story is comprehensible in isolation; together, they describe an executive branch that has decided U.S.-allied Middle Eastern relationships are insulated from scrutiny by any mechanism available — legal, diplomatic, or editorial.</p>
+<p>The home delivery of journalist subpoenas and Trump&#x27;s Haberman social media threat are not two press freedom incidents occurring in the same week. They are a coordinated dual-track operation. The grand jury process creates legal jeopardy and chilling effect on sources. The presidential social media threat creates personal jeopardy and public harassment pressure on a named individual. Home delivery is the connecting tactic — it merges the legal and personal tracks into a single act that signals: we know where you live, and we have legal process that reaches there. This is a durable tactic being tested in this cycle, not a one-off event.</p>
+<p>Graham&#x27;s death activates the Senate succession contingency scenario in concrete terms for the first time this cycle. The South Carolina appointment is now the template case against which the McConnell contingency — a Kentucky gubernatorial appointment that would go Democratic — becomes measurable. Graham&#x27;s death makes the Senate succession question politically legible in a way abstract health-watch coverage did not. The asymmetry is significant: SC fills in weeks by Republican appointment; the Kentucky scenario would produce a Democratic appointment. Senate leadership positioning in the next ten days — any McConnell schedule changes, committee assignments, or procedural positioning — should be read against this backdrop.</p>
+<p>The World Cup is functioning as an unrecognized geopolitical lens across six distinct stories in today&#x27;s cycle: ICE enforcement at the tournament, the Messi-Trump-Argentina soft power dimension, Norway&#x27;s FIFA Israel suspension campaign, Haaland&#x27;s viral celebrity moment, Title IX and men&#x27;s soccer, and England&#x27;s Starmer bank holiday. No outlet is treating these as a unified policy frame. The Norway FIFA story is individually the most consequential — a formal institutional campaign to suspend a U.S. ally from international competition — yet it is being covered as a sports story rather than as a diplomatic one.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>South Carolina Senate appointment, 0-21 days:</strong> Governor McMaster&#x27;s selection and timeline. Watch for whether the appointee is a loyalist placeholder or a 2026 primary contender, and whether any committee chairmanship cascades from the appointment shift legislative leverage before the next procedural vote. This is the most immediate constitutional consequence of the most under-covered story in today&#x27;s cycle.</p>
+<p><strong>State Department response to Khanna detention, 48-hour window:</strong> Whether the administration issues any diplomatic communication to Israel regarding IDF soldiers backing settlers against a sitting U.S. congressman. Silence beyond 48 hours becomes the story. If no formal protest emerges by July 14, that non-response should be treated as a policy signal, not a communication failure.</p>
+<p><strong>DOJ subpoena legal characterization:</strong> Whether the grand jury process constitutes a criminal investigation of the journalists themselves versus subpoenas for source communications. This is the dispositive legal distinction — the first is a prosecution track, the second is a chilling-effect operation. Watch for any court filings, motion to quash, or DOJ public statements that clarify which track is operative.</p>
+<p><strong>Maine Democratic filing deadline, July 27:</strong> The replacement candidate question. Watch specifically for any Republican legal challenge to a ballot-line substitution — that is the asymmetric risk that could extend the damage from weeks to months. Any new candidate announcement before July 20 meaningfully reduces that window.</p>
+<p><strong>Iran/Hormuz status verification:</strong> The complete disappearance of this story after the previous cycle&#x27;s escalation tracking requires independent verification. Check maritime insurance premium adjustments, Lloyd&#x27;s of London war-risk designations, and Strait of Hormuz commercial transit data as leading indicators. Do not assume quiet de-escalation from editorial silence alone.</p>
+<p><strong>Norway FIFA Israel suspension campaign vote timing:</strong> Whether Norway formally introduces a resolution before the World Cup concludes, and which national football associations co-sponsor. A formal resolution with co-sponsors from UEFA member states would constitute the most significant international institutional pressure on Israel since the current conflict began, and it is currently receiving almost no mainstream political coverage.</p>
+<p><strong>McConnell public schedule and Senate activity, next 7 days:</strong> Graham&#x27;s death makes the succession contingency concretely legible. Watch for any schedule changes, public appearances, or Senate leadership positioning in the week following Graham&#x27;s death — this is now the live stress test of whether the Republican caucus has a functional succession plan.</p>
+<p><strong>Qatar government communications, 72-hour window:</strong> Whether Qatar makes any public statement or whether any Gulf state diplomatic communications with the Trump administration occur following the DOJ subpoenas. Qatar&#x27;s silence or response will indicate whether the grand jury process is understood in Doha as a U.S. government move to protect the relationship or complicate it.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The defining characteristic of this political moment is not any single story but a pattern of simultaneous institutional failures operating at different speeds and in different registers that are individually comprehensible and collectively alarming. The executive branch is using legal process to suppress accountability for its Gulf state relationships, diplomatic silence to insulate its Israeli relationship, and editorial management to obscure a Senate succession event that has immediate constitutional consequences. These are not three separate stories — they are three instruments of the same underlying posture: that the executive branch&#x27;s core alliance relationships are not subject to accountability through any available mechanism, legal, diplomatic, or editorial. What is most significant is not the individual actions but the absence of friction: the press is being intimidated, the State Department is silent, and the Senate is filling a seat by appointment with near-zero coverage. The institutions designed to create friction on executive overreach are each failing independently, and the net effect is a political environment in which the executive branch is operating with substantially less resistance than the formal institutional architecture would suggest.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The Justice Department subpoenaed at least four New York Times journalists — delivering some subpoenas at their homes — over reporting on security concerns with Qatar&#x27;s donated Air Force One plane, while President Trump separately threatened journalist Maggie Haberman with legal consequences on social media.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (3)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:40.0;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 3"></div><div class="bias-segment" style="background:#7ae09b; flex:13.3;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:6.7;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:13.3;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:6.7;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The factually grounded core of this news cycle involves two simultaneous pressure points on press freedom: a DOJ grand jury process targeting journalists over national security reporting, and a president making explicit public threats against a named journalist. These are distinct legal and political acts that warrant scrutiny regardless of the underlying merits of the Qatar Air Force One story. The right&#x27;s complete editorial silence on both — while the left leads with them — means neither side is offering a complete picture: the left omits any legitimate leak-investigation rationale, while the right treats presidential threats against journalists as unremarkable. The Iran escalation is a genuinely high-stakes parallel story that is getting fragmented coverage, with no outlet synthesizing the military, diplomatic, and economic dimensions coherently.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets (Mother Jones, Guardian, NPR, PBS) frame the DOJ subpoenas as a coordinated, authoritarian suppression of the free press — emphasizing the dramatic home delivery of subpoenas as designed to intimidate. Trump&#x27;s threat to Haberman is treated as part of the same pattern of targeted retaliation against journalists who criticize him. The Guardian adds a &#x27;destabilizing ally&#x27; frame to the NATO story. Hunter Biden&#x27;s defamation win is elevated as vindication against politically-motivated disinformation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) cover both the DOJ-press story and the Iran escalation with more procedural framing — reporting the sequence of events (strikes, strait closure, subpoenas) without heavy editorial coloring. The Hill explicitly names Trump&#x27;s Haberman threat as a &#x27;chilling effect&#x27; but frames it as newsworthy conduct rather than authoritarian pattern. Axios treats the Iran assassination threat and MOU fragility as the dominant strategic story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and center-right outlets (National Review, RealClearPolitics) do not cover the NYT subpoenas or the Haberman threat at all. National Review focuses its critical energy on Trump&#x27;s inconsistency with Erdoğan — a right-flank critique of foreign policy incoherence rather than press freedom. RealClearPolitics runs opinion content validating Trump as a cultural corrective. The right&#x27;s silence on the press freedom story is the defining editorial choice.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not engage with the possibility that the NYT&#x27;s Air Force One reporting may have involved classified information or genuine national security equities — framing that would complicate a pure press-freedom narrative. They largely omit the strategic dimension of Iran&#x27;s strait closure as a global oil supply threat, and do not cover Trump&#x27;s NATO dealings with Erdoğan through a foreign policy effectiveness lens.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets entirely omit the DOJ subpoena story and Trump&#x27;s direct threat to Haberman — two of the most concrete press-freedom actions in the dataset. They do not cover the growing financial cost of the Iran war or question the strategic coherence of U.S. military objectives. The Haberman threat, which involves a sitting president using social media to warn a specific journalist of legal consequences, receives zero right-outlet coverage in this set.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Rep. Ro Khanna (D-CA) was detained for over an hour by armed Israeli settlers carrying U.S.-made M4 rifles while visiting a Palestinian village site in the West Bank, with IDF soldiers initially siding with the settlers before Israeli police dispersed them.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core event is not seriously in dispute: a sitting U.S. congressman was physically detained by armed civilians in a military-occupied territory, with uniformed IDF soldiers initially supporting those civilians over an American elected official. That detail — IDF soldiers siding with settlers against a congressman — is the most diplomatically significant fact in the story, and it is most visible in Fox&#x27;s own reporting, even as Fox buries it under credibility qualifiers. The left is using real facts to drive a complicity argument; the right is using process skepticism to avoid engaging with those same facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The detention is treated as direct evidence of the occupation&#x27;s brutality and U.S. complicity — the American-made weapons become the symbol, tying Congressional visits to the arms pipeline. The destroyed Palestinian village is foregrounded. Emotion: moral indignation, urgency around accountability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS frames the incident as a diplomatic and institutional anomaly — a sitting U.S. congressman confronted by Israeli military and settlers — raising implicit questions about access and bilateral conduct without taking a strong normative position. Neutral but implicitly alarmed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Khanna&#x27;s account is treated with skepticism via repeated hedging language. The story is folded into a pre-existing narrative about Democrats trying to restrict Israel arms sales, implicitly suggesting Khanna&#x27;s trip was politically motivated rather than fact-finding. Emotion: suspicion of the messenger.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not mention that IDF soldiers eventually called Israeli police who dispersed the settlers, which slightly complicates the &#x27;total IDF impunity&#x27; framing. It also does not acknowledge any uncertainty about Khanna&#x27;s account.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not engage with the substantive policy question raised by US-made weapons in settler hands, nor the destruction of the Palestinian village being visited. It omits the diplomatic dimension of a U.S. congressman being detained, which would typically be treated as more significant.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">U.S. Senator Lindsey Graham (R-SC), 71, died on the evening of July 11, 2026 from a brief and sudden illness while serving in his fourth Senate term and actively campaigning for reelection.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:66.7;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The death of a sitting U.S. Senator is a concrete, verifiable event — all three outlets agree on the core facts. The divergence is purely interpretive: left outlets, particularly The Guardian, contextualize Graham through his political journey and its contradictions, while Fox constructs a hagiographic legacy built on loyalty to Trump. Neither version is factually false, but each omits what complicates its preferred narrative. The most significant downstream fact — that Graham&#x27;s death triggers a South Carolina gubernatorial appointment and alters Senate math — receives no meaningful attention in any of the three sources.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    WaPo treats the death as a clean factual record with minimal editorializing. The Guardian layers on political biography, foregrounding Graham&#x27;s ideological journey — from John McCain ally and frequent Trump critic to full Trump loyalist — as essential context for understanding his legacy. The implicit editorial signal is that his legacy is complicated, not simply heroic.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No explicitly center outlet was included in this sample. WaPo, while tagged left, functions here closest to a neutral wire-service register — factual, brief, non-editorial.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox leads with the loss of a patriot and loyal Republican, uses Trump&#x27;s tribute as a capstone to reinforce Graham&#x27;s standing within the MAGA coalition. The framing positions Graham as a distinguished statesman whose service deserves reverence, with no acknowledgment of his earlier conflicts with Trump.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets do not foreground Trump&#x27;s personal tribute or frame it as a meaningful measure of Graham&#x27;s legacy. They do not characterize him as a &#x27;patriot&#x27; or &#x27;loyal Republican statesman.&#x27;
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox makes no mention of Graham&#x27;s lengthy period as a vocal Trump critic, his close association with John McCain, or the ideological evolution that defined his post-2016 career. His transformation is erased in favor of an uncomplicated loyalty narrative.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Maine Democratic Senate candidate Graham Platner withdrew from the race against incumbent Susan Collins after a rape allegation surfaced, with reporting indicating his campaign&#x27;s vetting process ignored internal warnings — a setback that narrows Democratic options in a key 2026 race.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (3)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:14.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:28.6;" title="center-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:14.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:42.9;" title="right: 3"></div></div></div>
+  <div class="story-assessment">The factual core is clear: a Democratic candidate with a problematic background was recruited and inadequately vetted, and Democrats in Maine now face a difficult replacement timeline against a durable incumbent. The real dispute is about where accountability sits — on outside activists who pushed recruitment, on campaign staff who reportedly ignored vetting flags, or on party infrastructure that allowed both. The Fox News pairing of Platner with McConnell health demands and 2028 socialism warnings is editorializing, not reporting — those are separate stories being stitched into a &#x27;Democratic chaos&#x27; meta-narrative that the Platner facts alone don&#x27;t fully support.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian treats this as a systemic warning about outside-activist overreach in Democratic candidate recruitment — the party as an institution is a victim of undisciplined enthusiasm from national progressive groups who bypassed rigorous local vetting. The emotion is concern and retrospective accountability, not partisan attack. The implicit lesson is that the party needs tighter centralized controls over candidate selection.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR and RealClearPolitics focus on electoral consequences — the compressed timeline, Collins&#x27;s improved position, and the strategic hole Democrats now face. The framing is analytical and race-focused rather than moralistic. RealClearPolitics nods toward intra-party rifts but doesn&#x27;t fully commit to the Fox-style &#x27;catastrophe&#x27; language.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News and RealClearPolitics frame the collapse as self-inflicted Democratic incompetence — slapdash staffers, ignored warnings, a party that is unserious and chaotic. Two Fox articles use Platner only as a jumping-off point to broader arguments: that Democrats are being pulled toward socialism (Schmitt) and that a Democratic governor is hypocritically weaponizing health-transparency demands against McConnell. The cumulative effect is a portrait of a dysfunctional, radical, and double-standard-applying opposition party.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning coverage does not engage with the specific claim — sourced by Fox — that the campaign&#x27;s own vetting team flagged concerns and was overruled. If true, this shifts blame from outside activists to internal campaign decision-makers, which complicates the Guardian&#x27;s &#x27;victim of outsiders&#x27; framing.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage largely ignores the structural recruitment problem The Guardian identifies: that Platner was a political newcomer with no prior public record, recruited specifically because national progressive groups wanted a challenger to Collins and moved fast. This context matters because it explains how warnings could be minimized — the pressure to field *someone* was intense. Right coverage also omits any acknowledgment that the rape allegation itself — not just vetting failures — is the central harm.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Senator Whitehouse announced whistleblower allegations that Kennedy Center renovation contracts were mishandled, with disclosures citing rushed timelines and possible federal contracting law violations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core factual claim — that whistleblowers alleged construction and contracting problems at the Kennedy Center — appears solid enough to warrant scrutiny, as it involves a federal institution and public funds. The critical unresolved question is whether the contracting irregularities were driven by normal bureaucratic pressure or by deliberate politically-motivated rush, which is precisely what the Guardian asserts but PBS leaves ambiguous. The FIFA peace prize detail, if accurate, is the most politically significant element and the most likely to be disputed — it is also the element most absent from the more restrained PBS account, suggesting it may be contested or unverified.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as corrupt abuse of federal resources driven by Trump&#x27;s ego — the FIFA &#x27;peace prize&#x27; angle makes it personal and embarrassing, and &#x27;rushed&#x27; implies deliberate lawbreaking rather than mere mismanagement. The emotional register is scandal and accountability-denied.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour treats this as a procedural oversight story: a senator received a credible disclosure and is doing his job. The framing is institutional and restrained, emphasizing process over politics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources were provided for this story. Their absence is itself notable — either the story hasn&#x27;t penetrated right-media yet, or it is being suppressed or counter-framed in ways not captured here.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left-leaning outlet addresses whether the Kennedy Center renovations were otherwise overdue, whether the timeline was publicly announced in advance, or whether any contracting irregularities were flagged internally before whistleblowers went external. No response from Kennedy Center leadership or the administration is present in either account.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Without right-sourced coverage, omissions cannot be directly measured. However, based on the story&#x27;s structure, right outlets would likely omit or dispute: the FIFA peace prize framing, the allegation of deliberate legal violations, and the congressional oversight angle — while potentially questioning whistleblower motives or GAP&#x27;s political affiliation.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Norway&#x27;s presence at the 2026 FIFA World Cup generates two distinct stories: a quiet institutional campaign to suspend Israel from FIFA, and Norwegian star Erling Haaland&#x27;s unexpected emergence as a viral internet celebrity.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">These two outlets are not covering the same story — they are covering two entirely different aspects of Norway at the World Cup, which is itself the most analytically significant finding. Politico surfaces a quiet but consequential geopolitical campaign with real FIFA governance implications; Mother Jones surfaces a cultural moment with an embedded structural critique. The juxtaposition reveals how political orientation determines what counts as &#x27;news&#x27; — state power and institutional maneuvering versus celebrity culture and sports capitalism. The Israel suspension campaign is the higher-stakes story and receives no left coverage here, while the Haaland meme story receives no center or right coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones anchors on Haaland&#x27;s endearing, unpolished public persona as a feel-good cultural story, but uses it as a vehicle to critique the structural rot underneath — UAE sports-washing, commodified celebrity, AI-generated fan content. The &#x27;babygirl&#x27; framing humanizes Haaland while keeping the reader primed for systemic critique.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Politico treats Norway&#x27;s FIFA pressure campaign as a serious geopolitical and institutional story — methodical, state-level, deliberate. The framing is process-focused and diplomatic, notably avoiding moral editorializing about Israel while still reporting the campaign exists.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning sources are present in this dataset. Analysis of right-framing is not possible without fabricating it.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones makes no mention whatsoever of Norway&#x27;s institutional campaign to expel Israel from FIFA — a significant geopolitical development directly tied to Norway&#x27;s World Cup footprint. The omission is total, not partial.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right sources present. However, neither source addresses the counter-argument: what Israel or FIFA have said in response to Norway&#x27;s pressure campaign, or whether other nations support or oppose Norway&#x27;s position.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">England defeated Norway 2-1 in a World Cup match, prompting UK PM Keir Starmer to post a playful taunt to Norway&#x27;s PM on social media while remaining publicly cautious about granting a bank holiday to mark the occasion.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">The actual event is straightforward: England won a World Cup match and Starmer made a social media quip. The politically meaningful downstream question — whether to grant a bank holiday — is where real governance tradeoffs exist, and Politico is the only outlet engaging with that. The Hill&#x27;s framing, while accurate, essentially covers the optics without the substance. Neither outlet together gives a complete picture: one omits the win&#x27;s human context, the other ignores its policy implications.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Politico treats the bank holiday question as the politically meaningful story, portraying Starmer as appropriately cautious and aware that not all constituencies share the celebratory mood. The tone is lightly skeptical — tempering hype with pragmatism.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats the Norway taunt as a human-interest moment — informal, warm, and apolitical. The focus is on tone and personality rather than policy consequences, presenting Starmer favorably without scrutiny.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set. Right framing cannot be assessed from available inputs.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Politico does not mention the specific social media exchange with Norway&#x27;s PM, Bellingham&#x27;s performance, or the personal/informal dimension of Starmer&#x27;s public reaction — stripping the celebratory context that gives the bank holiday debate its energy.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source available to assess omissions against.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">A New York City immigrant-enclave map released under Mayor Mamdani&#x27;s administration omitted Little Italy, historically Jewish, and Irish neighborhoods, drawing backlash from Italian-American groups and actor Robert Davi, after which city officials said the map would be updated.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is a genuine minor controversy with legitimate factual basis — a city-published map did omit historically significant European-immigrant neighborhoods, and the city confirmed it. However, with only one partisan source covering it, the framing is entirely one-directional: the story is being used to feed a cultural grievance narrative about progressive selective recognition rather than examined as a mapping methodology or communications error. The Reason piece included in this brief is an unrelated story, meaning no meaningful cross-spectrum triangulation on the Mamdani map story is possible from the sources provided.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is represented in this coverage set — this is a notable absence. The story may be receiving minimal attention from left-aligned media, which could itself be a form of editorial omission.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center outlet is represented in this coverage set. The Reason piece provided is an entirely different story (Fetterman/libertarianism) and does not constitute cross-spectrum coverage of the Mamdani map controversy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the omission as symptomatic of selective recognition of immigrant identity — implying Mamdani&#x27;s administration privileges certain ethnic communities over historically white European immigrant groups. Celebrity grievance (Davi) is used to emotionalize the issue and broaden audience identification.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets appear to be ignoring or underreporting the story entirely — no left-framed coverage was provided. The specific critique that omitting Little Italy and Jewish neighborhoods may reflect blind spots in progressive identity-mapping frameworks is absent.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not engage with the possibility that the map was a working draft, a data-driven product based on census or immigration metrics, or that &#x27;immigrant enclave&#x27; has a specific technical definition that may exclude longer-settled communities regardless of ethnicity. The update announcement is mentioned but not foregrounded.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DOJ journalist subpoenas</span><span class="entity-tag">Qatar Air Force One</span><span class="entity-tag">Ro Khanna West Bank detention</span></div>
+  <div class="connection-text">Both stories involve the U.S. government actively suppressing or ignoring inconvenient facts about relationships with Middle Eastern actors — the DOJ is criminalizing press coverage of a Gulf state&#x27;s gift to Trump while the State Department is apparently silent on IDF soldiers backing settlers against a U.S. congressman. The Qatar story is being sealed off via grand jury process; the Khanna story is being sealed off via editorial neglect on the right.</div>
+  <div class="connection-sig">↳ The two tracks of suppression — legal process and editorial silence — are operating simultaneously on adjacent Middle East policy stories. Neither story can be fully understood without the other: together they suggest a broader pattern of insulating U.S.-allied Middle Eastern relationships from accountability.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lindsey Graham death</span><span class="entity-tag">Graham Platner withdrawal</span><span class="entity-tag">Maine Senate race</span></div>
+  <div class="connection-text">On the same news cycle, Democrats lost a viable Senate pickup opportunity (Maine, Platner withdrawal) while Republicans lost a sitting senator (Graham, SC) whose seat will be filled by Republican gubernatorial appointment. The net effect is that neither party gains seats, but Democrats lose months of recruitment time in a winnable race while Republicans lose none — SC appointment insulates the R seat immediately.</div>
+  <div class="connection-sig">↳ This is a hidden asymmetry: the Maine loss requires months to recover from (filing deadlines, new candidate vetting, donor reengagement), while the SC seat is filled within weeks by appointment. The coverage treats these as unrelated human-interest stories rather than as simultaneous shifts in 2026 Senate math.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Norway (FIFA Israel suspension campaign)</span><span class="entity-tag">Ro Khanna West Bank detention</span><span class="entity-tag">DOJ Qatar Air Force One subpoenas</span></div>
+  <div class="connection-text">Israel appears as a contested actor across three separate stories today — international institutional pressure via FIFA, physical confrontation with a U.S. congressman in the occupied West Bank, and the suppressed reporting orbit of the Qatar/Air Force One story (which implicates the Gulf state context surrounding U.S.-Israel-Gulf triangulation). No outlet is connecting these three Israel-adjacent threads.</div>
+  <div class="connection-sig">↳ The simultaneous pressure points on U.S.-Israel relations — congressional, diplomatic, institutional — are individually covered in silos and collectively invisible. An analyst looking at all three simultaneously sees a diplomatic relationship under more stress than any single story conveys.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DOJ (journalist subpoenas)</span><span class="entity-tag">Kennedy Center (whistleblower contracting allegations)</span></div>
+  <div class="connection-text">The DOJ is being used as a weapon against press accountability (suppressing reporting) at the exact same moment whistleblowers allege the DOJ-adjacent executive branch is mishandling federal contracting at a prestige cultural institution. The DOJ is simultaneously the story&#x27;s suppressor (journalist subpoenas) and the oversight body that should be investigating the Kennedy Center irregularities.</div>
+  <div class="connection-sig">↳ The DOJ cannot credibly investigate executive branch contracting misconduct while it is also subpoenaing journalists investigating executive branch conduct — the institutional conflict is invisible when each story is covered separately.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lindsey Graham death</span><span class="entity-tag">McConnell health (prior watch list)</span><span class="entity-tag">Kentucky (appears in 2 stories today)</span></div>
+  <div class="connection-text">The previous cycle flagged McConnell succession mechanics as a live issue. Graham&#x27;s death is the first actual Senate seat vacancy from aging/health in this cycle. Kentucky appears in two stories today without obvious connection to Graham — but Senate watchers tracking aging-member succession will now turn their attention from McConnell&#x27;s contingency planning to Graham&#x27;s actual event as a model case.</div>
+  <div class="connection-sig">↳ Graham&#x27;s death activates the Senate succession scenario in concrete terms for the first time, making the McConnell contingency question more urgent and politically legible. The SC Republican appointment is a template; the Kentucky Democratic appointment scenario is the asymmetric risk still ahead.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump public threat against Haberman</span><span class="entity-tag">DOJ home-delivery subpoenas to journalists</span></div>
+  <div class="connection-text">The public social media threat and the legal grand jury process are being covered as two separate stories, but they are structurally a coordinated dual-track intimidation operation: the grand jury creates legal jeopardy and chilling effect on sources, while the presidential threat creates personal jeopardy and public harassment pressure on a named individual. Home delivery of subpoenas is the connecting tactic — it merges the legal and personal tracks into a single act of intimidation.</div>
+  <div class="connection-sig">↳ When analyzed together rather than separately, these are not two press freedom incidents but one coordinated operation with legal and extralegal prongs. The home-delivery detail is the tell: it serves no procedural purpose that courthouse delivery does not, which means its purpose is psychological.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">INSTITUTIONAL LEGITIMACY EROSION IN PARALLEL: Five separate institutions appear compromised or dysfunctional simultaneously in today&#x27;s stories — DOJ (journalist subpoenas), IDF (backing settlers over a congressman), Kennedy Center (contracting irregularities), Democratic Party (vetting failure), and FIFA (Israel suspension campaign) — yet no outlet synthesizes this as a systemic pattern. The effect is that each story appears isolated when the cumulative picture is a moment of unusually broad institutional stress.</div>
+<div class="pattern-item">THE QATAR-GULF-ISRAEL TRIANGLE SEALED FROM SCRUTINY: Three stories today (Air Force One Qatar gift, Khanna West Bank detention, Norway FIFA Israel suspension) all intersect the same geopolitical fault line — U.S. relationships with Gulf states and Israel — yet are covered in complete isolation. The DOJ is actively suppressing reporting on one of these stories, the State Department appears silent on the second, and the third receives zero right-side coverage. The pattern is that every avenue for scrutinizing U.S. Middle East alliance relationships is blocked by a different mechanism.</div>
+<div class="pattern-item">WORLD CUP AS GEOPOLITICAL PROXY WITH NO SYNTHESIS: Six distinct stories today use the World Cup as a frame — ICE at the tournament, Messi/Trump/Argentina, Norway&#x27;s FIFA Israel suspension campaign, Haaland viral celebrity, Title IX men&#x27;s soccer, and England/Starmer bank holiday. These stories span immigration enforcement, diplomatic pressure campaigns, gender equity law, soft power, and domestic UK politics. No outlet is treating the World Cup as a unified geopolitical lens; each story is treated as sports or culture rather than as policy.</div>
+<div class="pattern-item">RIGHT-SIDE EDITORIAL SILENCE ON U.S.-ALLIED ACCOUNTABILITY: The right is completely silent on both the DOJ subpoenas (press freedom) and the Khanna West Bank detention (Israeli settlers with U.S.-made weapons detaining a U.S. congressman). These are stories where the right would normally invoke government overreach (DOJ) and American sovereignty (a congressman physically detained by foreign civilians). The silence is not ideological inconsistency — it is selective application of principles to protect specific alliances.</div>
+<div class="pattern-item">DEMOCRATIC VULNERABILITY STORIES CLUSTER ON THE SAME CYCLE AS GRAHAM DEATH: The Platner withdrawal (Maine Senate race setback), the Kennedy Center whistleblower (Democratic senator&#x27;s allegation, but attached to an administration target), and the NYC map controversy (progressive mayor taking heat) all run simultaneously with the Graham death story that neutralizes Republican seat loss. The clustering creates a &#x27;Democratic chaos&#x27; meta-narrative by coincidence or coordination — the Graham death that might have dominated as a Republican loss story is instead drowned in Democratic vulnerability coverage.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">GRAHAM DEATH RECEIVING NEAR-BLACKOUT COVERAGE: The death of a sitting U.S. Senator — the first since the current congressional term — is covered by only three sources total. A senator&#x27;s death is a concrete constitutional event triggering gubernatorial appointment, committee reassignments, and potential procedural votes. The near-absence of coverage, particularly on the left which would normally amplify a story about Republican Senate seat vulnerability, is the most anomalous editorial decision in today&#x27;s cycle.</div>
+<div class="anomaly-item">DOJ HOME-DELIVERY OF JOURNALIST SUBPOENAS: Subpoenas are typically served at newsrooms or through counsel. Home delivery serves no legal procedural function that standard service does not — its only unique effect is personal intimidation at a private residence. This is a deliberate escalation of process that has received almost no analytical attention separate from the subpoenas themselves, despite being the most operationally significant detail in the press freedom story.</div>
+<div class="anomaly-item">STATE DEPARTMENT SILENCE ON KHANNA DETENTION IS ABSENT FROM ALL COVERAGE: A sitting U.S. congressman was physically detained by armed civilians while uniformed soldiers of a U.S. ally sided with those civilians against him. This is a diplomatic incident by any normal standard. No story in today&#x27;s cycle reports any State Department response, formal protest, or even a spokesperson statement. The absence of a government response — and the absence of coverage noting that absence — is more anomalous than the incident itself.</div>
+<div class="anomaly-item">IRAN/HORMUZ DISAPPEARS ENTIRELY FROM TODAY&#x27;S CYCLE: The previous watch list flagged Hormuz commercial shipping and the 72-hour window after Trump&#x27;s Saturday deadline as the highest-stakes developing story. Iran appears nowhere in today&#x27;s entity network. The complete disappearance of a story that was tracking toward potential military escalation is itself significant — either the situation stabilized quietly, coverage was redirected, or the story is being managed out of the news cycle during the same window the DOJ is suppressing other security-adjacent reporting.</div>
+<div class="anomaly-item">NORWAY CLUSTERING ACROSS THREE SEPARATE STORIES: A country of 5 million people appears simultaneously in an England World Cup match result, a quiet FIFA Israel suspension campaign, and a &#x27;sporting superpower&#x27; analysis. This is statistically unusual. Norway is not a geopolitical heavyweight, yet it is serving as the vector for the single most consequential international institutional story (Israel FIFA suspension) that is receiving almost no mainstream coverage.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding any story that implicates its core alliance relationships: the DOJ journalist subpoenas (which would normally trigger government overreach outrage), the Khanna West Bank detention (which implicates Israeli settler conduct and U.S.-made weapons), and the Graham Senate succession mechanics (which would highlight a Republican vulnerability). The avoidance pattern suggests the right&#x27;s editorial filter today is &#x27;protect the Qatar relationship, protect the Israel relationship, protect the Senate math&#x27; — principles are applied selectively to serve those ends. The left is systematically avoiding the McConnell succession mechanics (despite flagging it previously), the legitimate leak-investigation rationale for the DOJ journalist subpoenas, and any engagement with the FIFA Israel suspension campaign despite covering the Khanna story — the FIFA story would extend the Israel accountability argument but requires engaging with international institutional processes the left is not covering. Together, the two avoidance patterns leave the U.S.-Israel-Gulf geopolitical triangle almost entirely unscrutinized from any direction, which is the most significant collective editorial blind spot in today&#x27;s cycle.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kennedy Center Whitehouse Announces Whistleblower</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› World Norway&#x27;S Other Campaign: Getting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Week in Politics: Trump&#x27;s housing bill protest fails; Trump and NATO; Maine&#x27;s Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota is pulling troops early from D.C., as pressure grows on Michigan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge tosses remnants of Proud Boys seditious conspiracy case after Trump&#x27;s broad clemency</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How ICE melted from view at the World Cup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trump ally looking for a Messi miracle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will Trump&#x27;s Justice Department rescue Messi&#x27;s Argentina?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spot the pol!</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The host city is doing all of the hosting, none of the headlining</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The secret to becoming a sporting superpower</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll: Patriotism in the US, Europe and Canada, charted</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why FIFA is putting down roots in Miami</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Guggenheim museum in New York City tests positive for legionnaires’ disease</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Family pleads for answers in death of young Black man in Mississippi</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘A slap in the face’: small farmers say Trump is turning his back on them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› More than 200 people at summer camp airlifted to safety as Missouri faces flooding</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dam Removals Helped Bring About a Stunning Comeback for Maine’s Alewives</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the Smithsonian Lost America’s Plot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump-aligned House holdouts accused of holding &#x27;life-saving&#x27; veterans bill &#x27;hostage&#x27; over SAVE America Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Harvard astronomer tapped to lead White House UFO council says US government &#x27;baffled by what they are seeing&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump-appointed judge permanently ends Proud Boys&#x27; Jan 6 case, says Constitution left him no choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s EPA chief pushes back on climate skeptics being labeled &#x27;science deniers&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Putin Has Lost the War in Ukraine</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Roman Empire Second Wind Sweeps Montreal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sports Still Form Character. Politics Should Learn from Them</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Did Life Begin on Mars?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Democrats Controlling District Courts Biggest Threat to MAGA, Fmr. Trump Asst AG Warns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Top DOJ Lawyer: Vetting Conservative Justices Should Start with Birthright Citizenship</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Idaho Decided to Bring Back Firing Squads</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pinkerton: Like All Communists, Mamdani Erases Americans&#x27; Heritage</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Katie Porter Caught, Leaves Humiliating Yelp Reviews</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mexican President Blames Biden-Era Policies for Rise in Cartel Violence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Marlow: Devastating Case Against Tyler Robinson</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Tributes – DHS Secretary Mullin: ‘In America There&#x27;s Not One Thing You Can&#x27;t Achieve&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE: Los Angeles Gives Free Pass to Illegal Alien Food Vendors While Restaurants Must Comply Or Get Fined and Even Shut Down</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive — Rep. Riley Moore: H-1B Visa Program Abused by Large Corporations to &#x27;Displace the American Worker&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GA Poll: Jackson/Collins Can Win as Trump Approval Rises</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Economic Consensus Shifts on Mass Immigration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Age of Reading Isn&#x27;t Over</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Parent&#x27;s Worst Nightmare</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Title IX Is Holding Back U.S. Men&#x27;s Soccer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America Isn&#x27;t a Christian Nation--or a Secular One</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">South Carolina gubernatorial appointment to fill Graham&#x27;s Senate seat: Governor Henry McMaster&#x27;s timeline, whether he appoints a loyalist or a 2026 Senate primary contender, and whether any committee chairmanships shift as a result — this is the most immediate constitutional consequence of today&#x27;s most under-covered story</div>
+<div class="watch-item">State Department formal response or continuing silence on the Khanna West Bank detention: whether the administration issues any diplomatic communication to Israel regarding IDF soldiers backing settlers against a U.S. congressman — silence beyond 48 hours will itself become a story</div>
+<div class="watch-item">Whether the DOJ journalist subpoenas constitute grand jury investigation of the journalists themselves (criminal exposure) versus subpoenas for source communications (press-source privilege question) — the legal distinction determines whether this is a chilling-effect operation or an actual prosecution track</div>
+<div class="watch-item">Maine Democratic Party filing mechanics and replacement candidate timeline: the July 27 deadline from the previous watch list is now the critical constraint; watch for any Republican legal challenge to a ballot-line substitution, which would be the asymmetric risk</div>
+<div class="watch-item">Norway&#x27;s FIFA Israel suspension campaign vote timing: whether Norway formally introduces a resolution before the World Cup concludes, and which other national football associations co-sponsor — this is the highest-stakes story receiving the least coverage</div>
+<div class="watch-item">McConnell public health or Senate activity signals in the 7 days following Graham&#x27;s death: Graham&#x27;s death makes the Senate succession contingency concretely legible in a way it was not before; watch for any McConnell schedule changes or Senate leadership positioning</div>
+<div class="watch-item">Qatar government response or silence on the Air Force One story following DOJ subpoenas: whether Qatar makes any public statement, and whether any Gulf state diplomatic communications with the Trump administration occur in the next 72 hours</div>
+<div class="watch-item">Iran/Hormuz status: the complete disappearance of this story from today&#x27;s cycle after the previous cycle&#x27;s escalation tracking demands verification — check maritime insurance premium adjustments and Lloyd&#x27;s of London war-risk designations as the leading indicator</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
