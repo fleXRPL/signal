@@ -96,8 +96,23 @@ def _build_watch_list_evolution(runs: List[Dict[str, Any]]) -> str:
     return "\n".join(lines) if lines else "Insufficient data for watch list evolution."
 
 
-def _llm_call_claude(prompt: str, timeout: int, attempts: int = 2) -> str:
-    """Call Claude Code CLI; retry once on stream idle timeout (long weekly synthesis)."""
+_TRANSIENT_CLAUDE_ERRORS = (
+    "stream idle timeout",
+    "connection closed mid-response",
+    "connection reset",
+    "broken pipe",
+    "eof",
+)
+
+
+def _is_retryable_claude_error(detail: str) -> bool:
+    """Return True for transient Claude CLI failures worth retrying."""
+    lowered = detail.lower()
+    return any(token in lowered for token in _TRANSIENT_CLAUDE_ERRORS)
+
+
+def _llm_call_claude(prompt: str, timeout: int, attempts: int = 3) -> str:
+    """Call Claude Code CLI; retry on transient stream/connection errors."""
     claude_bin = shutil.which("claude") or "/opt/homebrew/bin/claude"
     last_error = ""
     for attempt in range(attempts):
@@ -111,7 +126,7 @@ def _llm_call_claude(prompt: str, timeout: int, attempts: int = 2) -> str:
             return result.stdout.strip()
         detail = result.stderr.strip() or result.stdout.strip() or "Claude CLI non-zero exit"
         last_error = detail
-        if "Stream idle timeout" not in detail or attempt >= attempts - 1:
+        if not _is_retryable_claude_error(detail) or attempt >= attempts - 1:
             raise RuntimeError(detail)
     raise RuntimeError(last_error)
 

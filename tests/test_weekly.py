@@ -80,6 +80,19 @@ class TestLlmCallClaude:
             _llm_call_claude("prompt", timeout=60)
         assert mock_run.call_count == 1
 
+    @patch("pipeline.weekly.subprocess.run")
+    def test_retries_connection_closed(self, mock_run):
+        mock_run.side_effect = [
+            MagicMock(
+                returncode=1,
+                stdout="",
+                stderr="API Error: Connection closed mid-response. The response above may be incomplete.",
+            ),
+            MagicMock(returncode=0, stdout="Recovered brief", stderr=""),
+        ]
+        assert _llm_call_claude("prompt", timeout=60) == "Recovered brief"
+        assert mock_run.call_count == 2
+
 
 # ── _build_daily_data ─────────────────────────────────────────────────────────
 
