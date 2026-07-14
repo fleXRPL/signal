@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-14 10:31 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-14 10:31 UTC</span>
+    <span class="pill">116 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>American politics on July 14, 2026 is being shaped by three simultaneous structural shifts occurring within the same 24-hour window, none of which has been connected by any outlet covering them. First: the Senate&#x27;s most politically consequential crossover figure is dead, replaced by a placeholder with no institutional standing. Second: a federal court has formally found that Trump&#x27;s legal apparatus used the judiciary as a laundering mechanism to redirect $1.8 billion in taxpayer funds into a politically branded slush fund — and the press corps most likely to amplify that finding has not run it. Third: the executive branch is now in documented non-compliance with judicial orders on at least three simultaneous fronts — $100 billion in court-ordered tariff refunds still unpaid four months after a Supreme Court ruling, body camera footage withheld from state prosecutors in a federal agent shooting case, and attorneys sanctioned for filing a sham lawsuit. Treated individually, each is a significant story. As a pattern, they describe a governing posture: the executive retains money, withholds evidence, and delays compliance as a deliberate tool, betting that political conditions will shift before accountability arrives.</p>
+<p>The Graham death is being reported primarily as an obituary. It is more accurately described as a foreign policy vacancy of the first order at the worst possible time. Graham was not merely a hawkish senator — he was a personal relationship node connecting the Senate Armed Services committee, the Saudi normalization track, and the Iran containment architecture. His replacement has zero standing in any of those networks. Simultaneously, the Iran blockade revival story is running today, right-only, with no accountability coverage from any outlet capable of demanding a War Powers notification. The overlap is not coincidental in its timing; it is coincidental in that no one currently has the institutional standing to make it matter.</p>
+<p>The Senate arithmetic has quietly shifted. With Graham&#x27;s seat in placeholder status and Graham Platner&#x27;s withdrawal from the Maine race announced the same day, Susan Collins is now structurally more powerful than she was 48 hours ago — her reelection pressure decreased and her vote became marginally more pivotal within the Republican caucus simultaneously. Neither development received analytical coverage connecting them.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Todd Blanche</strong> is the figure who does not fit the story he is being placed in. Trump&#x27;s principal attorney is now appearing in two distinct storylines: the Graham death coverage, where he surfaces as a figure deeply embedded in Senate Republican relationships, and the IRS sanctions ruling, where Trump-aligned attorneys were sanctioned for filing what a federal judge explicitly called a sham lawsuit. The convergence point is not accidental. If the Anti-Weaponization Fund litigation was coordinated with Senate allies — Graham was among the most vocal opponents of DOJ &quot;weaponization&quot; — then the simultaneous exposure of the scheme in court and the death of its most prominent Senate amplifier represent a meaningful weakening of that political network in a single news cycle.</p>
+<p><strong>Marco Rubio</strong> is the beneficiary of a coordinated positioning operation that has not yet been named as such. National Review ran seven stories today, including a Graham eulogy framed around pro-life identity and a separate defense of Rubio against what it characterized as left-wing attacks. The Rubio defense piece ran the same day Graham&#x27;s foreign policy portfolio became vacant. Rubio is the most plausible inheritor of Graham&#x27;s Iran hawk and Saudi normalization relationships. The NR volume and targeting suggest conservative media is moving to establish that inheritance before committee reshuffling creates competing claimants.</p>
+<p><strong>Susan Collins</strong> is now in a structurally stronger position than at any point in recent memory, and the conditions creating that strength materialized simultaneously and without apparent coordination. Platner&#x27;s withdrawal removes her most credible general election threat; Graham&#x27;s death tightens the arithmetic in a chamber where her vote counts more. Her next public statements and floor votes in the coming 14 days should be read as signals about whether she recognizes and intends to act on this leverage.</p>
+<p><strong>Federal Judge Kathleen Williams</strong> made findings that, if they stand, describe something closer to fraud than procedural misconduct. The undisputed core of her ruling is that attorneys filed a lawsuit not to litigate a genuine dispute, but to give judicial cover to a pre-arranged settlement directing taxpayer funds into a politically branded account. The referral to the Florida Bar adds personal professional jeopardy to the institutional consequences. The dollar figure Reason reports — $1.8 billion in diverted taxpayer funds — has not been denied by any source. The question of who actually received those funds remains entirely unanswered in all coverage.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The most anomalous coverage gap today is left outlets not running the IRS sanctions story. This is precisely the material left-leaning outlets amplify: a federal judge finding that Trump attorneys ran a sham lawsuit to redirect nearly $2 billion in taxpayer money into a fund named after a MAGA political slogan, with a Florida Bar referral attached. The 24-hour absence has two plausible explanations — the story broke too recently for editorial processing, or outlets are holding for additional sourcing. Neither is fully satisfying. If left outlets have not run this story within 48 hours, that absence is analytically significant in itself and warrants a separate line of inquiry about why.</p>
+<p>Right outlets are not covering the $100 billion tariff refund non-compliance story. The silence is analytically clean: there is no non-political explanation for why outlets that have spent two years covering government overreach are ignoring a Supreme Court order that the executive branch has defied for four months while retaining over $100 billion in money it was legally required to return. This is not administrative backlog. The consistent right-media silence on all three stories in which courts ruled against the executive branch today — tariff refunds, IRS sanctions, Minnesota evidence — is a reliable signal that the non-compliance is deliberate policy, not bureaucratic delay.</p>
+<p>Iran is the most consequential foreign policy story receiving the least accountable coverage. The blockade revival story is running right-only, framed as strength, with no outlet asking the War Powers question. Graham&#x27;s death means the Senate Armed Services committee has lost its most experienced and personally invested Iran voice, and his replacement has no standing to demand executive branch reporting on active military operations. The structural result is that Iran operations are now unfolding in a Senate oversight vacuum that no one in the press corps appears to have mapped.</p>
+<p>Left outlets are also running two separate ICE killing stories with zero acknowledgment that right outlets are simultaneously running three separate ICE enforcement celebration stories. These are not competing framings of the same events. They are different event sets being reported as if the other does not exist. This is the clearest illustration of the bifurcated information environment operating in American political media today.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The single most important pattern visible across today&#x27;s corpus is that the executive branch is in a deliberate posture of selective compliance with legal obligations, and that posture is being treated by every outlet as a set of isolated stories rather than a governing strategy. A Supreme Court order to return $100 billion goes unenforced for four months. Body camera footage from a federal agent shooting is withheld from state prosecutors. Attorneys file a sham lawsuit with what a judge found was pre-arranged intent to redirect taxpayer funds. These are three separate stories, covered by different outlets, with no analytical piece connecting them. The correct frame is not &quot;what happened in each case&quot; — the correct frame is &quot;why does the executive branch believe it can selectively comply with legal obligations and what happens when it miscalculates.&quot;</p>
+<p>The Graham death and the IRS sanctions ruling materializing on the same day is not a conspiracy — but the structural consequence is real and unexamined. Graham was the Senate&#x27;s most vocal amplifier of &quot;DOJ weaponization&quot; rhetoric, the precise political frame the Anti-Weaponization Fund was named to exploit. His death removes that amplification capacity at the moment a federal court exposed the scheme. Whether the timing is coincidental is less important than the consequence: the political cover for that litigation just lost its loudest Senate voice.</p>
+<p>National Review&#x27;s seven-story footprint today is disproportionate and targeted in a way that reads as coordinated messaging rather than organic editorial judgment. The combination of Graham eulogy, Rubio defense, and cultural positioning represents a clear attempt to shape the post-Graham conservative foreign policy consensus before the Senate has reshuffled its committee assignments. The implicit argument being constructed is that Graham&#x27;s foreign policy inheritance belongs to Rubio — not through committee seniority but through ideological succession established in the media space first.</p>
+<p>The simultaneous withdrawal of Graham Platner from the Maine Senate race and the death of Lindsey Graham creates a name-coincidence disinformation substrate that no outlet has flagged as a specific risk. PBS is already tracking false claims about Graham&#x27;s death. Two people named Graham exit the political picture on the same day under dramatically different circumstances — one dies, one withdraws over a criminal allegation. The conditions for manufactured confusion between these two figures are present and unmanaged.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Senate Armed Services and Foreign Relations committee assignments, next 72 hours.</strong> Which Republican assumes Graham&#x27;s Iran and Saudi-Israel normalization relationships is the most consequential unresolved question from today&#x27;s news. Graham&#x27;s relationships were personal as much as institutional — watch whether they transfer through committee assignment or whether they dissolve entirely.</p>
+<p><strong>Left outlet pickup on the IRS Anti-Weaponization Fund sanctions story, next 48 hours.</strong> If major left-leaning outlets have not run this story by July 16, that absence is itself a story. If they do run it, watch specifically for whether they name the fund recipients — that is the detail most consequential to understanding whether diverted taxpayer money benefited Trump personally.</p>
+<p><strong>War Powers notification status for Iran blockade operations, next 7 days.</strong> With Graham&#x27;s seat in placeholder status, watch for whether any senator formally requests a War Powers report. Silence for more than seven days following the blockade revival reporting signals institutional abdication on the most active foreign policy front currently in motion.</p>
+<p><strong>Todd Blanche&#x27;s next public legal filing or court appearance.</strong> The sanctions ruling and his reported involvement in Senate Republican political networks are converging. Any new Blanche filing in the next week should be read against the sanctions context, specifically whether he is distancing himself from the Anti-Weaponization Fund litigation or doubling down.</p>
+<p><strong>Susan Collins floor votes and public statements, next 14 days.</strong> Her mathematical leverage increased with Graham&#x27;s placeholder appointment and Platner&#x27;s withdrawal simultaneously. Any deviation from her recent voting pattern — particularly on budget, military authorization, or Iran-adjacent votes — signals she is acting on this leverage.</p>
+<p><strong>Maritime insurance rates and Lloyd&#x27;s war-risk premiums for Hormuz passage.</strong> Still the most reliable open-source escalation indicator. The Iran blockade revival story is running with no analytical coverage and no accountability framing. Lloyd&#x27;s war-risk premiums provide a market signal that does not depend on executive branch disclosure.</p>
+<p><strong>McConnell public schedule and floor appearance frequency.</strong> Graham&#x27;s death and the Senate arithmetic shift make McConnell&#x27;s health and activity a higher-stakes signal than it was 72 hours ago. His absence from the floor in the coming days would be meaningful in a way it was not last week.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic that explains what otherwise looks like a fragmented news day is this: the executive branch is currently operating on a theory of selective legal compliance, and it is winning that bet in the short term because the three institutional actors capable of forcing compliance — the courts, the Senate, and the press — are each compromised in different ways simultaneously. Courts are issuing orders that the executive is not enforcing and that no one in the Senate has the standing or the will to escalate. The Senate&#x27;s most institutionally aggressive foreign policy voice is dead and replaced by a placeholder. The press is bifurcated to the point that the most significant judicial ruling of the day — a federal judge finding that taxpayer funds were laundered through a sham lawsuit — is being covered by neither the outlets most likely to amplify it nor the outlets that would be politically motivated to suppress it. This is not a sustainable equilibrium, but it does not need to be: the administration requires only that compliance delays outlast the political conditions that would make enforcement costly. Four months into a $100 billion refund non-compliance, that bet is still paying off. The question analysts should be tracking is not whether the courts will eventually force compliance — they likely will — but whether the political cost of non-compliance will materialize before the 2026 midterms change the leverage calculation entirely.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Republican Senator Lindsey Graham died at age 71 from aortic dissection, prompting South Carolina Governor McMaster to appoint Graham&#x27;s sister Darline Graham Nordone as interim senator, while Maine Democratic Senate candidate Graham Platner separately withdrew from his race following a rape allegation.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (16)</span><span class="bias-badge" style="color:#e0a87a;">center-left (14)</span><span class="bias-badge" style="color:#7ae09b;">center-right (4)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (6)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:27.6;" title="center: 16"></div><div class="bias-segment" style="background:#e0a87a; flex:24.1;" title="center-left: 14"></div><div class="bias-segment" style="background:#7ae09b; flex:6.9;" title="center-right: 4"></div><div class="bias-segment" style="background:#e05252; flex:5.2;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:10.3;" title="far-right: 6"></div><div class="bias-segment" style="background:#e07a7a; flex:10.3;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:1.7;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:13.8;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The core facts here are not seriously in dispute: Graham died, his unqualified sister was appointed for family-tribute reasons with presidential backing, and a bipartisan sanctions bill may be his most concrete legislative legacy. The real analytical tension is in Graham&#x27;s dual identity — he was simultaneously a dealmaker capable of genuine bipartisan achievement and a politician who demonstrably bent his stated convictions to maintain proximity to power. Neither pure eulogy nor pure takedown captures that accurately. The Nordone appointment is the softer story it appears to be: a placeholder driven by sentiment, not a serious governance decision, and coverage framing it as either historic tribute or disqualifying nepotism is overstating both.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame Graham&#x27;s legacy primarily as cautionary: an opportunist who repeatedly reversed positions to stay relevant, and a hawk whose influence may have helped draw the U.S. into the current Iran conflict. Nordone&#x27;s appointment is framed skeptically as nepotism dressed in sentiment. The ICE Maine shooting is framed as a pattern of escalating state violence, with emphasis on the victim&#x27;s legal status and community ties. Graham Platner&#x27;s exit is framed as Democratic disarray and human cost to motivated grassroots voters.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets focus on procedural and political mechanics: the Senate vacancy&#x27;s effect on Republican margins, the bipartisan Russia sanctions bill as a rare moment of cross-aisle unity, oil price spikes from the Iran blockade, and the competitive dynamics of the upcoming GOP South Carolina primary. Graham&#x27;s legacy is treated ambivalently — consequential but complicated.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Graham as a beloved statesman, Trump&#x27;s most effective Senate advocate, and a principled voice for U.S. strength abroad. Nordone&#x27;s appointment is presented as a fitting tribute and historic milestone — first female senator from South Carolina — with Trump&#x27;s endorsement highlighted as a unifying signal. The ICE shooting is either absent or contextualized as a law enforcement action. Democratic reaction to the ICE shooting (calls to abolish ICE) is framed as radical political opportunism.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits Graham&#x27;s documented effectiveness as a bipartisan dealmaker, his final act securing White House support for the Ukraine-focused Russia sanctions bill, and Nordone&#x27;s historic status as South Carolina&#x27;s first female senator. The emotional institutional weight of his death within the Senate is underplayed.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits Graham&#x27;s documented ideological reversals catalogued by reporters who covered him closely, Nordone&#x27;s complete absence of political qualifications beyond familial loyalty, Graham&#x27;s potential role in nudging Trump toward hawkish Iran positions that remain strategically contested, and the fact that the ICE victim in Maine may not have been the intended arrest target.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Minnesota&#x27;s Hennepin County Attorney received previously withheld federal evidence, including body camera footage and statements, related to the fatal shootings of Renée Good and Alex Pretti by federal immigration agents.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core fact — state prosecutors finally obtained long-withheld federal evidence in a shooting-by-agents case — is real and significant regardless of framing. The left amplifies victim identity and systemic critique of immigration enforcement; the center-left stays procedural. With only two sources from the same side of the spectrum, this analysis cannot fully map the contested terrain — the right&#x27;s silence or counter-framing is itself data worth tracking. The most important unanswered question is what the body camera footage actually shows, which neither source has yet reported on.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Federal immigration enforcement is framed as lethal and operating without accountability. Victim identity (unarmed US citizen, mother) is centered to humanize and generate outrage. State prosecutors are cast as heroes resisting a powerful, obstructive federal apparatus. The story is about power, immigration enforcement violence, and institutional cover-up.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS treats this as a procedural milestone in a local accountability investigation, focusing on the mechanics of evidence receipt and prosecutorial process. It acknowledges federal obstruction as a framing but does not amplify it emotionally or connect it to broader immigration policy debates.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided. Based on the story&#x27;s elements, right-leaning coverage would likely emphasize the legal authority of federal agents, question the nature of the encounters, or frame state-level prosecution of federal officers as political overreach by a local DA.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left nor center-left source provides context about what circumstances led to the shootings — specifically, what law enforcement actions were underway, whether agents faced any threat, or details about the federal investigation&#x27;s findings. These omissions foreclose any competing narrative about agent conduct.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was provided, so this analysis is limited to two sources on the left half of the spectrum. The absence of right-leaning coverage itself may be significant — either the story has not been picked up by those outlets, or it is being actively downplayed in that media ecosystem.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Federal Judge Kathleen Williams sanctioned Trump&#x27;s attorneys and referred one to the Florida Bar after ruling that a $10 billion IRS lawsuit was filed for an improper purpose — to legitimize a pre-arranged settlement funneling funds into an &#x27;Anti-Weaponization Fund.&#x27;</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:33.3;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The legally significant finding here — undisputed across all three sources — is that a federal judge found the lawsuit was a sham designed to launder a pre-arranged deal through the courts. The right&#x27;s Obama-appointment framing is a distraction: judicial partisanship claims do not address whether the ruling&#x27;s factual findings are correct, and no source disputes the core facts. The most consequential unresolved question, raised only by Reason, is whether $1.8 billion in taxpayer funds was diverted and to whom — that claim, if accurate, would elevate this from procedural misconduct to something closer to fraud.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this brief. Based on center and libertarian coverage, left outlets would likely emphasize the corruption and self-dealing angle — Trump using the courts to immunize himself from IRS scrutiny — and frame it as an abuse of presidential power rather than a procedural legal dispute.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios treats this as a story about procedural abuse — lawyers exploiting the court system to manufacture legitimacy for a political arrangement. The framing is institutional rather than partisan: the problem is the manipulation of legal process, not a culture-war grievance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox foregrounds the judge&#x27;s Democratic appointee status (&#x27;Obama-appointed&#x27;) to prime readers to view the ruling as politically motivated judicial opposition rather than a legitimate finding of misconduct. The word &#x27;torches&#x27; signals drama and partisan aggression. The attorney Bar referral is treated as the headline consequence, shifting focus away from what the settlement actually did.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left source provided. Center and libertarian coverage both omit the judge&#x27;s appointing president — the one detail Fox leads with — suggesting non-right outlets view the judicial pedigree as irrelevant to the merits.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox does not report the specific dollar amount of taxpayer funds allegedly diverted, does not mention audit immunity for Trump personally, and does not characterize who benefits from the Anti-Weaponization Fund — the three details that most directly speak to self-dealing and conflict of interest.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The US Supreme Court invalidated Trump&#x27;s IEEPA-based tariffs in February 2026, triggering a partial refund process in which the government has returned between $71-81 billion of an estimated $166 billion illegally collected, with roughly $100 billion still owed to importers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The core legal and fiscal facts are not in dispute: the Supreme Court struck down IEEPA tariffs and the government owes refunds. The more significant and underreported story is Reason&#x27;s framing — that over $100 billion remains unpaid four-plus months after a court order, which represents either administrative failure or deliberate delay in returning money the government had no legal right to collect. The Guardian&#x27;s framing treats the story as concluded; Reason&#x27;s data suggests it is ongoing and contested. Analysts should weight Reason&#x27;s numerical specificity heavily here, as the Guardian piece appears to be reporting on a snapshot rather than the full picture.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the $81 billion refund as a definitive verdict on Trump&#x27;s tariff policy — a legal rebuke that exposed the gap between his economic nationalism rhetoric and legal reality. The story is essentially &#x27;Trump was wrong, courts corrected it, money returned.&#x27; Tone is retrospective and conclusive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was provided. Center outlets would likely focus on the scale of the fiscal event ($166 billion collected, ongoing refund logistics) and the constitutional implications for executive trade authority without strong editorial valence.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this analysis. Right-leaning coverage would likely either minimize the ruling&#x27;s significance, frame it as judicial overreach into executive trade authority, or emphasize that tariffs served a strategic purpose regardless of the legal mechanism used.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not report that the refund process is incomplete — it omits the ~$100.65 billion still owed and the more than four-month delay in full repayment. This framing makes the story feel resolved when it is not. The total amount illegally collected ($166 billion) is also absent.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right source present to assess omissions. However, based on the framing gap, right coverage would likely omit or downplay the Supreme Court&#x27;s explicit finding of illegality and the scale of harm to importers who were out-of-pocket for months on unconstitutionally collected duties.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Todd Blanche</span><span class="entity-tag">Lindsey Graham death</span><span class="entity-tag">IRS sanctions ruling</span></div>
+  <div class="connection-text">Blanche appears in both the Graham death coverage (as Trump&#x27;s attorney deeply embedded in Senate Republican relationships) and the IRS sanctions story (Trump&#x27;s legal apparatus sanctioned for sham litigation). Graham&#x27;s death and the Blanche sanctions materialize simultaneously, creating a 24-hour window in which Trump&#x27;s principal Senate shield and his primary courtroom defender are both weakened on the same news cycle.</div>
+  <div class="connection-sig">↳ If the &#x27;Anti-Weaponization Fund&#x27; litigation was coordinated with Senate allies — Graham was a vocal opponent of DOJ &#x27;weaponization&#x27; — his absence removes a key political amplifier at the moment the scheme is exposed in court.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">IEEPA tariff non-compliance ($100B+ owed)</span><span class="entity-tag">ICE evidence withholding (Minnesota)</span></div>
+  <div class="connection-text">Both represent executive branch selective compliance with legal obligations: one financial (defying a Supreme Court refund order by four months and counting), one evidentiary (withholding body camera footage from state prosecutors). Neither story connects them, but the structural pattern is the same: the executive retains money and information it is legally required to surrender.</div>
+  <div class="connection-sig">↳ If these are treated as isolated incidents they appear as bureaucratic delay. As a pattern they suggest a deliberate posture of delayed compliance as a governing tool — hold the money, hold the footage, wait for political conditions to change.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Graham death (foreign policy vacuum)</span><span class="entity-tag">Iran Kills Deal / Trump Revives Blockade (right-only)</span></div>
+  <div class="connection-text">The Iran blockade revival story is right-only and published the same day Graham — the Senate&#x27;s most personally invested Iran hawk and the architect of the Centcom-Saudi normalization track — dies. His appointed successor (Nordone) has zero foreign policy standing. No outlet connects these two facts.</div>
+  <div class="connection-sig">↳ Active Iran operations are now unfolding without the Senate&#x27;s most experienced committee voice. The War Powers notification question (from the previous watch list) is now structurally unanswerable: there is no senator in Graham&#x27;s seat with the standing to demand one.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Review (7-story presence)</span><span class="entity-tag">Marco Rubio</span><span class="entity-tag">Lindsey Graham legacy framing</span></div>
+  <div class="connection-text">National Review is doing unusually heavy narrative work today: Graham eulogy framed around pro-life identity, a defense of Rubio against left attacks, and cultural commentary. The Rubio defense piece runs the same day Graham&#x27;s foreign policy portfolio becomes vacant. Rubio is the most plausible inheritor of Graham&#x27;s Iran/Saudi hawk position.</div>
+  <div class="connection-sig">↳ NR&#x27;s volume and targeting suggest coordinated conservative media positioning of Rubio as the successor to Graham&#x27;s Senate foreign policy role before the reshuffling has even begun.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anti-Weaponization Fund (IRS sham litigation)</span><span class="entity-tag">DOJ Reminds Election Officials They Need To Follow Law (right-only)</span></div>
+  <div class="connection-text">Both are mechanisms of executive legal apparatus being deployed for politically directed ends: one redirecting taxpayer money through sham litigation, one asserting federal electoral compliance authority ahead of 2026 midterms. They are covered by entirely different outlet sets with no cross-referencing.</div>
+  <div class="connection-sig">↳ Taken together they describe an executive branch using DOJ simultaneously as a revenue redirection vehicle (IRS fund) and a voter-roll enforcement tool (election officials letter) — two prongs of institutional capture that are analytically related but narratively siloed.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Susan Collins</span><span class="entity-tag">Graham death Senate arithmetic</span><span class="entity-tag">Ditching Platner (Maine Senate)</span></div>
+  <div class="connection-text">Collins appears in both the Graham coverage and the Platner withdrawal story. Platner&#x27;s exit weakens Democratic Senate prospects in Maine — Collins&#x27;s home state — at the exact moment Collins&#x27;s vote becomes mathematically more significant with Graham&#x27;s seat in placeholder status.</div>
+  <div class="connection-sig">↳ Collins is now structurally more pivotal than she was 48 hours ago: Graham&#x27;s death tightens the Republican majority arithmetic, and Platner&#x27;s withdrawal reduces her reelection pressure simultaneously. Both shifts favor her independence or, alternatively, reduce Republican incentive to court her.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Immigration is being fought in two completely parallel narrative universes with zero overlap: right-only outlets run three separate ICE enforcement celebration stories (deportations, criminal alien arrests, operational capacity) while left-only outlets cover two separate ICE killing stories (Maine, Minnesota) plus the withheld evidence case. Neither side acknowledges the other&#x27;s stories exist. This is not competing framing of the same events — it is two entirely different event sets being reported as if the other does not occur.</div>
+<div class="pattern-item">The executive branch is in a posture of selective compliance with judicial mandates across at least three simultaneous fronts: $100B+ in tariff refunds still owed after a Supreme Court order (four months), body camera footage withheld from state prosecutors in a shooting case, and a federal judge finding that DOJ-connected attorneys filed a sham lawsuit. These stories are covered by different outlets with no analyst connecting them as a unified compliance pattern.</div>
+<div class="pattern-item">Graham&#x27;s death is being used by conservative media to perform dual legacy management: simultaneously establishing him as a principled conservative (pro-life, Iran hawk) while protecting Rubio as his successor — this is visible in National Review&#x27;s 7-story footprint today, which spans eulogy, Rubio defense, and cultural positioning. The subtext is that Graham&#x27;s Senate foreign policy portfolio should transfer to Rubio, not be redistributed through committee reshuffling.</div>
+<div class="pattern-item">Three stories today involve courts or judicial findings going against the executive branch (IEEPA tariffs, IRS sanctions, implicitly the Minnesota evidence case), yet right-wing outlets are either silent on or actively downplaying all three. The right is simultaneously celebrating DOJ&#x27;s election compliance letter — aggressive executive authority welcome, judicial constraints on executive authority not covered.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Left outlets are not covering the IRS sanctions story despite it being precisely the kind of story they amplify: a federal judge finding Trump attorneys filed a sham lawsuit to launder $1.8B in taxpayer funds into a politically named &#x27;Anti-Weaponization Fund,&#x27; with a referral to the Florida Bar. This is the most anomalous coverage gap today. Possible explanations: story broke too recently for editorial processing, or left outlets are holding it pending additional sourcing — but the 24-hour absence is notable.</div>
+<div class="anomaly-item">Right outlets are not covering the $100B+ tariff refund non-compliance story despite it being textbook fiscal overreach — a government retaining money it was legally ordered to return. The silence is explicable only by political loyalty to the current administration, which makes it a reliable signal that the non-payment is deliberate policy rather than administrative backlog.</div>
+<div class="anomaly-item">Graham&#x27;s aortic dissection at 71 receives no medical skepticism in any outlet despite aortic dissection being associated with prior health conditions rarely absent at that age. Given the political stakes (Senate arithmetic, Iran policy vacuum, sanctions timing), the complete absence of any sourced inquiry into Graham&#x27;s prior health record is a press failure worth noting — not as conspiracy but as basic background reporting that would normally accompany such a death.</div>
+<div class="anomaly-item">The Paramount/Warner merger lawsuit filed by 12 states (including Arizona, Connecticut, Massachusetts, Washington, New York) is entirely absent from right-wing coverage. Media consolidation that reduces competition in news distribution should generate conservative interest — unless conservative outlets assess that the merger benefits right-leaning media ecosystems or that the merged entity is easier to pressure than competing independent entities.</div>
+<div class="anomaly-item">Two people named Graham exit the Senate picture on the same day — Lindsey Graham dies, Graham Platner withdraws. PBS is already tracking false claims about Graham&#x27;s death. The name coincidence creates a ready-made disinformation substrate that no outlet appears to have flagged as a specific risk vector.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding all three stories in which courts ruled against the executive branch today (tariff refunds, IRS sanctions, Minnesota evidence), while flooding the zone with ICE enforcement narratives — the avoidance pattern reveals that &#x27;rule of law&#x27; framing is being deployed selectively, activated for election compliance and immigration enforcement, suppressed when the law runs against executive prerogative. The left is systematically avoiding the IRS sanctions story (anomalous, given its fit with anti-corruption framing) and entirely ignoring Iran policy developments, which now include an active blockade revival and a Senate oversight vacuum created by Graham&#x27;s death — the left&#x27;s Iran silence may reflect discomfort with the hawkish policy space Graham occupied, but that silence leaves the most consequential foreign policy story of the day uncovered from any accountability angle.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Evidence Fatal Shootings Pretti Minnesota</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› He was having a mental health crisis. Memphis task force agents came and shot him</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former member of federal Election Assistance Commission speaks out after dismissal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: Fed chair Kevin Warsh testifies on monetary policy in House hearing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› More than 53,000 immigrants have been deported or repatriated by South Africa in a crackdown</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: Justices Kagan and Coney Barrett testify on Supreme Court budget in House hearing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 12 states challenge Paramount&#x27;s takeover of Warner, say merger would &#x27;extinguish competition&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen. Lindsey Graham&#x27;s sudden death spurs false claims</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pat Oliphant, prizewinning giant of political cartooning, dies at 90</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ICE fatally shoots 26-year-old Colombian man in Maine during immigration operation – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Marco Rubio launches campaign to dismantle international criminal court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Michigan health officials identify ‘potential source’ of parasite outbreak</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One of strictest US abortion bans could be overturned in November’s election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Energy Policies Are “Fattening the Wallets of his Cronies” at Public  Expense</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chicago’s Coming Pension ‘Pneumonia’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› From Canada to Detroit to Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Kills Deal, Trump Revives Blockade</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Medicaid Spending Keeps Soaring</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Damage Control at the New York Times</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Schumer’s Tragedy—and Ours</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We’re Defending ObamaCare From Lawfare</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The ‘Irrepressible’ U.S.-Iran Conflict</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mick Jagger Doesn’t Love Us Anymore</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic socialists erupt over 2028 endorsement as AOC speculation grows: &#x27;Dangerous path&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Left Goes After Marco Rubio</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lindsey Graham Was a Fierce Defender of the Pro-Life Cause</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Damning Case Against Tyler Robinson</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The One Where the Kardashians Save the World</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California’s DEI Bloat Clashes with Newsom’s Pivot to ‘Normal’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The IRA Is Penalizing Many Cancer Drugs That Work Best</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Backdoor Property Tax You’ve Never Heard Of</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive – Rep. Paul Gosar Requests HHS and NIH Close Down Fauci’s Rocky Mountain Lab</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: ICE Deports Illegal Alien Criminals to Honduras with Dept. of War Aircraft</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Riley Moore: Legalized Migration Is Worse than Illegal Migration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: ICE Arrests Illegal Alien Whose Criminal Record Dates Back 35 Years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Teen Takeovers Are Not a Mystery</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can American Economics Change?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why We&#x27;re Dismantling the International Criminal Court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ditching Platner May Not Be a Win for Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is There Any End to The Atlantic&#x27;s &#x27;End-ism&#x27; Fetish?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ Reminds Election Officials They Need To Follow Law</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Senate Armed Services and Foreign Relations Committee assignments in the 72 hours following Graham&#x27;s death: which Republican assumes his Iran and Saudi-Israel normalization relationships, and whether those relationships are institutionally transferable or personally held — this is the most consequential unresolved question in today&#x27;s news</div>
+<div class="watch-item">Left outlet pick-up timing on the IRS &#x27;Anti-Weaponization Fund&#x27; sanctions story: if they do not cover it within 48 hours, that absence itself becomes analytically significant; if they do, watch for whether they name the fund recipients</div>
+<div class="watch-item">Todd Blanche&#x27;s next public legal filing or court appearance: the sanctions ruling and the &#x27;insider account&#x27; narrative from the previous watch list are converging — any new Blanche filing in the next week should be read against the sanctions context</div>
+<div class="watch-item">War Powers notification status for Iran blockade operations: with Graham&#x27;s seat in placeholder status and the Armed Services committee in transition, watch for whether any senator formally requests a War Powers report — silence for more than 7 days signals institutional abdication</div>
+<div class="watch-item">Susan Collins floor votes and public statements in the next 14 days: her mathematical leverage increased with Graham&#x27;s placeholder appointment and Platner&#x27;s withdrawal simultaneously; any deviation from her recent voting pattern signals she is aware of and acting on this leverage</div>
+<div class="watch-item">Maritime insurance rates and Lloyd&#x27;s war-risk premiums for Hormuz passage: still the most reliable open-source escalation indicator given the &#x27;Iran Kills Deal, Trump Revives Blockade&#x27; story running right-only with no analytical coverage</div>
+<div class="watch-item">Whether the &#x27;Anti-Weaponization Fund&#x27; is named in any Treasury or OMB disclosure, or referenced in any subsequent DOJ filing — its legal status as a recipient of diverted taxpayer funds is the most consequential unresolved fact from today&#x27;s stories</div>
+<div class="watch-item">McConnell public schedule and floor appearance frequency: Graham&#x27;s death and the Senate arithmetic shift make McConnell&#x27;s health and activity a higher-stakes signal than it was last week</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
