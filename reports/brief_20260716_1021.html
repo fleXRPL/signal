@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-16 10:21 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-16 10:21 UTC</span>
+    <span class="pill">126 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The defining feature of the current political moment is not any single story but a structural pattern: the simultaneous concentration of institutional oversight functions in a single loyalty chain running directly to the president. The Senate is confirming Todd Blanche — Trump&#x27;s personal criminal defense attorney — as Attorney General while the DOJ he is about to lead is actively issuing grand jury subpoenas to journalists who reported on security vulnerabilities in a foreign government&#x27;s gift to Trump. These are not parallel events. They are the same event: a personal lawyer becoming the head of the institution that is currently suppressing reporting about his client&#x27;s foreign financial relationships. The confirmation is the capstone of a process already in motion.</p>
+<p>Simultaneously, the administration is managing an acute foreign policy stress test. Iran has materially violated the June 17 MOU — not disputed — and Trump now faces a decision with no clean options. Escalation risks military engagement he has not politically prepared for; non-escalation hands his own coalition a liability they are already positioning to use against him. The intra-conservative fracture on Iran is real and visible: right-leaning outlets are already running cover-your-flank framing (&quot;Iran set a trap&quot;) that functions as preemptive excuse-making regardless of what Trump does next. On the same day this broke, 104 House Democrats voted against party leadership on Israel aid — the largest visible fracture in Democratic foreign policy discipline in this cycle. Both coalitions are cracking on foreign policy simultaneously, in ways that interact: any U.S. action with Israeli dimensions will immediately weaponize the Democratic fracture against the opposition.</p>
+<p>The domestic enforcement picture is deteriorating in ways that are not being connected to the oversight picture. ICE operations have produced shooting deaths of unarmed non-targets — a factually uncontested detail being buried across the right-leaning media ecosystem. DOJ oversight of enforcement conduct is precisely the function most compromised by the Blanche loyalty structure. The institution that should be investigating those deaths is being run by the man whose primary qualification for the job is his personal relationship with the president who controls ICE.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Todd Blanche</strong> is the most consequential actor in Washington this week, not because of his confirmation hearing but because of what his confirmation formalizes: the collapse of institutional distance between the presidency and federal law enforcement. His prior role is not a conflict-of-interest concern in the abstract — it is an active operational fact. The DOJ is currently running grand jury subpoenas against journalists covering a Trump foreign financial relationship while Blanche is being confirmed to lead that DOJ. The hearing is a political ritual validating a power arrangement that is already operational.</p>
+<p><strong>Pete Hegseth</strong> is functioning as the organizing principle of Pentagon media coverage in ways that reveal more about the conservative media ecosystem than about the Pentagon. Right outlets are running his testosterone screening initiative as a culture-war affirmation story while systematically suppressing the COVID vaccine mandate independent review — which could result in reinstatements and compensation for discharged service members, a constituency those same outlets claim to champion. Hegseth is not just a policy actor; he is an editorial organizing principle determining which stories his allied outlets amplify and which they bury.</p>
+<p><strong>Susan Collins</strong> has not yet made a public statement on Blanche, and her mathematical leverage has increased: the Graham seat vacancy and Platner withdrawal are simultaneous. If her vote is determinative, she knows it. Her silence is not neutral — it is leverage being banked, not abstained from.</p>
+<p><strong>Iran&#x27;s decision calculus</strong> is not adequately covered by any source in this dataset. The right frames it as a &quot;trap&quot; (preemptive Trump cover) or a policy failure (intra-conservative attack); neither engages with what Iran&#x27;s leadership actually gains from incremental MOU violation short of triggering a full military response. The most likely Iranian objective is establishing a precedent of managed non-compliance — testing whether the MOU has enforcement teeth without crossing into an escalation that justifies a strike. Trump&#x27;s domestic political problem is that his coalition has already concluded it requires escalation.</p>
+<p><strong>Qatar</strong> is the buried connective tissue actor. Qatar gave Trump a plane. Journalists reported security concerns about that plane. The DOJ is now subpoenaing those journalists. Qatar is also a key regional diplomatic intermediary in the Middle East — including on Iran. If Qatar is simultaneously the source of a foreign gift to Trump and a back-channel actor in any Iran negotiation track, the Blanche/NYT subpoena situation is no longer merely a domestic press freedom question. It is a live foreign policy conflict of interest that no outlet has assembled.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering three stories where stated conservative values conflict directly with administration loyalty: the NYT subpoenas (press freedom, foreign government influence in Trump&#x27;s orbit, Air Force One national security — triple relevance, zero coverage); the COVID vaccine mandate independent review (discharged service members, conservative accountability, military integrity); and the detail that both ICE shooting victims were unarmed non-targets. These are not random omissions. Each story requires the outlet to either acknowledge administration conduct that conflicts with a stated editorial value or abandon the constituency claim. The pattern is targeted, not coincidental.</p>
+<p>The left is not covering the Iran MOU violation with anything approaching proportional seriousness, and is understating the structural significance of 104 Democratic votes against party leadership on Israel aid. Both require confronting intracoalition fractures — foreign policy divisions that have no clean villain outside the coalition itself, no available rhetorical resolution, and no way to frame as a Republican problem. The Iran story in particular has zero center-left or left coverage in this dataset, which is an anomaly that has moved beyond news-cycle lag into deliberate avoidance territory.</p>
+<p>What neither side is saying: the DOJ loyalty chain (Blanche confirmation + NYT subpoenas + ICE enforcement oversight gap), the Pentagon deflection dynamic (testosterone screening suppressing COVID mandate accountability), and the Middle East fragmentation (Iran MOU breach intersecting with Democratic Israel fracture) are not three separate stories. They are one story about institutional capacity operating under loyalty constraints at a moment of acute foreign and domestic pressure. No outlet today is covering all three vectors simultaneously as a unified operational pattern.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Qatar thread connects stories that are being covered as entirely separate. Qatar gave Trump a plane. Journalists reported on security problems with that plane. The DOJ — now being formalized under Blanche — subpoenaed those journalists. Qatar is also a regional diplomatic actor with potential involvement in Iran back-channel communications. If any Iran diplomatic track runs through Qatar, then the Blanche/NYT subpoena situation means the institution suppressing journalism about a Trump-Qatar financial relationship is simultaneously the institution with oversight of any Qatar-mediated Iran diplomacy. That is not a hypothetical conflict of interest. It is a structural one that would be visible to anyone in a position to act on it.</p>
+<p>The simultaneous coalition fractures on foreign policy — 104 Democratic votes against Israel aid, intra-conservative positioning on Iran MOU — are creating a mutual vulnerability neither side&#x27;s media is analyzing as parallel. Each is covering only the other&#x27;s fracture. The operational consequence: if Trump takes any action with Israeli dimensions in response to Iran, his team can collapse 104 Democratic dissenting votes and any opposition to his Iran response into a single &quot;pro-Iran&quot; narrative. The Democratic fracture on Israel aid, treated as a legislative story, is actually a foreign policy liability that an Iran escalation would immediately activate.</p>
+<p>The media silence pattern on the NYT subpoena story has no neutral editorial explanation. The story is simultaneously relevant to national security hawks (Air Force One vulnerabilities, foreign government influence), press freedom advocates (grand jury subpoenas to journalists, source-revealing compulsion), and foreign influence watchdogs (Qatar&#x27;s relationship to Trump&#x27;s orbit). Libertarian outlets that invoke press freedom on reflex are absent. Right outlets that aggressively cover Qatar&#x27;s Middle East influence are absent. The one variable that explains universal silence across otherwise competing editorial interests is that the story&#x27;s primary beneficiary — the person whose foreign relationship is being shielded from reporting — is Trump.</p>
+<p>The War Powers institutional test has now materialized. The previous watch flagged War Powers invocation as a 7-day institutional test following the Iran strike coverage. The confirmed MOU violation is a concrete escalation beyond those strikes. No invocation has occurred. With the Graham seat vacant, a key institutional voice on that process is absent. The test has now elapsed from &quot;watch&quot; to &quot;active signal of institutional abdication.&quot;</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Blanche hearing transcript, specifically the NYT subpoena question:</strong> Obtain the full Senate Judiciary Committee transcript and determine whether any senator raised the active DOJ subpoenas to NYT journalists. The absence of that question is analytically as significant as any answer would be. If no senator raised it, that absence is a failure of oversight function that is more important than any exchange that did occur.</p>
+<p><strong>Left and center outlet pickup of Iran MOU violation within 48 hours:</strong> If the story is verified and reported by left or center outlets, watch the framing: does it attribute the situation to Iranian strategy or Trump policy failure? The framing choice reveals whether the center-left is engaging the story as a foreign policy accountability question or a Trump attack opportunity — and those framings have different consequences for any coalition effort to constrain administration military action.</p>
+<p><strong>Susan Collins public statement on Blanche, within 14 days:</strong> Her mathematical leverage is at a cycle high. Any statement with conditions or hesitation signals active deployment of that leverage at a moment when her vote may be determinative. Silence is also informative — it either signals quiet accommodation or active negotiation not yet surfaced.</p>
+<p><strong>COVID vaccine mandate review leadership appointment:</strong> Who was appointed to lead the independent review, what the review criteria are, and whether Hegseth is publicly supporting or quietly undermining the process. This determines whether the review is genuine accountability with real reinstatement risk or procedural theater designed to absorb political pressure without producing outcomes.</p>
+<p><strong>Qatar&#x27;s role in any Iran diplomatic back-channel:</strong> If reporting surfaces that Qatar is serving as a communications intermediary in any U.S.-Iran diplomatic contact, the Blanche/NYT subpoena situation immediately becomes a live foreign policy conflict of interest. Watch for Qatar appearing in Iran diplomatic reporting — it will not be flagged as connected to the subpoena story by any outlet covering it.</p>
+<p><strong>The 104 Democratic House members, specifically leadership response:</strong> Whether House Democratic leadership responds to the Israel aid dissent with committee assignments, primary threats, or accommodation will determine whether the fracture is being managed or is metastasizing. Any Iran response debate will reactivate this vote as precedent. Leadership&#x27;s choice in the next 7 days shapes the coalition&#x27;s structural vulnerability before that moment arrives.</p>
+<p><strong>Right-wing media coverage of testosterone screening versus COVID mandate review at 72 hours:</strong> If the testosterone story sustains coverage and the mandate review remains absent from the same outlets, it confirms cultural deflection as deliberate editorial strategy rather than news-cycle lag. At 72 hours, you can distinguish between &quot;not covered yet&quot; and &quot;not going to be covered.&quot; Hegseth is the organizing principle either way.</p>
+<p>---</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The clearest way to describe the current political moment is this: the United States government is operating under a loyalty-first institutional framework at a moment of simultaneous acute pressure on multiple fronts, and the press ecosystem has fractured along lines that make it structurally incapable of covering this as a unified phenomenon. The DOJ is not malfunctioning — it is functioning exactly as designed by the people who now run it. The Pentagon media coverage is not randomly selective — it is organized around a single figure&#x27;s cultural priorities. The foreign policy crises are not coincidental — they are interacting in ways that the domestic political fractures are making harder to manage, not easier. What is confusing about the current moment is not that too much is happening; it is that the normal institutional mechanisms for processing simultaneous crises — independent DOJ oversight, press investigation of foreign relationships, congressional war powers scrutiny, coalition discipline on foreign policy — are compromised, absent, or fracturing at precisely the moment they would be most needed. The signal in this data is not any individual story. It is the shape of what is being systematically not said, across all sides, simultaneously.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Acting Attorney General Todd Blanche faced contentious Senate Judiciary Committee confirmation hearings over conflicts of interest, while the House rejected a Massie amendment to cut $3.3B in Israel aid 104-314, exposing a Democratic leadership split.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (14)</span><span class="bias-badge" style="color:#e0a87a;">center-left (12)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (6)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:23.3;" title="center: 14"></div><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 12"></div><div class="bias-segment" style="background:#7ae09b; flex:10.0;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:8.3;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:10.0;" title="far-right: 6"></div><div class="bias-segment" style="background:#e07a7a; flex:13.3;" title="left: 8"></div><div class="bias-segment" style="background:#a07ae0; flex:5.0;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:10.0;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The Blanche hearing is the most substantive story here: the conflict-of-interest question — a sitting AG who was personally representing the president in criminal proceedings now running the DOJ — is factually established and not seriously disputed, only framed differently. The Israel aid vote reveals a real and widening Democratic intraparty fracture regardless of framing; 104 Democratic votes against the party leadership position is a concrete political event, not spin. The ICE shootings are underdiscussed on the right and overdramatized on the far-left, but the factually uncontested detail — both victims were unarmed non-targets — is the most important piece of information for evaluating policy, and it is being buried.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the Blanche hearing as a legitimate ethics reckoning for a conflicted nominee who may be serving Trump rather than justice, with the Epstein files and IRS settlement as evidence of DOJ politicization. ICE is portrayed as a deadly, unaccountable agency killing innocent people. The Democratic Israel split is cast as a moral awakening, not dysfunction. Trump is framed throughout as an authoritarian whose ventures — Iran war, Epstein disclosure, cultural appointments — reflect hubris and incompetence.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets present Blanche&#x27;s hearing as genuinely high-stakes with bipartisan skepticism, neither dismissing ethics concerns nor foreclosing confirmation. The Israel vote is reported factually as a Democratic leadership fracture, not primarily as a moral statement. Vance&#x27;s Epstein admission is treated as a significant self-inflicted political wound. Iran release and ICE shootings are reported with factual neutrality, acknowledging both enforcement rationale and human cost.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets frame Blanche&#x27;s confirmation as a normalizing step that would bring stability to DOJ, downplaying ethics concerns. The Israel vote is framed as proof of Democratic radicalization and leadership collapse. ICE enforcement is implicitly justified; the Maine and Houston shootings receive minimal coverage. Iran hostage release is a Trump diplomatic win. Lindsey Graham&#x27;s death is treated as a human-interest legacy story. Defense investment and Army recruitment are framed as Trump-era revitalization wins largely absent from left coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely ignore Trump&#x27;s $10B Pennsylvania defense investment announcement, the Army hitting recruitment targets early, the Walz pardon controversy involving a convicted child sex offender, and any positive diplomatic framing of the Iran hostage release. They do not engage with the argument that a Senate-confirmed AG provides institutional stability.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets largely omit the federal judge&#x27;s specific finding that the DOJ IRS settlement was an &#x27;improper&#x27; product of self-dealing, the detail that both ICE shooting victims were unarmed and not the intended targets of the operations, Blanche&#x27;s evasion on federal agents at polling places, and the Pew poll showing more countries now view China and Xi more favorably than the U.S. and Trump.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The New York Times filed a motion to quash federal grand jury subpoenas issued to reporters who covered security concerns about Qatar&#x27;s gifted Air Force One aircraft.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The core facts are undisputed: DOJ subpoenaed NYT reporters after publication of Air Force One security reporting, and the Times is now fighting those subpoenas in court. The genuine legal question — whether the government can compel journalists to reveal sources in a national security context — is serious regardless of framing, with meaningful precedent at stake under the Privacy Protection Act and reporter&#x27;s privilege doctrine. This dataset lacks right-leaning coverage entirely, which limits the ability to assess the full spectrum; the three sources provided cluster center to left and share a broadly similar press-freedom frame.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as a bad-faith, brazenly retaliatory assault on First Amendment rights — emphasizing the Trump administration as the aggressor and the Times as engaged in legitimate national security journalism. Language is adversarial and implies intent.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the subpoenas as overreach and an abuse of power, but leads with the procedural fact (the motion to quash) rather than emotional framing. More restrained than the Guardian, but still editorially skeptical of the government&#x27;s action.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this dataset. Right-leaning coverage would likely emphasize the national security classification implications of the reporting, question whether the Times published sensitive information irresponsibly, and frame the subpoenas as a lawful investigative tool rather than press intimidation.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    None of the three sources include a right-leaning outlet, so this comparison is structurally incomplete. Within available coverage, left outlets do not address whether the underlying reporting involved leaked classified material, nor do they engage with the government&#x27;s stated legal justification for the subpoenas.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source provided. Based on available center-left and left sources, right outlets would likely omit or minimize the First Amendment precedent implications and the historical rarity of grand jury subpoenas targeting news organizations.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The Pentagon is pursuing two distinct military health policy initiatives simultaneously: an independent review of the 2021 COVID-19 vaccine mandate and a new testosterone screening program for service members — but the two sources provided are not covering the same event.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">These two sources are not actually covering the same story, which is itself the most important analytical finding: right-leaning media is selectively amplifying a masculinity-coded health initiative while ignoring a politically thornier accountability review of a mandate many conservatives opposed. The COVID mandate review has the higher long-term policy consequence — it could result in reinstatements, compensation, or legal precedents — yet the outlet most likely to champion dismissed service members is not covering it. The testosterone screening story, while real, may be serving a deflection function regardless of intent.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this coverage set — analysis unavailable.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents the COVID mandate review in neutral, procedural terms — emphasizing the human cost (8,700+ dismissals) and the institutional mechanism (NAPA independent panel) without taking a position on whether the original mandate was right or wrong.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart ignores the COVID mandate review entirely and pivots to the testosterone screening story, framing Hegseth as a bold, performance-focused reformer using science to build a stronger military. The emotional register is enthusiasm and vindication — masculine readiness as a corrective to prior Pentagon priorities.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left/center coverage omits the testosterone screening announcement entirely, leaving readers unaware of a separate, concurrent Hegseth health policy initiative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits the COVID vaccine mandate review story entirely — a significant gap given that the reinstatement or vindication of dismissed service members would be directly relevant to its core audience.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Iran has violated the June 17 Memorandum of Understanding with the United States, leaving Trump facing a decision on whether and how forcefully to respond.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:66.7;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The operative fact — that Iran is violating the MOU — is not seriously contested. What is contested is whether this was foreseeable strategic design (RCP) or a policy failure now requiring a face-saving response (NR). The more revealing story here is an intra-conservative fracture: some on the right are already distancing from Trump&#x27;s Iran handling, signaling that if he does not escalate, the political liability will come from his own coalition, not just the left. The &#x27;trap&#x27; framing from RCP reads as preemptive spin to give Trump cover if he does act — or excuse-making if he doesn&#x27;t.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were included in this dataset. Left framing cannot be assessed from available coverage — a significant gap in the signal.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    RealClearPolitics (center-right) pushes back against pundit consensus, framing the MOU not as capitulation but as a calculated move that gave Iran enough rope to hang itself. The tone is analytical and somewhat congratulatory toward Trump&#x27;s strategic positioning.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The right is internally divided: National Review is critical of Trump, framing his hesitation as weakness and urging decisive military or coercive action. The emotional register is frustration and urgency — almost a challenge to Trump&#x27;s manhood and resolve. RealClearPolitics counters with a contrarian defense, framing Trump as the shrewd strategist who set a trap Iran couldn&#x27;t resist.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Without left coverage present, this field cannot be reliably assessed. Notable absence: no progressive or liberal outlet coverage was surfaced, which itself may be signal — either the story is being downplayed on the left, or coverage was not collected.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning pieces omit any humanitarian framing around military escalation, do not address the domestic political cost of potential military action, and largely sidestep the diplomatic track (allies, UN, regional partners). The NR pieces do not engage seriously with the &#x27;trap&#x27; thesis advanced by RCP.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Justice Department</span><span class="entity-tag">New York Times</span><span class="entity-tag">Todd Blanche</span><span class="entity-tag">Qatar</span></div>
+  <div class="connection-text">The DOJ under Blanche — Trump&#x27;s personal defense attorney in federal criminal proceedings — is simultaneously issuing grand jury subpoenas to NYT journalists who reported on security vulnerabilities in Qatar&#x27;s gifted Air Force One. Blanche&#x27;s confirmation hearing is happening concurrently with an active DOJ press suppression effort around a story that directly touches Trump&#x27;s personal financial relationship with a foreign government. The loyalty chain is direct: Qatar gifts Trump an aircraft → journalists report security concerns about that gift → Trump&#x27;s personal lawyer (now AG) runs the DOJ issuing subpoenas to those journalists → Senate confirms that lawyer as AG.</div>
+  <div class="connection-sig">↳ If Senate Judiciary members are not questioning Blanche about the NYT subpoenas during his hearing, it is a more significant failure than any exchange that did occur — the live operational conflict is more direct than the prior-representation question receiving all the coverage.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Pete Hegseth</span><span class="entity-tag">Pentagon COVID vaccine mandate review</span><span class="entity-tag">testosterone screening program</span></div>
+  <div class="connection-text">Hegseth is the connective entity across both Pentagon health stories. Right-leaning media covers his testosterone screening initiative (culture-war coded, identity-affirming) while entirely suppressing the COVID mandate review — which could result in reinstatements and compensation for discharged service members, a constituency reliably championed by conservative media. Hegseth&#x27;s cultural priorities at DOD are functioning as an editorial organizing principle even within the conservative media ecosystem that claims to advocate for those service members.</div>
+  <div class="connection-sig">↳ The COVID mandate review has more concrete near-term consequence for identifiable individuals than testosterone screening, yet the media ecosystem most aligned with that constituency has chosen the identity-coded story over the accountability story. This is a real-time demonstration of culture war framing overriding stated constituency interest.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran MOU violation</span><span class="entity-tag">Democratic Party</span><span class="entity-tag">Israel aid vote</span></div>
+  <div class="connection-text">Iran violating the U.S.-brokered MOU increases probability of escalation with Israeli dimensions. The 104 Democratic votes against Israel aid — a concrete intraparty fracture event — occurred the same day the Iran MOU violation story broke on right-leaning outlets. If Trump responds to Iran with any action involving Israel, the Democratic coalition fracture becomes an active political weapon: the administration can frame Democratic opposition to any Iran response as consistent with the faction that opposed Israel aid, collapsing two separate policy positions into a single &#x27;pro-Iran&#x27; narrative.</div>
+  <div class="connection-sig">↳ The Democratic fracture on Israel aid is not just a legislative story — it is a structural foreign policy vulnerability that an Iran escalation would immediately activate. Neither the Israel aid coverage nor the Iran coverage is drawing this connection.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">New York Times subpoenas</span><span class="entity-tag">right-wing media</span><span class="entity-tag">libertarian media</span></div>
+  <div class="connection-text">The NYT subpoena story — federal government compelling journalists to reveal sources on national security reporting about a foreign government&#x27;s gift to the president — has zero right-wing or libertarian coverage. The story touches Qatar (foreign influence in Trump orbit, a topic right outlets cover aggressively elsewhere), Air Force One security (national security, a reliably right-amplified frame), and press freedom (a libertarian core issue). Triple relevance with zero coverage across both spectrums simultaneously.</div>
+  <div class="connection-sig">↳ When a story is simultaneously relevant to national security hawks, press freedom advocates, and foreign influence watchdogs yet receives zero coverage from any of those constituencies&#x27; outlets, the most parsimonious explanation is that the beneficiary of the press suppression — Trump — is the stronger organizing principle than any of their stated editorial interests.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Todd Blanche confirmation</span><span class="entity-tag">ICE shootings of unarmed civilians</span><span class="entity-tag">Justice Department oversight</span></div>
+  <div class="connection-text">The ICE shooting deaths of unarmed non-targets — assessed as the most consequential underreported domestic pattern of the week — are occurring while the Senate confirms as AG the president&#x27;s personal defense attorney. DOJ oversight of ICE enforcement conduct is precisely the function most structurally compromised by Blanche&#x27;s loyalty relationship with Trump. The most acute domestic law enforcement accountability question of the week is being adjudicated by the institution whose leadership is simultaneously being confirmed on personal loyalty grounds — and no coverage of either story connects them.</div>
+  <div class="connection-sig">↳ The Blanche confirmation has direct operational consequences for ICE accountability. This connection is absent from coverage of both the Blanche hearing and the ICE deaths.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">DOJ as personal loyalty instrument across three simultaneous vectors: Blanche confirmation (personal Trump lawyer as AG), NYT subpoenas (DOJ targeting journalists who investigated Qatar&#x27;s gift to Trump), and ICE death accountability gap (DOJ oversight of enforcement compromised by loyalty structure). All three stories are running in parallel; no coverage connects them as a unified operational pattern.</div>
+<div class="pattern-item">Simultaneous coalition fragmentation on both sides on foreign policy: Democratic split on Israel aid (104 votes against leadership) and intra-conservative fracture on Iran MOU handling (right outlets already positioning Trump liability) are happening the same day. Both coalitions are fracturing on foreign policy simultaneously, creating mutual vulnerability that neither side&#x27;s media is analyzing as a parallel phenomenon — each side is covering only the other&#x27;s fracture.</div>
+<div class="pattern-item">Health policy as masculinity-coded deflection at the Pentagon: Right media amplifies testosterone screening (Hegseth&#x27;s culture-war priority) while burying COVID mandate review that could benefit the precise constituency — discharged service members — conservative media claims to champion. The cultural frame is overriding the policy interest of the stated beneficiary in real time.</div>
+<div class="pattern-item">Qatar as buried connective tissue across unconnected stories: Qatar appears across multiple story layers — the Air Force One gift triggering NYT subpoenas, Qatar&#x27;s role as a Middle East diplomatic actor adjacent to the Iran MOU violation, and implicitly in the Israel aid vote context. No outlet is drawing the Qatar thread through these stories simultaneously, despite Qatar&#x27;s unique position as both a Trump financial relationship and a key regional intermediary.</div>
+<div class="pattern-item">Layered oversight suppression with no single story capturing the pattern: Blanche confirmation compromises DOJ independence; NYT subpoenas suppress press investigation of Trump foreign relationships; right media silence on COVID mandate review suppresses Pentagon accountability; ICE death coverage buried across right outlets. Multiple simultaneous vectors reducing institutional and press oversight, none covered as a coordinated phenomenon.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Total right and libertarian silence on the NYT subpoena story despite triple relevance: The story involves foreign government influence in Trump&#x27;s orbit (Qatar, a topic right outlets track aggressively), Air Force One national security vulnerabilities, and federal subpoenas compelling journalists to reveal sources. Libertarian outlets that invoke press freedom regularly are also absent. This triple-relevance, zero-coverage pattern has no neutral editorial explanation.</div>
+<div class="anomaly-item">Iran MOU violation covered exclusively by right and center-right (3 sources): A confirmed breach of a U.S.-brokered international agreement has no center or left coverage. Either the center and left are behind the news cycle, or the story is more contested than the assessment suggests, or both sides are avoiding it for different reasons (right wanting to amplify Trump pressure, left wanting to avoid a story that complicates their Iran narrative without a clean resolution).</div>
+<div class="anomaly-item">The $1 Trump coin story is covered only by left outlets: A U.S. Mint producing a Trump-image coin for the 250th anniversary is being amplified exclusively by sources framing it negatively. Right-leaning outlets — which would normally celebrate this as a cultural and political victory — are entirely absent. The most plausible explanation is that the monarchical optics are uncomfortable for right outlets when surfaced by left framing, so they are choosing not to engage rather than amplify.</div>
+<div class="anomaly-item">Blanche confirmation hearing coverage does not mention NYT subpoenas: Based on available reporting, senators are questioning Blanche on prior Trump representation and general conflicts of interest, but the live operational conflict — DOJ actively subpoenaing journalists about a Trump foreign gift while he is being confirmed — appears absent from hearing coverage. If no senator raised this, it is a more significant failure than any exchange that did occur.</div>
+<div class="anomaly-item">War Powers invocation still absent despite confirmed Iran MOU breach: The previous watch list flagged this as an institutional test. The MOU violation represents an escalation that should, under normal institutional function, trigger War Powers discussion. Its absence — combined with the Graham seat vacancy removing a key voice — has now moved from &#x27;watch&#x27; to &#x27;active concern&#x27; territory.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding three accountability stories where the current administration&#x27;s conduct creates direct exposure: the NYT subpoena story (would require acknowledging DOJ press suppression around a Trump foreign gift), the COVID vaccine mandate review (would require acknowledging the Pentagon is officially investigating a policy the prior Republican administration championed), and ICE shooting deaths of unarmed civilians. The pattern is not random topic-avoidance but targeted suppression of stories where stated conservative values — press freedom, service member welfare, rule of law — conflict with administration loyalty. The left is systematically avoiding the Iran MOU violation and understating the structural significance of 104 Democratic votes against party leadership on Israel aid — both require confronting intracoalition foreign policy fractures with no clean rhetorical resolution and no available villain outside their own coalition. The combined avoidance pattern means no outlet today is covering the three most structurally significant story clusters simultaneously: the DOJ loyalty chain (Blanche + NYT subpoenas + ICE oversight gap), the Pentagon deflection dynamic (testosterone screening suppressing COVID mandate accountability), and the Middle East fragmentation (Iran MOU violation intersecting with Democratic Israel fracture).</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s intelligence nominee refuses to say who won 2020 election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. Mint produces a $1 coin bearing Trump&#x27;s face to help celebrate America&#x27;s 250th birthday</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Biden will publish &#x27;Promise Me, America&#x27; memoir after the November midterm elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hegseth announces new policy to test troops for low testosterone and offer them hormone replacement therapy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trading soccer shirts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gathering of Latino-American politicians shows little love for Argentina</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A British diplomat with a diplomatic answer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge handling challenge to Trump immigration halt cites exceptions for World Cup visas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spot the pol!</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hilton honors England</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Scottish independents should back England, needles conservative leader</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big day for a British Overseas Territory (no, not that one)</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wales finds reason to cheer England</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Brazil condemns US move to impose 25% tariffs next week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New $1 coin featuring Trump in production at US Mint, treasury says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Drained reflecting pool reveals Trump’s ‘American flag blue’ liner is now closer to gray</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet the Multi-Millionaire Pro-Hamas Activist Who Was Arrested in Spain</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Most Extreme GOP Candidate in the Nation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nation’s Biggest Public Utility Just Doubled Down on Coal, Gas, and Nuclear</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Race to Stop AI’s Threats to Democracy</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Doesn’T Stomach Cease-Fire Ceases</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the SEC Enforced a Gag Rule on Me and Others</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Blockade U.S. National Security</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Some Good News on Inflation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who Has the Midterm Upper Hand?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Fedora Gives Way to the Baseball Cap</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nevada Lt Gov: Elon Musk could make space tourism state&#x27;s next big industry</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;She saw dollar signs&#x27;: Former Obama counsel pressed over years-long Epstein ties</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-Dem fundraiser torches Biden as book launch implodes: &#x27;No one wants to read&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems unite to boycott hearing on emerging threat facing America: &#x27;Don’t want to know the truth&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› All the World’s a Stage, Unfortunately</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is the Data Center Backlash Real?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College in America Needs an Overhaul</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Faulty Premise of Dua Lipa’s ‘Banned’ Books Library</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Plan to Confiscate AI Company Stock</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &lt;i&gt;Young Washington&lt;/i&gt;’s Naïve Appeal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Republicans Can ‘Raise’ Their Midterm Hopes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive — Secretary Bessent to Reveal Treasury’s Financial Crackdown Plans on ‘Transnational Political Terrorism’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Threatens to Shut Down Middle Eastern Oil Production as U.S. Reimposes Blockade</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Brendan Carr — FCC to Vote on Eliminating ‘Outdated’ Ownership Cap to Help Boost Local News Stations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rising Momentum for Another Progressive Champion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Middle America Isn&#x27;t on Your Timeline</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Left Has Lessons To Learn After Platner Unforced Error</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› CA Schools on the Frontlines of Fighting Homelessness</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No English, No Problem--Until the Crash Happens</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Push To &#x27;Defund ICE&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Netflix&#x27;s &#x27;Little House on the Prairie&#x27; Is a Betrayal</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Senate Judiciary Committee hearing transcript for Blanche: specifically whether any senator raised the NYT subpoenas — the absence of that question is analytically as significant as the answer would be</div>
+<div class="watch-item">Left and center outlet pickup of Iran MOU violation within 48 hours: if verified and published, watch whether framing attributes blame to Iranian strategy or Trump policy failure — the framing choice reveals the editorial calculus under pressure</div>
+<div class="watch-item">COVID vaccine mandate independent review: who was appointed to lead it, what the review criteria are, and whether Hegseth is visibly supporting or quietly undermining the process — determines whether this is genuine accountability or procedural theater</div>
+<div class="watch-item">Qatar&#x27;s presence in any Iran back-channel diplomatic communication: if Qatar is simultaneously the source of a foreign gift to Trump and a diplomatic intermediary on Iran, the Blanche/NYT subpoena situation becomes a live foreign policy conflict of interest, not merely a domestic press freedom question</div>
+<div class="watch-item">The 104 Democratic House members who voted against Israel aid: whether Democratic leadership responds with committee assignments, primary threats, or accommodation will determine whether the fracture is being managed or is metastasizing ahead of any Iran response debate</div>
+<div class="watch-item">Susan Collins public statement on Blanche confirmation within 14 days: her mathematical leverage has increased with the Graham vacancy and Platner withdrawal simultaneously; any hesitation or stated conditions signals active deployment of that leverage at a moment when her vote may be determinative</div>
+<div class="watch-item">Right-wing media coverage trajectory of testosterone screening vs. COVID mandate review over next 72 hours: if the testosterone story sustains and the mandate review remains absent, it confirms cultural deflection as deliberate editorial strategy rather than news-cycle lag — and identifies Hegseth as the organizing principle</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
