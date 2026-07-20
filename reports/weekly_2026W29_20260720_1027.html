@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Weekly Intelligence Brief 2026W29</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #e3b341;
+    --warn:     #58a6ff;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  .header {
+    background: var(--surface);
+    border-bottom: 3px solid var(--accent);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .weekly-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #0d1117;
+    font-family: var(--mono);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 6px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p { margin-bottom: 14px; color: var(--text); }
+
+  .brief-section ul { list-style: none; padding: 0; }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(227,179,65,0.07), rgba(227,179,65,0.02));
+    border: 1px solid rgba(227,179,65,0.35);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p { font-size: 15px; line-height: 1.75; color: var(--text); }
+
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  .days-covered {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 24px 0;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .day-chip {
+    background: rgba(227,179,65,0.1);
+    border: 1px solid rgba(227,179,65,0.3);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .divider { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="weekly-badge">Weekly Summary</div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>WEEKLY INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-13 → 2026-07-19</span>
+    <span class="pill">7 days of coverage</span>
+    <span class="pill warn">🤖 Claude</span>
+    <span class="pill">generated 2026-07-20 10:27 UTC</span>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="days-covered">
+    <span style="font-size:12px; color:var(--muted); font-family:var(--mono); margin-right:4px;">DAYS INCLUDED</span>
+    <span class="day-chip">2026-07-13</span>
+<span class="day-chip">2026-07-14</span>
+<span class="day-chip">2026-07-15</span>
+<span class="day-chip">2026-07-16</span>
+<span class="day-chip">2026-07-17</span>
+<span class="day-chip">2026-07-18</span>
+<span class="day-chip">2026-07-19</span>
+  </div>
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">🗓 Weekly Brief</div>
+  <h2>WEEK IN REVIEW</h2>
+  <p>The week of July 13–19 was not, in its underlying logic, a week of scattered crises. It was a week in which the executive branch completed the assembly of a loyalty-first institutional architecture — DOJ, election oversight, international coalition framing, legislative sequencing — while simultaneously conducting an undeclared shooting war with Iran that killed at least two Americans and, by one account, sixteen. Those two dynamics are not separate stories. The institutional consolidation is the domestic precondition for sustaining a conflict that has no formal congressional authorization, no War Powers notification, and no institutional champion left in the Senate to demand one. Lindsey Graham died on July 11. The week ended with ballistic missiles hitting a U.S. base in Jordan.</p>
+<p>The domestic political noise — Democratic fractures on Israel aid, Johnson&#x27;s procedural theater, Rubio&#x27;s 60-country summit, Trump&#x27;s primetime election speech — functioned this week as genuine news that also served as a structural distraction from the military story. That is not a conspiracy claim. It is a description of how attention markets work: genuine domestic political drama is more legible, more partisan-sortable, and more immediately actionable for audiences than an undeclared overseas war with murky casualty numbers and no official framing from either party. The result is that the most consequential week in U.S.-Iran relations in years generated less analytical coverage than a New York City mayoral candidate&#x27;s cough.</p>
+<p>The third current running underneath both of these is the Democratic coalition&#x27;s structural inability to respond. The party&#x27;s 104-member Israel aid defection, the absence of any leadership response to that fracture, the leadership vacuum narrative being assembled from left, center, and right simultaneously — these are not independent stories about Democratic dysfunction. They describe a party that cannot generate institutional pressure on either the military escalation or the domestic consolidation, because it is consuming its own organizational energy managing internal identity conflicts. That is the week as a whole: a government consolidating authority while fighting an unacknowledged war, against an opposition too fractured to mount coherent resistance to either.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">📈 Weekly Brief</div>
+  <h2>STORY ARC TRACKER</h2>
+  <p><strong>Iran: From Background Noise to Shooting War</strong></p>
+<p>Monday 7/13: U.S. Central Command announced additional strikes against Iran. The story was buried beneath the Graham death and ICE shooting domestic cycles. Three story clusters mentioned Iran; zero offered analytical coverage. The most militarily significant event of the day effectively vanished.</p>
+<p>Tuesday 7/14: Iran absent as a standalone story. Graham&#x27;s death dominated Senate coverage. The institutional question of who assumes Graham&#x27;s Iran portfolio was flagged on the watch list but generated no reporting.</p>
+<p>Wednesday 7/15: Iran returned with escalation — Trump publicly threatened Iranian infrastructure destruction, strikes ongoing, no senator had invoked War Powers. The 7-day clock was identified as the threshold for confirmed institutional abdication. A February Tomahawk strike reportedly killing over 100 children at an Iranian elementary school surfaced exclusively in Reason and was ignored everywhere else.</p>
+<p>Thursday 7/16: Iran&#x27;s MOU violation confirmed — a breach of a U.S.-brokered international agreement, covered exclusively by right and center-right outlets. No center or left coverage. The story shifted from &quot;strikes ongoing&quot; to &quot;treaty breach confirmed&quot; with minimal notice.</p>
+<p>Friday 7/17: Iran disappeared as a standalone story but appeared as live-conflict context in the Israel aid vote. A joint U.S.-Israel military operation was treated as background texture in a story about domestic congressional votes.</p>
+<p>Saturday 7/18: Iran as implicit backdrop to the Trump election speech and joint U.S.-Israel operational framing. Still no War Powers invocation. Still no left-outlet coverage of the MOU violation.</p>
+<p>Sunday 7/19: Ballistic missiles attributed to Iranian state forces struck a U.S. military installation in Jordan. Two American service members killed. One missing. U.S. retaliatory airstrikes against Iran proper. Axios reported a cumulative toll of 16 American military deaths from Iran-linked strikes over the duration of the campaign. The story had four outlets — all center-to-far-right. Zero left coverage. Fewer sources than the NYC mayoral candidate story.</p>
+<p>Arc summary: The Iran story escalated every single day of the week, from &quot;background strikes&quot; to &quot;Americans killed by state-attributed ballistic missiles,&quot; and received progressively less proportionate coverage as it escalated. The coverage thinned as the stakes rose. That is not a normal news dynamic.</p>
+<p>---</p>
+<p><strong>Todd Blanche / DOJ Loyalty Consolidation</strong></p>
+<p>Monday 7/13: Not yet a named story in the primary intelligence.</p>
+<p>Tuesday 7/14: Identified as watch item — a federal judge finding Trump attorneys filed a sham lawsuit to redirect $1.8 billion into a politically branded fund, with Bar referral. Left outlets not covering despite direct relevance.</p>
+<p>Wednesday 7/15: Blanche confirmation vote timing and margin added to watch list. His AG status identified as determining legal posture on ICE deaths, Khalil lawsuit, and DOJ coordination questions.</p>
+<p>Thursday 7/16: Confirmation hearing goes live. The NYT subpoena question — whether any senator raised that DOJ was actively subpoenaing journalists covering a foreign government&#x27;s gift to Trump, while the man being confirmed as AG had personally defended Trump — identified as the key indicator. Three separate outlets covered three different hearings, fragmenting the record.</p>
+<p>Friday 7/17: Hearing ongoing. The recusal commitment on Trump financial matters identified as the actionable data point. No senator publicly raised the IRS conflict or the NYT subpoena on record, as far as coverage shows.</p>
+<p>Saturday 7/18: Blanche still not confirmed as of this date; Epstein file management identified as the next structural conflict of interest, as survivors described a meeting as &quot;dismissive.&quot;</p>
+<p>Sunday 7/19: Blanche absent from the daily brief, suggesting either confirmation occurred without notable controversy, or it was buried beneath the Iran and casualty stories.</p>
+<p>Arc summary: The Blanche story began as an abstract concern about DOJ independence and ended as a case study in confirmation theater — three outlets covering three different hearings, no senator publicly raising the conflict of interest that made his nomination structurally significant, and a confirmation that appears to have completed without the central question ever being asked on the record.</p>
+<p>---</p>
+<p><strong>Graham Death / Senate Arithmetic</strong></p>
+<p>Monday 7/13: Graham dies hours after returning from Ukraine. Senate majority is razor-thin. Seat temporarily vacant. No successor with his committee relationships, bilateral contacts, or foreign policy leverage.</p>
+<p>Tuesday 7/14: National Review runs a seven-story Graham legacy management package simultaneously performing eulogy and repositioning his portfolio as Rubio&#x27;s inheritance. The subtext: his Senate influence should transfer to the Secretary of State, not through committee reshuffling.</p>
+<p>Wednesday 7/15: Graham&#x27;s sister sworn in as placeholder. The critical question — who institutionally assumes his Iran/Saudi committee relationships — remains unreported.</p>
+<p>Thursday–Saturday 7/16–7/18: The committee assignment question persists on the watch list without resolution. Nordone confirmed as placeholder. Collins&#x27;s mathematical leverage increases. Trump endorses Darline Graham (the senator&#x27;s niece) for the seat.</p>
+<p>Sunday 7/19: Formal candidacy announcement watch — if she announces within 7 days, the SC race becomes a direct test of Trump&#x27;s ability to clear a Senate primary field.</p>
+<p>Arc summary: The Senate arithmetic story degraded from &quot;acute governance crisis&quot; to &quot;managed succession track&quot; over the week. The appointment of a family-tribute placeholder neutralized the immediate intraparty conflict scenario. But the watch list&#x27;s most important question — who now holds Graham&#x27;s Iran relationships institutionally — was never answered. The answer may be: nobody. That is the finding, and it went unreported.</p>
+<p>---</p>
+<p><strong>Election Authority Centralization</strong></p>
+<p>This story did not exist as a named arc on Monday. It assembled itself across the week.</p>
+<p>Thursday 7/16: SAVE America Act appears in Senate context. DHS threats against state election officials noted.</p>
+<p>Friday 7/17: Rubio&#x27;s 60-country summit frames domestic political opposition as international left-wing extremism. DHS electoral threat expansion to include noncitizen registration. These three items not yet connected.</p>
+<p>Saturday 7/18: The architecture becomes visible in a single day: Trump primetime address with newly declassified Chinese interference documents provides the threat justification; SAVE America Act appears in three simultaneous coverage clusters providing the legislative vehicle; DHS threats against state officials providing enforcement pressure. The three-pronged architecture — threat narrative, legislative vehicle, enforcement mechanism — is complete.</p>
+<p>Sunday 7/19: China voter theft framing continues as one of four simultaneous foreign adversary vectors.</p>
+<p>Arc summary: The election authority story went from scattered legislative items to a recognizable campaign architecture over four days. The primetime address was not a political speech — it was the capstone of a rollout.</p>
+<p>---</p>
+<p><strong>Democratic Coalition Fracture</strong></p>
+<p>Monday 7/13: Democratic leadership vacuum narrative assembled from three angles simultaneously — Shapiro moderates, Mamdani socialists, right&#x27;s Tea Party trap analysis. No outlet connecting all three.</p>
+<p>Tuesday–Wednesday 7/14–7/15: Right media running coordinated &quot;communism&quot; framing cluster, attempting to force Democrats onto unfavorable ideological terrain ahead of 2026.</p>
+<p>Thursday 7/16: 104 Democratic House members vote against Israel aid — the largest foreign policy fracture in the caucus during an active military operation.</p>
+<p>Friday 7/17: No Democratic leadership response to the 104-member vote. Silence identified as deliberate management through inaction, itself a policy choice.</p>
+<p>Saturday–Sunday 7/18–7/19: Progressive local officials (Mamdani, Eddins) continue to be assembled into a right-wing &quot;face of the Democratic Party&quot; narrative regardless of electoral salience.</p>
+<p>Arc summary: The Democratic fracture deepened all week without any visible leadership response. The 104-member Israel vote is the most significant concrete data point: it is a live coalition break during active U.S. military hostilities, and it received no formal Democratic leadership acknowledgment in the coverage record. That silence is the story.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔺 Weekly Brief</div>
+  <h2>WHAT ESCALATED</h2>
+  <p><strong>Iran, dramatically.</strong> The week opened with buried Centcom strike announcements and closed with ballistic missiles killing Americans on a U.S. base. The cumulative casualty figure, if verified, means this is no longer a &quot;strikes&quot; story — it is a sustained conflict with body count. The escalation was continuous and the coverage thinned as the stakes rose. This is the most significant escalation of the week by any national security metric.</p>
+<p><strong>Executive institutional architecture, to near-completion.</strong> By week&#x27;s end, the DOJ has a personal Trump lawyer as AG-designate, the election oversight campaign has a completed three-part architecture (threat narrative, legislation, enforcement), and a 60-country international summit has embedded domestic opposition as an &quot;extremism&quot; framework in shared intelligence channels. These were separate items on Monday. By Sunday they read as a completed project.</p>
+<p><strong>The McConnell signal, from zero to notable.</strong> Sunday&#x27;s brief noted, almost in passing, that &quot;Kentucky governor received 2 calls indicating McConnell had passed.&quot; If accurate, the former Senate Majority Leader and the most consequential Republican institutionalist of the past three decades died or had a serious medical event during the same week that a shooting war with Iran claimed Americans. The story&#x27;s near-total absence from the primary coverage set — while a mayoral candidate&#x27;s cough generated dedicated coverage — is an editorial priority failure that warrants direct attention next week.</p>
+<p><strong>Watch list materialization rate.</strong> Of the week&#x27;s flagged items: McMaster placeholder (materialized exactly as predicted), Blanche confirmation hearing (materialized), Trump election speech with declassified documents (materialized), legislative-executive synchronization on SAVE Act (materialized), Iran escalation beyond strikes to confirmed MOU violation and beyond (materially exceeded the prediction). The watch list was directionally accurate on every item that had a binary outcome. The items that did not materialize — War Powers invocation, left-outlet coverage of IRS sanctions, Senate committee reassignments — did not materialize in the direction of institutional resistance. Every miss was a miss toward inaction.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">⬇ Weekly Brief</div>
+  <h2>WHAT WAS BURIED</h2>
+  <p><strong>War Powers — the watch list item that never came.</strong> The 7-day clock was identified on Wednesday 7/15 as the threshold for confirmed institutional abdication. By Sunday 7/19, with Americans dead from an Iranian ballistic missile strike, no senator had formally invoked War Powers. The watch list called this correctly: silence past 7 days signals abdication, not lag. The clock has now run. The legal and political implications of that silence are not speculative — they are the operating environment for every subsequent executive military decision.</p>
+<p><strong>The $100 billion tariff non-compliance.</strong> Introduced Tuesday as a Supreme Court-ordered refund four months unpaid, it appeared in no subsequent daily brief. The story did not resolve — there is no indication the money was returned. It dropped from the news cycle without a natural endpoint, which means it dropped because it stopped generating new developments, not because it was addressed. A government retaining $100 billion it was legally ordered to return is not a story that becomes less significant by becoming less visible.</p>
+<p><strong>Senate Armed Services and Foreign Relations committee assignments.</strong> Flagged every day from Monday through Saturday. Never reported. This is the most significant unanswered institutional question of the week: who, if anyone, now holds Graham&#x27;s Iran portfolio in the Senate. The silence is not a gap in the watch list — the watch list called for it repeatedly. The silence is in the reporting. No outlet answered the question. The implication is either that no reassignment has been made, or that the reassignment was made without public notice. Either way, the Senate&#x27;s institutional capacity to exercise friction on Iran escalation is currently unmeasured.</p>
+<p><strong>The February Tomahawk strike.</strong> Surfaced Wednesday in Reason — a reported strike killing over 100 children at an Iranian elementary school. No other outlet pursued it. No follow-up reporting in any subsequent day. This either means the claim is unverified (the most likely explanation given the total absence of corroboration) or it was collectively avoided. Either way, the story vanished without resolution. If the claim has any validity, its disappearance is a major journalistic failure. If it is unverified, someone should have said so on the record.</p>
+<p><strong>McConnell.</strong> Sunday&#x27;s brief flagged it as an anomaly. It was not on any prior watch list because it appeared with no warning. But a former Senate Majority Leader potentially dying during a week in which the Senate&#x27;s institutional capacity to check the executive is already compromised deserves more than a parenthetical. His absence from primary coverage while active political reporting continued around him suggests either the story was unconfirmed at publication time, or that the political press corps does not yet know what to do with it.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Weekly Brief</div>
+  <h2>BLINDSPOT OF THE WEEK</h2>
+  <p>The Iran war.</p>
+<p>Not the Iran situation. Not Iran tensions. The Iran war — an undeclared, ongoing kinetic military conflict in which the United States has been conducting airstrikes since at least early in the year, in which an Iranian ballistic missile strike killed two Americans and left one missing, in which cumulative U.S. military deaths may number sixteen, and in which the United States has responded with retaliatory strikes against Iranian territory. By any definition that does not require a formal declaration of war, this is a war. Congress has not authorized it. The War Powers clock has not been formally started. No senator has formally invoked the 60-day clock. No major left-leaning outlet covered the Jordan strike with any analytical depth. The story ended the week with four outlets, all center-to-far-right.</p>
+<p>The significance of this blindspot cannot be overstated. When the United States fought in Korea, Vietnam, the Gulf, Iraq, and Afghanistan, those conflicts — whatever their authorization status — were the dominant media and political story of their moment. The current Iran conflict is being treated as a medium-register update in cycles dominated by mayoral candidates and primetime election speeches. The media ecosystem&#x27;s inability to center this story is not merely a journalism failure. It is a political fact: an administration can sustain military action indefinitely if the press and opposition party are each, for different reasons, structurally unwilling to make it the central political question. The press finds it less legible than domestic culture war. The opposition party is internally fractured on the underlying question. The result is a war that is happening in the negative space of American political attention.</p>
+<p>---</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Forward Watch</div>
+  <h2>WATCH LIST: NEXT WEEK</h2>
+  <div class="watch-item">**Iran cumulative casualty count (48 hours, urgent).** The Axios-reported 16 U.S. military deaths from Iran-linked strikes must be independently confirmed or refuted this week. If confirmed, it transforms the legal and political landscape — it is no longer possible to characterize this as a limited strike operation. If wrong, it is a major journalistic failure at one of the most-read political outlets in Washington. Either outcome is significant. No other item on this list matters as much if this number is accurate.</div>
+<div class="watch-item">**War Powers formal invocation.** The 7-day clock identified July 22 as the threshold for confirmed institutional abdication. With Americans dead from a ballistic missile strike, any senator filing a formal War Powers notification this week would be the single most consequential congressional action of the current cycle. Watch specifically for: Collins, Murkowski, or any Democrat on Armed Services. Silence past July 22 is a confirmed data point, not an open question.</div>
+<div class="watch-item">**McConnell status (48 hours).** Sunday&#x27;s brief noted Kentucky&#x27;s governor received two calls indicating McConnell had passed. This must be confirmed or denied. If accurate, the political and institutional implications — for Senate Republican leadership structure, for Kentucky&#x27;s appointment politics, for the chamber&#x27;s already-fragile arithmetic — are immediate and substantial.</div>
+<div class="watch-item">**Blanche recusal posture on Epstein file.** Assuming confirmation has occurred or is imminent, watch for his handling of the first Epstein-adjacent matter that reaches DOJ — specifically whether he recuses. The survivors&#x27; characterization of the dismissal meeting combined with unresolved IRS conflict means the first charging or non-charging decision on any Epstein-linked financial matter will immediately be contested on conflict-of-interest grounds. The watch item is the posture, not the decision.</div>
+<div class="watch-item">**SAVE America Act Senate vote count.** The Act cleared the House. The Senate is the next institutional checkpoint. Watch specifically for whether any Republican senator signals opposition — Collins and Murkowski are the most likely deviation points. A floor vote or a Judiciary Committee markup scheduled in the next week would indicate the administration believes it has the votes. No scheduling action signals they are counting.</div>
+<div class="watch-item">**Darline Graham formal candidacy announcement.** Trump&#x27;s implicit endorsement has created a primary pressure dynamic. If she announces within the next 7 days, the South Carolina race becomes a live test of Trump&#x27;s capacity to clear a Senate primary field by personal endorsement during a period when his Iran policy is generating casualties. The timing and the announcement text will both be analytically significant.</div>
+<div class="watch-item">**Democratic leadership response to 104-member Israel vote.** Seven days have elapsed with no formal leadership response. Another week of silence on a coalition fracture of this size, during active hostilities, would confirm that Democratic leadership has made a deliberate calculation to absorb the fracture rather than manage it. Watch for any statement from Jeffries or Schumer, any committee consequence, or any primary signaling. The absence of all three is the data point.</div>
+<div class="watch-item">**Independent assessment of declassified Chinese interference documents.** Congressional intelligence committee members who are cleared to see the underlying classified assessment have not publicly characterized the documents. One cleared member saying the documents accurately represent the underlying intelligence — or saying they do not — is the single factual anchor for the entire election authority campaign. Watch specifically for any senator or House member making a public characterization from a position of classified access.</div>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note — Weekly Assessment</div>
+  <p>After seven consecutive days of cross-spectrum intelligence, the honest assessment is this: the United States is further into an undeclared war than its domestic political class has acknowledged, further into an institutional consolidation of executive authority than the oversight mechanisms are currently capable of resisting, and the opposition party is structurally unequipped to address either. The Iran story is the most urgent because it has the most irreversible consequences — Americans are dying, retaliatory strikes against Iranian territory have been conducted, and the legal vacuum created by the failure to invoke War Powers means there is currently no binding institutional constraint on further escalation. The executive consolidation story is the most durable because it is structural — Blanche at DOJ, the election authority campaign, the international &quot;extremism&quot; framing are not temporary political moves, they are architecture. A well-informed observer should be watching most closely for the thing that has been conspicuously absent all week: whether any institutional actor — a senator, a federal judge, a cleared intelligence official — publicly names the Iran conflict for what it is and demands the legal accountability that would follow from that naming. The political significance of that act, if it occurs, would be enormous precisely because nothing like it has happened yet.</p>
+</div>
+
+</div>
+</body>
+</html>
