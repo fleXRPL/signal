@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-21 10:21 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-21 10:21 UTC</span>
+    <span class="pill">107 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">2 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The United States is currently engaged in an active military conflict with Iran that has now entered its tenth consecutive night and has produced 17 confirmed American combat deaths. This is not a skirmish or a limited strike exchange — this is a war, and it is being conducted without a publicly articulated strategic objective, without a formal congressional authorization, and without a visible off-ramp. The administration has not defined what victory looks like, what conditions would end hostilities, or what it is willing to accept short of regime change. Qatar-led ceasefire talks are reportedly ongoing, which means the administration is simultaneously escalating militarily and negotiating diplomatically — a posture that is tactically coherent only if the military pressure is designed to improve negotiating leverage. Whether that is the actual strategy or post-hoc rationalization is not yet determinable from open sources.</p>
+<p>Against that backdrop, Trump is executing a maximalist unilateral agenda across multiple fronts simultaneously: 50% tariffs on Canadian goods invoking a legally dubious 1930s statute, a public pledge of ICC immunity for Netanyahu that sets binding diplomatic precedent, and the Iran campaign itself. Congress is not a meaningful check on any of these actions. The reconciliation fight is consuming legislative bandwidth and providing political cover for the executive branch to move without meaningful oversight. This is not accidental — the White House has historically timed aggressive executive moves to coincide with periods of congressional procedural distraction.</p>
+<p>The domestic political picture is less dramatic but structurally important. Democrats are coalescing around a primary challenge to Susan Collins in Maine — a signal that the party is investing in Senate math for 2026. A NYC mayoral figure made comments about arresting Netanyahu that Democrats have largely chosen not to amplify, suggesting the party is aware it has a disciplinary problem on the foreign policy left that it is managing by silence rather than engagement.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the singular driver of American foreign and economic policy right now in a way that is unusually complete even by recent standards. The tariff authority, the Iran strikes, the ICC pledge — these are all unilateral executive actions operating in legal gray zones where congressional or judicial intervention is slow, uncertain, or practically foreclosed. He is not governing through coalition; he is governing through momentum.</p>
+<p><strong>Senate Republican leadership</strong> is the absent actor here. The silence of Senate Republicans on 17 American combat deaths and a war with no defined end state is politically significant. Historically, the party out of power screams about casualty counts; the party in power stays quiet. What&#x27;s notable is that no senior Republican figure is demanding articulation of war aims. This could reflect genuine strategic deference, fear of primary challenges, or quiet confidence that the situation will resolve before it becomes politically costly.</p>
+<p><strong>Sen. Mark Kelly (D-AZ)</strong> is the most credible domestic critic of the Iran campaign — a combat veteran whose objections are substantively grounded in military strategy rather than reflexive partisan opposition. His criticism is being attributed to partisanship in right media, which functionally neutralizes it. Watch how the White House responds if his criticism sharpens: dismissal versus substantive engagement will tell you whether the administration has a real strategic answer.</p>
+<p><strong>Troy Jackson</strong> in Maine is a proxy fight for what kind of Democrat runs against Collins. His temperament allegations — flagged by WaPo — are a real liability that the party is currently choosing to paper over. If those allegations get traction in the primary, they could produce a general election candidate who is precisely the wrong vehicle for flipping a seat that requires crossover appeal.</p>
+<p><strong>Qatar</strong> is doing meaningful diplomatic work in the background of the Iran conflict. The presence of active ceasefire talks means there is a diplomatic channel the U.S. is using even while striking. This is underreported and matters: it suggests the administration has a floor below which it will not escalate, but that floor has not been publicly communicated.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The single largest omission across the entire corpus is a serious public accounting of what the Iran war is for. Seventeen Americans are dead. The operation has entered its tenth night. Neither side of the media spectrum has pressed the administration on terminal objectives. Left outlets have criticized the war as reckless escalation without engaging with the administration&#x27;s counter-argument (such as it is). Right outlets have covered casualties as evidence of Iranian aggression requiring retaliation, which is circular — retaliation to what end? The absence of this conversation in media coverage mirrors its apparent absence in the policy itself.</p>
+<p>On the left: the Mamdani arrest comment regarding Netanyahu is being suppressed as a liability story. This matters because it reflects a genuine fracture in the Democratic coalition — the progressive urban base is functionally more hostile to Israeli leadership than the party&#x27;s Senate candidates can afford to be. Managing that fracture by silence is a short-term solution with long-term costs.</p>
+<p>On the right: the legal architecture of Trump&#x27;s executive actions is not being examined. The 1930s tariff statute being invoked for Canada was not designed for this purpose. The ICC immunity pledge may not survive legal scrutiny or a change in administration. The Iran strikes have not been tied to a specific AUMF. Each of these actions has a legal vulnerability that right media is not surfacing — which means the public record on the durability of these policies is incomplete.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The coherent pattern across the Iran conflict, the Netanyahu ICC pledge, and the Canadian tariffs is that Trump is systematically testing the boundaries of executive authority in domains where the costs of being wrong are diffuse and the political rewards of appearing strong are immediate. Military action in Iran plays to the base. ICC defiance on Netanyahu plays to the evangelical and hawkish Jewish donor coalition. Tariffs on Canada play to economic nationalism. None of these require congressional assent. All of them position Trump as the actor, everyone else as reactor.</p>
+<p>The reconciliation fight is doing double duty: it is the domestic policy vehicle for the tax and spending agenda, and it is also a congressional distraction device. When legislators are consumed by procedural vote-counting on a major domestic bill, they are not holding hearings on war aims, tariff legality, or diplomatic precedent. This parallelism is worth watching — if it recurs, it is either strategic design or a pattern that the White House has recognized and will continue to exploit.</p>
+<p>The Maine Senate race and the Mamdani episode are connected by the same underlying Democratic problem: the party&#x27;s progressive urban flank has foreign policy positions — on Gaza, on Netanyahu, on ICC accountability — that are electorally toxic in the swing states and swing districts the party needs to win in 2026. The party is managing this by elevating candidates like Jackson who can hold the coalition together in primaries without resolving the underlying tension. That strategy has a shelf life, and 2026 will test it.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Iran casualty trajectory (next 48-72 hours):</strong> Seventeen deaths over ten nights is roughly 1.7 per night. If the rate holds or increases, the political pressure on Congress to demand war aims or invoke the War Powers Act becomes substantially harder to resist. Monitor whether any Republican senator joins Kelly in demanding a strategic briefing on the record.</p>
+<p><strong>Qatar ceasefire talks:</strong> Any reported progress, breakdown, or administration comment on these talks will be a leading indicator of whether the Iran campaign is designed to end or designed to continue. A positive signal from Qatar-led mediation that the administration downplays publicly would confirm the diplomatic-military dual-track theory.</p>
+<p><strong>Congressional reconciliation vote timeline:</strong> The bill&#x27;s progress or stall directly affects how much attention legislative leadership has for foreign policy oversight. A delay in reconciliation prolongs the distraction window; a rapid passage closes it and redirects political bandwidth.</p>
+<p><strong>Troy Jackson temperament coverage:</strong> Watch whether the WaPo allegations get picked up by other outlets or by Collins&#x27;s likely campaign infrastructure. If they do, the Democratic primary becomes about candidate fitness, not Collins&#x27;s record — a bad trade for Democrats.</p>
+<p><strong>Canadian government response to 50% tariffs:</strong> Ottawa&#x27;s retaliation posture will determine whether this escalates into a genuine trade crisis with a treaty ally or stabilizes as a negotiating opening. Canadian retaliation targeting agricultural or manufacturing districts with Republican representation is the political pressure point to watch.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic of this moment is executive branch autonomy operating at a scale and speed that American political institutions were not built to process in real time. The Iran war, the ICC pledge, the Canadian tariffs — these are not aberrations or individual policy choices; they are the consistent output of an administration that has concluded, correctly so far, that the combination of congressional procedural distraction, media fragmentation, and opposition incoherence creates a window for unilateral action with minimal accountability cost. The 17 dead American service members are the sharpest test of whether that conclusion holds: casualty counts have historically been the forcing function that compels congressional reassertion of war powers, and the current silence of Senate Republicans is a political choice that gets harder to sustain as the number rises. The most important question in American politics right now is not who controls the Senate in 2026 — it is whether any institution, political or legal, will demand a publicly articulable answer to what the United States is actually trying to achieve in Iran, and at what human cost that objective is worth pursuing.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Trump pledged ICC immunity for Netanyahu amid a NYC mayor&#x27;s arrest threat, while Maine Democrats rallied around Troy Jackson to challenge Susan Collins, U.S.-Iran strikes entered a 10th consecutive night with 17 American troops killed, and Trump imposed 50% tariffs on most Canadian goods.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#7ae09b;">center-right (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (8)</span><span class="bias-badge" style="color:#e07a7a;">left (9)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (4)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.4;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:18.5;" title="center-left: 10"></div><div class="bias-segment" style="background:#7ae09b; flex:9.3;" title="center-right: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:14.8;" title="far-right: 8"></div><div class="bias-segment" style="background:#e07a7a; flex:16.7;" title="left: 9"></div><div class="bias-segment" style="background:#a07ae0; flex:7.4;" title="libertarian: 4"></div><div class="bias-segment" style="background:#5ab56e; flex:13.0;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The Netanyahu story and the Iran war are the developments with the highest real-world consequence: Trump&#x27;s public ICC immunity pledge creates a binding diplomatic precedent that will outlast the current administration, and 17 American combat deaths in a war with an undefined end state is a crisis regardless of partisan framing. The Maine Senate race matters for the Senate majority math but is largely a process story. The through-line connecting all four story clusters is the same: Trump taking maximalist unilateral executive actions — military strikes, tariff escalation, ICC defiance — while Congress is distracted by procedural wrangling over reconciliation. The most underreported angle across the spectrum is the absence of any clear articulation from the administration of what &#x27;winning&#x27; in Iran actually looks like.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Trump is simultaneously defying international law by shielding a war crimes suspect (Netanyahu), prosecuting an open-ended war with no exit strategy that is killing American troops, and inflicting economic self-harm through reckless tariffs — a pattern of dangerous executive unilateralism. The Maine story is framed as organizational resilience under pressure, with Jackson&#x27;s emergence treated as a net positive for Democrats.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Multiple simultaneous crises with high stakes but uncertain outcomes: Iran escalation with rising body counts and a ceasefire proposal on the table; tariff escalation with an unusually obscure statutory hook; Maine as a competitive Senate race in flux. Center outlets emphasize inflection points and practical consequences — ceasefire-or-all-out-war binary on Iran, unprecedented tariff mechanism on Canada — without strong moral framing in either direction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Trump is projecting decisive strength: protecting a key ally from an illegitimate international court, punishing Iranian aggression with proportional force, and defending American economic interests against Canadian discrimination. Democratic chaos — Platner&#x27;s implosion, progressive insurgents threatening moderates, Mamdani&#x27;s reckless arrest threat — is framed as the real political story. Johnson&#x27;s procedural maneuvering on the SAVE Act is a victory, not overreach.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets largely avoid treating Mamdani&#x27;s arrest comment as a serious self-inflicted Democratic liability ahead of elections. They give minimal coverage to Trump&#x27;s retained diplomatic channels (Qatar-led ceasefire talks), which complicates the &#x27;reckless escalation&#x27; narrative. Troy Jackson&#x27;s temperament allegations, reported by WaPo, receive little amplification from other left outlets despite its electoral relevance.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right outlets do not engage with the international legal substance of the ICC warrant against Netanyahu or the precedent set by Trump&#x27;s immunity pledge. U.S. troop casualties are reported but subordinated to retaliatory rhetoric rather than treated as evidence of strategic failure. The legal dubiousness of invoking a dormant 1930s tariff statute goes unexamined. Democratic criticism of Iran war objectives — including from a combat veteran like Sen. Mark Kelly — is attributed to partisanship rather than addressed on its merits.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Opinion coverage speculates Andy Burnham — currently Mayor of Greater Manchester — could become UK Prime Minister, with right-leaning outlets warning his economic agenda would harm British business.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is speculative opinion content, not breaking news — both pieces are reacting to Burnham&#x27;s political profile rather than a confirmed leadership change. The National Review piece is ideologically predictable: any Labour figure with interventionist instincts will be framed as 1970s redux. RealClearPolitics offers a more structurally interesting argument — that UK political culture is the problem, not any individual leader — but uses that frame to avoid engaging with Burnham&#x27;s actual record. Neither piece provides substantive policy analysis; both are essentially positioning documents for their respective audiences.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning sources were provided in this coverage set. Left framing is absent from this analysis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Institutional cynicism: RealClearPolitics treats UK leadership churn as self-parody, suggesting the identity of the next PM matters less than the dysfunctional political system producing them. Burnham is doubted not because of ideology but because no UK leader has delivered recently. The tone is weary and dismissive rather than alarmed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Economic alarm: Burnham is cast as a throwback to failed statist policies, a direct threat to business competitiveness and prosperity. The 1970s reference invokes stagflation, union dominance, and industrial decline — a deliberate emotional trigger for center-right readers. Emphasis is on danger and regression.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage is absent, so no left omissions can be identified. Notably, no source here addresses the public case FOR Burnham — his record in Greater Manchester, transport policy, homelessness initiatives, or polling support that may be driving his national profile.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Neither right source engages with the structural economic conditions (stagnant wages, housing crisis, public service decay) that make Labour-style interventionism politically appealing to voters. National Review omits any acknowledgment that the business-first approach of recent Conservative governments also produced weak growth outcomes.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Arizona midterm primary elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia&#x27;s Petro calls on supporters to defend economic reforms in last presidential speech</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Deadly shootings by ICE officers renew scrutiny of recruitment and training</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump imposes 50% tariffs on Canadian goods, citing disputes over autos, alcohol and cheese</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A religious sect is at the heart of an old fight getting attention in a GOP race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tropical Storm Bertha heads for land as Hurricane Fausto forms in eastern Pacific</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› United Airlines says it will ‘look into’ worker’s threat to call ICE in viral video</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Five people die in attempt to save struggling swimmer in Ohio river</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› By the numbers: the latest ICE and CBP data on arrests, detentions and deportations in the US</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida’s Nursing Homes Are Bracing for Life Without Haitian TPS Workers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Oceans Are Absorbing Huge Amounts of Heat—and Sending Some of It Ashore</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Burnham British Business Britain Prime</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How a Veterans Reform Blew Up</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet the New Bargain Patriot Missile</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Everything Tax</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump to China: Deal Me In</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alan Greenspan and the 2008-09 Financial Crisis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can We Kill You for Your Organs, Please?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Dollar Index Rises 0.08% to 97.17</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ opens probe into Harvard&#x27;s financial aid for alleged discrimination against American students</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rand Paul releases docs that reveal FBI halted border inspection of virus researcher over Wuhan lab links</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Times torched for ‘FALSE’ reporting on ICE investigations, outlet fires back</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pittsburgh official suspended over shocking Instagram video telling journalist to jump off bridge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Trump’s Campaign Against ‘Third Worldism,’ Cuba Is at the Center</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Anti-&lt;em&gt;Odyssey&lt;/em&gt; Crusade Has Lost the Plot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Antisemitism Is Always Evil</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Let Banks Charge Data-Rationing Fees</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Countering Left-Wing Terrorism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Video: Older Chicago Cubs Fan Smacks Young Man for Not Standing During National Anthem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› MLB Restricting iPads in Dugouts to Prevent AI Making Strategy Decisions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big Government Inevitably Invites Corruption</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who Counts As &quot;Working Class&quot;?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Iranian Vision of the New Middle East</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Navy&#x27;s State of the Straits</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Are Living Through an Era of Cultural Destruction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Christopher Nolan&#x27;s &#x27;The Odyssey&#x27; Is a Masterpiece</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
