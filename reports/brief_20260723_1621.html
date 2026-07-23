@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-23 16:21 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-23 16:21 UTC</span>
+    <span class="pill">116 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the day is a U.S.-Saudi civil nuclear cooperation agreement that Trump has explicitly linked to Saudi normalization with Israel — a linkage that, if it holds, would be the most significant Middle East realignment attempt since the Abraham Accords. The verified facts are narrow: an agreement was signed, it is now inside a 90-day congressional review window, and Trump has publicly tied its completion to normalization. Everything past that — whether the deal permits uranium enrichment to weapons-grade levels, whether Saudi Arabia has actually agreed to normalize, whether this is a serious proliferation risk or a routine commercial arrangement dressed up in geopolitical stakes — is contested, unconfirmed, or asserted by one side and ignored by the other. No outlet has produced the signed text. No Saudi official has confirmed or denied the normalization condition. That silence, on the highest-significance story of the day, is itself the most important data point.</p>
+<p>Beneath that, domestic politics is running on two almost entirely separate tracks depending on which media ecosystem you&#x27;re in. Right-of-center coverage is consumed with a &quot;Democratic Party in crisis&quot; narrative — donor anger, internal ideological fights, a push to force Democrats to disavow the DSA, a New Jersey noncitizen-voting disclosure read as proof of systemic fraud risk — all landing the same day, which is consistent with coordinated pre-midterm messaging rather than organic reporting. Left-of-center coverage is consumed with institutional-accountability stories — a fired U.S. attorney&#x27;s lawsuit, surveillance concerns tied to the Cop City case, family separation, and Epstein-adjacent congressional testimony involving Bill Clinton associate Jes Staley. These two news cycles share almost no common material. The one place they nominally intersect — the Saudi deal — is being covered with different omissions on each side: the left drops Trump&#x27;s direct rebuttal that the deal bars enrichment, the right drops the nonproliferation warnings and the contradiction with concurrent U.S. action against Iran&#x27;s nuclear program.</p>
+<p>Underneath the noise, actual electoral machinery is turning: Arizona&#x27;s 1st District Democratic primary produced an establishment upset (Amish Shah over the DCCC&#x27;s preferred candidate) that sets up a genuine swing-district general election, and Google is absorbing simultaneous EU antitrust penalties and a U.S. Senate legislative push (the SEARCH Act) that together amount to a two-front regulatory assault on its search dominance.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the single actor driving the day&#x27;s highest-stakes story by explicitly conditioning the Saudi nuclear deal on Israel normalization — a negotiating tactic, a genuine policy linkage, or a trial balloon; the sourcing doesn&#x27;t distinguish which, and Trump&#x27;s own team has pushed a rebuttal (via Axios/Breitbart) that the deal bars enrichment, meaning the administration is already managing two contradictory messages simultaneously: &quot;historic deal&quot; and &quot;no proliferation risk, don&#x27;t worry.&quot;</p>
+<p><strong>Saudi Arabia</strong> is conspicuously silent. A government normally eager to publicize a nuclear cooperation win has said nothing about the condition Trump attached to it. That silence could mean the condition is real and Riyadh is uncomfortable being seen agreeing to it, or that Trump is unilaterally attaching a condition Saudi Arabia hasn&#x27;t accepted. Either reading is consequential and neither has been reported.</p>
+<p><strong>The DCCC and Arizona Democratic establishment</strong> lost a battle they were expected to win when Amish Shah beat their preferred candidate in AZ-1. That result matters beyond the district: it&#x27;s a data point on whether primary voters are rejecting the party&#x27;s national machine picks heading into the midterms, right as the party is simultaneously being hammered in right-leaning coverage over donor anger and internal DSA tensions. No right-leaning source in this batch covers the AZ-1 race at all, which is itself a gap — a genuinely competitive seat flip opportunity isn&#x27;t part of the &quot;Democrats in crisis&quot; narrative because it cuts against it.</p>
+<p><strong>An unnamed &quot;hidden left-wing network&quot;</strong> is alleged by a right-only story to be organizing conservative opposition to an unnamed &quot;major Trump priority.&quot; Given same-day entity clustering (Fox News, Congress, the Saudi deal all co-occurring), this is very likely aimed at recasting authentic conservative nonproliferation or pro-Israel-hawk objections to the Saudi deal as externally manufactured rather than organic. Watch for whether funders are ever named — if they aren&#x27;t, the story is doing narrative work, not reporting.</p>
+<p><strong>Google</strong> is fighting a three-front battle (EU fine, a Senate bill targeting self-preferencing, and reported internal Gemini dysfunction) at the exact moment Meta is running an &quot;AI optimism&quot; campaign — competitive positioning that benefits from Google&#x27;s regulatory and product troubles regardless of Meta&#x27;s own progress.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right side of the spectrum is not covering any Trump-administration accountability story in this batch — no fired U.S. attorney lawsuit, no Cop City surveillance angle, no family separation coverage, nothing on the Epstein-adjacent Staley testimony. That is a complete blackout on an entire category of news, not a difference in emphasis.</p>
+<p>The left side is not covering the Democratic Party&#x27;s internal problems at all — no donor anger, no DSA disavowal pressure, no acknowledgment of the NJ noncitizen-voting disclosure, no engagement with the &quot;Democrats have an Asian-American voter problem&quot; framing appearing on the right. Three consecutive cycles now, right-only coverage of the NJ noncitizen-voting numbers has had zero left or center-left pickup — notable because the underlying numbers are state-disclosed and both sides could report them factually without conceding the fraud framing. The blindspot is hardening rather than closing.</p>
+<p>Nobody, on either side, has produced the actual text of the Saudi nuclear agreement, despite it being the day&#x27;s most consequential story and having a live 90-day legislative clock attached to it. For a story this significant, going a full news cycle without a single outlet obtaining or leaking the operative text — specifically the enrichment provision — is unusual and suggests either tight administration control of the document or that reporters haven&#x27;t prioritized chasing it.</p>
+<p>AOC&#x27;s 2028 New Hampshire polling lead, which was on the previous watch list as a story to track, has disappeared entirely from today&#x27;s coverage across every source. That&#x27;s worth checking directly rather than assuming — a poll that vanishes completely, rather than being contested or debunked in public, more often means it was quietly wrong than that it was suppressed.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The clearest pattern today is coordinated opinion amplification rather than organic reporting. Two center-right outlets ran near-identical arguments pressuring Democrats to disavow the DSA platform, with matching framing and no independent reporting behind either. Separately, three right-only pieces have now run on the NJ noncitizen-voting disclosure, escalating in volume while adding no new facts. Both are consistent with outlets amplifying a shared talking point rather than each doing its own reporting — treat repetition across &quot;independent&quot; outlets as a sign of coordination, not corroboration.</p>
+<p>The Saudi nuclear/Israel-normalization story functions as a hub connecting almost every other major actor in today&#x27;s news — Congress, Fox News, DOJ, SCOTUS, China, Russia all show up adjacent to it in the sourcing. That is very likely an artifact of one large aggregator-style story rather than a genuine web of substantive connections, and it should be discounted as a real &quot;network&quot; rather than read as evidence of a grand unified story.</p>
+<p>One apparent connection is worth flagging as probably spurious: Bill Clinton appears both in the Epstein/Staley congressional-panel story and near the Saudi nuclear deal coverage. There&#x27;s no substantive link in the sourcing — this reads like an incidental or historical reference (possibly 1990s nonproliferation-era context) rather than a live connection, and it would be a mistake to manufacture a relationship between the two just because the name co-occurs.</p>
+<p>The Arizona primary result deserves a second look through a narrative lens: Washington Post&#x27;s coverage explicitly invokes GOP incumbent Andy Biggs&#x27; election-denial history in the same breath as reporting Shah&#x27;s win, while separate same-day coverage flags &quot;Trump loyalists and election deniers winning GOP primaries&quot; nationally. That makes AZ-1 a likely marquee test case for the election-denialism frame heading into the general — a framing decision, not a neutral fact, and one currently uncontested because no right-leaning source in this set covers the race at all.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Saudi nuclear deal text and enrichment provision</strong> — the 90-day congressional review clock is running now. The single fact that resolves whether this is a routine commercial deal or a proliferation problem is whether the agreement permits enrichment. No side has it yet.</p>
+<p><strong>Saudi government statement on Israel normalization</strong> — watch specifically for Riyadh to confirm or deny Trump&#x27;s claim that the deal is conditioned on normalization. Continued silence past this week would itself be informative.</p>
+<p><strong>Named funders behind the &quot;hidden left-wing network&quot; story</strong> — if the alleged campaign against the Saudi deal ever gets a funder attached to it, that confirms the deal is the &quot;major Trump priority&quot; in question and turns a vague insinuation into a checkable claim.</p>
+<p><strong>AZ-1 general election</strong> — track DCCC re-engagement and national money flowing to Shah now that the establishment&#x27;s preferred candidate lost; also track whether the &quot;election denier&quot; framing against Biggs gets picked up by any right-leaning outlet or stays a one-sided narrative.</p>
+<p><strong>DSA/Democratic Party response to the disavowal push</strong> — now two cycles old with zero official response. A continued non-response either means the party judges the story too small to dignify, or that it&#x27;s genuinely stuck on messaging.</p>
+<p><strong>NJ noncitizen-voting story cross-spectrum pickup</strong> — three cycles deep in right-only coverage with state-disclosed numbers both sides could report. Watch specifically for the first center-left or left outlet to touch it at all.</p>
+<p><strong>AOC 2028 NH poll</strong> — confirm whether it was quietly debunked or just dropped; a full disappearance after a prior watch-list appearance is unusual enough to verify directly rather than assume.</p>
+<p><strong>SEARCH Act and EU-Google fine</strong> — watch whether the Senate bill gets floor movement and whether the EU fine gets folded into broader US-EU trade retaliation rhetoric, which would escalate a regulatory story into a trade-policy one.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The most important thing happening right now is not any single story but the fact that the two halves of the American political information ecosystem are covering almost entirely different sets of events on the same day, converging only where a story is too large to ignore. That is not evidence of bias in the conventional sense — it&#x27;s evidence that each side has learned which true stories complicate its preferred midterm narrative and is simply declining to run them, rather than lacking access to the same facts. The Saudi deal is the exception that proves the rule: it&#x27;s large enough that both sides have to engage with it, and the result is that both sides report the parts favorable to their priors and omit the parts that aren&#x27;t, while the single most consequential open question — what the deal&#x27;s text actually says about enrichment — goes unanswered because no outlet on either side has prioritized obtaining it. Treat today&#x27;s coverage less as a set of competing facts and more as two separate, internally coherent narratives being constructed in parallel for a midterm audience that will mostly never see the other one.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The Trump administration signed a civil nuclear cooperation deal with Saudi Arabia allowing U.S. companies to build nuclear power plants there, but Trump then said the deal is conditioned on Saudi Arabia normalizing relations with Israel, while experts and critics warn the agreement may lack adequate safeguards against uranium enrichment to weapons-grade levels.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (9)</span><span class="bias-badge" style="color:#e0a87a;">center-left (12)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (4)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:18.8;" title="center: 9"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 12"></div><div class="bias-segment" style="background:#7ae09b; flex:6.2;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:8.3;" title="far-left: 4"></div><div class="bias-segment" style="background:#3a8a52; flex:6.2;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:20.8;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:2.1;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:12.5;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow: a U.S.-Saudi civil nuclear agreement was signed, is pending congressional review, and Trump has tied its fate to Saudi-Israel normalization — everything else is interpretive spin. The real open question, unresolved by any outlet&#x27;s sourcing, is whether the deal&#x27;s text actually permits uranium enrichment, since that single technical detail determines whether this is a routine commercial deal or a genuine proliferation risk, and no side has definitively settled it with primary documentation.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes proliferation danger and policy contradiction — that the U.S. is bombing Iran&#x27;s nuclear sites while simultaneously enabling a Gulf monarchy&#x27;s nuclear program with weak safeguards, and frames Trump&#x27;s Israel-normalization condition as a destabilizing, last-minute ultimatum that undermines the deal&#x27;s credibility.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Balances the commercial/diplomatic significance of the deal against expert and nonproliferation warnings, generally centering critics&#x27; safety concerns (PBS) while also reporting Trump&#x27;s conditions and rebuttals fairly neutrally (Axios, NPR) without strongly editorializing either direction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the deal as a diplomatic win, using Trump&#x27;s own statements to rebut proliferation critics — emphasizing that enrichment is excluded and that the Israel-normalization requirement is a deliberate lever to expand the Abraham Accords, portraying the accords favorably.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits Trump&#x27;s own direct rebuttal (reported by Axios/Breitbart) that the deal explicitly bars enrichment, instead centering critics&#x27; warnings that enrichment &#x27;might&#x27; be permitted.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits the expert/nonproliferation warnings and the contradiction with concurrent U.S. military action against Iran&#x27;s nuclear program that left and center-left outlets emphasize heavily.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Amish Shah won the Democratic primary for Arizona&#x27;s 1st Congressional District, defeating the candidate backed by the DCCC/party establishment, setting up a battleground general election.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core fact: Shah beat the establishment-backed Democrat in a competitive primary. The Washington Post goes further by tying the result to Biggs&#x27; election-denial history, a framing choice absent from Politico&#x27;s more procedural, horse-race-focused account — that&#x27;s an interpretive addition, not a factual dispute. Without any right-leaning source in this set, the analysis is one-sided and cannot assess how conservative outlets are covering the same primary or the eventual GOP matchup.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the outcome as a grassroots/populist victory over the Democratic establishment, and uses the result as a springboard to highlight Andy Biggs&#x27; election-denial record, implicitly casting the general election as a choice between a reform-minded Democrat and GOP extremism.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Politico frames the race primarily through an electoral-strategy lens, emphasizing the battleground/pickup-opportunity angle and treating the establishment-candidate defeat as a notable upset within the primary process itself, without extending into general-election contrasts.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right-wing framing cannot be assessed from the given coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was supplied, so it&#x27;s not possible to identify what left coverage omits relative to the right.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage was supplied, so right-side claims or emphases (e.g., on Biggs, the GOP incumbent/candidate, or district dynamics) cannot be compared against left omissions.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The European Commission fined Google roughly $1 billion for antitrust violations in search and app-store practices, coinciding with rising EU-US trade tensions and a separate US Senate push to legislate against Google&#x27;s search self-preferencing.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These two articles cover related but distinct events: an EU antitrust fine against Google and a separate, domestic US legislative effort (SEARCH Act) targeting similar self-preferencing behavior. The real story is a pincer movement against Google&#x27;s search dominance from both EU regulators and US lawmakers, but neither source connects the two, and the EU fine&#x27;s political entanglement with US-EU trade tensions is asserted by only one source without corroboration.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the EU fine primarily through a geopolitical lens, tying it to escalating US-EU trade friction and its proximity to an expected Trump tariff announcement, rather than treating it as a standalone antitrust story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided; Reason (libertarian) frames the issue not around the EU fine itself but around a US Senate antitrust bill, portraying it as government overreach that will degrade a functioning product and is poorly timed given AI-driven disruption already reshaping search.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left-source data provided, so omissions relative to the right cannot be assessed.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason omits any mention of the EU&#x27;s $1 billion fine, the specific antitrust findings against Google (search manipulation, Play store restrictions), and the trade-tension context Axios emphasizes.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">New Jersey election officials disclosed that a data-matching glitch allowed thousands of noncitizens to register and hundreds to cast ballots over several years, a disclosure now being read differently by left and right as either proof of fraud risk or proof the system works.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the same underlying numbers, so this is less a factual dispute than a framing fight over what those numbers mean. The right treats the raw count as proof of a real vulnerability worth alarm; the center-right treats the state&#x27;s own detection-and-correction process as the more important story, i.e., evidence the safeguards worked. Neither source here confirms Trump&#x27;s broader fraud claims at the scale he has alleged.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set; based on the center-right outlet&#x27;s rebuttal framing, left-aligned coverage would likely emphasize that the state caught and fixed its own error, portray the episode as routine administrative correction, and push back hard against using it to justify restrictive voting laws or federal fraud narratives.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    RealClearPolitics frames the story around process integrity — that the Sherrill administration identified, disclosed, and corrected the glitch transparently — positioning the disclosure as a demonstration of functioning safeguards rather than proof of widespread fraud, and explicitly rebuts using it to validate Trump&#x27;s claims.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review frames the admission as a rare, damning concession that validates long-standing election-integrity concerns, emphasizing the raw numbers (thousands registered, hundreds voted) as evidence the risk is real, even while carefully noting it doesn&#x27;t fully match Trump&#x27;s larger claims.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-aligned coverage (not present here, inferred from the center-right rebuttal it mirrors) would likely omit the raw scale figures — thousands registered, hundreds voted — that right-leaning coverage foregrounds as the headline fact.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    National Review&#x27;s framing downplays or omits the administrative context RealClearPolitics emphasizes: that the error was self-identified, disclosed, and corrected by the state as part of routine data-matching processes, which cuts against a narrative of deliberate or systemic fraud.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Two center-right opinion outlets published near-identical pieces pressuring Democrats to disavow the Democratic Socialists of America platform, with no left or center-left coverage of the same framing available for comparison.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:100.0;" title="center-right: 2"></div></div></div>
+  <div class="story-assessment">This is not a factual news event but a coordinated opinion push — two ideologically aligned outlets running the same headline and argument, which inflates apparent consensus without adding independent reporting. The underlying question (do Democrats need to disavow a third-party organization they don&#x27;t control) is a rhetorical framing device more than a substantive political development, and the lack of any center or left source prevents real cross-spectrum comparison.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set, so left framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No genuinely center or centrist-neutral outlet is present; both listed sources are center-right and largely duplicate each other&#x27;s argument and framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both center-right sources frame the story as a test of Democratic Party integrity, portraying DSA as a radical or manipulative force and casting the absence of a disavowal as politically damning; emotional register is alarm (WSJ, historical-catastrophe analogy) and derision (RCP, fairy-tale/narrative framing).
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning coverage of this story was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right-leaning pieces omit any polling data, specific Democratic officials&#x27; statements, or direct DSA rebuttal; neither engages with why Democrats might decline to &#x27;disavow&#x27; a group they are not formally aligned with, nor whether &#x27;disavowal&#x27; is a meaningful or commonly demanded political act in other contexts.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Amish Shah</span><span class="entity-tag">Arizona GOP primaries</span><span class="entity-tag">election deniers</span></div>
+  <div class="connection-text">Shah&#x27;s win over the DCCC-favored candidate sets up a general election against a Republican side that the same day&#x27;s coverage separately flags for &#x27;Trump loyalists and election deniers winning GOP primaries&#x27; (Biggs&#x27; election-denial history is invoked by WaPo in the same breath). Arizona&#x27;s 1st District is quietly becoming a marquee test case for the &#x27;election denialism&#x27; framing heading into the midterms.</div>
+  <div class="connection-sig">↳ This turns a routine primary horse-race story into a proxy fight over the election-denial narrative, but it&#x27;s only visible by cross-referencing two otherwise-separate story threads with no right-leaning source present to contest the framing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Saudi Arabia</span><span class="entity-tag">Israel</span><span class="entity-tag">Bill Clinton</span></div>
+  <div class="connection-text">Bill Clinton co-occurs with both the Epstein/Staley congressional-panel story and the Saudi nuclear deal story, but nothing in the sourcing ties Clinton substantively to the nuclear deal — this looks like an incidental/historical mention (possibly 1990s nonproliferation precedent) rather than a live connection.</div>
+  <div class="connection-sig">↳ A spurious entity co-occurrence risks being over-read as a hidden link; flagging it prevents manufacturing a connection that doesn&#x27;t exist in the underlying reporting.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Fox News</span><span class="entity-tag">hidden left-wing network</span><span class="entity-tag">Saudi nuclear deal</span></div>
+  <div class="connection-text">A right-only story alleges a &#x27;hidden left-wing network powering a conservative rebellion against a major Trump priority&#x27; — given the entity overlap (Fox News, Reason, Congress all cluster around the Saudi story on the same day), the unnamed &#x27;priority&#x27; is very likely the Saudi nuclear/Israel-normalization deal, with conservative national-security and pro-Israel hawks recast as unwitting tools of a left-funded campaign.</div>
+  <div class="connection-sig">↳ If true, this reframes intra-GOP opposition to the Saudi deal as externally manufactured rather than a genuine conservative proliferation/Israel concern — a narrative move worth tracking for who is actually named as funding it.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Google</span><span class="entity-tag">Meta</span><span class="entity-tag">EU antitrust</span></div>
+  <div class="connection-text">Google is having a simultaneous three-front bad week (EU antitrust fine, Cop City/DOJ surveillance-adjacent story, internal Gemini dysfunction) while Meta runs a parallel &#x27;AI optimism&#x27; PR campaign — the timing lets Meta position itself as the stable alternative right as its chief rival is battered on regulatory, legal, and product fronts at once.</div>
+  <div class="connection-sig">↳ Competitive positioning in the AI race is being shaped as much by Google&#x27;s bad week as by Meta&#x27;s own progress — worth watching whether Meta&#x27;s messaging explicitly exploits Google&#x27;s stumbles.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Coordinated opinion amplification: both the DSA-disavow push (two center-right outlets, identical framing) and the NJ noncitizen-voter story (three separate right-only pieces on the same disclosure) show the same mechanic — repetition across nominally independent outlets manufacturing the appearance of a bigger story than the underlying facts support.</div>
+<div class="pattern-item">A broader &#x27;Democratic Party in crisis&#x27; media cycle is running almost entirely in right-of-center outlets simultaneously: donor anger, a &#x27;communist problem,&#x27; a disavow-the-platform demand, and Asian-American voter neglect all appear the same day, suggesting a coordinated pre-midterm framing of Democratic identity rather than organic, independent story generation.</div>
+<div class="pattern-item">The Saudi nuclear/Israel-normalization story functions as an entity hub connecting almost every other major actor in the day&#x27;s news (Congress, Fox News, DOJ, SCOTUS, China, Russia) — this is likely an artifact of one large aggregator-style story rather than genuine substantive links, and should be discounted accordingly when reading the network graph.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Zero Saudi government confirmation or denial of Trump&#x27;s claim that the nuclear deal is conditioned on Israel normalization appears anywhere in the sourcing — for a story this significant, the total silence from the other party to the agreement is conspicuous.</div>
+<div class="anomaly-item">The NJ noncitizen-voting disclosure has now generated three separate right-only pieces (escalating from one previously) with continued zero center-left or left pickup — the blindspot is hardening rather than narrowing, which is itself notable given the story involves verifiable state-disclosed numbers both sides could report factually.</div>
+<div class="anomaly-item">AOC&#x27;s 2028 New Hampshire polling lead, flagged on the previous watch list as a story to track for left/center pickup, has vanished entirely from today&#x27;s coverage on all sides — worth checking whether it was quietly debunked or simply dropped.</div>
+<div class="anomaly-item">No outlet across the political spectrum has surfaced the actual signed text of the Saudi nuclear agreement despite it being the day&#x27;s highest-significance story and the subject of a 90-day congressional review clock now running.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Left-only coverage today clusters around institutional accountability and civil-liberties themes (a fired U.S. attorney suing, Cop City surveillance, family separation, Epstein-adjacent congressional testimony) while systematically ignoring Democratic Party internal-dysfunction stories. Right-only coverage clusters around Democratic Party weakness, immigration/voter-fraud, and national-security hawkishness, while ignoring Trump-administration accountability stories entirely. The two information ecosystems are running almost fully separate news cycles today, converging only on the Saudi nuclear story and, partially, on NJ voting — suggesting each side is avoiding stories that complicate its preferred midterm narrative rather than genuinely lacking access to the same facts.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Amish Primary Arizona House Battleground</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: FDA advisory panel considers use of peptides</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The implications of Trump loyalists and election deniers winning GOP primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;This is about the rule of law&#x27;: U.S. attorney fired by Trump sues to overturn dismissal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thomas Jefferson&#x27;s complicated legacy 250 years after the Declaration of Independence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Prosecutors struggle to turn voter fraud claims into criminal charges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› About 500 national guard members deployed to West Virginia after flash floods</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US government targets Cop City protester over phone operating system</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Barclays CEO Jes Staley faces US congressional panel over Epstein ties</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Separated at the Border, Torn Apart Again</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Disavow Platform?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jersey’S Damning Admission Illegal Voting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Almost Nobody Got Laid Off Last Week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chaff Can Fool Russia’s Radar</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Operation GOP Military Rescue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Donors Make Democrats Crazy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Jersey’s 400 Noncitizen Voters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The FDA Discovers the Power of Peptides</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rwanda, Israel and the Inversion of ‘Genocide’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Khanna demands answers from CCP-linked company accused of undercutting US manufacturers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Brandon Gill corners law school gatekeeper with DEI question she won&#x27;t answer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The hidden left-wing network powering a ‘conservative’ rebellion against a major Trump priority</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mike Waltz confronts leftist Democrat over Cuba trip after Marco Rubio jab: &#x27;His entire family is from Cuba&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Obama Center subcontractor shuts down amid $4M fight, lays off 25</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Large-Scale Desalination Could Help Offset Colorado River Water Shortage</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Trove of Cars Fit for the Racetrack, a Beauty Pageant, or a Date with 007</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hawaii Justices’ Inflammatory Attack on the U.S. Supreme Court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The End of ‘El Mayo’ Is Only the Beginning</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Not So Fast on Campus Agitator Mahdawi’s Anticipated Deportation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It’s Time to Ban Congressional Insider Trading</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Do We Get Out of the Saudi Nuclear Deal?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nicolas Maduro Drug Trafficking Trial Set for June 2027</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Unearthed Video Reveals Democrat Milat Kiros Wants to Import Foreigners to Run America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Petition Calls on Burnham to Reinstate Margaret Thatcher Portrait to 10 Downing Street</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Sen. Sheehy Bill Would Halt H-1B Visas, Crack Down on Companies Replacing American Workers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Rep. Stutzman Bill Toughens Fentanyl Penalties, Expands Postal Drug Screening</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DR Congo Passes 1,000 Ebola Deaths as Outbreak Becomes Fastest-Spreading on Record</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Populist AfD Surges to Record Lead over German Chancellor&#x27;s Party</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Democrats Have a Communist Problem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is Trump Losing Older Voters?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems Hope for Nebraska or Montana Senate Surprise</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vote Fraud in New Jersey</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani Is a Clown. And the ICC Is a Joke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Founders Would Be Ashamed of Woke Bias at Smithsonian</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Saudi nuclear deal&#x27;s actual signed text and any leak revealing the enrichment provision, during the 90-day congressional review window</div>
+<div class="watch-item">Any Saudi government statement confirming or denying the Israel-normalization condition Trump described</div>
+<div class="watch-item">Named funders behind the alleged &#x27;hidden left-wing network&#x27; opposing the Saudi deal — watch for the unnamed &#x27;major Trump priority&#x27; to be explicitly confirmed as the Saudi/Israel deal</div>
+<div class="watch-item">Democratic Party or DSA official response to the disavow-platform push, now a two-cycle-old story with zero party engagement</div>
+<div class="watch-item">Whether NJ noncitizen-voting numbers get any center-left or left pickup, now three cycles deep in right-only siloing</div>
+<div class="watch-item">AZ-1 general election fundraising and national party involvement now that Shah beat the DCCC&#x27;s preferred candidate</div>
+<div class="watch-item">Sheehy H-1B bill and Stutzman fentanyl/postal-screening bill for any floor movement, still exclusive to Breitbart with no cross-spectrum tracking</div>
+<div class="watch-item">SEARCH Act progress in the Senate against Google, and whether the EU fine gets folded into broader US-EU trade retaliation rhetoric</div>
+<div class="watch-item">Whether AOC&#x27;s 2028 NH polling story resurfaces or was quietly retracted</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
