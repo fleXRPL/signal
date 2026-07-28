@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-28 10:29 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-28 10:29 UTC</span>
+    <span class="pill">112 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>With roughly 100 days to the midterms, the structural battle over how the election will be won is running on four simultaneous tracks: who can vote (a Trump-backed mail-in voting executive order now before the Supreme Court), how districts are drawn (GOP mid-decade redistricting has pulled the House map back to a 2018-level Republican tilt), who controls the intelligence apparatus (a loyalist DNI nominee advancing through the Senate), and who is allowed to criticize the president without facing prosecution (the Comey indictment, defended as protected political speech). None of these is being covered as part of a single story. Each is running in its own ideological lane, which is itself a finding — the connective tissue between &quot;voting rules,&quot; &quot;district maps,&quot; &quot;intelligence leadership,&quot; and &quot;criminalizing a critic&quot; is being left for someone else to notice.</p>
+<p>Layered on top is a parallel information contest that has nothing to do with legislative mechanics: Rand Paul&#x27;s release of 1,141 pages of Fauci diary material, timed one day before Fauci&#x27;s Wednesday Senate testimony, and a cluster of Democratic primary stories (Michigan&#x27;s Stevens–El-Sayed race, Maine&#x27;s Senate succession, DSA infighting) being pushed almost exclusively by right-leaning outlets as evidence the opposition party is disorganized. Neither of these is organic news cycle churn — both show the signature of timed releases and selective amplification designed to set a frame before the other side can respond.</p>
+<p>Underneath both tracks sits an unresolved Iran situation, where Trump is holding open the threat of renewed military action while the Pentagon faces a casualty-reporting controversy and at least one outlet is running a story on a &quot;White House missile shortage excuse.&quot; This is getting covered as a subplot inside Senate-agenda roundups rather than as the standalone national security story its stakes warrant.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the common driver across nearly every thread: pushing the mail-in voting EO to the Supreme Court, pressing the Senate to cancel August recess for a voting-ID bill, backing the DNI nominee, driving the Comey prosecution, and managing Iran unilaterally enough that Senate Republicans openly rejected one of his asks (a Canada wildfire demand) as &quot;ridiculous&quot; — a rare visible crack in GOP unity that right-leaning coverage is downplaying rather than exploiting.</p>
+<p><strong>Rand Paul</strong> is running an independent operation against Fauci that is procedurally separate from the White House&#x27;s tracks but serves the same broader purpose — discrediting a pandemic-era institutional figure right before he testifies under oath. The timing (diary dump the day before testimony) is the tell; this is not a coincidental news cycle.</p>
+<p><strong>Senate Republicans</strong> are not monolithic. The wildfire-demand rejection and the recess fight suggest institutional friction with Trump on specific asks even as they move his DNI nominee and voting legislation. This is worth tracking as a fault line, not dismissing as noise.</p>
+<p><strong>Democrats</strong> are fighting a two-front war they don&#x27;t appear to be coordinating: a real internal primary contest over Israel policy and corporate money (Michigan), a leadership succession in Maine, and a DSA accountability fight — each real on its own terms, but collectively being weaponized by right-leaning outlets into a single &quot;party in disarray&quot; narrative that no Democratic-aligned outlet is pushing back on directly.</p>
+<p><strong>Comey</strong> is a stand-in for a bigger fight over whether Trump-era speech prosecutions will survive judicial review. His lawyers&#x27; framing (protected political speech, not a threat) is the actual legal question, but coverage is fixated on the seashell post&#x27;s semantics rather than the constitutional stakes.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Center-left outlets are not engaging with the substance of the Fauci diary entry itself — they are covering the release as a political event without addressing what the January 2020 entry actually says about scientists&#x27; private lab-leak views. That is a real gap: readers of center-left coverage cannot currently evaluate whether the entry is significant or is being overread.</p>
+<p>Right-leaning outlets are almost entirely silent on the redistricting story, despite the new map favoring them at a 2018-comparable tilt — a favorable data point they would normally amplify. Letting it pass without comment suggests message discipline: don&#x27;t invite scrutiny of a structural advantage while running a &quot;Democrats in disarray&quot; storyline that plays better.</p>
+<p>Neither side is covering the Supreme Court mail-in voting case, the DNI confirmation, the Comey case, and the Iran threat as connected exercises of executive power. Each is being treated as a discrete procedural story. That fragmentation is arguably the most consequential blind spot in the entire corpus — no single outlet is telling the &quot;control of 2026 midterm mechanics&quot; story as one story.</p>
+<p>No outlet on either side has surfaced the judge&#x27;s actual reasoning in the Comey dismissal motion, or independent legal analysis of its odds. Everyone is litigating the narrative around the case; no one is covering the legal mechanics that will actually decide it.</p>
+<p>Right-leaning coverage of the Michigan and Maine primaries omits the substantive policy content (AIPAC money, Israel policy specifics) in favor of personality and disarray framing; left coverage of the same races stays narrowly procedural and avoids characterizing the internal party conflict at all.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Fauci diary release is best read as a timed information operation: dropped the day before testimony, immediately amplified by three separate right-leaning pieces the same day, met by a single center-left piece that declines to engage the entry&#x27;s substance. That asymmetry — coordinated amplification versus substantive avoidance — is itself diagnostic of how both media ecosystems are choosing to fight this rather than inform on it.</p>
+<p>Four Trump-driven power moves are converging in the same 100-day pre-midterm window: the Comey prosecution (speech), the mail-in voting EO (voting rules), the DNI nominee (intelligence apparatus), and the Iran threat (war powers). Covered separately, these look like routine governance. Covered together, they describe simultaneous pressure on four different checks on executive power, landing in the same window ahead of an election. No outlet in this corpus is drawing that line.</p>
+<p>The &quot;Democrats in disarray&quot; framing recurs across four nominally unrelated stories — Michigan, Maine, DSA, and DNC chair scrutiny — almost exclusively from right-leaning sources. That repetition across unrelated local stories, absent any organizing event, is the signature of a thematic push rather than independent editorial judgment landing on the same conclusion four times.</p>
+<p>The redistricting story and the Senate voting-ID/mail-in-voting fight are functionally the same underlying contest — control over election mechanics — but are being covered as unrelated horse-race and process stories. Splitting them obscures that the rules of the 2026 midterms are being contested on multiple fronts at once.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Fauci&#x27;s Wednesday Senate testimony</strong> — specifically whether he is asked about and directly addresses the January 2020 diary entry. His answer (or non-answer) will determine whether the lab-leak reframing sticks.</li>
+<li><strong>SCOTUS timeline on the mail-in voting executive order</strong> — no ruling yet; any expedited scheduling signals how much urgency the Court attaches to resolving this before November 2026 filing deadlines in various states.</li>
+<li><strong>Senate floor action on the August recess cancellation / voting-ID bill</strong> — watch whether GOP senators who broke with Trump on the Canada wildfire demand also resist the recess cancellation, which would indicate a broader pattern of friction rather than a one-off.</li>
+<li><strong>DNI nominee confirmation vote</strong> — timing and margin will indicate how much political capital Republicans are willing to spend on this pick amid other agenda items.</li>
+<li><strong>Any concrete Iran military action</strong> beyond rhetoric — the Pentagon casualty-reporting controversy and the &quot;missile shortage&quot; story suggest something is being contested internally about readiness; an actual strike order would be a major escalation from the current holding pattern.</li>
+<li><strong>Comey dismissal motion ruling</strong> — when issued, read the judge&#x27;s actual reasoning, not the spin; this is the first real test of whether these speech-based prosecutions survive judicial scrutiny.</li>
+<li><strong>Michigan Democratic Senate primary, August 4</strong> — Stevens vs. El-Sayed result is a concrete data point on AIPAC-aligned money versus progressive insurgency, independent of the &quot;disarray&quot; framing wrapped around it.</li>
+<li><strong>Whether any right-leaning outlet engages with the redistricting map data</strong> — continued silence would confirm the message-discipline read rather than coincidental disinterest.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The fragmented, single-lane coverage across this corpus is not a media failure so much as a structural fact of the current moment: multiple actors are running simultaneous, mostly uncoordinated plays — Trump on executive power and voting mechanics, Paul on Fauci, right-leaning outlets on Democratic disarray, Senate Republicans on their own institutional interests — and no one has an incentive to connect them into a single narrative, because the connected version is more alarming than any of the parts. The individual stories read as manageable, procedural, or personality-driven; assembled, they describe a coordinated tightening around speech, voting access, intelligence control, and war powers in the run-up to an election, alongside a live effort to relitigate COVID-era credibility and fracture the opposition party&#x27;s coalition. Whether this is deliberate coordination or several actors independently pursuing advantage in the same window is not yet determinable from open coverage — but the effect is the same either way, and the fact that it is not being covered as one story is the story most worth tracking over the next several weeks.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">With under 100 days until the midterms, GOP-led mid-decade redistricting has restored the House map to a Republican tilt roughly comparable to 2018, even as Democrats and Republicans each claim distinct advantages heading into the election.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">The available coverage skews center and center-left, with no right-leaning outlet represented, limiting a full spectrum comparison. The two sources are complementary rather than contradictory: NPR supplies the narrative horse-race framing while The Hill supplies the underlying data point (the redistricted map&#x27;s partisan lean rivals 2018&#x27;s), which matters because Democrats won the House in 2018 despite a similarly unfavorable map, suggesting the map alone won&#x27;t determine the outcome.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is included in this set; NPR (center-left) presents a balanced horse-race frame, citing both parties&#x27; claimed advantages without emphasizing emotion or taking a side.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill treats redistricting as a technical, data-driven electoral analysis, quantifying the House map&#x27;s partisan lean and comparing it neutrally to 2018 without framing it as either a partisan scandal or a Republican triumph; NPR similarly frames the race as a balanced contest of competing structural and political factors.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this coverage set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source is present in this set; comparison to right coverage cannot be made.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source is present in this set; comparison to left coverage cannot be made.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">As midterms approach, the Senate is working through a contested pre-election agenda — advancing Trump&#x27;s DNI nominee, resisting Trump&#x27;s push to cancel August recess for a voting-ID bill, and facing a Trump-backed executive order on mail-in voting before the Supreme Court — while Trump simultaneously manages an Iran standoff with threats of renewed military action.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.0;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:8.0;" title="center-right: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:16.0;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:8.0;" title="left: 2"></div><div class="bias-segment" style="background:#a07ae0; flex:12.0;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:20.0;" title="right: 5"></div></div></div>
+  <div class="story-assessment">Beneath the partisan framing, the concrete developments are procedural but consequential: a DNI confirmation, a fight over recess and voting legislation, a live Supreme Court case on mail-in voting rules, and an unresolved Iran military-diplomatic standoff — all landing squarely before the midterms. Each outlet selectively surfaces the thread that serves its narrative (national security wins vs. executive overreach, GOP unity vs. GOP conflict), and no single source covers the full picture, meaning the voting-rules litigation and casualty-reporting controversy in particular are underreported outside their originating ideological lane.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes accountability and harm: the Pentagon&#x27;s casualty reclassification is framed as disrespecting veterans and hiding the true cost of Trump&#x27;s Iran war, a Democratic-led congressional probe targets Trump-Fifa ties as potential corrupt favor-trading, and Republican attacks on the DSA are framed as exploiting Democratic division rather than substantive critique. Underlying tone is skepticism of Trump&#x27;s use of executive and military power.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Treats the Senate agenda largely as a procedural and institutional story — workload pressure ahead of midterms, Thune&#x27;s calendar management, and a tools-comparison approach to Iran policy (sanctions vs. bombs) — favoring process and power-dynamics framing over ideological argument. Center-right opinion (WSJ) breaks from straight reporting to argue against Trump&#x27;s filibuster push on strategic grounds.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Emphasizes national security wins undercut by obstruction and cultural/political vindication: Clayton&#x27;s confirmation is tied to reviving anti-terror surveillance, Trump is cast as a resolute dealmaker on Iran willing to use force, and stories highlighting bipartisan pushback (Canada wildfire demand) or unpopular policy (data centers) are used to show even-handedness or expose overreach on both sides. Far-right coverage additionally frames mainstream-media Trump critics (McCaskill, Cupp) as biased partisans to be dismissed.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the Clayton/DNI confirmation vote and its national-security stakes (FISA revival), the bipartisan Senate rejection of Trump&#x27;s Canada wildfire demand, the Fox poll showing broad public opposition to data centers, and any Iran-strategy argument favorable to Trump (e.g., the WSJ &#x27;fox vs. hedgehog&#x27; framing).
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the Trump administration&#x27;s Supreme Court push to alter mail-in voting rules before the midterms, the Pentagon&#x27;s Iran casualty reclassification controversy, the Fifa/Raskin congressional investigation into Trump ties, and internal Republican senators&#x27; &#x27;ridiculous&#x27; rejection of Trump&#x27;s Canada wildfire demand is covered by Fox but downplayed as isolating rather than substantive dissent.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. Rand Paul released 1,141 pages of Anthony Fauci&#x27;s pandemic-era diary notes ahead of Fauci&#x27;s Wednesday Senate testimony, and outlets differ on whether a January 2020 entry shows scientists privately favored the lab-leak theory.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow: Paul released a large batch of Fauci&#x27;s diary notes before a hearing, and one January 2020 entry has become the focal point of dueling interpretations. The right-wing framing leaps from &#x27;scientists discussed lab-leak as a possibility early on&#x27; to &#x27;admission of cover-up,&#x27; while the center-left framing avoids engaging with the entry&#x27;s substance at all — both gaps make it hard to assess the actual evidentiary weight of the diary without reading the underlying document text directly.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR frames the release primarily as a political and procedural event — a document dump timed to a Senate hearing amid the long-running Paul-Fauci feud over COVID-19 origins — without independently adjudicating the scientific claims in the diary.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR, described here as center-left, treats the diary as newsworthy context for an ongoing institutional conflict rather than as a vindication or indictment of either side, offering a more procedural &#x27;here&#x27;s what these documents show&#x27; summary.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the same entry as a smoking-gun admission, emphasizing betrayal and cover-up: that top scientists privately believed the lab-leak theory was likely true even as they publicly and dismissively labeled it a conspiracy theory.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR&#x27;s coverage as summarized does not detail the specific content of the January 2020 entry regarding scientists&#x27; private lab-leak beliefs, nor does it engage with the cover-up framing that Breitbart emphasizes.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart&#x27;s coverage as summarized omits the broader political context NPR provides — namely that this release is part of a long-running Paul-Fauci dispute timed to a hearing — and does not address whether the diary entry might be explainable by normal scientific uncertainty in the earliest days of the outbreak rather than deliberate deception.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">James Comey&#x27;s lawyers asked a federal judge to dismiss his indictment, arguing his &#x27;86 47&#x27; seashells social media post was protected political speech rather than a criminal threat against Trump.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core facts: Comey is fighting an indictment tied to a coded social media post, arguing it&#x27;s protected speech, not a threat. The real divergence is emphasis — PBS treats it as a constitutional free-speech test case, while Breitbart keeps focus on Comey personally and the plausibility of a threat interpretation. Neither source provides the actual judge&#x27;s reasoning or ruling, nor independent legal expert analysis on the likelihood of dismissal, which is the key unresolved question here.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS frames this as a legal/constitutional dispute, emphasizing the free-speech dimension and treating the case as a question of protected political expression versus criminal conduct, with a measured, procedural tone.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS presents a straightforward legal-process narrative: what Comey is arguing, what the judge must decide, without strong emotional framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart centers Comey&#x27;s legal defense and the semantic ambiguity of &#x27;86,&#x27; while still treating the underlying indictment as serious — giving voice to both the argument that this was political speech and an implicit skepticism toward Comey.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS coverage does not surface the semantic debate over what &#x27;86&#x27; specifically means/implies, which Breitbart highlights.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart&#x27;s framing does not emphasize the broader First Amendment/protected-political-speech legal doctrine angle as fully as PBS does, and gives less weight to the case as a constitutional precedent question.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Michigan Democratic Senate primary rivals Haley Stevens and Abdul El-Sayed clashed in a heated debate over corporate/AIPAC money, Israel policy, and a leaked &#x27;ogre on a pike&#x27; remark, one week before the August 4 primary.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:14.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:28.6;" title="center-left: 2"></div><div class="bias-segment" style="background:#7ae09b; flex:14.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:14.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:14.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:14.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow: a leaked remark and a contentious debate over money-in-politics and Israel policy in a competitive primary. Beyond that, coverage diverges sharply by ideological lens — left outlets personalize and litigate intent behind the remark, while right outlets use the episode as a vehicle for a broader &#x27;Democrats in disarray&#x27; narrative, and Breitbart&#x27;s claims about Black voter defection and Bowman&#x27;s endorsement remain uncorroborated by any other outlet.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets (Guardian, Politico) focus on the personal and gender-dynamics angle of the leaked remark — emphasizing El-Sayed&#x27;s clarification/defense and framing the episode as an intraparty progressive-vs-moderate flare-up rather than dwelling on policy substance or party-wide dysfunction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill) present the race as a substantive ideological contest — corporate influence and Israel policy — treating it as a normal, if fiery, competitive primary between a moderate and a progressive rather than a scandal or party crisis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets (Fox, Breitbart, RealClearPolitics) frame the primary as symptomatic of broader Democratic Party dysfunction and infighting, emphasizing sexism accusations, AIPAC money fights, and questionable endorsements (e.g., Bowman&#x27;s &#x27;fire alarm&#x27; scandal) to portray the party as chaotic and anxious ahead of the general election.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning coverage largely omits the electability/demographic angle (El-Sayed&#x27;s standing with Black voters, the Bowman endorsement controversy) and downplays the AIPAC/outside-income policy disputes that right and center outlets highlight as central to the debate.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits El-Sayed&#x27;s own explanation that the &#x27;ogre&#x27; remark targeted Fetterman, not Stevens, and largely skips the corporate-influence/Israel-policy substance in favor of framing the episode as evidence of Democratic dysfunction and sexism drama.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rand Paul</span><span class="entity-tag">Anthony Fauci</span><span class="entity-tag">Senate</span></div>
+  <div class="connection-text">The 1,141-page diary dump lands the day before Fauci&#x27;s Wednesday testimony, and is immediately amplified by three separate right-leaning pieces same-day (&#x27;Fauci an Egomaniac Milking Covid,&#x27; &#x27;The Revealing Diaries of Dr. Fauci,&#x27; plus the diary-release story itself) versus a single center-left piece that avoids the entry&#x27;s substance entirely.</div>
+  <div class="connection-sig">↳ This is a timed information operation, not organic coverage — a document release engineered to seed a narrative frame before the source can testify and contest it live, with right-wing media pre-positioned to amplify.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">James Comey</span><span class="entity-tag">Trump-backed mail-in voting EO</span><span class="entity-tag">DNI nominee</span><span class="entity-tag">Iran</span></div>
+  <div class="connection-text">Four Trump-adjacent power moves are converging in the same window: prosecuting a prominent critic (Comey) over speech, pushing an executive order on mail-in voting to SCOTUS, advancing a loyalist DNI nominee, and threatening renewed unilateral military action on Iran — all roughly 100 days before midterms.</div>
+  <div class="connection-sig">↳ Individually these read as separate procedural stories; together they describe simultaneous pressure on speech, voting rules, the intelligence apparatus, and war powers — a pattern worth tracking as a single thread rather than four unrelated items.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Michigan Senate primary</span><span class="entity-tag">Democratic Socialists of America</span><span class="entity-tag">Maine Senate race (Platner/Jackson)</span></div>
+  <div class="connection-text">Three separate Democratic primary contests (Michigan&#x27;s Stevens-El-Sayed AIPAC/Israel clash, Maine&#x27;s Platner-to-Jackson succession, and DSA internal accountability pieces) are being covered almost exclusively by right-leaning outlets as evidence of a party &#x27;in disarray,&#x27; while center-left coverage of the same races stays narrowly procedural.</div>
+  <div class="connection-sig">↳ Suggests a coordinated &#x27;Democrats in disarray&#x27; framing strategy stitched across otherwise-unrelated local primary stories rather than three independent editorial judgments.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">GOP redistricting</span><span class="entity-tag">voting-ID bill</span><span class="entity-tag">mail-in voting Supreme Court case</span></div>
+  <div class="connection-text">The redistricting story (map restored to 2018 R-tilt) and the Senate agenda story (recess fight over a voting-ID bill, SCOTUS mail-in voting case) are functionally the same underlying fight — who gets to vote and how districts are drawn — but are being covered as separate &#x27;horse race&#x27; and &#x27;process&#x27; stories rather than connected as a single election-mechanics battle.</div>
+  <div class="connection-sig">↳ Splitting these into separate stories obscures that structural/procedural control over the 2026 midterms is being contested on multiple fronts simultaneously, which is arguably the more consequential story than any single race.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A &#x27;Democrats in disarray&#x27; meta-narrative recurs across at least four nominally unrelated stories (Michigan primary, Maine succession, DSA pieces, DNC chair scrutiny), almost entirely from right-leaning outlets — indicating a thematic push rather than coincidental overlap.</div>
+<div class="pattern-item">COVID-origins relitigation (Fauci diaries, lab-leak framing) is resurfacing as a pre-midterm wedge issue years after the fact, timed precisely to a scheduled hearing.</div>
+<div class="pattern-item">Executive-power consolidation stories (Comey prosecution, mail-in voting EO, DNI nominee, Iran war-powers threat) are each being covered in isolated ideological lanes with no outlet connecting them as a single pattern.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The redistricting story — normally a conservative talking point when the map favors the GOP — has zero right-leaning source coverage, which is unusual and suggests the right is underplaying a favorable data point rather than amplifying it.</div>
+<div class="anomaly-item">Trump&#x27;s threat of renewed Iran military action is mentioned only as one thread inside a broader Senate-agenda roundup rather than treated as standalone breaking news, despite its gravity — and pairs oddly with a right-only story titled &#x27;The White House Missile Shortage Excuse,&#x27; suggesting military readiness is being quietly contested beneath the surface.</div>
+<div class="anomaly-item">The Maine Senate succession (Platner to Troy Jackson) is covered in fully separate, non-overlapping left-only and right-only silos with no center or crossover source at all — a total blindspot bifurcation rare enough to flag.</div>
+<div class="anomaly-item">No outlet on either side has surfaced the judge&#x27;s actual reasoning or independent legal analysis on Comey&#x27;s dismissal motion, despite it being a live constitutional test case — both sides are litigating the narrative while ignoring the actual legal mechanics.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Center-left outlets are systematically avoiding the substance of the Fauci diary entry and the merits of Comey&#x27;s speech defense, treating both as settled/uncontroversial rather than engaging the evidence — likely to avoid legitimizing right-wing framing. Right-leaning outlets are avoiding redistricting math that favors them (letting it pass with no coverage) while over-indexing on Democratic Party dysfunction stories (Michigan, Maine, DSA) — a pattern that suggests message discipline around &#x27;GOP structural advantage&#x27; paired with amplification of &#x27;Democrats in disarray.&#x27; Both sides are avoiding connecting the Comey/mail-in-voting/DNI/Iran threads into a single executive-power narrative, each preferring to cover their piece in isolation.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Platner energized Maine&#x27;s Democrats. Jackson&#x27;s challenge will be to keep them engaged</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside Joe Manchin&#x27;s new quest to elect more Independents to Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kalshi attacks a Wisconsin law banning election bets as &#x27;voter suppression&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Memphis, an &#x27;anti-crime&#x27; task force quietly turned into an ICE crackdown</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Maine Democrats pick Troy Jackson to replace Graham Platner in Senate race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› India&#x27;s youth-led &#x27;cockroach&#x27; protests expose cracks in Modi&#x27;s government</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tamara Keith and Amy Walter on midterm voter enthusiasm</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Georgia&#x27;s 13th Congressional District special election</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› McConnell remains in rehab and not cleared for work, his office says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘I&#x27;ve never lost:’ Rahm Emanuel makes his case for the White House</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Police vetted dubious allegation only after Buttigieg was separated from children</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Deadly U.S. boat strikes have failed to curb cocaine supply, Pentagon and DEA officials say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump backs Pete Hegseth amid renewed tensions with Iran – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At least three suspects involved in Bite of Seattle shooting, police say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US influencer ‘couldn’t seem to get away’ from husband accused of killing her, ex-partner says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC chair faces growing scrutiny amid financial pressure and internal turmoil</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wisconsin tornado causes extensive damage and cuts power to thousands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge rules singer D4vd must stand trial in killing of 14-year-old girl</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man convicted in Idaho college student killings seeks to withdraw guilty plea</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Records Reveal How Homeland Security Agents Surveilled ICE Protesters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EPA Ordered—Again—to Release $2.8 Billion in Climate Justice Funds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› She’s Charged With Killing Her Twins. The Anti-Vaccine Movement Made Her a Martyr.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Reporters—and the Public—Need a Federal Shield Law</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Revealing Diaries of Dr. Fauci</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The White House Missile Shortage Excuse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mao Meets Manhattan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sunday Shopping: That Thing You Don’t</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When Democratic Socialists Take Over</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Shouldn’t Require a Permission Slip</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Biden&#x27;s classified docs narrative crumbles amid release of ghostwriter tapes: &#x27;Be careful&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Summer School: Republicans&#x27; crusade to teach voters the &#x27;New Math&#x27; on the &#x27;commie caucus&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 9/11 families push to ban Mamdani from 25th anniversary remembrance over &#x27;hostile&#x27; record</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GOP lawmaker under House ethics review blasts &#x27;baseless&#x27; investigation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The DSA accountability machine stops at first class</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The DSA Wants to Abolish America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It’s Time to Reexamine Monetary Policy Rules</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› There’s No Such Thing as Free Data</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Troy Jackson Is Just as Radical as Graham Platner</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Religious Liberty Isn’t a Given in Kathy Hochul’s New York</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Still Need More Ships</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Illegal Alien Gets 20 Years in Prison for Killing Nashville Restaurateur</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Jersey Democrat Defends Piker&#x27;s &#x27;America Deserved 9/11&#x27;: &#x27;I Still Love the Guy&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Savannah Guthrie Begs Mom&#x27;s Captor: &#x27;Make the Right Choice&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Inside Story of How Dems Lost the Working Class</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Autocracy Doesn&#x27;t Pay</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic Socialists of America vs. John Adams</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kamala Harris&#x27; Biggest Opponent in 2028? Herself</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Anthony Fauci&#x27;s Diaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nobody&#x27;s Cashing In on the Presidency Like Don Trump Jr.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hunter Biden&#x27;s Weird Rehab Tour</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Pentagon&#x27;s Testosterone Wake-Up Call</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci an Egomaniac Milking Covid for Everything It&#x27;s Worth</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Fauci&#x27;s Wednesday Senate testimony and whether it addresses the January 2020 diary entry directly</div>
+<div class="watch-item">SCOTUS ruling timeline on the Trump-backed mail-in voting executive order</div>
+<div class="watch-item">Senate floor action on the August recess cancellation / voting-ID bill</div>
+<div class="watch-item">DNI nominee confirmation vote timing</div>
+<div class="watch-item">Any concrete Iran military escalation beyond rhetorical threats</div>
+<div class="watch-item">Comey dismissal motion ruling — watch for judge&#x27;s actual reasoning once issued</div>
+<div class="watch-item">Michigan Democratic Senate primary result (Aug 4) as a bellwether for AIPAC-vs-progressive money dynamics</div>
+<div class="watch-item">Whether any right-leaning outlet engages substantively with the redistricting map data point</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
