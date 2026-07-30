@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-07-30 10:42 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-07-30 10:42 UTC</span>
+    <span class="pill">114 articles</span>
+    <span class="pill">13 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant dynamic in American politics right now is not Democrat-versus-Republican combat but intra-coalition discipline fights on both sides, dressed up in cross-partisan language that obscures what&#x27;s actually happening. On the right, Senate Republicans are actively constraining the Trump administration and its allies: Cornyn and Tillis are holding up Todd Blanche&#x27;s attorney general nomination pending written assurances on a Trump-IRS settlement, and Rand Paul is chairing a hearing that produced Anthony Fauci pleading the Fifth over 100 times — both GOP-driven actions, not Democratic attacks, despite coverage that defaults to a persecution-versus-accountability partisan frame. On the left, the more consequential fight is between the Democratic establishment and its socialist/progressive flank, playing out simultaneously in Michigan&#x27;s Senate primary (El-Sayed vs. Stevens), New York&#x27;s mayoralty (Mamdani), and Fetterman&#x27;s public jab at a Pennsylvania progressive — three geographically unconnected races running the identical &quot;risk/extremism/unelectability&quot; script against the same ideological lane.</p>
+<p>Underneath the partisan theater, a real national-security policy action — an FCC ban on Chinese-linked humanoid robot and power-inverter imports — is moving with almost no multi-source scrutiny. That&#x27;s a gap in the information environment, not a null event: it lands squarely in the active US-China humanoid robotics race and deserves the kind of coverage it isn&#x27;t getting.</p>
+<p>The throughline for a briefing audience: legacy accountability narratives (Fauci, COVID origins) are being kept alive almost entirely by the right and are being met with near-silence rather than rebuttal from the left. Meanwhile the left&#x27;s most newsworthy internal fracture — its relationship with its own progressive wing, most visibly Mamdani — is being narrated almost exclusively by right-leaning and pundit-driven outlets, with the left declining to engage directly. Both sides are, in effect, litigating the other&#x27;s internal conflicts while avoiding their own.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Rand Paul</strong> is driving the Fauci accountability track through the Senate Homeland Security Committee — a genuine Fifth Amendment event (100+ invocations), not spin, though the motive narrative split (persecution vs. overdue accountability) is where the real fight lives. Ted Cruz&#x27;s calls to jail Fauci and a Florida AG investigation are running in parallel on the right and are largely invisible in left coverage.</p>
+<p><strong>Cornyn and Tillis</strong> are the more underplayed story: two Republican senators blocking Trump&#x27;s own AG nominee over unresolved IRS-settlement questions. This is GOP-on-GOP oversight, and it is being absorbed into generic &quot;accountability&quot; framing rather than reported as intra-party friction — likely because neither side benefits from a &quot;Republicans distrust Trump&#x27;s DOJ pick&quot; storyline.</p>
+<p><strong>Abdul El-Sayed and Haley Stevens</strong> are contesting a primary that&#x27;s become a national proxy fight, complicated by unreconciled polling (RCP shows El-Sayed leading; Breitbart shows him trailing Rogers by 10 in a general-election trial heat) and a Fox-reported financial disclosure story (undisclosed Dubai property/income) that no other outlet has touched. Nobody has reconciled the polling discrepancy, which is a due-diligence failure one week out from an Aug 4 vote, not necessarily evidence of manipulation.</p>
+<p><strong>Zohran Mamdani</strong> is absorbing establishment-Democrat and conservative pushback over property-tax policy and Israel rhetoric, including a pundit (James Woods, amplified via Breitbart) framing his positions in explicitly religious-threat terms. Mamdani himself has not responded in any source reviewed, and no left-leaning outlet has covered the story at all — an unusual and specific silence for a sitting mayor.</p>
+<p><strong>Musk</strong>, per Axios reporting, is pushing GOP midterm spending — worth tracking for whether it surfaces in the Michigan general election once a Democratic nominee is set.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Left-leaning outlets are not covering Mamdani&#x27;s property-tax policy or his Israel remarks in his own words, anywhere. They are discussing &quot;Democrats and working-class messaging&quot; in the abstract while ceding all concrete Mamdani coverage to the right and to pundits. That is a deepening blind spot, not an oversight — the same pattern held in the prior collection cycle.</p>
+<p>Right-leaning outlets are not framing the Cornyn/Tillis hold on Blanche as what it is: Republican senators distrusting a Trump DOJ nominee. It gets folded into a content-neutral &quot;accountability&quot; story instead, which avoids the GOP-vs-GOP angle entirely.</p>
+<p>Right coverage of Fauci omits his own rebuttal (he&#x27;s called the inquiry an &quot;unhinged obsession&quot;) and omits Mother Jones&#x27; debunking of the &quot;scrubbed diary&quot; claim. Left coverage omits Cruz&#x27;s jail-Fauci rhetoric and the Florida AG investigation almost entirely, minimizing the accountability frame rather than engaging it.</p>
+<p>Nobody has followed up on the January 2020 Fauci diary entry previously flagged as a watch item, despite the hearing itself getting wide cross-spectrum coverage — the specific factual thread got dropped even as the surrounding spectacle was amplified.</p>
+<p>Four previously flagged items — Jay Clayton&#x27;s conduct as DNI, the SCOTUS cert decision on the Carroll immunity case, corroboration of the Ken Martin DNC-chair incident, and the Iran/Russia sanctions bill linkage — have vanished from coverage entirely with no reported resolution. Treat these as unresolved and re-query directly; don&#x27;t assume they were quietly settled.</p>
+<p>The FCC&#x27;s China-linked robot/inverter import ban has essentially no real second source in this corpus — the story is functionally uncorroborated despite being a substantive trade and national-security action.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Michigan Senate primary, the Mamdani coverage, and Fetterman&#x27;s &quot;Pontiac Platner&quot; line are not three unrelated stories — they&#x27;re the same national &quot;establishment vs. socialist flank&quot; script being run against three different candidates in three different races on the same news cycle. That&#x27;s either genuine narrative convergence around a real 2026 fight inside the Democratic Party, or outlets mechanically applying one template to unrelated local contests. Either way, it&#x27;s a bigger story than any single race captures.</p>
+<p>Fauci coverage on the right is running two tracks at once — procedural/legal (&quot;Take Fauci to SCOTUS,&quot; the Fifth Amendment hearing) and a claimed-abandonment narrative (&quot;The Left Has No Use for Anthony Fauci Anymore&quot;) — with the second track asserting an internal left-of-center rift that no left-leaning outlet has confirmed or even addressed. That&#x27;s a projection technique: an assertion about the opposing coalition&#x27;s internal state, made without corroboration from that coalition, that could easily calcify into &quot;fact&quot; if repeated uncritically.</p>
+<p>Watch for a clustering artifact: three separate Volokh Conspiracy posts about the same O&#x27;Keefe Media Group Pentagon-contractor lawsuit (fraud claim, pseudonymity ruling, hidden-date recording) can look like three independent cross-referenced stories when they&#x27;re actually one niche litigation thread. Don&#x27;t let it inflate its apparent significance relative to Fauci or Michigan.</p>
+<p>Each side is covering the other&#x27;s internal conflict rather than its own: left outlets document right-wing militia activity and a Proud Boys embed; right outlets frame progressive Democrats (Mamdani, Platner, El-Sayed) as an ideological threat. Neither side is turning that same lens inward — the Cornyn/Tillis-vs-Trump friction and the establishment-vs-progressive Democratic fight are each getting minimized by the side that would have to report on itself.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Michigan Democratic Senate primary, Aug 4</strong> — watch whether the El-Sayed-leads vs. trails-by-10 polling discrepancy gets reconciled before the vote, and whether Fox&#x27;s financial disclosure story (Dubai property, undisclosed income) spreads beyond right-leaning outlets. A late break either way could decide the primary&#x27;s national framing.</p>
+<p><strong>Blanche AG nomination</strong> — watch whether Cornyn and Tillis&#x27;s IRS-settlement demand becomes an open GOP-on-GOP oversight story, or stays buried in generic &quot;accountability&quot; framing. The vote delay itself is the concrete thing to track; a rescheduled Judiciary Committee vote is the trigger.</p>
+<p><strong>FCC humanoid robot/power-inverter import ban</strong> — actively seek trade-press or China-focused sourcing; this is a substantive national-security action essentially uncorroborated in mainstream political coverage right now.</p>
+<p><strong>Mamdani</strong> — watch for the first left-leaning outlet to cover his property-tax policy or Israel remarks directly, or in his own words. Continued silence past this point confirms an intentional, not incidental, avoidance.</p>
+<p><strong>Fauci hearing follow-through</strong> — watch whether the January 2020 diary-entry question gets raised in any subsequent hearing or filing; it has been flagged and dropped once already.</p>
+<p><strong>Four dropped watch items</strong> — Jay Clayton/DNI conduct, the SCOTUS Carroll immunity cert decision, Ken Martin DNC-chair incident corroboration, and Iran/Russia sanctions bill linkage — re-query directly rather than assuming resolution; disappearance from coverage is not the same as resolution.</p>
+<p><strong>Musk&#x27;s reported GOP midterm spending push (Axios)</strong> — watch for signs it targets the Michigan Senate general election once the Democratic nominee is set.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The confusing surface of today&#x27;s coverage — Fauci, Blanche, Michigan, Mamdani, an obscure robotics trade ban — resolves into one underlying dynamic: both political coalitions are currently more occupied with disciplining their own flanks than with attacking each other, but neither side&#x27;s media apparatus wants to report that plainly, so it gets laundered into cross-partisan combat framing instead. Republicans are quietly checking Trump&#x27;s own nominee and reviving a legacy COVID accountability fight that mostly serves intra-party positioning; Democrats are fighting an establishment-versus-progressive war across at least three separate races while declining to cover their most prominent progressive, Mamdani, in their own outlets at all. The net effect is a media environment where the real story in both coalitions is internal, but the incentive structure on both sides pushes coverage toward the safer, more familiar story of the other team&#x27;s threat.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">Michigan&#x27;s Democratic Senate primary between Abdul El-Sayed and Haley Stevens is drawing national attention as a proxy fight over the party&#x27;s direction, while new financial disclosures and polling data are shaping the race&#x27;s narrative ahead of the vote.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:25.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:25.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:25.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The coverage splits along a familiar axis: left-leaning outlets frame the race as a substantive debate over party direction, while right-leaning outlets zero in on El-Sayed&#x27;s personal financial disclosures and weaker general-election polling to cast him as risky or compromised. The RealClearPolitics claim of an El-Sayed primary lead sits in tension with Breitbart&#x27;s poll showing him trailing Rogers by 10 — these may reflect different polls (primary vs. general) rather than a direct contradiction, but no outlet reconciles the discrepancy. The financial disclosure story (Fox) is a significant, verifiable claim that other outlets simply haven&#x27;t addressed, likely because it broke separately from the horse-race coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR emphasizes grassroots voter sentiment and intra-party ideological debate, framing the race as a story about Democratic identity and cautious optimism about retaking the Senate, with minimal focus on individual candidate controversies.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    RealClearPolitics takes a horse-race approach, reporting El-Sayed&#x27;s primary standing as a data point without ideological commentary, while NPR (center-left) frames the contest through the lens of party identity rather than individual scandal or polling.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News and Breitbart focus on El-Sayed specifically — Fox highlighting undisclosed foreign wealth and financial opacity as a character/trust issue, and Breitbart emphasizing polling weakness that frames him as an electability liability compared to his more moderate primary opponent.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR omits the financial disclosure controversy (Dubai property, undisclosed income/liabilities) and the specific polling numbers showing El-Sayed trailing Rogers by double digits.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News and Breitbart omit the grassroots, voter-driven narrative about party direction that NPR foregrounds, and neither addresses RealClearPolitics&#x27; claim that El-Sayed holds a primary advantage over his Democratic rivals.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Anthony Fauci invoked his Fifth Amendment right more than 100 times at a Senate Homeland Security Committee hearing on COVID-19&#x27;s origins chaired by Rand Paul, while separately the Senate Judiciary Committee postponed a vote on Todd Blanche&#x27;s attorney general nomination after GOP senators Cornyn and Tillis demanded written assurances about a Trump-IRS settlement.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (13)</span><span class="bias-badge" style="color:#7ae09b;">center-right (5)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (6)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.4;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:24.1;" title="center-left: 13"></div><div class="bias-segment" style="background:#7ae09b; flex:9.3;" title="center-right: 5"></div><div class="bias-segment" style="background:#e05252; flex:3.7;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:11.1;" title="far-right: 6"></div><div class="bias-segment" style="background:#e07a7a; flex:14.8;" title="left: 8"></div><div class="bias-segment" style="background:#a07ae0; flex:5.6;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:11.1;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The undisputed factual core — Fauci pleading the Fifth over 100 times and Blanche&#x27;s nomination stalling over unresolved IRS-settlement questions — is being read through nearly opposite motive narratives: persecution versus overdue accountability. Neither side disputes the events themselves, only what they signify, which is where the real partisan divide lies rather than in the facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames Fauci sympathetically as the target of a politically motivated, years-long campaign by Rand Paul and allied Republicans, emphasizing his &#x27;unhinged obsession&#x27; rebuttal and treating the Fifth Amendment invocation as a measured legal response rather than evasion; frames the Blanche nomination delay as evidence of GOP distrust in the nominee and DOJ opacity around a Trump-connected financial settlement.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Reports both storylines procedurally — describing the hearing mechanics, the specific senators involved, and the committee&#x27;s postponement rationale — without strongly editorializing on Fauci&#x27;s guilt or the administration&#x27;s motives, though some center-right outlets (RealClearPolitics) lean into &#x27;cover-up&#x27; language.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames Fauci&#x27;s repeated Fifth Amendment pleas as tacit admission of wrongdoing and unaccountable evasion enabled by an unjust preemptive pardon, with calls (e.g., Ted Cruz) for contempt, prosecution, and jail time; frames the Blanche delay as a legitimate, good-faith GOP push for transparency on the IRS settlement rather than opposition to the nominee himself.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits Ted Cruz&#x27;s calls for jailing Fauci, the Florida AG&#x27;s investigation, and the &#x27;scrubbed diary&#x27; cover-up narrative being pushed on the right, minimizing the accountability framing entirely.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits Fauci&#x27;s rebuttal that the inquiry reflects an &#x27;unhinged obsession,&#x27; the Mother Jones debunking of the &#x27;scrubbed diary&#x27; claim, and downplays the substance of Democratic/Guardian concerns that the Blanche delay stems from DOJ favoritism toward Trump rather than mere procedural caution.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The FCC has moved to ban imports of new foreign-made (China-linked) humanoid robots and power inverters citing national security; no comparable second source on this event was actually provided.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The two articles are not covering the same event: PBS reports on a new FCC ban on foreign (China-linked) humanoid robots and power inverters, while RealClearPolitics discusses the unrelated, long-running COVID-19 origins/mandates controversy. A meaningful cross-spectrum comparison of coverage on the robot ban cannot be produced from this input — genuine center-right and/or left-leaning sources actually reporting on the FCC robot/inverter ban would be needed. Treat this as a sourcing mismatch rather than a resolved analysis.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not directly available — only one center-left source (PBS) was supplied, and it presents the ban primarily as a national-security response to Chinese tech risk while including China&#x27;s objection for balance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS (center-left, treated here as the closest available center-adjacent source) frames the ban as a dual-track story: legitimate U.S. security concern over Chinese-made robotics/inverters, balanced against China&#x27;s protectionism accusation — a fairly standard &#x27;security vs. trade dispute&#x27; framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Not available for this story. The supplied &#x27;center-right&#x27; article (RealClearPolitics) does not cover the robot/inverter import ban at all; it addresses a separate topic (COVID-19 policy divisions), so no right-leaning framing of the robot ban can be assessed from the data given.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Because no genuine right-of-center coverage of the robot ban was provided, it&#x27;s impossible to identify specific facts or angles that right coverage includes but PBS omits (e.g., potential economic costs to U.S. robotics/manufacturing firms, industry reaction, or supply-chain specifics) — this is a data gap, not a confirmed omission.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not assessable — the RealClearPolitics piece supplied is about COVID-19, not the robot ban, so it contains no content on this story to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">NYC Mayor Zohran Mamdani&#x27;s property-tax policy and rhetoric on Israel drew criticism from Democratic establishment figures and conservative media, with coverage ranging from policy objections to inflammatory rhetoric about his religion.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The three sources reflect three different stories more than three angles on one story: a policy critique (WSJ), an establishment-Democrat pushback narrative (Fox), and an inflammatory religious-threat framing from a pundit amplified as news (Breitbart). The underlying factual core — a property-tax policy exists and has drawn criticism — is thin compared to the interpretive weight each outlet adds, and the absence of Mamdani&#x27;s own voice or any left-leaning source makes it impossible to assess the full spectrum of coverage or verify WSJ&#x27;s specific &#x27;names and addresses&#x27; claim independently.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is included in this set, so left framing cannot be directly assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    WSJ Opinion (center-right) frames the property-tax policy itself as authoritarian in character, emphasizing the exposure of private citizens&#x27; identifying information as a tool of political intimidation, independent of religious or establishment-politics angles.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning coverage spans two distinct registers: Fox News frames Mamdani&#x27;s agenda as being rejected by mainstream, establishment Democrats (lending cross-partisan legitimacy to the criticism), while Breitbart escalates into civilizational and religious-threat rhetoric, amplifying a pundit&#x27;s inflammatory claim about a &#x27;Muslim invasion&#x27; rather than reporting policy substance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left-leaning source is present in this set, so omissions relative to left coverage cannot be determined; notably absent from all three sources is any statement from Mamdani himself or his administration explaining the policy&#x27;s intent or defending it.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning sources omit substantive detail on the property-tax policy&#x27;s actual mechanics and legal basis, do not include any pro-Mamdani or neutral defense of the policy, and do not contextualize James Woods&#x27; &#x27;Muslim invasion&#x27; remark as widely condemned rhetoric rather than a mainstream assessment.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Eugene Volokh</span><span class="entity-tag">Jamie Mannina</span><span class="entity-tag">Amit Mehta</span><span class="entity-tag">James O&#x27;Keefe</span><span class="entity-tag">O&#x27;Keefe Media Group</span><span class="entity-tag">Pentagon</span></div>
+  <div class="connection-text">The &#x27;entity network&#x27; treats three separate Volokh Conspiracy blog posts about the same O&#x27;Keefe Media Group Pentagon-contractor lawsuit (fraud claim, pseudonymity ruling, hidden-date recording) as three independent stories, inflating apparent cross-story significance for a single niche litigation thread.</div>
+  <div class="connection-sig">↳ This is a clustering artifact, not a real pattern — treating it as genuine cross-story significance would overweight one lawsuit relative to actual multi-outlet stories like Fauci or Michigan.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rand Paul</span><span class="entity-tag">Fauci</span><span class="entity-tag">Cornyn</span><span class="entity-tag">Tillis</span><span class="entity-tag">Blanche</span></div>
+  <div class="connection-text">Rand Paul chairing the Fauci Fifth Amendment hearing and Cornyn/Tillis stalling Blanche&#x27;s AG nomination over IRS-settlement assurances are both intra-Senate-GOP actions constraining or embarrassing the Trump administration/allies from the right, not from Democrats.</div>
+  <div class="connection-sig">↳ Coverage frames both as partisan (D vs R) spectacle, obscuring that the more newsworthy dynamic is Republican senators independently applying pressure on Trump-aligned nominees and legacy COVID figures.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">El-Sayed</span><span class="entity-tag">Mamdani</span><span class="entity-tag">Pontiac Platner</span><span class="entity-tag">Fetterman</span></div>
+  <div class="connection-text">Three geographically separate stories (Michigan Senate primary, NYC mayoral coverage, and Fetterman&#x27;s &#x27;Pontiac Platner&#x27; dig) all center on establishment Democrats or conservative media attacking self-identified socialist/progressive candidates using near-identical framing (risk, extremism, unelectability).</div>
+  <div class="connection-sig">↳ Suggests a coordinated or at least converging media narrative about a 2026 &#x27;socialist flank&#x27; fight inside the Democratic Party, running simultaneously in Senate and mayoral contests — bigger than any single race suggests in isolation.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">The Left Has No Use for Anthony Fauci Anymore</span><span class="entity-tag">Fauci Senate hearing</span></div>
+  <div class="connection-text">A right-leaning outlet is narrating internal left-of-center abandonment of Fauci, but this claim appears only in right-only coverage — no left-leaning outlet is making or confirming this claim about itself.</div>
+  <div class="connection-sig">↳ This is a projection technique: right-leaning media asserting a rift within the opposing coalition without corroboration, which if uncritically repeated could be mistaken for an observed trend rather than an assertion.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FCC robot/inverter ban</span><span class="entity-tag">China</span></div>
+  <div class="connection-text">A significant national-security trade action (banning Chinese humanoid robot and power inverter imports) is effectively covered by only one usable source in the entire dataset — the paired &#x27;second source&#x27; is a mismatched, unrelated COVID article.</div>
+  <div class="connection-sig">↳ Given the active US-China humanoid robotics race (Optimus, Unitree, Figure), a formal import ban is a substantial policy event; its near-total absence of verified multi-source coverage is itself notable and warrants direct monitoring rather than reliance on this feed.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Establishment-vs-socialist-flank framing recurs across unrelated races (Michigan Senate, NYC mayor, Fetterman/Platner) on the same news day, suggesting outlets are applying one national storyline to multiple local contests rather than covering each on its own merits.</div>
+<div class="pattern-item">Legal/accountability stories (Fauci Fifth Amendment pleas, Blanche IRS-settlement holdup, O&#x27;Keefe Pentagon litigation) are being covered heavily by niche legal/opinion outlets (Volokh/Reason, libertarian sources) while mainstream left-center outlets engage only with the Fauci strand — accountability-themed stories are fragmenting by outlet type rather than converging.</div>
+<div class="pattern-item">Right-leaning media is running a dual track on Fauci: procedural/legal (&#x27;Take Fauci to SCOTUS?&#x27;, &#x27;Dr. Fauci Takes the Fifth&#x27;) alongside a claimed-abandonment narrative (&#x27;The Left Has No Use for Anthony Fauci Anymore&#x27;) — building a case that Fauci is now politically friendless from all sides, without left-side confirmation.</div>
+<div class="pattern-item">Left-only coverage skews toward documenting right-wing extremism (Proud Boys embed, &#x27;Rapid Rise of Right-Wing Militias&#x27;) while right-only coverage skews toward framing progressive Democrats as an existential/ideological threat (Mamdani, Platner, El-Sayed) — each side covers the other&#x27;s &#x27;threat&#x27; rather than its own internal fault lines.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The FCC&#x27;s China-linked humanoid robot/power-inverter import ban — a substantive national-security trade action — has almost no real cross-spectrum sourcing in this dataset; the purported second source is off-topic, meaning this news event is functionally uncorroborated here despite its apparent significance.</div>
+<div class="anomaly-item">No left-leaning outlet appears anywhere in the Mamdani property-tax/Israel-rhetoric story, and Mamdani&#x27;s own response is absent — for a sitting NYC mayor facing &#x27;religious threat&#x27; framing from a pundit amplified as news (Breitbart), the total silence from left-aligned outlets on rebutting or contextualizing this is conspicuous.</div>
+<div class="anomaly-item">The Michigan Senate primary shows two irreconcilable polling claims (El-Sayed leading vs. trailing Rogers by 10) presented by different outlets with no attempt by either to reconcile methodology or timing — an unusual lack of due diligence for a nationally-watched race one week from voting.</div>
+<div class="anomaly-item">Several previously flagged watch items (Jay Clayton DNI conduct, SCOTUS Carroll immunity cert, Ken Martin DNC-chair incident corroboration, Iran/Russia sanctions bill linkage) have entirely dropped from coverage today with no resolution reported — either genuinely resolved off-cycle or quietly abandoned by the outlets that raised them.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are avoiding any scrutiny of intra-GOP friction (Cornyn/Tillis stalling Trump&#x27;s own AG pick) by folding it into a generic &#x27;accountability&#x27; frame rather than a Republican-vs-Republican story. Left-leaning outlets are avoiding direct engagement with Mamdani specifically — discussing &#x27;Democrats and working-class messaging&#x27; in the abstract while ceding all concrete Mamdani coverage to right-leaning and far-right outlets. Both patterns suggest each side prefers to litigate the opposing coalition&#x27;s internal conflicts rather than its own.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› To win over working-class voters, Democrats need to stop talking about democracy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Journalist details weekend spent with far-right Proud Boys</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge weighs bid to block or reverse transfers of transgender inmates into a segregated prison unit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wisconsin judge says voters who have returned absentee ballot for state primary cannot get a new one</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bullets that killed two at Seattle food festival do not match teen shooter’s gun, police say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Two people accuse Epstein of sexual conduct at Michigan fine arts school</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A quarter of young Africans believe USAID cuts could be positive, survey finds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California Does Medicaid Home Care Well. They’re Being Punished For It.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What “You Only Get 18 Summers” Gets Right About Parenting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big Oil Is Getting Sued for Heat Deaths. It’s Fighting Back With an Army of Immunity Laws.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Rapid Rise of Right-Wing Militias</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani Mamdani’S Class Enemies Clinton,</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dr. Fauci Takes the Fifth, Alas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Big Tax Moment for Missouri</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Warsh, the Fed and Market Signals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Restorative Justice’ Brings Violent Schools</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Cockroaches’ Threaten to Overrun Narendra Modi’s Kitchen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Quiet Sen. Graham</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump admin invokes 30-year dormant terror court as it seeks to deport Afghan woman tied to Election Day plot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News Poll: Democratic enthusiasm shapes North Carolina Senate race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fetterman brands new socialist favorite &#x27;Pontiac Platner&#x27; after &#x27;ogre&#x27; dig</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Left Has No Use for Anthony Fauci Anymore</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Reagan Showed the Way on Dealing with Kooks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci Has a Lot to Answer For</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Technology, Old Questions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Attack of the Theater Kids</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The IRS Is Still ‘Attempting the Impossible’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nicaragua Officially Becomes a Family Dictatorship</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: James Talarico Filmed Driving Rental Truck in &#x27;Real Texan&#x27; Campaign Ad</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: White House Fraud Task Force Helps FBI Catch 4 Overseas Fugitives</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Take Fauci to SCOTUS?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Is Winning? Don&#x27;t Be So Sure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NeverTrumpers Banking on Iran War To Tank GOP Midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Mamdani&#x27;s Grocery Stores Probably Won&#x27;t Work</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Peace Plan for the Data Center Wars</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Michigan Democratic Senate primary, Aug 4 2026 — watch whether the El-Sayed-leads vs. trails-by-10 polling discrepancy gets reconciled before the vote, and whether Fox&#x27;s financial-disclosure story gains traction beyond right-leaning outlets</div>
+<div class="watch-item">FCC humanoid robot/power-inverter import ban — seek out a genuine second/third source (trade press, China-focused outlets) since current cross-spectrum sourcing is effectively broken</div>
+<div class="watch-item">Whether any left-leaning outlet publishes directly on Mamdani&#x27;s property-tax policy or Israel remarks in his own words — continued silence would confirm a deepening, not incidental, blindspot</div>
+<div class="watch-item">Blanche AG nomination — watch whether Cornyn/Tillis&#x27;s demand for written IRS-settlement assurances becomes a broader story about GOP-on-GOP oversight rather than partisan persecution/accountability framing</div>
+<div class="watch-item">Whether Fauci&#x27;s testimony is ever tied back to the January 2020 diary entry previously flagged — still unaddressed despite wide-spectrum coverage of the hearing itself</div>
+<div class="watch-item">Musk&#x27;s reported GOP midterm spending push (Axios) — watch for signs it targets the Michigan Senate general election once the Democratic nominee is set</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
