@@ -4,7 +4,7 @@
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=fleXRPL_signal&metric=coverage)](https://sonarcloud.io/summary/new_code?id=fleXRPL_signal)
 
-[![Signal Logo](images/signal_banner.png)](https://flexrpl.github.io/signal/)
+[![Signal Logo](images/alt/signal_banner_dark.png)](https://flexrpl.github.io/signal/)
 
 A fully automated political intelligence pipeline. Ingests RSS feeds across the full political spectrum, runs a five-pass daily analysis, synthesizes weekly and monthly intelligence summaries, and publishes HTML briefs to GitHub Pages. Automatically posts three social cards to Bluesky each day — watch list, spectrum breakdown, and blindspot analysis.
 
