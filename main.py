@@ -12,6 +12,8 @@ Usage:
 """
 
 import argparse
+import os
+import re
 import shutil
 import subprocess
 import sys
@@ -23,6 +25,20 @@ from typing import Any
 
 ROOT = Path(__file__).parent
 _PREFLIGHT_CHECK_MSG = "[dim]Pre-flight LLM check...[/dim]"
+_MONTH_RE = re.compile(r"^\d{4}-(0[1-9]|1[0-2])$")
+_MODEL_RE = re.compile(r"^[a-zA-Z0-9][a-zA-Z0-9._:-]{0,63}$")
+
+
+def _parse_month_arg(value: str) -> str:
+    if not _MONTH_RE.fullmatch(value):
+        raise argparse.ArgumentTypeError(f"month must be YYYY-MM, got {value!r}")
+    return value
+
+
+def _parse_model_arg(value: str) -> str:
+    if not _MODEL_RE.fullmatch(value):
+        raise argparse.ArgumentTypeError(f"invalid model name {value!r}")
+    return value
 
 
 def setup_venv() -> Path:
@@ -41,6 +57,32 @@ def setup_venv() -> Path:
             check=True,
         )
     return python
+
+
+def _activate_venv() -> None:
+    """Ensure the project venv exists and its site-packages are on sys.path."""
+    venv_python = setup_venv()
+    if Path(sys.executable).resolve() == venv_python.resolve():
+        return
+
+    venv_dir = ROOT / ".venv"
+    for site_packages in sorted((venv_dir / "lib").glob("python*/site-packages"), reverse=True):
+        site_path = str(site_packages)
+        if site_path not in sys.path:
+            sys.path.insert(0, site_path)
+
+    venv_bin = str(venv_python.parent)
+    os.environ["PATH"] = f"{venv_bin}{os.pathsep}{os.environ.get('PATH', '')}"
+    os.environ["VIRTUAL_ENV"] = str(venv_dir)
+
+
+def _dispatch(args: argparse.Namespace) -> None:
+    if args.monthly:
+        run_monthly_signal(args)
+    elif args.weekly:
+        run_weekly_signal(args)
+    else:
+        run_signal(args)
 
 
 def run_weekly_signal(args: argparse.Namespace) -> None:
@@ -711,7 +753,7 @@ Examples:
   python main.py --collect-only
         """,
     )
-    parser.add_argument("--model", type=str, default=None, help="Ollama model override")
+    parser.add_argument("--model", type=_parse_model_arg, default=None, help="Ollama model override")
     parser.add_argument("--no-venv", action="store_true", help="Skip venv setup")
     parser.add_argument("--collect-only", action="store_true", help="Fetch articles only, skip analysis")
     parser.add_argument("--no-fetch", action="store_true", help="Skip full article text fetch")
@@ -733,37 +775,15 @@ Examples:
     )
     parser.add_argument(
         "--month",
-        type=str,
+        type=_parse_month_arg,
         default=datetime.now(timezone.utc).strftime("%Y-%m"),
         help="Calendar month for monthly synthesis as YYYY-MM (default: current month)",
     )
     args = parser.parse_args()
 
-    if args.no_venv:
-        if args.monthly:
-            run_monthly_signal(args)
-        elif args.weekly:
-            run_weekly_signal(args)
-        else:
-            run_signal(args)
-    else:
-        python = setup_venv()
-        cmd = [str(python), str(Path(__file__).resolve()), "--no-venv"]
-        if args.monthly:
-            cmd.append("--monthly")
-            cmd += ["--month", args.month]
-        elif args.weekly:
-            cmd.append("--weekly")
-            cmd += ["--days", str(args.days)]
-        else:
-            if args.model:
-                cmd += ["--model", args.model]
-            if args.collect_only:
-                cmd.append("--collect-only")
-            if args.no_fetch:
-                cmd.append("--no-fetch")
-        result = subprocess.run(cmd, cwd=str(ROOT))
-        sys.exit(result.returncode)
+    if not args.no_venv:
+        _activate_venv()
+    _dispatch(args)
 
 
 if __name__ == "__main__":
