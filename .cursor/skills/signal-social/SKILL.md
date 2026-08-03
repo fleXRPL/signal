@@ -42,10 +42,10 @@ Bluesky max **300 graphemes**. `social.py` uses `_BLUESKY_SAFE_GRAPHEMES = 295` 
 
 | Label | Time | Slot |
 |-------|------|------|
-| `com.flexrpl.signal` | 4:00 AM | pipeline + cards |
-| `com.flexrpl.signal.social.am` | 9:00 AM | `--slot am` |
-| `com.flexrpl.signal.social.noon` | 12:00 PM | `--slot noon` |
-| `com.flexrpl.signal.social.pm` | 6:00 PM | `--slot pm` |
+| `com.flexrpl.signal` | Mon–Fri 4:00 AM | pipeline + cards |
+| `com.flexrpl.signal.social.am` | Mon–Fri 9:00 AM | `--slot am` |
+| `com.flexrpl.signal.social.noon` | Mon–Fri 12:00 PM | `--slot noon` |
+| `com.flexrpl.signal.social.pm` | Mon–Fri 6:00 PM | `--slot pm` |
 
 Reload after editing plists:
 

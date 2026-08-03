@@ -165,11 +165,11 @@ Expected (exit code `0` in the second column = last run OK):
 
 | Job                              | Schedule                                    |
 | -------------------------------- | ------------------------------------------- |
-| `com.flexrpl.signal`             | Daily 4:00 AM — pipeline + cards + git push |
-| `com.flexrpl.signal.weekly`      | Monday 6:00 AM — weekly brief               |
-| `com.flexrpl.signal.social.am`   | Daily 9:00 AM — post Watch List             |
-| `com.flexrpl.signal.social.noon` | Daily 12:00 PM — post Spectrum              |
-| `com.flexrpl.signal.social.pm`   | Daily 6:00 PM — post Blindspot              |
+| `com.flexrpl.signal`             | Mon–Fri 4:00 AM — pipeline + cards + git push |
+| `com.flexrpl.signal.weekly`      | Monday 6:00 AM — weekly brief                 |
+| `com.flexrpl.signal.social.am`   | Mon–Fri 9:00 AM — post Watch List             |
+| `com.flexrpl.signal.social.noon` | Mon–Fri 12:00 PM — post Spectrum              |
+| `com.flexrpl.signal.social.pm`   | Mon–Fri 6:00 PM — post Blindspot              |
 
 Social jobs only **post** pre-built files; they do not run the LLM or Playwright.
 
