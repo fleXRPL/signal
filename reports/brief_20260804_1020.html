@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-04 10:20 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-04 10:20 UTC</span>
+    <span class="pill">106 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story in American politics today is not a single event but a pattern: nearly every major storyline is being covered by only one side of the ideological spectrum, and the split tracks almost perfectly with which coalition looks bad in the story. This is a low-news-density day — no single dominant national event — which makes the selective-coverage pattern more visible than usual, because outlets are choosing what to cover rather than reacting to what they&#x27;re forced to cover.</p>
+<p>Two parallel House Republican accountability stories are underway: Rep. Chuck Edwards faces a censure recommendation for harassment of young female staffers, and Rep. Max Miller is refusing to withdraw from reelection despite domestic abuse allegations from his ex-wife, with an Ohio ballot deadline approaching. Right-leaning outlets are covering Edwards (six sources) but are nearly silent on Miller — a sharper omission given the two cases are structurally similar. Simultaneously, an intraparty Democratic fight over the party&#x27;s socialist wing is playing out through Zohran Mamdani (NYC), Francesca Hong (Wisconsin gubernatorial primary), and Cori Bush (ex-Missouri Congress), driven almost entirely by right-only and left-only outlets with center coverage absent. Separately, a Schumer-led Senate Democratic concession on a shutdown-related procedural vote is being covered only on the right, and appears nowhere in left-of-center sampling.</p>
+<p>Underneath these is a resurfacing COVID-origins/Fauci narrative running in right-only opinion space with no visible triggering event, and a set of ICE-related stories where each side is covering only the valence that confirms its priors — courtroom wins for ICE on the right, oversight and accountability stories about ICE on the left. None of this is fabrication; it is selective emphasis operating at scale across a fragmented but simultaneous news cycle.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Elizabeth Warren</strong> is an uncredited throughline today — her name doesn&#x27;t appear as a headline driver, but her oversight letter appears to have prompted the ICE chief&#x27;s stock divestment and recusal, and Massachusetts recurs across at least three otherwise unconnected stories (Senate primary debate, ICE oversight, Uber driver unionization). This suggests one senator&#x27;s staff is generating multiple simultaneous news threads that aggregation is treating as unrelated.</p>
+<p><strong>Trump</strong>, per Axios, privately told Max Miller his candidacy is in trouble while staying publicly silent — a pattern consistent with managing a liability without owning the political cost of forcing him out. That silence is doing real work: it lets the ballot deadline, not a public break with Trump, become the forcing mechanism on Miller&#x27;s seat.</p>
+<p><strong>Chuck Schumer</strong> conceded a procedural point to Republicans on a shutdown-related vote, a rare visible crack in Senate Democratic leadership. That it is invisible in left-of-center coverage while present in right-leaning coverage indicates the story is being used by the right as a wedge against progressive dissatisfaction with Democratic leadership, not corroborated independently.</p>
+<p><strong>Mamdani</strong> is functioning as a proxy target for a larger conservative-media campaign to nationalize &quot;Democratic Party socialism&quot; ahead of the Wisconsin primary, bundled with attacks on Hong and Bush and reinforced by opinion pieces urging Democrats to distance themselves from their left flank. The specifics of Mamdani&#x27;s grocery-store plan (particularly an ID-verification detail) are still being reported inconsistently between right-leaning sources, suggesting the policy itself may not be finalized — the attack is running ahead of the policy detail.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning outlets are avoiding three things that are harder to spin than routine partisan disputes: Max Miller&#x27;s domestic abuse allegations against a sitting member actively seeking reelection; federal worker relocation conditions; and Iran-linked water-system cyberattacks across seven states, which would ordinarily draw heavy national-security coverage on the right but instead appear only on the left — worth checking whether Iran attribution is actually confirmed or still contested, since that would explain (but not fully excuse) the silence.</p>
+<p>Left-leaning outlets are avoiding stories where Democratic institutions falter internally: Schumer&#x27;s shutdown concession is the clearest example, invisible on the left despite being a real story about Senate Democratic leadership. The left is also largely ceding the Democratic-socialist-wing fight (Mamdani, Hong, Bush) to right-only framing rather than contesting it directly — an absence of defense, not just an absence of offense.</p>
+<p>Both patterns converge on the same rule: each side covers accountability and internal-fracture stories only when the institution under scrutiny belongs to the opposing coalition. Neither side is lying. Both are curating.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>A synchronized cluster of right-only pieces on Fauci and COVID origins (&quot;Fauci Is a Guy That Was Drinking His Own Kool-Aid,&quot; &quot;Fauci vs. the Republican Witch Hunt,&quot; Aaron Rodgers&#x27; comments, and a China-origins piece) published the same day with no visible news trigger in center or left coverage. Coordinated multi-outlet revivals like this typically track to an external driver — a book release, a hearing, an HHS/RFK Jr. announcement, or a court filing — not yet visible in this sample. This is worth treating as a leading indicator of an announcement rather than nostalgia.</p>
+<p>ICE coverage splits by favorability, not just ideology: the one ICE story the right covers (a federal judge blocking New York&#x27;s mask ban) shows the agency prevailing in court; every ICE story involving scrutiny — the chief&#x27;s stock divestment, for-profit detention contracts, the DHS border wall crossing Tohono O&#x27;odham land — is left-only. Same agency, opposite selection logic depending on outcome.</p>
+<p>Two separate story pairs today were mismatched by the aggregation process — a PBS cyclosporiasis item bundled with a Hill story on a McMahon university letter, and a WSJ item on California&#x27;s wealth tax bundled with a Fox story on the ICE mask ruling. Neither pairing reflects a real connection; this happening twice in one cycle suggests a thin-news-day clustering artifact worth flagging to whoever maintains the aggregation pipeline, not a substantive signal.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Max Miller — Ohio ballot withdrawal deadline.</strong> Watch whether right-leaning outlets begin covering the domestic abuse allegations as the deadline approaches, or whether the silence holds until it&#x27;s moot.</p>
+<p><strong>Chuck Edwards — House censure vote timeline.</strong> The procedural next step in a case the right is willing to cover, unlike Miller&#x27;s.</p>
+<p><strong>Michigan Democratic Senate primary (El-Sayed vs. Stevens).</strong> Election Day was today; results coverage has not yet appeared in this dataset. Watch for which outlets pick up the outcome after largely ignoring the lead-up.</p>
+<p><strong>Trigger event behind the Fauci/COVID-origins revival.</strong> Look for a book release, hearing announcement, or HHS/RFK Jr. action in the next 48–72 hours that retroactively explains today&#x27;s synchronized cluster.</p>
+<p><strong>Iran-linked water-system cyberattacks across seven states.</strong> Watch for attribution updates and whether right-leaning outlets pick up the story once (if) attribution firms up — the current silence may be an evidentiary gap, not an ideological one.</p>
+<p><strong>Jack Smith&#x27;s scheduled testimony before Senate Judiciary.</strong> Independent of today&#x27;s noise, this is a hard calendar event with direct bearing on the 2020/2024 election-interference cases.</p>
+<p><strong>Schumer/Senate Democrats shutdown deal.</strong> Watch for progressive backlash and whether left-of-center outlets eventually acknowledge the concession.</p>
+<p><strong>California Democratic Party wealth-tax endorsement vs. Newsom.</strong> An intraparty fight with 2028 implications if Newsom is positioning as a moderate.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline across today&#x27;s fragmented coverage is not any single scandal or vote but a hardening pattern of asymmetric institutional self-protection: each media coalition has effectively stopped covering accountability stories that implicate its own side, not through denial but through omission, while amplifying equivalent stories about the other side without hesitation. This is more corrosive than overt bias because it doesn&#x27;t require distortion of facts — it only requires silence, and silence doesn&#x27;t trigger fact-checking. The practical effect is that a senior official relying on either side&#x27;s coverage alone would have no idea that a sitting Republican faces domestic abuse allegations with a ballot deadline attached, or that Senate Democratic leadership just conceded ground to Republicans on the shutdown fight. Both omissions are consequential and neither is being corrected by the other side, because neither side has an incentive to surface a story that primarily damages itself.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">Two House Republicans face separate misconduct scandals — Rep. Chuck Edwards recommended for censure over harassment of young female staffers, and Rep. Max Miller refusing to withdraw from reelection despite domestic abuse allegations from his ex-wife — as Democrats push for resignations or expulsion and the GOP confronts ballot and accountability deadlines.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (10)</span><span class="bias-badge" style="color:#e0a87a;">center-left (12)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.6;" title="center: 10"></div><div class="bias-segment" style="background:#e0a87a; flex:30.8;" title="center-left: 12"></div><div class="bias-segment" style="background:#7ae09b; flex:7.7;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:5.1;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:5.1;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:2.6;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:7.7;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:15.4;" title="right: 6"></div></div></div>
+  <div class="story-assessment">Two distinct House GOP accountability stories are unfolding in parallel — a substantiated ethics violation (Edwards) and unadjudicated but serious abuse allegations (Miller) — and the clearest signal isn&#x27;t in the disputed details but in the asymmetric attention: center-left and center outlets are covering both stories heavily while right-leaning outlets in this sample are conspicuously silent on Miller specifically. The ballot deadline gives the Miller story real near-term stakes for the GOP&#x27;s Ohio seat, independent of how the allegations are ultimately resolved.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left outlets (NPR, PBS) treat both cases as institutional accountability failures, emphasizing bipartisan ethics findings, the moral weight of a senator breaking with his own former son-in-law over abuse allegations, and the GOP&#x27;s discomfort in policing its own members ahead of a hard ballot deadline.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) frame both stories through a process and horse-race lens — ballot-deadline logistics, succession speculation (Renacci), and internal Democratic strategizing over whether to force an expulsion vote — rather than dwelling on the substance or severity of the allegations themselves.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning coverage in this set (Fox News) addresses the Edwards ethics finding fairly directly and factually, including his denial, but no outlet on the right covers the Max Miller domestic abuse story at all — right-of-center attention here is concentrated instead on unrelated stories (denaturalization, judicial impeachment threats, Iran, Pentagon strikes).
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning coverage does not surface the insider detail (reported by Axios, a center outlet) that Trump privately told Miller his candidacy was in trouble while staying publicly silent, nor does it engage with Edwards&#x27; attorneys&#x27; counter-argument that the ethics recommendation overreaches.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets in this set almost entirely omit the Max Miller domestic abuse story — no Fox News or Breitbart piece addresses it, despite it being one of the more heavily covered GOP accountability stories across NPR, PBS, The Hill, and Axios — leaving a notable coverage gap on a sitting Republican member&#x27;s alleged domestic abuse.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">PBS NewsHour ran a multi-topic news-wrap segment noting Michigan&#x27;s first two reported deaths tied to a cyclosporiasis outbreak, while The Hill separately reported that Education Secretary Linda McMahon sent university leaders a letter demanding they detail commitments to Trump administration priorities by year-end — these are two unrelated stories, not two perspectives on the same event.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">This is not a single story covered across the spectrum — it&#x27;s a mismatched pairing of two unrelated news items (a public-health death toll and a higher-ed policy letter), each from a single outlet. No genuine consensus or bias comparison can be drawn; the apparent &#x27;contested points&#x27; are simply an artifact of comparing unrelated claims rather than actual disputes over facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS treats the Michigan deaths as one item in a rapid-fire roundup of same-day alarming news (public health, political/legal conflict, war), presenting it matter-of-factly without deeper analysis or political framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames McMahon&#x27;s letter as the administration applying pressure on universities to align with its political priorities under a &#x27;national service&#x27; and traditional-principles banner, treating it as a notable higher-ed/political-conflict story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is present in this set; right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS&#x27;s segment does not mention the McMahon university letter at all, so no comparison of omission is meaningful on that story.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning outlet is included, so it&#x27;s not possible to identify what a right-leaning source would add regarding either the cyclosporiasis outbreak or the McMahon letter.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The U.S. and Japan jointly intervened in currency markets to support a weakening yen, with commentators split on whether the deeper problem is strained global bond markets or the Bank of Japan&#x27;s monetary policy.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">Both pieces agree on the basic fact — coordinated Treasury support for the yen — but diverge sharply on what the action means: Axios reads it as a symptom of bond-market anxiety, while WSJ Opinion reads it as a stopgap for BOJ policy inertia. Neither source is corroborated by outlets outside the center/center-right band, so the full political spectrum&#x27;s take (particularly left-leaning coverage) is absent and the picture is incomplete.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set; cannot characterize left framing from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios treats the intervention as a symptom to be decoded, emphasizing what the move reveals about deeper U.S. concerns over global bond market stress rather than treating it as a story about the yen itself.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion treats the intervention skeptically as a stopgap, arguing the real fix is a monetary-policy decision only the Bank of Japan can make — implicitly criticizing reliance on Treasury market intervention as insufficient or misdirected.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    N/A — no left-leaning source provided in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion omits Axios&#x27;s central thesis: that the intervention may be a coded signal of broader U.S. concern about global bond-market strain and rising long-term rates, treating the episode narrowly as a yen/BOJ policy question instead.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The two sources provided do not cover the same event: WSJ Opinion reports on California Democratic Party&#x27;s ballot endorsement of a wealth tax over Governor Newsom&#x27;s objection, while Fox News reports on a federal judge blocking a New York law that banned ICE agents from wearing masks — these are unrelated stories bundled under one label.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is not a single story covered across the spectrum — it is two distinct, unrelated political stories (a California tax-policy intraparty dispute and a New York federal court ruling on ICE agent identification) that have been mistakenly grouped together. A meaningful bias comparison requires matching sources reporting on the same underlying event; as given, no consensus can be established and any cross-story &#x27;contested points&#x27; would be a false equivalence.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set, so left framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-rated source was provided in this set, so center framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The right-leaning sources emphasize institutional overreach and vindication of federal authority: WSJ Opinion frames California Democrats&#x27; wealth tax endorsement as reckless leftward drift undercutting Newsom&#x27;s moderate brand, while Fox News frames the judge&#x27;s ruling as validating ICE agents&#x27; operational safety against state interference.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left-leaning coverage is entirely absent from this set, so no comparison of omissions relative to right coverage is possible.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Because the two right-leaning pieces cover unrelated events, neither addresses the other&#x27;s subject matter at all; without left or center sourcing on either the wealth tax fight or the ICE mask-ban ruling, it cannot be determined what the right-leaning pieces omit relative to other framings.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">New York City Mayor Zohran Mamdani&#x27;s proposed city-run grocery store initiative is drawing criticism from right-leaning outlets over both a proposed ID-verification system and the plan&#x27;s potential economic side effects.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Both right-leaning sources oppose the plan but attack it from different angles — one focused on procedural/political hypocrisy (ID checks), the other on economic mechanics (market distortion) — suggesting the specifics of the plan are still being reported inconsistently or are not yet finalized. Without left-leaning coverage in this sample, it&#x27;s not possible to determine whether the ID-system detail is confirmed policy or speculative reporting, which is the key fact still in question.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not available — no left-leaning source was included in this sample, so left-of-center framing cannot be characterized from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    RealClearPolitics takes a more analytical, policy-critique tone, arguing the plan is well-intentioned but economically flawed, emphasizing unintended market consequences over personal/political hypocrisy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the story around perceived hypocrisy and government overreach, using the voter-ID contrast (&#x27;Make it make sense&#x27;) to portray Mamdani as inconsistent and the policy as bureaucratic and paternalistic.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source is present in this dataset to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Coverage as provided does not include any defense of the plan&#x27;s rationale (e.g., stated goals around food affordability/access, or Mamdani campaign&#x27;s justification for anti-resale controls), nor any pro-plan economic analysis that might counter the &#x27;hidden costs&#x27; framing — these would likely appear in left-leaning coverage but are absent here.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Right-leaning outlets are casting Wisconsin Democratic gubernatorial candidate Francesca Hong as a political liability, with National Review attacking her ideological positioning and Breitbart highlighting a resurfaced 2019 social media post about race.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This coverage set is entirely right-of-center (one mainstream conservative, one far-right), so what&#x27;s presented as &#x27;coverage of an event&#x27; is really two opinion-inflected attacks on a candidate rather than balanced reporting — there is no independent verification of the Culver&#x27;s post&#x27;s context or of the claim that her candidacy is a genuine electoral risk. The actual news hook (a resurfaced social media post) is thin, and the political risk claim is an opinion framing dressed as analysis; readers would need left or center sources to know if these characterizations hold up.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in this source set — no left-leaning coverage of this story was provided, so it&#x27;s unclear how left-leaning outlets are characterizing Hong&#x27;s candidacy or responding to these attacks.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not represented in this source set — no center/nonpartisan coverage was provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Two distinct right-of-center angles converge on discrediting Hong: National Review takes an ideological/policy-risk approach, framing her as more radically socialist than Wisconsin&#x27;s historical &#x27;sewer socialism&#x27; tradition and thus dangerous for the state and party; Breitbart takes a culture-war approach, resurfacing an old social media post to paint her as anti-white and extreme. Both emphasize risk, radicalism, and unsuitability for office.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source is present in this set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right-leaning pieces omit Hong&#x27;s own platform, policy record, legislative history, or any direct response/context she has given for the resurfaced post; neither source engages with her substantive governing agenda beyond labeling it &#x27;socialist,&#x27; and neither provides polling data or establishment Democratic reaction to assess whether she&#x27;s actually viewed as a liability within her own party.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anthony Fauci</span><span class="entity-tag">Aaron Rodgers</span><span class="entity-tag">China</span></div>
+  <div class="connection-text">Three right-only pieces published the same day — &#x27;Fauci Is a Guy That Was Drinking His Own Kool-Aid,&#x27; &#x27;Fauci vs. the Republican Witch Hunt,&#x27; &#x27;Aaron Rodgers Calls Anthony Fauci An Absolute Coward&#x27; — plus &#x27;We Must Not Let China Plead the Fifth on Covid&#x27;s Origin&#x27; form a synchronized COVID-accountability revival cluster with no proximate news trigger visible anywhere in today&#x27;s center or left coverage.</div>
+  <div class="connection-sig">↳ Coordinated multi-outlet revivals like this usually track to an external driver (book release, hearing, HHS/RFK Jr. announcement, court filing) not captured in this sample — worth identifying the trigger, since it may signal an upcoming action rather than nostalgia.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">ICE</span><span class="entity-tag">Department of Homeland Security</span></div>
+  <div class="connection-text">ICE-related coverage splits cleanly by valence, not just ideology: the one ICE story right-leaning outlets cover (federal judge blocking NY&#x27;s mask ban) shows ICE prevailing in court, while every ICE story showing scrutiny — chief&#x27;s stock divestment/recusal (prompted by Warren), for-profit detention contract battles, DHS border wall through Tohono O&#x27;odham land — is left-only.</div>
+  <div class="connection-sig">↳ This is favorability-selective story selection on the same agency, not topic avoidance — both sides are picking ICE stories that confirm pre-existing frames rather than ignoring the agency altogether.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Zohran Mamdani</span><span class="entity-tag">Francesca Hong</span><span class="entity-tag">Cori Bush</span></div>
+  <div class="connection-text">Three DSA-aligned Democratic figures (NYC mayor, WI gubernatorial candidate, ex-Missouri Congress member) are targeted in right-only or right-heavy pieces the same day as &#x27;I&#x27;m a Democrat. Socialists need to stop leeching off my party&#x27; and &#x27;The Socialists Want the DNC to Sign Its Own Death Warrant.&#x27;</div>
+  <div class="connection-sig">↳ Reads as a coordinated conservative-media push to nationalize &#x27;Democratic Party socialism&#x27; as a wedge issue ahead of the Wisconsin primary and building on Mamdani&#x27;s NYC mayoralty — largely uncontested by center or center-left outlets in this sample.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Chuck Edwards</span><span class="entity-tag">Max Miller</span></div>
+  <div class="connection-text">Right-leaning outlets cover the Edwards harassment/censure story heavily (right=6) but are essentially silent on Miller&#x27;s domestic abuse allegations, despite both being live GOP accountability stories with ballot implications.</div>
+  <div class="connection-sig">↳ Suggests an editorial calculation on the right that domestic-abuse allegations against a candidate actively seeking reelection are harder to cover/defend than a censure recommendation — raises the stakes of Ohio&#x27;s ballot deadline as a forcing event.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Chuck Schumer</span><span class="entity-tag">Senate Democrats</span></div>
+  <div class="connection-text">&#x27;Democrats blink as Schumer helps GOP clear key shutdown hurdle&#x27; appears only in right-leaning sources — no center-left or left outlet in this sample covers Senate Democratic leadership&#x27;s own procedural concession.</div>
+  <div class="connection-sig">↳ An intraparty Democratic setback is invisible on the left today, consistent with a broader pattern of left-of-center outlets underplaying stories where Democratic leadership fractures or capitulates.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Massachusetts</span><span class="entity-tag">Elizabeth Warren</span></div>
+  <div class="connection-text">Massachusetts recurs across four otherwise-unconnected stories — the MA Senate Democratic primary debate, the ICE chief&#x27;s stock divestment triggered by a Warren letter, and Uber-driver unionization — pointing to Warren as an uncredited common thread of oversight/labor stories the entity network didn&#x27;t surface by name.</div>
+  <div class="connection-sig">↳ Worth tracking Warren&#x27;s oversight activity as a single throughline rather than three isolated stories, since it suggests one senator is driving multiple simultaneous news cycles.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A Democratic &#x27;socialist wing civil war&#x27; narrative cuts across NYC (Mamdani), Wisconsin (Hong), Missouri (Cori Bush), and DNC-strategy opinion pieces, driven almost entirely by right-only and left-only outlets — center and center-left mainstream news is conspicuously absent from this fight today.</div>
+<div class="pattern-item">A cluster of simultaneous &#x27;official facing accountability&#x27; stories (Edwards censure, Miller withdrawal pressure, DHS&#x27;s Mullin criticized by his own MAGA base, ICE chief&#x27;s recusal) are each being covered in ideological isolation rather than as a connected accountability wave.</div>
+<div class="pattern-item">A COVID-origins/Fauci revival cycle is running entirely in right-only opinion space with no visible trigger in center or left coverage sampled today.</div>
+<div class="pattern-item">Two separate story pairs today were mismatched/bundled unrelated items by the aggregation process (PBS/Hill cyclosporiasis+McMahon letter; WSJ/Fox CA wealth tax+NY ICE mask ruling) — likely a thin-news-day clustering artifact, but notable it happened twice in one cycle.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Right-leaning outlets&#x27; near-total silence on Max Miller&#x27;s domestic abuse allegations contrasts sharply with heavy right coverage (6 sources) of the structurally similar Edwards harassment story.</div>
+<div class="anomaly-item">Iran-linked water-system cyberattacks across 7 states are covered only by left-leaning outlets; stories implicating Iran in US infrastructure attacks typically draw heavy right-wing national-security coverage, so the absence here is notable and worth checking whether Iran attribution is confirmed or still contested.</div>
+<div class="anomaly-item">Three right-only Fauci/COVID-origins pieces appear with no apparent proximate news hook in today&#x27;s dataset — the trigger event is not visible and should be identified.</div>
+<div class="anomaly-item">The Michigan Democratic Senate primary (El-Sayed vs. Stevens), flagged in the previous watch list as today&#x27;s vote, does not appear as a distinct story in today&#x27;s data despite Election Day having arrived — results coverage appears deferred.</div>
+<div class="anomaly-item">Two mismatched/bundled story pairs occurred in a single day&#x27;s aggregation, suggesting a possible clustering-quality issue rather than a pure signal from the news environment.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are systematically avoiding stories that reflect poorly on their own coalition in ways harder to spin than routine partisan attacks: Miller&#x27;s domestic abuse allegations, federal worker relocation conditions, and Iran-linked infrastructure cyberattacks that complicate a deterrence narrative. Left-leaning outlets are avoiding stories showing Democratic leadership faltering or fracturing internally, most notably Schumer&#x27;s shutdown concession, while ceding the Democratic-socialist-wing fight (Mamdani, Hong, Cori Bush) to right-only framing rather than contesting it directly. Both patterns point to the same underlying behavior: each side covers intra-institutional accountability stories only when the institution being scrutinized belongs to the other camp.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ripple effects: Three people have Reflecting Pool charges dropped after Hearn request</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bedbugs, bad Wi-Fi: Federal workers say forced summer relocations have been chaos</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: Massachusetts&#x27; U.S. Senate Democratic primary debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What we know about the cyberattacks on water systems in 7 states</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man who killed top Minnesota lawmaker and her husband makes first state court appearance</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump signs executive order forming Military Spouse Commission</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We’re about to find out how powerful progressives really are</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Trump is lashing out at Chevron amid profit windfall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Great Inflammation Panic</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As For-Profit Companies Battle Over ICE Contracts, Immigrants Are Caught in the Middle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS Wants To Build A Border Wall Through Tohono O’odham Land. It’s Another Instance of The US Undermining Tribal Sovereignty.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California Democrats Newsom Wealth Federal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani&#x27;S Grocery Giveaway Critics Foul:</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sewer Socialism, Worse Democrat Wisconsin</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump vs. Big Oil</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gilead Beats the Plaintiff Bar</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Unions Are Coming for Your Uber Driver</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› JD Vance ‘Fixes’ Capitalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Unpredictability Has Costs, Too</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Bald-Faced Truth About Beards</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;The Brink of War&#x27; tells story of Reagan-Gorbachev nuclear discussions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats blink as Schumer helps GOP clear key shutdown hurdle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I’m a Democrat. Socialists need to stop leeching off my party and build their own</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Where Bipartisan Reform Is Actually Working</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Reflecting Pool Debacle Reflects Trump’s Essential Spite</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kumba, R.I.P.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Socialists Want the DNC to Sign Its Own Death Warrant</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Child’s Healthy Body Is Not a Problem to Be Solved</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Must Not Let China Plead the Fifth on Covid’s Origin</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Never Forgetting with Boy George</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cori Bush Wants &#x27;Trans Rights,&#x27; &#x27;Abortion Rights&#x27; Enshrined in Constitution</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrat Roy Cooper’s Billion-Dollar Electric Vehicle Deal Crumbles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alsobrooks: Trump Is Doing a &#x27;Smash-and-Grab&#x27; on the Country</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS Chief Markwayne Mullin Criticized by MAGA Supporters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Aaron Rodgers Calls Anthony Fauci &#x27;An Absolute Coward&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WNBA Coach Who Wore &#x27;Trans Kids Belong&#x27; Shirt Fears Men Taking Coaching Jobs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Court Shields Catholic Nuns, Healthcare Ministries from New York Assisted Suicide Law</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Med Schools Are Over Their Politics Fever</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Biden Confessed to Everything--Hur Gave Him a Pass</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s Economic &#x27;Golden Age&#x27; Collides With Reality</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Racial Crossroads</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci Is a Guy That Was Drinking His Own Kool-Aid</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Quiet Redesign of the Bachelor&#x27;s Degree</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci vs. the Republican Witch Hunt</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Max Miller — Ohio ballot withdrawal deadline and whether right-leaning outlets begin covering the allegations as the deadline nears</div>
+<div class="watch-item">Chuck Edwards censure vote timeline in the House</div>
+<div class="watch-item">Michigan Democratic Senate primary (El-Sayed vs. Stevens) results and which outlets pick up the outcome after ignoring the lead-up</div>
+<div class="watch-item">Trigger event behind today&#x27;s synchronized Fauci/COVID-origins revival (book, hearing, HHS/RFK Jr. announcement)</div>
+<div class="watch-item">Attribution updates on the Iran-linked water-system cyberattacks across 7 states</div>
+<div class="watch-item">Jack Smith&#x27;s scheduled testimony before the Senate Judiciary Committee</div>
+<div class="watch-item">Mamdani grocery-store plan — confirmation of whether the ID-verification detail is finalized policy or speculative reporting</div>
+<div class="watch-item">California Democratic Party wealth-tax ballot endorsement vs. Newsom — intraparty fallout</div>
+<div class="watch-item">Schumer/Senate Democrats shutdown deal — progressive backlash and whether left-of-center outlets eventually cover it</div>
+<div class="watch-item">Minnesota lawmaker (Hortman) killer&#x27;s ongoing state court proceedings — watch for right-of-center pickup</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
