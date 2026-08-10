@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-10 08:57 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-10 08:57 UTC</span>
+    <span class="pill">97 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story in American politics today is not foreign policy, not legislation, and not the administration&#x27;s legal apparatus — it is a wave of contested 2026 primaries exposing a genuine rift inside the Democratic Party. Abdul El-Sayed&#x27;s defeat of Rep. Haley Stevens in the Michigan Senate primary is the clearest marker: a progressive/democratic-socialist challenger beating an establishment incumbent, with parallel fights underway in Wisconsin, Montana, Hawaii, and South Carolina. This is real and consequential, not manufactured — it has direct bearing on how the party positions itself for the midterms and on the shape of a post-Trump 2028 field. It has also displaced what was, until recently, the dominant intra-party storyline (the Ogles/Blackburn accountability fight), which has gone quiet.</p>
+<p>Beneath that headline, the more consequential but least-covered story is Iran. Trump has told Axios the US is &quot;low-keying it&quot; — sustained economic pressure rather than military escalation — while Iran is reportedly attaching conditions to reopening the Strait of Hormuz. Nobody in this sample reports what those conditions actually are. This is a live, high-stakes foreign policy standoff being covered as six loosely bundled, mostly unrelated stories (military-readiness debate, a senator&#x27;s Israel criticism, election-security drills, Senate satire) rather than as a single coherent thread. The domestic primary fight is getting cross-spectrum, well-sourced coverage; the Iran standoff is not.</p>
+<p>A third layer is quieter but telling: multiple stories today involve actors using procedure, deflection, or silence to avoid substantive accountability questions — Max Miller&#x27;s ballot-deadline lock-in despite abuse allegations, the RNC dismissing Democratic crossover claims in Texas, an AI-generated attack ad in the Texas Senate race, and a near-total right-wing blackout on two stories involving strain inside Trump&#x27;s legal team (Will Scharf&#x27;s WH Counsel appointment, Blanche&#x27;s rocky tenure as Acting AG). None of these individually is a major event. Together they describe an information environment where both parties are managing what doesn&#x27;t get discussed as carefully as what does.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Abdul El-Sayed</strong> is now the clearest data point for the strength of the progressive/DSA-aligned lane inside the Democratic Party, having beaten a sitting House member with establishment backing. <strong>Barack Obama&#x27;s</strong> apparent involvement in reconciliation efforts signals the party establishment is treating this as a containment problem, not a fluke. Watch whether the same pattern (insurgent beats establishment favorite) repeats in Wisconsin, Montana, Hawaii, and South Carolina — if it does three-for-four, that&#x27;s a trend, not an anomaly.</p>
+<p><strong>Trump</strong> is running a deliberately restrained Iran policy — pressure over escalation — a posture that cuts against his usual rhetorical style and is being read by sympathetic outlets as strategic patience and by critics as legacy anxiety (the Hoover comparison). Iran&#x27;s leverage is shipping through Hormuz, and the actual substance of what Tehran wants in exchange for reopening it is not being reported anywhere in this sample — a real gap, not a rhetorical one.</p>
+<p><strong>Will Scharf</strong> replacing David Warrington as White House Counsel (effective Sept 1) is a routine loyalist promotion on its face, but the total absence of right-wing coverage of a top legal-leadership change is itself a signal — either deliberate avoidance or an instinctive editorial choice to not draw attention to turnover in Trump&#x27;s legal apparatus, especially with the Guardian&#x27;s unverified claim linking Scharf to the ballroom-project controversy still unaddressed. <strong>Todd Blanche&#x27;s</strong> difficulties as Acting AG (court skepticism, staff morale) sit in the same category — real but only covered on the left.</p>
+<p><strong>Max Miller</strong> is now locked in as the OH-07 nominee purely because a legal deadline passed, not because the allegations against him were resolved or addressed. Both of Ohio&#x27;s senators called for his resignation — a detail right-leaning coverage omits. This is a story about institutional inertia protecting an incumbent, not about the allegations being adjudicated.</p>
+<p><strong>Tucker Carlson</strong> is positioning against the GOP mainstream ahead of 2028 — a real intra-Republican fracture story that is, notably, favorable to Democratic messaging and yet is not being picked up by any left-leaning outlet in this sample.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not discussing anything that implies dysfunction inside Trump&#x27;s legal or institutional apparatus. Both the Scharf appointment and Blanche&#x27;s troubles as Acting AG are absent from right-leaning coverage entirely — not spun, not minimized, simply not mentioned. That is a stronger signal than spin would be; it suggests an instinct to deny these stories oxygen rather than contest their framing.</p>
+<p>The left is not exploiting the Carlson/GOP-2028 fracture story, despite it directly supporting a &quot;Republicans are radicalizing and eating themselves&quot; narrative that would parallel their own framing of the Democratic primary fights. That&#x27;s either a blind spot or a deliberate choice to keep focus on their own primary drama rather than dilute it.</p>
+<p>Nobody — left, right, or center — is reporting the actual substance of Iran&#x27;s demands for reopening the Strait of Hormuz. This is the most consequential open question in the corpus and the thinnest sourced.</p>
+<p>Center-leaning outlets are conspicuously absent from two stories with obvious public-interest stakes: the fatal Statue of Liberty ferry capsizing (criminal charges have been filed) and the Texas Senate dirty-tricks stories (the Paxton AI ad, the RNC&#x27;s dismissal of crossover claims). Both are being left to two-source pairs at opposite ideological poles, with no outlet in the middle picking them up.</p>
+<p>Nearly the entire prior watch list has gone dark simultaneously with no resolution reported: the Fauci prosecution, birthright-citizenship EO litigation, Head Start rulemaking, Paul Rivera&#x27;s DNC autopsy claim, the Ogles primary framing, the $150M no-bid contract, and the Minnesota ICE shooting extradition. Minnesota resurfaces today, but recontextualized around an immigration-crackdown Senate primary — the ICE extradition angle specifically has not been mentioned again. Stories are being raised and then abandoned rather than tracked to resolution, which should be read as a structural feature of this media environment, not a sign that these issues were actually resolved.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The &quot;Iran endgame&quot; coverage and the Axios/RealClearPolitics Strait of Hormuz story are describing the same underlying standoff — US economic pressure versus Iranian shipping leverage — yet share no source overlap. One is being tracked as a domestic-politics hook (six stories, six ideological lanes, thin connective tissue), the other as a narrow foreign-policy/economic story (two sources, center and center-right only). No single outlet is connecting the two halves of what is actually one story.</p>
+<p>Scharf and Blanche form a matched pair: both are stories about turnover or strain in Trump&#x27;s legal team, and both get the same asymmetric treatment — real coverage on the left, none on the right. This isn&#x27;t two isolated editorial choices; it reads as a consistent pattern of the right declining to cover anything that touches internal friction in Trump&#x27;s legal apparatus.</p>
+<p>Miller&#x27;s ballot lock-in, the RNC&#x27;s dismissal of Talarico crossover claims, and the Paxton super PAC&#x27;s AI-generated ad are procedurally different but structurally identical: each is a case of a party or candidate using timing, credibility attacks, or manufactured content to avoid engaging a substantive question directly (abuse allegations, electability, policy record). This is a cross-party pattern for the 2026 cycle, not a one-off in Ohio or Texas.</p>
+<p>The El-Sayed/Stevens Democratic rift and the Carlson/GOP-2028 rift are mirror-image stories — both parties have a real internal fracture running right now — but only the Democratic version is getting genuine cross-spectrum coverage (eleven outlets). The Republican version is right-only. Each side is more comfortable airing the other side&#x27;s chaos than either covering its own weak spots or amplifying a story that would actually help it.</p>
+<p>Worth flagging as a caution, not a finding: much of the apparent &quot;entity network&quot; connecting unrelated stories (recurring names, incidental mentions, shared bylines) is very likely coincidental — byline and mention artifacts rather than genuine coordination. Don&#x27;t over-read the network graph.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Wisconsin, Montana, Hawaii, South Carolina primaries</strong> — watch for repeats of the El-Sayed pattern (progressive/DSA challenger beating establishment incumbent). Three or more repeats confirms a trend rather than a Michigan-specific event.</p>
+<p><strong>Will Scharf&#x27;s confirmation, effective September 1</strong> — watch specifically whether right-leaning outlets ever cover it, and whether the Guardian&#x27;s unverified ballroom-project claim gets addressed or dropped.</p>
+<p><strong>Strait of Hormuz reopening conditions</strong> — currently unreported by any outlet in this set. The actual terms Iran is demanding are the single most important missing fact in this briefing.</p>
+<p><strong>Max Miller</strong> — general-election viability in OH-07 now that he&#x27;s locked in as nominee, and any new developments in the abuse allegations from his ex-wife.</p>
+<p><strong>Todd Blanche&#x27;s tenure as Acting AG</strong> — watch for resignation speculation and whether right-leaning outlets break silence on the court skepticism and staff morale reporting.</p>
+<p><strong>Statue of Liberty boat captain&#x27;s criminal case</strong> — charges have been filed; watch for victim identification and whether center-leaning outlets ever pick the story up.</p>
+<p><strong>Tucker Carlson/GOP-2028 fracture story</strong> — watch whether any left-leaning outlet starts amplifying it, which would signal a shift toward using it as a messaging tool against Republicans.</p>
+<p><strong>Fauci contempt referral, birthright-citizenship EO litigation, Head Start rulemaking</strong> — all went dark simultaneously; any resurfacing would indicate real movement rather than editorial abandonment.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What looks like a single confusing news day is really two separate media ecosystems each running a curated highlight reel of the other side&#x27;s problems while protecting their own — the right won&#x27;t touch friction in Trump&#x27;s legal apparatus, the left won&#x27;t touch the GOP&#x27;s 2028 fracture even though it helps them, and both are treating a live, high-stakes Iran standoff as background noise to a much louder domestic primary story. The Democratic primary rift is real and probably the most consequential domestic story of the cycle so far, but its prominence is also doing structural work: it&#x27;s crowding out sustained coverage of Iran, letting several open accountability questions (Fauci, birthright citizenship, Head Start, the Minnesota ICE extradition) simply lapse without resolution, and giving cover to procedural accountability-dodges (Miller, the Texas Senate dirty tricks) that would draw more scrutiny in a quieter news cycle. The operative dynamic is not suppression of any one story so much as selective attention — each outlet ecosystem is choosing what merits sustained tracking, and those choices are consistently self-serving rather than editorially neutral.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">A wave of contested 2026 Democratic primaries — most notably Abdul El-Sayed&#x27;s Michigan Senate win over Rep. Haley Stevens — has exposed a party rift between progressive/democratic-socialist candidates and the establishment, playing out alongside parallel primary fights in Wisconsin, Montana, Hawaii and South Carolina.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:18.2;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:22.7;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:4.5;" title="center-right: 1"></div><div class="bias-segment" style="background:#e05252; flex:4.5;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:4.5;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:22.7;" title="left: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:22.7;" title="right: 5"></div></div></div>
+  <div class="story-assessment">Beneath the spin, this is a genuine and consequential intra-Democratic contest between progressive/democratic-socialist insurgents and establishment figures playing out simultaneously in Michigan, Wisconsin, Montana, and Hawaii, with real strategic stakes for both the 2026 midterms and 2028. Right-leaning outlets amplify individual liabilities (Piker ties, AIPAC rift, socialist policies) to argue the party is radicalizing and fracturing, while left-leaning outlets emphasize reconciliation and populist economic messaging — both are selectively omitting the other&#x27;s strongest evidence rather than fabricating facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes party unity, reconciliation (El-Sayed consulting Obama), and populist economic contrasts with Trump&#x27;s wealth; treats AOC&#x27;s egg-freezing as an empowerment/reproductive-autonomy story tied to criticism of Trump-era health policy; largely avoids engaging with critiques of progressive candidates&#x27; specific liabilities.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Treats the primaries analytically as strategic and electability contests: a 2028 proxy battle over Bernie-style populism (Axios), an internal ballot-access dilemma (NPR), and a referendum on Trump&#x27;s personal influence and economic conditions rather than ideology (NPR).
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames Democratic primaries as evidence of party dysfunction and drift toward extremism — El-Sayed as a general-election liability, Hong as a dangerous socialist, Sanders exposing a &#x27;corrupt system,&#x27; and establishment Democrats undemocratically pressuring Bankhead out — while casting AOC&#x27;s announcement as politically motivated rather than personal.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the Hasan Piker controversy and specific electability critiques of El-Sayed, the detailed radical policy specifics of Hong&#x27;s platform, and the framing of establishment pressure on Bankhead as anti-democratic.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the party-unity/reconciliation angle (Obama&#x27;s involvement), the economic-headwinds-hurt-Republicans analysis, Trump&#x27;s absence from the ballot as a midterm factor, and the reproductive-rights policy context behind AOC&#x27;s announcement.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Ohio Rep. Max Miller remains the Republican nominee for the state&#x27;s 7th Congressional District after the deadline to replace him on the ballot passed, despite domestic abuse allegations from his ex-wife and public calls for him to withdraw.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The only fully corroborated facts are procedural: Miller faces domestic abuse allegations from his ex-wife, calls to withdraw went unheeded, and he is now locked in as the nominee because the legal deadline passed. Beyond that, coverage splits along framing lines — left and center outlets emphasize institutional accountability and constituent trust, while right outlets emphasize procedural mechanics and Miller&#x27;s defiance, softening the centrality of the allegations. None of the four sources independently verifies the abuse claims; all reporting rests on the ex-wife&#x27;s allegations and Miller&#x27;s denial.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames this as an institutional accountability failure — Republican Party leaders missed their window to remove an accused congressman from the ballot, emphasizing lost opportunity and the party&#x27;s inaction rather than Miller&#x27;s individual choices.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR centers constituent and voter reaction, portraying the episode as a credibility crisis for Miller driven by public and bipartisan pressure, without itself adjudicating the truth of the allegations.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames this around Miller&#x27;s personal defiance of party pressure and the procedural mechanics of the ballot deadline (&#x27;locked in&#x27;), treating the abuse allegations primarily as a political liability rather than centering the allegations or the accuser. (Note: the second Fox item supplied, on Gen Z conservative voters, is unrelated to the Miller story and was excluded from this framing assessment.)
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left/center coverage does not emphasize procedural deadline mechanics as neutral fact the way Fox does, and includes less of Miller&#x27;s own defense or perspective; it foregrounds party accountability over Miller&#x27;s individual agency.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the specific detail that both of Ohio&#x27;s senators demanded Miller&#x27;s resignation, and does not frame Republican leadership&#x27;s inaction as a failure of accountability the way left coverage does; it also gives less emphasis to the substance of the allegations themselves.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Coverage nominally grouped under &#x27;Trump&#x27;s Iran endgame&#x27; actually spans several loosely-related stories — Trump&#x27;s Iran strategy, a senator&#x27;s criticism of Israel, U.S. military readiness debates, Democratic election-security drills, and unrelated Senate satire — with only partial overlap between outlets.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.7;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:16.7;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:16.7;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:16.7;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This is not coverage of one event but six mostly independent stories loosely bundled under an &#x27;Iran endgame&#x27; theme — genuine cross-spectrum consensus exists only on the bare fact that Trump is pursuing pressure-based Iran policy rather than escalation. Everything else, from motive (legacy fear vs. strategic patience) to consequence (military exposed vs. strategy working) to entirely separate storylines (Israel alignment, election security, Senate accountability satire), is either contested or simply not addressed by outlets outside that story&#x27;s own political lane. Readers relying on a single outlet would miss most of this news cycle entirely.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes psychological and moral stakes — Trump acting out of personal legacy anxiety on Iran, and Democrats forced into urgent defensive preparation against an active &#x27;assault on voting.&#x27; Tone is alarmed and protective of democratic institutions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Policy-focused and comparatively measured: The Hill reports a senator&#x27;s substantive critique of Israeli conduct without broader editorializing, while RCP uses satire to critique congressional accountability structurally rather than partisan actors specifically.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Emphasizes strength, strategy, and institutional dysfunction — Trump&#x27;s Iran pressure campaign cast as shrewd and working, paired with WSJ&#x27;s alarm over military weakness against China, and RCP&#x27;s satirical jab at an unaccountable Senate. Tone ranges from approving (Breitbart) to urgently critical of institutions (WSJ, RCP) rather than of Trump.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the WSJ/Breitbart argument that the Iran conflict exposed real U.S. military vulnerabilities and the case that economic pressure is succeeding as strategy; it also omits any China-threat framing.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the Democratic concern over AI-driven election disinformation and voter intimidation, the Hoover-comparison/legacy-anxiety explanation for Trump&#x27;s Iran moves, and Sen. Murphy&#x27;s critique of Israeli alignment with U.S. objectives.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Trump told Axios the US is &#x27;low-keying it&#x27; with Iran, favoring continued economic pressure over new military action, while Iran has reportedly attached conditions or demands to reopening the Strait of Hormuz to shipping.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The two pieces are covering adjacent but distinct angles of the same standoff: Axios focuses on Trump&#x27;s stated strategy toward Iran, while RealClearPolitics focuses on Iran&#x27;s leverage over the Strait of Hormuz — neither fully corroborates the other&#x27;s specific claims. The real story is the unresolved tension between US restraint and Iranian conditions on a critical global shipping chokepoint, but with only two sources (no left-leaning outlet) and thin detail on what Iran&#x27;s actual &#x27;price&#x27; is, this coverage set is too narrow to assess full political-spectrum framing.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set; cannot characterize left framing from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the story around Trump&#x27;s own words and strategic posture, presenting &#x27;low-keying it&#x27; as a calculated choice to rely on economic pressure and negotiation rather than military escalation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    RealClearPolitics (center-right) frames Iran&#x27;s position as coercive leverage — a threat to global oil markets and Western shipping interests — emphasizing Iran&#x27;s demands rather than Trump&#x27;s strategy.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source provided in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    RealClearPolitics omits Trump&#x27;s own framing and stated rationale (from the Axios interview) that the low-key approach is a deliberate strategic choice rather than passive drift or weakness.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A woman and her five-month-old daughter died after a boat capsized in New York Harbor near the Statue of Liberty/Liberty Island, and the vessel&#x27;s captain has been criminally charged.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core tragedy — a woman and infant died when a boat capsized near the Statue of Liberty — but they diverge sharply on emphasis: The Guardian centers on legal accountability already underway, while Breitbart centers on an unresolved safety failure (overcrowding) that officials haven&#x27;t confirmed. Neither outlet&#x27;s claim as summarized directly contradicts the other, but each is materially incomplete without the other&#x27;s detail, suggesting readers of only one source would misjudge either the legal status or the causal safety picture.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as a tragedy met with swift accountability, centering the deaths of the victims and the legal consequences facing the captain, implying the justice system is responding appropriately to a preventable loss of life.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned outlet was provided in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames this as a preventable disaster driven by regulatory and operational failure, emphasizing the boat&#x27;s apparent overcrowding relative to its rated capacity and suggesting authorities have been slow or unable to confirm obvious safety lapses.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian&#x27;s claim omits any detail about the boat&#x27;s size, its rated passenger capacity, the 14-person headcount, or the overcrowding question that is central to Breitbart&#x27;s account.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart&#x27;s claim omits that the captain has been formally charged with 13 counts of reckless endangerment, a concrete legal/accountability development reported by The Guardian.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Coverage of the Texas Senate race between Republican Ken Paxton and Democrat James Talarico split along two separate storylines: a Paxton-aligned Super PAC&#x27;s AI-generated attack ad invoking the 1964 &#x27;Daisy&#x27; ad over trans youth healthcare, and RNC Chairman Joe Gruters&#x27; dismissal of Talarico&#x27;s claimed Republican crossover support as inauthentic.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These two outlets are not actually covering the same event — they&#x27;re each amplifying a different attack line within the same Senate race, chosen because it favors their side&#x27;s narrative: the left highlights an ad it can frame as manipulative and cruel, the right highlights a credibility challenge to Talarico&#x27;s electability pitch. Neither source engages with the other&#x27;s story, so readers of just one outlet get a one-sided view of the race&#x27;s dirty-tricks dynamics. The pattern itself — dueling attacks on messaging authenticity from both directions — is more telling than either individual claim.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones frames the ad as a cynical, technologically-enabled escalation of fearmongering — invoking the historically notorious &#x27;Daisy&#x27; ad to cast the attack as manipulative Cold War-style scare tactics now weaponized via AI against a vulnerable group (transgender youth), emphasizing harm and disinformation over policy substance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-oriented source was provided in this coverage set, so centrist framing cannot be assessed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the story around credibility and authenticity, quoting the RNC chair to portray Talarico&#x27;s bipartisan-appeal narrative as a fabricated &#x27;pipe dream&#x27; propped up by longtime partisan Democratic operatives rather than genuine Republican defectors, casting Talarico as overselling his electability.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones does not address the RNC&#x27;s specific counter-narrative that Talarico&#x27;s claimed crossover support is astroturfed by partisan activists, a credibility attack that is central to the right-leaning coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News does not mention the AI-recreated attack ad, its content targeting transgender youth healthcare, or the criticism that a Paxton-aligned Super PAC is using AI-generated fearmongering tactics against Talarico.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Trump appointed longtime aide and current White House staff secretary Will Scharf as the new White House counsel, effective September 1, replacing David Warrington, who is departing for the private sector.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (3)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.7;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow and undisputed: a routine swap of the top White House lawyer, promoting a trusted internal aide. The more interesting story is what&#x27;s around the edges — the Guardian&#x27;s unverified claim tying Scharf to the ballroom project controversy, and the complete absence of right-wing coverage in this sample, which itself signals asymmetric prioritization rather than any factual dispute.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets largely treat this as a routine internal staffing change, with the Washington Post emphasizing continuity (a &#x27;longtime aide&#x27; moving up) while the Guardian goes further, framing it as a calculated pre-midterm shakeup and tying Scharf to Trump&#x27;s controversial ballroom project, injecting a note of scrutiny about insider dealing and loyalty-based promotion.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents it as a straightforward personnel announcement, centering Trump&#x27;s own laudatory comments about Scharf rather than any deeper political analysis.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    None of the sampled right-leaning coverage (Fox News) addresses the Scharf appointment at all; instead, right-leaning coverage that day focused on unrelated stories — alleged fraud patterns in migrant communities tied to federal aid programs, and criticism of Smithsonian funding and DEI content — suggesting this personnel change was not a editorial priority on the right.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits any right-leaning perspective on Scharf himself (e.g., his legal background, loyalty credentials, or role in defending Trump in prior legal cases) and does not mention the specific praise Trump gave the appointee, which The Hill highlights.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning sources in this sample omit the Scharf appointment entirely, including no mention of Warrington&#x27;s departure, Scharf&#x27;s prior role as staff secretary, or any framing of the change — leaving readers of Fox News&#x27; sampled coverage uninformed about a top White House legal leadership change.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump&#x27;s Iran endgame bundle</span><span class="entity-tag">Strait of Hormuz story (Axios/RCP)</span></div>
+  <div class="connection-text">These are nominally two different &#x27;stories&#x27; but describe the same underlying Iran standoff — US economic pressure vs. Iranian leverage over shipping — yet are tracked with almost no source overlap (one is a 6-way loose bundle across 6 ideological lanes, the other a 2-source center/center-right pairing). No outlet appears in both.</div>
+  <div class="connection-sig">↳ Readers following either story individually get a fragmented, incomplete picture of active Iran policy; the split itself suggests editorial silos are tracking &#x27;Iran&#x27; as a domestic-politics hook versus a foreign-policy/economic hook without cross-referencing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Will Scharf (WH Counsel)</span><span class="entity-tag">Blanche (Acting AG)</span></div>
+  <div class="connection-text">Both stories concern turnover and strain inside Trump&#x27;s legal apparatus (WH Counsel replacement; AG facing court skepticism and low staff morale) but receive opposite treatment — Scharf&#x27;s move draws zero right-wing coverage while Blanche&#x27;s troubles are left-only. Neither is being framed by the right as a story worth touching.</div>
+  <div class="connection-sig">↳ Suggests a coordinated (or simply instinctive) right-of-center avoidance of any narrative implying dysfunction in Trump&#x27;s legal team, even a low-significance routine personnel swap.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Max Miller ballot deadline</span><span class="entity-tag">RNC&#x27;s Gruters dismissal of Talarico crossover claims</span><span class="entity-tag">Paxton super PAC AI ad</span></div>
+  <div class="connection-text">Three unrelated races (OH-07, TX Senate) share a structural pattern: parties/candidates using procedural timing, credibility attacks, or manufactured messaging to sidestep substantive accountability questions (abuse allegations, electability claims, policy attacks) rather than engage them directly.</div>
+  <div class="connection-sig">↳ Indicates a broader 2026-cycle playbook of deflection-via-mechanics that cuts across party lines, not an isolated Ohio or Texas phenomenon.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">El-Sayed/Stevens Michigan primary</span><span class="entity-tag">Tucker Carlson 2028 GOP piece</span><span class="entity-tag">Group urging Democrats to woo moderate voters</span></div>
+  <div class="connection-text">Both parties are having a real internal-fracture story this cycle (Democratic progressive-vs-establishment; Republican Carlson-vs-mainstream-2028), but only the Democratic version gets genuine cross-spectrum coverage (11 outlets across the spectrum). The GOP fracture story is right-only, and no left-leaning outlet is amplifying it despite it being favorable to their side&#x27;s messaging.</div>
+  <div class="connection-sig">↳ Shows asymmetric appetite for airing the *other* side&#x27;s internal rift versus one&#x27;s own — the right readily covers Democratic chaos and its own possible 2028 threat, but the left isn&#x27;t capitalizing on the GOP story, suggesting either an editorial blind spot or a strategic choice to stay focused on their own primary drama.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A significant share of the &#x27;entity network&#x27; overlaps (Amanda Macias, Mother Jones, Instagram, OpenAI, Melania Trump, Lincoln Memorial Reflecting Pool appearing in unrelated stories) are almost certainly byline/incidental-mention artifacts rather than genuine narrative links — the network is noisier than it looks and should not be over-read as coordination.</div>
+<div class="pattern-item">Two &#x27;dirty tricks&#x27; stories (Texas Senate AI ad + crossover-support dismissal; Miller&#x27;s ballot lock-in) are each covered by only two outlets from opposite ideological poles with zero engagement across the aisle — a recurring pattern this cycle of single-sourced partisan amplification rather than contested reporting.</div>
+<div class="pattern-item">Foreign policy (Iran) is being crowded out and fragmented by domestic primary-season coverage — six separate threads nominally under one &#x27;Iran endgame&#x27; umbrella, most of which aren&#x27;t actually about Iran.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Complete right-wing silence on the Will Scharf WH Counsel appointment is unusual for a personnel story of this profile, especially with an unverified Guardian claim tying Scharf to the ballroom-project controversy sitting unaddressed.</div>
+<div class="anomaly-item">Center-leaning outlets are almost entirely absent from two stories with clear public-interest hooks: the fatal Statue of Liberty boat capsizing (criminal charges filed) and the Texas Senate dirty-tricks storylines — both left to ideologically opposite 2-source pairs.</div>
+<div class="anomaly-item">Nearly every item on the previous watch list (Fauci prosecution, birthright-citizenship EO lawsuits, Head Start rulemaking, Paul Rivera&#x27;s DNC autopsy claim, Ogles primary framing, the $150M no-bid contract, Minnesota ICE extradition) has gone completely silent today across all outlets simultaneously — a pattern of stories being raised, then dropped without resolution rather than continuously tracked.</div>
+<div class="anomaly-item">The timing of Miller&#x27;s ballot-deadline lock-in landing the same day as the high-significance Democratic primary-rift wave creates an implicit contrast (GOP incumbent shielded by procedure vs. Democratic base actively ousting establishment figures) that no outlet explicitly draws but is rhetorically available to either side.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding anything suggesting friction inside Trump&#x27;s legal/institutional apparatus (Scharf&#x27;s appointment, Blanche&#x27;s AG troubles), while the left is largely ignoring the mirror-image GOP fracture story (Tucker Carlson vs. 2028 mainstream) despite it being favorable to their framing. Both sides are underinvesting in the actual Iran/Strait of Hormuz foreign-policy substance, letting domestic primary drama dominate — meaning the most consequential geopolitical thread of the day is also the thinnest-sourced.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› There&#x27;s a birth control backlash online. Can it explain the rise in abortions?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Watchdog for $46 billion tribal gambling industry can&#x27;t enforce the law without a chairperson</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s immigration crackdown looms over Minnesota&#x27;s bruising Senate primary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Joe Biden&#x27;s prostate cancer has spread and is causing him pain, Hunter Biden says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Group urges Democrats to woo moderate voters with populist policies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Blanche as AG faces pressure from Trump, skeptical courts, low staff morale</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Zuckerberg faces questions over why superyacht reportedly declined to help stranded boat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lake Mead plummets to historic low water level as Colorado River struggles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How clean air clubs are protecting Americans from wildfire smoke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Good Luck Trying to Kill This Jellyfish</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› China Presses a Weakness in America’s Tech Policy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The FCC Tries to Save Broadcast TV</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Haverford Admits Its Antisemitism Problem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tax Freedom Day, Europe vs. U.S.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Venezuelan Oil Boom Sputters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Imports Don’t Depress Economic Growth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Los Angeles Schools Run Out of Other People’s Money</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Media and Academia: Increasingly Irrelevant, Increasingly Distrusted</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iran Is Rewiring Its Proxy Network</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Campaign Speech Lies at the Heart of the First Amendment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Overpopulation Panic Dates Back to &lt;i&gt;Odyssey&lt;/i&gt; Times</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Misadventures in Migration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOT Sec. Sean Duffy Makes English a Permanent Requirement for Nation&#x27;s Migrant Truckers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DSA Activists Upset North Carolina Town Removed Their Propaganda Bus Stop Benches</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ: Connecticut Children’s Medical Center Agrees to End Sex Change Drugs for Minors</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› VIDEO: Florida Business Owners Accused of Dumping 1,500 Toxic Mothballs on Beach to Deter &#x27;Imperiled&#x27; Birds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trans Cyclist Veronica Ivy Now Stealing Women&#x27;s Titles in a Second Sport</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH — Fisherman Discovers Ancient Roman Shipwreck and Piles of Cargo Off Sicily&#x27;s Coast: &#x27;A Piece of Our History&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Utah Police: Man with Shotgun Shot, Killed by Gas Station Bystander</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Has America Already Undergone a Soft Breakup?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alito: &amp;lsquo;Practical Originalism&#x27; and Its Facile Critics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voters Won&#x27;t Like the Right&#x27;s Response to &#x27;$20 Burrito&#x27; Debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Machines That Keep America Alive Are Failing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Long View of Iran</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tucker Carlson Could Derail GOP in 2028</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Swing&#x27; and Amiss for Michigan Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America&#x27;s Third Red Scare</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether the El-Sayed-style progressive insurgency pattern repeats in Wisconsin, Montana, Hawaii, and South Carolina primaries</div>
+<div class="watch-item">Will Scharf&#x27;s Sept 1 confirmation and whether right-leaning outlets ever cover it, plus any follow-up on the Guardian&#x27;s ballroom-project claim</div>
+<div class="watch-item">Concrete details of Iran&#x27;s conditions for reopening the Strait of Hormuz — currently unreported by any outlet in this set</div>
+<div class="watch-item">Max Miller&#x27;s general-election standing and any new developments in the ex-wife&#x27;s abuse allegations</div>
+<div class="watch-item">Blanche&#x27;s AG tenure — watch for resignation speculation and whether right-leaning outlets break their silence</div>
+<div class="watch-item">Statue of Liberty boat captain&#x27;s criminal case — charges, victim identification, and whether center outlets ever pick it up</div>
+<div class="watch-item">Whether left-leaning outlets pick up the Tucker Carlson/GOP-2028 fracture story</div>
+<div class="watch-item">Any resurfacing of the Fauci contempt referral, birthright-citizenship EO litigation, or Head Start rulemaking, all of which have gone dark</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
