@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-11 10:50 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-11 10:50 UTC</span>
+    <span class="pill">118 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the cycle is a coordinated push on vaccine policy and Anthony Fauci&#x27;s personal accountability, and it is worth treating as a single operation rather than three coincidental headlines. On the same day, Trump signed an executive order cutting the CDC&#x27;s recommended childhood vaccine count and splitting the MMR shot into three doses; GOP senators released private Fauci text messages touching on COVID vaccines and pregnancy; and Trump denied having discussed a Fauci prosecution with DOJ officials. A sympathetic opinion piece framing any Fauci prosecution as &quot;persecution&quot; ran the same day on the right. That is a leak, an executive action, a denial, and a pre-emptive defense all landing in one 24-hour window — the kind of clustering that typically indicates message coordination, not organic news flow. Meanwhile the medical establishment (AMA, AAP) has issued unusually blunt condemnations of the vaccine order, and that institutional pushback is getting comparatively little traction in right-leaning coverage.</p>
+<p>Underneath that story, the courts are doing more actual governing than the legislature this week, and they&#x27;re doing it in ideologically inconsistent directions — which is precisely why nobody is connecting the dots. A New York state judge froze Mayor Mamdani&#x27;s pied-à-terre tax on a homeowner lawsuit, a defeat for a progressive revenue policy. The Ninth Circuit simultaneously handed Meta and TikTok a major loss, clearing thousands of youth-addiction lawsuits to proceed — a blow to Big Tech that neither side is covering with any real depth. And DOJ, under Todd Blanche, is pressing a civil-rights enforcement action alleging Duke Law&#x27;s admissions process still uses race in violation of the 2023 SFFA ruling. Each of these is being consumed in an ideological silo; none is being read as part of a pattern of courts and DOJ actively reshaping policy outcomes while Congress is largely absent from the frame.</p>
+<p>The third thing worth naming plainly: coverage this cycle is thin where it should be thick. Three of five major stories (the Mamdani tax ruling, the Ninth Circuit decision, the Duke DOJ probe) are running on one to three total sources each, while the Fauci/vaccine story is saturated. That is not a reflection of relative importance — a major appellate loss for Meta and TikTok and an active DOJ civil-rights allegation against a law school are being under-covered relative to a personality-driven accountability fight. Attention is being allocated by narrative heat, not by consequence.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is running two tracks simultaneously on vaccines — the executive order reshaping CDC recommendations, which plays to his medical-freedom base, and a denial of discussing Fauci prosecution, which lets him distance himself from the more legally exposed accountability push while GOP senators do the leaking. This is a familiar pattern: surface the aggressive version through allies, deny personal involvement, keep optionality.</p>
+<p><strong>Todd Blanche</strong> is the actor coverage is least equipped to assess right now, because he sits at the intersection of two separate stories that aren&#x27;t being read together. His DOJ is the one that would decide any Fauci prosecution, and it is the same DOJ pressing the Duke Law admissions case the same week. His own confirmation controversy is covered almost exclusively by left-leaning outlets, meaning the person who will make the actual call on Fauci is a blind spot for the audience most invested in seeing that prosecution happen. Watch him, not just the headline decision.</p>
+<p><strong>GOP senators</strong> releasing the Fauci texts are doing the work that keeps Trump&#x27;s hands clean — they generate the accountability pressure and public exhibit without requiring the administration to formally act yet. If this is coordinated, the senators are the delivery mechanism and Blanche&#x27;s DOJ is the eventual decision point.</p>
+<p><strong>Mamdani</strong> is absorbing a real legal setback on the pied-à-terre tax, but the underlying merits of the case — the actual legal theory of the homeowners&#x27; challenge — are getting almost no substantive coverage from either side, which is being replaced by pure political framing (setback for Mamdani vs. victory over overreach).</p>
+<p><strong>The judiciary itself</strong> is the most consequential actor this week and the least discussed as an actor. A state judge and the Ninth Circuit issued rulings cutting against a progressive policy and against Big Tech in the same cycle. Neither side is framing this as &quot;courts are currently driving outcomes on both the left&#x27;s and the right&#x27;s preferred targets&quot; — each side is only noticing the ruling that favors its priors.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Left-leaning outlets are not touching the DOJ&#x27;s Duke Law allegation at all. That leaves an active federal civil-rights enforcement action — one that could reshape how every selective institution handles race post-SFFA — completely uncontested in the information environment. There is no Duke response reported anywhere, from any outlet. An allegation of this weight running unrebutted for days is itself notable.</p>
+<p>Right-leaning outlets are avoiding two things: Todd Blanche&#x27;s own confirmation controversy, and the Ninth Circuit&#x27;s Meta/TikTok ruling. The latter is the more surprising omission — a major loss for Big Tech should be catnip for an anti-Big-Tech right flank, and its near-absence suggests either a pro-business instinct overriding that impulse, or simply that the story hasn&#x27;t been packaged for that audience yet.</p>
+<p>Both sides are skipping the legal substance of the Mamdani tax case in favor of political scorekeeping. Nobody is explaining what the homeowners actually argued or what the city would need to change to survive the TRO.</p>
+<p>Also conspicuous: no Ukraine-related entity appears anywhere in today&#x27;s corpus. Given that it&#x27;s a live conflict in most cycles, a total absence — not reduced coverage, but zero — is worth flagging as either a genuine lull or a collection gap.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Fauci cluster is the clearest case of apparent coordination: leak, executive order, denial, and defensive op-ed inside one news day. Treat the &quot;did they discuss prosecution&quot; denial as provisional — it&#x27;s the kind of statement that gets revised once a formal decision is closer.</p>
+<p>Blanche is the connective tissue between two DOJ actions that are being read as unrelated: the Fauci prosecution question and the Duke Law admissions probe. Both are DOJ exercising political-adjacent enforcement power in the same week, under the same AG, and no outlet is naming that as a pattern. If Blanche moves on Fauci, expect the Duke action to get retroactively read as evidence of a broader enforcement posture.</p>
+<p>The judiciary pattern — a progressive tax frozen, Big Tech denied dismissal, both in the same cycle — is a second example of the same blind spot: outlets report each ruling within their own ideological frame and miss that courts are currently the most active branch shaping outcomes on both fronts.</p>
+<p>One item should be flagged as a likely data artifact rather than a real connection: the &quot;Trump Vaccine Order Fauci House&quot; story cluster in the entity network improbably links Jason Arday, the WNBA, Wisconsin&#x27;s &quot;Zuckbucks&quot; resignation, Iran, and China. That span is not plausible for a single story and likely reflects a story-clustering error in the collection pipeline. Don&#x27;t build inference on that cluster&#x27;s entity network until it&#x27;s verified — it could be artificially inflating the perceived centrality of the vaccine story.</p>
+<p>Thin sourcing itself is a pattern worth noting structurally: the stories getting one to three sources this cycle (Mamdani, Ninth Circuit, Duke) are exactly the ones with the most direct policy consequence, while the highest-source-count story (Fauci/vaccine) is the most personality-driven. That&#x27;s an attention misallocation, not a significance signal.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Formal contempt referral or prosecution decision on Fauci</strong> — the GOP senators&#x27; text release is the predicate; whether Blanche&#x27;s DOJ acts on it in the next 48-72 hours is the actual signal, not the leak itself.</li>
+<li><strong>Duke Law&#x27;s response to the DOJ admissions allegation</strong> — currently silent, and watch whether any left-leaning outlet picks the story up at all; continued silence on both fronts (Duke and the left media) would itself be notable.</li>
+<li><strong>Mamdani pied-à-terre tax litigation</strong> — next hearing date, and whether NYC amends implementation to moot the TRO rather than litigate it.</li>
+<li><strong>Post-Ninth Circuit Meta/TikTok lawsuits</strong> — which specific suits proceed, and whether right-leaning coverage picks up given latent anti-Big-Tech sentiment that hasn&#x27;t yet engaged with this ruling.</li>
+<li><strong>AMA/AAP formal response and state-level pushback</strong> on the split-dose MMR schedule — states may move independently of the federal recommendation change.</li>
+<li><strong>Blanche&#x27;s specific role in Fauci deliberations</strong> — this is the point where the vaccine mega-story and his under-covered confirmation controversy will intersect; his public posture here is the highest-value single data point available.</li>
+<li><strong>Verify the &quot;Trump Vaccine Order Fauci House&quot; entity cluster</strong> — confirm whether Jason Arday, WNBA, Iran, and China attributions are real co-occurrences or a pipeline error before using that network for further analysis.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline this cycle isn&#x27;t any single story — it&#x27;s that the institutions actually deciding outcomes right now (courts, DOJ) are being covered as background noise while a personality-driven accountability fight over Fauci absorbs nearly all available attention and, very plausibly, is being fed by coordinated timing from the administration and allied senators. That imbalance is itself the story: real policy is being set by a state judge, the Ninth Circuit, and a DOJ civil-rights probe with almost no scrutiny, while a symbolically loaded but still legally unresolved accountability narrative dominates the information environment. Whoever controls the Fauci narrative&#x27;s pace controls the news cycle&#x27;s attention, and that appears to be exactly the point.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">President Trump signed an executive order revising the CDC-recommended childhood vaccine schedule — cutting the recommended vaccine count and directing the MMR shot be split into three separate doses — while separately, GOP senators released private Fauci text messages about COVID vaccines and pregnancy, and Trump denied discussing a Fauci prosecution with DOJ officials.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (10)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (6)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:23.8;" title="center: 10"></div><div class="bias-segment" style="background:#e0a87a; flex:19.0;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:2.4;" title="center-right: 1"></div><div class="bias-segment" style="background:#e05252; flex:2.4;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:11.9;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:14.3;" title="left: 6"></div><div class="bias-segment" style="background:#a07ae0; flex:7.1;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:19.0;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The core facts — an executive order altering childhood vaccine recommendations and the release of Fauci&#x27;s private texts — are confirmed across the spectrum, but each side diverges sharply on interpretation: one frames the order as a public-health rollback and the texts as an accountability disclosure needing more scrutiny of substance, the other frames the order as restoring medical freedom and the texts as proof of a cover-up. The medical establishment&#x27;s near-uniform criticism (AMA, AAP) is a significant, largely unrebutted data point in the coverage, while the more sensational accountability claims (contempt vote, prosecution angle) remain thinly corroborated.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets frame the vaccine order as a dangerous, unscientific overreach that endangers children, leaning heavily on condemnation from doctors, medical associations, and lawmakers, and linking it to previously debunked vaccine-autism claims and past legal pushback. On Fauci, left coverage frames the text release as a GOP-driven disclosure/scrutiny exercise focused on process rather than assessing the substance of the medical claims.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (Axios, PBS, The Hill) report the executive order&#x27;s contents relatively straightforwardly, sourcing the White House fact sheet while also giving voice to medical-authority criticism (AMA, AAP) without strong editorializing. On Fauci, The Hill neutrally reports Trump&#x27;s denial of discussing prosecution, framing it as distancing rather than confirmation of an investigation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets frame the vaccine order as a courageous restoration of parental choice and &#x27;common sense,&#x27; aligning the U.S. with other developed nations and casting establishment/media resistance as suspicious. On Fauci, they frame the released texts as proof of official deception — that Fauci privately knew of miscarriage risks tied to COVID vaccination while public messaging downplayed or mandated it — and push for continued accountability, including contempt proceedings and scrutiny of China&#x27;s role.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the specific substantive content of Fauci&#x27;s texts (the cytokine-storm/miscarriage warning details) and the accountability push tied to a Senate contempt vote, focusing instead on the political mechanics of the text release rather than engaging with the claims themselves.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the extent and authority of medical-community condemnation (AMA&#x27;s &#x27;risk to children&#x27;s health,&#x27; AAP&#x27;s &#x27;dangerous&#x27; characterization) and the context that U.S. measles cases are at a 35-year high, as well as the disputed legal question of whether the order oversteps CDC authority and revives discredited vaccine-autism claims.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The 9th U.S. Circuit Court of Appeals ruled that Meta, TikTok, and other social media companies must face thousands of lawsuits alleging their platforms are addictive and harmful to young users, rejecting the companies&#x27; bid to have the cases dismissed on appeal.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:66.7;" title="center: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The available coverage confirms a significant appellate loss for Meta, TikTok, and other platforms, clearing the way for thousands of addiction-related lawsuits to proceed — but the underlying merits of the addiction claims have not been adjudicated, only a procedural barrier to dismissal was removed. No genuine cross-spectrum comparison is possible here since the only right-leaning article supplied is on an unrelated topic (a Senate tax proposal), meaning any claim of ideological framing differences on this story would be unsupported by the evidence given.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set; only center and right (off-topic) coverage is available.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both center outlets (The Hill, Axios) frame the ruling as a legal and accountability setback for tech companies, emphasizing that thousands of addiction-related lawsuits can now move forward against Meta and TikTok over harm to young users.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage of this specific story was provided — the Fox News Politics article supplied is about an unrelated Senate Democrat tax proposal on data centers, not the social media lawsuit ruling.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source on this topic was provided.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning source provided does not address the social media lawsuit ruling at all, omitting any coverage of the 9th Circuit decision, the companies&#x27; legal arguments, or the scale of litigation exposure that center outlets emphasize.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A New York state judge issued a temporary restraining order halting New York City&#x27;s rollout of Mayor Zohran Mamdani&#x27;s pied-à-terre tax on second homes worth over $5 million, after homeowners filed suit challenging how the city implemented the surcharge.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">All three outlets agree on the core, verifiable fact: a court has temporarily paused NYC&#x27;s rollout of Mamdani&#x27;s tax on high-value second homes following a homeowner lawsuit. The differences are almost entirely framing — The Hill and Guardian treat it as a political setback for Mamdani, while Breitbart amplifies it as a triumph of homeowners over government overreach. None of the sources provide much substantive detail on the legal arguments or next steps in the litigation, which matters more than the framing spin for understanding the tax&#x27;s ultimate fate.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as a setback for Mamdani&#x27;s progressive housing agenda, focusing on homeowner grievances about the city&#x27;s enforcement process — implying a procedural/technical hiccup rather than a rejection of the policy&#x27;s merits.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the ruling primarily as a political blow to Mamdani, emphasizing judicial pushback against his signature tax policy without strongly editorializing on the underlying merits.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the ruling as a legal rebuke of government overreach, casting homeowners as victims fighting back against city hall, emphasizing the lawsuit as vindication against an aggressive taxation scheme.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage downplays the homeowner-as-victim narrative and doesn&#x27;t frame the lawsuit as a broader pushback against Mamdani&#x27;s tax agenda the way Breitbart does.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits detail on the housing-policy rationale behind the pied-à-terre tax (e.g., its intended use for affordable housing or revenue) and doesn&#x27;t address it as part of a broader progressive housing strategy.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The DOJ has alleged that Duke Law School&#x27;s admissions process continues to favor black and Hispanic applicants over white and Asian applicants in violation of the Supreme Court&#x27;s 2023 ruling banning race-based affirmative action.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The available coverage is entirely from right-of-center outlets (WSJ Opinion and National Review), so this is not a left-right comparison but two ideologically aligned accounts reinforcing the same narrative — meaning the &#x27;consensus&#x27; here reflects agreement within one side of the spectrum, not cross-spectrum corroboration. The core factual claim — DOJ alleges Duke Law&#x27;s admissions violate the SFFA ruling — is likely accurate as a report of DOJ&#x27;s position, but both pieces present the allegation with the certainty of an established fact rather than a contested claim, and neither includes Duke&#x27;s response.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is included in this set, so left framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No independent center/centrist source (as opposed to center-right) is included, so straight-news center framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both National Review and WSJ Opinion (center-right) frame this uniformly as clear-cut institutional defiance of a binding, legitimate Supreme Court ruling, treating DOJ enforcement as accountability and emphasizing racial discrimination against white and Asian applicants.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is present in this set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right-leaning sources omit Duke Law&#x27;s own account or rebuttal, any procedural detail on how the DOJ reached its finding (investigation, complaint, formal charge vs. preliminary allegation), and any legal or policy arguments for holistic admissions review that might contextualize Duke&#x27;s practices.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Two separate WNBA controversies are being covered in parallel: DiJonai Carrington&#x27;s &#x27;white privilege&#x27; comment following her Flagrant 2 ejection, and Sophie Cunningham&#x27;s public advocacy for &#x27;women&#x27;s sports,&#x27; with no single shared event actually corroborated by both sources.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">This pairing does not actually represent two-sided coverage of one event — it bundles two distinct WNBA storylines (a race-related foul/ejection dispute involving Carrington, and a separate &#x27;women&#x27;s sports&#x27; advocacy narrative involving Cunningham) under one story label. Without a left-leaning source addressing either incident, no genuine spectrum comparison is possible; what&#x27;s presented instead is one opinion piece favorable to Cunningham and one adversarial report about Carrington, both from right-of-center outlets. Readers should treat this as two under-sourced, single-perspective stories rather than a fully contested narrative.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is present in this set, so left framing cannot be characterized from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The WSJ piece, despite being labeled center-right and opinion-driven, functions as the closest thing to &#x27;center&#x27; framing here — it&#x27;s sympathetic to Cunningham&#x27;s position but frames the issue as a values debate (&#x27;What Is a W?&#x27;) rather than a personal attack on any individual player.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Far-right coverage (Breitbart) frames Carrington&#x27;s Stanford reference as disingenuous damage control — implying she deployed a &#x27;race card&#x27; after backlash and is now hiding behind credentials rather than owning the original accusation. Center-right coverage (WSJ Opinion) frames Cunningham&#x27;s &#x27;women&#x27;s sports&#x27; advocacy approvingly, emphasizing cross-sport solidarity (via Freedom&#x27;s support) and treating the definitional debate as a legitimate cause worth defending.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left-leaning source was provided for comparison, so omissions relative to left coverage cannot be assessed.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    N/A given only right-of-center sources are present — cannot identify what right coverage omits relative to left coverage without a left source.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Fauci</span><span class="entity-tag">Todd Blanche</span><span class="entity-tag">DOJ</span></div>
+  <div class="connection-text">Blanche&#x27;s DOJ is simultaneously the subject of a Fauci-prosecution denial (in the vaccine mega-story) and the agency pressing an aggressive civil-rights enforcement action against Duke Law&#x27;s admissions process — two politically charged DOJ actions landing the same day, yet no outlet connects them into a single &#x27;DOJ as political enforcement arm&#x27; narrative. Blanche&#x27;s own confirmation fight is covered only by left-leaning outlets, meaning the person now central to the Fauci prosecution question is otherwise a right-side blindspot.</div>
+  <div class="connection-sig">↳ Suggests the DOJ under Blanche is running parallel culture-war-adjacent actions (a potential political prosecution + a race-based admissions probe) that are being consumed by audiences as unrelated stories rather than as a pattern of DOJ posture.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anthony Fauci</span><span class="entity-tag">GOP Senators</span><span class="entity-tag">Trump</span></div>
+  <div class="connection-text">Three distinct Fauci-related threads — private text release by GOP senators, Trump&#x27;s vaccine-schedule EO, and Trump&#x27;s denial of discussing a Fauci prosecution — all surfaced on the same news day, alongside a right-only opinion piece (&#x27;Fauci Made Mistakes, But His Persecution Is a Travesty&#x27;) that pre-emptively frames any prosecution as excessive.</div>
+  <div class="connection-sig">↳ The clustering of a leak, an EO, a denial, and a sympathetic opinion piece in one cycle looks less like organic news flow and more like a coordinated messaging push around Fauci accountability — worth tracking for whether a formal contempt or prosecution referral follows.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Judiciary (NY state judge, 9th Circuit)</span><span class="entity-tag">Mamdani</span><span class="entity-tag">Meta/TikTok</span></div>
+  <div class="connection-text">Courts issued rulings cutting against a progressive city tax policy (Mamdani&#x27;s pied-à-terre tax TRO) and against large tech corporations (9th Circuit allowing Meta/TikTok suits) on the same day — ideologically opposite targets, both framed locally as isolated stories rather than as part of a broader pattern of courts actively reshaping policy outcomes this week.</div>
+  <div class="connection-sig">↳ Cross-ideological judicial activity happening simultaneously is easy to miss when each ruling is covered in a separate ideological silo, but together they show courts, not legislatures, currently driving major policy outcomes on both a progressive tax and Big Tech liability.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Jason Arday</span><span class="entity-tag">WNBA</span></div>
+  <div class="connection-text">Both entities are tagged as appearing in the sprawling &#x27;Trump Vaccine Order Fauci House&#x27; story cluster alongside Iran, China, and Wisconsin&#x27;s Zuckbucks resignation — an implausible span of topics for one story, indicating this label is functioning as a catch-all aggregation bucket rather than a single article.</div>
+  <div class="connection-sig">↳ This is likely a data/entity-linking artifact, not a real narrative connection — it should be flagged as a pipeline quality issue since it could distort the entity-network analysis and inflate perceived significance of the &#x27;vaccine&#x27; story.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A &#x27;government overreach vs. restoring freedom/accountability&#x27; frame repeats across at least three unrelated stories today — the vaccine EO (medical freedom vs. rollback), the Mamdani tax TRO (homeowner rights vs. political setback), and the Duke DOJ probe (enforcement vs. discrimination) — each covered through the same binary lens by right-leaning outlets specifically.</div>
+<div class="pattern-item">Institutional pushback is a quiet through-line: AMA/AAP criticism of the vaccine EO, the 9th Circuit&#x27;s rejection of Meta/TikTok&#x27;s dismissal bid, and the NY judge&#x27;s TRO against Mamdani all show establishment/judicial bodies checking political actors from both left and right, yet no single outlet frames this as a cross-cutting &#x27;institutions vs. politics&#x27; story.</div>
+<div class="pattern-item">Thin sourcing is itself a pattern: three of five stories today (Mamdani tax, 9th Circuit ruling, Duke DOJ probe) have only 1-3 total sources, meaning today&#x27;s &#x27;high significance&#x27; judicial and regulatory news is being under-covered relative to the saturated Fauci/vaccine story.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">GOP senators&#x27; release of private Fauci pregnancy-related texts lands the same day as Trump&#x27;s vaccine EO and his DOJ-prosecution denial — a suspiciously tight synchronization of three separate Fauci-accountability threads that suggests coordinated timing rather than coincidence.</div>
+<div class="anomaly-item">The DOJ&#x27;s Duke Law admissions allegation has zero left-of-center coverage and comes only from two opinion-adjacent right sources (WSJ Opinion, National Review) with no Duke response reported anywhere — an active DOJ civil-rights action essentially going uncontested in the information environment.</div>
+<div class="anomaly-item">The 9th Circuit&#x27;s major appellate loss for Meta and TikTok — high significance, clearing thousands of lawsuits — has almost no coverage (2 center, 1 unrelated right piece), which is a conspicuous gap given how aggressively both left (tech accountability) and right (anti-Big-Tech) audiences usually engage this topic.</div>
+<div class="anomaly-item">No Ukraine-related entity appears anywhere in today&#x27;s network despite it being a live conflict story in most cycles — a notable absence.</div>
+<div class="anomaly-item">The entity network shows implausible topic-bundling under the &#x27;Trump Vaccine Order Fauci House&#x27; label (WNBA, Jason Arday, Wisconsin Zuckbucks, Iran, China all listed as co-occurring), indicating a likely story-clustering/data artifact rather than genuine cross-topic linkage.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Left-leaning outlets are avoiding the DOJ&#x27;s Duke Law affirmative-action enforcement story entirely, leaving an active civil-rights allegation uncontested by any left-of-center account. Right-leaning outlets are avoiding Todd Blanche&#x27;s own confirmation controversy and giving almost no attention to the 9th Circuit&#x27;s Meta/TikTok liability ruling, an outcome that cuts awkwardly against both pro-business and anti-Big-Tech instincts on the right. Both sides continue to skip substantive legal analysis of the Mamdani tax case, preferring political framing over the actual litigation merits — consistent with last cycle&#x27;s pattern of surface-level coverage on ongoing court fights.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alabama heads into a second primary election after redistricting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› After his Reflecting Pool vandalism case is dismissed, David Hearn looks for closure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;The Nerd Reich&#x27; tracks the &#x27;unmasking of Silicon Valley&#x27;s true politics&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In a competitive Maine Senate race, women voters could be the deciders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voters are sick of the 2-party system. A new poll shows they&#x27;re open to big changes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Faith is a centerpiece of Texas Senate candidate James Talarico&#x27;s campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› State voting officials join CISA security call with election 85 days away</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Family of Marine veteran imprisoned in Russia warns he&#x27;s near death</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How pop culture and social media are changing how people talk</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Todd Blanche sworn in as attorney general after bruising confirmation battle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington grapples with a $1.4 billion National Guard deployment extension until 2029</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump announces staff secretary Will Scharf, who helped secure ballroom approval, will be his new White House counsel</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump demands major changes to childhood vaccine recommendations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hunter Biden tells Tucker Carlson that Trump poses an ‘existential threat’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the economy is hurting Republicans’ midterm chances</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump nominates loyalist to office that would oversee Reflecting Pool review</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former president Barack Obama launches a new podcast</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What the Senate did and didn’t get done in the final hours before recess</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voters want fighters. But where is the limit?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why a murder trial is beginning nearly 30 years after Tupac Shakur’s death</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s media company, which also owns Truth Social, reports $238m loss</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jackie, a beloved bald eagle and livestream star, dies of mysterious illness</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ilhan Omar questions whether Trump administration has used ICE to ‘surveil’ critics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Boat operator faces federal charges after mother and infant killed in New York capsizing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nevada authorities investigate dozens of mysterious tree poisonings in Lake Tahoe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What People With Eating Disorders Hear in the Ariana Grande Discourse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Is Pete Hegseth Purging Women From Command? Doug Wilson Is Why.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College Preferences Defies Supreme Court</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Asks: Dijonai Carrington Cites Stanford</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will the Yen Need Saving Again Soon?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Next ‘Lab Leak’ Could Be AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Blockade Keeps the Economic Pressure on Iran</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Welcome Trump Restart for Head Start</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Immigration Becomes a Global Powder Keg</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Should Act Against Colorado’s Transgender Subsidies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› So Long, Sun, See You in Two Minutes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem Gov Maura Healey signs sweeping Massachusetts bill allowing abortions up to birth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Dangerous Times, There Is Progress on Munitions Procurement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will the Woke Own Up to Their Lunacy?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Are Nun Too Lost</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› American Birthday Accounts Can Help Solve Our Coming Population Problem</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Abdul El-Sayed Argued &#x27;Toxic Masculinity&#x27; Governs American Football</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DSA Leader Dodges Question: Who Catches a Rapist if Police, Prisons Abolished?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sarah McBride Admits Transgender Activists’ Strategy Failed as Public Support Falls</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Do Young People Really Want? The Suburbs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wisconsin Official at Center of Zuckbucks Scandal Resigns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci Made Mistakes, But His Persecution Is a Travesty</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Giggling Away Woke-Era Abuses Should Not Be Tolerated</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrat AGs Should Lose Fight To Keep CNN Leftist</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Happened to the American University?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bureaucratic Hurdles Shouldn&#x27;t Limit School Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;A Burrito Shouldn&#x27;t Cost $20&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate Blows Off Trump&#x27;s Demands, Then Skips Town</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether GOP senators&#x27; Fauci text release produces a formal contempt referral or prosecution decision from Blanche&#x27;s DOJ</div>
+<div class="watch-item">Duke Law&#x27;s official response to the DOJ admissions allegation, and whether any left-leaning outlet picks up the story</div>
+<div class="watch-item">Mamdani pied-à-terre tax litigation — next hearing date and whether the city amends its implementation to address the TRO</div>
+<div class="watch-item">Which specific lawsuits proceed against Meta/TikTok post-9th Circuit ruling, and whether right-leaning outlets increase coverage given anti-Big-Tech sentiment</div>
+<div class="watch-item">AMA/AAP formal response and any state-level pushback on the split-dose MMR schedule</div>
+<div class="watch-item">Todd Blanche&#x27;s specific role in any Fauci prosecution deliberations — the point where the vaccine mega-story and his under-covered confirmation story intersect</div>
+<div class="watch-item">Whether the &#x27;Trump Vaccine Order Fauci House&#x27; story cluster is a data-pipeline artifact — verify entity attributions (Jason Arday, WNBA, Iran, China) before relying on this cluster&#x27;s entity network</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
