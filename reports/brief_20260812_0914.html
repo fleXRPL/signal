@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-12 09:14 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-12 09:14 UTC</span>
+    <span class="pill">124 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">5 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the last 48 hours is not any single race but a framing war being fought over the same primary-night results. On the night of August 11, Minnesota Democrats nominated progressive Lt. Gov. Peggy Flanagan over Rep. Angie Craig for Senate, Connecticut Democrats ousted 14-term Rep. John Larson in favor of Hartford Mayor Luke Bronin, and Wisconsin&#x27;s Crowley narrowly edged Hong in a tight gubernatorial primary. On the same night, Minnesota Republicans rejected Trump&#x27;s own endorsed candidate, Mike Lindell, in favor of establishment pick Lisa Demuth. The underlying facts are narrow and mostly undisputed. The interpretation is not: right-leaning outlets have converged on a six-plus-piece opinion cluster arguing the Democratic Party is fracturing under progressive pressure, while the structurally identical rebuke of Trump inside his own party is barely covered anywhere on the right.</p>
+<p>Beneath the horse-race noise, there are two stories with real institutional weight that are getting almost no cross-spectrum scrutiny. First, a financial disclosure analysis alleges Justice Samuel Alito realized up to $2.9 million in gains from fossil-fuel investments over nearly two decades on the bench — a judicial-conflict story of the sort that normally draws AP/Reuters/NYT pickup within a day. It has exactly one outlet on it (Mother Jones), with zero corroboration, zero response from Alito or the Court, and zero right-leaning engagement. Second, the DCCC is escalating spending against Rep. Max Miller (R-Ohio) in a race entangled with denied abuse allegations against Miller — reported only by center-left outlets, with no conservative outlet weighing in on either the spending or the allegations.</p>
+<p>Layered on top of the primary results is a live but quieter policy track: administration moves on vaccine policy for children, a new &quot;Trump accounts&quot; tax-advantaged savings vehicle, and continuing coverage of Yemen civilian casualties from U.S. actions. These are being covered almost exclusively by left-leaning outlets, who are simultaneously and conspicuously not engaging with the Democratic-fracture narrative dominating the right. The result is two media ecosystems that are not really arguing about the same set of facts on any given day — they&#x27;re each picking which subset of the news cycle to inhabit.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the connective tissue across both party storylines but is being deployed asymmetrically. His endorsement failure with Lindell is a genuine data point about the limits of his primary-clout — the kind of story that would be a major &quot;Trump weakened&quot; headline if it had happened to a Democratic-aligned figure of similar stature. It is not being treated that way on the right, and it is barely being picked up on the left either, likely because it complicates the simpler &quot;Trump dominates the GOP&quot; frame both sides find useful in different ways.</p>
+<p><strong>Fetterman</strong> is a live wildcard. His public refusal to campaign against Sen. Dave McCormick (R-Pa.) is a checkable, on-the-record data point being used by right-leaning opinion writers as proof of Democratic incoherence — and no left-of-center outlet is contesting, contextualizing, or even reporting it today. That&#x27;s a real vulnerability: the party&#x27;s own dissenters are currently only being narrated by the opposition.</p>
+<p><strong>DCCC/national Democratic infrastructure</strong> is moving money aggressively into both offense (Ohio&#x27;s Miller seat) and what looks like incumbent-protection anxiety (the Larson and Craig losses). Watch whether that spending pattern produces any public strategy statement — a real signal of how national Democrats are reading the incumbent-loss wave.</p>
+<p><strong>Mother Jones</strong> is functioning as a single-outlet pipeline for both a major accountability story (Alito) and several culture-war pieces (AOC egg-freezing, &quot;Tech Prophet&quot;), meaning one outlet&#x27;s editorial choices are currently doing a disproportionate amount of work in the entity network. That&#x27;s a concentration risk for anyone relying on breadth-of-coverage as a signal of a story&#x27;s importance.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not talking about Demuth beating Lindell. That is the single clearest omission in this cycle: an establishment Republican just beat Trump&#x27;s own endorsed pick, on the same night and under the same dynamic that right-leaning outlets are calling a &quot;crisis&quot; when it happens to Democrats. The silence is the story.</p>
+<p>The left is not talking about its own coalition&#x27;s fault lines. Craig&#x27;s loss, Larson&#x27;s ouster, and Fetterman&#x27;s public distancing from McCormick&#x27;s opponent are all real, checkable events that left-leaning outlets are simply not engaging with today, retreating instead to administration-policy coverage and softer human-interest pieces. That&#x27;s not a factual dispute — it&#x27;s an editorial avoidance pattern on both sides simultaneously.</p>
+<p>Nobody is talking about Alito&#x27;s $2.9 million, outside of Mother Jones. No AP, Reuters, NYT, WaPo, or conservative pickup. Either this is a genuine blind spot every other newsroom is currently sitting on, or the underlying analysis has a credibility problem serious enough that nobody wants to touch it yet. Both are plausible; neither has been resolved by any visible reporting.</p>
+<p>Nobody is fact-checking the &quot;UK arrests over social media posts&quot; claim underpinning the right&#x27;s free-speech-comparison pieces. It&#x27;s being asserted, not verified, and there&#x27;s no cross-spectrum pushback on the record.</p>
+<p>And several stories that were live in the previous cycle — the Duke Law/DOJ admissions matter, Mamdani&#x27;s pied-à-terre litigation, the Meta/TikTok Ninth Circuit cases, Todd Blanche&#x27;s prosecutorial role, and the Fauci-texts contempt referral — have produced zero new coverage today. That&#x27;s consistent with either quiet resolution or stalling, and it should not be assumed to be the former without a direct check.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Minnesota results are the cleanest example in this cycle of asymmetric narrative construction: the same night produced a Democratic intra-party result (Flanagan over Craig) and a Republican intra-party result (Demuth over Lindell) that are structurally identical — grassroots/establishment candidate beats the national leader&#x27;s preferred pick — yet only one of them is being narrated as evidence of party dysfunction. This is worth treating as a template: when a night produces symmetric results, watch which one gets the &quot;crisis&quot; frame.</p>
+<p>The Ohio DCCC spending story and the Bronin/Larson upset sit in the same interpretive space — both are being used to support a &quot;Democratic money machine mobilizing&quot; or &quot;incumbent wave&quot; narrative — but each is sourced by only one to three outlets total. Thin sourcing is being asked to carry a broad national-trend claim in both cases.</p>
+<p>The Volokh/Reason and Alito/Reason pairings are very likely a data-pipeline artifact rather than a real editorial signal — the same author or outlet is being counted as multiple independent nodes, and the Alito story got algorithmically paired with an unrelated Reason immigration piece. This is a recurrence of a clustering problem flagged in the previous cycle (the Fauci-cluster issue), which means it&#x27;s now a persistent structural defect in how this corpus is being assembled, not a one-off. Treat entity-count and co-occurrence signals from this pipeline with real skepticism until that&#x27;s fixed.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Alito fossil-fuel disclosure story</strong>: watch for any AP/Reuters/NYT pickup, any statement from Alito or the Court, or any right-leaning outlet engagement in the next 72 hours. Continued silence across the spectrum is itself a data point worth escalating.</li>
+<li><strong>DCCC spending vs. Max Miller (OH)</strong>: watch for a right-leaning outlet to finally engage with either the spending surge or the underlying abuse allegations, and for any formal response from Miller&#x27;s campaign.</li>
+<li><strong>Fetterman&#x27;s stance on McCormick</strong>: watch whether any national Democratic Party organ (DNC, DSCC) responds publicly or attempts to discipline/pressure him — this is the concrete test of whether the party treats intra-coalition dissent as tolerable or not.</li>
+<li><strong>Craig and Hong&#x27;s post-primary posture</strong>: whether they formally endorse Flanagan and Crowley respectively. This is the cleanest real-world test of &quot;party fracturing&quot; versus &quot;healthy accommodation&quot; — an actual behavioral signal, not spin.</li>
+<li><strong>DCCC/DNC statement on incumbent-loss pattern</strong>: after Larson&#x27;s loss joins a run of 2026 incumbent primary defeats, watch for any official strategy statement acknowledging or addressing the trend.</li>
+<li><strong>Fauci-texts contempt referral</strong>: zero movement today after being live in the prior cycle. Needs a direct status check rather than being assumed resolved — either DOJ made a quiet decision or the story is stalled in process.</li>
+<li><strong>Pipeline reliability</strong>: if the Volokh triple-count or Alito/Reason mispairing recurs again in the next collection cycle, that confirms a structural ingestion defect that should be flagged for a fix rather than repeatedly worked around analytically.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What&#x27;s actually happening is less a story about Democratic fracture or Republican unity than a story about two separate media ecosystems each declining to report on their own side&#x27;s weaknesses while amplifying the other&#x27;s. The Minnesota results alone falsify the simple version of the &quot;only Democrats are in crisis&quot; narrative, since the same night delivered an equally sharp rebuke of Trump inside his own party — but almost nobody is saying so, on either side, because it&#x27;s inconvenient to both. The more consequential gap isn&#x27;t partisan spin, which is normal and self-correcting over time; it&#x27;s the apparent one-source blackout on a Supreme Court financial-conflict story that would ordinarily be a multi-day national story, and the recurrence of what looks like a genuine data-pipeline defect distorting which stories appear connected. Treat today&#x27;s primary-night &quot;fracture&quot; narratives as unresolved spin, treat the Alito story as unverified until corroborated, and treat the entity-clustering output from this system as unreliable until the Volokh/Reason pattern is fixed at the source.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">On the same primary election night, Minnesota Democrats nominated progressive Lt. Gov. Peggy Flanagan over Rep. Angie Craig for U.S. Senate while Minnesota Republicans rejected Trump-endorsed Mike Lindell in favor of Lisa Demuth for governor, part of a broader set of primaries (including Wisconsin&#x27;s close Crowley-Hong governor&#x27;s race) testing the progressive-vs-establishment divide in the Democratic Party.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (14)</span><span class="bias-badge" style="color:#e0a87a;">center-left (15)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (4)</span><span class="bias-badge" style="color:#3a8a52;">far-right (7)</span><span class="bias-badge" style="color:#e07a7a;">left (14)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:19.4;" title="center: 14"></div><div class="bias-segment" style="background:#e0a87a; flex:20.8;" title="center-left: 15"></div><div class="bias-segment" style="background:#7ae09b; flex:8.3;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:5.6;" title="far-left: 4"></div><div class="bias-segment" style="background:#3a8a52; flex:9.7;" title="far-right: 7"></div><div class="bias-segment" style="background:#e07a7a; flex:19.4;" title="left: 14"></div><div class="bias-segment" style="background:#a07ae0; flex:4.2;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:12.5;" title="right: 9"></div></div></div>
+  <div class="story-assessment">Beneath the competing spin, the verifiable outcomes are narrow and specific: Flanagan beat Craig, Demuth beat Lindell, and Crowley narrowly beat Hong — all confirmed across the spectrum. The real dispute is interpretive, not factual: whether these results signal a Democratic Party fracturing under progressive pressure (right framing) or a healthy, still-functioning party accommodating both wings while Trump&#x27;s endorsement clout shows real limits (left/center framing) — both readings are defensible and the truth likely lies in the specifics of each race rather than a single unifying narrative.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets (Guardian, Washington Post, NPR, Mother Jones) frame Flanagan&#x27;s win as a grassroots progressive victory fueled by anger over ICE/immigration enforcement, and frame Demuth&#x27;s win over Lindell and the Hong-Crowley race as evidence that Trump&#x27;s endorsement power and far-right candidates are losing ground with voters, often paired with sympathetic emphasis on voting-rights rulings (USPS injunction, birthright citizenship challenges) as checks on executive overreach.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (Axios, The Hill, PBS, RealClearPolitics) largely present the results as straightforward horse-race outcomes — who won, who they&#x27;ll face in November — while noting the ideological tension between progressive and establishment factions as a storyline worth watching rather than adjudicating which side is right.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets (Fox News, Breitbart, WSJ Opinion, RealClearPolitics) frame the same results as evidence of an intensifying, destabilizing Democratic civil war — a &#x27;progressive insurgency&#x27; or &#x27;DSA takeover&#x27; that weakens Schumer and establishment Democrats — while treating Demuth&#x27;s win over Lindell as a notable but survivable setback for Trump rather than a repudiation, and emphasize electability doubts about socialist-aligned candidates like Hong and Flanagan.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the &#x27;Democratic civil war&#x27;/Schumer-weakening framing and the electability doubts about progressive candidates that right-leaning outlets emphasize, and does not mention the Minnesota welfare-fraud political liability angle raised by RealClearPolitics.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage generally omits the anti-ICE grassroots anger that left outlets identify as the substantive driver of Flanagan&#x27;s win, and downplays or omits the judicial rulings against Trump&#x27;s mail-in voting and birthright citizenship orders that left outlets frame as significant accountability checks.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Hartford Mayor Luke Bronin defeated 14-term Rep. John Larson (D-Conn.), 78, in the Democratic primary for Connecticut&#x27;s 1st Congressional District, part of a broader 2026 wave of Democratic incumbent primary defeats.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow and undisputed: a longtime, elderly Democratic incumbent lost his primary to a younger, higher-profile local challenger. Beyond that, each outlet supplies a distinct causal story — institutional trend (Axios), ideological/generational rebuke (Fox), or age-driven decline (Breitbart) — that reflects editorial emphasis more than corroborated reporting, and readers should treat the &#x27;why&#x27; behind the loss as contested rather than settled.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet was included in the provided source set, so left-of-center framing cannot be directly assessed from this data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the result analytically and structurally, situating Larson&#x27;s loss within a larger 2026 pattern of Democratic incumbents losing primaries, rather than focusing on personal characteristics of Larson or ideological narratives about the challenger.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning coverage splits between two angles: Fox frames the loss as a generational and ideological rebuke of an &#x27;anti-Trump&#x27; Democratic establishment figure by a progressive challenger, while Breitbart frames it primarily around Larson&#x27;s age and apparent health decline (citing a seizure episode) as evidence of diminished capacity, downplaying policy or ideological explanations.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is present in this coverage set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning sources (Fox, Breitbart) omit the broader statistical/trend context that Axios emphasizes — that 2026 is shaping up as a record year for Democratic incumbent primary losses — instead focusing narrowly on Larson&#x27;s individual case (ideology or age) rather than the pattern across races.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">National Democratic groups, including the DCCC&#x27;s Red to Blue program, are ramping up financial and organizational support for Brian Poindexter&#x27;s 2026 challenge to Rep. Max Miller (R-Ohio) after already spending heavily to help him win the primary.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree Democrats are materially escalating investment in this Ohio race, but they diverge sharply on causation: Axios treats it as a straightforward strategic bet on a winnable seat, while the Washington Post ties the surge to Miller&#x27;s denied abuse allegations, a significant reputational variable Axios omits entirely. Without a right-leaning source, it&#x27;s impossible to gauge how conservative media is characterizing either the allegations or the DCCC spending, which limits a full spectrum read of this story.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post centers the unresolved domestic abuse allegations against Miller (which he denies), framing the surge in Democratic support for Poindexter as substantially a reaction to that controversy rather than purely a strategic electoral calculation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the story through a strategic/operative lens — Democratic money managers reassessing a previously safe GOP seat as newly competitive and worth significant investment, emphasizing dollar figures and campaign strategy over personal controversy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this coverage set, so a right-of-center framing cannot be characterized from the provided material.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Nothing can be assessed here since no right-leaning source was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Nothing can be assessed here since no right-leaning source was provided for comparison; notably, no conservative outlet&#x27;s response to or framing of the abuse allegations is available.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A financial disclosure analysis reported that Justice Samuel Alito realized up to $2.9 million in gains from fossil fuel-related investments over his nearly two decades on the Supreme Court; no other outlet in this set actually covered this story.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">This dataset does not actually contain cross-spectrum coverage of the same event: the Mother Jones piece concerns Justice Alito&#x27;s fossil fuel holdings, while the Reason piece concerns an unrelated immigration/citizenship case. As a result, no meaningful consensus-vs-dispute analysis of the Alito story can be performed here — genuine comparison would require additional outlets that actually reported on Alito&#x27;s financial disclosures, including any response from Alito or the Court.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones frames the disclosure data as evidence of a hidden conflict of interest, emphasizing the scale of the dollar figure and linking it directly to Alito&#x27;s judicial role and potential influence over climate litigation outcomes.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-outlet coverage of this story is included in this dataset.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet in this dataset covers the Alito fossil fuel story at all — the only other source provided (Reason, libertarian-leaning) reports on an unrelated case concerning birthright citizenship for children of designated &#x27;alien enemies.&#x27; There is no right-of-center framing of this specific story to compare.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Nothing can be assessed, since the comparison source does not cover the same story; there is no right-coverage content on Alito&#x27;s finances to identify as omitted from the left account.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — the second source does not address the Alito fossil fuel story, so no comparison of omissions is possible for this topic.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two right-of-center opinion pieces separately argue the U.S. outperforms Europe/the UK — one on economic strength (citing wage data), the other on free-speech protections (citing UK arrests over social media posts) — with no left-of-center outlet represented in this sample to corroborate or contest either claim.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These are two loosely related opinion pieces rather than coverage of a single event — one an economic-data rebuttal, the other a civil-liberties alarm about UK policing of speech — bundled here under a shared &#x27;U.S. vs. Europe&#x27; theme. Because only right and center-right sources are represented, the analysis is one-sided by construction: neither claim (the wage comparison&#x27;s methodology or the characterization of UK arrests as a free-speech crisis) has a counterpoint in this sample. Real assessment of factual accuracy would require the underlying wage data source and the specific legal charges in the UK cases cited.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is included in this sample, so left framing cannot be characterized from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinct center/centrist (non-right-leaning) source is included; RealClearPolitics is labeled center-right and shares the right&#x27;s framing emphasis on civil-liberties alarm.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both outlets frame the U.S. as the favorable benchmark: National Review emphasizes underrated U.S. economic strength via a wage statistic rebutting critics, while RealClearPolitics frames European (especially UK) speech restrictions as government overreach and a betrayal of shared transatlantic civil-liberties values, with emotional emphasis on individual cases like Linehan&#x27;s arrest.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning outlet is present in this dataset to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning coverage omits counter-context that left-leaning outlets often raise on these topics, such as: cost-of-living, healthcare access, and inequality metrics that complicate simple wage comparisons; and the specific content/legal basis behind UK arrests (e.g., harassment or incitement allegations) rather than framing them solely as speech suppression.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">Mike Lindell</span><span class="entity-tag">Lisa Demuth</span></div>
+  <div class="connection-text">On the same night the press frames Democrats as fracturing between progressives and moderates (Flanagan-Craig, Bronin-Larson), Minnesota Republicans handed Trump&#x27;s own endorsed candidate (Lindell) a defeat in favor of establishment pick Demuth — a GOP establishment-vs-Trump storyline that is structurally identical to the Democratic storyline but almost entirely absent from right-leaning coverage.</div>
+  <div class="connection-sig">↳ Suggests asymmetric framing: intra-party dissent is being narrated as crisis when it happens to Democrats and as a footnote when it happens to Republicans, on the very same election night with the very same dynamic.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DCCC</span><span class="entity-tag">Brian Poindexter</span><span class="entity-tag">Max Miller</span><span class="entity-tag">Washington Post</span><span class="entity-tag">Axios</span></div>
+  <div class="connection-text">The Ohio DCCC spending surge sits at the intersection of two other threads today: the broader &#x27;Democratic money machine&#x27; mobilization implied by the CT-1 upset (Bronin over Larson) and the party&#x27;s post-primary consolidation strategy. Only WaPo connects the spending to Miller&#x27;s denied abuse allegations; Axios&#x27;s version reads as pure strategy, and no right-leaning outlet in this set covers the story at all.</div>
+  <div class="connection-sig">↳ A one-sided sourcing gap (center/left only) on a story with a serious allegation component means the allegation framing could shape the race&#x27;s national narrative before conservative outlets even engage with it.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Eugene Volokh</span><span class="entity-tag">Reason</span></div>
+  <div class="connection-text">Volokh appears as a distinct &#x27;entity&#x27; across three nominally separate stories, all traceable to the same Reason-hosted Volokh Conspiracy blog output rather than three independent news events.</div>
+  <div class="connection-sig">↳ Inflates apparent right/libertarian story diversity and entity-network density; likely a clustering artifact rather than a substantive pattern, consistent with last cycle&#x27;s flagged pipeline issue.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Mother Jones</span><span class="entity-tag">Samuel Alito</span><span class="entity-tag">Supreme Court</span></div>
+  <div class="connection-text">Mother Jones is the sole substantive source on the Alito $2.9M fossil-fuel gains story, and it also anchors three unrelated far-left culture/politics stories today (AOC egg-freezing, &#x27;Tech Prophet&#x27;), making it a disproportionately concentrated node in the entity network for a single-outlet exclusive on a major SCOTUS financial-conflict story.</div>
+  <div class="connection-sig">↳ A story with real institutional-accountability implications (undisclosed judicial financial conflicts) is being carried by exactly one outlet with no center or right corroboration — either a genuine blindspot elsewhere or a signal the claim needs independent verification before it&#x27;s treated as settled.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Fetterman</span><span class="entity-tag">Dave McCormick</span><span class="entity-tag">Democratic Party</span></div>
+  <div class="connection-text">A sitting Democratic senator publicly declining to campaign against a Republican colleague appears the same day as multiple right-only opinion pieces (&#x27;Class Gap on the Left,&#x27; &#x27;Democratic Socialism&#x27;s Stars Try to Flee from Their Radicalism&#x27;) arguing the party is incoherent — Fetterman&#x27;s move is being used as evidence for that thesis but is covered exclusively by right-leaning outlets.</div>
+  <div class="connection-sig">↳ A real, checkable data point (Fetterman&#x27;s stance) is being absorbed into an opinion narrative with no left-of-center outlet contesting or contextualizing it today.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning outlets are running a concentrated, opinion-heavy cluster (at least six distinct pieces: anti-capitalism, class gap, single-payer, antisemitism, socialism&#x27;s stars fleeing, WI Dems&#x27; &#x27;catch&#x27;) all converging on a single thesis — the Democratic Party is ideologically fracturing — published the same day actual primary results show a mixed picture (progressive Flanagan win, but also moderate-friendly outcomes elsewhere) that only partially supports that thesis.</div>
+<div class="pattern-item">Left-leaning outlets are almost entirely absent from the Democratic-fracture narrative and instead cluster around Trump-administration policy actions (vaccine moves, Yemen civilian toll, &#x27;Trump accounts,&#x27; digital ID) and soft human-interest/culture pieces (AOC egg freezing, Big Sur wildfire, pageant dispute) — a pattern of covering the administration&#x27;s actions while largely declining to engage with intra-party critique.</div>
+<div class="pattern-item">Election-night results are being laundered into two incompatible unifying narratives (party fracture vs. Trump endorsement limits) even though the underlying facts are narrow, race-specific, and don&#x27;t clearly support either sweeping frame — a textbook case of interpretation outrunning evidence on a low-information news night.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">A Supreme Court justice&#x27;s $2.9M fossil-fuel investment gains story — a significant judicial-ethics story by any normal news standard — drew coverage from exactly one outlet (Mother Jones) with no AP, Reuters, NYT, WaPo, or right-leaning pickup, and got algorithmically paired with an unrelated Reason immigration piece, suggesting either a genuine cross-spectrum blackout or a data-pipeline clustering failure (echoing last cycle&#x27;s flagged Fauci-cluster artifact).</div>
+<div class="anomaly-item">The Bronin-over-Larson and DCCC-Ohio stories are each sourced by only 1-3 outlets total despite being framed as part of a &#x27;broader wave&#x27; — thin sourcing for stories being used to support a national-trend narrative.</div>
+<div class="anomaly-item">No center or left-of-center outlet in this set engages with the &#x27;US outperforms Europe&#x27; economic/free-speech pieces, leaving a specific, checkable claim (UK arrests over social media posts) completely uncontested rather than fact-checked.</div>
+<div class="anomaly-item">Despite Trump appearing in 5 stories, there is no coverage today connecting the Fauci-texts story to any DOJ contempt or prosecution decision — the previous watch item appears to have gone quiet rather than resolved, which is itself notable given how live that story was.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are avoiding their own party&#x27;s establishment-over-Trump result (Demuth beating Lindell) while amplifying a multi-piece thesis that Democrats are ideologically broken — a selective reading of the same election night. Left-leaning outlets are avoiding the intra-party fracture story almost entirely, retreating instead to Trump-administration policy coverage and human-interest pieces, which limits scrutiny of their own coalition&#x27;s real fault lines (Fetterman-McCormick, Craig&#x27;s loss, Larson&#x27;s ouster). The net effect is that the one dataset both sides could have covered honestly — actual primary-night arithmetic — is being replaced on both sides by pre-selected framing devices.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 5 questions parents may have after Trump&#x27;s latest vaccine move</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Top adviser to Iran&#x27;s Revolutionary Guard leader sits down for rare interview</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What to know as your driver&#x27;s license gets a digital upgrade</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fueled by national movement, democratic socialist shakes up Wisconsin&#x27;s governor&#x27;s race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Vermont midterm primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The far left hits a wall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pentagon report reveals steep civilian toll of Trump’s Yemen campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rule could let parents put $2,500 into child ‘Trump accounts’ tax-free</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The data center backlash is building</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Famed tourist destinations evacuated as wildfire threatens California’s Big Sur</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dethroned Miss North Carolina USA threatens legal action over title removal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Political Power of Alexandria Ocasio-Cortez’s Egg Freezing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Tech Prophet Finally Gets Her Second Coming</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’T Malign Economy Europe Struggle</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Left and Right Dabble in Anti-Capitalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Jabs at Vaccines for Children</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who’s Really Holding Up the Gaza Deal?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Glenn Youngkin Goes to Bat for School Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mainstream Democrats Quietly Push for Single Payer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Europe’s Geoengineering Future?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The GAO Precedent for Fed Independence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who Is Behind North Korea’s Expeditionary Force in Europe?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic Socialism’s Stars Try to Flee from Their Radicalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How to Fail at Public Order</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans Can Win on Affordability</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Country for Old Men</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lauren Boebert&#x27;s Son Arrested on Charges of Child Sexual Exploitation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fetterman Says He Will Not Campaign Against Dave McCormick</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Margaret Brennan Exists To Speak Power to Truth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Class Gap on the Left Threatens Any Winning Coalition</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NY Times Ignores Democrats Embrace of Antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Fauci&#x27;s Texts Reveal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WI Dems on Verge of a Comeback...But There&#x27;s a Catch</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether any center or right-leaning outlet corroborates or disputes the Alito $2.9M fossil-fuel gains figure, and whether Alito or the Court issues any response or recusal statement on pending environmental-adjacent cases</div>
+<div class="watch-item">Washington Post&#x27;s Max Miller abuse-allegation reporting — watch for right-leaning outlet pickup now that DCCC spending is escalating, and any formal response from Miller&#x27;s campaign</div>
+<div class="watch-item">Fetterman&#x27;s continued public distancing from Democratic campaign efforts against McCormick — watch for whether national Democratic groups respond or discipline him</div>
+<div class="watch-item">General-election positioning for Flanagan (MN Senate) and the Crowley-Hong aftermath in Wisconsin — watch whether Craig or Hong endorse their primary winners, a concrete test of the &#x27;party fracturing vs. healthy accommodation&#x27; dispute</div>
+<div class="watch-item">Whether the CT-1 Bronin win and other 2026 incumbent-primary losses (Larson) produce any DCCC/DNC statement on incumbent protection strategy</div>
+<div class="watch-item">Continued data-pipeline/entity-clustering reliability issues (Volokh/Reason triple-counting, Alito/Reason mismatched pairing) — treat entity-network counts with caution until source-clustering is verified</div>
+<div class="watch-item">Fauci-texts contempt referral status — carried over from last watch list with zero new developments today, meaning it is either resolved quietly or stalled; needs a direct status check</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
