@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-13 08:59 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-13 08:59 UTC</span>
+    <span class="pill">117 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant activity in American politics today is not legislative or electoral in the traditional sense — it is narrative construction ahead of the midterms, running on parallel, non-intersecting tracks. Democrats had a genuinely mixed primary night: Wisconsin chose the moderate David Crowley over DSA-aligned Francesca Hong by a narrow margin, while Minnesota simultaneously nominated a more progressive Senate candidate. That is not a trend, it is a split decision. It is being processed by right-leaning outlets as proof of a party &quot;fracturing&quot; toward socialism and by left-leaning outlets as proof of pragmatic electability — neither of which is fully supported by pairing both results together, which nobody in the coverage set is doing.</p>
+<p>Underneath the electoral noise, a more consequential story is a federal criminal case: the DOJ has indicted Heidi Beirich, former CFO of the Southern Poverty Law Center, on wire fraud, bank fraud, and money laundering conspiracy charges tied to undisclosed payments to informants embedded in extremist groups. The verified facts are narrow. Everything past that — whether this was standard (if improperly disclosed) informant handling or actual funding of groups like the KKK — is contested and unresolved by primary court documents. This case is landing inside a broader, same-day cluster of &quot;left-institution corruption&quot; content (a Schweizer fraud op-ed, a Head Start &quot;never worked&quot; piece), which should raise your threshold for how much of the framing to take at face value until charging documents are read directly.</p>
+<p>Separately, there is a real, serious, under-covered story: a federal lawsuit alleging Rep. Max Miller (R-OH) was involved in the exposure of a sensitive image of his minor child, filed by his ex-wife. This has essentially zero right-leaning pickup despite involving a sitting member of Congress and a minor. Compare that to the volume of right-leaning coverage devoted to a Rashida Tlaib intra-party dispute the same day, and you have a clean natural experiment in selective outrage. Both parties are running the same playbook — amplify the other side&#x27;s dysfunction, go quiet on your own.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Karoline Leavitt</strong> is leaving the White House press secretary role at the end of August, framed on all sides as amicable, moving into an &quot;outside adviser&quot; capacity to Trump. This is not a departure from the Trump orbit — it&#x27;s a lateral move into a role with less formal accountability (no podium, no transcript, no press corps scrutiny) but presumably continued messaging influence. Worth tracking as the first visible piece of a pre-midterm reshuffle of Trump&#x27;s communications operation into looser structures.</p>
+<p><strong>Right-leaning outlets</strong> are running a coordinated-looking, multi-story package on Democratic Party dysfunction: Hong&#x27;s loss, &quot;Geriatric Democrat Loses to a Moderate,&quot; pieces on party &quot;pathologies,&quot; Occupy Wall Street retrospectives, and the Tlaib story, all clustered same-day. The density and thematic coherence of this package — far exceeding any equivalent left-side self-examination — suggests deliberate midterm positioning rather than organic news judgment.</p>
+<p><strong>The DOJ</strong>, under the current administration, is the actor to watch on the SPLC case. A prosecution against a left-coded institution&#x27;s former CFO, landing the same day as fraud-enforcement commentary favorable to the administration, is either coincidence or coordination — the timing alone doesn&#x27;t resolve it, but it&#x27;s the kind of pattern that warrants tracking the next filing rather than the initial headline.</p>
+<p><strong>Emily Moreno&#x27;s</strong> lawsuit against Max Miller is the story with the most asymmetric silence relative to its seriousness. No right-leaning outlet has touched it. That silence is itself a data point about which stories the conservative media ecosystem is willing to carry.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the Max Miller lawsuit at all, despite it involving a sitting GOP member of Congress and an allegation concerning a minor child — a story that would almost certainly dominate right-leaning coverage cycles if the party affiliation were reversed. It is also largely absent from the three same-day ICE controversy stories (electric-shock restraint gloves, an officer filmed pointing a gun at a woman in Virginia, airport Fourth Amendment concerns), instead running immigrant-crime stories from the same news cycle — not disputing the ICE stories, just not running them.</p>
+<p>The left is largely skipping sustained self-examination of its primary results (declining to reconcile the Hong loss with Minnesota&#x27;s more progressive Senate pick) and is engaging with the SPLC indictment mostly on process and prosecutorial-motive grounds rather than on the substance of what the informant payments actually were.</p>
+<p>Two previously flagged watch items have now gone silent for a second consecutive cycle with zero new coverage: Alito&#x27;s $2.9 million fossil-fuel-related financial disclosure, and the Fauci-texts contempt referral. Two silent cycles in a row is enough to treat these as either deliberately deprioritized or genuinely stalled — worth a direct status check rather than continued passive monitoring, since &quot;no news&quot; here is ambiguous between &quot;resolved quietly&quot; and &quot;buried.&quot;</p>
+<p>The federal judges violent-threats story — objectively high-salience given the current climate — has functionally one source (PBS) covering it, with no cross-spectrum pickup at all. That is a thinness worth noting on its own regardless of framing disputes.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The SPLC indictment and the same-day &quot;War on Fraud&quot; op-ed are not necessarily connected, but the thematic pairing is doing work regardless of intent: a criminal case against a left-coded institution&#x27;s former officer, released into a news cycle already carrying an op-ed about fraud enforcement being a partisan battleground, reinforces a narrative before the underlying facts (informant handling vs. extremist financing) are settled. Treat this as narrative infrastructure being built in real time, not as proof of coordination.</p>
+<p>The Miller/Tlaib asymmetry and the ICE/immigrant-crime asymmetry are the same underlying mechanic applied twice in one day: each side selects different stories entirely from the same news cycle rather than disputing shared stories, producing two non-overlapping realities from identical raw material. That is a more sophisticated (and harder to fact-check) form of spin than dueling interpretations of the same event, and it&#x27;s showing up in more than one vertical simultaneously, which suggests it&#x27;s structural to how each media ecosystem is currently operating, not a one-story anomaly.</p>
+<p>There is a data-quality problem sitting inside the source pipeline itself: a garbled composite headline (&quot;House White Press Wisconsin Secretary&quot;) is merging fragments of at least three unrelated stories and getting falsely attached to 15+ unrelated entities (Truth Social, Russia, Ukraine, DOJ, named individuals). This is a worse recurrence of a clustering bug flagged in the prior cycle. Any entity-network conclusion touching those names should be treated as unreliable until this is fixed — it is a collection artifact, not a political signal.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Emily Moreno v. Max Miller lawsuit</strong>: whether any right-leaning outlet covers it at all in the next 72 hours, and whether Miller or House GOP leadership issues any statement. Current total silence on the right is itself the story.</li>
+<li><strong>Beirich/SPLC case, primary court filings</strong>: the next filing should clarify whether this is &quot;undisclosed informant payments&quot; or &quot;extremist group financing&quot; — the two framings currently running in parallel are not reconcilable without it.</li>
+<li><strong>Angie Craig (MN) and Francesca Hong endorsements</strong>: whether they formally back their respective primary winners is a direct, checkable test of the &quot;Democratic Party fracturing&quot; narrative versus normal-course accommodation.</li>
+<li><strong>Karoline Leavitt&#x27;s next role</strong>: once her specific &quot;outside adviser&quot; position is named, it will indicate whether this is an isolated move or the start of a broader White House communications reshuffle ahead of the midterms.</li>
+<li><strong>Alito fossil-fuel disclosure and Fauci-texts contempt referral</strong>: both now silent for two consecutive cycles. Needs a direct status check — stalled and buried look identical from the outside until someone checks.</li>
+<li><strong>Cross-spectrum pickup of the federal judges threats story</strong>: currently one source (PBS). Watch whether center or right outlets pick it up at all, given the story&#x27;s objective salience.</li>
+<li><strong>The three same-day ICE stories</strong> (shock gloves, VA gun-pointing incident, airport Fourth Amendment concerns): watch for continued right-leaning non-coverage or, if it breaks, how it&#x27;s framed relative to the immigrant-crime stories run the same day.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What looks like a chaotic, fragmented news day is actually two disciplined, mostly non-overlapping information operations running in parallel — each side selecting different true stories from the same 24 hours to build a coherent midterm narrative, while staying almost entirely silent on stories that implicate its own side. That&#x27;s more concerning than dueling spin on a shared story, because it means the two information ecosystems are no longer really arguing with each other — they&#x27;re each constructing a self-contained reality and betting their audience never sees the other one. The genuinely unresolved, substantive threads underneath all of it — the actual mechanics of the SPLC informant payments, the judicial-threats story, the Alito and Fauci items gone quiet — are getting less scrutiny precisely because they don&#x27;t fit cleanly into either narrative package. The signal-to-noise problem here isn&#x27;t fake news, it&#x27;s selective real news, and it&#x27;s the harder problem to correct for.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Emily Moreno, ex-wife of Rep. Max Miller (R-Ohio), has filed a federal lawsuit against him alleging a sensitive/nude photo of their young daughter was made public.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core, serious fact: a federal lawsuit alleges a sensitive image of a minor child was exposed and connects Rep. Max Miller to that exposure. The dispute is less about whether it happened and more about mechanism and intent — The Hill&#x27;s language implies direct posting, while The Washington Post&#x27;s account describes exposure through mishandled legal documents amid unrelated domestic abuse litigation, a meaningfully different culpability picture. Readers relying on only one source would come away with a different sense of whether this was a deliberate act or a negligent one, and the missing right-leaning coverage leaves a real gap in understanding how this story is being received across the full spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Washington Post frames this as an act of recklessness by a Republican congressman who endangered his own child while trying to defend himself against domestic abuse allegations — emphasizing the unsecured Dropbox mishandling and situating the incident within a larger pattern of alleged misconduct by Miller.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents the story primarily as a serious legal matter, centering the lawsuit&#x27;s allegations in neutral, fact-forward language without connecting it to broader political context or editorializing on Miller&#x27;s culpability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in the provided coverage, so right-of-center framing cannot be characterized from this set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post&#x27;s framing does not present the more direct, unqualified allegation language used by The Hill (that Miller &#x27;posted&#x27; the photo), instead foregrounding the Dropbox/document-release mechanism, which somewhat softens the directness of the accusation while amplifying the negligence and domestic-abuse angle.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source is available in this set to compare; it&#x27;s unknown whether right-leaning outlets have covered this story at all or how they would frame it.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">David Crowley narrowly defeated democratic socialist Francesca Hong in Wisconsin&#x27;s Democratic gubernatorial primary while Karoline Leavitt announced she is stepping down as White House press secretary at the end of August to become an outside Trump adviser.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (9)</span><span class="bias-badge" style="color:#e0a87a;">center-left (11)</span><span class="bias-badge" style="color:#7ae09b;">center-right (4)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (12)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:18.8;" title="center: 9"></div><div class="bias-segment" style="background:#e0a87a; flex:22.9;" title="center-left: 11"></div><div class="bias-segment" style="background:#7ae09b; flex:8.3;" title="center-right: 4"></div><div class="bias-segment" style="background:#e05252; flex:2.1;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:10.4;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 12"></div><div class="bias-segment" style="background:#a07ae0; flex:2.1;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:10.4;" title="right: 5"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow and undisputed: Leavitt is departing the press secretary post amicably while staying close to Trump, and Wisconsin Democrats chose the more moderate Crowley over the DSA-aligned Hong by a slim margin, even as Minnesota Democrats simultaneously nominated a more progressive Senate candidate — meaning there is no single, uniform ideological story about the Democratic Party&#x27;s direction. Right-leaning outlets amplify the &#x27;socialist threat&#x27; angle as a midterm opportunity, while left-leaning outlets reframe the same result as pragmatic electability reasoning or historic milestones, and both sides are shaping a genuinely mixed, contested primary outcome to fit pre-existing narratives about the Democratic Party&#x27;s trajectory.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames Leavitt&#x27;s exit as an amicable, largely uneventful personnel transition, and frames Hong&#x27;s loss through sympathetic or process-oriented lenses — pragmatic electability concerns, polling failures, establishment maneuvering, or historic milestones (potential first Black governor, Minnesota&#x27;s all-female statewide matchups) — rather than as an ideological repudiation of the left.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Presents the primaries through balanced dual-partisan analysis (pairing Republican and Democratic strategists) and strategic &#x27;takeaways&#x27; framing, describing Crowley&#x27;s win as a center-left counterweight to a progressive winning streak while noting Flanagan&#x27;s Minnesota win complicates any single narrative; treats Leavitt&#x27;s exit as a low-drama, family-motivated transition.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames Hong&#x27;s near-victory as an alarming sign of growing DSA/socialist influence inside the Democratic Party and a strategic opportunity for Republicans, while pairing the primary coverage with other stories (Ossoff&#x27;s reparations comments, Piker&#x27;s rhetoric, El-Sayed&#x27;s &#x27;Hamas&#x27; framing) that reinforce a narrative of a Democratic Party drifting toward the radical left; treats Leavitt&#x27;s departure as amicable and a continuation of her influence.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays the right&#x27;s framing that Hong&#x27;s near-win signals a dangerous socialist surge Republicans can exploit, and does not amplify the more inflammatory characterizations of the Democratic left (e.g., &#x27;impoverish the White middle class&#x27; remarks, Hamas-sympathy accusations) that right-leaning outlets highlighted.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the Guardian&#x27;s critical retrospective on Leavitt&#x27;s tenure (accusations of spreading misinformation and restricting press access), the Washington Post&#x27;s scrutiny of polling failures and of Trump&#x27;s account of the Air Force One plane switch, and the historic-milestone framing around Crowley&#x27;s potential status as Wisconsin&#x27;s first Black governor and Minnesota&#x27;s all-female statewide matchups.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Heidi Beirich, former chief financial officer of the Southern Poverty Law Center, was arrested and indicted by the Justice Department on wire fraud, bank fraud, and money laundering conspiracy charges related to undisclosed payments to informants embedded in extremist groups, as part of a broader DOJ criminal case against SPLC.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:20.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:40.0;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:20.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The verified core is narrow: a former SPLC CFO was charged with financial crimes tied to undisclosed informant payments, within a larger DOJ case against SPLC. Beyond that, coverage diverges sharply on intent and characterization — right-wing outlets frame this as funding extremist groups, while left-wing outlets frame it as payments to sources embedded in those groups and question the prosecution&#x27;s political motivation. The gap between &#x27;paid an informant inside a hate group&#x27; and &#x27;funneled money to the KKK&#x27; is the crux of the story, and no outlet in this set independently reconciles that distinction with primary court documents.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets (Guardian, WaPo) frame the case with skepticism toward DOJ motives, emphasizing Beirich&#x27;s stature as a respected far-right extremism expert and situating the prosecution within the Trump administration&#x27;s broader antagonism toward SPLC as a civil rights institution. Emotional register centers on alarm over prosecutorial overreach and political targeting.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour takes the most restrained approach, framing the charge primarily as part of a larger, ongoing DOJ legal action against SPLC, while noting the group&#x27;s history as a target of conservative criticism — providing political context without asserting guilt or political motivation on either side.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets (Fox, Breitbart) frame the story as exposure of hypocrisy and corruption at a prominent liberal watchdog group, emphasizing specific dollar figures, named hate groups (KKK), and DOJ&#x27;s aggressive prosecutorial language. Emotional register centers on vindication of long-standing conservative distrust of SPLC.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays the specific alleged dollar amount ($4M) and the claim that funds were allegedly funneled to named hate groups like the KKK — details that Fox and Breitbart center prominently.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the defense&#x27;s counter-narrative about potential political motivation behind the prosecution, and does not mention the personal/romantic relationship detail (WaPo) that could contextualize the informant payments as a personnel/ethics issue rather than a hate-group financing scheme.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The two supplied sources do not cover the same event: PBS NewsHour reports on threats against federal judges, while Reason discusses the durability of Trump&#x27;s deregulatory agenda — no genuine cross-spectrum comparison is possible from this input.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">This input does not actually support a spectrum comparison — the two articles are about unrelated events, so no consensus or genuine contested framing can be extracted. To properly analyze the &#x27;Federal Judges Describe Violent Threats&#x27; story, sources further right (and ideally a true center outlet) that specifically cover judicial threats are needed.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS (center-left) frames rising threats against judges as a direct consequence of &#x27;dehumanizing&#x27; rhetoric from Trump and allies, centering judicial safety, institutional integrity, and the chilling effect on the rule of law.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not applicable — PBS NewsHour is coded here as center-left rather than center, and no true center source was supplied.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source on the judicial threats story was provided, so right-of-center framing on that event cannot be assessed. The libertarian outlet (Reason) instead frames a different topic — Trump&#x27;s deregulation — critically, emphasizing procedural fragility and executive overreach rather than defending the administration.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined: no right-leaning coverage of the judicial-threats story was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined: the only non-left source provided (Reason) does not cover the judicial-threats story at all, so there is no basis to identify what it omits relative to PBS.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Southern Poverty Law Center</span><span class="entity-tag">Department of Justice</span><span class="entity-tag">Peter Schweizer / &quot;War on Fraud&quot; op-ed</span></div>
+  <div class="connection-text">The Beirich/SPLC fraud indictment lands the same day right-leaning commentary runs &#x27;The War on Fraud Continues Without Democrats&#x27; Help&#x27; — a thematic pairing where a criminal fraud case against a left-coded institution&#x27;s former CFO reinforces a simultaneous op-ed narrative about fraud enforcement being a partisan battleground.</div>
+  <div class="connection-sig">↳ Suggests coordinated framing rather than coincidence: the SPLC case is being fed into a pre-existing &#x27;fraud/corruption is a Democratic-institution problem&#x27; narrative before primary court documents have even clarified whether this was informant-handling or extremist financing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Max Miller</span><span class="entity-tag">Rashida Tlaib</span></div>
+  <div class="connection-text">Both are same-day intra-party controversy stories involving a sitting member of Congress, but coverage is inverted by ideology: Tlaib (D) draws heavy right-only coverage (&#x27;no coincidence&#x27; framing), while Miller (R) draws a serious federal lawsuit involving a minor with only center/left pickup and zero right-leaning coverage.</div>
+  <div class="connection-sig">↳ Textbook asymmetric spotlighting — each side amplifies the other party&#x27;s member scandal while staying silent on its own, which is more informative about outlet behavior than about either underlying story.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">ICE</span><span class="entity-tag">Axios</span><span class="entity-tag">Associated Press</span></div>
+  <div class="connection-text">Three distinct ICE-conduct controversies broke the same day (electric-shock gloves, an officer filmed pointing a gun at a woman in Virginia, airport 4th Amendment concerns) and all cluster in left-only coverage, while right-leaning outlets simultaneously ran immigrant-crime stories (California slaying, &#x27;Trump Prosecutor Deported Hundreds&#x27;).</div>
+  <div class="connection-sig">↳ A mirrored immigration narrative split: left selects ICE-misconduct stories, right selects immigrant-crime stories, from the same day&#x27;s news cycle — each side is constructing an opposite morality tale from the same underlying policy area.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Karoline Leavitt</span><span class="entity-tag">Donald Trump</span></div>
+  <div class="connection-text">Leavitt&#x27;s departure from the press secretary post is framed as amicable and immediately paired with her becoming an &#x27;outside adviser&#x27; to Trump — not a break, a lateral move that keeps her in the messaging orbit without official-spokesperson constraints.</div>
+  <div class="connection-sig">↳ Worth tracking as a possible pre-midterm reshuffle of the Trump communications apparatus into looser, less accountable &#x27;outside&#x27; structures.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Francesca Hong</span><span class="entity-tag">Melissa Hortman-style progressive frame</span><span class="entity-tag">Minnesota Senate nominee</span></div>
+  <div class="connection-text">Wisconsin&#x27;s Crowley-over-Hong result is being read as a single &#x27;Democrats are moderating&#x27; story by right-leaning outlets, even though Minnesota nominated a more progressive Senate candidate the same cycle — the two data points contradict a uniform trend but are not being reconciled in the same pieces.</div>
+  <div class="connection-sig">↳ Indicates cherry-picked cross-state comparison; the &#x27;party fracturing&#x27; narrative is being built from a single favorable data point rather than the full picture.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning outlets are running a dense, multi-story &#x27;Democratic Party fracturing/pathology&#x27; package (Hong&#x27;s loss, &#x27;Geriatric Democrat Loses to a Moderate&#x27;, &#x27;The Political Parties&#x27; Pathologies&#x27;, &#x27;How Occupy Wall Street Explains Politics Today&#x27;, Tlaib piece) — far denser than any equivalent left-side self-examination, suggesting this is being pushed as a coordinated midterm narrative rather than organic commentary.</div>
+<div class="pattern-item">Institutional-fraud framing is appearing across unrelated verticals same day: SPLC/Beirich (crime), Schweizer op-ed (fraud), Head Start (&#x27;Has Never Worked&#x27;), Fauci/RFK — all converge on a &#x27;left-coded institutions are corrupt or broken&#x27; theme.</div>
+<div class="pattern-item">Immigration coverage is bifurcating by selecting different incidents entirely (ICE misconduct vs. immigrant crime) rather than disputing the same incident — a more sophisticated form of framing divergence than classic same-story spin.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The entity-clustering pipeline is producing a garbled composite title (&#x27;House White Press Wisconsin Secretary&#x27;) that appears to merge fragments of at least three unrelated headlines and is now falsely attributed to 15+ unrelated entities (Truth Social, Russia, Ukraine, DOJ, Charles Creitz, Mike Rogers, etc.) — this is a worse recurrence of the Volokh/Alito clustering bug flagged in the previous run, not a one-off.</div>
+<div class="anomaly-item">The &#x27;Federal Judges Describe Violent Threats&#x27; story — normally a high-salience topic given the current climate of political violence — has only two total sources (PBS, and an unrelated Reason piece mismatched into the same slot), meaning it is effectively uncovered outside of one center-left outlet. That thinness is itself notable.</div>
+<div class="anomaly-item">Both prior watch-list items on Alito&#x27;s $2.9M fossil-fuel disclosure and the Fauci-texts contempt referral produced zero coverage today for a second consecutive cycle — either both stories have gone quiet by design (settled out of the news cycle) or are being actively deprioritized; worth a direct status check rather than continued passive monitoring.</div>
+<div class="anomaly-item">No right-leaning outlet has picked up the Max Miller lawsuit despite it involving a sitting Republican member of Congress and an allegation involving a minor — a conspicuous silence given how aggressively the same outlets covered Tlaib&#x27;s intra-party dispute same day.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding stories where its own actors look bad (Miller lawsuit, ICE misconduct) while amplifying Democratic Party dysfunction narratives and institutional-fraud framing against left-coded organizations (SPLC). The left is avoiding sustained self-examination of its primary results and largely ignoring the SPLC prosecution&#x27;s substance, instead focusing on process/motivation questions. Both patterns suggest each side is optimizing today&#x27;s coverage for pre-existing midterm narratives rather than following the news value of individual stories.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump sued over service selling faster access to Truth Social posts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report suggests a threat forced Trump to switch aircraft as he departed NATO summit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Latest primaries yield mixed results for moderate and progressive Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sam Roberts and Geoff Bennett discuss the art of obituary writing on &#x27;Settle In&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bessent said the K-shaped economy &#x27;is over.&#x27; Here&#x27;s what financial experts say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AP report: ICE plans to give its officers gloves that can deliver painful electric shocks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Surrogate mother who fled to Texas gives birth to baby with severe heart defect</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› San Francisco-area estate sells for $70m in sign of AI-fueled wealth explosion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Minnesota man killed his wife and child before dying by suicide, police say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US army helicopter crashes in Texas, killing two people and sparking wildfire</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It must have been love, but it’s over now: sex toy placed in trash bin triggers DC bomb squad</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I Asked AI to Write a Novel. It’s Not So Bad.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci, RFK Jr., and the Latest in American Health</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani Wants to Deliver Amazon to the Teamsters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Disinflation Returns, Kevin Warsh’s Critics Hardest Hit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Zhu Rongji, and What China Might Have Been</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Field Marshal Munir and the Pakistan Paradox</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Geriatric Democrat Loses to a Moderate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Despite What You’ve Heard, the World Isn’t on Fire</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Political Parties’ Pathologies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News Poll: New matchup, same result: Maine Senate race stays locked</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Repeat offender sucker-punches woman in city where Ukrainian refugee was stabbed by career criminal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed dares GOP rival to no-pads football showdown as Senate feud turns personal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tlaib under fire for working to unseat two Jewish House Democrats in Florida: &#x27;No coincidence&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Illegal immigrant charged with brutal slaying one day after California judge released him</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Education Savings Accounts Are the Right Path to School Choice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spider-Man’s Web of Deceit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An AI Future Built on Resilience, Not Restraint</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Hollywood Merger Won’t Kill Entertainment Jobs. Blocking It Might</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Prosecutor Deported Hundreds from California Amnesty Zone</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;The Matrix’ Director Lilly Wachowski Bashes Hollywood for Refusing to Fund &#x27;Wall-to-Wall Trans Cast’ Action Film</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bob Iger, Josh Kushner to Purchase Los Angeles Lakers for $12.5 Billion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Peter Schweizer: The War on Fraud Continues Without Democrats&#x27; Help</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Progressives Are Backing Off &#x27;Woke 1&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Case for Lesser-Known Colleges</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Head Start Has Never Worked</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Manosphere Sours on Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington&#x27;s Fatal Attraction to War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Much of America Soured on Israel</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Occupy Wall Street Explains Politics Today</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Hong&#x27;s Loss Means for Progressives</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether any right-leaning outlet ever covers the Emily Moreno v. Max Miller lawsuit, and any statement from Miller&#x27;s campaign or House GOP leadership</div>
+<div class="watch-item">Primary court filings in the Beirich/SPLC case that would resolve &#x27;informant payment&#x27; vs. &#x27;extremist funding&#x27; framing</div>
+<div class="watch-item">Whether Angie Craig (MN) or Francesca Hong formally endorse their primary winners — direct test of party-fracturing vs. accommodation</div>
+<div class="watch-item">Karoline Leavitt&#x27;s specific role/employer as an &#x27;outside adviser&#x27; once named, and whether it signals a broader WH comms reshuffle ahead of midterms</div>
+<div class="watch-item">Cross-spectrum pickup (especially center and right) of the federal judges violent-threats story, currently covered by only one outlet</div>
+<div class="watch-item">Status check on Alito&#x27;s $2.9M fossil-fuel gains disclosure and the Fauci-texts contempt referral — both now silent for two consecutive cycles</div>
+<div class="watch-item">Data pipeline fix for entity clustering — the &#x27;House White Press Wisconsin Secretary&#x27; composite title is corrupting entity-network output and should be treated as unreliable until resolved</div>
+<div class="watch-item">Right-leaning coverage (or continued non-coverage) of the three same-day ICE controversy stories (shock gloves, VA gun-pointing incident, airport 4th Amendment story)</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
