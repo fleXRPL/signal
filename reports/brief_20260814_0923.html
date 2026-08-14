@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-14 09:23 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-14 09:23 UTC</span>
+    <span class="pill">126 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant fact of this news cycle is not any single story but the near-total bifurcation of the American information environment: on August 14, right- and left-leaning outlets are covering almost entirely non-overlapping sets of facts about the same government, producing two coherent but incompatible pictures of the country. The administration is simultaneously executing a genuine, multi-front tightening of citizenship and immigration status — denaturalization proceedings, a birth-tourism task force, roughly 175,000 revoked visas, and continued ICE detention operations that have now produced a third death at the same New Jersey facility — while also notching real wins it is moving fast to publicize: a tariff-evasion report implicating 40-plus countries in Chinese transshipment, a federal suppressor deregulation taking effect, and a favorable stay in the Mamdani NYC luxury-tax fight. Each of these threads is real and independently corroborated. What is missing is anyone connecting them.</p>
+<p>Underneath the administration story is a second, quieter one: the Democratic Party is visibly working through a leadership and generational transition, with Ro Khanna positioning for 2028 and Pelosi reportedly moving against Scott Wiener&#x27;s House bid. This is happening in public, in real time, and — unusually — is one of the only storylines getting attention from both ideological camps, even though no outlet has yet synthesized it into a single &quot;Democrats in transition&quot; narrative.</p>
+<p>The third thread is Trump&#x27;s own attention allocation. A reported pattern of the president prioritizing monuments, legacy, and personal preference over technical or institutional recommendation shows up repeatedly today — reverting Ford-class carriers to steam catapults over the Navy&#x27;s electromagnetic recommendation, the Kennedy Center renovation/renaming push, a $135,000 governor portrait, and reaction to WWII Memorial vandalism. This is a pattern, not a coincidence, and it is under-covered as a pattern because each instance is reported as a standalone item.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>The White House press operation</strong> is running a disciplined, centralized messaging effort — Karoline Leavitt is the named voice across two structurally unrelated stories today (the Mamdani tax stay and the tariff/carrier report), which reads as normal press-secretary function rather than the &quot;outside adviser&quot; ambiguity flagged in prior cycles. That thread appears resolved: she is operating in-lane.</p>
+<p><strong>DHS/ICE</strong> is the actor most distorted by selective coverage. The right frames it exclusively through immigrants-as-perpetrators (a Kentucky rape case, a Georgia forced-labor bust); the left frames it exclusively through immigrants-as-victims (the Delaney Hall deaths, denaturalization, mass surveillance of anti-ICE protesters, the shock-gloves controversy Homan is now defending on the record). No outlet is holding DHS accountable as a single institution responsible for both public safety and custodial safety. That gap is doing real work for the administration — it means the agency never faces coverage that forces it to answer for both sides of its record simultaneously.</p>
+<p><strong>Democratic elders vs. the next generation.</strong> Pelosi working against Wiener while Khanna makes an open 2028 case is a live power struggle, not background noise. Watch whether Pelosi or Wiener responds publicly — that would confirm this has moved from reported tension to open conflict.</p>
+<p><strong>Trump&#x27;s personal preference as a governing input.</strong> The steam-catapult reversal over Navy technical recommendation is the clearest data point that legacy/monument instincts are influencing operational military decisions, not just symbolic ones. That has real cost and readiness implications the right-leaning coverage is not engaging with at all.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering: the third Delaney Hall detainee death; the Nevada fake-electors case dismissal (a Republican-favorable outcome it should want to claim but hasn&#x27;t touched); the Max Miller domestic-violence allegations, now escalated to claims he made false statements to an Ohio court; the U.S. government&#x27;s &quot;act of terror&quot; characterization of Israeli settler action against Palestinian homes; and the technical, financial, and welfare costs of the steam-catapult decision (deteriorating conditions aboard the USS Abraham Lincoln, Hegseth&#x27;s denials under congressional scrutiny, White House construction cost overruns).</p>
+<p>The left is not covering: the birth-tourism task force, the 175,000 visa revocations, or the suppressor deregulation as anything other than isolated items — none are connected to the denaturalization story as a single citizenship-tightening policy thread, despite that thread being the most substantively important pattern in today&#x27;s file.</p>
+<p>Both sides are silent on: the Alito $2.9M fossil-fuel disclosure and the Fauci contempt referral, both now dark for multiple cycles; the federal-judges-threats story; SPLC/Beirich filings; and the Angie Craig/Francesca Hong endorsement questions — all of which dropped out of coverage today with no indication of resolution versus simple abandonment.</p>
+<p>The Miller story is the sharpest anomaly: a sitting Republican member of Congress facing escalating, court-documented allegations, and zero center-right or right pickup, even as those same outlets are actively covering unrelated immigration crime stories the same day. That is not an accident of assignment desks; that is a story the right has decided not to touch.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>Three administration-favorable legal/policy outcomes — the suppressor ruling taking effect, the Mamdani tax stay, and the tariff-evasion report — landed in the same 24-hour window and each was picked up only by the audience it flatters. This could be coincidental clustering of court and agency timelines, but it&#x27;s worth tracking whether this is a recurring cadence rather than a one-off.</p>
+<p>The citizenship-narrowing thread (denaturalization, birth tourism, visa revocations) is real and multi-source but exists nowhere as a connected story — each outlet is reporting one piece and leaving the other two out, which functionally hides the aggregate policy shift from any single audience.</p>
+<p>The monuments/legacy pattern (steam catapults, Kennedy Center, WWII Memorial vandalism response, the governor portrait) recurs across otherwise unrelated beats and lines up with earlier reporting that a large share of Trump&#x27;s discretionary attention goes to legacy and monument-adjacent decisions. This is the kind of pattern that only becomes visible by reading across the full corpus — no single-beat reporter would connect a carrier catapult decision to a museum renovation.</p>
+<p>Every contested court ruling in today&#x27;s set was covered by exactly one side. That is a structural signature, not a one-day fluke: it means legal outcomes are not being stress-tested by adversarial scrutiny on the day they happen, which shapes public understanding before any appeal or rebuttal coverage arrives.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Delaney Hall ICE facility (Newark, NJ)</strong> — third detainee death now on record. Watch for congressional or DHS response, and specifically whether any right-leaning outlet engages once (or if) a political angle attaches.</li>
+<li><strong>Max Miller / Emily Moreno</strong> — new allegations he made false statements to an Ohio court to obtain a protective order. Watch for any center-right or right pickup; the continued blackout on a sitting GOP member is itself the story.</li>
+<li><strong>Nevada fake-electors dismissal</strong> — a ready-made Republican vindication narrative that the right has not claimed. Watch whether it surfaces there at all, and watch for a state appeal.</li>
+<li><strong>NFA suppressor ruling and Mamdani luxury-tax stay</strong> — both early-stage and likely to be appealed; watch for filings in the next 72 hours.</li>
+<li><strong>Khanna 2028 signaling and the Pelosi-Wiener conflict</strong> — watch for a public statement from either Pelosi or Wiener, which would confirm this has escalated from reported tension to open party conflict.</li>
+<li><strong>Denaturalization task force, birth-tourism task force, 175,000 revoked visas</strong> — watch for the first outlet (either side) to connect these into a single citizenship-policy story, and for any legal challenge to consolidate them.</li>
+<li><strong>Alito&#x27;s $2.9M fossil-fuel disclosure and the Fauci contempt referral</strong> — both dark for multiple cycles; distinguish the Fauci contempt thread from today&#x27;s unrelated &quot;Fauci/vaccines/miscarriages&quot; right-only story, which is a different narrative entirely.</li>
+<li><strong>ICE shock-gloves controversy</strong> — Homan is now defending the tactic on record, confirming it&#x27;s live; watch whether the related VA gun-pointing and airport Fourth Amendment stories resurface alongside it.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The most consequential finding here isn&#x27;t in any single story — it&#x27;s that the American political information system is now functioning as two separate curation operations, each maintaining a coherent internal narrative (&quot;state failure&quot; on the left, &quot;state competence&quot; on the right) by omission rather than distortion. Almost nothing reported today is factually false; what&#x27;s missing is anyone forced to hold the whole picture at once. That has a specific effect on accountability: a Republican congressman facing serious court-documented allegations goes uncovered by his own side, a Democratic-favorable court dismissal goes unclaimed by Republicans who&#x27;d normally want the win, and a policy of narrowing citizenship rights proceeds in three separate pieces that never get assembled into the single systemic story it actually is. This isn&#x27;t a failure of journalism in the traditional sense — it&#x27;s a functioning market response to audiences that reward confirmation over completeness. For a decision-maker without independent access to both feeds, the operative risk is not being misinformed but being half-informed with high confidence.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">A Guatemalan immigrant, Jose Chajon-Raxon, died following a medical emergency while detained at the Delaney Hall ICE facility in Newark, New Jersey, becoming the third detainee death at that facility.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:25.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:25.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Only two of the four supplied sources (The Hill and The Guardian) actually cover this event; Mother Jones and Fox News address unrelated stories, so a genuine left-right spectrum comparison isn&#x27;t possible here. Of the two that do cover it, both agree on the core facts (identity, location, third death at the facility) but diverge in tone — The Hill is factual and restrained while The Guardian explicitly frames it as symptomatic of systemic failure under expanded Trump-era detention policy. The absence of any conservative outlet reporting on repeated deaths at an ICE facility is itself notable and worth flagging as a coverage gap.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian centers the death within a broader indictment of the Trump administration&#x27;s expanded immigration detention system, emphasizing a pattern of fatal failures, distrust of the official DHS explanation, and unanswered accountability questions. Mother Jones does not cover this story at all, instead focusing on alleged voter suppression of nursing home residents.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill reports the death straightforwardly as part of a developing pattern of deaths at the facility, raising accountability and medical-care-quality questions without strong ideological framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet in this set covered the Delaney Hall detainee death. Fox News instead covered an unrelated story on detransitioners and alleged financial incentives in pediatric gender-transition care, meaning there is no right-of-center framing of this event to compare.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    N/A for direct comparison — no right-leaning outlet in this set covered the story, so there is no right-side reporting for the left to be omitting.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage (Fox News) omits the Delaney Hall detainee deaths entirely, covering an unrelated topic instead. This means any DHS/ICE response, defense of detention conditions, or context on detainee health screening that a right-leaning outlet might have offered is absent from this dataset.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The White House released a report accusing more than 40 countries of helping China evade U.S. tariffs through transshipment, costing an estimated $19–26 billion annually, while Trump separately ordered the Navy to abandon electromagnetic catapults on new Ford-class carriers in favor of steam catapults.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:22.2;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:18.5;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:3.7;" title="center-right: 1"></div><div class="bias-segment" style="background:#e05252; flex:3.7;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:11.1;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:25.9;" title="left: 7"></div><div class="bias-segment" style="background:#a07ae0; flex:7.4;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:7.4;" title="right: 2"></div></div></div>
+  <div class="story-assessment">Two distinct but genuinely consensus-backed stories anchor this coverage: a White House tariff-evasion report naming China and dozens of enabling countries, and a Trump directive reverting new carriers to steam catapults. The factual core (numbers, the directive itself) is corroborated across the spectrum, but the framing splits sharply — right coverage treats the tariff report as vindication and ignores the carrier and military-welfare stories entirely, while left/center coverage adds skeptical layers (technical disputes, personal motive, sailor welfare, cost overruns) largely absent from right-leaning outlets.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets frame the tariff report as evidence of enforcement failure undermining Trump trade policy, and frame the steam-catapult order as an eccentric, personally-driven reversal of modern military engineering that risks an already-delayed carrier program. They also emphasize military strain (Lincoln deployment conditions, Reaper drone losses) and skepticism toward Pentagon denials, alongside unrelated accountability stories (construction costs, cyber-attack authorization, DOGE waste).
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) cover both threads with a more skeptical, oversight-oriented lens — framing the tariff evasion as a trade-enforcement failure costing billions, and the catapult reversal as a costly, technically disputed decision. The Hill and Axios also emphasize accountability angles on White House construction spending (GAO audit calls) that right-leaning outlets omit.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets (Fox, Breitbart) frame the transshipment report as validation of the administration&#x27;s trade-enforcement crackdown, emphasizing Chinese evasion and naming specific complicit countries approvingly. The carrier catapult story, USS Lincoln conditions, and White House construction costs are notably absent from right-leaning coverage in this set; right coverage instead highlights unrelated administration wins (smuggling profit declines, Abraham Accords anniversary).
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the specific named countries (Panama, Mexico, Colombia) that Fox highlights as high-risk transshipment hubs, and generally omits any validating or enforcement-success framing of the tariff crackdown that right coverage emphasizes.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the technical/expert criticism of the steam-catapult reversal, the reported deteriorating conditions and mental-health concerns aboard the USS Abraham Lincoln, Hegseth&#x27;s denials amid congressional scrutiny, the ballooning White House construction costs and GAO audit calls, and the cyber-attack authorization memo — all covered extensively on the left and center-left.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A Nevada judge dismissed the criminal case against six Republicans accused of submitting a false certificate declaring Trump the winner of the state&#x27;s 2020 election.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (4)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:5.9;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:47.1;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:17.6;" title="center-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:5.9;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:23.5;" title="right: 4"></div></div></div>
+  <div class="story-assessment">The core fact — a Nevada judge dropped the fake-electors case — is undisputed and reported the same way by center-left and center outlets, with only the emphasis differing (accountability failure vs. procedural/evidentiary setback). The most notable feature of this coverage set isn&#x27;t spin but silence: no right-leaning source here covers the story at all, making it impossible to assess how conservative outlets are characterizing (or downplaying) the dismissal.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR and Washington Post-aligned coverage (via NPR/PBS, which lean center-left) situate the dismissal within a broader narrative of accountability efforts against Trump-aligned actors repeatedly stalling in swing states, emphasizing setback and pattern rather than the legal reasoning itself.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill reports the dismissal in more procedural, restrained terms, attributing it to &#x27;insufficient evidence&#x27; and framing it as a legal/procedural setback for prosecutors rather than a vindication of the defendants or a partisan talking point.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet in the provided set (Fox News, National Review, RealClearPolitics) covered this story, so no right-of-center framing is available for direct comparison.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR/PBS coverage does not report or engage with the specific evidentiary rationale (e.g., &#x27;insufficient evidence&#x27;) that The Hill cites, and does not present any defense-side or Republican perspective on the ruling.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets in this dataset omit the story entirely — no coverage of the dismissal, the underlying fake-elector allegations, or the legal reasoning appears in Fox News, National Review, or RealClearPolitics pieces provided, despite the story&#x27;s national political significance.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Rep. Max Miller&#x27;s ex-girlfriend Emily Moreno has accused him of domestic violence, which he denies, and her attorneys have filed new allegations that Miller made false statements to an Ohio court to obtain a protective order against her.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources lean left-of-center and neither directly contests the other&#x27;s facts, but they diverge sharply in emphasis: NPR uses the story as an educational springboard on domestic violence broadly, while Mother Jones pursues an accountability angle targeting Miller&#x27;s specific legal conduct. The absence of any center-right or right-leaning source is itself significant — it limits the ability to assess how this story is being covered (or downplayed) across the full political spectrum, and readers should seek out additional sources before forming a complete picture.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones (far-left) frames the story as an accountability exposé, emphasizing legal filings that allege Miller lied to a court under oath — casting him as a Republican official allegedly abusing the legal system to shield himself from abuse allegations.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR (center-left) frames the story didactically, using the allegations as a news hook to educate the public on common myths and stereotypes about domestic violence rather than focusing on Miller&#x27;s guilt or innocence.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage was provided in this set, so right-of-center framing cannot be assessed from the given sources. This is a notable gap given the story involves a sitting Republican congressman.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined without right-leaning coverage for comparison; no right-side reporting was supplied to identify what left coverage omits.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source was included in this set to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Rep. Ro Khanna is publicly making the case for Democrats to nominate a progressive in 2028 and signaling he may run himself, while separately Nancy Pelosi is reportedly working against Scott Wiener&#x27;s congressional bid.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These are two separate stories bundled together rather than competing accounts of the same event, so &#x27;consensus vs. contested&#x27; analysis is limited — the real story here is that both pieces, from different ideological angles, depict a Democratic Party in the midst of visible internal tension over its future direction and leadership. Readers relying on only one source would get a narrow slice: either a flattering personal narrative about Khanna&#x27;s ambitions or a conflict-driven narrative about Pelosi&#x27;s motives, without a full picture of the broader party debate connecting them.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR frames Khanna&#x27;s comments as a personal, reflective profile piece — letting him explain his own ideological rationale for wanting a progressive 2028 nominee, emphasizing his political identity and ambition in his own words rather than through outside critique.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not applicable — no center-only source was provided; NPR is categorized here as center-left.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review frames the Wiener-Pelosi story as evidence of Democratic Party dysfunction, casting Pelosi&#x27;s actions as driven by personal grudge and power politics rather than substantive disagreement, emphasizing intra-party conflict.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR&#x27;s Khanna profile does not address the Pelosi-Wiener conflict at all, so it omits any coverage of internal party power struggles or personal feuds happening elsewhere in the party.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    National Review&#x27;s piece does not engage with Khanna&#x27;s substantive argument for why a progressive nominee would be strategically or ideologically right for Democrats in 2028, omitting the policy debate in favor of a conflict narrative.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge struck down the National Firearms Act&#x27;s decades-old registration and tax requirements for gun silencers/suppressors as unconstitutional, with the ruling taking effect August 13, 2026 and gun rights groups hailing it as a major victory.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core factual event — a federal judge invalidating NFA suppressor registration requirements, effective August 13, 2026 — appears consistent across both sources, but both are right-of-center outlets, so this represents a one-sided sample rather than a full-spectrum comparison. The key point of divergence is political framing: Fox treats it as a legal/advocacy win, while Breitbart explicitly folds it into pro-Trump messaging, which readers should recognize as advocacy framing rather than neutral legal analysis. Without left or center coverage, it&#x27;s impossible to assess how gun-control advocates, legal experts, or the Justice Department are responding to the ruling.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning or center-left source was included in this coverage set, so left framing cannot be directly assessed from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center or centrist source was included in this coverage set, so center framing cannot be directly assessed from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets frame the ruling as a landmark, hard-won victory for Second Amendment rights against long-standing federal overreach. Fox News emphasizes grassroots advocacy triumph (&#x27;Monumental&#x27;), while Breitbart goes further, tying the win directly to President Trump&#x27;s leadership and legislative record, casting it as validation of his pro-2A policy agenda ahead of political messaging to voters.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source was provided in this coverage set to compare.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits any discussion of public safety concerns, law enforcement or gun-control advocacy group reactions, the legal reasoning or constitutional basis cited by the judge, whether the ruling will be appealed by the government, and any dissenting or critical perspectives on removing suppressor registration requirements.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A New York state appeals court judge granted a stay lifting the temporary restraining order that had blocked New York City from implementing Mayor Zohran Mamdani&#x27;s luxury-home tax surcharge, allowing the city to resume rollout while the underlying legal challenge from homeowners continues.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This dataset does not actually contain two-sided coverage of the same event: the Fox News piece covers the Mamdani luxury-home tax ruling, while the Reason piece is an unrelated podcast discussion about Flock camera surveillance and the Fourth Amendment. No meaningful spectrum comparison can be made on the Mamdani story from these two sources — only the Fox News account can be summarized, and it should be read as a single-source, right-leaning account pending corroboration from outlets across the spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source on this specific story is present in the provided set; cannot characterize left framing of the Mamdani tax ruling from this data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-labeled source on this story is present in the provided set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the story around homeowner grievance, leading with the homeowners&#x27; attorney&#x27;s criticism and portraying the Mamdani administration as the aggressor pushing the tax through over legal objections.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot assess — no left-leaning coverage of this story was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot assess reliably — the only other source provided (Reason) does not cover this story at all, so no comparison of omissions is possible.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Department of Homeland Security (DHS)</span><span class="entity-tag">ICE</span></div>
+  <div class="connection-text">DHS/ICE appears today only through the &#x27;immigrant as perpetrator&#x27; frame on the right (Kentucky rape case, Georgia forced-labor bust) and only through the &#x27;immigrant as victim&#x27; frame on the left (third Delaney Hall detainee death, denaturalization tactic, mass spying on anti-ICE protesters) — the same agency, two non-overlapping coverage universes.</div>
+  <div class="connection-sig">↳ Neither side is covering DHS/ICE as an institution accountable for both crime prevention and custodial safety; readers of either side alone get a one-dimensional view of the same agency.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Karoline Leavitt</span><span class="entity-tag">White House</span></div>
+  <div class="connection-text">Leavitt is the named messenger across two structurally unrelated stories today — the Mamdani NYC luxury-tax stay and the tariff-evasion/carrier-catapult report — suggesting a centralized press-office push touching both a municipal legal fight and a national trade/military story on the same news cycle.</div>
+  <div class="connection-sig">↳ Worth distinguishing routine press-secretary function from a coordinated messaging day; prior watch flagged her role as an &#x27;outside adviser&#x27; and this is the first data clarifying she&#x27;s operating in the standard WH Press Secretary capacity.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Nevada fake-electors dismissal</span><span class="entity-tag">NFA suppressor ruling</span><span class="entity-tag">Mamdani luxury-tax stay</span></div>
+  <div class="connection-text">Three separate court rulings today, each picked up by exactly one ideological cluster (Nevada: left/center only; suppressor: right/far-right only; Mamdani: right/libertarian only) — no ruling in today&#x27;s set received genuine adversarial, cross-spectrum coverage.</div>
+  <div class="connection-sig">↳ Every legal outcome today is being reported by the side it favors and ignored by the side it doesn&#x27;t, which forecloses readers&#x27; ability to see any ruling stress-tested by opposing scrutiny on day one.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DOJ denaturalization tactic</span><span class="entity-tag">State Dept birth-tourism task force</span><span class="entity-tag">175,000 revoked visas</span></div>
+  <div class="connection-text">Three distinct administration actions narrowing citizenship/immigration status, covered in isolation — denaturalization is left-only, birth tourism and mass visa revocation are right-only — with no outlet connecting them as one coherent policy thread.</div>
+  <div class="connection-sig">↳ A systemic tightening of citizenship and entry rights is underway but structurally invisible as a whole because each piece is filtered through whichever side finds it politically useful.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Ro Khanna</span><span class="entity-tag">Nancy Pelosi</span><span class="entity-tag">older Democrats walloped by midterms</span><span class="entity-tag">2028 Democratic contenders</span></div>
+  <div class="connection-text">Four nominally separate stories (two explicitly bundled, two only visible via the entity network) all describe the same Democratic generational/leadership fight, split left (ambition/horse-race framing) vs right (establishment-in-chaos framing).</div>
+  <div class="connection-sig">↳ The party-fracture narrative is real and multi-sourced, but no single outlet is synthesizing it, so each audience sees only a partisan slice of a genuinely bipartisan-observed story.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A &#x27;Trump and monuments/legacy&#x27; cluster recurs across otherwise unrelated stories — steam catapults over electromagnetic (personal preference beating technical recommendation), Kennedy Center renaming/renovation, WWII Memorial vandalism, a $135,000 governor portrait — echoing the entity-network item that ~70% of Trump&#x27;s attention reportedly goes to monuments and legacy.</div>
+<div class="pattern-item">Immigration stories split cleanly along a perpetrator-vs-victim axis by ideology rather than by fact pattern: right covers immigrants as threats, left covers immigrants as harmed by state action, with almost no overlap in subject matter.</div>
+<div class="pattern-item">Multiple &#x27;one-sided legal win&#x27; stories (suppressor ruling, Mamdani tax reversal, Nevada dismissal) each surface only on the side the outcome politically favors, with zero opposing-side scrutiny the same day.</div>
+<div class="pattern-item">Democratic Party internal conflict is the most cross-spectrum-covered soft story of the day even without any outlet explicitly connecting the pieces — both sides are independently building a shared &#x27;Democrats in disarray/renewal&#x27; narrative.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Right-leaning outlets are entirely silent on the Nevada fake-electors dismissal despite it being a Republican-favorable outcome — a ready-made &#x27;vindication&#x27; story goes uncovered on the right even as the same outlets amplify the tariff report as vindication the same day.</div>
+<div class="anomaly-item">No right-leaning source covers a third detainee death at the same ICE facility (Delaney Hall, high significance) despite DHS being actively covered on the right elsewhere today via the Kentucky and Georgia stories.</div>
+<div class="anomaly-item">The Max Miller domestic-violence story has gone at least another cycle with zero center-right or right pickup despite new, escalating allegations that he made false statements to a court — notable silence for a sitting GOP member of Congress.</div>
+<div class="anomaly-item">A US government statement calling Israeli settler action against Palestinian homes an &#x27;act of terror&#x27; draws zero right-leaning coverage — a notably strong label going unmentioned is unusual given the right&#x27;s typical volume on terror-labeled events.</div>
+<div class="anomaly-item">The NFA suppressor ruling&#x27;s effective date (August 13, 2026) lands in the same cycle as the tariff report and carrier directive — three administration-favorable stories clustering on one day, though intentional coordination can&#x27;t be confirmed from this data.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are systematically avoiding stories where state or administration action produces sympathy for people the administration has targeted (ICE detainee deaths, the Nevada electors dismissal, Israeli settler violence, domestic-violence allegations against a GOP congressman), while left-leaning outlets are avoiding stories where courts or agencies hand the administration clean enforcement/deregulation wins (the suppressor ruling, birth-tourism task force, mass visa revocations). This isn&#x27;t factual distortion so much as curated omission — each side appears to be maintaining a coherent &#x27;state failure&#x27; or &#x27;state competence&#x27; narrative by leaving out whatever complicates it.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Author Discusses Common Myths Stereotypes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Act of terror&#x27;: U.S. condemns Israeli settler siege of Palestinian homes in West Bank</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Palestinian American family recounts siege of West Bank home by Israeli settlers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ deploys tactic to strip naturalized Americans of citizenship</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Teacher empowers her students to see themselves as art</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kennedy Center board moves forward with a two-year closure to allow for renovations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Zambians cast ballots in a presidential election that tests incumbent&#x27;s economic reforms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Platner announced as speaker for activist-led event in Maine</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How a baby born via surrogate became the center of an abortion fight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Graham Platner to speak at Maine rally in return to public eye</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In turnabout, Blanche lauds DOJ career staff in first speech as attorney general</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Group sues AMA seeking transparency over Medicare billing codes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The American Dream comes down to OnlyFans, dodgeball and reality TV</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Democrats can learn from Wisconsin’s ‘oatmeal’ win</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sizing up the 2028 Democratic presidential contenders</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Three men executed on same day in US for the first time in 15 years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US conducted ‘mass spying campaign’ against leftwing groups and anti-ICE protesters, records reveal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Massachusetts teen accused of killing mother and brother used ChatGPT</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kennedy Center board votes again to renovate building and inscribe Trump’s name on it – report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Trump Judge Called Mail-In Ballots a Threat to Democracy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Helped Me Build a Killer Drone</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Flock’s Answer to Its Surveillance Scandals: Trust Us</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can’t Pay Preschool Teachers More? Try Giving Them a Free Place to Live.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rights Groups Capitalize After Judge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› UWM Is a Government Mortgage Canary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Russia Disqualifies an Antiwar Party</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fauci, Covid Vaccines and Miscarriages</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The $135,000 Portrait of a Governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Is Starting to Look Precarious</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AOC Tries to Make a Joke of Woke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is Congress About to Reform Social Security?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No American Should Be Afraid to Pray</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Teddy Roosevelt and the NCAA Monopoly</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal appeals court restores Texas mail ballot ID requirements in major election integrity ruling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› World War II Memorial on National Mall vandalized with pink spray paint; fountain overflowing with bubbles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Politicians used to be boring in public. It was better then</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Restoring Sanity to the Endangered Species Act</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Far Can America’s Free Speech Protections Reach?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rising Tides, Covered Bridges, and ‘Envy, Thy Name Is Trot’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani Against Prime Delivery</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive – Tommy Pigott: State Department Has Revoked Over 175,000 Visas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kentucky: Illegal Alien Accused of Raping, Sodomizing 15-Year-Old Girl</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. Attorney Busts Chinese-Run Forced Labor Scheme in Georgia Factory</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› State Department Creates Task Force to Go After Birth Tourism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Afghan Women ‘Erased’ by Taliban Five Years After Biden’s Pullout Disaster</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Breitbart Business Digest: AI Inflation Moves from Chips to Construction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Crime Crackdown &#x27;Working,&#x27; DC Homicides Plummet</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Quiet Manufacturing Boom</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chicago&#x27;s Sustainable Community Schools Are a Scam</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I Went No Contact With My Parents. I Regret It</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vance Reads the Room With Well-Timed Burrito Joke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Is Not, and Should Not Be, &#x27;Habibi City&#x27;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether any right-leaning outlet ever covers the Nevada fake-electors dismissal or the Miller/Moreno false-statements-to-court allegations</div>
+<div class="watch-item">Whether the Delaney Hall ICE facility (now three deaths) draws a congressional or DHS response, and whether right-leaning outlets engage once a political angle emerges</div>
+<div class="watch-item">Appeals in the NFA suppressor ruling and the Mamdani luxury-tax stay — both are early-stage and likely contested further</div>
+<div class="watch-item">Whether Khanna&#x27;s 2028 signaling and Pelosi&#x27;s move against Wiener get synthesized into one &#x27;Democratic Party direction&#x27; story, and any public response from Pelosi or Wiener</div>
+<div class="watch-item">The denaturalization task force, birth-tourism task force, and 175,000 visa revocations — watch for any outlet linking these into one citizenship-policy narrative, and for legal challenges</div>
+<div class="watch-item">Status of Alito&#x27;s $2.9M fossil-fuel disclosure and the Fauci contempt referral — both silent multiple cycles now; distinct from today&#x27;s new &#x27;Fauci, Covid Vaccines and Miscarriages&#x27; right-only story, which should not be conflated with the contempt-referral thread</div>
+<div class="watch-item">Whether the VA gun-pointing and airport 4th Amendment ICE stories resurface alongside today&#x27;s reappearance of the shock-gloves controversy</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
