@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-17 08:25 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-17 08:25 UTC</span>
+    <span class="pill">92 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant pattern in today&#x27;s cycle is not any single event but a governing style made visible by three unrelated decisions landing on the same day: a scaled-back Korea military exercise justified by Trump&#x27;s &quot;relationship with Kim Jong Un&quot; rather than a Pentagon threat assessment, a childhood vaccine-schedule order that a sitting Republican physician-senator called baseless, and a federal court blocking the White House ballroom/East Wing construction project. None of these are connected by any outlet&#x27;s own reporting, but taken together they show institutional processes — military planning, medical consensus, judicial review — being overridden or bypassed by personal preference at the top. That is the throughline worth carrying into this brief, not any one of the three stories alone.</p>
+<p>Layered on top of that is early but real evidence of eroding confidence inside Trump&#x27;s own coalition. Cassidy&#x27;s rebuke is the clearest data point, and The Hill explicitly ties it to Trump&#x27;s declining approval numbers. Less noticed: both the Washington Post and Fox News, not just left-leaning outlets, are raising skepticism about the strategic wisdom of the Korea drawdown given ongoing North Korean missile activity. Cross-spectrum unease surfacing in the same week on two unrelated policy fronts (health and defense) is a stronger signal than either controversy alone, and it deserves more weight than the volume of coverage currently gives it.</p>
+<p>Simultaneously, a second and largely uncoordinated story is developing on the other side: fragmentation inside the Democratic Party over its left flank. Fetterman&#x27;s &quot;lunacy&quot; comment, a CBS/YouGov poll on rising socialist sentiment, primary wins by democratic-socialist candidates, and separate items involving Beshear and a Wisconsin primary pick are all touching the same underlying question — where is the party going — without any outlet yet synthesizing them into one narrative. That fragmentation is itself informative: it may mean the story is still forming, or it may mean coverage is understating how significant the rift already is.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the common node across the day&#x27;s most significant institutional-override stories — Korea exercises, the vaccine order, and (by proxy, via DOJ) Blanche&#x27;s non-pledge of prosecutorial independence. The justification pattern is consistent: personal relationships or preferences (Kim, aesthetic judgment on the ballroom, distrust of the existing vaccine consensus) presented as sufficient grounds to override standing institutional judgment. This is not new as a style, but seeing it register in three separate domains in one 24-hour window is a useful marker of pace.</p>
+<p><strong>Bill Cassidy</strong> is the most consequential actor to watch from inside the governing coalition. As a physician and a Republican senator willing to publicly call the administration&#x27;s MMR claims &quot;crazy, stupid,&quot; he is a rare source of intra-party friction on a health policy question with real public-health stakes, not just a symbolic break. His remarks being explicitly tied to Trump&#x27;s polling numbers (per The Hill) suggests this may be read inside the party as a bellwether, not an isolated complaint.</p>
+<p><strong>John Fetterman</strong> occupies the analogous role on the Democratic side — a sitting senator publicly breaking with his party&#x27;s leftward direction. Unlike Cassidy, his remark is reactive commentary on polling and primary results rather than a break on a live policy action, but it is being covered by right-leaning outlets more as a wedge story than a governance story.</p>
+<p><strong>DOJ (Pirro/Blanche)</strong> is a thread that connects to the same institutional-independence pattern: reporting that the department is declining to affirmatively pledge independence sits alongside the Korea and vaccine stories as another data point on institutional guardrails under pressure.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>A cluster of previously significant accountability stories has now gone silent across multiple cycles, not just today: the Nevada fake-electors case dismissal, deaths at the Delaney Hall ICE facility, Justice Alito&#x27;s fossil-fuel financial disclosure, the Fauci contempt referral, and VA/airport Fourth Amendment incidents. Each was independently rated significant when first flagged. Their continued, simultaneous absence across the entire spectrum — left, right, and center — is no longer plausibly random and should itself be treated as a finding, not a gap.</p>
+<p>Rudofsky&#x27;s Eighth Circuit nomination is getting zero left-leaning coverage, which is unusual; circuit nominations historically draw at least token scrutiny from the left. Its total absence there is conspicuous and worth flagging as either a coverage failure or a signal the nomination is not seen as contestable.</p>
+<p>No outlet in this dataset covers North Korea&#x27;s or Seoul&#x27;s actual reaction to the exercise drawdown — the entire story is being run through a U.S. domestic political lens, with the foreign-policy counterpart reaction (the part that would actually validate or undercut Trump&#x27;s stated rationale) missing entirely.</p>
+<p>The coverage asymmetry between the two coalitions is also notable in its own right: right-leaning outlets are heavily amplifying Democratic disarray (socialism polling, Fetterman, culture-war framing) while giving thin coverage to real dissent inside their own coalition (Cassidy, Fox&#x27;s own Korea skepticism). Left-leaning outlets show the mirror pattern — heavy on institutional-accountability and human-interest stories, largely absent on judicial nominations and the economic/regulatory stories the right is covering. Neither side appears to be suppressing facts so much as declining to cover its own coalition&#x27;s fractures — a mutual-avoidance dynamic rather than a factual dispute, but one that leaves a briefing reader without a full picture from either side alone.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Korea drawdown, the vaccine order, and the ballroom construction ruling form a coherent pattern only when read together: personal preference overriding, respectively, military consensus, medical consensus, and judicial process. No single outlet has connected these three; each is being covered as a standalone story. That absence of synthesis is itself worth noting — it means the &quot;personalization over process&quot; pattern is currently invisible to any single-source reader.</p>
+<p>Cassidy&#x27;s rebuke and the bipartisan (WaPo/Fox) skepticism on Korea are two independent signals of the same underlying phenomenon: erosion of confidence in Trump&#x27;s judgment surfacing simultaneously in health and defense policy, from ideologically opposite outlets. That convergence is more diagnostic of a broader approval problem than either story read in isolation.</p>
+<p>The Fetterman remark, the Beshear item, the CBS/YouGov socialism poll, and the Wisconsin primary story all orbit the same &quot;Democratic Party direction&quot; question but remain uncorroborated and uncross-referenced. This is either a genuinely uncoordinated news cycle or an emerging consolidated story that hasn&#x27;t found its shape yet — worth revisiting in 48–72 hours to see if it resolves into one narrative or stays fragmented.</p>
+<p>Separately, flag a data-quality issue: at least three story pairs in today&#x27;s collection were bundled as if related when they were not (carrier-design review paired with the ballroom ruling; Beshear/McConnell paired with a state legislator&#x27;s capitalism comments; Cinerama Dome reopening paired with an antitrust story). This kind of clustering error is exactly the failure mode that would also distort the entity-network analysis above — treat any &quot;hidden connection&quot; involving those specific pairs with added skepticism until sourced independently.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Cassidy vaccine rebuke, next 72 hours</strong>: watch for additional GOP senators joining the criticism, a White House response or walk-back, and any movement in Trump&#x27;s approval polling that outlets tie to this specifically.</li>
+<li><strong>North Korea response to the exercise drawdown</strong>: watch for an official KCNA statement or missile-test activity in the days following the announcement — this is the actual test of whether the &quot;relationship with Kim&quot; rationale holds up.</li>
+<li><strong>Rudofsky&#x27;s Eighth Circuit nomination</strong>: watch for the point at which left-leaning outlets begin covering it, likely at Senate Judiciary Committee stage — total silence to date is the anomaly to track.</li>
+<li><strong>Fetterman &quot;lunacy&quot; remark</strong>: watch for direct pushback from DSA-aligned Democrats or Beshear, which would indicate the fragmented Democratic-direction stories are consolidating into one open intra-party fight rather than staying as separate items.</li>
+<li><strong>Blanche/DOJ independence remarks</strong>: watch for Senate Judiciary follow-up questions or additional reporting connecting this to Pirro — this is the thread most likely to escalate into a confirmation or oversight fight.</li>
+<li><strong>White House ballroom/East Wing construction ruling</strong>: watch for an appeal filing and its timeline, which will indicate whether the administration intends to litigate or seek a workaround.</li>
+<li><strong>Persistent silence tracker</strong>: Nevada fake electors, Delaney Hall deaths, Alito&#x27;s disclosure, and the Fauci contempt referral — if these remain absent across another full cycle, the silence itself should be escalated as the story.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The most useful thing in today&#x27;s corpus isn&#x27;t any individual headline — it&#x27;s the shape that emerges only by reading across all of them: institutional guardrails (military planning, medical consensus, judicial process, prosecutorial independence) being tested or overridden by personal preference in parallel, on the same day, in unrelated domains, while both political coalitions are simultaneously more interested in covering the other side&#x27;s internal fractures than their own. That combination produces a media environment that looks chaotic and fragmented on the surface but is actually fairly legible underneath: real erosion of institutional deference at the top, real but under-covered dissent inside the governing coalition, and a Democratic Party identity fight that the coverage apparatus hasn&#x27;t yet decided is one story. None of this is a crisis on its own terms today, but the accumulation — especially against a backdrop of several accountability stories that have now gone silent for multiple cycles running — is the kind of pattern that tends to compound rather than resolve on its own.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">President Trump ordered the Pentagon to significantly scale back joint U.S.-South Korea military exercises, citing their cost and his personal relationship with North Korean leader Kim Jong Un.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (7)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (5)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:23.3;" title="center: 7"></div><div class="bias-segment" style="background:#e0a87a; flex:6.7;" title="center-left: 2"></div><div class="bias-segment" style="background:#7ae09b; flex:3.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#e05252; flex:3.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:16.7;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:16.7;" title="left: 5"></div><div class="bias-segment" style="background:#a07ae0; flex:6.7;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:23.3;" title="right: 7"></div></div></div>
+  <div class="story-assessment">All sides agree on the core fact: Trump personally ordered a substantial cutback in joint military exercises with South Korea, justified by cost and his rapport with Kim Jong Un. What&#x27;s most notable is that this isn&#x27;t a clean left-right split — both the Washington Post and Fox News raise skepticism about the strategic wisdom of the move, suggesting genuine cross-spectrum concern about weakening deterrence amid North Korean missile activity, even as each side frames the underlying motive differently (erratic concession vs. transactional dealmaking).</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the move as erratic and personally driven, emphasizing that it amounts to a concession to an adversary (Kim Jong Un) that undermines a key U.S. ally, South Korea.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill, Axios, and PBS largely relay the decision through Trump&#x27;s own stated rationale (cost, relations with Kim) without independently assessing the strategic or alliance implications, treating it as a notable but explainable unilateral policy shift.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames the decision as transactional and personality-driven, notably casting doubt on its strategic wisdom given rising North Korean missile tests — right-leaning coverage here is not straightforwardly defensive of Trump.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the security context that right-leaning outlets raise — specifically, the backdrop of escalating North Korean missile tests that makes the drill reduction strategically risky in the eyes of critics.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits the alliance-management angle emphasized on the left — the argument that reducing exercises signals reduced U.S. commitment to South Korea and could strain a decades-old security partnership.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Republican Senator Bill Cassidy, a physician, publicly criticized Trump&#x27;s executive order altering the childhood vaccine schedule, calling the administration&#x27;s claims about MMR vaccine dangers &#x27;crazy, stupid&#x27; and linking the controversy to Trump&#x27;s declining poll numbers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core fact: a Republican physician-senator broke ranks to call the administration&#x27;s anti-MMR-vaccine claims baseless. The Hill emphasizes political consequences (poll numbers) while the Guardian emphasizes public health risk, but neither is contradicted by the other — this is a framing/emphasis difference, not a factual dispute. The notable gap is the absence of any right-leaning outlet in this set, making it impossible to assess how conservative media outside The Hill (a center outlet) are characterizing Cassidy&#x27;s remarks or defending the administration&#x27;s position.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian emphasizes public health stakes, portraying Trump&#x27;s rhetoric as reckless and dangerous, and leans on Cassidy&#x27;s medical credentials to frame the claims as scientifically discredited and a threat to vaccine confidence.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the story primarily through a political lens — as intra-Republican Party conflict and a factor in Trump&#x27;s eroding approval ratings — treating Cassidy&#x27;s rebuke as a notable break from party loyalty.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this coverage set, so right-wing framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was provided for comparison, so omissions relative to right-wing framing cannot be determined.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source included in this set.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The two sources provided do not cover the same event: The Hill reports on an internal Navy review of aircraft carrier design aesthetics, while the Washington Post reports on courts blocking Trump&#x27;s White House ballroom/East Wing construction project.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These are two distinct stories bundled together, not multiple perspectives on one event, so a genuine cross-spectrum comparison isn&#x27;t possible from this data. Both individually describe a recurring pattern — Trump&#x27;s personal preferences (aesthetic or justificatory) shaping formal federal processes (military procurement, court-reviewed construction) — but each claim rests on a single outlet with no corroboration. A right-leaning source should be added for either story before drawing conclusions about spin or omission.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames Trump&#x27;s shift in rationale for the ballroom project — from a personal/ceremonial addition to a &#x27;military complex&#x27; national-security justification — as an ad hoc, inconsistent response to adverse court rulings, implying legal overreach and post-hoc rationalization rather than genuine defense need.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the carrier story around institutional tension, portraying the Navy as accommodating the President&#x27;s personal aesthetic tastes in a serious procurement/design process, raising implicit questions about civilian-personal influence over military hardware decisions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right-of-center framing cannot be assessed from the given data.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post piece does not address the separate carrier-redesign story at all, and gives no coverage of the aesthetic-influence angle present in the center source.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in this dataset to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. John Fetterman criticized rising Democratic support for socialism as &#x27;lunacy,&#x27; reacting to a CBS News/YouGov poll and recent primary wins by democratic socialist and progressive candidates.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree Fetterman made a notable public break from his party&#x27;s leftward-trending base, but they anchor the story to different evidence — one to election results, the other to polling data — which shapes how systemic or anecdotal the &#x27;socialism rise&#x27; appears. Without left-leaning sources for comparison, it&#x27;s impossible to assess whether the poll&#x27;s framing (capitalism vs. socialism as a binary) or terminology is being contested elsewhere; readers should note that &#x27;socialism&#x27; in the poll is self-reported sentiment, not a policy-specific measure.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is included in this coverage set, so left framing cannot be directly assessed from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames this as an intraparty story about factional tension, focusing on primary election results as evidence of socialism&#x27;s rising influence and Fetterman&#x27;s role as a moderate voice pushing back against it.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart emphasizes hard polling data to depict a measurable, alarming ideological shift among Democratic voters, using Fetterman&#x27;s own words as validation from within the party to lend credibility to conservative critiques of the Democratic Party&#x27;s leftward drift.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left-leaning outlet is present in this set to compare; it&#x27;s unknown what a left-leaning framing (e.g., emphasizing Fetterman&#x27;s own controversial standing within the party, or context on how &#x27;socialism&#x27; is defined/measured in the poll) would add.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits the primary election context The Hill emphasizes, narrowing the story to poll numbers and Fetterman&#x27;s quote rather than the broader electoral dynamics driving the debate.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">President Trump has nominated Judge Lee Rudofsky, currently a U.S. District Judge for the Eastern District of Arkansas, to fill a vacancy on the U.S. Court of Appeals for the Eighth Circuit.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The only verifiable, uncontested fact is procedural: Trump nominated Rudofsky to the Eighth Circuit. Both available sources are ideologically aligned (center-right and libertarian) and celebratory in tone, so this dataset lacks any critical or opposing perspective — readers get no sense of potential confirmation hurdles, judicial record controversies, or left-leaning objections. A fuller picture would require sourcing from outlets across the spectrum, particularly left-leaning or straight-news coverage of the nomination and confirmation process.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is included in this coverage set, so left framing cannot be directly assessed from the provided material.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No outlet in this set represents center/non-opinion straight-news framing; both sources are opinion/advocacy pieces (center-right and libertarian).
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion (center-right) casts the nomination as confirmation that Trump&#x27;s judicial appointments strategy continues to reshape the federal appellate bench along originalist lines, treating it as a legacy achievement.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is present in this coverage set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both available sources are favorable toward the nomination; neither addresses potential objections, confirmation controversy, ideological concerns, or opposition arguments that critics of the nominee might raise (e.g., specific rulings that progressive or civil-liberties groups might contest), nor do they address the Senate confirmation process or timeline.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">The two supplied sources do not cover the same event: The Hill reports on Gov. Andy Beshear saying he has gotten no response from Sen. Mitch McConnell&#x27;s office about McConnell&#x27;s health, while Breitbart reports on Pennsylvania state Rep. Chris Rabb&#x27;s comments about capitalism and socialism — an unrelated story.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">This is not a single story covered across the spectrum — it is two unrelated articles (Beshear/McConnell health silence vs. a state legislator&#x27;s capitalism comments) that happen to have been bundled together. No genuine cross-spectrum comparison, consensus, or omission analysis is possible without a matching set of sources on one actual event. Flagging this as a data/input error rather than fabricating a false comparison.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided for either story, so left framing cannot be assessed from this data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the Beshear/McConnell item as a political-personal snub story, emphasizing the silence from McConnell&#x27;s office and layering in speculation about both McConnell&#x27;s health and Beshear&#x27;s 2028 presidential ambitions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart (far-right) frames Rabb&#x27;s routine observation about mixed-economy programs as a revealing ideological admission, casting normal social-insurance policy as evidence of creeping socialism — an angle aimed at alarming readers rather than describing consensus economic analysis.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source was provided for either story.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no comparable story pairing exists; Breitbart&#x27;s article addresses a different event entirely, so it cannot be checked for omissions relative to The Hill&#x27;s McConnell story.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">These two articles do not cover the same event: the Guardian reports on Sony Pictures&#x27; 2028 reopening of the Cinerama Dome theater, while National Review reports on California AG Rob Bonta&#x27;s antitrust enforcement actions against the entertainment industry — they are only loosely linked by the shared backdrop of Hollywood&#x27;s economic struggles.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is not a single story covered from opposing angles — it&#x27;s two unrelated Hollywood-adjacent stories that happen to share a setting. The Guardian&#x27;s piece is a human-interest/business item about a specific theater reopening; National Review&#x27;s is a political-economy argument about state regulatory policy. Treating them as &#x27;coverage of the same event&#x27; risks manufacturing a false left-right contrast where none exists; any real comparison would require finding actual competing coverage of either the Cinerama Dome reopening or the Bonta antitrust actions specifically.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the Cinerama Dome reopening as an emotional, community-oriented symbol of recovery — nostalgia and resilience for Hollywood and moviegoing culture after the pandemic&#x27;s damage to theatrical exhibition, emphasizing hope and revival.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source provided for comparison.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    National Review frames California state government action — specifically antitrust enforcement by the AG — as an ideologically driven attack (&#x27;lawfare&#x27;) that is accelerating Hollywood&#x27;s decline, emphasizing regulatory overreach and self-inflicted economic harm.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian&#x27;s celebratory reopening story does not address any of the regulatory, legal, or policy pressures (like AG antitrust actions) that right-leaning coverage identifies as contributing to Hollywood&#x27;s broader industry decline.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    National Review&#x27;s piece on regulatory &#x27;lawfare&#x27; omits any positive developments in Hollywood, such as reinvestment or reopening projects like the Cinerama Dome, that complicate a narrative of unchecked industry flight and decline.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">Kim Jong Un</span><span class="entity-tag">Bill Cassidy</span><span class="entity-tag">Courts (White House ballroom ruling)</span></div>
+  <div class="connection-text">Three ostensibly unrelated stories today (Korea exercise drawdown &#x27;because of my relationship with Kim,&#x27; the vaccine-schedule order Cassidy calls baseless, and courts blocking the ballroom/East Wing project) all share a structure: a personal Trump preference or relationship overriding institutional expertise, military consensus, medical consensus, or judicial review.</div>
+  <div class="connection-sig">↳ When three independent policy domains (defense posture, public health, federal construction law) show the same override pattern in a single day, it indicates a governing style pattern rather than isolated decisions — worth tracking as a throughline, not three separate stories.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Bill Cassidy</span><span class="entity-tag">Trump approval/poll numbers</span><span class="entity-tag">Trump-South Korea exercise skepticism</span></div>
+  <div class="connection-text">The Hill explicitly ties Cassidy&#x27;s vaccine rebuke to Trump&#x27;s declining poll numbers, and separately both center-left and right outlets (WaPo, Fox) voice unusual bipartisan skepticism about the Korea drawdown&#x27;s strategic wisdom — two distinct signals of eroding elite confidence surfacing the same week.</div>
+  <div class="connection-sig">↳ Simultaneous cross-spectrum unease on foreign policy and health policy suggests approval erosion may be broader than any single controversy, which is more politically consequential than either story alone.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">John Fetterman</span><span class="entity-tag">Democratic Socialists of America</span><span class="entity-tag">Andy Beshear</span><span class="entity-tag">YouGov</span></div>
+  <div class="connection-text">Fetterman&#x27;s &#x27;lunacy&#x27; remark, the Beshear/Kentucky DSA-adjacent item, and the CBS/YouGov socialism poll all touch the same underlying story — the Democratic Party&#x27;s left-flank identity fight — but are being covered as disconnected single-source items rather than synthesized.</div>
+  <div class="connection-sig">↳ No outlet appears to be connecting these into one &#x27;Democratic Party civil war&#x27; narrative yet, which is itself informative: the fragmentation may be understating how coordinated or significant the intra-party rift actually is.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Jeanine Pirro</span><span class="entity-tag">Blanche</span><span class="entity-tag">Justice Department</span></div>
+  <div class="connection-text">Pirro and Blanche co-occur in two stories, one explicitly about DOJ declining to pledge independence — a thread that connects to the broader &#x27;personal loyalty over institutional norms&#x27; pattern seen in the Trump/Kim and Trump/courts stories.</div>
+  <div class="connection-sig">↳ DOJ independence claims deserve monitoring alongside the other institutional-override stories as part of the same larger pattern.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Personalization-over-process: military exercises scaled back for a personal Kim relationship, a vaccine schedule changed against physician consensus, and a construction project pushed against court rulings all surfaced the same day — a consistent pattern of individual preference overriding institutional guardrails.</div>
+<div class="pattern-item">Asymmetric intra-party coverage: right-leaning outlets heavily cover Democratic disarray (socialism polling, Fetterman, AOC, Wisconsin primary shift) while genuine GOP dissent stories today (Cassidy&#x27;s vaccine rebuke, Fox&#x27;s own Korea skepticism) get comparatively thin right-of-center amplification — each side appears to prefer covering the other&#x27;s fractures over its own.</div>
+<div class="pattern-item">Fragmented &#x27;Democratic Party direction&#x27; story: at least five separate single-sourced items today (Fetterman, Beshear/DSA, AOC woke rewrite, Wisconsin pick, 2028 calendar chat) circle the same underlying question of where the party is headed, but none cross-reference each other — suggesting either an uncoordinated news cycle or an emerging story not yet consolidated by any outlet.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Unusually high rate of story-bundling errors in a single day&#x27;s dataset — three separate pairs (Navy carrier design/ballroom ruling; Beshear-McConnell/Rabb capitalism; Cinerama Dome/Bonta antitrust) were flagged as unrelated events incorrectly paired, suggesting a clustering/pipeline issue that may also be distorting the entity network above (e.g., the garbled &#x27;Trump Korea Trump&#x27;S Blanche Exercises&#x27; story-title merges).</div>
+<div class="anomaly-item">Multiple previously flagged accountability threads (Nevada fake-electors dismissal, Delaney Hall ICE deaths, Alito&#x27;s fossil-fuel disclosure, Fauci contempt referral, VA gun-pointing/airport 4th Amendment stories) remain completely absent again today across all sides — a persistence of silence over several cycles that is itself notable given each was independently rated significant when first flagged.</div>
+<div class="anomaly-item">Zero left-leaning coverage of the Rudofsky Eighth Circuit nomination — historically, circuit court nominations draw at least some left-of-center scrutiny; total silence here is conspicuous.</div>
+<div class="anomaly-item">No outlet in this dataset addresses how North Korea or Seoul is reacting to the exercise drawdown itself — the story is entirely framed through the U.S. domestic political lens, with the actual foreign-policy counterpart reaction absent.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Left-leaning sources lean into institutional-accountability and human-interest coverage (Supreme Court overhaul, DOJ independence, storms, local tragedies) while almost entirely skipping judicial nominations and economic/regulatory stories that dominate right-only coverage. Right-leaning sources lean into ideological commentary and Democratic Party critique (socialism polling, woke/Israel framing, Mamdani-adjacent culture pieces) while underplaying the genuine GOP dissent stories that surfaced today (Cassidy&#x27;s vaccine rebuke, bipartisan Korea skepticism). The pattern suggests both sides prefer amplifying the opposing coalition&#x27;s internal conflict over their own coalition&#x27;s fractures — a mutual-avoidance dynamic rather than a factual dispute.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;What are we going to do?&#x27; The mom of a trans teen grapples with Trump&#x27;s Medicaid move</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Florida, Congressman Byron Donalds&#x27; seat is up for grabs for Republicans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Polls everywhere in primary season. Can they be trusted?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Politics chat: Democrats take lessons from the primaries, set 2028 calendar</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fact-checking claims about Taylor Farms&#x27; donations to Trump-aligned groups</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Class act: The working-class game binding London and Canberra</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Navy weighs major warship redesign to match Trump’s preferences</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Blanche on whether DOJ will be independent: ‘I’m not going to pledge that’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Angry at the Supreme Court, liberals push a slew of plans for overhauling it</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Suspect in Virginia State University shooting found hiding in dorm closet</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At least six people dead from days of storms and record flooding in Indiana</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘She is a hero’: 13-year-old survivor of Michigan shooting rampage called 911</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Awed by nature’: fans mourn California’s beloved Jackie the bald eagle, whose legacy soars on</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why cancer, not cost of living, may be the biggest issue in Iowa’s midterm elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida’s Ambitious “Coastal Corridor” project Is Giving Marine Scientists Hope</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Should We Kill One Kind of Owl To Save Another?</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The $1.4 Trillion State Tort Raid on Meta</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans Can End an Inflation Tax</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Boys Will Be Boys—but in the WNBA?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Geoengineering Will Save Us</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Warsh Is Wise to Ditch the Dots</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This Nursing Home Is for the Birds</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lessons From a Sociable Life</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sheinbaum Moves to Gag Mexico’s Media</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Progressive Minneapolis mayor&#x27;s viral hip-hop moves spark &#x27;humiliation ritual&#x27; mockery online</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Humanoid robots could patrol southern border, CEO pitches, as futuristic technology moves closer to reality</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hasan Piker torched over playbook to dodge his past controversies: &#x27;Bats--- crazy&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Presidential Soft-Launch Has Begun</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Myth of the Miserable Housewife</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trouble with the Soft Sciences</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll: 58 Percent of Democrats Hold Positive View of Socialism over Capitalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;Scream&#x27; Franchise Star Hayden Panettiere Dead at 36</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Green Energy PAC Targets Ralph Norman in South Carolina Senate Runoff</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans Are Repeating Democrats&#x27; Biggest Mistake</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Neoliberalism&#x27;s Successors Are Cracking Up</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Happens When Millennials Take Over?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› With Trump, the Buck Always Stops Somewhere Else</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Red States Will Pay as GOP Ditches Federalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woke 2.0 Trades Identity Politics for Israel Bashing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What the Mecca Defense Pact Means</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bessent Makes the Economic Case for Deportations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats&#x27; Pick in Wisconsin Shows a Shift in Priorities</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether Cassidy&#x27;s vaccine rebuke draws further GOP defections or a White House response, and any movement in Trump approval polling tied to it</div>
+<div class="watch-item">North Korea/Kim Jong Un official response to the scaled-back joint exercises, and any missile-test activity in the following days</div>
+<div class="watch-item">Rudofsky&#x27;s Eighth Circuit confirmation process — watch for left-leaning outlets to engage once it reaches committee</div>
+<div class="watch-item">Whether Fetterman&#x27;s &#x27;lunacy&#x27; remark draws direct pushback from DSA-aligned Democrats, Beshear, or other progressives, testing whether the fragmented Dem-direction stories consolidate into one narrative</div>
+<div class="watch-item">Blanche&#x27;s DOJ-independence remarks — watch for Senate Judiciary follow-up or further reporting tying it to Pirro</div>
+<div class="watch-item">Continued multi-cycle silence on Nevada fake-electors, Delaney Hall deaths, Alito&#x27;s disclosure, and the Fauci contempt referral — the silence itself is now the story and should be flagged if it persists further</div>
+<div class="watch-item">Appeal status of the White House ballroom/East Wing construction court block</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
