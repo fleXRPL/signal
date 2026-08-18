@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-18 12:45 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-18 12:45 UTC</span>
+    <span class="pill">118 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the day is a foreign-policy retrenchment that most of the media ecosystem is declining to treat as one: Trump has ordered a scale-back of joint U.S.-South Korea military exercises and threatened to bomb Oman over its refusal to join the Iran war effort, both moves surfacing while negotiations with Iran are stalled. This is happening in the same news cycle as two separate U.S. Navy readiness failures — the destroyer USS Benfold drifted powerless for four days in the South China Sea, and sailors aboard USS Lincoln are reporting unmet basic needs — and as Defense Secretary Hegseth takes a &quot;personal capacity&quot; trip to Iowa amid 2028 speculation. No outlet is connecting these as a single narrative about strained military posture and command attention, but taken together they describe a defense establishment simultaneously drawing down alliance commitments in the Pacific, absorbing readiness failures in the same theater, and led by a secretary managing his own political future. This is the most consequential thread running today and it is currently legible only by reading across sources, not within any single one.</p>
+<p>Beneath that is a second, quieter thread: the Justice Department&#x27;s institutional legitimacy is degrading in concrete, adjudicated ways rather than through rhetoric. An appeals court has ruled Nevada&#x27;s top federal prosecutor was unlawfully appointed, a fired federal prosecutor is suing DOJ for retaliation, and DOJ is deploying roughly 1,000 monitors to polling places this fall. This is a material escalation from the prior cycle&#x27;s &quot;DOJ independence&quot; talk to actual court findings and litigation, and it is being carried almost exclusively by left-leaning outlets with no right-side engagement — meaning the story is real but its political salience is being suppressed by asymmetric coverage rather than by any dispute over facts.</p>
+<p>Layered on top is the usual accountability-and-scandal traffic — a House Ethics Committee investigation into Rep. Jimmy Gomez over sexual misconduct allegations, Florida primary carpetbagging accusations, and SCOTUS declining to rehear Trump&#x27;s appeal of the $5 million Carroll verdict — all of which is real and worth tracking but is functioning, in the current coverage pattern, as attention cover that keeps the alliance-drawdown and DOJ-legitimacy stories from getting cross-spectrum traction.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the central mover on the foreign-policy axis, simultaneously de-escalating a formal alliance commitment (Korea exercises) and escalating rhetoric against a non-belligerent partner (Oman) while the actual object of the pressure campaign — Iran — sits in stalled talks. The incoherence between these two moves (soften toward one theater, threaten a country not directly party to the conflict) is not being interrogated by right-leaning coverage at all; it shows up only in center/left reporting and one WSJ Opinion piece, which is notable because it means even ideologically friendly commentary found this hard to defend on the merits.</p>
+<p><strong>Hegseth</strong> is drawing scrutiny less for any single decision than for timing: his political travel lands in the same week as two independent fleet-readiness failures under his command. Nobody in the corpus is asking whether these are related, but the juxtaction itself — a defense secretary building 2028 credibility while his fleet reports power failures and morale complaints — is the kind of pattern that normally draws direct scrutiny and currently isn&#x27;t getting any.</p>
+<p><strong>DOJ leadership</strong> (Blanche and the broader department) is the actor to watch on the institutional-legitimacy thread. What was previously framed as a rhetorical dispute over prosecutorial independence has now produced an actual appellate ruling against an unlawful appointment and a retaliation lawsuit — this is DOJ leadership&#x27;s decisions generating litigation risk, not just messaging risk, and it&#x27;s happening in a low-visibility way because only one side of the press is carrying it.</p>
+<p><strong>Josh Blackman</strong> and similar legal commentators are shaping how two unrelated SCOTUS-adjacent stories (Trump v. Barbara commentary, the Texas Ten Commandments cert petition) get framed — both pushing a &quot;don&#x27;t invite this Court to rule broadly&quot; caution. That&#x27;s a coherent legal-strategy argument, but its repetition across unrelated stories on the same day looks more like a single influential voice setting the frame than organic convergent analysis, and it&#x27;s worth knowing whose risk calculus that caution actually serves (not necessarily the ACLU&#x27;s or the plaintiffs&#x27;).</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not engaging with the substance of the Korea/Oman story at all — not the allied alarm, not the contradictory rationale Trump has offered, not the war-powers pushback from Democrats. Where it appears in right-leaning coverage, it&#x27;s confined to a single WSJ Opinion column, with no independent reporting. This is the single largest coverage gap in the corpus given the story&#x27;s significance rating.</p>
+<p>The left is not covering the Jimmy Gomez ethics probe or the Florida carpetbagging story with anything like the intensity it brings to the Korea/Oman and DOJ-legitimacy threads — both stories cut against Democrats and are being underplayed accordingly. Left coverage is also thin on the declassified FBI material regarding Rep. Eric Swalwell&#x27;s relationship with a suspected Chinese intelligence operative.</p>
+<p>Border security coverage is oddly silent on the Big Bend National Park wall-construction pause. This is normally a reliable volume generator for right-leaning outlets, and its near-total absence there suggests the story doesn&#x27;t fit a &quot;border win&quot; narrative and is being passed over rather than contested.</p>
+<p>The EEOC antisemitism-complaint story appears to be effectively single-sourced — a WSJ Opinion piece and a RealClearPolitics piece running the same angle the same day, with no EEOC response and no independent verification. Treat this as a talking point in circulation, not a confirmed news development.</p>
+<p>Multiple stories that were live in the previous cycle — Nevada fake-electors case, deaths at Delaney Hall, Justice Alito&#x27;s financial disclosure, the Fauci contempt referral — do not appear anywhere in today&#x27;s corpus for a second or third consecutive cycle. This has crossed from &quot;gap&quot; to &quot;structural blackout&quot; and should be verified directly rather than assumed resolved. Likewise, North Korea has issued no visible official response to the scaled-back joint exercises, which given the exercises&#x27; own high-significance rating is itself notable — either Pyongyang is being deliberately quiet or coverage of its response is being dropped.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Korea exercise drawdown, the Oman threat, the Benfold power failure, and the Lincoln readiness complaints all sit in or near the same broad theater and chain of command, and all surfaced in the same cycle — yet each is being reported as a discrete, unrelated item. Whether this reflects genuine editorial fragmentation or a reluctance to draw the obvious inference (alliance drawdown plus fleet strain plus a defense secretary&#x27;s political travel equals a leadership/readiness story), the effect is the same: a materially significant strategic narrative is currently invisible to anyone reading a single outlet.</p>
+<p>The DOJ-legitimacy stories (Nevada appointment ruling, retaliation suit, poll monitors) read as a coherent escalation of the &quot;DOJ independence&quot; concern that was previously rhetorical — this is worth tracking as a single evolving thread rather than three separate items, especially heading into the fall election cycle where the poll-monitor deployment intersects directly with the appointment and retaliation questions.</p>
+<p>The WSJ Opinion/RealClearPolitics EEOC pairing looks like coordinated opinion placement rather than organic dual coverage — same day, same angle, no independent reporting on either side. Treat it accordingly when it resurfaces in briefings or hearings.</p>
+<p>Structurally, both sides&#x27; blindspots are self-serving in the same way: each side is avoiding exactly the story category that would complicate its preferred narrative about the other&#x27;s competence or integrity. The right avoids stories suggesting administration or military overreach/strain (Korea, Benfold, Lincoln, DOJ rulings, Big Bend); the left avoids stories suggesting Democratic ethical exposure (Gomez, Swalwell, Florida carpetbagging). This is not a factual dispute anywhere in the corpus — it is a matched pair of attention-allocation decisions.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>North Korea&#x27;s response</strong> to the scaled-back joint exercises, and any missile activity in the next 72 hours. Second consecutive cycle of silence from Pyongyang is itself notable and due for a reaction.</li>
+<li><strong>Oman&#x27;s diplomatic response</strong> to the bombing threat, and whether other Gulf states adjust posture in solidarity or distance themselves from Washington.</li>
+<li><strong>SCOTUS cert decision</strong> on the Texas Ten Commandments law. If cert is granted, expect Blackman-style &quot;this could backfire&quot; commentary to intensify sharply — watch whether that commentary shapes ACLU strategy in real time.</li>
+<li><strong>House Ethics Committee</strong> timeline and any evidence disclosures in the Gomez investigation — currently under-covered by the left; a concrete finding would force broader engagement.</li>
+<li><strong>Navy accountability statement</strong> on the Benfold incident, and whether it gets tied publicly to the Lincoln complaints — this is the test of whether the readiness-strain story becomes a combined narrative or stays fragmented.</li>
+<li><strong>CBP Commissioner Rodney Scott&#x27;s</strong> Big Bend inspection outcome — resumption, indefinite pause, or reroute — and whether right-leaning outlets pick up the story once there&#x27;s a &quot;win&quot; framing available.</li>
+<li><strong>DOJ&#x27;s response/appeal</strong> on the Nevada unlawful-appointment ruling, and progress on the retaliatory-firing suit — the concrete test of whether &quot;DOJ independence&quot; concerns are institutionalizing into real legal exposure.</li>
+<li><strong>Any FEC or ethics scrutiny</strong> of Hegseth&#x27;s Iowa travel given 2028 speculation — a trigger that would force the readiness-strain and political-positioning threads together.</li>
+<li><strong>30-day mark</strong> on Nevada fake-electors, Delaney Hall deaths, Alito&#x27;s disclosure, and the Fauci contempt referral — if these remain absent from coverage across the spectrum, escalate from &quot;gap&quot; to confirmed blackout and verify status directly through primary sources rather than press coverage.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline across today&#x27;s material isn&#x27;t any single decision but a widening gap between what is materially happening inside government institutions — alliance commitments loosening, fleet readiness faltering, prosecutorial appointments being invalidated in court — and what is getting sustained political attention, which is scandal and culture-war accountability content that generates volume without threatening either side&#x27;s coalition narrative. Neither side&#x27;s coverage gap is accidental: it is attention allocated toward what discomforts the other side and away from what discomforts one&#x27;s own. The practical risk is that genuinely consequential developments — a Pacific alliance drawdown coinciding with fleet strain, a Justice Department accumulating adverse rulings on its own personnel decisions — are being processed as background noise rather than signal, and will likely surface as &quot;sudden&quot; crises later that were in fact visible and connected today for anyone reading across the full spectrum rather than within it.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Amid stalled Iran war negotiations, Trump ordered a scale-back of joint U.S.-South Korea military exercises and threatened to bomb Oman over allies&#x27; refusal to join the war effort, while separately the House Ethics Committee opened an investigation into Rep. Jimmy Gomez over sexual misconduct allegations and Florida held primary elections marked by carpetbagging accusations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (4)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (9)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:14.3;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:19.0;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:4.8;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:9.5;" title="far-left: 4"></div><div class="bias-segment" style="background:#3a8a52; flex:7.1;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:21.4;" title="left: 9"></div><div class="bias-segment" style="background:#a07ae0; flex:4.8;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:19.0;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The verifiable core here is that Trump ordered reduced U.S.-South Korea military exercises and threatened Oman while Iran war negotiations stalled, a move that drew bipartisan-adjacent concern from foreign-policy watchers regardless of outlet ideology — even a right-leaning WSJ Opinion piece criticized it. The starkest spectrum divide isn&#x27;t over the facts but over attention: left/center outlets treat the alliance story as the day&#x27;s major event while right outlets largely ignore it in favor of scandal and accountability narratives (Gomez, Swalwell) that cut against Democrats, revealing selective emphasis more than factual dispute.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and far-left outlets emphasize erratic, self-interested, and hypocritical decision-making by Trump — casting the South Korea exercise cutback and Oman threats as reckless betrayals of allies driven by personal rapport with Kim Jong Un or financial entanglements, and pairing this with stories highlighting Trump&#x27;s own mail-in voting hypocrisy and the White House&#x27;s combative treatment of the press.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios, PBS) frame the Korea/Oman developments as a destabilizing break from alliance norms alarming to Democrats and foreign-policy observers, while treating the Gomez investigation and Florida primary as straightforward institutional/procedural stories without strong ideological coloring.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets largely sidestep the South Korea/Iran allies controversy (only WSJ Opinion critically engages it), instead emphasizing national-security accountability themes — the Gomez ethics probe as part of a pattern of Capitol Hill misconduct, the Swalwell &#x27;Fang Fang&#x27; revelations as Democratic compromise by a Chinese operative, illegal-voter prosecution, and a warm, patriotic human-interest story of Trump honoring a teen lifeguard.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays stories that reflect poorly on Democrats or China-related security concerns present in right coverage — notably the declassified FBI revelations that Rep. Eric Swalwell had a relationship with a suspected Chinese intelligence operative, and Mike Johnson&#x27;s characterization of Democratic Party fractures after DSA-backed primary wins.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the substance of the South Korea/Oman controversy that dominates center and left coverage — the alarm from allies and foreign-policy experts, the contradictory justifications Trump has offered, and the war-powers pushback from congressional Democrats — engaging with it, if at all, only through WSJ Opinion&#x27;s critical piece.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">Attorneys, backed by the ACLU, filed a Supreme Court cert petition challenging a Texas law that requires public schools to display the Ten Commandments, after the Fifth Circuit&#x27;s en banc ruling upheld the law.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:33.3;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">All three outlets agree on the core procedural fact: a cert petition challenging Texas&#x27;s Ten Commandments law has reached the Supreme Court after the Fifth Circuit upheld it. The meaningful divergence isn&#x27;t left-vs-right but strategic framing — mainstream left coverage treats this as a rights vindication story, while Reason raises a sharper, insider legal-strategy question about whether asking this particular Court to weigh in could backfire and set a broader precedent favoring religious displays nationwide.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets (WaPo, PBS) present this as a landmark church-state constitutional clash, emphasizing the First Amendment rights of families and framing the litigation as a rights-defense narrative without questioning the legal strategy involved.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS frames the story primarily through the legal mechanics — who petitioned, on what constitutional grounds — presenting the families&#x27; First Amendment argument as the central, largely uncontested claim.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this set; the libertarian outlet (Reason) is not conservative on this issue and instead critiques the challengers&#x27; strategy from a skeptical, process-focused angle rather than defending the Texas law on religious-liberty or tradition grounds.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets omit the ACLU&#x27;s specific role as the filer and don&#x27;t engage with the strategic risk — that petitioning this Supreme Court could result in a ruling that entrenches or nationally extends the Fifth Circuit&#x27;s pro-display precedent rather than striking the law down.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source is present in this set; Reason (libertarian) does not offer a defense of the Texas law itself, so arguments in favor of the Commandments display (e.g., historical/tradition rationale relied on by the Fifth Circuit) are largely unaddressed across all three sources.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Trump administration paused border wall construction inside Big Bend National Park so that CBP Commissioner Rodney Scott can personally inspect the site and consult stakeholders after criticism of the project.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core, verifiable fact: construction was paused for Commissioner Scott to evaluate the site, not canceled outright. The disagreement is in framing rather than facts — the Guardian casts this as a win against a destructive, secretive project, while Axios presents it as routine administrative review — and without right-leaning coverage in this set, the full spectrum of political spin (e.g., border-security framing) is missing.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian emphasizes environmental harm and public outrage, portraying the wall project as an unwelcome, secretive intrusion on a treasured national park, with the pause framed as a concession to bipartisan backlash.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the pause neutrally as a procedural, evaluative step by the CBP Commissioner to personally assess the site and consult stakeholders, avoiding characterizing it as either a capitulation or a reversal.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right-wing framing cannot be assessed from the given coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was provided, so specific omissions relative to right-wing reporting cannot be identified.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source included in this coverage set to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The U.S. Supreme Court declined to rehear Donald Trump&#x27;s appeal of the $5 million jury verdict finding him liable for sexually abusing and defaming E. Jean Carroll, leaving the judgment intact.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The core fact is narrow and undisputed: the Supreme Court declined to disturb a $5 million jury verdict against Trump. The more interesting divergence isn&#x27;t left-vs-right but within the right itself — Breitbart treats this as a discrete legal update, while the Washington Examiner uses it as a springboard for an institutional argument about court legitimacy that goes well beyond the case&#x27;s actual facts. No outlet here explains what remains of Trump&#x27;s appellate options or financial liability going forward.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is present in this set; only center and right/far-right coverage was provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios reports the outcome plainly as a legal setback within Trump&#x27;s ongoing litigation with Carroll, without editorializing on guilt, motive, or broader institutional implications.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Split within the right: Breitbart treats it as a narrow procedural/legal update, noting the rehearing denial is unusual and presenting allegations neutrally alongside Trump&#x27;s denials; Washington Examiner uses the ruling as a launchpad for a broader institutional argument that both Trump and Democrats (via Jeffries&#x27; court-packing push) are damaging the Supreme Court&#x27;s legitimacy by trying to politically capture it.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source was included in this comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage (Washington Examiner in particular) omits straightforward factual framing in favor of a broader both-sides institutional critique, and does not center the Carroll case facts themselves the way Axios and Breitbart do; neither right source explores what the denial means for Trump&#x27;s remaining legal/financial exposure.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The USS Benfold, a US Navy guided-missile destroyer, lost power and drifted for four days in the South China Sea after an engineering casualty disabled its generators, requiring a tow to Subic Bay in the Philippines.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:100.0;" title="left: 2"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core facts: a Navy destroyer lost power for four days and needed a tow, and both use the incident to advance a narrative about fleet overextension rather than treating it as a routine mechanical failure. Because both sources sit on the same side of the political spectrum, this dataset cannot support a genuine left-right comparison — it only shows how two left-leaning outlets converge on the same &#x27;readiness crisis&#x27; framing, one of which explicitly names the Trump administration as a causal factor while the other does not.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both left-leaning outlets frame the incident as a symptom of systemic military readiness problems — specifically overuse and strain on the fleet — with Washington Post directly tying this to Trump administration deployment tempo, and The Guardian emphasizing excessive operational strain more broadly. The tone emphasizes institutional/policy failure rather than an isolated mechanical breakdown.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center coverage was provided in this set, so center framing cannot be assessed from the given sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage was provided in this set, so right-of-center framing cannot be assessed from the given sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no right-leaning coverage was provided for comparison, so it cannot be determined what right coverage includes that left coverage omits.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning coverage was provided in this set to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Commentary from WSJ Opinion and RealClearPolitics criticizes the EEOC&#x27;s data collection and handling of antisemitism-related workplace discrimination complaints amid a reported rise in antisemitic incidents.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:100.0;" title="center-right: 2"></div></div></div>
+  <div class="story-assessment">This dataset contains only opinion commentary from two outlets both coded center-right, sharing the same headline — effectively one viewpoint, not a cross-spectrum comparison. Any claim of &#x27;agency failure&#x27; should be treated as an opinion argument pending EEOC&#x27;s own data or statements and independent reporting; no genuine left-right contrast can be drawn from what&#x27;s provided here.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this dataset, so left framing cannot be characterized from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not distinctly represented; both sources provided are labeled center-right and share identical framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the story as evidence of bureaucratic negligence — the EEOC is portrayed as failing to adequately count or respond to a real and rising wave of antisemitic workplace discrimination, implying institutional indifference or dysfunction.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The available pieces are opinion/commentary rather than straight news, and do not appear to include EEOC&#x27;s own response, methodology explanation, or independent verification of complaint-volume statistics.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Josh Blackman</span><span class="entity-tag">Supreme Court</span><span class="entity-tag">Ten Commandments (Texas)</span><span class="entity-tag">Trump v. Barbara</span></div>
+  <div class="connection-text">The same legal commentator (Blackman) is the throughline on two separate SCOTUS-adjacent stories today — a pedagogical piece on Trump v. Barbara and the Texas Ten Commandments cert petition coverage. Both pieces share a common frame: caution that inviting this Court to rule risks setting broader precedent than litigants want.</div>
+  <div class="connection-sig">↳ Suggests a single ideological/legal-strategy voice is shaping how two unrelated SCOTUS stories get framed for readers, which can manufacture a sense of consensus risk-aversion around this Court that isn&#x27;t necessarily shared by the plaintiffs or ACLU driving the underlying litigation.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Hegseth</span><span class="entity-tag">USS Benfold</span><span class="entity-tag">USS Lincoln</span><span class="entity-tag">Trump administration</span></div>
+  <div class="connection-text">SecDef Hegseth&#x27;s &#x27;personal capacity&#x27; Iowa trip amid 2028 speculation runs the same day as two separate Navy readiness stories — Benfold adrift for four days in the South China Sea and Lincoln sailors&#x27; &#x27;basic needs&#x27; complaints reported by Sen. Mark Kelly. All three touch the same chain of command but are covered as unconnected items.</div>
+  <div class="connection-sig">↳ A pattern of fleet strain stories clustering the same week a defense leader is doing political travel is the kind of juxtaposition accountability journalism would normally connect explicitly, yet it appears nowhere as a combined story — an editorial gap rather than a factual one.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">China</span><span class="entity-tag">South Korea military exercises</span><span class="entity-tag">USS Benfold</span><span class="entity-tag">Strait of Hormuz</span></div>
+  <div class="connection-text">Trump&#x27;s scale-back of joint Korea exercises and the Oman bombing threat (Middle East-driven) coincide with a Pacific-theater mechanical failure (Benfold) and rising China-entity density (4 stories) — pointing to a single underlying strategic tension: Middle East demands pulling attention and possibly resources away from the Pacific posture just as China-watchers are raising alarms.</div>
+  <div class="connection-sig">↳ This is a materially significant strategic story (alliance drawdown + fleet strain in the same theater as China competition) that no outlet appears to be covering as one connected narrative — it&#x27;s currently legible only by cross-referencing separate blindspot lists.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Justice Department</span><span class="entity-tag">Nevada US attorney appointment</span><span class="entity-tag">federal prosecutor firing suit</span><span class="entity-tag">poll monitors</span></div>
+  <div class="connection-text">Three DOJ stories today — an appeals court ruling the Nevada top federal prosecutor was unlawfully appointed, a former prosecutor suing DOJ for retaliatory firing, and DOJ sending ~1,000 monitors to polls this fall — form a coherent thread about DOJ personnel legitimacy and electoral posture, but are being covered as isolated items, almost entirely left-only.</div>
+  <div class="connection-sig">↳ This extends the previous cycle&#x27;s &#x27;Blanche DOJ-independence&#x27; watch item into concrete institutional friction (unlawful appointments, retaliation suits) rather than just rhetoric — a material escalation that&#x27;s being under-aggregated.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">WSJ Opinion</span><span class="entity-tag">RealClearPolitics</span><span class="entity-tag">EEOC</span></div>
+  <div class="connection-text">Two center-right outlets ran essentially the same critique of EEOC antisemitism-complaint handling on the same day with no independent reporting or EEOC response included.</div>
+  <div class="connection-sig">↳ Pattern consistent with coordinated opinion placement/messaging rather than organic dual coverage — worth flagging as a talking point rather than a developing news story.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning outlets are systematically deprioritizing the Korea/Oman alliance-strain story in favor of scandal-and-accountability narratives (Gomez, carpetbagging) — the spectrum divide is about attention allocation, not facts in dispute.</div>
+<div class="pattern-item">Left-leaning outlets are the exclusive carriers of military-readiness-strain stories (Benfold, Lincoln, Hegseth Iowa trip) and DOJ-legitimacy stories (Nevada appointment, prosecutor firing, poll monitors) — both threads read as implicit critiques of administration competence/control, and neither gets right-side engagement.</div>
+<div class="pattern-item">Multiple high-significance, low-volume stories (Big Bend pause: 2 sources; Ten Commandments cert: 3 sources; EEOC: 2 sources) are under-covered relative to their long-term consequence, suggesting attention is being absorbed by the day&#x27;s mega-bundled Trump/Korea/Florida/Gomez story.</div>
+<div class="pattern-item">Distinct foreign-policy, ethics, and domestic-election stories are being algorithmically or editorially bundled into a single &#x27;Trump Korea Florida South Sexual&#x27; mega-story, which risks diluting the standalone gravity of the alliance drawdown and the Gomez ethics probe alike.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">No coverage found of North Korea&#x27;s official response to the scaled-back joint exercises — this is now a second consecutive cycle of silence on a materially reactive actor, despite the drawdown itself getting high-significance coverage.</div>
+<div class="anomaly-item">Big Bend National Park border wall pause — a signature border-security storyline — drew essentially zero right-wing coverage, unusual given how reliably border stories generate right-side volume; the pause not fitting a clean &#x27;win&#x27; narrative may explain the silence.</div>
+<div class="anomaly-item">Hegseth&#x27;s &#x27;personal capacity&#x27; Iowa trip lands the same cycle as two separate fleet-readiness failure stories, yet no outlet in this set links defense leadership&#x27;s political positioning to the readiness narrative.</div>
+<div class="anomaly-item">The EEOC antisemitism story is single-sourced in effect (WSJ Opinion + RCP, same angle, same day) with no EEOC statement or independent verification present — reads as opinion-column amplification rather than news.</div>
+<div class="anomaly-item">Continued multi-cycle blackout persists on Nevada fake-electors, Delaney Hall deaths, Alito&#x27;s disclosure, and the Fauci contempt referral, none of which surface even tangentially in today&#x27;s entity network — the silence itself is now a multi-week pattern worth escalating rather than just noting.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are avoiding stories that reflect strain or overreach inside the administration or military — the Korea/Oman alliance drawdown, Navy readiness failures, DOJ legitimacy rulings, and the Big Bend pause — while amplifying scandal and culture-war accountability narratives that implicate Democrats or cultural opponents (Gomez, trans-athlete disputes, IVF, DEI). Left-leaning outlets are conversely quiet on the Gomez sexual-misconduct probe and Florida carpetbagging story, both of which cut against their own coalition, and rarely engage the alliance-drawdown story with the urgency the right&#x27;s own WSJ Opinion piece gave it. The net effect is that each side&#x27;s blindspot is precisely the story category that would complicate its preferred narrative about the other side&#x27;s competence or integrity.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Destroyer Power South China Adrift</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former federal prosecutor is suing DOJ for &#x27;unlawful and retaliatory&#x27; firing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS defends investigating agency critics and giving them warning notices</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen. Mark Kelly says USS Lincoln sailors &#x27;can&#x27;t get basic needs met&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Wyoming midterm primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Live Results: Alaska midterm primaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice Department watchdog to review DEA tactic that permitted deadly fentanyl to hit streets</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ICE pitches legal insurance to help shield local officers who make immigration arrests</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration can’t scrap plan to move FBI headquarters to Md., judge rules</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Planned Parenthood to spend more than $600,000 against Susan Collins in Maine</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice Department plans to send about 1,000 monitors to the polls this fall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hegseth travels to Iowa in his ‘personal capacity’ amid 2028 speculation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Election denier Tina Peters to be hired as elections consultant in conservative California county</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lindsay Clancy had ‘thoughts of harming the children’, her mother testifies at trial</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tropical storm Lala wreaks ‘devastation’ to some areas of Hawaii’s Big Island</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Could the GOP Lose Florida Over Data Centers?</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Counting, Antisemitism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woke 2 Was Craaazy, Says the Judge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Senate Food Fight on SNAP Welfare Waste</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Michigan Prosecutes Five Noncitizen Voters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Constantine’s Example for China</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Write Plymouth’s History by Ancestry</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Deep State of Mind on NBC</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 3 Vaccines Are Better Than 1</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Appeals court rules Trump admin unlawfully appointed Nevada&#x27;s top federal prosecutor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed aide likens GOP opponent&#x27;s campaign to &#x27;KKK cross burning&#x27; over video with Ford pickup</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NYC drivers shell out $9 congestion toll. City admits it failed to improve air quality</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I Still Think IVF Should Be Banned</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One Crazy Summer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will the Pentagon’s Latest UFO Files Satisfy the Alien Theorists?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Deterring Russia’s Threat to the Baltics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What If AOC Took a Vow of Silence?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jeanie Buss Opposes Reported Sale of the Lakers, Says Siblings Can&#x27;t Without Her Approval</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WNBA Admits Security in Atlanta Was Wrong for Asking Mother and Daughter to Cover &#x27;XX-XY Athletics&#x27; Shirt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› John Cornyn Staffer Joins Democrat James Talarico’s Campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Hid Reporter&#x27;s Soros-Funded Ties in Kushner Albania Hit Piece</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Naturalized U.S. Citizen Scammer Convicted of Laundering $2.7M</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Caitlyn Jenner Blasts WNBA&#x27;s &#x27;Hypocrisy&#x27; Over Trans Athletes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Making Americans Healthier Again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC Did Something Right? Actually, It Was Three Things</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› CA Admits It Doesn&#x27;t Track Noncitizens on Voter Rolls</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Doubles Down on Strait of Hormuz as U.S. Territory</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Eric Hobsbawm&#x27;s Age of Contradictions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Milwaukee&#x27;s Latest Election Mess a Bit of History Repeating</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Trump&#x27;s Obsession With Small-Dollar Fraud Reveals</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Warsh Is Wise To Ditch the Dots</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">North Korea&#x27;s formal response to the scaled-back joint U.S.-South Korea exercises, and any missile-test activity in following days</div>
+<div class="watch-item">Oman&#x27;s diplomatic response to Trump&#x27;s bombing threat, and whether other Gulf allies shift posture in response</div>
+<div class="watch-item">SCOTUS cert decision (grant/deny) on the Texas Ten Commandments law — watch for Josh Blackman-style strategic-risk commentary to intensify if cert is granted</div>
+<div class="watch-item">House Ethics Committee timeline and any evidence disclosures in the Jimmy Gomez sexual misconduct investigation</div>
+<div class="watch-item">Navy&#x27;s official accountability statement on the USS Benfold incident and whether broader fleet-readiness reporting follows (tie to Lincoln sailors&#x27; complaints)</div>
+<div class="watch-item">CBP Commissioner Rodney Scott&#x27;s Big Bend National Park inspection outcome and whether construction resumes, pauses indefinitely, or is rerouted</div>
+<div class="watch-item">Any ethics/FEC scrutiny of Hegseth&#x27;s &#x27;personal capacity&#x27; Iowa travel given 2028 speculation</div>
+<div class="watch-item">Appeal or DOJ response to the ruling that Nevada&#x27;s top federal prosecutor was unlawfully appointed, and the retaliatory-firing lawsuit&#x27;s progress</div>
+<div class="watch-item">Continued silence tracking: Nevada fake-electors case, Delaney Hall deaths, Alito disclosure, Fauci contempt referral — flag if a full month passes with zero cross-spectrum coverage</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
