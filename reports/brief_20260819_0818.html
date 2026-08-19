@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-19 08:18 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-19 08:18 UTC</span>
+    <span class="pill">115 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>Three primary states — Florida, Alaska, and Wyoming — produced a set of uncontested factual results that are being run through completely divergent interpretive machinery on the way to the public. Angie Nixon, a DSA-backed Democratic socialist, beat establishment-favorite Alex Vindman for a Florida Senate nomination; scandal-plagued GOP Rep. Cory Mills lost his House primary; and Trump&#x27;s endorsement record split, winning Florida&#x27;s governor race while losing Wyoming&#x27;s. None of that is in dispute. What is in dispute is what it means, and the two information ecosystems are not actually arguing about the same question — they are building parallel narratives that barely touch. The right had pre-loaded a &quot;DSA/socialist threat&quot; frame before Nixon&#x27;s win ever landed, meaning her victory is being slotted into a script rather than driving new analysis.</p>
+<p>The more consequential thread running under today&#x27;s cycle is a pattern of federal agencies allegedly being used against critics or perceived opponents — ABC/Disney suing the FCC over what it calls a retaliatory campaign by Chairman Brendan Carr, DOJ&#x27;s antisemitism probes into Ivy League institutions, and ICE reportedly investigating a critic. This is a single underlying story — agency-as-leverage — appearing in three separate guises, and only the corporate-media instance (ABC/Disney, because it hits a business the right also has grievances with) gets any cross-spectrum airing. The university and individual-critic versions run left-only. That asymmetry is itself information: it tells you which uses of state power each side is willing to treat as a principle versus a grievance.</p>
+<p>Layered under both of those is a foreign-policy data point that is not getting the scrutiny it deserves: an Israeli strike on a Syrian airbase landing in the same cycle as the first-ever UN inspection of undeclared Syrian nuclear sites. Each is currently sourced from a single outlet and treated as unrelated. Whether or not they are causally connected, no part of the coverage ecosystem is even asking the question, which is a coverage failure independent of what the answer turns out to be.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Brendan Carr / FCC vs. Disney-ABC.</strong> This is the cleanest test case in today&#x27;s set of an agency head using regulatory leverage as a political instrument. Notably, no outlet — left, right, or center — has yet published the FCC&#x27;s own justification for its actions. Readers are getting the complainant&#x27;s frame from two directions (PBS via an internal FCC critic, WSJ Opinion via direct advocacy for Disney) with no regulator counter-narrative anywhere. That silence from the FCC itself is worth reading as deliberate.</p>
+<p><strong>DSA / Angie Nixon.</strong> Her win is being used by the right as evidence for a threat narrative constructed in advance (&quot;The Young MAGA Socialists Are Here,&quot; Moskowitz&#x27;s &quot;Reject DSA&quot; framing), which means her general-election performance will likely be evaluated against a script the right already committed to, not against what she actually does. Watch whether the DSA-establishment fault line gets nationalized as a midterm storyline — that&#x27;s the more consequential outcome than the primary result itself.</p>
+<p><strong>Trump.</strong> His endorsement record is genuinely mixed (FL win, WY loss), but coverage on both sides is fitting that mixed record into pre-existing conclusions — &quot;validation&quot; on the right, &quot;erosion&quot; implied but not stated on the left. Separately, his revived noncitizen-voting claims got no amplification from right-leaning outlets in this cycle, which is a real departure from pattern and suggests either the claim didn&#x27;t generate a fresh peg or outlets are quietly declining to echo it this time.</p>
+<p><strong>Sen. Slotkin and DOD neutrality.</strong> A Senate push to get Hegseth and Gen. Caine to commit publicly to keeping the military out of midterm operations is a serious institutional question running the same day as the year&#x27;s marquee primary story — and it is getting zero right-of-center pickup. That is a live safeguard question being decided in an information vacuum.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering: the Ballroom construction Supreme Court challenge (a live legal fight directly involving Trump — total blackout, not even defensive coverage, which is itself unusual), the six-year sentencing of a woman who plotted to kill Treasury Secretary Bessent (political violence against a cabinet official normally draws ideology-agnostic coverage; the silence here is conspicuous), and any of the DOJ/ICE agency-overreach stories once the target stops being a media conglomerate.</p>
+<p>The left is not covering: Trump-aligned primary wins as evidence of continued influence, the &quot;far-left meddling&quot; theory some outlets raised around Alaska&#x27;s primary, mail-voting hypocrisy angles, or cultural-conservative arguments that stand on their own data (crime-decline statistics, Ukraine corruption critiques). The pattern on the left is amplify-every-thread-of-alleged-overreach while downplaying anything that validates the other side&#x27;s read of an election.</p>
+<p>Both patterns point to curation for narrative reinforcement, not gatekeeping around facts. Neither audience is being confronted with inconvenient news about its own side today.</p>
+<p>Also worth flagging structurally: a full news cycle has now passed with zero cross-spectrum mentions of eight previously flagged watch items — Nevada fake electors, Delaney Hall deaths, the Alito disclosure, the SCOTUS Ten Commandments cert, the Jimmy Gomez ethics probe, USS Benfold accountability, the Big Bend inspection, and Hegseth&#x27;s Iowa travel/FEC exposure. That is not evidence these stories resolved — it&#x27;s evidence they&#x27;ve been dropped from active coverage rotation entirely.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Syria strike and the UN nuclear inspection deserve a harder look than either is getting individually. An Israeli strike degrading Syrian air defense or delivery capability landing in the same window as the first-ever inspection of undeclared nuclear sites is the kind of thing that, if coordinated, represents a real pressure campaign on post-Assad Syria&#x27;s WMD infrastructure — and if coincidental, is still worth knowing that. Right now nobody in the ecosystem has connected them because each is single-sourced.</p>
+<p>The agency-as-retaliation throughline (FCC, DOJ, ICE, and now DOD via the Slotkin ask) is the day&#x27;s real structural story, but it&#x27;s being covered as four disconnected items rather than one pattern, and only the FCC instance crosses the aisle. If you were trying to obscure a pattern of executive-branch pressure on critics, fragmenting it into agency-specific stories and letting only the business-friendly instance get bipartisan attention is exactly how you&#x27;d do it — whether or not that&#x27;s intentional is unknowable from here, but the effect is the same either way.</p>
+<p>Two Fauci storylines ran in parallel today with no shared factual anchor — a left-only piece on a former aide admitting to hiding emails, and a right-only retrospective on &quot;Fauci&#x27;s Diary.&quot; Both sides are re-litigating his legacy independently, which suggests the dormant Fauci contempt-referral thread may be stirring again, but it hasn&#x27;t yet produced a story either side is willing to engage on the other&#x27;s terms.</p>
+<p>Be aware that several &quot;connections&quot; in today&#x27;s raw data are aggregation artifacts, not real linkages — a Syria/ballroom/crypto-meeting bundle and two unrelated Pew surveys (AI sentiment, India favorability) got tagged together upstream purely by coincidence of timing. Treat any cross-story comparison built on those bundles as noise.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>ABC/Disney v. FCC docket</strong> — watch specifically for Chairman Carr to issue any public justification for the agency&#x27;s actions; his continued silence is itself becoming the story.</li>
+<li><strong>UN inspection results at undeclared Syrian nuclear sites</strong>, cross-referenced against whether Israeli strikes on Syrian military targets continue — first indication of whether these are coordinated or coincidental.</li>
+<li><strong>Ballroom construction SCOTUS ruling</strong> — watch for the first moment right-leaning outlets cover it at all, which will itself be a signal.</li>
+<li><strong>Sen. Slotkin&#x27;s request to Hegseth/Caine</strong> on military-midterm neutrality — watch for any actual Pentagon response; a non-response by end of week is itself informative.</li>
+<li><strong>Nixon vs. general-election opponent</strong> — the real test of whether the DSA-establishment split becomes a nationalized midterm frame or stays a single-district story.</li>
+<li><strong>Cory Mills</strong> — post-loss, his legal/ethics exposure is no longer politically shielded by an active campaign; watch for movement in the next 1-2 weeks.</li>
+<li><strong>Fauci aide&#x27;s hidden-email admission</strong> — watch for DOJ or congressional follow-up, and whether it merges with the dormant contempt-referral track.</li>
+<li><strong>Continued-silence carryover</strong> — Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, Gomez ethics probe, USS Benfold accountability, Big Bend inspection, Hegseth Iowa travel/FEC — now at a full cycle of zero cross-spectrum coverage; flag if this extends further, as it suggests active abandonment rather than resolution.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The dominant dynamic right now isn&#x27;t disagreement over facts — the primary results, the FCC lawsuit, the strike, the sentencing are all uncontested at the factual layer. The dynamic is two separate curation engines selecting which uncontested facts get amplified and which get left to rot in single-source obscurity, each engine tuned to protect its own side from inconvenient developments while maximizing the other side&#x27;s exposure. That produces an electorate that isn&#x27;t just disagreeing about interpretation — it&#x27;s operating off genuinely different sets of known facts, because a story that never crosses into your feed might as well not have happened. The most dangerous version of this isn&#x27;t the loud partisan fights over Nixon or Trump&#x27;s endorsement record; it&#x27;s the quiet stuff neither side wants examined — the Bessent assassination sentencing, the Ballroom SCOTUS fight, DOD neutrality — because those are exactly the stories where accountability requires cross-spectrum pressure that currently does not exist.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">Florida, Alaska, and Wyoming held primary elections in which Democratic socialist Angie Nixon upset establishment favorite Alex Vindman for the Florida Senate nomination, scandal-plagued GOP Rep. Cory Mills lost his House primary, and Trump-endorsed candidates split results — winning in Florida&#x27;s governor race but losing Wyoming&#x27;s governor primary.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (8)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:19.6;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:14.3;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:10.7;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:3.6;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:14.3;" title="far-right: 8"></div><div class="bias-segment" style="background:#e07a7a; flex:17.9;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:3.6;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:16.1;" title="right: 9"></div></div></div>
+  <div class="story-assessment">The verifiable outcomes are uncontested and mostly mechanical — specific winners and losers across FL, AK, and WY primaries — but every outlet layers a divergent narrative onto identical results: the same Trump-endorsed losses are &#x27;establishment revolt&#x27; to the center-left and simply local upsets to the right, while the same Trump-endorsed wins are &#x27;validation&#x27; to the right and downplayed elsewhere. The most durable story is Nixon&#x27;s DSA-backed upset of a heavily-funded Vindman, which all sides cover but interpret through opposite ideological lenses (deserved comeuppance vs. grassroots triumph).</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes accountability and hypocrisy narratives — Mills&#x27; loss as scandal comeuppance, Trump&#x27;s mail-ballot use contradicting his fraud claims, Ossoff&#x27;s &#x27;draft-dodging crook&#x27; attack — and celebrates Nixon&#x27;s DSA-backed win as a historic grassroots breakthrough against establishment money, while casting Trump&#x27;s foreign policy moves (South Korea drawdown, Oman threats) as erratic and alliance-straining.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Largely procedural and horse-race oriented — reporting who won/advanced in Florida, Alaska, and Wyoming races with minimal ideological framing — though The Hill and Politico both note a pattern of Trump-endorsed candidates (Degenfelder, Webster&#x27;s pick) losing primaries as a notable storyline.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames results through Trump&#x27;s continued dominance over the GOP (Donalds, Hageman, Gray wins) and treats Democratic-side news as evidence of party dysfunction — Nixon&#x27;s win exposing Vindman&#x27;s &#x27;TDS-addled&#x27; hypocrisy and wasted establishment money — while covering Alaska&#x27;s jungle primary as an orderly process threatened by &#x27;far-left meddling,&#x27; and framing Trump&#x27;s Canada tariffs as justified leverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays Trump-aligned wins as validation of his influence (e.g., Donalds&#x27;, Hageman&#x27;s, Gray&#x27;s victories) and doesn&#x27;t cover the &#x27;far-left meddling&#x27; framing of Alaska&#x27;s primary or the vote-splitting Dan Sullivan theory that right-leaning/libertarian outlets raised.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the mail-voting hypocrisy story, the Ossoff-Harp/plane-switch security scrutiny story, and does not frame Barlow&#x27;s or Vindman&#x27;s-opponent&#x27;s wins as signs of any erosion in Trump&#x27;s or the GOP&#x27;s political dominance, instead isolating each result as a discrete outcome.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">ABC (Disney) sued the FCC, accusing Chairman Brendan Carr of running a retaliatory campaign that violates the network&#x27;s First Amendment rights.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core, verifiable fact: ABC/Disney is suing the FCC over alleged retaliatory action tied to free speech. Neither is a straight neutral report — PBS leans on an internal critic to bolster the overreach narrative, while WSJ Opinion is explicitly advocacy journalism siding with Disney. Notably absent from both excerpts is the FCC&#x27;s own justification for its actions, meaning readers get the complainant&#x27;s framing from two directions without the regulator&#x27;s counter-argument.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS centers the lawsuit as a press-freedom and government-overreach story, lending credibility by featuring a sitting FCC commissioner who is critical of the agency&#x27;s own conduct — emphasizing institutional alarm over executive-branch retaliation against media.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinct center-only source was provided; PBS NewsHour is coded center-left here and serves as the closest to neutral, straight news framing among the two.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion frames this approvingly as Disney &#x27;striking back&#x27; against an overreaching regulator, portraying Carr&#x27;s actions as personal harassment and endorsing the lawsuit&#x27;s free-speech merits — emphasizing vindication of a company under unfair government pressure.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS coverage does not engage with or assess the legal strength of Disney&#x27;s case the way WSJ&#x27;s opinion piece does.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion omits the internal FCC dissent (the critical commissioner&#x27;s voice) that PBS includes, and does not address why the FCC took its actions in the first place beyond calling it harassment.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">These three articles do not cover a single event: they report on an Israeli strike on a Syrian airbase, a legal challenge to Trump&#x27;s White House ballroom construction, and a White House meeting with crypto industry leaders — three unrelated stories bundled under one garbled label.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This is not a single story covered across the spectrum but three distinct, unrelated news items — a foreign strike, a domestic legal fight, and a conflict-of-interest story — each sourced from only one outlet. Any comparison of &#x27;bias&#x27; or &#x27;omission&#x27; here would be spurious, since there is no shared factual event for the sources to agree or disagree on. The underlying stories are individually notable, but this dataset conflates them under a single mislabeled headline.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The two left-leaning outlets frame Trump-adjacent power as inherently transgressive: the Guardian casts the ballroom project as executive overreach bypassing Congress and endangering a historic landmark, while Mother Jones frames the crypto meeting as brazen self-dealing and conflict of interest, emphasizing corruption over policy substance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the Israeli strike on Syria as a destabilizing diplomatic problem, emphasizing strained U.S. relations with Israel, Turkey, and Syria rather than assessing the strike&#x27;s military justification.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this set, so right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets emphasize institutional and ethical overreach (legal challenges, financial conflicts) but omit any coverage of the Israel-Syria-Turkey strike or its diplomatic fallout, which appears only in the center source.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source was provided in this set, so it&#x27;s impossible to say what a right-leaning outlet would include or omit relative to the left coverage.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Two unrelated Pew Research Center surveys are being covered separately: one on U.S. under-30 sentiment toward AI, another on U.S. favorability toward India amid H-1B visa debates.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">These are not competing frames of a single event — they are two different Pew Research Center surveys on entirely different subjects (AI attitudes vs. country favorability) that happen to share a data source. Breitbart&#x27;s headline conflates a favorability trend with a specific causal narrative about H-1B visas that isn&#x27;t substantiated by the cited claim. Treating this as one &#x27;story&#x27; risks manufacturing a false equivalence between unrelated polling data.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is present in this set; only center and far-right sources were provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the AI story as a generational data trend, emphasizing eroding trust, job anxiety, and societal concern among young adults rather than any immigration or labor angle.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames declining U.S. favorability toward India as evidence of backlash against Indian workers&#x27; dominance in H-1B and other visa programs, emphasizing job displacement and implicitly linking immigration policy to economic grievance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source was included in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any mention of the AI-sentiment survey entirely, and provides no direct data connecting H-1B visa levels to the favorability decline it reports — the causal claim is asserted, not sourced to Pew&#x27;s actual findings.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Syria</span><span class="entity-tag">Israel</span><span class="entity-tag">UN inspectors</span></div>
+  <div class="connection-text">An Israeli strike on a Syrian airbase and the first-ever UN inspection of undeclared Syrian nuclear sites are landing in the same news cycle but are being treated as unrelated single-source items rather than parts of a coordinated pressure campaign on post-Assad Syria&#x27;s military/WMD infrastructure.</div>
+  <div class="connection-sig">↳ If these are causally linked (strike degrading air defenses/delivery capability ahead of inspections, or inspections prompted by intelligence tied to the strike), no outlet is currently connecting them — each is sourced from only one outlet, so the dots aren&#x27;t being drawn anywhere in the ecosystem.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">FCC</span><span class="entity-tag">Department of Justice</span><span class="entity-tag">Department of Homeland Security</span><span class="entity-tag">Brendan Carr</span></div>
+  <div class="connection-text">Three separate stories today (ABC/Disney v. FCC, DOJ&#x27;s politicized Ivy League antisemitism probes, ICE investigating a critic over protected speech) all depict federal agencies allegedly wielding regulatory/investigative power against speech or perceived critics — but only the FCC/ABC story gets any right-of-center coverage; the DOJ and ICE versions are left-only.</div>
+  <div class="connection-sig">↳ Same underlying pattern (agency-as-retaliation-tool) is being validated by the right only when a corporate media giant is the target, and ignored when the target is a university or an individual critic — suggesting selective outrage rather than a principled free-speech stance.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump</span><span class="entity-tag">Ballroom construction</span><span class="entity-tag">Supreme Court</span><span class="entity-tag">National Trust for Historic Preservation</span></div>
+  <div class="connection-text">The Ballroom SCOTUS legal challenge appears twice in the dataset — once in the mislabeled three-story bundle, once in the left-only blindspot list — and in both cases draws zero right-leaning coverage.</div>
+  <div class="connection-sig">↳ A live Trump-adjacent Supreme Court fight is functionally invisible outside left/center audiences, meaning most of the electorate will only learn about it if and when SCOTUS actually rules.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anthony Fauci</span><span class="entity-tag">Department of Justice</span></div>
+  <div class="connection-text">Two unrelated Fauci storylines run in parallel today with no shared factual anchor: a left-only piece on a former aide admitting to hiding emails, and a right-only piece reflecting on &#x27;Fauci&#x27;s Diary.&#x27;</div>
+  <div class="connection-sig">↳ Both sides are independently re-litigating Fauci&#x27;s legacy on the same day without engaging each other&#x27;s framing — a sign the dormant Fauci contempt-referral thread (flagged on the prior watch list) may be reactivating, but still with no cross-spectrum coverage to force accountability.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Department of Defense</span><span class="entity-tag">Sen. Slotkin</span><span class="entity-tag">U.S. Senate</span></div>
+  <div class="connection-text">A Senate push to get Hegseth/Caine to commit to keeping the military out of midterm elections runs left-only on the same day primaries are the day&#x27;s biggest story and receive full-spectrum coverage.</div>
+  <div class="connection-sig">↳ The safeguard-seeking story is a natural companion to election-integrity coverage, but its total absence from right-leaning outlets leaves the question of Pentagon neutrality unexamined outside one ideological lane.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Identical, uncontested primary results (Nixon over Vindman, Mills&#x27; loss, split Trump endorsements) are being fitted into pre-existing ideological scripts rather than treated as new information — &#x27;establishment revolt&#x27; vs. &#x27;local upset,&#x27; &#x27;validation&#x27; vs. silence.</div>
+<div class="pattern-item">A DSA/socialism-threat frame set up by right-only pieces (&#x27;Moskowitz: My District... Reject DSA,&#x27; &#x27;The Young MAGA Socialists Are Here&#x27;) predates and now colors right-side coverage of Nixon&#x27;s win, suggesting the interpretive frame was built before the results landed.</div>
+<div class="pattern-item">Federal-power-used-against-critics is today&#x27;s dominant left-side throughline (FCC/ABC, DOJ/Ivy League, ICE/critic, DOD/midterms) but only the corporate-media instance (ABC/Disney) crosses into right-of-center coverage.</div>
+<div class="pattern-item">Multiple genuinely unrelated items are being bundled under single garbled headlines (Israel/Syria + ballroom + crypto meeting; two unrelated Pew surveys), which risks manufacturing false &#x27;bias&#x27; or &#x27;omission&#x27; comparisons where none exist and may reflect an aggregation/tagging problem upstream.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">A six-year sentence for a woman who plotted to kill Treasury Secretary Bessent is covered only on the left — political-violence-against-a-cabinet-official stories normally draw broad, ideology-agnostic coverage, and the total right/center silence here is conspicuous.</div>
+<div class="anomaly-item">Trump&#x27;s own revived noncitizen-voting claims are not amplified by any right-leaning outlet in today&#x27;s set — either the claim didn&#x27;t generate a fresh news peg, or outlets are declining to echo it, both of which are notable departures from pattern.</div>
+<div class="anomaly-item">Total right-wing blackout on the Ballroom SCOTUS challenge, a live legal fight directly involving Trump, is unusual; even defensive right-wing coverage would be expected and is absent.</div>
+<div class="anomaly-item">The National Trust for Historic Preservation entity links an Israel/Syria-labeled story to the Ballroom SCOTUS story — almost certainly a mislabeling artifact from the garbled three-story bundle rather than a real connection, and worth flagging as a data-quality issue rather than a substantive one.</div>
+<div class="anomaly-item">None of the prior watch-list items (Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, Gomez ethics probe, USS Benfold accountability, Big Bend inspection, Hegseth Iowa travel/FEC) appear anywhere in today&#x27;s dataset — a full cycle of continued silence on all eight simultaneously is itself notable.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding stories where Republican local wins or cultural-conservative arguments stand on their own (California special election, crime-decline data, Ukraine corruption critique) while amplifying every available thread of alleged administration overreach (FCC, DOJ, ICE, DOD). The right is systematically avoiding stories that put Trump or his administration in legal or ethical jeopardy (Ballroom SCOTUS fight, Bessent assassination-plot sentencing, election-denier candidates) while leaning into culture-war and socialism-threat framing. Both patterns point to curation around narrative reinforcement rather than shared-fact reporting — neither side is being confronted with inconvenient developments on its own side today.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 2020 election deniers on the ballot for key offices in battleground states</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The growing debate over big money influence in American politics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Whistleblower alleges political pressure, lack of evidence in antisemitism investigations targeting universities</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;The party is in charge of everything,&#x27; freed pastor says of China&#x27;s crackdown on religion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge blocks the Trump administration from moving FBI headquarters out of Maryland to DC office building</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen. Slotkin presses Hegseth, Caine to commit to keeping U.S. military out of the midterm elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump revives unverified claims of noncitizen voting in 2020</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Politics drove antisemitism probes against Ivy League schools, DOJ whistleblower says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Fauci aide admits hiding emails to thwart pandemic inquiry</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woman who planned to kill Treasury Secretary Bessent gets six years in prison</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Workers start latest repairs to Reflecting Pool liner, months after rehab began</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jill Stein, repeat Green Party candidate, faces assault charges in Missouri</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ballroom opponents ask Supreme Court to keep Trump project on hold</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tupac Shakur murder trial: ‘You better treat me as a hostile witness,’ Suge Knight associate testifies – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Boyfriend of Hayden Panettiere was at apartment when actor died</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cops Love ICE’s New Shock Gloves. Parents Want Them Out of Schools.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trump Administration Launches a New Angle of Attack Against Trans Healthcare</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Medicaid and Transgender Treatments for Kids</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› High Anxiety in the Bond Market</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Economic Case for European Air Conditioning</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What We Learned From Fauci’s Diary</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› No One Got Rich Singing About Money</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Young MAGA Socialists Are Here</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› State of play: What to know about California showdown to replace Swalwell after massive scandal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kim Jong-un Is Not Our Friend</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Decline in Violent Crime Is Worth Celebrating</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kushner Legitimizes Hamas</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Woke One’ Wasn’t Just Crazy — It Was Destructive</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ukraine Must Defeat the Culture of Soviet Corruption</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Moskowitz: My District Has People Who &#x27;Escaped Socialism&#x27;, They Reject DSA</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Americans Do and Don&#x27;t Like About Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Call to Power: Islamic Leaders See Ballot Box as Path to Paradise</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Arday&#x27;s Final Self-Delusion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Coolidge on the Christian Roots of American Liberty</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hey, Lefties: Shoplifting Isn&#x27;t Need, It&#x27;s Just Plain Greed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DNC Did Something Right? Actually, It Was 3 Things</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">ABC/Disney v. FCC docket and whether Chairman Carr issues any public justification — currently absent from all coverage</div>
+<div class="watch-item">UN inspection findings at undeclared Syrian nuclear sites and whether Israeli strikes on Syrian airbases continue in parallel</div>
+<div class="watch-item">Ballroom construction SCOTUS ruling — watch specifically for the moment right-leaning outlets first cover it, if ever</div>
+<div class="watch-item">Fauci aide&#x27;s hidden-emails admission — watch for DOJ or congressional follow-up and any merge with the dormant Fauci contempt referral</div>
+<div class="watch-item">Sen. Slotkin&#x27;s request to Hegseth/Caine on military-midterm neutrality — watch for an actual Pentagon response</div>
+<div class="watch-item">Nixon vs. general-election opponent and whether the DSA-establishment fault line becomes a nationalized midterm storyline</div>
+<div class="watch-item">Cory Mills&#x27; post-primary-loss legal/ethics exposure now that his seat is no longer a factor</div>
+<div class="watch-item">Continued-silence carryover (now at a full cycle with zero cross-spectrum mentions): Nevada fake-electors case, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, Jimmy Gomez ethics probe, USS Benfold accountability, Big Bend inspection outcome, Hegseth Iowa travel/FEC — flag if this extends further</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
