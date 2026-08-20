@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-20 12:43 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-20 12:43 UTC</span>
+    <span class="pill">118 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>Both major parties are currently losing control of their own nominating processes, and neither side&#x27;s media apparatus is covering this as the structural story it actually is. In Florida, a heavily outspent progressive state legislator, Angie Nixon, just defeated establishment-backed Alex Vindman in a Democratic Senate primary. On the Republican side, Freedom Caucus primaries are described as &quot;brutal,&quot; and a Lindell-funded recount is underway in the Minnesota governor&#x27;s race. These are not two separate party stories — they are the same phenomenon happening in both parties simultaneously, and it is invisible as such because each outlet only covers the insurgency happening on the other team, using it as ammunition rather than analysis. The right is using Nixon&#x27;s win to build an &quot;unelectable left&quot; narrative; nobody is asking whether the Republican establishment has the same problem.</p>
+<p>Beneath that, a second layer of the moment is a DOJ/FBI accountability fight being run as two parallel, non-intersecting narratives. The left is covering skeptical framing of the Comey prosecution; the right is covering &quot;FBI misclassified info to hide Biden crimes.&quot; These are almost certainly touching the same underlying institutional terrain — DOJ conduct in Biden-era matters — but are being reported as though they concern different universes. There is no visible mechanism forcing these two threads to reconcile, which means public understanding of DOJ conduct is currently bifurcating along partisan lines rather than converging on facts.</p>
+<p>Underneath both of those is a longer, more concerning pattern: a substantial list of accountability stories — Nevada&#x27;s fake-electors case, the Delaney Hall deaths, Justice Alito&#x27;s disclosure matter, the SCOTUS Ten Commandments cert decision, USS Benfold accountability, the Big Bend inspection outcome, Hegseth&#x27;s Iowa travel/FEC exposure — has now gone two full monitoring cycles with zero mentions across all 14 tracked sources, left or right. These aren&#x27;t resolved. They are being mutually ignored because they don&#x27;t flatter either tribe&#x27;s narrative.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Angie Nixon</strong> is the clearest actor in motion. She beat a better-funded, establishment-backed opponent on a DSA-aligned platform, which makes her simultaneously a grassroots proof-of-concept for the left and a general-election liability narrative for the right — both readings are being pushed by their respective camps without engaging the other&#x27;s evidence. Her pending September trial on trespassing/resisting-arrest charges (tied to a redistricting protest) is a live variable being minimized by sympathetic coverage and will almost certainly resurface as a general-election attack line once the general campaign starts.</p>
+<p><strong>Zohran Mamdani</strong> is picking a direct legal fight with his own City Council over the RESPECT Check Act (teacher&#x27;s aide bonuses), on collective-bargaining grounds. This is a mayor litigating against the legislative body of his own city — a genuinely unusual intra-governing-coalition conflict — but it is currently reported by exactly one credible source (The Hill). The apparent second source is a mismatched, unrelated Reason piece on a Teamsters delivery-driver bill. Treat the &quot;violates collective bargaining law&quot; framing as an unverified single-source claim, not established fact.</p>
+<p><strong>Darline Graham (R-SC)</strong> dodged a Taiwan/national-security question in a runoff debate and is defending the dodge as authenticity rather than walking it back. This is a real vulnerability on national-security substance that right-leaning outlets appear to be routing around — the one &quot;right&quot; source attached to this story is an unrelated Fox News piece on Massachusetts voter fraud, which functions less like an oversight and more like a substitution of a flattering story for an unflattering one.</p>
+<p><strong>DOJ/FBI figures</strong> (Comey and unnamed FBI officials in Biden-era investigations) are the subject of mirror-image accountability narratives, each fully captured by one partisan audience. Neither side&#x27;s coverage lets its readers see the other&#x27;s framing of what is likely the same institutional conduct.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is under-foregrounding intra-Democratic accountability friction — Nixon&#x27;s pending criminal trial is present in coverage but subordinated to the &quot;grassroots triumph&quot; frame, and there is no left-side engagement with whether her platform costs Democrats a winnable Florida seat.</p>
+<p>The right is not engaging with Graham&#x27;s actual debate failure on its merits. Instead of direct coverage assessing whether an inability to discuss Taiwan policy has real national-security implications, right-leaning coverage appears to have substituted an unrelated, favorable story. That is either a labeling error or a deliberate narrative choice — it warrants direct verification before treating it as one or the other.</p>
+<p>Both sides are jointly silent, now across two full monitoring cycles, on the same slate of structural accountability items: the Nevada fake-electors case, the Delaney Hall deaths, Alito&#x27;s disclosure matter, the SCOTUS Ten Commandments cert grant, USS Benfold accountability, the Big Bend inspection outcome, and Hegseth&#x27;s Iowa travel/FEC exposure. None of these serve a partisan narrative for either side, and the silence is not evidence of resolution — it&#x27;s evidence of mutual disinterest. Also newly dark: ABC/Disney-FCC matters, Syrian UN inspections, and Slotkin&#x27;s request for military neutrality from Hegseth.</p>
+<p>The Jimmy Gomez ethics probe broke a full cycle of silence, but only on the right. The left continues to omit it entirely — an asymmetric thaw worth tracking, since selective silence on an ethics matter involving a Democratic member is itself a signal.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Nixon primary win, Mamdani&#x27;s lawsuit against his own council, and a right-only-covered piece on a figure (El-Sayed) positioning to the left of Sanders together trace one throughline: DSA-aligned insurgency against Democratic establishment structures at the state, city, and rhetorical level simultaneously. No outlet is framing this as one storyline because it cuts against both sides&#x27; preferred narrative — the left wants &quot;grassroots triumph,&quot; the right wants &quot;socialist overreach&quot; — so the throughline itself goes unstated even though the underlying data supports it clearly.</p>
+<p>There is a recurring &quot;unapologetic evasion&quot; motif across otherwise disconnected stories: Graham defending her Taiwan non-answer as virtuous honesty, and DOJ figures managing message around the Comey matter. This isn&#x27;t coordination between the stories — it&#x27;s a shared political technique (own the dodge rather than correct it) surfacing independently across parties.</p>
+<p>The &quot;Trump White House Angie Nixon&quot; entry in the underlying data functions as a mega-aggregator/digest item mechanically linking a dozen unrelated entities (Trump, California, Texas, Turkey, Amazon, ICE, FDA, Harvard, etc.). This is very likely a roundup artifact, not a genuine co-occurrence signal, and anyone reading raw entity-density data off this corpus should discount it accordingly — it inflates apparent network density without underlying substance.</p>
+<p>The Comey/FBI dual-narrative structure and the Graham source-mismatch both point to the same underlying pattern: on stories with real embarrassment potential for one side, that side&#x27;s coverage either goes silent, reframes, or substitutes a more comfortable adjacent story rather than engaging the actual event.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Angie Nixon&#x27;s trespassing/resisting-arrest trial, September 2026.</strong> This is the mechanism by which her primary win converts into a general-election liability narrative. Watch for the first Republican opposition-research push tying the DSA platform to the criminal charge.</p>
+<p><strong>Right-wing coverage of Graham&#x27;s Taiwan dodge.</strong> Watch specifically for whether any right-leaning outlet produces direct, on-topic coverage in the next 48-72 hours, replacing the current mismatched Fox News substitute. Its continued absence is itself a data point about narrative management on the right.</p>
+<p><strong>A second, genuine corroborating source on the Mamdani v. NYC Council RESPECT Check Act lawsuit.</strong> Until one appears, treat the &quot;violates collective bargaining law&quot; framing as unverified.</p>
+<p><strong>Whether left-leaning outlets pick up the Jimmy Gomez ethics probe</strong>, now that the right has broken a full cycle of silence on it. A continued left blackout would be notable on its own.</p>
+<p><strong>Freedom Caucus primary results and the Lindell-funded Minnesota governor recount</strong>, as the test case for whether &quot;establishment vs. insurgent&quot; gets nationalized as a cross-party 2026 midterm frame — which it structurally should be, but currently isn&#x27;t.</p>
+<p><strong>Any DOJ filing or public statement that forces the Comey &quot;86 47&quot; narrative and the &quot;FBI misclassified info&quot; narrative to be reported as the same underlying event.</strong> That would be the first sign of the two-narrative DOJ story converging rather than bifurcating further.</p>
+<p><strong>The full continued-silence list entering a third cycle</strong>: Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold, Big Bend inspection outcome, Hegseth Iowa travel/FEC. If these remain dark past 72 hours, treat it as confirmation these stories have been tacitly deprioritized by the entire media ecosystem, not merely delayed.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The defining feature of the current moment is not any single storyline but a media ecosystem that has functionally split into two closed information loops, each capable of amplifying stories that damage the other side while either ignoring or substituting away stories that damage itself — and both loops agree, without coordination, to let genuinely unflattering structural-accountability stories (fake electors, detention deaths, judicial disclosure, military accountability) go dark because neither audience wants them. The insurgent-vs-establishment fracture running through both parties&#x27; primaries is real and significant, but it is being consumed by partisans as a weapon against the opposing party rather than understood as a shared structural weakness in both parties&#x27; nominating apparatus. A senior official reading only one side&#x27;s coverage right now would not just be missing facts — they would be missing the existence of entire storylines, including ones directly relevant to institutional accountability that both sides have quietly agreed not to discuss.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">Florida state Rep. Angie Nixon, running as a progressive/democratic-socialist, defeated establishment-backed and vastly better-funded Alex Vindman in the Democratic U.S. Senate primary, while facing a September trial on trespassing/resisting-arrest charges from a redistricting protest.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (12)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (8)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (11)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (2)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.7;" title="center: 12"></div><div class="bias-segment" style="background:#e0a87a; flex:13.8;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:13.8;" title="center-right: 8"></div><div class="bias-segment" style="background:#e05252; flex:8.6;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:6.9;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:19.0;" title="left: 11"></div><div class="bias-segment" style="background:#a07ae0; flex:3.4;" title="libertarian: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:13.8;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow and undisputed: Nixon, a heavily outspent progressive, beat an establishment-backed opponent in a Democratic primary. Everything else — whether this signals a healthy grassroots movement or a general-election liability — is interpretive spin layered onto the same result by outlets selecting which details (spending gap, wealth tax, pending trial, party unity quotes) to foreground. The real open question neither side resolves is how Nixon&#x27;s platform and legal situation will play with Florida&#x27;s general-election electorate in November.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets frame Nixon&#x27;s win as an inspiring underdog/grassroots triumph over establishment money and party gatekeepers, emphasizing her outsider authenticity, the scale of the spending disparity she overcame, and treating her activism (including her arrest record) as evidence of principled resistance rather than a liability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios, NPR, PBS) largely stick to horse-race and procedural framing — describing Nixon&#x27;s win as a notable primary upset with implications for the November general election, and letting Nixon&#x27;s own quotes downplaying party division carry the story rather than editorializing on ideology.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets frame Nixon&#x27;s nomination as proof Democrats have embraced &#x27;socialism&#x27; in a state trending conservative, treating it as a strategic gift to Republicans; some pair this with broader claims that Democratic socialists (DSA) hold politically toxic views (e.g., on Castro/Cuba) that will alienate Florida voters.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays the &#x27;socialist&#x27;/wealth-tax framing that right outlets use to characterize Nixon as electorally risky, and does not engage with arguments that her platform could hurt Democrats&#x27; broader midterm chances in a conservative state.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the grassroots-organizing narrative and the scale of the fundraising gap Nixon overcame, as well as her framing of the primary as not being about ideological labels; it also largely leaves out her pending trial being tied specifically to redistricting protest activism, which left outlets present sympathetically.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. Darline Graham (R-SC) declined to directly answer a Taiwan/national-security question during a South Carolina runoff debate, then defended the non-answer as honesty about voter priorities.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow: Graham dodged a Taiwan-related national security question in a debate and later defended that dodge as honesty rather than apologizing for it. Everything beyond that — whether it signals incompetence or authenticity, and whether it will hurt her in the runoff — is interpretive framing, not fact. The Fox News article included in this set is a mismatched, unrelated story (noncitizen voter fraud in Massachusetts) and should not be read as right-wing coverage of the Graham incident.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS frames this as a candidate-accountability story: Graham&#x27;s evasiveness on a national security question is presented as a substantive failure with real electoral stakes, emphasizing scrutiny and consequence ahead of the runoff.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinct center-only source was provided; PBS is categorized center-left and its framing (accountability/competence angle) is the closest available to center coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames Graham sympathetically as a plainspoken outsider under unfair media attack, reframing &#x27;ignorance of Taiwan&#x27; as relatable honesty about what average voters actually prioritize; emotionally it valorizes authenticity over polish. (Separately, Fox News&#x27; unrelated piece reflects a general right-wing framing emphasis on noncitizen voter fraud and DOJ enforcement, but is not coverage of the Graham story.)
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS omits Graham&#x27;s own explanation/defense — that she was being deliberately honest and that most voters don&#x27;t prioritize Taiwan — which is the central content of the Breitbart piece.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any assessment of whether an inability to engage substantively on Taiwan policy has genuine implications for Graham&#x27;s fitness on national security matters, focusing instead on relatability and media unfairness.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">NYC Mayor Zohran Mamdani filed suit against the City Council over the RESPECT Check Act, which awards $10,000 bonuses to teachers&#x27; aides, claiming it violates collective bargaining law.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The two sources supplied do not actually cover the same event: The Hill reports on Mamdani&#x27;s lawsuit against the City Council over teachers&#x27; aide bonuses, while Reason covers an unrelated Teamsters-backed delivery driver employment bill. As a result, no genuine cross-spectrum comparison, consensus, or omission analysis is possible for the Mamdani story — only a single-source, center-framed account exists, and its legal/procedural framing should be treated as unverified until corroborated by other outlets.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this data set, so left framing of the Mamdani/Council story cannot be assessed.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the story narrowly as a legal and procedural clash over municipal authority and labor law — whether the City Council overstepped its power in mandating bonuses that arguably belong to collective bargaining — rather than debating whether teachers&#x27; aides deserve the raise.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this data set; the Reason (libertarian) piece supplied does not cover the Mamdani/Council story at all, so no right-of-center framing of this specific event is available.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning coverage of this story was provided.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — the only non-center source provided (Reason) covers an unrelated labor story about delivery drivers, not the Mamdani/Council teachers&#x27; aide dispute, so no right-of-center take on this specific event exists in the data.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Angie Nixon</span><span class="entity-tag">Freedom Caucus</span><span class="entity-tag">Mike Lindell / Minnesota GOP primary</span></div>
+  <div class="connection-text">Both parties are running simultaneous establishment-vs-insurgent primary fights this cycle — Nixon&#x27;s DSA-aligned upset over Vindman on the Democratic side mirrors the &#x27;brutal&#x27; Freedom Caucus primary and the Lindell-funded Minnesota governor recount on the Republican side — but each is covered only within its own partisan silo as a party-specific story rather than as one nationalized &#x27;insurgents vs. establishment&#x27; phenomenon.</div>
+  <div class="connection-sig">↳ No outlet in the set is connecting these as a single structural story, meaning the broader 2026 midterm theme of both major parties losing control of their own nominating processes is currently invisible to any single audience.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Darline Graham</span><span class="entity-tag">Fox News</span></div>
+  <div class="connection-text">The only &#x27;right&#x27; source attached to Graham&#x27;s Taiwan-dodge story is a mismatched, unrelated Fox News piece about noncitizen voter fraud in Massachusetts, while the actual critical follow-up (&#x27;Woefully underprepared&#x27;: Graham critics seize on her foreign policy misstep) is left-only.</div>
+  <div class="connection-sig">↳ This looks less like coincidence than substitution — right-leaning coverage of a GOP candidate&#x27;s real stumble is being effectively replaced by a favorable deflection story, leaving her actual answer almost entirely unexamined outside left-leaning outlets.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">James Comey</span><span class="entity-tag">FBI/DOJ Biden-era investigations</span></div>
+  <div class="connection-text">The Comey &#x27;86 47&#x27; seashell/book-sales prosecution story (left-only, skeptical framing of prosecutors) and &#x27;How FBI Misclassified Info To Hide Biden Crimes&#x27; (right-only, pro-accountability framing) are mirror-image DOJ stories running the same week, each covered exclusively by the audience it flatters.</div>
+  <div class="connection-sig">↳ Two outlets are describing what is functionally the same institutional-accountability terrain (DOJ conduct in Biden-era matters) without either side&#x27;s readers ever seeing the other&#x27;s framing, hardening two incompatible narratives about the same investigative apparatus.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Mamdani</span><span class="entity-tag">NYC Council</span><span class="entity-tag">Reason</span></div>
+  <div class="connection-text">The two sources nominally supplied for the Mamdani RESPECT Check Act lawsuit don&#x27;t cover the same event — one is the actual lawsuit (The Hill), the other an unrelated Teamsters-backed delivery-driver bill (Reason) — so what appears to be balanced cross-spectrum coverage is actually a single uncorroborated account.</div>
+  <div class="connection-sig">↳ This is a data-integrity flag as much as a news signal: a real cross-outlet comparison of Mamdani&#x27;s legal fight with the Council currently does not exist in the available sourcing, so its &#x27;legal violates collective bargaining law&#x27; framing should be treated as unverified.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A three-story thread on the institutional left flank — Nixon&#x27;s Senate primary win, Mamdani&#x27;s lawsuit against his own City Council, and the right-only-covered El-Sayed piece on going further than Sanders — traces the same DSA-vs-establishment tension playing out simultaneously at state, city, and rhetorical levels, but is never framed as one storyline because left and right outlets each cover only the piece that suits their narrative (grassroots triumph vs. socialist overreach).</div>
+<div class="pattern-item">Underfunded-insurgent-beats-establishment coverage (Nixon/Vindman) is drawing unusually broad right-wing engagement (20 of 58 total sources are center-right/right/far-right) — a sign the right is using a Democratic primary result as ammunition for an &#x27;unelectable left&#x27; narrative rather than covering it as Democratic Party news.</div>
+<div class="pattern-item">Multiple stories this cycle hinge on someone declining to give a direct answer and then defending the non-answer as virtuous (Graham on Taiwan) alongside DOJ figures accused of message-management (Comey&#x27;s book-promotion framing) — a recurring &#x27;unapologetic evasion&#x27; motif across otherwise unconnected stories.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Graham Taiwan-dodge story is tagged medium significance but carries only 3 total sources, one of which is a confirmed mismatch (unrelated Fox News fraud story) — either a labeling/pipeline error or a genuine near-total blackout of real coverage on a Republican&#x27;s debate stumble.</div>
+<div class="anomaly-item">The Mamdani lawsuit story&#x27;s two &#x27;sources&#x27; cover different events entirely, meaning what reads as corroborated coverage is a single unverified account dressed up as cross-spectrum consensus.</div>
+<div class="anomaly-item">&#x27;Trump White House Angie Nixon&#x27; functions as a mega-aggregator entry that mechanically links Trump, California, Texas, Fox News, Turkey, Bloomberg, Amazon, Biden, ICE, FDA, and Harvard — this is very likely a digest/roundup item, not genuine substantive co-occurrence, and inflates the apparent density of the entity network.</div>
+<div class="anomaly-item">The Jimmy Gomez ethics probe — dormant with zero cross-spectrum mentions on the prior watch list — resurfaced today but exclusively in right-only coverage; left-leaning outlets continue to omit it entirely.</div>
+<div class="anomaly-item">A full slate of previously flagged accountability stories (Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold accountability, Big Bend inspection outcome, Hegseth Iowa travel/FEC) again produced zero mentions across any source in today&#x27;s set, now extending the silence to at least two full monitoring cycles.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is minimizing intra-Democratic accountability friction — Nixon&#x27;s pending criminal trial is present but under-foregrounded relative to the &#x27;grassroots win&#x27; framing — while amplifying stories that embarrass the right (Comey skepticism, Graham critics, debt figures). The right is doing the mirror opposite: leaning into DOJ/FBI-Biden accountability and cultural-grievance stories while apparently avoiding direct engagement with Graham&#x27;s actual debate failure, possibly substituting a more favorable, unrelated story in its place. Both sides continue, in lockstep, to ignore the same list of structural-accountability stories (Nevada electors, USS Benfold, Big Bend, Alito, Ten Commandments cert) that flatter neither tribe&#x27;s narrative, suggesting these aren&#x27;t resolved so much as mutually useless to cover.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Elbridge who? How the name of a forgotten founder lives on in the word &#x27;gerrymander&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Historian&#x27;s American road trip examines parallels between the Gilded Age and today</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How did U.S. debt hit $40 trillion? Here&#x27;s what to know</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What to know about the fake election poll numbers shared and retracted by a mysterious company</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Michael Cohen won’t say if he’ll use his Trump interview to seek a pardon</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Freedom Caucus is having a brutal primary run</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Woefully underprepared’: Graham critics seize on her foreign policy misstep</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. debt hits $40 trillion faster than forecasters expected</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump joins leaders of crypto companies in push for industry-backed bill</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Prosecutors claim Comey posted  ‘86 47’ seashell photo to boost book sales</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Elon Musk posted, and she lost her job. Now, she seeks to clear her name.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Reporters and military duo held at gunpoint by security at US space force base</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› UC Berkeley professor admits to using AI to edit op-ed on students’ math skills</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California becomes first US state to set efficiency rules for replacement tires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mike Lindell offers to fund recount in Minnesota Republican primary for governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Larry David says former friend Alan Dershowitz ‘made a deal with the devil’ as Trump’s lawyer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Texas Program Has Poured Billions Into Cancer Research. Ken Paxton Voted Against It.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Moderna’s Road to a Cancer Vaccine</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Midterm Lessons From Bush to Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump and the Campuses, Part 2</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When the Perfect Name Comes From Dad</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed reveals he would go ‘step further’ than Sanders on socialist plan for major US industry</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Clarence Thomas chokes up as he reveals promise he made after grandparents’ sudden deaths</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Soros-linked prosecutor blasted after accused killer got passport, fled US</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Europe’s Citric-Acid China Test</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Adam Smith’s Warning for America’s New Socialists</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cruel Stories of Youth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› YIMBY, with a Madisonian Twist</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Captain in New York Harbor Capsizing that Killed Mom, Baby Is Illegal Immigrant</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Accuser Tells House Ethics Panel Democrat Rep. Jimmy Gomez Assaulted Her</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump to Sit for Interview with Ex-Fixer Michael Cohen After Bitter Feud</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Karmelo Anthony Gets a Legal Win After Trial Judge Barred from His Appeal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› REPORT: Sophie Cunningham Suggests WNBA Could Benefit from New Leadership</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gen Z Is Souring on GOP, Here&#x27;s How Dems Can Capitalize</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Strange Politics of the AI Backlash</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Anthropic CEO&#x27;s Wife Courted Epstein To Invest in Porn Site</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Case for Chilling Out About Birth Rates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Promising Race To Get Kids Reading Again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Public Schools Must Empower the Common Citizen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How FBI Misclassified Info To Hide Biden Crimes</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Angie Nixon&#x27;s September trespassing/resisting-arrest trial and whether it becomes a general-election attack line against her</div>
+<div class="watch-item">Whether right-leaning outlets ever produce direct, on-topic coverage of Graham&#x27;s Taiwan-dodge rather than the current mismatched substitute story</div>
+<div class="watch-item">First genuine corroborating coverage of the Mamdani v. NYC Council RESPECT Check Act lawsuit from a second real source</div>
+<div class="watch-item">Whether left-leaning outlets pick up the Jimmy Gomez ethics probe now that the right has broken the prior full-cycle silence</div>
+<div class="watch-item">Continued-silence list now entering a third cycle if still unmentioned next check: Nevada fake-electors case, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold accountability, Big Bend inspection outcome, Hegseth Iowa travel/FEC</div>
+<div class="watch-item">Any DOJ filing or statement that forces the Comey &#x27;86 47&#x27; story and the &#x27;FBI Misclassified Info&#x27; story to be covered as the same underlying event rather than two disconnected partisan narratives</div>
+<div class="watch-item">Freedom Caucus primary results and the Lindell-funded Minnesota recount as parallel test cases for whether the &#x27;establishment vs. insurgent&#x27; frame gets nationalized across both parties simultaneously</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
