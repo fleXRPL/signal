@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-21 12:47 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-21 12:47 UTC</span>
+    <span class="pill">117 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">10 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant signal today is not any single event but a pattern of selective engagement: both ends of the political spectrum are choosing which parts of reality to cover based on what serves their side, and the gaps are as informative as the reporting itself. Three Senate races with Republican-held or -leaning seats — Texas, Iowa, and Michigan — are trending toward genuine competitiveness. Cook Political Report has moved both Texas and Iowa from &quot;Lean Republican&quot; to &quot;Toss Up,&quot; a materially significant shift in the national map. In each of these races, right-leaning coverage is largely declining to engage with the substantive trend and instead running character-attack stories on the Democratic candidates: James Talarico&#x27;s murder-trial comments in Texas, and an unsubstantiated Hezbollah-adjacent guilt-by-association piece on Abdul El-Sayed in Michigan, timed to run alongside Treasury&#x27;s actual Hezbollah cash-smuggling sanctions with no factual link between the two established.</p>
+<p>On the national security side, North Korea fired multiple ballistic missiles a day after rejecting a Trump administration offer to scale back joint U.S.-South Korea drills — a story that reflects ambiguously on the administration and has drawn zero right-leaning coverage in this dataset. Separately, an Albany woman was arrested in an FBI sting for allegedly seeking explosives to bomb the New York State Capitol with ISIS material support — arguably the highest-severity domestic story of the cycle — yet it has only two sources total. A foiled Capitol bomb plot getting thinner coverage than a Senate candidate&#x27;s crossover-endorsement talking point is itself a data point about what the incentive structures on both sides are currently rewarding.</p>
+<p>Underneath the story-selection noise, two structural issues compound the problem: the intelligence pipeline itself lost the two likely highest-volume stories of the day (&quot;Trump Swalwell Michael Sexual Cohen&quot; and the &quot;Trillion Wallet Democrats&quot; piece) to an analysis failure despite one having 28 sources across the spectrum, and a long-running list of accountability stories — Nevada fake electors, Delaney Hall deaths, Alito disclosures, Comey&#x27;s case, the Mamdani-NYC Council lawsuit, Freedom Caucus primary dynamics — is now entering a fourth consecutive dark cycle with zero mentions anywhere on the spectrum.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Mike Rogers (R-MI Senate)</strong> is running a dual-track campaign: substantively, he&#x27;s staked out a one-year moratorium on new data center construction, a position that taps into genuine local backlash against AI infrastructure buildout and is corroborated independently by The Hill and Politico. Politically, his campaign is pushing a &quot;Democratic crossover coalition&quot; narrative through Fox News that has no independent verification of scale — a standard tightening-race move to blunt momentum from Abdul El-Sayed, whose campaign appears to be gaining ground.</p>
+<p><strong>Abdul El-Sayed</strong> is simultaneously the subject of a legitimate horse-race story and a parallel guilt-by-association narrative tying his convention appearance to unrelated Hezbollah sanctions news. Watch whether this hardens into a sustained attack line — the juxtaposition (not the content) is the tell.</p>
+<p><strong>James Talarico (D-TX Senate)</strong> is absorbing a character attack over murder-trial comments precisely as the seat he&#x27;s running for moves to genuine toss-up status, a shift that would otherwise be the dominant Texas political story of the week.</p>
+<p><strong>Cook Political Report</strong> is functioning as the most consequential actor today in a non-partisan sense — its reclassification of Texas and Iowa is a real structural signal about the 2026 map that most right-leaning coverage is simply declining to engage with.</p>
+<p><strong>The U.S. Army</strong> is quietly phasing out the drone unit responsible for extracting lessons from the Russia-Ukraine war, a resourcing decision running concurrently with claims from a retired colonel that Russia is executing a deliberate war-crimes strategy. Institutional capacity to learn from the conflict is contracting exactly when the evidentiary case for its brutality is strengthening.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning outlets are not covering North Korea&#x27;s missile tests or the rejected U.S.-South Korea drill concession — a story that shows a Trump diplomatic overture being rebuffed. That is a notable, complete silence on a national-security story that would normally draw heavy coverage regardless of political valence.</p>
+<p>Right-leaning outlets are also not engaging with the Cook Political Report&#x27;s reclassification of Texas and Iowa to toss-up status, substituting personal-attack coverage instead. This is not simply a different emphasis — it is the absence of the dominant structural story in the exact races where attack coverage is running.</p>
+<p>Left-leaning outlets, for their part, are not directly rebutting the policy-critique pieces running unopposed on the right today: Medicare for All costing claims, wealth tax critiques, and a ranked-choice-voting op-ed. Left coverage is concentrated on institutional-accountability reporting (ICE detention, data brokers, resilience grants) rather than contesting these arguments on their own terrain.</p>
+<p>Both sides are, in effect, playing offense on favorable ground and declining to play defense on unfavorable ground — a pattern that shows up consistently across today&#x27;s corpus rather than in any single story.</p>
+<p>Separately, an entire tier of previously flagged stories — Nevada&#x27;s fake-electors case, the Delaney Hall detention deaths, Justice Alito&#x27;s disclosure matter, the SCOTUS Ten Commandments cert question, USS Benfold accountability, the Big Bend inspection outcome, Hegseth&#x27;s Iowa travel/FEC exposure, Comey&#x27;s &quot;86 47&quot;/FBI misclassified-information convergence, the Mamdani v. NYC Council lawsuit, the Jimmy Gomez ethics probe, the Angie Nixon trial, and Freedom Caucus primary/Lindell Minnesota recount dynamics — has now gone unmentioned across at least four consecutive collection cycles. At this point the silence itself, sustained across multiple independent check-ins, is more significant than any one of these stories individually. That is either a genuine lull in each of these threads simultaneously, which is statistically unlikely, or a systemic blind spot in what outlets across the spectrum consider worth assigning.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The clearest pattern today is a Senate-race triangulation: in Texas, Michigan, and implicitly Iowa, Republican-held or -leaning seats are showing competitiveness, and in every case right-leaning coverage responds not by contesting the electoral data but by redirecting to a character story about the Democratic candidate. This is not three unrelated editorial choices — it is a consistent substitution pattern across geographically and politically distinct races on the same day, which suggests coordinated messaging discipline rather than organic story selection.</p>
+<p>The El-Sayed/Hezbollah-sanctions juxtaposition is worth flagging specifically: Treasury&#x27;s actual sanctions action against Hezbollah cash-smuggling and El-Sayed&#x27;s scheduled Islamic convention appearance are factually unconnected, but Fox News ran them adjacent to each other the same day, with the added detail of &quot;controversial clerics&quot; attending the same event. No link to El-Sayed and Hezbollah is established anywhere in the reporting. This is a guilt-by-association construction, and its timing — as Rogers is simultaneously promoting a Democratic-crossover narrative to blunt a tightening race — indicates it is likely to recur as the race closes.</p>
+<p>The Iran thread is fragmented rather than unified: it surfaces in the Trump/Swalwell/Cohen story, the Hezbollah sanctions action, and the unresolved &quot;Trillion Wallet Democrats&quot; piece, none of which explicitly connect to one another. Given that the two most Iran-adjacent stories both returned &quot;Analysis unavailable&quot; despite one having 28 sources, there is likely a single larger Iran-finance narrative that the current pipeline is failing to surface coherently. This deserves a direct manual read rather than reliance on the automated synthesis.</p>
+<p>The Alaska ranked-choice-voting &quot;consensus&quot; flagged in the data is not a consensus at all — both sources are center-right op-eds with near-identical titles, almost certainly a single syndicated piece double-counted. Treat any apparent left-right agreement in this dataset with skepticism until source independence is confirmed.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Michigan Senate race (Rogers v. El-Sayed):</strong> Watch for the Hezbollah-sanctions/Islamic-convention juxtaposition to recur or escalate into a formal attack line as polling tightens further. Also watch whether Rogers&#x27; &quot;Democratic crossover coalition&quot; claim gets independently verified or remains a campaign talking point relayed uncritically.</li>
+<li><strong>Texas and Iowa Senate toss-up reclassification:</strong> Watch the next 48-72 hours for whether any right-leaning outlet engages substantively with the Cook Political Report data rather than running attack-story substitutes. Continued non-engagement would confirm deliberate narrative avoidance rather than a one-day gap.</li>
+<li><strong>Albany ISIS Capitol bomb plot:</strong> Watch for pickup beyond the current two sources (WaPo, Breitbart) — specifically whether any center-right or center-left outlet not already in the far-left/far-right poles covers it, and what the actual court filings show once unsealed.</li>
+<li><strong>North Korea missile tests / rejected drill-scaling offer:</strong> Watch whether right-leaning coverage materializes at all in the next cycle, and what State Department or White House response follows the rejection.</li>
+<li><strong>Army drone-unit phase-out:</strong> Watch for congressional or Pentagon-press-corps follow-up treating this as a standalone accountability story, independent of the war-crimes framing it&#x27;s currently bundled with.</li>
+<li><strong>The &quot;Trillion Wallet Democrats&quot; and Trump/Swalwell/Cohen stories:</strong> These returned no analysis despite high source volume (28 sources on one). Manually pull the underlying articles — this is likely the day&#x27;s actual highest-volume story and is currently invisible in this brief.</li>
+<li><strong>Fourth-cycle silence list:</strong> Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold, Big Bend inspection, Hegseth Iowa travel/FEC, Comey convergence, Mamdani lawsuit, Jimmy Gomez ethics probe, Angie Nixon trial, Freedom Caucus/Lindell recount. If any of these break coverage in the next cycle after four dark cycles, that reentry is itself significant and should be flagged immediately.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What looks like a chaotic, fragmented news day is actually a fairly coherent picture once you stop reading story-by-story and start reading for what each side is declining to cover. Both political coalitions are currently running offense-only strategies: each is amplifying stories that damage the other side (character attacks on tightening-race Democratic candidates; institutional-accountability stories on ICE and data brokers) while declining to contest the stories that damage their own side (GOP Senate seats sliding to toss-up, a rebuffed North Korea overture, unrebutted policy critiques on entitlement costing and wealth taxes). That is a rational short-term posture for partisan media, but it means a reader following only one side of the spectrum today would form a materially incomplete — not just differently-emphasized — picture of the electoral map and the national-security situation. The more durable concern is the accountability-story backlog now four cycles dark across the entire spectrum; a genuinely free press does not lose a dozen live stories simultaneously without either a coordinated suppression dynamic or a systemic assignment failure, and distinguishing between those two explanations should be a priority for the next collection cycle.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">The FBI arrested an Albany, New York woman on charges of attempting to provide material support to ISIS after an undercover sting in which she allegedly sought help and explosives to bomb the New York State Capitol.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core, verifiable facts: an Albany woman was arrested after an undercover FBI sting related to an alleged plan to bomb the New York State Capitol tied to ISIS. The divergence is less about disputed facts than about selective detail and emphasis — Breitbart supplies identifying specifics (name, age, exact charge) that heighten perceived threat, while the Washington Post foregrounds the sting&#x27;s success, softening the narrative toward institutional competence. Neither outlet&#x27;s account is contradicted by the other; the gap is one of specificity and framing rather than factual conflict.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Washington Post frames this primarily as a law-enforcement success story — a sting operation that identified and neutralized a threat before any attack could occur, emphasizing the effectiveness of FBI process over the individual&#x27;s ideology or motive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned outlet was included in this comparison, so center framing cannot be assessed from the sources provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames this as evidence of an ongoing domestic radicalization threat, emphasizing the suspect&#x27;s alleged pledge of allegiance to ISIS and specific intent to commit mass-casualty violence, using personal identifying details to underscore the concrete, named danger.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post&#x27;s account omits the suspect&#x27;s name, age, and the specific federal charge (material support to ISIS) that appear in Breitbart&#x27;s coverage, resulting in a more procedural and less personalized account.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart&#x27;s coverage does not emphasize the undercover sting methodology or frame the outcome as a law-enforcement success in the way the Washington Post does, and omits contextual framing around FBI process that might mitigate perceived threat severity.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Trump Swalwell Michael Sexual Cohen</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (4)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:14.3;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:17.9;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:7.1;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:3.6;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:14.3;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:25.0;" title="left: 7"></div><div class="bias-segment" style="background:#a07ae0; flex:3.6;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:14.3;" title="right: 4"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A retired U.S. Army colonel said Russia&#x27;s large-scale missile and drone strikes on Ukraine, which killed at least 17 civilians, reflect a deliberate war-crimes strategy, while separately the U.S. Army is moving to phase out a drone unit that had been studying lessons from the Russia-Ukraine war.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">These are two loosely related but distinct stories bundled together: one is a moral/strategic claim about Russian conduct in Ukraine sourced to a single retired colonel&#x27;s opinion, and the other is a U.S. Army internal restructuring decision affecting a unit that studied that same war. Neither source corroborates or contradicts the other, and without any right-leaning outlet in this set, a full left-right spectrum comparison isn&#x27;t possible from the data given — only center-left and center perspectives are represented.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS NewsHour emphasizes the human toll (17 civilian deaths) and elevates a military expert&#x27;s assessment that the strikes are part of a deliberate Russian strategy, implicitly bolstering the case for continued or increased U.S./Western air-defense support to Ukraine.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill takes a process- and institution-focused angle, framing the Army&#x27;s drone unit phase-out as an internal bureaucratic/personnel story — a reversal of modernization efforts pushed by generals who were removed — rather than commenting on the Ukraine war itself.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right-of-center framing cannot be assessed from the given coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning source is present to compare against, so specific omissions relative to right coverage cannot be identified.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source was included in this set to establish what it covers that others omit.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">North Korea fired multiple ballistic missiles toward the sea on Thursday, one day after rejecting a Trump administration offer to scale back joint U.S.-South Korea military drills.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">The verifiable core event — North Korea firing missiles after rejecting a U.S. drill concession — is consistently reported by the center and far-left sources, differing mainly in whether Trump&#x27;s gesture is framed as reasonable diplomacy rebuffed or as a naive, one-sided giveaway. The right-leaning source in this set fails to engage with the story at all, making it impossible to assess genuine cross-spectrum framing differences on the substance of the missile launches; this gap itself is notable given the story&#x27;s national-security relevance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning coverage (Mother Jones) frames the episode as a failed, self-inflicted concession — portraying Trump as having angered or undermined South Korea to appease Pyongyang, only for North Korea to respond with further provocation, emphasizing futility and poor judgment.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour presents a straightforward escalation narrative: North Korea rejected a U.S. overture and then launched missiles, implying continued North Korean intransigence despite U.S. attempts at de-escalation, without strong editorializing about Trump&#x27;s decision-making.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet in this set actually covers the North Korea missile event; the WSJ Opinion piece provided is off-topic, addressing domestic corruption allegations instead. As a result, there is no discernible right-leaning framing of the missile launches in this sample.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits any right-leaning perspective on the missile launches themselves (e.g., a national-security or deterrence framing), since no right-leaning outlet in this set actually reported on the event to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning source provided omits the North Korea missile story entirely — it does not acknowledge the launches, the drill scale-back, or North Korea&#x27;s rejection of the U.S. overture, focusing instead on unrelated domestic political criticism.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Mike Rogers, the Republican Senate nominee in Michigan, is calling for a one-year moratorium on new data center construction while also touting a coalition of Democratic supporters as his race against Abdul El-Sayed tightens.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The three outlets are effectively covering two different stories under one umbrella: the center and center-left focus on the substantive, emerging policy fight over data center development, while the right-leaning outlet pivots to a horse-race narrative about crossover endorsements. The data center moratorium claim appears solid across two independent outlets, but the &#x27;Democratic defectors&#x27; coalition is a Rogers campaign talking point relayed uncritically by Fox News with no independent verification of scale or significance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Politico situates the moratorium within a broader electoral trend, emphasizing that data centers are becoming a defining wedge issue across multiple competitive Senate races, framing Rogers&#x27; move as part of a larger political pattern rather than an isolated stance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the moratorium call primarily as a political response to growing public backlash against AI data centers, treating it as a strategic move rather than evaluating the underlying policy merits.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News shifts focus away from the data center issue entirely, instead emphasizing Rogers&#x27; claimed bipartisan appeal, highlighting Democratic &#x27;defectors&#x27; and framing El-Sayed as a &#x27;left-wing&#x27; candidate driving moderate Democrats toward Rogers — an emotionally charged narrative of crossover momentum in a close race.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Politico omits any mention of Rogers&#x27; claimed Democratic crossover support or the specific framing of El-Sayed as &#x27;left-wing,&#x27; details that are central to the Fox News narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News omits substantive discussion of the data center moratorium itself — the policy issue driving the other two stories — and does not address the voter backlash against AI infrastructure that The Hill and Politico center their coverage on.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Here&#x27;S America&#x27;S Trillion Wallet Democrats’</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Cook Political Report reclassified several Senate races, including Texas and Iowa, from &#x27;Lean Republican&#x27; to &#x27;Toss Up,&#x27; while far-right coverage of the Texas race focused instead on Democratic candidate James Talarico&#x27;s comments about a murder trial verdict.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These three outlets are effectively covering two different stories under one topic umbrella: Axios and WaPo report the same underlying forecaster data with center/left framing differences mostly in emphasis and adjective choice, while Breitbart ignores the ratings shift and instead runs a candidate-attack story with minimal factual overlap. The real signal — that a marquee red-state Senate race is now a true toss-up — is corroborated across center and left sources, but readers relying solely on Breitbart would not learn that the race has tightened at all.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the Cook Political Report shift as validating news for Democrats, emphasizing it as a rightward-to-&#x27;Toss Up&#x27; movement favorable to their electoral prospects, presented through the lens of a credentialed nonpartisan forecaster rather than a partisan talking point.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios presents the ratings change as a straightforward, data-driven horse-race update — citing forecaster methodology without editorializing about which party benefits, treating it as campaign-trail news rather than validation for either side.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart bypasses the horse-race ratings story entirely and instead attacks Texas Senate candidate James Talarico personally, framing his comments on a murder trial&#x27;s all-white jury as racially inflammatory and as making excuses for a convicted killer, casting him as out of step with Texans rather than as raising a substantive justice-system critique.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Washington Post and Axios omit any mention of Talarico&#x27;s remarks on the Karmelo Anthony trial or the controversy Breitbart highlights, leaving out a storyline that right-wing coverage is using to characterize the Democratic Senate candidate&#x27;s judgment and electability.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any mention of the Cook Political Report&#x27;s rating changes in Texas and Iowa altogether, ignoring the horse-race context that both center and left outlets treat as the dominant Senate-race story of the moment, and gives no space to Talarico&#x27;s actual reasoning or the underlying trial facts beyond the &#x27;all-white jury&#x27; framing.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two center-right outlets published opinion pieces criticizing Alaska&#x27;s ranked-choice voting system as confusing and disadvantageous to voters, without any left-leaning or center-neutral outlets represented in this comparison.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:100.0;" title="center-right: 2"></div></div></div>
+  <div class="story-assessment">This is not a balanced spectrum comparison — both sources are center-right opinion pieces with nearly identical titles and claims, likely the same op-ed syndicated across outlets, so &#x27;consensus&#x27; here reflects one viewpoint rather than cross-spectrum agreement. Readers should treat this as a single ideological critique of Alaska&#x27;s RCV system, not as verified fact, and seek independent reporting or left/center sources for the countervailing perspective and underlying data.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set, so left framing cannot be characterized from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No genuinely neutral/center outlet is present — RealClearPolitics is republishing or closely mirroring the same critical framing as WSJ Opinion rather than offering independent center coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both center-right sources frame Alaska&#x27;s ranked-choice voting as a rigged or voter-hostile system, emphasizing confusion, unfairness, and harm to the integrity of elections; the tone is critical and alarmed, treating RCV as a failed experiment rather than a legitimate reform.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source is included in this comparison, so it&#x27;s unknown what counter-arguments (e.g., studies showing RCV increases voter satisfaction, reduces negative campaigning, or reflects majority preference) are being omitted.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both pieces appear to omit specifics on turnout data, exit polling on voter comprehension, comparisons to Alaska&#x27;s prior primary system, and any defense of RCV&#x27;s stated goals (reducing spoiler effects, rewarding majority-preferred candidates) that supporters would raise.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">South Carolina Senate candidate Darline Graham made a factual error about Taiwan and separately admitted not knowing something, drawing criticism of her competence while her opponent Ralph Norman&#x27;s response to the Taiwan gaffe was also criticized as flawed.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The underlying event is a single gaffe-driven news cycle around a Taiwan-related misstatement by Graham, but the two outlets diverge sharply in what story they think it tells: WaPo uses it to moralize about the political cost of candor, while WSJ uses it to indict the competence of both campaigns. Neither source provides enough detail here to establish what Graham actually said or got wrong, making it hard to assess the substantive stakes versus the media narrative built around the moment.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post treats the moment primarily as a case study in the political risks of candidates admitting ignorance, emphasizing the self-inflicted nature of the damage and situating Graham within a familiar genre of gaffe-driven campaign narratives.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    WSJ Opinion adopts an even-handed &#x27;both sides failed&#x27; framing, criticizing Graham&#x27;s Taiwan error while also faulting opponent Ralph Norman&#x27;s reaction, resisting a simple hero/villain narrative.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No traditional right-leaning source is included in this set; WSJ Opinion (center-right) does not defend Graham but instead spreads blame, framing the episode as evidence of competence problems on both sides of the race.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    WaPo does not mention Ralph Norman&#x27;s response at all, omitting the bipartisan-blame angle and the specific Taiwan subject matter that WSJ centers on.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ does not engage with the broader pattern WaPo raises — that admissions of ignorance are systematically punished in campaigns — nor does it explore the political fallout or public reaction to Graham&#x27;s remark in detail.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">The two articles do not cover the same event: one reports the US Treasury sanctioning 10 people for an alleged Hezbollah cash-smuggling network, the other reports Michigan Senate candidate Abdul El-Sayed&#x27;s scheduled appearance at an Islamic convention alongside controversial clerics.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is not one story covered from two political angles; it is two unrelated stories that happen to both touch on Middle East-adjacent topics (Hezbollah financing and Muslim-American political figures). Treating them as left/right coverage of &#x27;the same event&#x27; would manufacture a false equivalence — the Fox piece&#x27;s implicit linkage of a Democratic candidate to Hezbollah-adjacent rhetoric via unrelated convention speakers, absent any actual Hezbollah connection to El-Sayed, is itself worth flagging as an association fallacy rather than corroborating or contesting the sanctions story.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not applicable in comparative terms — The Guardian&#x27;s piece is a straight enforcement-action report on Hezbollah financing, with no connection to or commentary on El-Sayed or Muslim-American political figures.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source provided for either story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News frames El-Sayed&#x27;s convention attendance as a guilt-by-association story, foregrounding co-speakers&#x27; inflammatory past statements to raise doubt about his candidacy ahead of the Michigan Senate race; it does not reference the Hezbollah sanctions story at all.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian coverage contains nothing about El-Sayed, ISNA, or any Muslim-American political figures — there is no shared subject for omission to apply to.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News coverage contains nothing about the Treasury&#x27;s Hezbollah sanctions action — there is no shared subject for omission to apply to.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Abdul El-Sayed</span><span class="entity-tag">Hezbollah sanctions</span><span class="entity-tag">Mike Rogers</span></div>
+  <div class="connection-text">El-Sayed appears simultaneously in the Rogers/Michigan Senate horse-race story and in a Fox News piece juxtaposing Treasury&#x27;s Hezbollah cash-smuggling sanctions with his scheduled appearance at an Islamic convention alongside &#x27;controversial clerics&#x27; — two factually unrelated events published the same day, with no actual Hezbollah link to El-Sayed established.</div>
+  <div class="connection-sig">↳ This is a textbook association-fallacy pattern: as the Rogers-El-Sayed race tightens and Rogers touts Democratic crossover support, a terrorism-adjacent guilt-by-association narrative against the Muslim-American candidate is being seeded in parallel. Worth tracking whether this becomes a sustained attack line as the race closes.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Cook Political Report</span><span class="entity-tag">Texas Senate race</span><span class="entity-tag">Talarico</span></div>
+  <div class="connection-text">The same day Cook reclassifies Texas from &#x27;Lean Republican&#x27; to &#x27;Toss Up,&#x27; far-right coverage of Texas ignores the ratings shift entirely and instead runs a Talarico murder-trial-comment attack story.</div>
+  <div class="connection-sig">↳ A red-state Senate seat becoming genuinely competitive is a materially newsworthy shift in the electoral map; substituting a personal-attack story in its place suggests deliberate narrative redirection away from unfavorable data rather than organic story selection.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">retired U.S. Army colonel</span><span class="entity-tag">Army drone unit</span><span class="entity-tag">Russia-Ukraine war</span></div>
+  <div class="connection-text">A claim that Russia is executing a deliberate war-crimes strategy in Ukraine runs the same cycle as news that the Army is phasing out the drone unit tasked with extracting lessons from that same war.</div>
+  <div class="connection-sig">↳ Institutional capacity to learn from the conflict is contracting precisely as evidence of escalating Russian brutality mounts — a resourcing decision that deserves scrutiny independent of the moral framing around it.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Iran</span><span class="entity-tag">Hezbollah sanctions</span><span class="entity-tag">Trillion Wallet Democrats</span></div>
+  <div class="connection-text">Iran threads through three nominally unrelated stories (Trump/Swalwell/Cohen, Hezbollah sanctions, and the unresolved &#x27;Trillion Wallet Democrats&#x27; story) without any single piece connecting them explicitly.</div>
+  <div class="connection-sig">↳ Possible signal of a broader Iran-finance narrative fragmenting across outlets rather than being covered as one story; the &#x27;Trillion Wallet&#x27; piece is too thin in this dataset to assess but merits a direct read.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Three separate Senate races (Texas, Michigan, and implicitly Iowa via the Cook reclassification) show Republican-held or -leaning seats trending toward competitiveness, and in each case right-leaning coverage pivots away from the substantive electoral trend toward a personal-attack story on the Democratic candidate (Talarico&#x27;s murder-trial comments, El-Sayed&#x27;s Hezbollah-adjacent convention appearance, Rogers spinning Democratic defectors as a horse-race win).</div>
+<div class="pattern-item">High-significance national-security stories (North Korea&#x27;s missile tests, the Albany ISIS Capitol-bomb plot) are both covered by a strikingly narrow slice of the spectrum, leaving no genuine left-right comparison possible on two stories that would normally draw heavy coverage across the board.</div>
+<div class="pattern-item">Right-leaning outlets are heavy on syndicated/ideological opinion content today (the duplicated Alaska RCV op-ed, Medicare for All math, wealth tax critiques) rather than hard news, while left-leaning outlets skew toward institutional-accountability reporting (ICE detention, data brokers, resilience grants).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">No right-leaning outlet engaged at all with the North Korea missile-launch story despite its direct relevance to a Trump administration diplomatic offer being rejected — a notable silence on a story that reflects ambiguously on the administration.</div>
+<div class="anomaly-item">The Albany ISIS-linked Capitol bombing plot — arguably the highest-significance story of the day — has only two sources total (left, far-right), an unusually thin footprint for a foiled domestic terror plot against a state capitol.</div>
+<div class="anomaly-item">Two &#x27;stories&#x27; in this set (&#x27;Trump Swalwell Michael Sexual Cohen&#x27; and &#x27;Here&#x27;S America&#x27;S Trillion Wallet Democrats&#x27;) returned &#x27;Analysis unavailable&#x27; despite one having 28 sources across the full spectrum — a data/pipeline gap masking what is likely the day&#x27;s highest-volume story.</div>
+<div class="anomaly-item">The Alaska ranked-choice-voting &#x27;consensus&#x27; is an illusion: both sources are center-right op-eds with near-identical titles, almost certainly the same syndicated piece counted twice.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are systematically avoiding stories that show Republican vulnerability (NK snubbing Trump&#x27;s offer, GOP Senate seats sliding to toss-up) in favor of character-attack substitutes on Democratic candidates, and are heavily invested in syndicated ideological opinion pieces over hard reporting today. Left-leaning outlets, meanwhile, concentrate on institutional-accountability stories (ICE, data brokers, redistricting) but are largely silent on directly rebutting the policy-critique pieces (Medicare for All costing, wealth tax, RCV) that the right is running unopposed. Both patterns suggest each side is choosing offense on favorable terrain rather than defense on unfavorable terrain today.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› So-called &#x27;blue state refugees&#x27; have helped turn Florida red</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› D.C.&#x27;s IndyCar race will zoom past museums. Some worry it could harm the art inside</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Privacy advocates call on Maryland to investigate data brokers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The system meant to protect ICE detainees has collapsed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Treasury yields are at 20-year highs &amp;ndash; and why it matters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why primary polls appear to be so inaccurate this year</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: Balance of Power &amp;mdash; Redistricting, Courts, and the Right to Vote | 2026 Hutchins Forum</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump keeps embracing data centers, an unpopular topic in midterm races</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Jonathan Haidt turned the fight over kids and social media into a political movement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What it means that Democrats are winning special elections in Trump country</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans notch win in Missouri congressional redistricting fight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New aircraft carrier arrives in Arabian Sea to replace long-stationed USS Abraham Lincoln</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A fake poll tested media and poll trackers. Here’s who passed and failed.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We’ll never be royals: the California town where Prince Harry and Meghan lived says goodbye</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Website behind widely shared fake election polls run by 21-year-old</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man suffered brain injury and severe bruising after ICE arrest in Virginia, records show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US deports 20 people to Liberia, the first of 1,200 migrants under Trump deal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Minions Say He’s Mulling New Tax Breaks—They’re Mainly for the Rich</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Roger Stone Is Lobbying for a Vape Firm Accused of Illegally Marketing to Kids</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Ordered to Release Billions in Resilience Grants for Disadvantaged Communities</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ranked-Choice Voting Travesty Alaska’S Alaska&#x27;S</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court’s Popular Mandate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The ‘Medicare for All’ Math Doesn’t Add Up</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ro Khanna Gets a Wealth Tax Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the U.S. Went $40 Trillion in Debt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Great Day for Swamp Draining</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› World Liberty’s Stablecoin Becomes a Partisan Target</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bodycam video shows Oklahoma secretary of state’s arrest outside McDonald’s on public intoxication allegation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pastor unleashes on Dearborn as religious tensions erupt at city council meeting: &#x27;Enough is enough&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California controller candidate slams massive education spending despite worse student results</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sean Duffy faces family dilemma over embattled Ivy League school and Christian values</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is There No Cure for the Data Center Hysteria?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leftist Zealots Just Can’t Admit When Their Schemes Don’t Work</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Different Kind of Identity Theft</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Los Angeles Should Follow San Francisco’s Path to Recovery — Says Man Who Helped Set Back Both</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Andy Burnham’s Redistribution of Migrants Won’t Work</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Right Has Forgotten What Beauty Is For</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Norman Rockwell, from New Rochelle to Vermont to the Hereafter</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ro Khanna Says Democrats Ditching Extremist Hasan Piker Would Show &#x27;Weakness&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Talarico: Democrats and Republicans Will Come Together as Texans to Defeat Paxton</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive -- Iowa GOP Governor Candidate Slams Democrat in Ad For Massive Tax Hike Plot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem Michigan Candidate Sean McCann Believes Nonsensical to Question Voting Systems Despite Challenging Before</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats&#x27; On-Again, Off-Again Class Politics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Harmeet Dhillon on DOJ&#x27;s Election Integrity Efforts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spanberger&#x27;s VA Places Illegals First, Victims Last</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet Alissa Ellman, Rust Belt Populist</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mellon Foundation&#x27;s Narrow Vision of the Humanities</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Economists Should Be Worried About Birth Rates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bass and Raman Both Lose LA Mayor Debate</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether the Fox News Hezbollah-sanctions/El-Sayed-convention juxtaposition hardens into a recurring attack line as the Michigan Senate race tightens</div>
+<div class="watch-item">Cook Political Report&#x27;s Texas and Iowa &#x27;Toss Up&#x27; reclassification — watch for substantive (non-attack) right-leaning engagement in the next cycle</div>
+<div class="watch-item">Whether any right-leaning, non-far-right outlet picks up the Albany ISIS/Capitol bomb-plot case, and whether left-leaning outlets beyond WaPo cover it</div>
+<div class="watch-item">North Korea missile tests and the status of the rejected U.S.-South Korea drill-scaling offer — watch for right-leaning coverage to materialize at all</div>
+<div class="watch-item">The Army&#x27;s drone-unit phase-out decision as a standalone accountability story independent of the war-crimes framing</div>
+<div class="watch-item">Whether right-leaning outlets ever produce direct, on-topic coverage of Graham&#x27;s Taiwan gaffe rather than the mismatched competence-narrative substitute (carried over from prior watch list, still unresolved)</div>
+<div class="watch-item">Continued-silence list entering a fourth cycle with zero mentions: Nevada fake-electors case, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold accountability, Big Bend inspection outcome, Hegseth Iowa travel/FEC, Comey &#x27;86 47&#x27;/FBI misclassified-info convergence, Mamdani v. NYC Council lawsuit second-source corroboration, Jimmy Gomez ethics probe left-side pickup, Angie Nixon trial, Freedom Caucus primaries/Lindell Minnesota recount</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
