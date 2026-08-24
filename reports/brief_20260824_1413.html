@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-24 14:13 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-24 14:13 UTC</span>
+    <span class="pill">95 articles</span>
+    <span class="pill">13 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant current in American politics right now is economic anxiety being weaponized by both parties ahead of the 2026 midterms, layered on top of an accelerating Iran pressure campaign whose actual results are unverified. Treasury Secretary Scott Bessent has rolled out a new Iran sanctions package branded internally as &quot;economic D-Day&quot; — a deliberately militarized framing that right-leaning outlets are amplifying uncritically, including claims that Iran&#x27;s military capability has already been destroyed and its economy is &quot;completely collapsing.&quot; No outlet, left or right, has independently verified these claims. This matters less as an Iran story than as a preview of how the administration intends to sell foreign-policy wins heading into 2026: assertively, without waiting for confirmation, and through friendly channels that won&#x27;t press for evidence.</p>
+<p>Domestically, &quot;affordability&quot; has become the shared vocabulary of both camps without any coordinated origin — Jared Kushner met with House Democratic leader Hakeem Jeffries on housing, immigration, and affordability the same day Mike Pence was warning that the U.S.-Canada trade rupture (76% of Canadians now support walking away from talks) will worsen cost-of-living pressure on Americans. Neither conversation is really about policy detail; both are positioning exercises for a midterm cycle where the party that &quot;owns&quot; affordability wins the messaging war. Simultaneously, a notably coordinated right-media push is working to define the Democratic Party as captured by its socialist flank (DSA) while elevating Jon Ossoff as the acceptable moderate alternative — a two-pronged narrative (delegitimize the left, legitimize the center) that appeared multiple times in a single day&#x27;s coverage, which is not organic.</p>
+<p>Beneath the midterm positioning, several second-order stories are being actively avoided by one side or the other. A White House secret-bunker story tied to a ballroom lawsuit is being carried by exactly one outlet (WaPo) while center-right coverage substitutes an unrelated tariff-appeal story rather than engaging it. A twelve-item list of previously flagged stories — fake-elector prosecutions, custody deaths, ethics probes, a recount dispute — has now gone five consecutive cycles with zero coverage anywhere in the sampled spectrum. That silence is itself a signal.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Scott Bessent</strong> is the administration&#x27;s designated economic-warfare spokesman right now, and the &quot;economic D-Day&quot; framing is a tell: this is a messaging operation as much as a policy rollout, designed to be repeated verbatim by sympathetic outlets. Watch for this same technique to be redeployed on other fronts.</p>
+<p><strong>Jared Kushner</strong> is functioning as an informal bipartisan channel again, this time on affordability/housing with Jeffries. The right-media treatment of this meeting — framing it as Democrats needing Republican legitimization — suggests Kushner&#x27;s outreach is being used less as genuine dealmaking and more as a wedge to widen the DSA/moderate split inside the Democratic caucus.</p>
+<p><strong>Hakeem Jeffries</strong> is caught between two audiences: he needs to look like he&#x27;s addressing affordability for swing voters while not appearing to legitimize a Trump-family emissary to his own base. His participation is being read by right-media as evidence of Democratic weakness rather than pragmatism, and Democratic-aligned outlets have not pushed back directly.</p>
+<p><strong>The DSA-vs-Ossoff narrative</strong> has no single author but multiple simultaneous right-leaning vehicles — this looks like converging messaging discipline across outlets rather than one outlet&#x27;s editorial choice, three or more pieces in one day building the same &quot;Democrats are two parties&quot; frame with Ossoff cast as the model moderate.</p>
+<p><strong>Charlie Kirk</strong>, roughly a year after his death, is being actively reinvoked as a live rhetorical reference point across three unconnected stories — a WaPo columnist-arbitration dispute, the Bessent/Kushner roundup, and a piece branding Hasan Piker &quot;the hateful left&#x27;s pied piper.&quot; This is not nostalgia; it&#x27;s active repurposing of his legacy as an ongoing culture-war cudgel, which shapes how unrelated disputes get narrated.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning outlets are systematically avoiding downstream-harm stories tied to administration policy: a visa-ban court loss, the trans-healthcare Medicaid/CHIP funding cutoff, border-wall damage to heritage sites, and storm-response failures all go uncovered on the right. Most tellingly, the WH secret-bunker/ballroom-lawsuit story is met with silence rather than rebuttal — right-leaning coverage substitutes a wholly unrelated tariff-appeal story rather than contesting the bunker reporting directly. Avoidance, not counter-argument, is the tell.</p>
+<p>Left-leaning outlets have their own blind spot: internal Democratic Party division. The DSA-influence storyline and the Ossoff-as-moderate framing get no direct engagement from left-aligned coverage. Ukraine&#x27;s actual Independence Day (August 24) — a symbolically loaded date for a war the left otherwise covers heavily — drew right/far-right-only coverage in this sample, with no left or center-left outlet touching it at all. Trump&#x27;s IndyCar National Mall spectacle, a made-for-conservative-media event tied to the 250th anniversary, drew zero right-leaning coverage in the sample, which is an unusual gap for a story built for that audience.</p>
+<p>The larger and more concerning silence is structural: twelve tracked stories — the Nevada fake-electors case, deaths at Delaney Hall, an Alito disclosure matter, a SCOTUS Ten Commandments cert decision, USS Benfold accountability, the Big Bend inspection outcome, Hegseth&#x27;s Iowa travel/FEC exposure, the Comey &quot;86 47&quot;/FBI misclassified-information convergence, the Mamdani v. NYC Council lawsuit, an ethics probe into Jimmy Gomez, the Angie Nixon trial, and Freedom Caucus primary dynamics tied to a Lindell-linked Minnesota recount — have now gone five consecutive collection cycles with zero coverage across the entire sampled spectrum. That is not noise; that is either genuine dormancy in all twelve matters simultaneously (unlikely) or a coverage gap in this monitoring pipeline that needs to be checked against primary sources directly.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Kushner-Jeffries meeting, the DSA-attack pieces, and the two Ossoff-favorable pieces landing on the same day is the clearest evidence of coordinated (if not centrally directed) narrative-building in this sample: it uses Kushner&#x27;s outreach as proof Democrats need Republican legitimization while simultaneously working to delegitimize the party&#x27;s left flank, a single midterm story told from two angles at once.</p>
+<p>The Michigan Senate race attack line pairing Abdul El-Sayed and Peter D&#x27;Abrosca has now recurred for a second consecutive cycle, confirmed as a sustained line of attack rather than a one-off, and it remains entirely right-side coverage with no left rebuttal or independent verification anywhere.</p>
+<p>Two of the day&#x27;s story clusters appear to be false merges from keyword overlap rather than genuine shared events — the bunker/tariff pairing and a New Mexico funding/drilling pairing both share only superficial entity overlap (White House; New Mexico). This is a pipeline reliability issue worth flagging: any left-right &quot;comparison&quot; built on these merges is comparing two different stories, not two framings of one story, and should not be treated as evidence of spectrum bias on either side.</p>
+<p>The Enes Kanter Freedom ejection and the New Mexico trans-Medicaid cutoff are both transgender-related stories publishing the same day with completely non-overlapping outlet sets — no single source bridges the sports-culture and healthcare-policy verticals. The broader &quot;transgender&quot; issue is being covered as disconnected sub-narratives rather than one continuous policy debate, which limits any outlet&#x27;s incentive, left or right, to connect the dots for readers.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>El-Sayed/D&#x27;Abrosca Michigan Senate attack line</strong> — now confirmed recurring across two cycles, right-only. Watch for a left-side rebuttal or independent fact-check; its absence so far is itself notable.</li>
+<li><strong>DSA-vs-Ossoff &quot;Democratic identity&quot; narrative</strong> — a newly identified, apparently coordinated right-media midterm push. Watch whether Jeffries or Democratic-aligned outlets respond directly in the next 48-72 hours, or continue to let the frame set unanswered.</li>
+<li><strong>WH secret-bunker/ballroom-lawsuit story</strong> — watch for any right-leaning outlet to engage the substance directly rather than substituting the Section 122 tariff-appeal story. Continued avoidance would itself be diagnostic.</li>
+<li><strong>Bessent&#x27;s &quot;economic D-Day&quot; Iran sanctions</strong> — watch for any independent, non-administration-sourced confirmation of claimed Iranian economic collapse or destroyed military capability. None exists as of this collection.</li>
+<li><strong>New Mexico state-funded trans-care program</strong> — the federal Medicaid/CHIP cutoff takes effect October 13; watch for implementation mechanics and the first legal challenge.</li>
+<li><strong>Ukraine long-range-strike policy</strong> — watch for the administration to take an explicit public position as the UK&#x27;s Burnham-linked &quot;blueprint transfer&quot; proceeds; the current silence is an asymmetry worth tracking against the vocal Iran posture.</li>
+<li><strong>Twelve-item continued-silence list</strong> (Nevada fake electors, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold accountability, Big Bend inspection, Hegseth Iowa travel/FEC, Comey &quot;86 47&quot;/FBI misclassification, Mamdani v. NYC Council, Jimmy Gomez ethics probe, Angie Nixon trial, Freedom Caucus primaries/Lindell Minnesota recount) — fifth dark cycle. Recommend a direct primary-source check on at least two or three of these to determine whether the silence reflects real dormancy or a monitoring gap.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>What looks like a fragmented news cycle is actually two disciplined messaging operations running in parallel with almost no friction between them: the administration is using unverified, maximalist claims (&quot;economic D-Day,&quot; Iran&#x27;s &quot;collapse&quot;) to bank a foreign-policy win before the midterms, while right-aligned media simultaneously builds a domestic narrative that splits the Democratic coalition into an unelectable socialist wing and an acceptable Ossoff-style moderate wing — with Kushner&#x27;s outreach to Jeffries serving as supporting evidence for both threads. Neither operation is being seriously contested, not because the claims are strong, but because the opposing side is selectively avoiding the stories that would require it to either defend its own coalition&#x27;s coherence (the Democratic silence on DSA/Ossoff) or account for its own governance failures (the right&#x27;s silence on the bunker story, visa-ban losses, and healthcare cutoffs). The net effect is an information environment where each side&#x27;s narrative advances mainly by the other side&#x27;s non-engagement, not by argument — which is a more durable and harder-to-counter dynamic than an ordinary partisan dispute, and one worth watching for whether it hardens into the default pattern heading into 2026.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Western debate intensifies over expanding Ukraine&#x27;s long-range strike and missile-production capabilities against Russia, spanning a WSJ opinion piece urging relaxed strike restrictions and UK PM Andy Burnham&#x27;s Kyiv visit to transfer Anglo-French missile blueprints.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">These two pieces reflect a genuine split on the right about escalation: WSJ Opinion advocates loosening restrictions as a defensive measure, while Breitbart&#x27;s framing amplifies Russian objections to portray Western material support as reckless overreach. Without left or center-left sourcing, it&#x27;s impossible to assess how this debate is being framed outside right-leaning outlets, and the underlying facts (Burnham&#x27;s visit, blueprint specifics, actual policy changes on strike restrictions) need independent verification beyond these opinion-inflected accounts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source provided in this set; left framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not applicable — WSJ Opinion is categorized center-right, not center; no true center source is present in this set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Split within the right: WSJ Opinion (center-right) frames expanded strike authority as a defensive, life-saving necessity, while Breitbart (far-right) frames UK missile technology transfers skeptically, emphasizing escalation risk and lending credibility to Russian complaints about direct Western involvement in the war.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined; no left-leaning source is included in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable in the traditional sense since both sources are right-leaning, but notably neither piece engages with the other&#x27;s specific claim: WSJ does not address UK-specific missile blueprint transfers, and Breitbart does not address the humanitarian/defensive rationale for loosening strike restrictions.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Treasury Secretary Scott Bessent announced a major new round of U.S. economic sanctions on Iran (dubbed &#x27;economic D-Day&#x27; by officials), while separately Jared Kushner met with House Democratic leader Hakeem Jeffries to discuss housing, immigration, and affordability ahead of the 2026 midterms.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (6)</span><span class="bias-badge" style="color:#e0a87a;">center-left (3)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (4)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:22.2;" title="center: 6"></div><div class="bias-segment" style="background:#e0a87a; flex:11.1;" title="center-left: 3"></div><div class="bias-segment" style="background:#7ae09b; flex:11.1;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:3.7;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:7.4;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:14.8;" title="left: 4"></div><div class="bias-segment" style="background:#a07ae0; flex:3.7;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:25.9;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow: Bessent is rolling out a new Iran sanctions package branded &#x27;economic D-Day,&#x27; and Kushner met with Jeffries on domestic policy topics ahead of the midterms — everything else is interpretive spin. Right-leaning outlets amplify administration talking points about Iran&#x27;s collapse and military defeat without independent verification, while left outlets counter with market skepticism and frame the Kushner-Jeffries meeting as a legitimacy problem for Democrats; neither side substantiates the more dramatic claims (Iran&#x27;s &#x27;collapse,&#x27; destroyed military capability) with independent evidence.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets treat Trump/Bessent&#x27;s Iran claims with skepticism, juxtaposing rhetoric against market data rather than endorsing it outright, and frame the Kushner-Jeffries meeting critically — as a troubling, unearned legitimization of an oligarch-linked figure rather than routine bipartisan outreach.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) adopt the dramatic &#x27;economic D-Day&#x27; framing supplied by officials with minimal pushback, presenting the sanctions as a major escalatory event, while PBS frames the Kushner-Jeffries meeting neutrally as a notable cross-party development tied to midterm stakes.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets (The Hill, Breitbart, Fox-adjacent coverage) embrace the administration&#x27;s &#x27;economic D-Day&#x27; language uncritically, portraying the sanctions as a decisive, righteous military-style victory over a defiant Iranian regime nearing its &#x27;endgame,&#x27; emphasizing American strength and resolve.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the administration&#x27;s specific claims that Iran&#x27;s military/nuclear capabilities have already been destroyed and downplays the &#x27;endgame&#x27;/victory framing that right outlets emphasize; it also omits any sympathetic account of why Jeffries might see value in engaging Kushner.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits skepticism about Trump&#x27;s &#x27;completely collapsing&#x27; economic claims and doesn&#x27;t address market-data caveats the Guardian raises; it also omits Democratic/left criticism that the Kushner-Jeffries meeting legitimizes a controversial, oligarch-linked figure.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A new survey found 76% of Canadians support their government&#x27;s decision to walk away from U.S. trade talks without a deal, as former VP Mike Pence warned the resulting trade fight could worsen U.S. affordability pressures.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">These two pieces cover different facets of the same rupture rather than conflicting accounts of one event: one is a Canadian opinion poll, the other a U.S. political figure&#x27;s economic warning. Neither outlet addresses the actual substance of what killed the negotiations or quantifies real economic damage, leaving the reader with sentiment and rhetoric but no hard data on trade flows, tariffs, or GDP impact. The absence of any right-leaning source limits confidence in how this story is being framed across the full spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the story through a U.S. domestic economic lens, using a Republican elder statesman&#x27;s warning to link the trade dispute to kitchen-table affordability concerns, implicitly criticizing the current administration&#x27;s handling of the rupture.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the story as a data-driven validation piece, emphasizing Canadian public opinion as evidence the negotiating breakdown was politically sound, without assessing economic fallout.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this coverage set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Washington Post omits any Canadian public opinion data on whether ending talks was the right call, and does not engage with how Canadians view the negotiation&#x27;s collapse.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was provided, so omissions relative to right coverage cannot be assessed.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Enes Kanter Freedom was ejected from a WNBA game between the Indiana Fever and Chicago Sky after a verbal confrontation with Sky guard Natasha Cloud, amid a broader public clash over transgender inclusion in women&#x27;s sports.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The only verifiable, cross-source fact is that Freedom was ejected after a confrontation with Cloud during a Fever-Sky game; everything beyond that — motive, fairness, and broader meaning — is contested and shaped by each outlet&#x27;s ideological lens. Notably, the &#x27;left&#x27; source in this set doesn&#x27;t actually address the ejection, which limits genuine left-right comparison on the incident itself and instead reveals two parallel, non-intersecting narratives about the same culture-war moment.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The available left-leaning coverage (Mother Jones) sidesteps the ejection incident itself and instead centers a celebratory, community-affirming narrative around a pro-trans rally, emphasizing joy, solidarity, and resistance to what it frames as bad-faith right-wing attacks on trans athletes.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill presents the story narrowly as a personal, in-game altercation between two individuals, focusing on the factual sequence of the confrontation and ejection without embedding it in the wider ideological debate.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the ejection as proof of double standards and hostility from progressive WNBA culture toward a conservative figure defending women&#x27;s sports, casting Freedom as a target of unfair treatment rather than someone whose conduct warranted removal.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage (as represented here) omits any direct account of the Kanter Freedom ejection, the confrontation with Cloud, or Freedom&#x27;s perspective — details present in both center and right coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the broader public/community response to the trans-athlete debate (e.g., the rally and its supportive tone) and does not engage with Natasha Cloud&#x27;s or the WNBA&#x27;s rationale for the ejection beyond framing it as biased.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">New Mexico announced it will use state funds to keep paying for gender-affirming care for transgender minors after a Trump administration rule cuts off Medicaid and CHIP reimbursement for such care starting October 13.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two sources provided do not actually cover the same event: the Guardian piece concerns New Mexico&#x27;s state funding of gender-affirming care for minors, while the Mother Jones piece concerns a proposed drilling buffer rollback near a UNESCO heritage site — they share only the &#x27;New Mexico&#x27; and &#x27;Trump administration&#x27; keywords. As a result, this analysis is effectively single-sourced from a left-leaning outlet, with no ideologically opposed or center coverage to compare against, so contested points and omissions cannot be reliably identified.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames New Mexico&#x27;s move as a protective, rights-affirming response by state government stepping in to shield transgender minors from the harm of federal healthcare cuts, emphasizing continuity of access and the state acting as a backstop against Washington
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-leaning source was provided for this story, so center framing cannot be assessed from the supplied data
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided for this story, so right-wing framing cannot be assessed from the supplied data
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Unable to determine, since no right-leaning coverage of this specific story was supplied for comparison
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Unable to determine, since no right-leaning coverage of this specific story was supplied for comparison; note the second source given (Mother Jones, on Chaco Culture drilling) is a separate, unrelated story and not a right-leaning counterpart
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">President Trump waved the green flag to start an IndyCar street race in Washington, D.C., the series&#x27; first-ever race on the National Mall, held amid America&#x27;s 250th anniversary celebrations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core facts: Trump started an IndyCar race in D.C. as part of a first-ever Mall event. The divergence is tonal rather than factual — PBS embeds the event in a political narrative about Trump&#x27;s anniversary celebrations, while the Post treats it as a local human-interest/spectacle story with no political framing. Notably, this sample lacks any right-leaning source, so claims about how conservative media covered it cannot be substantiated.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post treats the race as a local novelty and visual spectacle, presented via a photo gallery with minimal political commentary or analysis of Trump&#x27;s role.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour frames the event as ceremonial and patriotic, embedding it within Trump&#x27;s broader series of America&#x27;s 250th anniversary celebrations, giving it more political/symbolic weight.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source provided in this set, so right-wing framing cannot be assessed from the given coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source is included in this dataset to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is included in this dataset to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">The two supplied sources do not cover the same event: one (WaPo) reports on a secret White House bunker undermining Trump&#x27;s ballroom lawsuit defense, while the other (WSJ Opinion) covers a separate dispute over Trump&#x27;s Section 122 tariff appeal — no single shared event can be verified across the spectrum from this input.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This input pairs two unrelated stories rather than cross-spectrum coverage of one event, so a genuine consensus/contested/omissions analysis cannot be performed as requested. To properly analyze either story — the bunker/ballroom lawsuit or the tariff appeal — additional sources covering that same specific event across the spectrum are needed.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    WaPo frames the bunker&#x27;s existence as newly revealing evidence that exposes a contradiction or weakness in Trump&#x27;s legal position, emphasizing government secrecy and legal accountability.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    WSJ Opinion (center-right) frames the tariff appeal as an improper legal do-over, emphasizing procedural impropriety and the administration relitigating a loss rather than accepting the court&#x27;s ruling.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Not applicable — no right-leaning source was provided; WSJ Opinion is center-right and addresses an unrelated tariff story, not the bunker/ballroom matter.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — the right/center-right source provided covers a different story (tariffs), so no comparison of omissions on the bunker/ballroom story is possible.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be assessed for the same reason — there is no right-of-center coverage of the bunker/ballroom lawsuit in the provided sources to compare against WaPo&#x27;s reporting.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Charlie Kirk</span><span class="entity-tag">Hasan Piker</span><span class="entity-tag">Washington Post</span></div>
+  <div class="connection-text">Kirk is invoked as a live rhetorical touchstone across three unrelated stories (a WaPo columnist-reinstatement arbitration, the Bessent/Kushner roundup, and a piece branding Hasan Piker &#x27;the hateful left&#x27;s pied piper&#x27;) roughly a year after his death, rather than appearing as a historical reference.</div>
+  <div class="connection-sig">↳ Suggests Kirk&#x27;s legacy is being actively repurposed as an ongoing culture-war cudgel in right-media framing rather than fading from the news cycle, which shapes how adjacent disputes (like the WaPo arbitration) get narrated.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Jared Kushner</span><span class="entity-tag">Hakeem Jeffries</span><span class="entity-tag">Democratic Socialists of America</span><span class="entity-tag">Jon Ossoff</span></div>
+  <div class="connection-text">Kushner&#x27;s affordability/housing outreach to Jeffries lands the same day as three right-leaning pieces attacking DSA influence on Democratic candidates and two more contrasting Ossoff favorably against &#x27;far too many Dems&#x27; — together framing a single midterm storyline about Democratic Party identity.</div>
+  <div class="connection-sig">↳ This is a coordinated (if not centrally directed) narrative on the right that uses Kushner&#x27;s outreach as evidence Democrats need Republican legitimization while simultaneously delegitimizing the party&#x27;s left flank ahead of 2026 Senate races.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Abdul El-Sayed</span><span class="entity-tag">Peter D&#x27;Abrosca</span></div>
+  <div class="connection-text">Second consecutive appearance of this pairing in the Michigan Senate race attack-line dynamic flagged in the prior watch list.</div>
+  <div class="connection-sig">↳ Confirms the attack line is recurring rather than a one-off, and it remains right-only coverage with no left-leaning rebuttal or independent pickup.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Enes Kanter Freedom</span><span class="entity-tag">New Mexico gender-affirming care rule</span></div>
+  <div class="connection-text">Two transgender-related stories publish the same day — a sports-culture-war ejection and a Medicaid/CHIP funding cutoff — but draw entirely non-overlapping outlet sets, with no single source bridging the sports and policy verticals.</div>
+  <div class="connection-sig">↳ Illustrates how the broader &#x27;transgender&#x27; topic is being covered in ideologically siloed sub-narratives rather than as one continuous policy debate, limiting any outlet&#x27;s incentive to connect them for readers.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Scott Bessent</span><span class="entity-tag">Andy Burnham</span><span class="entity-tag">Ukraine missile-strike debate</span></div>
+  <div class="connection-text">The administration publicly owns and brands the Iran sanctions escalation (&#x27;economic D-Day&#x27;) but is entirely absent from the same-day Ukraine long-range-strike debate, which is carried instead by a UK PM visit and opinion columns.</div>
+  <div class="connection-sig">↳ Points to an asymmetric escalation posture — vocal ownership of Iran pressure, calculated silence on Ukraine strike-restriction policy — that outlets on neither side are naming directly.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">&quot;Affordability&quot; emerges independently as the pre-midterm frame in two unconnected stories (Kushner-Jeffries meeting, Pence&#x27;s Canada trade-war warning), suggesting both camps are converging on economic-pain messaging ahead of 2026 without any coordinated origin.</div>
+<div class="pattern-item">A cluster of right/right-only pieces (DSA &#x27;hates billionaires except Castro,&#x27; DSA &#x27;tripping up candidates,&#x27; two Ossoff pieces, Thune-aligned war-chest messaging) builds a single coherent midterm narrative: Democrats are captured by socialists except for a few Ossoff-style moderates.</div>
+<div class="pattern-item">Two of today&#x27;s seven story bundles (bunker/tariff, NM-funding/drilling) are keyword-clustered rather than event-verified — both share only superficial entity overlap (White House; New Mexico/Trump administration) — indicating the clustering pipeline is prone to false merges that could mislead spectrum comparisons if taken at face value.</div>
+<div class="pattern-item">Iran sanctions are covered with heavy right-leaning amplification of administration claims (&#x27;collapse,&#x27; destroyed military capability) with zero independent verification anywhere in the spectrum — a one-sided information cascade rather than a genuinely contested story.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Ukraine&#x27;s actual Independence Day (Aug 24) draws right/far-right-only coverage in this sample, with no left or center-left outlet engaging the anniversary at all — notable silence on a symbolically significant date for a war the left has otherwise covered heavily.</div>
+<div class="anomaly-item">Trump&#x27;s IndyCar National Mall event — a clear pro-Trump spectacle timed to the 250th anniversary — has zero right-leaning source in the sample, an unusual absence for a story tailor-made for right-media amplification.</div>
+<div class="anomaly-item">The WH secret-bunker/ballroom-lawsuit story is carried by a single left source (WaPo) with the paired center-right source ignoring it entirely in favor of a tariff-appeal story — right-leaning outlets appear to be avoiding the bunker story rather than contesting it.</div>
+<div class="anomaly-item">&quot;Economic D-Day&quot; is a strikingly militarized metaphor for a sanctions package, amplified uncritically by right-leaning outlets without any outlet — left or right — independently verifying the underlying claims about Iran&#x27;s economic or military state.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are avoiding downstream-harm stories tied to administration policy (the visa-ban court loss, trans-healthcare Medicaid cutoff, border-wall damage to heritage sites, storm-response failures) and are conspicuously not engaging the WH bunker/ballroom-lawsuit story at all, pivoting instead to a tariff-appeal story that shares no facts with it. Left-leaning outlets are avoiding stories that surface Democratic Party internal division (DSA influence, Ossoff-as-model-moderate framing) and largely sat out Ukraine&#x27;s Independence Day and the Trump National Mall spectacle. The net effect is that each side systematically declines to cover moments that complicate its preferred narrative about its own coalition&#x27;s coherence or its opponent&#x27;s policy consequences.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Indycar Trump Waves Green Start</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mexico Continue Funding Gender-Affirming Minors</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This not-so-secret document is inspiring the left — and tripping up its candidates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s visa ban on 75 countries struck down by federal judge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Indiana mayor calls it ‘unacceptable’ for thousands to have no power two weeks after storm</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› At least six injured in Reno, Nevada, wildfire as 42,000 forced to evacuate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former Illinois sheriff’s deputy who killed Sonya Massey in her home dies aged 32</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s border wall construction threatens rock art as old as the pyramids: ‘The ancestors are still here’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Social media goes into overdrive with Lindsay Clancy conspiracy theories</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Threat of Human Extinction Will Get Congress to Act on AI Safety…Right?</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Missile Ukraine’S Defense: Starlink? Russia</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Dumbest Trade War Revisited</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Now California Is Coming for Your Tires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Chicago Teachers Union Sues Its Critics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ukraine Celebrates Independence Day</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Antisemitism Task Force Whistleblower Refutes Herself</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What a Cuban Transition Might Look Like</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Summer of ‘My Bad’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US kills two &#x27;narco-terrorists&#x27; in strike 2 months since last announced anti-&#x27;narco-trafficking&#x27; attack</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Thune-aligned groups unleash historic war chest to defend Senate majority: &#x27;Winning message&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s Bedminster turf could make or break his last two years in the White House</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed under fire online after taking aim at Usha Vance, female Trump aide in weekend social media posts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Self-Destructive Opposition to Data Centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Virginia’s ‘Religious Test’ for College Students Is Unconstitutional</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What If Factories Had Gotten the Data-Center Treatment?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Democratic Socialists of America Hate Billionaires — Except Fidel Castro</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California Democrat AG Rob Bonta Cancels Paramount Settlement Talks Meeting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EXCLUSIVE: Report Exposes $638M Left-Wing ‘Vote Machine’ Running Through Tax-Exempt Charities</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dutch Quit 2027 Eurovision Song Contest Because... Israel</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ceuta Hospitality Sector Collapsing Under Weight of Illegal Migrant Invasion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› German Candidate Turns Heads with ‘MILF’ Necklace in Her Election Portrait</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Italy Detains German Migrant Taxi NGO Sea-Watch Vessel</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AOC&#x27;s Craaazy Economic Theory Lives On</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Social Progress Is Important. Relitigating &#x27;Woke 1.0&#x27; Isn&#x27;t</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fears of High Costs &amp; Strains On Grid Hurting Data Centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ripple or Wave? This Race Will Test Dem Strength in November</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Jon Ossoff Gets That Far Too Many Dems Don&#x27;t</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Yes, Jon Ossoff Is That Desperate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hasan Piker Is the Hateful Left&#x27;s Pied Piper</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">El-Sayed/D&#x27;Abrosca Michigan Senate attack line — now a two-cycle recurrence, watch for left-side rebuttal or independent verification</div>
+<div class="watch-item">Emerging DSA-vs-Ossoff &#x27;moderate wing&#x27; narrative as coordinated right-media midterm messaging — watch whether Democratic-aligned outlets respond directly</div>
+<div class="watch-item">WH secret-bunker/ballroom-lawsuit story — watch for right-leaning outlets to engage directly rather than substituting the Section 122 tariff-appeal story</div>
+<div class="watch-item">Bessent&#x27;s &#x27;economic D-Day&#x27; Iran sanctions — watch for any independent (non-administration-sourced) verification of claimed Iranian economic collapse</div>
+<div class="watch-item">Ukraine long-range-strike policy — watch for the Trump administration to take an explicit public position as Burnham&#x27;s blueprint transfer proceeds</div>
+<div class="watch-item">New Mexico state-funded trans-care program — watch implementation and legal challenges after the October 13 federal Medicaid/CHIP cutoff</div>
+<div class="watch-item">Continued-silence list now entering a fifth dark cycle: Nevada fake-electors case, Delaney Hall deaths, Alito disclosure, SCOTUS Ten Commandments cert, USS Benfold accountability, Big Bend inspection outcome, Hegseth Iowa travel/FEC, Comey &#x27;86 47&#x27;/FBI misclassified-info convergence, Mamdani v. NYC Council lawsuit second-source corroboration, Jimmy Gomez ethics probe left-side pickup, Angie Nixon trial, Freedom Caucus primaries/Lindell Minnesota recount</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
