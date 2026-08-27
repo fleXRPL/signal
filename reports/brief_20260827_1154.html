@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-27 11:54 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-27 11:54 UTC</span>
+    <span class="pill">112 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">10 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The corpus this week is thin on single dominant stories and heavy on structural signals — the kind of pattern that matters more than any one headline. Six threads surfaced: a Trump-adjacent Senate succession in South Carolina, an unspecified Trump directive touching mail-in voting, a multibillion-dollar Meta settlement over child safety, a Texas federal judge&#x27;s refusal to extradite an ICE officer facing assault charges in Minnesota, a cluster of 2026 midterm positioning stories (Alaska&#x27;s ballot quirk, Iowa Democrats publicly rejecting Harris), and a Guantanamo military judge finally setting a 2028 trial date for Khalid Sheikh Mohammed and three co-defendants — nearly 27 years after 9/11.</p>
+<p>None of these is individually a crisis. Together they describe a political environment where executive-branch actors (Trump, ICE, the military commission system) are consolidating outcomes in their favor with limited effective pushback, while the accountability mechanisms that exist — state AGs, extradition requests, party discipline — are producing partial, negotiated, or delayed results rather than clean wins. The Meta settlement is the clearest example: a real financial and regulatory consequence, but one arrived at through negotiation rather than litigation to verdict, and reported with inconsistent dollar figures ($16.7B–$18B) that suggest the number itself was still moving as coverage went to press.</p>
+<p>The midterm-positioning stories are the most forward-looking signal in the set. Democratic candidates in competitive or red-leaning states (Iowa) are actively distancing themselves from Kamala Harris more than a year out from the 2026 cycle, which is a stronger and earlier signal of intra-party brand anxiety than typical primary-season noise. Combined with the South Carolina succession race, where Trump is claiming decisive credit for an endorsement in a seat his coverage doesn&#x27;t even agree is competitive, the throughline is that both parties are still relitigating who owns political credibility heading into the midterms.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the organizing gravitational force across at least three of the six stories (SC primary, mail-in voting order, and indirectly the ICE extradition case, given his administration&#x27;s enforcement posture). His pattern here is claiming outsized credit for outcomes with ambiguous causal links — the SC endorsement claim is the clearest instance, where two of three outlets treat his influence as a genuinely open question rather than settled fact. Watch for this credit-claiming pattern to recur through the midterms regardless of actual electoral mechanics.</p>
+<p><strong>State attorneys general</strong> (coalition behind the Meta settlement) are functioning as the primary check on tech platform behavior in the absence of federal action — this is now a repeatable playbook (cf. prior tobacco and opioid-style multistate actions) rather than a one-off. That there is no right-leaning coverage of this settlement in the corpus is itself a data point: it suggests the story isn&#x27;t being contested so much as ignored on the right, which usually means it isn&#x27;t yet useful to either side&#x27;s narrative — or it is quietly uncomfortable for a deregulatory posture.</p>
+<p><strong>ICE and the federal judiciary in Texas</strong> — the Castro non-extradition ruling is a quiet but significant instance of federal enforcement personnel getting insulated from state-level accountability for on-duty violence. The Guardian&#x27;s framing (identifying the victim, the specific charges, the judge&#x27;s appointment history) reads as an accountability-gap story; PBS&#x27;s flight-risk framing is narrower and more procedural. The absence of right-leaning coverage here means we don&#x27;t know whether this is being defended, ignored, or simply not yet picked up on that side.</p>
+<p><strong>Democratic midterm strategists in swing/red states</strong> (Turek, Sand in Iowa) are making a calculated bet that the Harris brand is a net negative in their districts — this is candidates overriding what would normally be party-coordinated messaging, which signals real anxiety about the national ticket&#x27;s residual drag.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The most consequential absence in this corpus is structural, not topical: on two high-significance stories — the Meta child-safety settlement and the ICE extradition refusal — there is no right-leaning coverage at all. That&#x27;s not a minor gap. It means we cannot currently assess how the right is framing either a major tech-accountability settlement or a federal-vs-state law enforcement accountability dispute, both of which are exactly the kind of stories that typically generate sharp ideological divergence (regulatory overreach vs. consumer protection on Meta; federal authority vs. state sovereignty on Castro). Silence from one side on stories this significant should be treated as provisional, not conclusive — it likely reflects a lag in this collection cycle rather than genuine disinterest, and it should be checked again in the next collection window.</p>
+<p>On the South Carolina race, left-leaning coverage entirely omits the &quot;is this actually a competitive state&quot; question that the right is using to undercut Trump&#x27;s credit-claiming — meaning a reader of only NPR/PBS would not even know that framing exists as a counter-argument.</p>
+<p>On the Alaska/Iowa bundle, right-leaning coverage ignores the Harris-distancing story completely, focusing solely on the ranked-choice-voting mechanics critique — which conveniently avoids engaging with evidence of Democratic strategic repositioning that would complicate a simple &quot;Democrats are unified behind Harris&quot; strawman, if anyone were arguing that.</p>
+<p>No source in this set engages with why it took until 2026 to get a 2028 trial date for the 9/11 defendants — a 20-plus-year delay in the military commission system that ought to be a bigger standalone story than a passing procedural note.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Trump credit-claiming pattern (SC primary) and the mail-in voting order are thematically linked even though the corpus doesn&#x27;t connect them directly: both are about Trump asserting control over electoral mechanics and outcomes — one retrospectively (claiming his endorsement won a race), one prospectively (shaping mail-in voting rules ahead of the midterms). Treat these as two data points in the same campaign, not unrelated items.</p>
+<p>The ICE extradition ruling and the absence of right-leaning coverage on it should be read alongside the administration&#x27;s broader enforcement posture — a Texas federal judge declining to hand an ICE officer to state authorities is consistent with a pattern of federal enforcement personnel receiving procedural insulation, and it is the kind of ruling that would normally draw either strong right-leaning defense (&quot;state overreach against federal officers&quot;) or complete right-leaning silence to avoid drawing attention. The current silence in this corpus fits the latter.</p>
+<p>The Iowa Harris-distancing story and the SC succession race are both midterm-positioning stories about brand management — one party managing a national figure seen as a liability in specific districts, the other party&#x27;s leader claiming credit for a win to reinforce his own indispensability. Both are about controlling the &quot;why we won/why we should win&quot; narrative more than 14 months out.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Meta settlement finalization</strong> — the dollar figure is still unsettled across sources ($16.7B–$18B); watch for the actual signed consent decree or court filing that fixes the number and specifies which state AGs are party to it. A hard number and full state list within the next week would resolve whether this is a done deal or still being negotiated.</p>
+<p><strong>Castro case appeals/Minnesota response</strong> — watch whether Minnesota prosecutors seek any alternative route (civil action, renewed extradition request, federal charges) after the Texas ruling. Also watch for right-leaning outlets to pick up the story at all in the next 48-72 hours; continued silence would itself be notable.</p>
+<p><strong>Trump&#x27;s mail-in voting order</strong> — the corpus flags this only by a garbled headline with no substantive detail. Priority item: get the actual text/scope of this order. If it restricts mail-in ballot procedures ahead of the 2026 midterms, this is a higher-significance story than currently scored and should be re-flagged.</p>
+<p><strong>Iowa Senate/gubernatorial race dynamics</strong> — watch whether other Democratic candidates in competitive states follow Turek and Sand in publicly distancing from Harris; a broader pattern would be a significant early midterm signal about the national party&#x27;s brand liability.</p>
+<p><strong>South Carolina general election</strong> — watch whether Graham&#x27;s opponent or outside groups directly engage the &quot;is SC actually competitive&quot; question WSJ raised; if Democrats pour resources into this race, it validates that framing and undercuts Trump&#x27;s credit-claiming narrative.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The through-line across this week&#x27;s corpus is not any single event but a coverage asymmetry that is itself the story: on the two items with the highest real-world stakes — corporate accountability for child safety and federal law enforcement accountability for an on-duty shooting — one entire side of the ideological spectrum is not yet on record. That is either a collection artifact or a sign that both stories are being deliberately left unaddressed because they don&#x27;t cleanly serve an existing narrative. Meanwhile, the stories that are getting full-spectrum coverage are lower-stakes framing fights over credit and competitiveness (South Carolina) or process mechanics (Alaska ballots). The pattern suggests political media on all sides is currently more energized by contesting narrative ownership of the 2026 midterms than by engaging with concrete accountability actions happening right now — which means an official relying on mainstream coverage volume as a proxy for importance would systematically underweight the Meta and Castro stories relative to their actual significance.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Meta agreed to a multibillion-dollar settlement (reported between roughly $16.7B and $18B) with a coalition of state attorneys general over claims that Facebook and Instagram were designed in ways that harmed children&#x27;s and teens&#x27; mental health, and committed to new safety measures for young users.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 2"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:25.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">All four outlets agree on the core fact — Meta is paying a multibillion-dollar settlement to states over child mental health harms and pledging platform changes — but the specific dollar amount is reported inconsistently across every source, suggesting either preliminary/evolving figures at time of reporting or differing accounting of what&#x27;s included (fines vs. commitments). The starkest divide is interpretive: mainstream outlets treat this as a state-accountability and industry-reform milestone, while Mother Jones treats it as a strategic corporate retreat, and the absence of any right-leaning source here means the ideological range of reactions — including potential free-speech, regulatory-overreach, or parental-rights framings common on the right — is not represented.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones frames the settlement skeptically, portraying it as a reluctant, damage-control maneuver by a powerful, oligarch-controlled company seeking to shed liability and rebrand away from &#x27;social media&#x27; rather than a sincere embrace of child safety, emphasizing corporate self-interest over genuine reform.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill and Axios frame the settlement as a consumer-protection and accountability victory for states, with Axios going further to cast it as a historic, tobacco-settlement-style moment that will reshape industry norms around child safety; both emphasize concrete state-led enforcement rather than corporate motive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning or far-right outlet is included in this set, so right-of-center framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones omits the specific dollar figures used for consumer-protection framing (e.g., The Hill&#x27;s &#x27;more than $18B&#x27; investor/legal framing) and does not engage with the &#x27;industry standard-setting&#x27; angle Axios emphasizes, focusing instead on corporate motive over structural/regulatory impact.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage is provided in this set, so it is not possible to identify what right-leaning outlets include that left-leaning coverage omits.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Voting Mail-In Order Trump&#x27;S Trump</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (4)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 5"></div><div class="bias-segment" style="background:#e05252; flex:4.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:8.0;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:16.0;" title="left: 4"></div><div class="bias-segment" style="background:#a07ae0; flex:4.0;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:28.0;" title="right: 7"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge in Texas declined to extradite ICE officer Christian Castro to Minnesota, where he faces assault and false-reporting charges tied to the shooting of Julio Cesar Sosa-Celis, clearing the way for his release from custody.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core fact: a judge blocked Minnesota&#x27;s extradition bid, allowing Castro&#x27;s release despite pending state charges tied to a shooting. The Guardian adds more identifying detail (victim&#x27;s name, nationality, specific charges, judge&#x27;s appointment history) and more explicitly frames the outcome as a structural accountability failure, while PBS centers the flight-risk angle — but with only left-leaning and center-left sources available, this analysis cannot characterize how conservative outlets are covering the story, which is a significant gap given the politically charged nature of ICE enforcement actions.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as a systemic accountability failure, stressing that a Trump-appointed judge&#x27;s ruling lets an ICE agent accused of shooting an unarmed migrant potentially evade prosecution, emphasizing the power imbalance between federal immigration enforcement and state justice systems.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour frames the story around the risk that Castro could flee to Mexico and evade justice, presenting the ruling primarily as an accountability gap rather than emphasizing the judge&#x27;s political background.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set, so right-of-center framing cannot be assessed from the given data.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was supplied, so it is not possible to identify what left outlets omit relative to right coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source is present in this set; therefore no comparison can be made to identify omissions from a right-leaning perspective.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two unrelated stories are being covered together: Alaska&#x27;s U.S. Senate ballot will feature two candidates both named Dan Sullivan under the state&#x27;s ranked-choice system, while separately, Iowa Democratic candidates Josh Turek and Rob Sand have publicly said they do not want Kamala Harris campaigning for them ahead of 2026 races.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:16.7;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 2"></div><div class="bias-segment" style="background:#7ae09b; flex:16.7;" title="center-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 2"></div></div></div>
+  <div class="story-assessment">These are two distinct, loosely connected stories bundled under shared keywords rather than one coherent event: an Alaska ballot oddity involving two same-named Senate candidates, and Iowa Democrats publicly putting distance between themselves and Kamala Harris. The clearest signal across all sides is that Democratic candidates in Trump-leaning states are actively rejecting association with national party figures like Harris — a fact confirmed by center, left, and center-left sources alike — while the Alaska RCV framing splits along ideological lines over whether the system quirk is a harmless curiosity or evidence of electoral dysfunction.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets treat the Alaska name-twin situation as a quirky procedural curiosity that may inadvertently help Democrats, and frame Iowa Democrats&#x27; rejection of Harris as a sign the party is ready to move past 2024-era leadership toward new voices — emphasizing strategic opportunity and generational change rather than dysfunction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets report the underlying facts with minimal interpretive spin: PBS presents the Sullivan overlap as a notable but neutral electoral quirk in a closely watched race, The Hill straightforwardly reports Turek&#x27;s request that Harris not campaign for him as a moderate-distancing move, and Politico profiles an Iowa Democrat&#x27;s survival strategy in Trump-aligned territory.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning (WSJ Opinion) coverage frames the Alaska ballot situation as evidence that ranked-choice voting itself is structurally flawed and confusing, using the Sullivan coincidence as a case study in electoral dysfunction rather than a partisan quirk.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits or downplays the critique that ranked-choice voting itself may be a confusing or flawed system, which is the central argument in right-leaning (WSJ) coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage omits the Iowa Democrats&#x27; Harris-distancing storyline entirely and does not engage with the left&#x27;s claim that the Alaska ballot quirk could favor Democrats, focusing solely on the voting-system critique.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A military judge set June 5, 2028 as the trial date for Khalid Sheikh Mohammed and three co-defendants accused of orchestrating the September 11, 2001 attacks.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:100.0;" title="center: 2"></div></div></div>
+  <div class="story-assessment">Only center-oriented outlets were provided, so no genuine left-right contrast can be drawn here; both available sources agree on the core fact (a 2028 trial date has finally been set) and frame it neutrally as a procedural milestone. Notably absent from both is any mention of the pretrial controversies that have driven the case&#x27;s 20+ year delay — including torture/enhanced interrogation of the defendants, plea deal disputes, and Guantánamo detention conditions — which are likely to be prominent in more ideologically distinct coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both center outlets treat this as a straightforward procedural/legal-system update, emphasizing the long delay in bringing the case to trial rather than editorializing on guilt, national security policy, or Guantánamo detention controversies.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source was included in this dataset.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be assessed — no right-leaning source was included in this dataset.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">On the fifth anniversary of the Abbey Gate bombing, Defense Secretary Pete Hegseth upgraded valor awards for three Marines who defended the gate, while separate reporting surfaced on the firing of Army Gen. Randy George amid a Kid Rock-related probe and speculation about his replacement.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:40.0;" title="center: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:20.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:20.0;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:20.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These are functionally two different stories being covered along ideological lines: outlets favorable to the administration highlight the medal upgrades and anniversary tributes as acts of overdue justice and accountability for Biden, while Washington Post surfaces a personnel controversy suggesting political interference in military leadership. Neither the medal story nor the George/Kid Rock story is disputed on its core facts, but each side is telling only the half of the Pentagon-personnel picture that fits its narrative, leaving readers of any single outlet with an incomplete view of what&#x27;s happening inside the Department of War this week.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post centers on internal Pentagon turmoil and possible retaliatory politicization of military justice, emphasizing that a general was pushed out shortly after being advised to drop a probe touching a Trump-aligned celebrity (Kid Rock), suggesting Hegseth is reshaping military leadership for loyalty rather than merit.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill covers both threads in a straightforward, low-emotion register — treating the medal upgrades as a personnel/recognition story and the Army Secretary succession as routine insider speculation based on unnamed sources, without assigning blame or motive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News and Breitbart frame the anniversary around vindication and overdue justice: Hegseth is portrayed as correcting a bureaucratic wrong by upgrading Marines&#x27; medals (&#x27;those days are over&#x27;), while Trump&#x27;s tribute to the fallen is paired with direct blame of Biden&#x27;s withdrawal decisions, emphasizing heroism and accountability for past failures.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Washington Post coverage does not mention the medal upgrades for the Abbey Gate Marines or the anniversary tributes at all, omitting the recognition angle entirely in favor of the leadership-shakeup narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News and Breitbart do not mention the Kid Rock investigation, Gen. Randy George&#x27;s firing, or any controversy around Army leadership changes — omitting the personnel-turmoil narrative and any suggestion that Hegseth&#x27;s Pentagon shakeups might be politically motivated.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Third Circuit Court of Appeals ruled that the federal criminal case against Rep. LaMonica McIver (D-NJ), who was charged with assaulting and impeding federal officials during a congressional oversight visit to the Delaney Hall ICE detention facility, can proceed.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core, narrow legal fact: an appeals court cleared the way for the criminal case against Rep. McIver to continue — this is a procedural ruling, not a verdict on guilt. The real divergence isn&#x27;t left-vs-right spin but framing depth: Reason situates the incident within congressional oversight and ICE detention-facility context and unpacks the court&#x27;s legal reasoning, while WaPo stays higher-level but preserves McIver&#x27;s denial, a fairness detail Reason&#x27;s summary leaves out.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames this as a routine procedural/legal update — an appeals court allowing a case to move forward — while including the lawmaker&#x27;s denial, which softens the story into an ongoing legal dispute rather than a settled matter of guilt.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-rated source was provided in this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No traditional conservative outlet is included in this set. The libertarian outlet (Reason) leans into legal-doctrine and separation-of-powers analysis, walking through the Third Circuit&#x27;s reasoning in detail rather than editorializing about political motivation or defending McIver&#x27;s conduct as legitimate oversight.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    WaPo&#x27;s framing omits the specific detail that Delaney Hall is an ICE detention facility and that McIver&#x27;s visit was framed as congressional oversight — context that shapes how the underlying confrontation is understood.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Reason&#x27;s account omits McIver&#x27;s denial of the allegations, presenting the prosecution&#x27;s framing (assault/impeding) without noting her contesting version of events.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Lindsay Clancy is on trial in Plymouth, Massachusetts for the January 2023 killing of her three children, with an FBI psychiatrist testifying as the prosecution&#x27;s final witness that he does not believe she heard a commanding voice during the killings, as her postpartum psychosis defense and the surrounding media coverage draw scrutiny.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The three outlets are barely covering the same story: the Guardian and Mother Jones engage the actual legal and clinical substance of the trial (from opposing sympathies), while Breitbart&#x27;s piece is a media-criticism sidebar that says nothing about the trial&#x27;s merits. The real friction is between the Guardian&#x27;s neutral-clinical framing and Mother Jones&#x27; advocacy framing questioning the prosecution itself — Breitbart&#x27;s contribution adds spectacle but no substantive counterpoint.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the story as a legal/clinical drama, emphasizing expert testimony that challenges Clancy&#x27;s psychosis defense as the case nears its conclusion. Mother Jones goes further, casting the entire prosecution as morally questionable, emphasizing sympathy for Clancy as a mother allegedly failed by the maternal mental health system and questioning whether punishment serves justice.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned outlet was provided in this set; coverage spans from clinical/legal reporting (Guardian) to advocacy-tinged sympathy (Mother Jones) to media-criticism (Breitbart), with no neutral synthesis represented.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart largely bypasses the substance of the trial (the killings, the psychiatric evidence, the guilt question) and instead focuses on a media-ethics angle — portraying Vanity Fair&#x27;s firing of a freelance journalist as reactive overreach, and framing the press itself, rather than Clancy, as the subject of scrutiny.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Neither left-leaning outlet mentions the press-conduct controversy (the Vanity Fair journalist incident) that Breitbart highlights, nor do they address any broader critique of media circus behavior around the trial.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits virtually all substantive trial content present in left coverage — the FBI psychiatrist&#x27;s testimony undercutting the psychosis defense, the specifics of the prosecution&#x27;s case, and the underlying debate over whether Clancy&#x27;s mental state should mitigate culpability.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Darline Graham won the South Carolina Republican U.S. Senate primary/runoff to fill the seat previously held by her late brother, and Trump is claiming his endorsement was decisive in her victory.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:66.7;" title="center-left: 2"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">All three outlets agree on the core, verifiable fact: Graham won the primary and will appear as the GOP nominee. The actual disagreement is not over facts but over interpretive framing — NPR/PBS use the race to interrogate Trump&#x27;s political leverage, while WSJ uses it opportunistically to dismiss a narrative about South Carolina&#x27;s partisan lean that none of the other coverage even raises. Readers of only one source would miss either the credit-attribution debate or the state-competitiveness debate entirely.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left is the more accurate label here, but insofar as it leans left of WSJ: coverage is analytical and mildly skeptical, treating the story as a test case for measuring Trump&#x27;s actual influence over GOP primary voters and midterm strategy, rather than accepting his credit-claiming at face value.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR and PBS both center the family/dynastic angle (Graham succeeding her late brother) and treat Trump&#x27;s endorsement claim as newsworthy but unverified, focusing on what it signals about GOP power dynamics heading into the midterms.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion frames the win minimally on the facts and instead uses it rhetorically as a rebuttal to Democratic hopes/media narratives that South Carolina is becoming competitive for Democrats — the emotional register is vindication/mockery of the &#x27;blue state&#x27; assumption.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    NPR and PBS do not engage with or rebut the &#x27;is South Carolina a blue state&#x27; framing at all — they omit any discussion of state partisan competitiveness, which is the entire hook of the right-leaning piece.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ omits the succession/dynastic storyline (Graham replacing her late brother), any scrutiny of how much credit Trump&#x27;s endorsement actually deserves, and any discussion of midterm strategy implications — details present in both center-left pieces.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">These three articles do not cover the same event: they are unrelated stories — US sanctions on Palestine Action, declining US public opinion of India, and deadly floods in Nepal/Tibet — bundled together by a source-matching error rather than genuine cross-spectrum coverage of one story.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">This bundle is not a case of ideologically divergent coverage of one news event — it contains three unrelated stories, each reported by only a single outlet. Any attempt to extract &#x27;consensus facts&#x27; or &#x27;omissions&#x27; across them would fabricate a relationship that doesn&#x27;t exist in the source material. This appears to be a data pairing error upstream; each story should be analyzed independently with genuine multi-source coverage before a spectrum comparison is meaningful.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    N/A — the Guardian piece concerns a distinct topic (US terrorism designation of a UK protest group) with no corresponding left-coverage of the India or flood stories to compare.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    WSJ Opinion frames India&#x27;s reputational decline as a strategic risk to bilateral relations, unrelated to the other two stories.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    N/A — Breitbart (far-right) covers the Nepal/Tibet floods as a humanitarian disaster; WSJ Opinion (center-right) covers India&#x27;s declining US favorability. Neither addresses the Palestine Action sanctions.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — there is no shared event for the Guardian&#x27;s coverage to be compared against; the &#x27;right&#x27; coverage in this set is about entirely different topics (India favorability, Nepal/Tibet floods), not omissions from the same story.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — Breitbart and WSJ do not omit facts about the Palestine Action sanctions because they are not covering that story at all; there is no single event for omission analysis.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge Minnesota Extradite Denies Officer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How data centers became a major issue in the midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump-endorsed Mike Mazzei wins GOP nomination for Oklahoma governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic-backed Maryland redistricting amendment can&#x27;t go on November ballot, court rules</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fired FEMA crew leader defends skipping homes with Trump campaign signs</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge lifts block on Trump changes to mail voting, though legal fights continue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump visa restrictions will worsen strains on the economy, experts say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-DOD worker admits trying to trade classified info for foreign citizenship</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In Texas Senate race, Talarico seeks depositions that could damage Paxton</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats target Republicans who voted for SNAP cuts with billboards</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Man in prison in New York advances in primary for Alaska’s US House seat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alexandria Ocasio-Cortez rejoins DSA after membership lapse of seven years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Three pro-Israel Democrats given key roles on House foreign affairs panel</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Here’s to Dolly: Union Member, Vaccine Hero, Literacy Giant, Staunch Gay Ally</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Just Used a $500 Million Clean Steel Grant to Fund a Coal Furnace</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Memes and Machine Guns: How Brandon Herrera Built a Path to Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Cult and Corruption of Cryptocurrency</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meta’s Sensible Social-Media Settlement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas School Choice Helps the Not-Rich</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Pancreatic Cancer Revolution</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› JD Vance Is the GOP’s Obama</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nix on Nixon: How to Defeat the DSA in the Midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Americans Who Find Killing Acceptable</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Armed man arrested at Trump golf course allegedly had first lady&#x27;s schedule, notes on Secret Service: reports</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hawley rips Flock’s sprawling surveillance web as Texas cities cut cameras over privacy and data fears</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s lawyers put Dem AG on notice for targeting his family in NY fraud fight: &#x27;Cannot stand&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NFL owner&#x27;s prostitution arrest puts top Dem committee on defense: &#x27;So desperate for cash&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America’s heartland comes face-to-face with 9/11 history as 25th anniversary nears</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Full Contact with an Ancient Game</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AOC Is Damaged Goods</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Canada Tariffs Are Not on Mission</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spare America from the ‘Noblesse Oblige’ of This DSA Duchess</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› On Taiwan, China Is Pursuing ‘Unification Without Formal Unification’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One Dumb Tariff (Among Many)</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It’s No Mystery Why Young Men Are Leaving the Workforce</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The ‘Good Luck’ of Adam Sandler</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ayanna Pressley: ‘The Confederacy Is Still Alive and Well — That’s All MAGA Is’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani ‘Deeply Saddened’ by Death of Suspect Charged with Cold-Blooded Murder</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tom Brady&#x27;s Northern California Trading Card Shop Ransacked One Week After Grand Opening</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bodycam Footage of 49ers Owner Jed York&#x27;s Arrest for Soliciting Prostitution Released</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kelly: Hegseth&#x27;s Attitude That the Military Is About Killing People &#x27;Not Healthy&#x27;</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
