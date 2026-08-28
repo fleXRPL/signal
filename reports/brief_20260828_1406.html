@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-28 14:06 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-28 14:06 UTC</span>
+    <span class="pill">120 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the day — Trump&#x27;s executive order renaming Lake Ontario to &quot;Lake America&quot; — is a legally meaningless act that is nonetheless doing real political work: it is absorbing almost all available media attention (38 source-tags, by far the largest cluster in the corpus) while a genuine trade conflict with Canada, with material stakes for the auto industry and cross-border defense cooperation, sits underneath it largely undiscussed. This is the through-line for the day: symbolic, telegenic acts are crowding out substantive coverage of decisions with actual consequences.</p>
+<p>Underneath that noise, three threads carry more weight than their coverage volume suggests. First, a federal judge ruled the Pentagon retaliated against Anthropic for public criticism by blacklisting it as a supply-chain risk — a judicial finding against the executive branch that is drawing almost no attention, and specifically no attention from right-leaning outlets. Second, NATO&#x27;s Russia posture is being narrated through three non-overlapping, single-source claims (a Latvian sabotage warning, Trump downplaying attack risk, a WSJ inference that the downplaying itself invites Russian testing) that have been bundled into a &quot;high significance&quot; story despite none of the load-bearing facts being corroborated across outlets. Third, there are early signs of friction inside the administration&#x27;s economic team (Warsh vs. Bessent on bond-buyback strategy) and inside the right-of-center press itself (National Review breaking from Breitbart-style deflection on tariffs), both of which point to less unity than the administration&#x27;s public messaging implies.</p>
+<p>The overall picture is of two press ecosystems covering almost entirely disjoint agendas — the right on immigration/crime, the left on executive-power/accountability — converging only on the one story that offers spectacle without stakes. That convergence is itself informative: it is easier to agree on a joke than on a fact.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is driving the news cycle through symbolic, high-visibility actions (the lake renaming, downplaying Russia risk) that generate coverage volume disproportionate to their substance. This is consistent with a pattern of managing attention rather than managing policy outcomes — the renaming order costs nothing politically and generates days of both-sides engagement while the actual trade dispute with Canada continues unresolved.</p>
+<p><strong>The Pentagon/administration&#x27;s use of discretionary executive levers</strong> is the more consequential and least-covered dynamic. The Anthropic blacklisting ruling, a reported proposal to make federal grant termination discretionary (&quot;on a whim&quot;), and Jan. 6 defendants seeking payments from the administration all point to the same mechanism: procurement, funding, and restitution treated as tools of reward and punishment rather than neutral administration. No single story proves a coordinated policy, but the pattern is consistent enough, and uncontested enough by the right, to warrant treating it as a real trend rather than three coincidences.</p>
+<p><strong>Right-leaning media</strong> is functioning less as an independent check and more as a defensive perimeter around the administration on stories involving internal friction — RFK Jr.&#x27;s measles controversy, the Fed-Treasury tension, the Anthropic ruling all get thin-to-nonexistent right-side coverage, and where the right does engage (Lake Ontario, Jackson Hole), the posture is redirection or rebuttal rather than direct engagement with substance. National Review&#x27;s tariff criticism is the notable exception — evidence the right is not monolithic, but is an outlier rather than the norm today.</p>
+<p><strong>Left-leaning media</strong> mirrors this selectivity from the other direction, concentrating on accountability and overreach stories (grants, mail-voting restrictions, Secret Service probe) that draw little right-side rebuttal — not because the right has conceded the point, but because it isn&#x27;t engaging at all.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The most conspicuous silence is right-leaning media&#x27;s near-total non-coverage of the Anthropic ruling. A federal court finding that the Pentagon punished a company for criticizing the administration touches AI policy, national security, and executive overreach — three subjects the right normally covers aggressively. Its absence here looks like selective avoidance of a story that reflects badly on the administration, not lack of newsworthiness.</p>
+<p>The RFK Jr./Pennsylvania measles-death story shows the same pattern in sharper form: left-only coverage with zero right-side response, which is unusual — even administration-friendly outlets typically mount some defense on health/HHS controversies. The absence of even a rebuttal suggests outlets are choosing not to draw attention to it at all, rather than contesting it.</p>
+<p>On the other side, the right&#x27;s immigration and crime coverage (the DACA case, Honduran fentanyl traffickers, the Soros-backed DA, in-state tuition lawsuits) has no left-side counter-engagement — the left isn&#x27;t disputing these stories, it&#x27;s simply not covering them. Neither side is fact-checking the other&#x27;s agenda; they&#x27;re operating on separate news diets entirely, which means neither audience is being exposed to the other&#x27;s strongest material.</p>
+<p>Also underreported relative to its stakes: the Collins–Jackson Maine Senate race, a real electoral contest with a concrete development (four agreed debates), drew only two total sources — less coverage than the fake lake renaming. Attention is not tracking actual political consequence today.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The NATO/Russia sabotage story is worth flagging as a construction, not a corroborated event. Three outlets each contribute one unverified claim — Latvia&#x27;s FM on sabotage, Axios on Trump&#x27;s reassurance, WSJ Opinion&#x27;s strategic inference — and the aggregation into a single &quot;high significance&quot; narrative creates an appearance of a documented crisis that the underlying sourcing doesn&#x27;t support. Treat this as three watch items, not one confirmed story.</p>
+<p>There is a recurring right-media posture — visible in the Lake Ontario coverage (redirect to Democratic reactions), the Jackson Hole coverage (preemptive rebuttal of a conflict narrative), and the silence on Anthropic and RFK Jr. — of managing narratives defensively rather than reporting on them directly. That consistency across unrelated topics suggests coordinated messaging discipline around administration unity, not just editorial coincidence.</p>
+<p>The discretionary-power pattern (Anthropic blacklisting, grant termination proposal, Jan. 6 payment pathway) is only visible by reading left-only coverage against a court ruling with mixed sourcing — no outlet is connecting these three itself. That the right isn&#x27;t contesting any piece of it, rather than pushing back, is itself notable; contestation would at least indicate the story is being taken seriously as a battleground.</p>
+<p>Note also that &quot;Dolly Parton&quot; and &quot;Eugene Volokh&quot; co-occurring across unrelated stories is very likely an aggregation artifact (recurring columnists or same-day miscellany), not a signal — flagging so it isn&#x27;t mistaken for something meaningful in a later pass.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>Kevin Warsh vs. Scott Bessent</strong>: any on-record disagreement over bond-buyback strategy or rate policy in the next 48-72 hours would confirm real Fed-Treasury friction that Breitbart is currently working to suppress as a narrative.</li>
+<li><strong>Latvia FM&#x27;s sabotage claims</strong>: watch for corroboration or denial from other Baltic states or NATO officials. Right now this rests on one official, one outlet — a second data point either way changes the threat assessment materially.</li>
+<li><strong>Anthropic v. Pentagon ruling</strong>: watch for a DoD appeal or public response, and specifically whether any right-leaning outlet picks the story up at all. Continued silence is itself the signal.</li>
+<li><strong>RFK Jr./Pennsylvania measles dispute</strong>: watch for HHS/CDC response and whether right-of-center outlets begin covering it. Persistent right-side silence would confirm protective avoidance rather than a genuine coverage gap.</li>
+<li><strong>Collins–Jackson Maine Senate debates</strong>: watch for scheduling or format disputes and any polling movement — this is a concrete electoral event being under-covered relative to its stakes.</li>
+<li><strong>Federal grants termination proposal</strong>: watch for formal rulemaking, a comment period, or legal challenges — the &quot;on a whim&quot; framing needs to be tested against whatever actual mechanism gets proposed.</li>
+<li><strong>Lake Ontario/Canada trade dispute</strong>: watch for any material Canadian retaliation or actual U.S. trade-policy action beyond the symbolic order — that is where the real economic exposure lives, not in the renaming itself.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The through-line today is not any single policy or scandal but a widening gap between where attention goes and where consequence lives — a legally meaningless lake renaming is outdrawing a judicial rebuke of the Pentagon, a live Senate race, and early signs of internal administration friction combined. That gap is not organic: it reflects a right-leaning press actively managing which internal frictions get seen, and a left-leaning press concentrating on accountability stories that never reach an audience positioned to contest or act on them. The result is an information environment where both sides are technically reporting facts, but the selection of which facts to amplify is doing more work than any individual falsehood would. The near-total silence around the Anthropic ruling is the single most telling data point in this batch — a functioning check on executive power is being ignored not because it isn&#x27;t newsworthy, but because it doesn&#x27;t fit either side&#x27;s preferred story about the moment.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Latvia&#x27;s foreign minister warned that Russia is conducting sabotage operations across Europe, a claim that surfaced alongside separate reporting on Trump downplaying the risk of a Russian attack on NATO and WSJ Opinion arguing Putin may be emboldened to test NATO precisely because of that downplaying.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">The three outlets are covering adjacent but distinct facts rather than the same event: a specific official warning (PBS), a presidential reassurance (Axios), and an opinion writer&#x27;s strategic inference (WSJ). What&#x27;s actually agreed upon is thin — mainly that Russian threat perception and U.S. reliability are both live questions — while the more consequential claims (active sabotage campaign, Trump&#x27;s true risk tolerance, Putin&#x27;s actual calculus) are each sourced to only one outlet and unverified across the others. Readers relying on a single source would come away with a materially different picture of how urgent and how contested the NATO-Russia risk actually is.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS centers the voice of a frontline NATO state&#x27;s top diplomat, treating Russian sabotage as an established, ongoing pattern of aggression that validates continued Western vigilance and support for NATO&#x27;s eastern flank.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the story through Trump&#x27;s own reassurance, using his direct quote to push back against alarm generated by European officials and disputed intelligence reports, positioning him as the counterpoint to the warnings rather than validating them.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion frames the story as a strategic risk assessment, warning that Trump&#x27;s perceived unwillingness to defend NATO militarily could itself be the variable that invites Putin to test the alliance — implicitly critical of Trump&#x27;s reliability as a deterrent.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS does not address Trump&#x27;s stated lack of concern or the debate over U.S. commitment to NATO&#x27;s defense — it omits the transatlantic political friction that the center and right coverage centers on.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion does not report the specific, concrete warning from Latvia&#x27;s foreign minister about sabotage acts — it stays at the level of strategic speculation about Putin&#x27;s calculus rather than citing the frontline-state evidence PBS leads with.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">President Trump signed a symbolic executive order directing the U.S. government to rename Lake Ontario to &#x27;Lake America&#x27; amid escalating U.S.-Canada trade tensions, prompting rejection from Canadian and U.S. officials and countermeasures from Democrats.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (7)</span><span class="bias-badge" style="color:#e0a87a;">center-left (5)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (8)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:18.4;" title="center: 7"></div><div class="bias-segment" style="background:#e0a87a; flex:13.2;" title="center-left: 5"></div><div class="bias-segment" style="background:#7ae09b; flex:7.9;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:5.3;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:5.3;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:21.1;" title="left: 8"></div><div class="bias-segment" style="background:#a07ae0; flex:7.9;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:21.1;" title="right: 8"></div></div></div>
+  <div class="story-assessment">The core facts are undisputed: this is a symbolic, legally toothless executive order that functions mainly as a rhetorical escalation in the real, economically consequential U.S.-Canada trade dispute. Coverage splits less on facts and more on emphasis — left/center-left outlets tie it to genuine economic harm and portray it as reckless theater, while right outlets redirect attention to Democratic and celebrity reactions, sidestepping the substance of the trade conflict itself. The renaming has no real-world enforceability, but it is a visible marker of a trade war that does carry material economic risk.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets (WaPo, Guardian, Mother Jones, NPR) frame the renaming as an impulsive, provocative, and largely symbolic escalation of Trump&#x27;s trade feud with Canada — &#x27;absurd&#x27; nationalist overreach per Mother Jones — often paired with coverage of real economic harm from the broader trade war (e.g., Detroit&#x27;s auto industry) to suggest the gesture is self-defeating theater layered on top of substantive damage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (Axios, The Hill, PBS) report the order largely as straight news — describing the mechanics (Interior Dept./naming service), noting it has no binding effect on Canada, and covering the Democratic legislative response as a factual development within the broader trade dispute, with modest framing of the move as retaliatory.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets (Fox, Breitbart) focus less on the merits of the renaming itself and more on the reaction to it — mocking Hillary Clinton&#x27;s criticism as a &#x27;self-inflicted political misstep&#x27; and framing Democratic opposition (Dingell, legislation) as predictable partisan overreaction, while presenting the order&#x27;s official text neutrally.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the conservative backlash-to-critics narrative (e.g., mockery of Hillary Clinton) and doesn&#x27;t engage with any argument that the renaming could be a legitimate or popular assertion of national identity rather than pure impulsiveness.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits the substantive economic stakes of the underlying trade war (e.g., Detroit-Windsor auto industry damage, defense-industry cooperation risks) and Carney&#x27;s cultural/historical rebuttal (the indigenous Wendat origin of &#x27;Ontario&#x27;), focusing instead on partisan reaction dynamics.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Three outlets published loosely related but distinct Gaza/Israel stories on the same news cycle: PBS covered Gaza civilians&#x27; trauma amid a strained ceasefire, Breitbart reported a UN memorial event honoring a deceased Hamas commander among staff, and Reason covered a D.C. court declining to issue an anti-stalking order against a rabbi involved in an anti-Israel protest confrontation.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:33.3;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These are not three accounts of a single event but three separate stories bundled under a shared Gaza/Israel theme, each selected to fit a distinct ideological narrative: civilian suffering (PBS), institutional complicity with Hamas (Breitbart), and free-speech vindication for pro-Israel advocacy (Reason). Because they don&#x27;t share a common factual core, there is little genuine overlap to reconcile — each outlet is emphasizing evidence that supports a pre-existing narrative about the conflict rather than covering the same underlying facts from different angles. Readers relying on just one source would get a distorted, incomplete picture of the broader conflict&#x27;s institutional, legal, and humanitarian dimensions.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS centers the human and psychological toll on Gaza&#x27;s civilian population, especially youth, emphasizing suffering, fragile normalcy, and the ceasefire&#x27;s fragility as an obstacle to healing — an emotionally driven, humanitarian angle.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No distinct center-only outlet is present; PBS is categorized center-left here and functions as the emotionally-driven humanitarian narrative described above.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart and Reason emphasize institutional accountability and free-speech/security concerns: Breitbart frames the U.N. as institutionally compromised or negligent toward Hamas-linked figures, while Reason frames pro-Israel advocacy (the rabbi&#x27;s actions) as protected speech being wrongly targeted by legal action.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS&#x27;s coverage omits any mention of U.N./UNRWA accountability controversies or of domestic U.S. legal disputes involving pro-Israel advocates, both of which are central to the right-leaning stories.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Neither Breitbart nor Reason addresses the humanitarian conditions or psychological toll on Gaza civilians described by PBS; the right-leaning coverage largely omits ground-level civilian suffering in favor of institutional and legal accountability angles.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Federal Reserve Chair Kevin Warsh delivered a closely watched speech at the Jackson Hole symposium as markets weighed persistent inflation and bond market volatility, with commentary split over whether Warsh&#x27;s monetary stance conflicts with Treasury Secretary Scott Bessent&#x27;s bond-buyback strategy.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The only fact both pieces agree on is that Warsh spoke at Jackson Hole during a period of inflation and bond market stress — everything else is either unaddressed by one side or actively contested. Breitbart&#x27;s piece is less about the speech itself than a preemptive rebuttal of a Fed-Treasury conflict narrative found elsewhere in financial media, meaning readers of only these two sources get market stakes (center) or an insider-defense of administration unity (right) but no independent account of what Warsh actually said or why markets reacted as they did.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is included in this two-source set, so left framing cannot be directly characterized from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the event as a market-moving live news moment, emphasizing stakes (inflation, bond jitters) and urging audiences to tune in, without editorializing on personnel conflict or policy coordination.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the story defensively and combatively toward the press itself, casting &#x27;mainstream&#x27; financial media as having invented or exaggerated a Bessent-Warsh rift, and positions the administration&#x27;s economic team as unified rather than in tension — emphasis is on defending policy coordination, not on the speech&#x27;s content.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source is present in this sample to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits substantive discussion of the speech&#x27;s actual content or inflation data, and does not engage with the market-jitters framing The Hill emphasizes; its focus is narrowly on rebutting a media narrative rather than analyzing what Warsh said or its policy implications.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge ruled that the Pentagon&#x27;s designation of Anthropic as a supply-chain risk was unlawful retaliation for the company&#x27;s public criticism of the administration.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core fact: a federal judge struck down the Pentagon&#x27;s &#x27;supply chain risk&#x27; designation of Anthropic as unlawful, with at least one outlet emphasizing constitutional grounds. The Guardian leans harder into a retaliation-and-overreach narrative attributed to the Trump administration, while Axios stays closer to the legal mechanics of the ruling. The most significant gap here isn&#x27;t between left and right framing — it&#x27;s that no right-leaning source is represented at all, so any national-security justification for the original blacklist or criticism of judicial intervention is entirely missing from this analysis.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the ruling as a rebuke of government overreach, casting the Pentagon&#x27;s move as retaliatory punishment of a corporate critic and highlighting the judge&#x27;s pointed language that national security was used as a pretext — emphasizing abuse of power by the administration.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios presents the ruling in more neutral, legalistic terms, emphasizing the judge&#x27;s finding that the blacklisting was both unconstitutional and unlawful, framing the story as a straightforward legal check on government action rather than an ideological confrontation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this coverage set, so right-of-center framing cannot be assessed from the data provided.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian&#x27;s account, as summarized, does not mention the constitutional basis for the ruling that Axios highlights, focusing instead on the retaliation narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    With no right-leaning source present, it&#x27;s impossible to identify what conservative coverage might raise — such as potential national-security rationale for the original designation, arguments defending the Pentagon&#x27;s discretion over supply-chain risk determinations, or criticism of the judiciary intervening in executive national-security decisions. This is a gap in the available coverage set, not a confirmed omission by any outlet.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Susan Collins has agreed to four debates against Democratic challenger Troy Jackson ahead of Maine&#x27;s competitive November Senate election.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two outlets are actually covering different facets of the same race rather than directly disputing facts: WaPo reports a concrete scheduling development (four debates), while RCP offers a broader horse-race narrative about Jackson&#x27;s competitiveness. Neither source contradicts the other, but readers of only one would come away with an incomplete picture — one knows debates are happening, the other is told to expect a close race, but not both.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post treats the debate agreement as a procedural/strategic milestone in a high-stakes race, emphasizing its importance to Senate control without characterizing either candidate&#x27;s chances or motives.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-labeled source was provided in this set; RCP is presented as center-right and WaPo as left, so no strictly centrist framing is available for comparison.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    RealClearPolitics coverage is not focused on the debate news itself but on profiling Jackson, framing the race as a genuine horse-race with an incumbent facing unprecedented electoral jeopardy — emphasizing narrative tension and competitiveness.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post piece, as summarized, does not address how strong or unprecedented a challenge Jackson poses, a central theme in the right-leaning coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The RealClearPolitics piece, as summarized, does not mention the four-debate agreement at all, omitting the specific news event covered by the Washington Post.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump</span><span class="entity-tag">Latvia&#x27;s Foreign Minister</span><span class="entity-tag">NATO</span><span class="entity-tag">Russia</span></div>
+  <div class="connection-text">Trump publicly downplaying the risk of a Russian attack on NATO runs concurrently with a specific Baltic-state warning about active Russian sabotage in Europe and a WSJ opinion arguing that downplaying itself invites Putin to test the alliance. These are not corroborating reports of one event but three thinly-sourced, non-overlapping claims (1 outlet each) stitched into a single &#x27;high significance&#x27; story.</div>
+  <div class="connection-sig">↳ A story rated high-significance is resting on single-source claims for every substantive element — the sabotage campaign, Trump&#x27;s actual risk tolerance, and Putin&#x27;s calculus are each unverified outside one outlet. Readers get the appearance of a well-documented crisis without the corroboration that would normally justify that rating.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anthropic</span><span class="entity-tag">Trump administration</span><span class="entity-tag">federal grants proposal</span><span class="entity-tag">Jan. 6 rioters</span></div>
+  <div class="connection-text">A federal judge just found the Pentagon retaliated against Anthropic for public criticism, on the same news cycle that a left-only story reports an administration proposal letting federal grants be terminated &#x27;on a whim,&#x27; alongside another left-only story on Jan. 6 defendants pursuing payments from the administration. Together these describe a consistent pattern: discretionary federal levers (procurement blacklisting, grant funding, restitution/payment pathways) being used to punish critics and reward allies.</div>
+  <div class="connection-sig">↳ No single story establishes a &#x27;pattern of retaliatory governance&#x27; on its own, and the pattern is only visible by reading left-only coverage against a court ruling with mixed-source coverage — right-leaning outlets are not connecting or contesting any part of it, meaning the discretionary-power story is going almost entirely uncontested rather than debated.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Review</span><span class="entity-tag">Breitbart</span><span class="entity-tag">Trump</span><span class="entity-tag">tariffs</span></div>
+  <div class="connection-text">The same day Breitbart-style coverage of the Lake Ontario stunt redirects attention to Democratic/celebrity reactions rather than trade substance, National Review — a right-leaning outlet — is running &#x27;Trump&#x27;s Absurd Trade War&#x27; and tariff-impact-by-state pieces that engage the economic substance critically.</div>
+  <div class="connection-sig">↳ This shows the right is not monolithic on the trade war: populist/administration-aligned outlets are managing the narrative through deflection while traditional conservative outlets are breaking with the administration on economic grounds. Treating &#x27;the right&#x27; as a single bloc on this story would miss a real internal fracture.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Kevin Warsh</span><span class="entity-tag">Scott Bessent</span><span class="entity-tag">Federal Reserve</span></div>
+  <div class="connection-text">Breitbart&#x27;s Jackson Hole coverage is explicitly framed as a preemptive rebuttal to a Fed-Treasury conflict narrative circulating elsewhere in financial media, rather than independent reporting on what Warsh said. This is the same defensive posture seen in right-coverage of the Lake Ontario story (redirect/rebut rather than engage) and in the near-total right-side silence on the Anthropic ruling and RFK Jr./measles story.</div>
+  <div class="connection-sig">↳ A recurring right-media posture of pre-empting or redirecting rather than engaging on stories that reflect friction inside the administration (Fed independence, executive-power retaliation, HHS leadership) suggests coordinated narrative management around administration unity, not organic coverage gaps.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-only coverage clusters heavily on immigration/crime threat framing (DACA child porn case, fentanyl traffickers from Honduras, Soros-backed DA, in-state tuition lawsuits) while left-only coverage clusters on institutional-accountability/overreach framing (grant terminations, mail-voting restrictions, Jan 6 payments, Secret Service probe) — the two sides are covering essentially disjoint news agendas rather than disputing the same facts.</div>
+<div class="pattern-item">Multiple right-leaning outlets respond to unflattering or complicating stories (Lake Ontario trade costs, Fed-Treasury tension) by redirecting to opponents&#x27; reactions or issuing pre-emptive rebuttals rather than engaging the substance directly.</div>
+<div class="pattern-item">Symbolic/theatrical Trump stories (Lake America renaming) draw dramatically more total source coverage (38 tags) than substantive but less telegenic stories with real stakes (NATO-Russia sabotage: 3 sources; Anthropic ruling: 2 sources; Susan Collins Senate debates: 2 sources).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The NATO/Russia sabotage story is rated &#x27;high significance&#x27; yet rests on exactly one outlet per major claim (Latvia FM warning, Trump&#x27;s reassurance, WSJ&#x27;s inference) — unusually thin sourcing for a story of that stated importance, and the three pieces don&#x27;t actually corroborate each other.</div>
+<div class="anomaly-item">Zero right-leaning source covers the federal court ruling against the Pentagon&#x27;s Anthropic blacklist, despite the story combining AI policy, national security, and judicial checks on executive power — all frequent right-of-center topics. The silence itself is conspicuous.</div>
+<div class="anomaly-item">The RFK Jr./Pennsylvania measles-death story is left-only with no right-leaning counter-coverage, unlike most other administration-adjacent controversies which at least draw a defensive right-side response — this looks like protective avoidance rather than narrative competition.</div>
+<div class="anomaly-item">Entity co-occurrences like &#x27;Dolly Parton&#x27; and &#x27;Eugene Volokh&#x27; appearing in 3 unrelated stories are almost certainly aggregation artifacts (recurring columnists, same-day miscellany posts) rather than genuine narrative connections, and should not be read as signal.</div>
+<div class="anomaly-item">A concrete, competitive Senate race development (Collins agreeing to four debates against Jackson) drew only 2 sources total, far less coverage than a legally meaningless renaming stunt — attention is misallocated relative to electoral stakes.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding stories that reflect friction inside the administration or its allies — RFK Jr.&#x27;s measles controversy, the Fed-Treasury tension, and the Anthropic retaliation ruling all get thin-to-zero right-side coverage, while the trade war&#x27;s real economic costs are being deflected into culture-war framing by populist outlets (though not uniformly, per National Review&#x27;s dissent). The left is systematically avoiding the immigration/crime cases the right is emphasizing, instead concentrating on administrative-overreach and accountability stories that draw little right-side engagement. The net effect is two press ecosystems operating on almost entirely separate news agendas today, converging only on the Lake Ontario stunt as shared spectacle rather than substance.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Social Security trust fund is running out, and yet it&#x27;s not a top campaign issue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Democrats in Congress are preparing for Trump midterm election interference</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration proposal would allow federal grants to be terminated on a whim</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Norway&#x27;s King Harald V dies at 89 and his son becomes King Haakon VIII</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What a fake poll reveals about worries around prediction markets and the midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Political bickering follows two deaths related to measles in Pennsylvania</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jan. 6 rioters pursue new path for payments from Trump administration</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: More than 80 people charged in federal takedown of Puerto Rico gang</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump calls Supreme Court ruling on mail ballots &#x27;great&#x27; for Republican Party</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ICE officer charged in Minneapolis shooting released in Texas after immediate extradition rejected</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AP report: RFK Jr. said a Samoa trip had nothing to do with vaccines. New documents refute that</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The nation’s cartoonists on the week in politics</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› White South Africans could get $4,500 in aid if they come to U.S. as refugees</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Measles’ role in child’s death ignites fight between RFK Jr. and Pennsylvania governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Judge issues new block on Trump’s sweeping restrictions on mail-in voting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Chuck Edwards argues ‘affectionate friendship’ is not grounds for censure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lake America merch is already available, if you have a sense of humor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Secret Service spokesman is put on leave amid investigation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The political battle over grocery prices is here</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› First Thing: Rescue efforts continue as death toll rises in Nepal-Tibet flood</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘It’s all you can hear’: New Jersey lawsuit takes on datacenter’s noise pollution</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘This whole thing’s a farce’: New Orleans Catholic church sex abuse settlement brings anger and shock</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Tucker Carlson–Kremlin Bond Just Got Stronger</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Police Are Spending Opioid Settlement Funds on Flock Cameras</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Max Miller Just Suggested He Has Dirt on Bernie Moreno</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside WSJ Opinion&#x27;s &#x27;The Path to Zero&#x27; Documentary on the Chaotic Retreat From Afghanistan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chuck Schumer’s New Headache</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› You’re Living Longer, Americans</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dying for Medicare for All</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dolly Parton Leaves Us Wanting More</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Let Terrorists Run Nonprofits</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Man Who Stared Into Oblivion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Soros-backed DA accused of going easy on illegal immigrants gets squeezed by House GOP</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialist mayoral candidate ignites online mockery for touting basic city service</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Week: Trump’s Absurd Trade War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congress, Not Settlements, Should Set Social Media Rules</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› John Boorman, the Devil, and Modern Movie Illiteracy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Ballroom Is a Political Fight, Not a Judicial One</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Civil Rights Agency Strikes a Blow Against Racial Bean-Counting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Oppenheimer Obliterated Auden’s Association with &lt;font style=&quot;font-variant: small-caps;&quot;&gt;National Review&lt;/font&gt;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ossoff Condemns Hasan Piker Days After Streamer Called Him 2028 Pick</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Canadian Broadcasting Corp Tells Staff Not to Refer to 9/11 as ‘Terrorist Attack’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.N. Atomic Agency Rolls Out Ambitious Plan for Floating Nuclear Power Plants</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Portland: 80% of Fentanyl Trafficker Arrests Are Illegal Migrants from Honduras</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DOJ Sues 4 More States over in-State Tuition for Illegal Aliens</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spanberger&#x27;s Virginia: DACA Illegal Alien Charged with More than 20 Counts of Child Pornography</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Badly Is Iran War Hurting the GOP?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The DSA May Cost Dems Their Blue Wave</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Repeating Tea Party Takedown Process on America First Coalition</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This Is the Winning Message for Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› If Election Is &#x27;Capitalism vs. Socialism&#x27;, GOP Wins</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sherrod Brown&#x27;s Fake Populism Exposed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› GOP&#x27;s Midterm Convention Tells You About Its Priorities</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Kevin Warsh vs. Scott Bessent — any explicit statement of disagreement on bond-buyback strategy or rate policy could confirm or kill the Fed-Treasury conflict narrative</div>
+<div class="watch-item">Latvia FM&#x27;s Russian sabotage claims — watch for corroboration or denial from other Baltic states, NATO officials, or additional intelligence reporting</div>
+<div class="watch-item">Anthropic v. Pentagon ruling — watch for administration appeal or DoD response, and whether any right-leaning outlet picks up the story</div>
+<div class="watch-item">RFK Jr./Pennsylvania measles dispute — watch for HHS/CDC response and whether right-leaning outlets begin covering it</div>
+<div class="watch-item">Susan Collins–Troy Jackson Maine Senate race — watch for polling movement and debate scheduling/format disputes</div>
+<div class="watch-item">Lake America renaming aftermath — watch for any material Canadian retaliation or U.S. trade-policy follow-through beyond the symbolic order</div>
+<div class="watch-item">Federal grants termination proposal — watch for formal rulemaking, comment period, or legal challenges</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
