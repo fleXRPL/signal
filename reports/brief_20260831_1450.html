@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-31 14:50 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-31 14:50 UTC</span>
+    <span class="pill">108 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant fact of this news cycle is not any single story but the shape of the coverage itself: American political media has split into two ecosystems that are no longer reporting on the same set of facts, let alone the same interpretation of them. Congress returned from August recess to pass a stopgap funding bill through early December — a genuinely consequential pre-midterm event, since a shutdown fight or its avoidance will shape blame narratives heading into November 2026. Yet this legislative action drew coverage from only two center-left outlets, with zero right-leaning engagement on the bill&#x27;s actual mechanics, votes, or riders. At the same time, right-leaning outlets produced four separate opinion pieces on federal debt, bloated spending, and fiscal collapse — running in parallel to, but never citing, the concrete bill in front of the House. This is not a disagreement about the spending bill; it is two different information diets that never intersect.</p>
+<p>A second, lower-stakes but telling story is the Trump administration&#x27;s move to rename Lake Ontario &quot;Lake America&quot; for U.S. purposes, with Google Maps complying for U.S. users only and Ontario Premier Doug Ford publicly rebuking the move with his own signage. This is a real, corroborated diplomatic irritant with Canada, not media invention — but right-leaning outlets in this sample did not cover it at all, despite it being a story with an obvious favorable &quot;sovereignty&quot; framing available to them. Combined with a near-total right-leaning absence from a disaster that has killed over 900 people in Nepal, the pattern is consistent: right-leaning coverage in this sample is opting out of hard news and breaking events in favor of ideological commentary (fiscal doom, anti-socialism messaging, campus free speech), while left-leaning coverage is consistently engaging on accountability and human-impact stories (press access restrictions, disaster response, marginalized-group political shifts) without directly contesting the right&#x27;s fiscal narrative.</p>
+<p>Underneath both threads is early positioning for the 2026 midterms. Republicans are reportedly reviving transgender-focused campaign ads in competitive races (echoing 2024), and a parallel messaging track is casting the Democratic Party as captured by socialism and identity politics — via commentary around Rahm Emanuel and related pieces. Neither track is yet confirmed as a coordinated party strategy versus isolated commentary, but the thematic clustering is tight enough to note now, before the pattern either escalates or dissipates.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> remains the organizing axis of both the Lake Ontario story and the broader Republican midterm messaging — the renaming is a low-cost, high-visibility act of unilateral executive symbolism that forces a reaction (Google&#x27;s partial compliance, Ford&#x27;s public pushback) without requiring legislative buy-in. It is a preview of governing style, not policy.</p>
+<p><strong>Doug Ford</strong> is playing defense for Canadian sovereignty in a low-stakes but real bilateral friction point. Watch whether this stays symbolic or becomes a lever in trade/tariff conversations — the sign-war framing makes for good visuals but the underlying friction is genuine.</p>
+<p><strong>House Republicans and Democrats</strong> cooperated enough to move a stopgap bill through early December, avoiding a pre-midterm shutdown — notable because it suggests neither party currently wants to own a shutdown going into an election year, even as both sides build rhetorical ammunition (fiscal-doom commentary on the right, no visible counter-narrative on the left) for a future fight closer to the December deadline.</p>
+<p><strong>Rahm Emanuel</strong> appears to be test-driving a &quot;Democrats have a socialism problem&quot; framing that right-leaning commentary is amplifying — whether this is Emanuel positioning himself (2028 speculation is the obvious subtext) or genuinely reflects intra-party anxiety about the party&#x27;s left flank is not resolved by this data and needs direct sourcing.</p>
+<p><strong>GOP ad strategists</strong> are reportedly returning to transgender-issue messaging in competitive 2026 races. This claim traces to a single center-left outlet and is uncorroborated elsewhere in the sample — it should be tracked, not treated as established.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right-leaning silence is the loudest signal in this dataset. Three of the day&#x27;s top stories — the Lake Ontario renaming, the stopgap spending bill, and a 900-plus-death disaster in Nepal — drew no right-leaning coverage at all. This is unlikely to be coincidental topic avoidance (the Lake Ontario story, in particular, had an obvious pro-Trump framing available and was skipped anyway). It more likely reflects that the right-leaning outlets sampled here function as opinion/commentary operations rather than wire-style news desks, meaning breaking events get skipped regardless of their political valence in favor of pre-scheduled ideological content. Analysts should treat this as a sampling characteristic, not proof that the right-leaning ecosystem broadly ignored these stories — but within this dataset, the gap is real and consequential for anyone using it to gauge right-of-center reaction to the day&#x27;s events.</p>
+<p>On the left, the gap is narrower but real: left-leaning sources are not engaging with the right&#x27;s fiscal-doom argument (debt, spending cuts, &quot;fiscal Armageddon&quot;) at all, leaving that terrain uncontested. If the debt/spending narrative hardens into a midterm cudgel, the left will have ceded the framing fight by default rather than losing it on the merits.</p>
+<p>Also unaddressed anywhere in this sample: any administration rationale for the Lake Ontario renaming beyond &quot;Trump ordered it,&quot; and any confirmation — via ad-spend tracking rather than a single outlet&#x27;s claim — that the GOP transgender-ad strategy is actually underway at scale.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The four right-only fiscal opinion pieces (bond risk from state spending, whether Washington can cut 15%, &quot;It&#x27;s the Debt, Stupid,&quot; &quot;Fiscal Armageddon, Revisited&quot;) landing in the same cycle as the actual stopgap bill — while never engaging with the bill itself — reads as deliberate scene-setting. It builds an abstract &quot;government is fiscally reckless&quot; narrative that can be deployed for blame-shifting if a real shutdown or debt-ceiling clash materializes later this year, without requiring the outlets to take a position on this specific, low-drama funding patch.</p>
+<p>Separately, four items (Emanuel/socialism commentary, &quot;Leftists Will Never Self-Reflect,&quot; and the GOP transgender ad story) cluster into what looks like a single coordinated midterm thesis: paint Democrats as ideologically captured on two fronts simultaneously — economic (socialism) and cultural (gender identity). Treat these as one messaging track, not four independent stories, when assessing how the 2026 midterm framing is being constructed.</p>
+<p>One data-quality flag: the entity network shows Eugene Volokh, Judge Susan Illston, and references to Lufthansa/Saudi Arabia clustering with the Lake Ontario story. This is almost certainly a story-clustering error in the underlying pipeline — those names belong to an unrelated legal post about anti-SLAPP protections and foreign-speech cases. It artificially inflates the apparent centrality of the Lake Ontario story and should not be read as a real connection.</p>
+<p>Finally, two unrelated flash-flood disasters (Nepal, 900+ dead; Grand Canyon, 1 dead/15 missing) are running the same week without being connected into a broader extreme-weather narrative by any outlet in the sample — worth noting as either a missed journalistic angle or evidence that the datasets are siloed by region rather than theme.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Stopgap funding deadline, early December 2026</strong> — the bill just passed avoids a shutdown now but sets up the real test window. Watch whether right-leaning fiscal-doom commentary (currently abstract) pivots to explicit opposition or shutdown-blame messaging as the deadline approaches.</p>
+<p><strong>GOP transgender-ad claim</strong> — currently sourced to one outlet only. Check ad-tracking data (AdImpact, Wesleyan Media Project) over the next 48-72 hours to confirm whether this is an actual, funded campaign strategy in specific competitive races or an overstated single-source claim.</p>
+<p><strong>Nepal flood death toll and State Department travel advisory</strong> — confirm whether the toll rises past 900, whether the advisory expands to broader South Asia, and whether any U.S. aid announcement follows. The near-total media silence on this outside two outlets is itself worth tracking for whether it changes.</p>
+<p><strong>Doug Ford / Lake Ontario friction</strong> — watch for any escalation from symbolic sign-posting into trade or tariff rhetoric; this is the kind of low-stakes irritant that can become a proxy fight if either side wants a distraction.</p>
+<p><strong>Rahm Emanuel&#x27;s socialism messaging</strong> — watch whether this becomes an adopted DNC-adjacent talking point or stays an isolated comment, and note any tie-in to NYC mayoral politics or 2028 positioning speculation.</p>
+<p><strong>Treasury Department blocking journalists from G20 coverage</strong> — currently a left-only press-freedom story. Watch for CPJ/RSF response or any bipartisan pushback that would elevate it beyond one side&#x27;s coverage.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The most important thing happening in American politics right now is not any individual story in this sample — it&#x27;s that the right and left media ecosystems have stopped covering the same reality. One side is litigating the concrete mechanics of governance (funding bills, disaster response, press access) while the other is building an abstract ideological case (fiscal collapse, cultural extremism) that barely touches the actual legislative record. Neither side is lying, exactly — but each is constructing a version of &quot;what matters&quot; so selectively that a reader exposed to only one side would not recognize the other&#x27;s account of the same week. That gap, more than any single controversy, is the story: it means blame narratives for whatever crisis comes next — a shutdown, a debt fight, a midterm loss — are already being pre-loaded in isolation, with no shared factual floor to adjudicate them when they collide.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Massive flash floods in Nepal have killed over 900 people and left thousands missing, prompting a U.S. State Department travel advisory for affected border regions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two sources are covering nearly non-overlapping aspects of the same disaster: The Hill focuses solely on a narrow U.S. policy response (a travel warning), while The Guardian focuses on the scale and human cost of the flooding itself. Neither source alone gives a complete picture — readers relying only on The Hill would significantly underestimate the disaster&#x27;s severity (900+ dead, thousands missing), while readers of only The Guardian would be unaware of specific U.S. guidance for travelers. The absence of any right-leaning outlet in this sample also means ideological framing patterns cannot be fully assessed.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames this as an unfolding humanitarian emergency, emphasizing human toll and urgency — &#x27;desperate rescue attempts,&#x27; hundreds feared trapped in tunnels, mass casualty figures, and large-scale mobilization of security forces. The emotional register centers on loss, uncertainty, and crisis response.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the story narrowly around U.S. government action — a bureaucratic, procedural travel-safety advisory — treating the flooding as background context rather than the central story, with minimal emphasis on casualties or rescue operations.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this comparison, so right-of-center framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian&#x27;s coverage does not mention the State Department&#x27;s travel advisory or any specific U.S. government guidance for American citizens, which is the entire focus of the center-coverage source.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source is present in this comparison, so no omission analysis can be made relative to right coverage.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The House returned from August recess and took up a stopgap spending bill to fund the government through early December, avoiding a shutdown before the midterms, with Rep. Glenn Ivey (D-Md.) among those discussing the agenda.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:100.0;" title="center-left: 2"></div></div></div>
+  <div class="story-assessment">Both sources agree on the basic facts: the House returned from recess to pass a stopgap funding bill running through early December, timed to avoid a shutdown before the midterms. This is neutral, process-oriented coverage from two center-left-labeled outlets with no discernible partisan spin between them, but the absence of any right-leaning or explicitly left-leaning source means a true spectrum comparison isn&#x27;t possible here — the underlying political stakes (who gets blamed if funding lapses, what riders or disputes exist) are largely unaddressed by either.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning (non-center) source was provided in this set, so left framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Both NPR and PBS frame this as routine legislative process — a lawmaker interview and straightforward procedural coverage of the House returning to avert a shutdown — without assigning blame, credit, or partisan spin to either party.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right framing cannot be assessed from the given coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined; no right-leaning source is present to compare against for omissions.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined; no right-leaning source is present in this set to identify what it emphasizes that center-left coverage omits.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">As Congress returns to avert a shutdown and both parties court working-class and Trump-focused midterm narratives, Republicans are running transgender-issue campaign ads in competitive 2026 races, echoing their 2024 strategy.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (2)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 2"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 2"></div></div></div>
+  <div class="story-assessment">The six sources are largely covering different sub-stories rather than the same event, which limits direct comparability — only the general backdrop (active midterm positioning, Trump&#x27;s centrality, contested working-class support) is shared. The one direct claim in the prompt&#x27;s stated topic, that Republicans are focusing on transgender issues in ads, comes from a single center-left source and is uncorroborated elsewhere, so it should be treated as reported but unverified by this source set rather than established fact.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes structural power dynamics and Republican vulnerability — GOP candidates are portrayed as trapped by dependence on Trump&#x27;s money and base mobilization, while government funding fights are framed as procedural maneuvering timed around the midterms.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS treats the transgender-issue ads as a calculated, repeatable GOP messaging tactic rather than substantive policy; Politico frames working-class allegiance as a genuinely open contest, giving both parties credit and doubt in roughly equal measure.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the midterms as a mutual strategic contest — both parties converging on Trump as a focal point and competing for working-class voters — with skepticism cast on both sides&#x27; sincerity rather than singling out GOP tactics.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not mention the transgender-issue campaign ads at all, nor does it address the working-class voter competition or the Trump-as-central-issue framing found in center and right coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the transgender-ad strategy story entirely, does not address Republican financial/political dependence on Trump, and does not cover the stopgap spending bill or shutdown dynamics.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">President Trump ordered Lake Ontario renamed &#x27;Lake America&#x27; for U.S. purposes, Google Maps implemented the change for U.S. users while keeping &#x27;Lake Ontario&#x27; for Canadian users, and Ontario Premier Doug Ford responded by erecting a large &#x27;Lake Ontario&#x27; sign/billboard.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (8)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (4)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:19.0;" title="center: 8"></div><div class="bias-segment" style="background:#e0a87a; flex:19.0;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:7.1;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:7.1;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:2.4;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:19.0;" title="left: 8"></div><div class="bias-segment" style="background:#a07ae0; flex:9.5;" title="libertarian: 4"></div><div class="bias-segment" style="background:#5ab56e; flex:16.7;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The renaming is a symbolic, low-stakes provocation with real diplomatic friction attached: Trump directed a name change, a major tech platform partially complied for U.S. users only, and a Canadian official pushed back publicly — all facts corroborated across sources. The starkest signal isn&#x27;t in how the story is framed but that right-leaning outlets did not cover it at all in this sample, leaving the narrative (mockery of Trump, Canadian sovereignty, corporate capitulation) uncontested from the right and suggesting the story was treated by conservative media as either too trivial or too unflattering to engage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets treat the renaming as absurd Trump overreach and Canadian sovereignty pushback, ranging from NPR&#x27;s sympathetic &#x27;Canada claps back&#x27; framing to Mother Jones&#x27; sharper accusation that Google&#x27;s compliance exemplifies a &#x27;depressing pattern&#x27; of oligarchic deference to authoritarian presidential whims. Emotion centers on mockery of Trump and admiration for Canadian defiance/national pride.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center and center-left outlets (PBS, Axios) largely adopt an explainer/process posture — describing which bureaucratic bodies control map naming, how Google&#x27;s and Apple&#x27;s differing compliance reflects a corporate dilemma amid international friction, and treating Ford&#x27;s sign as a notable but not heavily editorialized diplomatic moment.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning or far-right outlet in this set (Fox News, Breitbart, RealClearPolitics) covered the Lake Ontario/&#x27;Lake America&#x27; renaming directly; their coverage focused on Iran strikes, immigration/trucking fraud, and unrelated domestic controversies. The closest right-adjacent commentary is libertarian outlet Reason, which addressed the broader U.S.-Canada trade war as &#x27;costly, absurd, and unfunny&#x27; — a rare right-of-center outlet criticizing the administration&#x27;s Canada posture, though not the lake renaming specifically.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not surface any right-leaning defense or rationale for the renaming (e.g., any administration justification beyond &#x27;Trump ordered it&#x27;), nor does it explore whether there is domestic political support for the move — right-leaning outlets in this sample are silent on the topic, so no counter-framing exists to omit from, which is itself notable.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets omit the Lake Ontario renaming story entirely, along with Canada&#x27;s public rebuke via Ford&#x27;s sign and Google&#x27;s compliance — despite it being one of the most heavily covered stories across left, center-left, and center outlets. This is a significant coverage gap rather than a framing difference.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Lake Ontario renaming</span><span class="entity-tag">Stopgap spending bill</span><span class="entity-tag">Nepal flash floods</span></div>
+  <div class="connection-text">All three top stories of the day are covered by center/center-left/left sources almost exclusively, with right-leaning outlets absent even from a 900+ death humanitarian disaster (Nepal) and a routine process story (spending bill). This isn&#x27;t topic-specific avoidance — it&#x27;s a broader pattern of right-leaning outlets in this sample skipping hard-news/wire-style stories in favor of opinion-column content.</div>
+  <div class="connection-sig">↳ Suggests the right-leaning sample skews toward opinion/commentary outlets rather than wire-service style reporting, which will systematically undercount right engagement with breaking news regardless of the topic&#x27;s political valence — a sampling artifact as much as an editorial choice.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Rahm Emanuel</span><span class="entity-tag">Dems&#x27; Demonization of Trump / Rise of Socialism</span><span class="entity-tag">Leftists Will Never Self-Reflect</span><span class="entity-tag">GOP transgender ads</span></div>
+  <div class="connection-text">Four right-only or right-leaning items cluster around a single midterm thesis: brand the Democratic Party as captured by socialists and identity politics, while simultaneously running transgender-focused ads against Democrats. This reads as one coordinated messaging track (socialism fear + culture-war ads) rather than four unrelated stories.</div>
+  <div class="connection-sig">↳ Indicates a deliberate two-pronged 2026 midterm strategy — the same &#x27;Democrats are extreme&#x27; frame is being applied on economic-ideology grounds (socialism) and social-issue grounds (trans ads) in parallel, echoing the 2024 playbook per the story itself.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Quiet Bond Risk of Bloated State Spending</span><span class="entity-tag">Can Washington Cut 15% of Spending?</span><span class="entity-tag">It&#x27;s the Debt, Stupid</span><span class="entity-tag">Fiscal Armageddon, Revisited</span><span class="entity-tag">Stopgap spending bill</span></div>
+  <div class="connection-text">Four right-only opinion pieces on fiscal doom/debt/spending cuts appear the same news cycle the House takes up a stopgap funding bill — but none of the right-only pieces actually engage with the stopgap bill&#x27;s contents or vote.</div>
+  <div class="connection-sig">↳ The right is building an abstract fiscal-crisis narrative in parallel with, rather than in response to, the concrete legislative event — useful groundwork for blame-shifting if a shutdown fight or debt-ceiling clash emerges later this year, without having to take a position on the actual bill.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Eugene Volokh</span><span class="entity-tag">Susan Illston</span><span class="entity-tag">Jamshed</span><span class="entity-tag">Deutsche Lufthansa AG</span><span class="entity-tag">Saudi Arabia</span></div>
+  <div class="connection-text">These names co-occur only with each other and appear to be misattributed to the &#x27;Trump Ontario Lake Canada&#x27; story cluster in the entity network — they actually belong to a distinct Volokh Conspiracy/Reason legal post about anti-SLAPP protections not applying to foreign speech by foreigners (a Saudi Arabia/Lufthansa-linked case before Judge Illston).</div>
+  <div class="connection-sig">↳ This is a story-clustering/entity-extraction error in the underlying pipeline, not a real-world connection — flag for data-quality review since it inflates the apparent centrality of the &#x27;Lake Ontario&#x27; story and could mislead pattern-matching on unrelated legal and foreign-influence stories.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Right-leaning commentary is heavily fiscal/institutional (debt, spending cuts, education, free speech on campus) while largely skipping same-day breaking news (Nepal floods, Lake Ontario, spending bill mechanics) — a pattern of engaging on ideological terrain of its own choosing rather than the day&#x27;s dominant wire stories.</div>
+<div class="pattern-item">Left-only coverage skews toward accountability and human-cost stories with international/identity dimensions (Arab American voters in Michigan, Israeli settler violence &#x27;hitting close to home&#x27; in the US, Treasury blocking G20 press access, global health spending cuts) — a consistent frame of institutional overreach and marginalized-group impact.</div>
+<div class="pattern-item">Two unrelated natural disasters (Nepal flooding, 900+ dead; Grand Canyon flash flood, 1 dead/15 missing) are running in the same cycle but are not being connected as part of a broader &#x27;extreme flooding&#x27; story — an editorial missed opportunity for pattern journalism, or a sign the datasets are siloed by region rather than by theme.</div>
+<div class="pattern-item">A one-source, uncorroborated claim (GOP running transgender-focused ads in 2026) is being treated across the sample as if it were an established trend echoing 2024 — a case of a single outlet&#x27;s framing risking amplification into &#x27;received wisdom&#x27; without cross-source verification.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">Right-leaning outlets did not cover the Lake Ontario renaming at all despite it being a Trump-driven story with a clear opportunity for a favorable &#x27;sovereignty/trolling&#x27; angle — suggests the story was seen as more mockable than useful, or simply beneath the threshold of outlets in this sample.</div>
+<div class="anomaly-item">A disaster that has killed 900+ people (Nepal) drew only two sources total and zero right-leaning coverage — a striking gap for a high-significance humanitarian event that would typically generate bipartisan coverage (aid response, travel advisories, etc.).</div>
+<div class="anomaly-item">The stopgap spending bill — a genuinely consequential pre-midterm event — has only two sources, both center-left, with no right-leaning coverage of the actual legislative mechanics even as four separate right-only opinion pieces discuss spending/debt in the abstract.</div>
+<div class="anomaly-item">Entity-network data shows implausible co-occurrences (Saudi Arabia, Deutsche Lufthansa, Susan Illston, Jamshed clustering with the Lake Ontario story) indicating a likely story-clustering error in the pipeline rather than a genuine narrative link.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning sources in this sample are systematically absent from breaking/process news (Lake Ontario, the spending bill, the Nepal disaster) while concentrating output on ideological opinion content (debt doom, anti-socialism, education, free speech) — suggesting an editorial strategy of shaping narrative through commentary rather than contesting facts on the ground. Left-leaning sources, meanwhile, cluster around accountability and marginalized-impact stories (press access, global health cuts, Arab American political shifts, settler violence) but similarly avoid engaging with the right&#x27;s fiscal-doom framing directly, leaving the debt/spending narrative uncontested from the left. The net effect is two parallel media ecosystems talking past each other on spending policy — one litigating the bill&#x27;s process, the other its abstract morality — with almost no outlet bridging both.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Glenn Ivey. D-Md., Discusses</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Scholar discusses Trump&#x27;s claims of a new Venezuelan oil agreement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Funding bill at the top of the agenda as House returns from recess</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Treasury Department blocks certain journalists from covering G20 meeting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump won the heart of Michigan’s Arab American community. They&#x27;re moving away from Mike Rogers.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Secretive deals may cut billions from U.S. global health spending, analysis shows</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The politics of the company you keep</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Georgia police officer put on leave after family’s pet donkey killed during search</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In a town in the heart of the US, Israeli settler violence in West Bank hits close to home</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US man says ‘hold tight’ to loved ones after wife and toddler killed by lightning</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One dead and 15 people may be missing after flash flood in Arizona’s Grand Canyon</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Quiet Bond Risk of Bloated State Spending</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Real Education Is What Helps Underprivileged Kids</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dolly Was More Than a Crystal-Clear Voice</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Young, Hip Fans of Murdering a CEO</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can Washington Cut 15% of Spending?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Fight for Free Thinking at UNC</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Seattle Teachers Threaten an Illegal Strike</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A New Look at the Universe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vulnerable Dem&#x27;s own audit admits Medicaid oversight failure amid massive statewide fraud scandal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Newly unclassified Pentagon images show suspected drug boats as official issues deadly warning</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DC public schools face special grand jury probe into attendance, truancy and graduation records</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It’s the Debt, Stupid</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fiscal Armageddon, Revisited</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Good Golly, Dolly Loved God</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jeanne Allen’s Important New Book Profiles Everyday Heroes of Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In the Age of AI, What Should Schools Teach?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› If You Thought California’s High-Speed-Rail Idea Was Insane . . .</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ceuta Crisis: Three Moroccans Arrested for Throwing Corrosive Cocktails at Military</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spanish PM Sanchez Says Israel and Russia Driving Disinformation on Ceuta Illegal Migrant Crisis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dallas Stars Will Not Host Pride Night for First Time in Five Years</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ukrainian Supermarkets Running Empty Amid Sustained Russian Attacks on Supply Chains</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rahm Emanuel: &#x27;I Don&#x27;t Consider Democratic Socialists Part of the Democratic Party&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dawn Buckingham: The &#x27;Texas Engine&#x27; -- Fueling, Feeding, and Fortifying America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› London&#x27;s Multicultural Notting Hill Carnival Sees 169 Arrests on Opening Day</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ashley Moody Claims Senate GOP Has Face &#x27;Historic Obstruction&#x27; from Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Majority Whip Emmer: &#x27;The Senate&#x27;s Got to Start to Perform&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems&#x27; Demonization of Trump To Blame for Rise of Socialism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leftists Will Never Self-Reflect or Apologize</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Susan Collins&#x27; Superpower Against Troy Jackson?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Letitia James Turns Evil Eye on Trump, Blind Eye to NY Crime</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Big Tech Crashes Headlong Into U.S. Democracy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans Are Being Shockingly Smart on Data Centers</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">House stopgap spending bill: watch for shutdown-blame messaging to escalate as the early-December deadline nears, especially whether right-leaning fiscal-doom commentary pivots to explicit opposition or blame-shifting</div>
+<div class="watch-item">GOP transgender-issue ad spending in specific competitive 2026 races — confirm via ad-tracking data (e.g., AdImpact/Wesleyan Media Project) whether this is a real trend or a single-source claim</div>
+<div class="watch-item">Nepal flood death toll and scope of the State Department travel advisory — check for expansion to broader South Asia guidance or US aid announcements</div>
+<div class="watch-item">Lake Ontario/&#x27;Lake America&#x27; friction — watch for escalation into tariff or trade rhetoric with Canada, and whether Doug Ford&#x27;s pushback becomes a recurring flashpoint</div>
+<div class="watch-item">Rahm Emanuel/Democratic Party-socialism messaging — watch whether this becomes a coordinated DNC-adjacent talking point or remains an isolated comment, and its interaction with NYC mayoral politics</div>
+<div class="watch-item">Treasury Department&#x27;s blocking of journalists from G20 coverage — a press-freedom story currently only on the left; watch for press-advocacy group response (CPJ, RSF) or bipartisan pushback</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
