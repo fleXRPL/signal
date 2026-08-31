@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-08-31 12:27 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-08-31 12:27 UTC</span>
+    <span class="pill">97 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">Trump Canada Ontario &#x27;Lake Iranian</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (5)</span><span class="bias-badge" style="color:#e0a87a;">center-left (8)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (4)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:14.7;" title="center: 5"></div><div class="bias-segment" style="background:#e0a87a; flex:23.5;" title="center-left: 8"></div><div class="bias-segment" style="background:#7ae09b; flex:5.9;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:8.8;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:11.8;" title="far-right: 4"></div><div class="bias-segment" style="background:#e07a7a; flex:20.6;" title="left: 7"></div><div class="bias-segment" style="background:#5ab56e; flex:14.7;" title="right: 5"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A flash flood swept through Bright Angel Canyon and the Phantom Ranch area of the Grand Canyon on August 29, 2026, killing at least one person and leaving roughly 15 others missing or unaccounted for.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core facts: a major flash flood hit a heavily trafficked corridor of the Grand Canyon and left about 15 people missing. The only notable discrepancy is that the Guardian reports a confirmed death while the Hill&#x27;s summary does not, which may reflect timing differences in when each story was filed as the situation developed. With only center and left sources available, no meaningful left-right political framing comparison can be made — this is a natural disaster story, not one with a clear partisan angle.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian centers the human toll, leading with the death count alongside the missing figure, framing the story around casualties and the scale of the emergency response rather than politics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the event as an unfolding emergency situation, leaning on NPS statements to convey urgency about the unaccounted-for visitors, with less emphasis on casualties.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set, so right-wing framing cannot be assessed.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was provided for comparison, so omissions relative to right coverage cannot be determined.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was included in this set; right-wing coverage and any omissions cannot be assessed.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. Ed Markey holds a commanding lead (60.4%) over Rep. Seth Moulton in a poll of the Massachusetts Democratic Senate primary, with the campaign increasingly framed around generational contrasts.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two available sources cover different facets of the same race without directly contradicting each other: one supplies horse-race polling numbers, the other explores campaign messaging and age dynamics. Without a poll&#x27;s context (sample size, date, pollster), the 60.4 percent figure is hard to weigh independently, and without right-leaning coverage, it&#x27;s unclear how conservative outlets are characterizing either the poll or the generational storyline.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the race as a generational-optics narrative, emphasizing the tension of an 80-year-old incumbent claiming to represent youth, with focus on Markey&#x27;s strategic messaging and identity contrast against a younger challenger.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the race as a decisive, numbers-driven contest, leading with poll margins to suggest the primary is effectively settled in Markey&#x27;s favor.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this set, so right-wing framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post piece omits the concrete polling data (60.4 percent margin) that would clarify whether the generational narrative it explores has electoral traction.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage is present in this set to compare omissions against.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">California&#x27;s Assembly Bill 2017, which would formally recognize Eid al-Fitr and Eid al-Adha in state law, passed the Assembly 64-1 and now awaits Senate action before reaching Governor Newsom&#x27;s desk; a separate, unrelated dispute is also unfolding over a newly signed California law (the &#x27;Stop Nick Shirley Act&#x27;) that a Republican assemblyman plans to challenge in court.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These two articles do not cover the same event — one concerns a bill recognizing Islamic holidays, the other an unrelated law targeting a journalist-fraud-exposure controversy — so no meaningful cross-spectrum comparison of framing on a single story is possible here. This appears to be a data-mismatch in the source set rather than a genuine case of divergent coverage; accurate analysis would require two sources actually reporting on the same underlying event, including at least one left-leaning and one center outlet for balance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set, so left framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was provided in this set, so center framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The two right-of-center outlets cover entirely different stories: Fox News treats AB 2017 as a routine procedural update emphasizing Democratic sponsorship without engaging the bill&#x27;s merits or controversy, while Breitbart (far-right) frames a separate law, the &#x27;Stop Nick Shirley Act,&#x27; as Democratic-enabled government overreach suppressing citizen journalists who expose fraud, casting the planned lawsuit as a free-speech defense.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source was included in this coverage set for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable in the usual sense: the two right-leaning sources report on two unrelated events, so neither outlet is omitting the other&#x27;s story so much as simply not covering it. No source in this set addresses the Islamic holidays bill and the citizen-journalism law together, so any connection or tension between them (if one exists) goes unexamined.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. plans to sanction another bank in effort to clamp down on Iran transactions, Bessent tells AP</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Republicans are focusing on transgender issues in competitive 2026 campaigns</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet the ex-Republicans running as Democrats in the midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› USDA reportedly shelves cyclospora research amid relocations and fund cuts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Humongous’ marmot crowned winner in inaugural Fat Marmot Week contest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘GB News wouldn’t touch him’: Milo Yiannopoulos will struggle to fit in with UK right wing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The datacenter backlash is bringing the entire political spectrum together – against big tech billionaires</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump EPA is manipulating safety data around a highly toxic flame retardant, advocates allege</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Just How Ridiculously, Hellishly Hot Are New York City’s Subways? Jack Can Tell You.</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› California Recognizing Islamic Holidays Nears</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Takes the Oil in Venezuela</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Fight for Free Thinking at UNC</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Seattle Teachers Threaten an Illegal Strike</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A New Look at the Universe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who’s ‘Working Class’ Anymore?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Extreme Weather’ Isn’t a Scientific Term</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Dollar’s Global Dominance Keeps America First</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America’s Systemic Munitions Shortfall</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DC public schools face special grand jury probe into attendance, truancy and graduation records</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans tighten screws on Sherrill as noncitizen voter probe enters new phase</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem Senate hopeful pivots on data centers as rising power costs collide with campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Silicon Valley exec ignites firestorm after accusing JD Vance of bringing DEI back</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› If You Thought California’s High-Speed-Rail Idea Was Insane . . .</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Anti-Trumpism Is Driving the Media to Cheer Hostile Powers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Life, Liberty, and a Laugh Track</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Khalid Sheikh Mohammed Faces Trial . . . Soon . . . Probably</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Europe’s Misguided Plans for Pursuing Digital Independence</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Siren Songs of Our Age</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Return of the ‘Zionist’ Slur</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hillary Clinton&#x27;s Search for Intern with &#x27;High Level&#x27; of &#x27;Discretion&#x27; Draws Mockery: &#x27;Who the Hell Would Sign Up for That Job?&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lawsuit: Elon Musk&#x27;s xAI Trained Grok AI Using Child Pornography</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Report: Officials Fielded Thousands of Food Safety Violations by Illegal Street Vendors But Now Do Nothing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College Football Player MicahJo Barnett Dies at 20 Moments After Scoring Touchdown</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› VIDEO: Florida Man Says &#x27;Angels&#x27; Rushed to Help Him During Shark Attack</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leftists Will Never Self-Reflect or Apologize</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The First Amendment Does Not Belong Only to the Beloved</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hegseth&#x27;s Path to the 2028 GOP Nomination Is No Joke</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Agentic America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Radically Simple Plan To Fix Higher Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America&#x27;s Schools Designed to Tear Down Young Men</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Make Internal Combustion Engines Great Again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Were the Bombs of August 1945 &#x27;Demonic&#x27;?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court Just Gave Mail-In Ballot Safeguards a Chance</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
