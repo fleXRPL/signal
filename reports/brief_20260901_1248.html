@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-01 12:48 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-01 12:48 UTC</span>
+    <span class="pill">121 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the collection period is a Supreme Court ruling that let construction continue on Trump&#x27;s White House ballroom while the underlying legality of the project remains unresolved in the lower courts. The 5-4 split, with Roberts in dissent, did not settle whether the project violates preservation or appropriations law — it settled only that opponents lacked standing to halt construction in the meantime. That distinction is being erased in coverage on both sides: the left is treating this as a completed erosion of institutional checks, the right is treating it as a vindicated win, and almost nobody outside libertarian outlets is engaging with the actual unresolved legal question. This is a pattern worth naming up front because it recurs throughout the corpus: procedural outcomes are being reported as substantive ones by outlets on both sides, which will make it harder for a reader relying on either side alone to understand what has and hasn&#x27;t actually been decided.</p>
+<p>Beneath that, two structural dynamics are running in parallel and mostly undiscussed as related phenomena. First, the succession question inside the Republican coalition is now visibly active — Vance courted major Jewish Republican donors at the RJC summit in Las Vegas with enough success to draw a standing ovation, a clear 2028 positioning move, at the same moment Trump is fighting in court to permanently alter the White House itself. Neither is being covered as part of the same story, but both are legacy-and-succession plays happening on the same calendar. Second, a coordinated-looking messaging push linking the Democratic Party to socialism and fiscal irresponsibility is running across at least four separate right-originated stories (a House anti-socialism resolution, two separate hit pieces on NYC-DSA figures, and tax-focused coverage of James Talarico), all converging on the same midterm-positioning message without any of the outlets treating it as a coordinated campaign.</p>
+<p>Finally, there is a real accountability story — fatal flash flooding at the Grand Canyon and the National Park Service response — that exists only in left coverage despite normally being the kind of human-interest, bipartisan disaster story that draws coverage across the spectrum. Its absence on the right, alongside the near-total absence of right-side coverage of a favorable Vance story, suggests editorial attention on the right this cycle is unusually narrow and concentrated on offense (socialism messaging, bureaucratic overreach) rather than routine coverage.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> is the central actor by volume but the ballroom fight is where his actual leverage is being tested — he is using litigation delay and a favorable Court composition to establish a physical, hard-to-reverse legacy marker before any court rules on the merits. That is a rational strategy if the underlying legal theory is weak: get it built, and reversal becomes politically and practically costlier regardless of the eventual ruling.</p>
+<p><strong>JD Vance</strong> is running a distinct and separately motivated operation — courting a donor and activist bloc (Jewish Republican donors) with whom he has had prior friction, in a closed-door setting, ahead of an all-but-declared 2028 run. The friction itself is undisclosed in every account available; that gap matters, because &quot;standing ovation despite prior friction&quot; is being reported as resolution without any outlet explaining what the friction was about. This is a coalition-repair story where the substance of the original rift is being withheld or simply not reported.</p>
+<p><strong>Chief Justice Roberts</strong> dissenting from his own Court&#x27;s majority on the ballroom case is a notable data point independent of the outcome — either a genuine separation-of-powers objection or a strategic dissent positioning him for a future merits ruling. Both readings are plausible and coverage has not seriously engaged with which is more likely.</p>
+<p><strong>The House GOP messaging operation</strong> (anti-socialism resolution, coordinated DSA criticism, tax framing around Talarico) looks like the most deliberately orchestrated element in this collection — four stories, four different origination points, one converging message, all landing in the same cycle ahead of midterms. This is the item most worth treating as strategy rather than news.</p>
+<p><strong>Ron Johnson</strong>, via two same-day &quot;Exclusive&quot; Breitbart placements pushing an anti-Fauci, Covid-reckoning message, is showing signs of a planned rollout — likely tied to a book, hearing, or subpoena announcement not yet public. Duplicate same-day exclusives from one outlet on one senator&#x27;s message is not organic news cadence.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the Grand Canyon flash-flood deaths and NPS emergency response at all — a fatal disaster story with an obvious federal-accountability angle that would normally draw coverage regardless of ideology. Given NPS is simultaneously a named party in the ballroom legal dispute, this is a live accountability story being left entirely to one side of the spectrum.</p>
+<p>The right is also not covering the Vance/RJC story, which is objectively favorable to a Republican vice president. That is the opposite of the expected incentive pattern and suggests either an editorial blind spot around 2028 positioning stories this early, or a deliberate choice not to surface intra-coalition friction even in service of a positive story.</p>
+<p>The left is not engaging with the socialism/tax-and-spend messaging cluster building against it — no counter-framing, no pushback on the Talarico tax coverage or the DSA hit pieces, and no independent verification of the Gordillo townhouse allegation, which is a factual claim (property records, family purchase) currently circulating with zero cross-checking from any left or center source. That allegation should be treated as unverified, not false, but its total lack of scrutiny in an otherwise adversarial media environment is itself notable.</p>
+<p>Neither side is seriously engaging the substantive legal question in the ballroom case — whether the construction actually violates preservation or appropriations law. The right has &quot;won&quot; the procedural round and moved on; the left has treated the procedural loss as the whole story. The merits question is still open and effectively unreported.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The clearest coordinated pattern is the socialism-messaging cluster: the House anti-socialism resolution, the Fox and Washington Examiner pieces on NYC-DSA (Gordillo&#x27;s housing situation, DSA&#x27;s funding math), and Talarico tax coverage all land in the same window and drive toward one message — Democrats as fiscally reckless socialists — ahead of the midterms. Treat this as an active branding campaign, not four unrelated editorial decisions, and expect it to keep escalating with additional entries, possibly tied to explicit midterm ad buys.</p>
+<p>The Vance/RJC speech and the ballroom fight are not connected in any coverage, but both are legacy-securing moves running on parallel tracks inside the same administration in the same week — one a coalition-and-money play for 2028, the other a physical, litigated legacy marker for the current term. Worth watching whether they start to interact, particularly if Vance begins distancing himself from or leaning into the ballroom fight as a proxy for his own positioning.</p>
+<p>Libertarian outlets (Reason) are the only cluster attacking both the ballroom construction and unrelated gun-rights cases against marijuana users on identical anti-overreach grounds, cutting across the standard left-right axis. That is a real ideological signal, not noise, and it is invisible if you&#x27;re only counting partisan source volume.</p>
+<p>The apparent &quot;White House Ballroom&quot; hub connecting to roughly twenty unrelated stories in the entity graph is very likely an artifact of shared bylines and wire-service tagging (PBS NewsHour, Axios, common reporters), not a substantive narrative link. Flag it as a data-quality issue rather than a finding.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Ballroom litigation, lower court</strong>: whether the underlying preservation/appropriations-law merits case advances to a substantive ruling in the next 48-72 hours, and whether right-leaning outlets begin covering that question rather than just the procedural win. This is the actual unresolved legal exposure.</p>
+<p><strong>Gordillo/DSA townhouse allegation</strong>: watch for a direct response from Gordillo or any left/center fact-check. Currently an unverified factual claim running in a single-side echo chamber — treat as unconfirmed until independently checked.</p>
+<p><strong>Ron Johnson/Fauci push</strong>: watch for an announced book, hearing, or subpoena request in the next few days that would explain the coordinated same-day double placement in Breitbart. If nothing surfaces, this was likely a deliberate media-cycle seed.</p>
+<p><strong>House stopgap spending bill</strong>: as Congress returns to DC with a December funding deadline approaching, this remains covered only on the left. Watch for the first right-side pickup and for shutdown-blame framing to start hardening on both sides.</p>
+<p><strong>Socialism-messaging cluster</strong>: watch whether the anti-socialism resolution, DSA pieces, and Talarico coverage coalesce into a named, funded midterm ad campaign — this would confirm the coordination read rather than leave it circumstantial.</p>
+<p><strong>JD Vance follow-on coverage</strong>: watch for right-leaning pickup of the RJC speech and for any reporting that finally specifies what the prior donor/activist friction with Vance was actually about.</p>
+<p><strong>Grand Canyon/NPS</strong>: watch for any right-side coverage or a federal-accountability angle (FEMA, congressional inquiry) given NPS&#x27;s simultaneous exposure in the ballroom case — continued silence would confirm this is being deliberately left uncovered rather than simply missed.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The through-line across this collection is that both media ecosystems are increasingly reporting procedural and positioning developments as if they were resolved substantive outcomes, while leaving the actual open questions — the ballroom&#x27;s legality, the substance of Vance&#x27;s donor friction, the funding math behind DSA&#x27;s platform, the truth of the Gordillo allegation — unaddressed by design rather than oversight. That is not neutral fragmentation; it is two separate operations each running favorable-but-thin stories inside a friendly silo, secure in the knowledge the other side won&#x27;t be read closely enough to force a correction. The socialism-messaging cluster on the right looks like the most organized element in the period, suggesting midterm positioning is now the primary driver of story selection on that side, while the left&#x27;s continued near-exclusive ownership of accountability stories (Grand Canyon, ballroom cost/preservation law) without any counter-coverage suggests the right is currently optimizing for offense over routine institutional scrutiny. Neither side is lying outright in what it reports; the distortion is almost entirely in what gets left out.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">The U.S. Supreme Court ruled 5-4 to allow construction of Trump&#x27;s White House ballroom to continue while a lower-court lawsuit over the project proceeds, with Chief Justice Roberts dissenting.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (14)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#7ae09b;">center-right (5)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (8)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (5)</span><span class="bias-badge" style="color:#5ab56e;">right (9)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 14"></div><div class="bias-segment" style="background:#e0a87a; flex:17.9;" title="center-left: 10"></div><div class="bias-segment" style="background:#7ae09b; flex:8.9;" title="center-right: 5"></div><div class="bias-segment" style="background:#e05252; flex:5.4;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:3.6;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:14.3;" title="left: 8"></div><div class="bias-segment" style="background:#a07ae0; flex:8.9;" title="libertarian: 5"></div><div class="bias-segment" style="background:#5ab56e; flex:16.1;" title="right: 9"></div></div></div>
+  <div class="story-assessment">All sides agree on the core legal fact: a divided Supreme Court let construction proceed without ruling on the project&#x27;s ultimate legality, leaving the real dispute unresolved. The spin gap is less about facts than about weight — left outlets treat this as an alarming erosion of checks on executive power, right outlets treat it as a deserved procedural win for Trump, and the substantive legal question (whether the construction violates preservation or appropriations law) remains genuinely unsettled and underreported on the right.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes the ruling as a troubling, ideologically split (5-4) decision that enables what they characterize as an unchecked, costly, personally-driven vanity project by Trump, foregrounding Democratic criticism and framing it as evidence of a compliant conservative court majority overriding preservation and separation-of-powers concerns.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Presents the ruling primarily as a procedural legal development — a stay allowing construction to continue pending further litigation — largely without editorializing on the merits of the ballroom project itself, though The Hill and Axios both give substantial attention to Roberts&#x27; separation-of-powers dissent as a notable institutional warning.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the ruling as a political &#x27;win&#x27; or &#x27;lifeline&#x27; for Trump, celebrating the outcome while treating Roberts&#x27; dissent as a secondary, even out-of-step counterpoint; some right-leaning legal commentary (Reason) instead focuses on the intra-court strategic dynamics between Kavanaugh and Roberts.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the narrower legal/procedural framing emphasized on the right and by libertarian outlets — that the ruling turned specifically on plaintiffs lacking sufficient standing (aesthetic injury) rather than a substantive ruling on the construction&#x27;s legality, and doesn&#x27;t engage with the theory that Roberts&#x27; dissent may have been a strategic vote-counting maneuver rather than pure principle.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage largely omits or downplays the cost figure (~$400 million) and preservation-law substance of the challenge emphasized on the left, and gives less weight to Roberts&#x27; separation-of-powers reasoning as a serious institutional critique, instead treating it as a losing dissent.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Vice President JD Vance gave a closed-door speech to the Republican Jewish Coalition leadership summit in Las Vegas and received a standing ovation, despite prior friction with some Jewish Republican donors and activists over his expected 2028 presidential ambitions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">All three sources agree on the core event: Vance addressed the RJC summit as part of a 2028-oriented outreach effort and was well received. The meaningful variation is in emphasis — Washington Post foregrounds prior donor/activist skepticism to frame the ovation as noteworthy, while Politico and Axios treat the speech more straightforwardly as expected political relationship-building, without dwelling on friction. The notable gap is the absence of any right-leaning outlet in this set, and none of the three specify what exactly caused the earlier Jewish Republican criticism of Vance, leaving the real substance of the dispute unclear.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the event as a notable, almost surprising reconciliation — emphasizing the contrast between prior donor/activist criticism and the warm reception, highlighting unresolved factional tension beneath a surface display of unity.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the speech primarily as strategic political outreach ahead of a 2028 run, emphasizing relationship-repair with a skeptical constituency rather than conflict or drama.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this set, so right-wing framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was provided for comparison, so specific omissions relative to right-wing framing cannot be identified.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source included in this coverage set.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A Las Vegas jury convicted Duane &#x27;Keffe D&#x27; Davis of murder for orchestrating the 1996 drive-by shooting that killed rapper Tupac Shakur.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core, verifiable outcome — Davis was convicted of murder in Shakur&#x27;s 1996 killing — with no factual dispute between them. The divergence is purely one of emphasis: the Guardian foregrounds emotional narrative and cultural legacy, while Breitbart foregrounds procedural/legal mechanics and evidentiary weight, reflecting each outlet&#x27;s typical framing rather than any substantive disagreement about facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames the verdict as the emotional culmination of a decades-long wait, emphasizing closure for Shakur&#x27;s family and fans and situating the trial within a broader narrative (including a memoir) about unresolved grief and cultural legacy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-outlet coverage was provided for this story.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames the story as a straightforward crime-and-justice account, emphasizing the specific criminal charge (murder with a deadly weapon), the strength of prosecutorial evidence, and accountability finally being delivered after decades of delay.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not mention the specific charge of &#x27;murder with a deadly weapon&#x27; or emphasize the evidentiary/prosecutorial case detail that Breitbart highlights.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits the emotional/human-interest angle around family and fan closure, and does not reference the memoir context that the Guardian includes.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">Fox News and the Washington Examiner published pieces this week criticizing NYC-DSA figures — one alleging co-chair Gustavo Gordillo&#x27;s working-class biography is contradicted by public records showing he lives in a $1.4M townhouse purchased by his parents, and another arguing DSA candidates can&#x27;t credibly explain how their policy proposals would be funded.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#5ab56e; flex:100.0;" title="right: 2"></div></div></div>
+  <div class="story-assessment">This dataset contains only right-leaning sources, one a reported piece alleging factual contradictions in a DSA leader&#x27;s biography (a claim resting on public records that warrants independent verification and the subject&#x27;s response before treating it as settled), and the other an opinion column making a broader ideological argument about DSA&#x27;s policy coherence rather than new reporting. Without left or center coverage, it&#x27;s impossible to assess consensus, and readers should treat the personal-hypocrisy narrative and the policy-incompetence narrative as separate claims of different evidentiary weight — the first is a factual allegation, the second is commentary.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in this dataset — no left-leaning source was provided, so left framing cannot be assessed from this coverage set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Not represented in this dataset — no center-labeled source was provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both outlets frame DSA and its leaders as hypocritical and unserious: Fox News emphasizes a personal &#x27;gotcha&#x27; narrative (a socialist leader secretly living off inherited wealth while claiming working-class credentials), while the Washington Examiner opinion piece frames DSA policy positions as financially incoherent and politically self-defeating, focusing on candidates&#x27; inability to answer funding questions rather than engaging the policy substance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning coverage is available for comparison in this dataset.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right-side pieces omit Gordillo&#x27;s or DSA candidates&#x27; own responses/rebuttals to these claims, any independent verification of the property ownership and employment records beyond the outlets&#x27; framing, and broader context on DSA&#x27;s stated policy funding mechanisms (e.g., specific tax proposals) that would let readers judge the &#x27;bad math&#x27; claim on its merits rather than through the columnist&#x27;s characterization.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">JD Vance</span><span class="entity-tag">Trump</span><span class="entity-tag">White House ballroom</span></div>
+  <div class="connection-text">Vance&#x27;s closed-door 2028 donor-courting speech to the RJC and Trump&#x27;s insistence on a permanent physical addition to the White House are both succession/legacy plays happening in the same news cycle — one literal (concrete), one political (coalition-building) — yet no outlet connected them, and no right-leaning source covered the Vance story at all.</div>
+  <div class="connection-sig">↳ A sitting VP actively building a 2028 financial/political base while the sitting President is simultaneously making legacy-defining, court-contested physical changes to the White House itself suggests parallel but uncoordinated legacy-securing operations; the total right-media silence on Vance&#x27;s move is itself notable given it should be a favorable story for that audience.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Reason</span><span class="entity-tag">Supreme Court</span><span class="entity-tag">8th Circuit</span></div>
+  <div class="connection-text">Reason (libertarian) is the only outlet cluster criticizing executive/judicial overreach on both the ballroom construction (procedural bypass of appropriations/preservation law) and gun-rights cases against pot smokers (retroactive constitutional patching) — two stories with opposite left/right valence that libertarians attack on identical &#x27;government exceeded its proper bounds&#x27; grounds.</div>
+  <div class="connection-sig">↳ Shows an ideological throughline (anti-executive-overreach) that cuts across the standard left/right axis and is invisible if you only track partisan source counts.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Anti-socialism resolution</span><span class="entity-tag">NYC-DSA (Gordillo)</span><span class="entity-tag">James Talarico</span><span class="entity-tag">Kamala Harris</span></div>
+  <div class="connection-text">Four nominally separate stories — the House GOP anti-socialism resolution, the Fox/Examiner DSA hit pieces, the Talarico tax-hike coverage, and &#x27;Kamala to the Rescue&#x27; — all originate on the right and converge on a single midterm message: Democratic Party = socialism/tax-and-spend.</div>
+  <div class="connection-sig">↳ This looks like a coordinated pre-midterm branding push rather than four independent editorial choices; it directly matches and has now escalated beyond the prior watch item on Rahm Emanuel/socialism messaging.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">National Park Service</span><span class="entity-tag">Grand Canyon flood</span><span class="entity-tag">White House ballroom</span></div>
+  <div class="connection-text">NPS is simultaneously the agency managing a deadly, heavily-covered flash-flood disaster response (three left-only stories) and the agency with jurisdiction implicated in the ballroom construction legal dispute — yet no outlet linked NPS&#x27;s bandwidth/credibility across both roles.</div>
+  <div class="connection-sig">↳ An agency under acute operational and legal scrutiny in two unrelated arenas at once is a legitimate accountability angle that both sides are missing by siloing coverage along ideological topic lines rather than institutional ones.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Ron Johnson</span><span class="entity-tag">Anthony Fauci</span><span class="entity-tag">Breitbart</span></div>
+  <div class="connection-text">Two separate &#x27;Exclusive&#x27; Breitbart pieces on the same day both push Ron Johnson&#x27;s Covid-reckoning/anti-Fauci message — an unusual same-day double-run rather than a single story, suggesting a coordinated release tied to a book, hearing announcement, or planned news cycle not yet reported elsewhere.</div>
+  <div class="connection-sig">↳ Same-day duplicate &#x27;exclusive&#x27; framing from one senator&#x27;s office via one outlet is a pattern worth flagging as manufactured momentum rather than organic news.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A right-wing &#x27;Democrats = socialism/high taxes&#x27; messaging cluster (anti-socialism resolution, DSA hypocrisy pieces, Talarico tax coverage) is running in parallel across multiple unrelated story origins, consistent with coordinated midterm positioning rather than coincidence.</div>
+<div class="pattern-item">Executive-power stories split almost perfectly by valence: left covers stories where Trump-administration power looks unchecked or harmful (speech crackdowns, pollution rule rollback, Census interference-ban removal), right covers stories where Democratic-adjacent or bureaucratic power looks harmful (higher-ed foreign funding, fiscal armageddon, data-center panic) — same theme (unaccountable institutional power), opposite targets.</div>
+<div class="pattern-item">Natural-disaster/government-response coverage (Grand Canyon flash flood, three stories) is entirely absent from the right, despite loss of life and direct NPS/federal-response angles that are usually cross-partisan news.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The JD Vance/RJC speech story — objectively favorable to Vance (standing ovation, successful outreach) — has zero right-leaning source coverage in this dataset, which is the opposite of the expected pattern for a positive story about a Republican VP.</div>
+<div class="anomaly-item">Ron Johnson gets two distinct &#x27;Exclusive&#x27; Breitbart pieces same-cycle pushing an identical anti-Fauci message — a same-day duplicate-messaging pattern more typical of a coordinated release than independent reporting.</div>
+<div class="anomaly-item">The DSA/Gordillo &#x27;townhouse hypocrisy&#x27; allegation is running with zero left or center verification, fact-check, or subject response — an unverified factual claim (not opinion) circulating in an echo chamber with no cross-checking visible in this dataset.</div>
+<div class="anomaly-item">The Grand Canyon flash-flood deaths generated three separate left-covered stories but no right-side coverage at all, unusual for a fatal natural-disaster/rescue story that typically draws bipartisan human-interest coverage.</div>
+<div class="anomaly-item">The entity-network graph shows &#x27;Trump House Ballroom&#x27; as a hub connecting to nearly 20 unrelated stories — this is very likely a data-linkage artifact (shared bylines/wire entities like PBS NewsHour, Axios, A Martínez) rather than substantive connection, and should be treated with caution rather than as a genuine narrative signal.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding stories that reinforce a &#x27;tax-and-spend socialist&#x27; Democratic brand (the anti-socialism resolution, Talarico&#x27;s tax platform, DSA policy-funding critiques), while amplifying stories about unchecked Trump-era executive/regulatory power (speech crackdowns, pollution rollback, Census interference-ban removal). The right is avoiding the inverse — stories that show executive or institutional power causing visible harm with no partisan upside (Grand Canyon flood/NPS response, pollution rule rollback) — while amplifying bureaucratic-overreach and fiscal-doom narratives aimed at the left. Both sides are also quietly not scrutinizing their own factual claims (DSA hypocrisy allegation unverified; Vance/RJC friction substance unspecified), suggesting comfort running favorable-but-thin stories inside ideological silos rather than testing them against the other side&#x27;s scrutiny.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump officials cut political interference ban after unusual Census Bureau report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kalshi bans former congressman George Santos for life after State of the Union trades</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rep. Glenn Ivey weighs stopgap spending bill as House returns to Washington</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Descendants of enslaved potter David Drake work to reclaim ancestor&#x27;s art</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Colombia&#x27;s president says soldiers killed a key dissident leader</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump says Fed Chair Warsh will &#x27;do what he has to do&#x27; on possible rate hikes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump says &#x27;Medicare for All&#x27; doesn&#x27;t work</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Trump says more pharmaceutical companies will lower drug prices</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Paxton allies launch $15 million ad campaign</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s attempts to crack down on speech and influence opinion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump touts new drug-price deals, seeking a midterm edge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mike Johnson said he supports ‘great member’ Max Miller’s reelection bid</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alaska Democrats back independent Bill Hill in statewide House race</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump says voters who oppose data centers will ‘kill the Golden Goose’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Remote Grand Canyon lodge hit by deadly flash flood boasts fabled history</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How intense rains in the Grand Canyon turned into a deadly disaster</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Two people dead and nearly 80 rescued after Grand Canyon flash flood</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Police fatally shoot woman who stabbed two people in Times Square</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pabst offers reward after beer heist from California warehouse: ‘Ps, this is real’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Is Unraveling a Hard-Won Rule to Reduce Toxic Pollution From Chemical Plants</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leader&#x27;S Working-Class Image Takes Public</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Rich World’s Climate Distraction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kamala to the Rescue!</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Data Center Panic and U.S. Decline</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida, Vaccines and Religious Liberty</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Taiwan’s Drone Realism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Higher Ed’s Secret Foreign Funding</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice for the ‘Killer Mom’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tensions erupt in House hearing as GOP advances anti-socialism resolution while Dems rage: &#x27;Silly season&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Surrendering to the Machines</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fiscal Armageddon, Revisited</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Good Golly, Dolly Loved God</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jeanne Allen’s Important New Book Profiles Everyday Heroes of Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› In the Age of AI, What Should Schools Teach?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive – Sen. Ron Johnson Seeks ‘Covid Reckoning’: ‘I Want to Make Sure That Anthony Fauci’s Reputation Is Completely Destroyed’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive – Sen. Ron Johnson Says Covid Revealed Scope of Government Corruption: ‘My Eyes Have Been Thrown Wide Open’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas Democrat Senate Candidate James Talarico Campaigns on Raising Taxes</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Lindsay Clancy&#x27;s Lawyer Complains About &#x27;Horrific&#x27; Trial Coverage by Hannity, &#x27;Queen of Mean&#x27; Nancy Grace as Jury Ends Third Day</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Niger Junta Claims to Thwart 24-Hour Mutiny with Help from Russian Mercenaries</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Serial California Butt Sniffer Arrested Again</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› D.C. Officer Dies After Allegedly Shooting Self in Police Station</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Restoring Law and Order Has Made America Safer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Canada Is Ready To Fight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Should Not Build Bridges With the Hard Left</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WashPost Embarrasses Itself Trying To Embarrass Me</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Different Kind of College Ranking</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hydrogen: Energy&#x27;s Version of Waiting for Godot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When Will Oil Deal With Venezuela Lower Gas Prices?</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether the SCOTUS ballroom case proceeds to a substantive appropriations/preservation-law ruling, and whether right-leaning outlets begin covering that underlying legal question rather than only the procedural win</div>
+<div class="watch-item">Any right-leaning pickup of the JD Vance/RJC 2028 outreach story, and specifics of the prior donor/activist friction that all three current sources left unexplained</div>
+<div class="watch-item">DSA/Gordillo townhouse allegation — watch for left/center fact-check or Gordillo&#x27;s direct response; treat as unverified until independently confirmed</div>
+<div class="watch-item">Ron Johnson&#x27;s Covid/Fauci push — check for an announced book, hearing, or subpoena request that would explain the same-day double &#x27;exclusive&#x27; placement</div>
+<div class="watch-item">House stopgap spending bill (Ivey) as the December deadline nears — watch for shutdown-blame messaging escalation, still only covered on the left</div>
+<div class="watch-item">Anti-socialism resolution + DSA hit pieces + Talarico tax coverage — watch whether this coalesces into an explicit, named DNC-adjacent midterm ad campaign (escalation from prior Rahm Emanuel watch item)</div>
+<div class="watch-item">Canada trade/tension coverage (&#x27;Why Canada Is Ready To Fight&#x27;, right-only) — check whether this is a continuation of the previously flagged Lake Ontario/Doug Ford friction or a new flashpoint</div>
+<div class="watch-item">Grand Canyon flood/NPS response — watch for right-side pickup or FEMA/NPS accountability angle given NPS&#x27;s simultaneous role in the ballroom legal dispute</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
