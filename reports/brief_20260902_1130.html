@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-02 11:30 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-02 11:30 UTC</span>
+    <span class="pill">113 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">4 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">A Utah judge ruled that Tyler Robinson, the man accused of fatally shooting Charlie Kirk, will stand trial for aggravated murder and is eligible for the death penalty if convicted.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the bare procedural facts and adopt nearly identical restrained, legal-process framing — neither speculates on motive or politicizes the ruling. However, the requested &#x27;full political spectrum&#x27; comparison is incomplete: only center-left and left sources were supplied, with no center-right or right-leaning outlet included, so claims about ideological contrast or omission patterns across the spectrum cannot be substantiated.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian presents this as a straightforward procedural/legal update, emphasizing the judge&#x27;s evidentiary reasoning for allowing the case to proceed rather than dwelling on the political dimensions of Kirk&#x27;s killing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR frames the ruling as a routine legal/procedural milestone, foregrounding court process and fair-trial considerations over commentary on Kirk&#x27;s political significance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set, so right-of-center framing cannot be assessed from the given data.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source was supplied for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be assessed since no right-leaning outlet was included; typically such coverage might emphasize Kirk&#x27;s political legacy, characterize the killing as politically or ideologically motivated, or push for expedited justice, but none of that can be confirmed from the sources given.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Sen. Ed Markey defeated Rep. Seth Moulton in the September 1-2 2026 Massachusetts Democratic primary for U.S. Senate, and will face Republican John Deaton in November.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (15)</span><span class="bias-badge" style="color:#e0a87a;">center-left (12)</span><span class="bias-badge" style="color:#7ae09b;">center-right (5)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (7)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (11)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:23.8;" title="center: 15"></div><div class="bias-segment" style="background:#e0a87a; flex:19.0;" title="center-left: 12"></div><div class="bias-segment" style="background:#7ae09b; flex:7.9;" title="center-right: 5"></div><div class="bias-segment" style="background:#e05252; flex:7.9;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:7.9;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:11.1;" title="left: 7"></div><div class="bias-segment" style="background:#a07ae0; flex:4.8;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:17.5;" title="right: 11"></div></div></div>
+  <div class="story-assessment">Stripped of framing, this is a straightforward incumbent-survives-challenge story: Markey beat Moulton in a same-party, largely non-ideological contest, and the generational-change narrative that some hoped would topple aging incumbents nationally did not materialize here. The spin gap is less about disputed facts and more about what significance to assign the result — a reassuring sign of progressive strength (left) versus a troubling sign of party detachment from voters (right) — with the specific claim about transgender-athlete positioning being the one factual detail confined to right-leaning coverage and worth independent verification.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left outlets (Guardian) frame Markey&#x27;s win as a rebuke of age-based primary challenges and a validation of progressive durability, placing it in the context of a national anti-incumbent progressive wave rather than crediting Moulton&#x27;s generational argument.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (NPR, PBS, The Hill, Axios, RealClearPolitics) largely report the race as a straightforward, low-editorializing horse-race story, framing it mainly as a generational contest and noting it as a data point against the cycle&#x27;s incumbent-ouster trend, without heavy ideological spin.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right outlets (Fox, National Review-adjacent coverage) frame the win skeptically, emphasizing Markey&#x27;s age (80) and portraying the victory as evidence of progressive overreach — highlighting his stance on transgender athletes and an endorsement from a controversial far-left streamer to cast the outcome as out-of-touch rather than a substantive mandate.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits or downplays the specific policy flashpoint (transgender athlete rights) that right-leaning outlets use to characterize the ideological content of Markey&#x27;s campaign, and does not mention Hasan Piker&#x27;s endorsement.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the broader &#x27;national wave&#x27; context Guardian uses (linking this to other anti-incumbent progressive primary wins nationally) and gives little attention to Moulton&#x27;s substantive generational-change argument on its own terms, instead centering on Markey&#x27;s age and progressive positioning.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The U.S. House voted to formally censure Rep. Chuck Edwards (R-N.C.) after an Ethics Committee investigation found he violated rules against sexual harassment of two female staffers.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core, verifiable facts: a censure vote occurred, it followed a substantiated Ethics Committee investigation, and it had cross-party backing — this is the strongest signal the censure is not a partisan maneuver. The coverage set lacks any right-leaning outlet, so claims about how conservative media are framing or omitting this story cannot be substantiated and should not be inferred.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No right-leaning source was included in this set, so right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR (center-left) emphasizes institutional accountability and the formal ethics process, foregrounding the harassment allegations and the two accusers. Axios (center) emphasizes the rarity and bipartisan nature of the rebuke, treating the censure itself as the newsworthy event more than the underlying misconduct details.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this set, so right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source is present in this dataset to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in this dataset to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">VP JD Vance faced pointed questions from Jewish Republicans and criticism from Nikki Haley over his refusal to clearly break with Tucker Carlson amid concerns about Carlson&#x27;s platforming of anti-Israel and antisemitic voices.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core fact: Vance would not clearly disavow Tucker Carlson when challenged on it, and this is being interpreted as evidence of a real strategic bind for him between the GOP&#x27;s pro-Israel establishment and its rising isolationist/populist wing. The absence of any right-leaning outlet in this set is a significant blind spot, since it prevents assessment of how Carlson&#x27;s own supporters or conservative media are framing the same moment — likely as media/establishment overreach rather than a legitimate Vance liability.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet is included in this set; only center-left (Politico) coverage is available, which emphasizes intra-GOP tension and frames Vance&#x27;s hedging as a letdown to Jewish Republican supporters.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill (center) frames this as an ideological rift within the Republican Party over Israel policy, using Haley&#x27;s ultimatum (&#x27;choose a side&#x27;) to cast Vance&#x27;s ambiguity as a lack of political courage rather than a substantive policy position.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this set, so how conservative or pro-Carlson media are characterizing this event cannot be assessed from the sources provided.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Politico&#x27;s account does not include Haley&#x27;s explicit &#x27;choose a side&#x27; framing or her direct characterization of Carlson&#x27;s wing as isolationist, details present in The Hill&#x27;s coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source is present in this coverage set, so it is not possible to identify what a right-leaning outlet includes that center/center-left coverage omits. This is a notable gap given Carlson&#x27;s standing with parts of the conservative base.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">JD Vance</span><span class="entity-tag">Iran</span><span class="entity-tag">Tucker Carlson</span></div>
+  <div class="connection-text">The Vance/Carlson antisemitism controversy and the right-only pieces &#x27;The Iran War&#x27;s Defenders Are Losing the Plot&#x27; and &#x27;The Illusion of One Voice in Wartime&#x27; are the same underlying GOP foreign-policy fracture — pro-Israel establishment vs. Carlson-aligned restrainers — but they run in separate lanes: center/center-left outlets cover the personal Vance angle, right-leaning outlets cover the abstract Iran-policy angle, with no outlet connecting the two.</div>
+  <div class="connection-sig">↳ Suggests the right-leaning press is engaging the substance of the isolationist-vs-hawk split while avoiding the personalized, reputationally costly Vance/Carlson framing of it — a soft blind spot rather than a topic avoidance.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Chuck Edwards</span><span class="entity-tag">House of Representatives</span><span class="entity-tag">Massie/Epstein associates</span></div>
+  <div class="connection-text">Two stories involving substantiated or alleged GOP-adjacent misconduct (Edwards&#x27; bipartisan harassment censure; Massie naming Epstein associates to &#x27;shame&#x27; DOJ) both show zero right-leaning sourcing in today&#x27;s set, even though the Edwards censure had cross-party backing and is not a partisan hit.</div>
+  <div class="connection-sig">↳ A verified, bipartisan accountability action against a sitting Republican going uncovered by right-leaning outlets is a stronger signal of selective story curation than the more commonly flagged Democratic-scandal blind spots.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Reason</span><span class="entity-tag">Trump</span><span class="entity-tag">data centers</span></div>
+  <div class="connection-text">Reason (libertarian) is single-handedly generating a five-story data-center cluster (&#x27;Trump Loves Data Centers&#x27;, &#x27;Federalism Will Save the Data Centers&#x27;, &#x27;AI Buildout Is Bruised but Far From Broken&#x27;, &#x27;Following the Data on Data Centers&#x27;) framing the buildout as economic/federalism opportunity, while the lone left-side entry (&#x27;Trump&#x27;s pro-data center stance is putting pressure on Republicans ahead of midterms&#x27;) frames the identical topic purely as a GOP midterm liability.</div>
+  <div class="connection-sig">↳ Same underlying policy story, two non-overlapping frames with almost no cross-citation — a preview of how data-center siting could become a 2026 midterm wedge issue argued past each other rather than against each other.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Massachusetts Markey Primary</span><span class="entity-tag">Provo, Utah</span><span class="entity-tag">USPS</span></div>
+  <div class="connection-text">The Markey-primary piece co-occurs with an unusually large and disparate set of entities (Iran, Israel, Russia, China, USPS, Kentucky, Provo Utah) that have no substantive link to a Massachusetts Senate primary.</div>
+  <div class="connection-sig">↳ Indicates this is a digest/roundup-style article incidentally mentioning the day&#x27;s other headlines, artificially inflating the entity-network&#x27;s apparent connectivity — treat as an extraction artifact, not a real narrative link, when reading the network graph.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Data-center buildout coverage is splitting into two non-communicating narratives: libertarian/right framing it as federalism and economic opportunity (Reason-driven), left framing it as a Republican midterm political liability — same facts, incompatible frames.</div>
+<div class="pattern-item">Stories involving verified or alleged misconduct touching Republican figures (Edwards censure, Epstein-associates naming) are systematically absent from right-leaning sourcing today, even where the underlying action was bipartisan.</div>
+<div class="pattern-item">Intra-GOP foreign-policy tension over Israel/Iran is being covered in two disconnected registers — personalized (Vance-Carlson, center/center-left only) versus policy-abstract (Iran war skepticism, right-only) — with no outlet bridging them.</div>
+<div class="pattern-item">Several &#x27;roundup&#x27; style pieces (the Markey primary writeup) function as artificial connectivity hubs in the entity network, linking unrelated stories only because they were mentioned in passing in the same digest.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Tyler Robinson/Charlie Kirk death-penalty trial ruling is marked &#x27;high&#x27; significance yet has zero right-leaning sources in this set — striking given Kirk&#x27;s stature in conservative media; either a genuine coverage lull or a data-collection gap worth independently checking.</div>
+<div class="anomaly-item">The Chuck Edwards bipartisan censure vote — a House Ethics-substantiated harassment finding against a sitting Republican — has no right-leaning coverage at all, despite cross-party backing that would make it low-risk for conservative outlets to report factually.</div>
+<div class="anomaly-item">The Vance-Tucker Carlson antisemitism story also has zero right-leaning sourcing; conservative media typically contests unflattering intra-coalition stories rather than ignoring them, so the silence may itself be a deliberate framing choice worth watching for delayed pickup.</div>
+<div class="anomaly-item">The &#x27;Provo, Utah&#x27; co-occurrence between the Robinson trial story and the unrelated USPS whistleblower story looks like an entity-extraction artifact rather than a real geographic or topical link.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets in today&#x27;s set are conspicuously silent on all three stories that reflect discomfort within the GOP coalition — the Edwards harassment censure, the Vance-Carlson antisemitism bind, and even the Kirk assassin&#x27;s trial — while dominating coverage of Trump-favorable economic stories (data centers) and culture/crime stories. Left-leaning outlets reciprocally ignore the federalism/economic case for data centers being made on the right, engaging the topic only as a GOP liability narrative. The pattern on both sides looks like curation toward priors rather than engagement with the other side&#x27;s strongest argument.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Rules Charlie Stand Death Judge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s pro-data center stance is putting pressure on Republicans ahead of midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congress averts a government shutdown ahead of the midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› USPS &#x27;carefully reviewing&#x27; whistleblower claim on plan for Trump&#x27;s mail in voting order</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Massie names 14 Epstein associates to &#x27;shame&#x27; DOJ</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH LIVE: House passes short-term spending bill, staving off another fund fight during midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gingers of America: portraits of people with ginger hair across the US</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal judge tosses Trump lawsuit over young trans athletes in California school sports</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Relentless Work of Being Sick</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Federal Judge Just Killed New York’s $75 Billion Climate Bill for Polluters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Here’s Why We’ve Been Seeing So Much Food-Borne Illness</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Young Americans and the Flock Camera Controversy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hurray for the Bond Market</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Supreme Court’s Ballroom Standing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Germany Calls Out Putin’s ‘Hybrid’ War</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› When AIs Say They’re Sentient</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Everyone Makes Mistakes, Especially Pollsters</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Former president-turned-amateur artist George W. Bush debuting new paintings for 9/11 remembrance</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Big Bet on Data Centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It’s Not Just the Economics, Stupid</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Illusion of One Voice in Wartime</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Admin to Dramatically Lower Biden-Era Vehicle Fuel Economy Requirements</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Shocking Video Shows Knife-Wielding Woman Charging NYPD Officers After Fatally Stabbing Woman, Wounding Man in Times Square</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Supreme Court Weighs Bid to Put Michigan Citizens-Only Voting Amendment on Ballot</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tony Romo was Allegedly Twice the Legal BAC Limit During Arrest</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NFL Legend Emmitt Smith Accused of Conning $2.5 Million from Native American Investor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Progressive Regression?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Tariffs Will Hurt Republicans in the Midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› I Reject Dems&#x27; Sympathy, in No Way Are They Sorry</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Iran Torched the Deal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can You Spend Your Way Out of Loneliness?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Guide to the 2026 Supreme Court Term</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Buildout Is Bruised but Far From Broken</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Following the Data on Data Centers</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether right-leaning outlets eventually cover the Chuck Edwards censure, and whether they frame it as a bipartisan integrity win or downplay/omit it entirely</div>
+<div class="watch-item">Right-leaning pickup (or continued silence) on the Tyler Robinson death-penalty trial ruling, given the story&#x27;s &#x27;high&#x27; significance and Kirk&#x27;s prominence in conservative media</div>
+<div class="watch-item">Whether conservative outlets frame the Vance-Tucker Carlson story as &#x27;media-manufactured&#x27; once/if they engage it, versus treating it as a genuine intra-GOP rift</div>
+<div class="watch-item">Data-center federalism vs. midterm-liability framing as a possible wedge issue — watch for either side citing the other&#x27;s argument directly</div>
+<div class="watch-item">Whether right-side Iran-war-skepticism pieces (&#x27;Iran War&#x27;s Defenders Are Losing the Plot&#x27;) begin explicitly naming Vance or Carlson, which would confirm the two currently separate narrative threads are merging</div>
+<div class="watch-item">SCOTUS ballroom case (&#x27;The Supreme Court&#x27;s Ballroom Standing&#x27;) — still right-only and still procedural; watch for a substantive appropriations/preservation ruling and whether left-leaning outlets ever engage it</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
