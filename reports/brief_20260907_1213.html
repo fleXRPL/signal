@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-07 12:13 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-07 12:13 UTC</span>
+    <span class="pill">90 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">U.S. envoys Steve Witkoff and Jared Kushner met with Putin in Moscow and then Zelenskyy in Kyiv to discuss next steps toward ending the Ukraine war, while separately the Trump administration renewed its Supreme Court appeal to enforce mail-in ballot restrictions ahead of the midterms.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (7)</span><span class="bias-badge" style="color:#e0a87a;">center-left (4)</span><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e05252;">far-left (2)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (3)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (5)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.9;" title="center: 7"></div><div class="bias-segment" style="background:#e0a87a; flex:14.8;" title="center-left: 4"></div><div class="bias-segment" style="background:#7ae09b; flex:7.4;" title="center-right: 2"></div><div class="bias-segment" style="background:#e05252; flex:7.4;" title="far-left: 2"></div><div class="bias-segment" style="background:#3a8a52; flex:11.1;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:11.1;" title="left: 3"></div><div class="bias-segment" style="background:#a07ae0; flex:3.7;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:18.5;" title="right: 5"></div></div></div>
+  <div class="story-assessment">Two distinct storylines are being conflated under this headline: modestly positive-sounding but substantively thin U.S.-Russia-Ukraine diplomacy, and a recurring executive-judiciary clash over mail-ballot rules ahead of the midterms. All sides agree on the basic sequence of events (Moscow then Kyiv meetings; renewed Supreme Court appeal), but diverge sharply on whether these represent genuine progress/necessary action or empty optics/voter suppression risk — the actual outcome of both the negotiations and the legal fight remains unresolved.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and center-left outlets treat the Witkoff/Kushner diplomacy with skepticism, juxtaposing upbeat U.S. rhetoric against the Kremlin&#x27;s noncommittal posture and no concrete outcomes; on the mail-ballot story, they frame the administration&#x27;s Supreme Court appeal as a threat to voting access timed suspiciously close to the midterms, and portray the RNC convention as an example of Trump&#x27;s self-serving dominance over a reluctant party.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (The Hill, Axios) report the Witkoff/Kushner talks in largely straightforward, optimistic terms as a diplomatic first, and describe the RNC convention and helipad completion as procedural/logistical news without strong evaluative spin; PBS frames the mail-ballot dispute as a procedural executive-judicial conflict rather than a rights or access issue.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets frame the mail-ballot fight as the administration urgently defending lawful election procedures against judicial obstruction, and treat the Ukraine envoy visit as a positive, first-of-its-kind diplomatic milestone; coverage separately emphasizes law-and-order and immigration enforcement themes (e.g., MS-13 release) and intra-GOP debates over war seriousness (Iran) rather than dwelling on Trump-centric convention framing.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the administration&#x27;s stated urgency/rationale for the mail-ballot restrictions (e.g., claims about ballot integrity or that ballots are already being mailed in North Carolina under contested rules) that right outlets highlight.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the skepticism and lack-of-breakthrough framing around the Putin meeting that left and center-left outlets emphasize, and largely does not address concerns that mail-ballot restrictions could suppress legitimate midterm voting access.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">The AfD won a record 44% plurality in Saxony-Anhalt&#x27;s state election, its strongest result ever in a state vote, raising the question of whether it could form Germany&#x27;s first far-right-led state government since WWII.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core fact — a record 44% AfD result in Saxony-Anhalt — but diverge sharply on causal framing: one treats it as an alarming erosion of postwar anti-extremist norms, the other as a rational (if uncomfortable) protest vote against establishment parties. Neither source here represents left-leaning coverage, so the full ideological spread of reactions (e.g., concerns about normalization, civil society response) is not visible in this set. The real significance lies in what happens next — whether CDU or other parties break the firewall to form a coalition, which neither piece resolves.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning outlet was included in this coverage set, so left framing cannot be characterized from the sources provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the result as a historic stress test for Germany&#x27;s postwar anti-extremist safeguards, emphasizing the institutional and symbolic significance of a far-right party approaching governing power for the first time since WWII.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion frames the AfD surge as a symptom of establishment failure — casting frustrated voters as rejecting mainstream parties rather than endorsing far-right ideology, and implicitly questioning whether the &#x27;firewall&#x27; strategy of isolating AfD is itself contributing to its rise.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source is present in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion omits the historical/institutional weight Axios emphasizes — it does not engage with the &#x27;firewall&#x27; concept or the WWII-era context, instead centering voter grievance as the causal story and leaving out what a firewall breach would mean for Germany&#x27;s democratic safeguards.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Public Backlash Against Centers Rising.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Candidate Democratic Governor, Campaign Gubernatorial</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:20.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:40.0;" title="left: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:20.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">An Amazon-operated cargo plane overran the runway while landing at Miami International Airport, killing at least five people and injuring several others.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">All three outlets agree on the core, low-controversy facts — an Amazon cargo plane overran the runway in Miami, killing at least five — and none assign cause or blame, since this is early-stage breaking news likely pending an NTSB investigation. The variation in injury counts and framing reflects differing access to initial official statements rather than any ideological slant, making this a rare case where left/center/right coverage is nearly indistinguishable in substance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian centers human casualties and the disruption to airport operations, presenting the event as a breaking tragedy without speculating on cause or fault.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the story around the breaking casualty count and hospitalizations, keeping focus tightly on the human toll of the incident.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart also treats it as a straightforward accident, leaning on official statements and eyewitness accounts to convey the chaos of the rescue scene, again without assigning blame.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian omits the specific timing (Sunday), the landing-phase detail, and the firsthand/eyewitness accounts of the rescue scene that Breitbart includes.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart omits any mention of disruption to broader airport operations, which The Guardian notes.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">These Important House Races Watch</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:66.7;" title="center-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Analysis unavailable.</div>
+  
+  
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Trump administration has struck an oil-related deal or policy shift with Venezuela, and commentators are split on whether it advances U.S. strategic interests or undercuts American oil companies whose assets Venezuela previously expropriated.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (2)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:66.7;" title="center-right: 2"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The only substantive, corroborated fact across the two on-topic sources is that a Trump-era Venezuela oil policy exists and is being debated; everything else — whether it&#x27;s a savvy strategic move or a hypocritical abandonment of expropriated U.S. companies — is interpretive framing from a single outlet each, not cross-verified reporting. The inclusion of an unrelated Iran-policy piece under this Venezuela story is itself a notable data-quality issue, and the complete absence of left-leaning coverage means this analysis reflects only the internal right-of-center debate, not the full political spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this coverage set, so left framing cannot be assessed from the given data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The WSJ Opinion piece functions as the closest thing to &#x27;center&#x27; framing here, presenting the deal through an editorial/analytical lens focused on strategic implications rather than moral or legal judgment; the RealClearPolitics piece, though labeled center-right, is off-topic (Iran) and offers no center framing on Venezuela.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Split within the right: WSJ Opinion (center-right) treats the deal as a legitimate subject for strategic debate via an expert interview format, while National Review (further right) frames it as exposing administration hypocrisy — rhetorically denouncing Chávez&#x27;s theft while pursuing a deal that undercuts the very companies victimized by that theft.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left source is present in this set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ Opinion&#x27;s strategic-merits framing omits the hypocrisy/property-rights angle that National Review foregrounds — WSJ does not appear to address whether American companies&#x27; expropriation claims are being sacrificed for the deal.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;We are winning elections’: Bernie Sanders on Democrats’ progressive wing</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump appeals to Supreme Court as time runs out on push to restrict mail voting</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside Pirro’s special grand jury probe into D.C. agencies supervising kids</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hawaii declares state of emergency as Hurricane Lowell approaches islands</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› This smokejumper says the US has lost its empathy. That’s why he’s running for Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We’re the mayors of Paris, Milan and Phoenix. The heat crisis has us all facing the same question | Emmanuel Grégoire, Giuseppe Sala and Kate Gallego</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› That sound you hear is not the world ending – it’s liberalism being monstered | Waleed Aly</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Prediction markets have become America’s new national pastime | Dave Schilling</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Wind Power Has Benefitted North Dakota. So Why Have Residents Soured on It?</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Opinion: Trump’S Venezuela Taking Venezuela’S</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› School Choice Could Ease the Fertility Crisis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Teamsters Return to Ugly Type</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Want Fetterman ‘on a Pike’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sunshine Really May be the Best Medicine</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Opinion: Hits and Misses of the Week</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WSJ Opinion: Democratic Governors Face a School Choice Test</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump appears to debut darker hair, sparking online buzz</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani under fire after symbolic 9/11 pen goes to former al Qaeda defense lawyer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 8 everyday things that would quit working without data centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Letitia James’ Times Square shooting probe draws GOP criticism over New York’s mental health crisis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› America’s Sailors Are Overworked — We Can Fix That</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is There Any Capitalist’s Murder That &lt;i&gt;Isn’t&lt;/i&gt; Justified?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Do People Vacation?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Professional Fact-Check Is Dead</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Fails to Build Trust with U.S.-Venezuela Oil Deal</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Bessent: Iran Blockade, Sanctions &#x27;One of the Most Powerful One-Two Punches&#x27; in History of Economic Isolation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Police Group Blue Lives Matter Drops Jelly Roll from Mar-a-Lago Fundraiser Event</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fired NBA Announcer Loses Free Speech Fight over &#x27;All Lives Matter&#x27; Tweet</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Nolte: The Fascinating and Frustrating Times When Robert Mitchum Played Philip Marlowe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› VIDEO: L.A. Cops Throw Down on Street Takeovers, Arrest 69, Impound 200 Cars</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The World Isn&#x27;t Ending, But Liberal Progressivism Is</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Today&#x27;s Leftists Are Possessed by the Jacobin Spirit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Have the Wealth to Handle National Debt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lindsay Clancy and the Inversion of Feminism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Looking Back on 9/11</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Summer of Mush: We&#x27;re in Another Period of Stasis</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
