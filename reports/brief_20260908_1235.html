@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-08 12:35 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-08 12:35 UTC</span>
+    <span class="pill">99 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The 2026 midterm cycle has formally opened, and the dominant dynamic is not any single scandal or vote but a set of parallel maneuvering campaigns that outlets are covering in isolation rather than as a whole. Trump is simultaneously running a trade confrontation with Canada (roughly $20 billion in retaliatory tariffs following his latest tariff round), posting expansionist flag-map memes about Canada and Greenland, and overseeing a visible physical rebuilding campaign at the White House (a ballroom project cleared by the Supreme Court, North Portico construction that injured a worker, and a broader D.C. building spree). None of these are being treated as connected, but together they describe a White House projecting both territorial assertion abroad and physical permanence at home during an election season.</p>
+<p>On the Democratic side, the notable story is not a single candidate but a structural one: governors are becoming the visible center of gravity for the party&#x27;s future. Newsom is actively building profile and state-party infrastructure outside California, and Ohio gubernatorial candidate Amy Acton became national news after an armed individual charged her at a public campaign event, injuring multiple people before troopers intervened. A right-leaning opinion thesis — that the 2028 Democratic nominee will likely be a sitting governor — is running the same week these two data points surface independently, suggesting the pattern is real but not yet being named as such in actual news coverage.</p>
+<p>Abroad, Germany&#x27;s AfD won a state election in Saxony-Anhalt, with its lead candidate publicly crediting Elon Musk&#x27;s support. This lands in the same window as Trump&#x27;s territorial rhetoric, and the two are not being connected by any outlet in the sample — despite both being expressions of a transatlantic nationalist-right moment with a shared financial and rhetorical backer network. Layered underneath all of this is a quieter, more consistent pattern: courts continuing to check administration immigration-enforcement tactics (a TRO in Ohio protecting an &quot;ICE watcher,&quot; sanctuary city rulings), a pattern that is real but invisible because each ruling is being reported as a standalone local story.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Trump</strong> remains the fixed gravitational center of the news cycle — his presence is undercounted in raw story tallies because coverage fragments references to him (&quot;Trump&quot; vs. &quot;Donald Trump&quot;) across otherwise unrelated storylines: trade, courts, midterms, construction spending. His territorial map posts (Canada, Greenland, and earlier a &quot;renaming New Mexico&quot; story) are a recurring rhetorical genre — not a one-off meme — that no outlet is tracking as a pattern of behavior.</p>
+<p><strong>Musk</strong> is playing an underexamined dual role: bankrolling right-wing political infrastructure in the U.S. while his backing is now explicitly credited by AfD&#x27;s Saxony-Anhalt candidate for their win in Germany. No outlet connects these two roles, but the timing — Trump&#x27;s expansionist posts landing the same news day as the AfD victory — reads as two fronts of the same transatlantic nationalist-right push rather than coincidence.</p>
+<p><strong>Newsom and Acton</strong> represent the emerging Democratic governor pipeline. Newsom is deliberately raising his national profile through on-the-ground organizing outside his home state; Acton&#x27;s national exposure came involuntarily, through an act of political violence at a public event. Both are converging on the same structural story — Democrats rebuilding a national bench through governorships — but that thesis currently exists only in right-leaning opinion commentary, not in hard reporting.</p>
+<p><strong>Courts</strong> are functioning as a quiet, persistent check on the administration&#x27;s immigration enforcement — the Ohio ICE-watcher TRO and sanctuary city rulings are part of the same throughline, but because they&#x27;re sourced from non-overlapping outlet sets, no single source is tracking the administration&#x27;s aggregate litigation record. That record matters more than any individual ruling and is currently invisible as a trend.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not covering the Acton incident at all. An armed individual charging a sitting gubernatorial candidate at a public event, injuring multiple people, is the kind of event that typically receives heavy amplification from the right when the political roles are reversed — its near-total absence here is conspicuous, especially set against right-leaning outlets simultaneously running &quot;political toxicity&quot; and DSA-influence pieces about the left. This looks like narrative substitution: filling the news hole with ideological commentary rather than engaging the actual event.</p>
+<p>The right is also broadly avoiding same-day hard news that reflects poorly on the administration — the Canada trade dispute, sanctuary city court losses, and the trans health report criticism all get no direct engagement, replaced by opinion and culture-war content (Labor Day capitalism pieces, socialism critiques, Confederate memorial language framing).</p>
+<p>The left has its own avoidance pattern: it is not touching intra-Democratic tension stories (DSA influence, primary challenges from the left) that both center-left and right outlets are surfacing, and it is not engaging with the economic nuance on the Canada tariff story — notably, a libertarian outlet (Reason) was the one source willing to push back on the &quot;Canada ripping off the U.S.&quot; framing with actual data, a role neither left nor far-right outlets took up.</p>
+<p>Neither side is naming the Democratic governor-pipeline thesis explicitly in news coverage, even though Newsom&#x27;s activity, Acton&#x27;s sudden prominence, and a right-leaning opinion piece are all pointing at the same structural claim independently.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>Trump&#x27;s Canada/Greenland flag-map posts, the earlier &quot;renaming New Mexico&quot; story, and the general run of territorial-assertion rhetoric form a single recognizable behavioral pattern that is being covered as disconnected one-off memes. Treat it as a pattern going forward, not noise.</p>
+<p>The AfD win, Musk&#x27;s role in it, and Trump&#x27;s own expansionist posts landing the same news day form a plausible transatlantic nationalist-right feedback loop — American map rhetoric and European far-right electoral gains reinforcing each other, with Musk as a common financial thread. This connection appears nowhere in current coverage.</p>
+<p>Three ostensibly separate White House stories — the North Portico construction injury, the Supreme Court ballroom ruling, and midterm-coverage mentions of Trump&#x27;s broader D.C. construction spree — are fragments of one aggregate story about cost, contracting, oversight, and safety at the White House that nobody is asking as a single question.</p>
+<p>The AfD story, despite being flagged as high-significance, has the thinnest sourcing in the sample (five total sources) and shows genuine internal disagreement on the right itself — WSJ and one RCP piece treat it as a real alarm bell, while a second RCP piece minimizes it by disputing the &quot;far right&quot; label rather than engaging the electoral or foreign-influence facts. This is not a unified right-wing line; it&#x27;s an open editorial split worth tracking.</p>
+<p>A GOP midterm convention&#x27;s official-seeming web presence reportedly redirects to Epstein-files coverage — a technical/reputational embarrassment surfacing right as the formal midterm convention season launches, suggesting the Epstein association remains a live liability that keeps resurfacing in unexpected contexts.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p><strong>Ohio gubernatorial race security framing</strong> — watch whether right-leaning outlets acknowledge the Acton incident at all in the next 48-72 hours, or whether the silence holds. Either outcome is informative about how the incident gets processed heading into a competitive 2026 race.</p>
+<p><strong>Musk-AfD-Trump linkage</strong> — watch for any outlet (currently none) drawing an explicit connection between Musk&#x27;s financing of European far-right parties and his simultaneous role in U.S. right-wing politics, especially as AfD&#x27;s national polling develops.</p>
+<p><strong>Sanctuary city litigation trajectory</strong> — the administration has a rare recent win here; watch whether it&#x27;s an outlier against the broader trend of court pushback (Ohio ICE-watcher TRO and prior rulings), or the start of a reversal.</p>
+<p><strong>White House construction oversight</strong> — no outlet has yet aggregated the ballroom project, North Portico injury, and wider D.C. construction spending into one cost/oversight story. Watch for whether any outlet does, particularly given the scaffolding injury as a news hook.</p>
+<p><strong>AfD polling nationally in Germany</strong> — the Saxony-Anhalt win&#x27;s durability and whether U.S. right-of-center coverage converges toward alarm (WSJ posture) or minimization (RCP labeling-dispute posture) will signal how the American right intends to process a European far-right advance tied to Musk.</p>
+<p><strong>Democratic governor-pipeline framing</strong> — watch whether the Newsom/Acton/2028-governor thesis moves from right-leaning opinion commentary into mainstream reporting as an explicit storyline.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The defining feature of this news cycle is not disagreement over facts but asymmetric selection of which facts to cover at all — both sides are increasingly choosing storylines based on whether they help or complicate a preferred midterm narrative, not based on the story&#x27;s actual weight. That produces a public information environment where a political-violence incident against a sitting candidate, a foreign election result tied to a domestic billionaire&#x27;s money, and an emerging aggregate story about executive construction spending all sit un-synthesized in plain sight, visible only by reading across outlets that don&#x27;t read each other. The individual facts are mostly solid; the picture built from any single outlet&#x27;s selection of them is not.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Germany&#x27;s far-right AfD party won a state parliamentary election in Saxony-Anhalt, with its lead candidate publicly thanking Elon Musk for his support, prompting sharply divided reactions across the political spectrum about what the win means for Germany and Europe.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:20.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:60.0;" title="center-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:20.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The one hard fact everyone agrees on is that AfD won a significant state election in Saxony-Anhalt; everything else — how dangerous it is, whether foreign actors (Musk, Russia) meaningfully boosted it, and even whether &#x27;far right&#x27; is a fair label — is contested along predictable ideological lines. Notably, the right is not unified: WSJ and RCP&#x27;s strategy piece treat the win as a real alarm bell for European complacency, while RCP&#x27;s labeling piece minimizes the story by attacking terminology rather than addressing the electoral or foreign-influence facts the left emphasizes.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Alarmed and historicized: emphasizes the win as a dangerous, norm-breaking rupture, highlights foreign interference/validation (Musk&#x27;s endorsement, Russian praise) as delegitimizing factors, and stresses the party&#x27;s extremist designation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS presents the win primarily as a factual account of a major electoral outcome with alarmed reaction from European observers, anchoring its framing in the party&#x27;s official extremist designation rather than opinion or strategy.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Split internally — WSJ/RCP (first piece) treat the win as a genuine warning sign requiring Europe to unify and mainstream parties to adapt tactically; RCP&#x27;s second piece pushes back on the &#x27;far right&#x27; label itself, framing media/opponent characterization as an inaccurate smear rather than engaging with the win&#x27;s substance.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage omits the internal right-of-center debate over whether &#x27;far right&#x27; is even an accurate label, and does not engage with the argument (made in RCP&#x27;s second piece) that mainstream media may be mischaracterizing the party.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage (WSJ, RCP strategy piece) omits the Musk/Russia angle entirely, and RCP&#x27;s &#x27;not far right&#x27; piece omits any mention of the party&#x27;s official extremist classification by German domestic intelligence, engaging instead only with the labeling dispute.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">An armed individual charged/lunged toward Ohio Democratic gubernatorial candidate Amy Acton at the Canfield Fair, injuring multiple people before state troopers intervened.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:25.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 2"></div></div></div>
+  <div class="story-assessment">The core facts — an armed person aggressively approached Acton at a public event, people were hurt, and troopers stopped him — are consistently reported by left and center outlets, but the available right-wing coverage sidesteps the incident entirely, focusing instead on unrelated campaign-trail rhetoric. This asymmetry (rather than direct factual dispute) is the most significant distortion here: one side is amplifying the violence as a symptom of political toxicity while the other appears to be ignoring it, which itself shapes public perception of the event&#x27;s importance.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets (Washington Post) emphasize the incident as political violence, using charged language (&#x27;toxic,&#x27; &#x27;lunged,&#x27; &#x27;forced his way&#x27;) to connect the attack to an escalating, dangerous atmosphere in the Ohio governor&#x27;s race, foregrounding candidate safety and the normalization of violence in campaigns.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    PBS NewsHour presents the incident primarily through law enforcement&#x27;s account, framing it as a public-safety/security matter rather than emphasizing partisan toxicity or motive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The available far-right source (Breitbart) does not cover the assault at all; instead it covers a separate, unrelated Acton news item — her &#x27;ground zero&#x27; campaign remarks — with skeptical distance, framing her comments as partisan self-promotion rather than substantive claims.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not mention or engage with Acton&#x27;s own campaign rhetoric (e.g., her &#x27;ground zero&#x27; comments) or provide any skeptical framing of her as a political actor — the coverage is focused entirely on her as a victim of violence.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-wing source provided omits the assault/security incident entirely — there is no mention of the charge/lunge, the injuries, the weapons, or law enforcement&#x27;s response, despite this being a significant safety event involving a gubernatorial candidate.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Canada imposed roughly $20 billion in retaliatory tariffs on U.S. goods after Trump&#x27;s latest tariff round, and Trump followed with social media posts depicting Canada, Greenland, and other territories under the American flag, escalating tensions between the two countries.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (4)</span><span class="bias-badge" style="color:#e0a87a;">center-left (4)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (3)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:25.0;" title="center: 4"></div><div class="bias-segment" style="background:#e0a87a; flex:25.0;" title="center-left: 4"></div><div class="bias-segment" style="background:#7ae09b; flex:6.2;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:18.8;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:18.8;" title="left: 3"></div><div class="bias-segment" style="background:#a07ae0; flex:6.2;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">The only sources actually covering this story in depth are center-positioned (NPR, The Hill), with a libertarian outlet (Reason) pushing back on the factual premise of the &#x27;ripping off&#x27; claim using economic data. Neither the sampled left nor far-right outlets engage with the Canada trade story directly, meaning the spectrum comparison is thin — real coverage gaps and asymmetric attention across outlets is itself the notable finding, not competing narratives about the same facts.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets (via related coverage of Trump&#x27;s broader agenda) emphasize authoritarian overreach and harm to ordinary people/workers, and would likely frame the Canada tariff fight as another instance of Trump using economic coercion against allies and unilateral executive action without checks.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (NPR, The Hill, Axios) treat the story most directly and neutrally-to-critically: NPR frames it as a test of whether Canada can resist U.S. pressure, while The Hill frames Trump&#x27;s territorial map post as an escalation of expansionist rhetoric; both note the retaliatory tariffs as the factual anchor.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Far-right coverage in this set does not directly address the Canada trade war, instead emphasizing U.S. strength abroad (Strait of Hormuz) and domestic labor wins for non-college workers, implicitly framing Trump&#x27;s trade posture as part of a broader narrative of American assertiveness and economic vindication.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left outlets in this sample do not address the Canada trade dispute at all, omitting any direct economic data (like Reason&#x27;s point about Canada&#x27;s relative economic decline) that could complicate a narrative of Trump as the sole aggressor.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Far-right outlets omit the Canada trade war entirely, saying nothing about the retaliatory tariffs or Trump&#x27;s territorial map post, instead focusing on unrelated wins (Hormuz, employment data, religious diplomacy) that avoid engaging with potential downsides of Trump&#x27;s trade confrontations.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">As the 2026 midterm campaign season formally opens, coverage splits across outlets between Republican vulnerability forecasts, Gavin Newsom&#x27;s national political positioning, Trump&#x27;s D.C. construction projects, and scattered partisan flashpoints (an ICE-related crash, a leftward primary challenge, DSA influence on Democrats).</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (6)</span><span class="bias-badge" style="color:#3a8a52;">far-right (2)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:9.1;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:54.5;" title="center-left: 6"></div><div class="bias-segment" style="background:#3a8a52; flex:18.2;" title="far-right: 2"></div><div class="bias-segment" style="background:#e07a7a; flex:9.1;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:9.1;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is less a single news event than several parallel storylines — early midterm positioning, Newsom&#x27;s national profile-raising, and Trump&#x27;s D.C. building spree — each filtered through outlet-specific priorities rather than disputed over facts. No side directly contradicts another&#x27;s core claims; instead, each selectively amplifies the storyline that best serves its narrative (GOP peril vs. Democratic radicalization vs. public-safety failures), leaving readers of any single outlet with a distorted sense of which threads matter most. The real signal — that both parties are already maneuvering hard for 2026 and 2028 — is present everywhere but stated plainly nowhere.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left and left outlets emphasize horse-race dynamics and structural GOP vulnerability (historical midterm patterns, Trump&#x27;s unpopularity, specific seat-loss forecasts), frame Newsom&#x27;s Carolinas tour and combative rhetoric as savvy party-building tied to 2028 ambitions, and describe Trump&#x27;s D.C. construction as ego-driven legacy-seeking. The Democratic primary challenge to Valadao is framed as a bold ideological experiment rather than a risky gambit.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill covers Trump&#x27;s D.C. &#x27;beautification&#x27; project announcements neutrally as a straightforward account of his social-media self-promotion, without assessing motive or merit.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets emphasize threats and internal contradictions on the left: Fox frames an ICE-related crash as proof that sanctuary/anti-ICE policies endanger public safety and casts Democratic &#x27;abolish ICE&#x27; responses as irresponsible; Breitbart uses Newsom&#x27;s own words to suggest the Democratic Party is being pulled toward DSA-style socialism and that impeachment talk is politically opportunistic rather than substantive, implying a party in ideological disarray.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left and center-left coverage omits the ICE-related crash and any public-safety critique of sanctuary policies, and does not address claims that DSA/socialist ideas are shaping the Democratic platform.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right and far-right coverage omits the broader midterm forecasting data showing significant Republican seat losses, the substance/cost of Trump&#x27;s D.C. construction spending, and Newsom&#x27;s on-the-ground state-party-building efforts in the Carolinas.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Rudy Giuliani publicly said NYC Mayor Zohran Mamdani should not attend the 9/11 anniversary ceremony at Ground Zero, and Mamdani said he would attend anyway, amid separate controversy over Mamdani&#x27;s calls for protests during the UN General Assembly week.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:33.3;" title="left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">These three outlets are largely covering different, only loosely related stories under one umbrella: a Giuliani-Mamdani spat over 9/11 remembrance (Hill, Guardian) and a separate Israeli-ambassador statement about Mamdani&#x27;s protest calls (Fox). The left-right divide is less about disputing the same facts and more about selective story choice, with the Guardian foregrounding religious-bias framing the Hill omits, and Fox ignoring the Giuliani angle to center Israeli concerns instead.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    The Guardian frames Giuliani&#x27;s comments as an anti-Muslim &#x27;rant,&#x27; emphasizing religious bigotry and portraying Mamdani sympathetically as committed to honoring victims and first responders despite the attack on his faith.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames this as a political clash centered on Giuliani&#x27;s personal criticism of Mamdani&#x27;s fitness and rhetoric regarding 9/11, without emphasizing religion or the Israel angle.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Fox News shifts focus away from Giuliani entirely, framing Mamdani through an Israeli official&#x27;s lens as a reckless, destabilizing figure whose protest calls threaten public order and diplomatic relations around Netanyahu&#x27;s UN visit.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Guardian does not mention the Danon/Netanyahu protest controversy or Israeli officials&#x27; characterization of Mamdani as chaos-inducing, which is central to right-leaning coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Fox News omits the Giuliani 9/11-ceremony controversy altogether, including any mention of Mamdani&#x27;s faith being invoked or Mamdani&#x27;s confirmation that he will attend the memorial.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Courts issued a mix of rulings on Trump administration matters this week: a Supreme Court-related decision favoring the White House ballroom project, and separate lower-court rulings mostly rejecting the administration&#x27;s sanctuary city funding conditions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These two articles do not describe the same event: one covers a Supreme Court standing decision clearing the way for Trump&#x27;s White House ballroom, the other covers separate lower-court sanctuary city rulings, tied together only by involving Trump administration litigation. Reason&#x27;s framing treats the administration&#x27;s rare sanctuary city win skeptically as part of a broader losing streak, while The Hill treats its unrelated ballroom win at face value; neither outlet&#x27;s coverage can be used to corroborate or contest the other&#x27;s specific claims. A meaningful spectrum comparison would require a left, center, and right source covering the same specific ruling.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in this source set — no left-leaning outlet included
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the ballroom ruling as an unambiguous, validating legal win for Trump, emphasizing the project can now proceed with minimal reference to the underlying preservation dispute or remaining legal questions
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Not represented in this source set — no right-leaning outlet included
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    N/A — no left-leaning source provided for comparison
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    N/A — no right-leaning source provided for comparison
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">A construction worker was injured while working on scaffolding at the White House North Portico and was rescued by an emergency crew and hospitalized.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both available sources agree on the core, non-political fact pattern: a worker was hurt during White House construction and rescued by emergency responders, with no indication of foul play or security failure. This appears to be a low-stakes workplace-safety incident rather than a politically significant event, though the analysis is limited by the absence of right-leaning coverage to check for divergent framing (e.g., scrutiny of White House renovation oversight or security protocols).</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post Politics reports the event in a brief, largely factual manner, mirroring the same core claim as the center source with minimal added interpretation or emotional framing.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames this as a routine workplace-safety and emergency-response story, explicitly downplaying any political or security angle.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set, so right-wing framing cannot be assessed.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning coverage was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning source was included in this dataset, so it is unknown what, if anything, right-leaning outlets are omitting or emphasizing differently (e.g., potential security/Secret Service angle, White House safety oversight).
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Trump</span><span class="entity-tag">Musk</span><span class="entity-tag">AfD</span><span class="entity-tag">Canada/Greenland annexation posts</span></div>
+  <div class="connection-text">On the same news day, Trump posted flag-annexation memes about Canada and Greenland while AfD&#x27;s lead candidate in Saxony-Anhalt publicly thanked Elon Musk for backing their win — two expressions of transatlantic nationalist/territorial assertion happening in parallel, but no outlet in the sample connects Trump&#x27;s expansionist rhetoric to Musk&#x27;s role in boosting Europe&#x27;s far-right.</div>
+  <div class="connection-sig">↳ Suggests an emerging, uncovered storyline: a US-Europe nationalist-right feedback loop (Trump&#x27;s map rhetoric legitimizing AfD-style politics, Musk bankrolling both American right-wing platforms and European far-right parties) that is currently reported as two unrelated stories rather than one pattern.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">White House North Portico construction</span><span class="entity-tag">White House ballroom SCOTUS ruling</span><span class="entity-tag">Trump DC construction projects</span></div>
+  <div class="connection-text">Three nominally separate stories — a worker injured on White House scaffolding, a Supreme Court decision clearing the ballroom project, and midterm coverage noting Trump&#x27;s broader DC construction spree — all describe facets of the same physical rebuilding campaign at the White House, but are being covered as isolated items (safety incident, legal story, campaign-trail color) rather than one oversight/spending story.</div>
+  <div class="connection-sig">↳ Fragmented coverage means no outlet is asking the aggregate question — cost, contracting, oversight, and safety record of the White House construction program as a whole — even though all three data points exist in the same week&#x27;s coverage.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Ohio</span><span class="entity-tag">Amy Acton</span><span class="entity-tag">ICE Watcher TRO</span></div>
+  <div class="connection-text">Ohio produced two distinct law-enforcement/political-tension stories this cycle — a court TRO barring retaliatory action against an &#x27;ICE watcher,&#x27; and an armed man charging a Democratic gubernatorial candidate at a public fair — that are being tracked as unrelated local items rather than as converging evidence of a state becoming a flashpoint for political-violence and enforcement disputes ahead of a competitive governor&#x27;s race.</div>
+  <div class="connection-sig">↳ If either story recurs, Ohio&#x27;s 2026 gubernatorial race could become a national bellwether for campaign security and ICE-related civil conflict; currently no outlet is framing it that way.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Gavin Newsom</span><span class="entity-tag">Amy Acton</span><span class="entity-tag">2028 Dem Nominee governor thesis</span></div>
+  <div class="connection-text">A right-leaning opinion piece (&#x27;2028 Dem Nominee Will Likely Be a Governor&#x27;) runs the same week Newsom is actively raising his national profile and Acton (a gubernatorial candidate) becomes national news via the fair incident — three independent data points converging on the same structural claim: Democrats are pipeline-building through governorships.</div>
+  <div class="connection-sig">↳ The convergence is real and under-articulated — it&#x27;s visible piecemeal across ideologically opposite outlets but stated as an explicit thesis nowhere in the actual news coverage, only in commentary.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Sanctuary city rulings</span><span class="entity-tag">Ohio ICE watcher TRO</span></div>
+  <div class="connection-text">Both belong to the same legal throughline — courts repeatedly checking the administration&#x27;s immigration-enforcement tactics — but are being sourced from entirely different, non-overlapping outlet sets, so no single source is tracking the administration&#x27;s aggregate win/loss record on immigration enforcement litigation.</div>
+  <div class="connection-sig">↳ A pattern of judicial pushback on enforcement tactics is forming across jurisdictions but remains invisible as a trend because each ruling is reported as a standalone local/procedural story.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Multiple ostensibly separate stories (Canada tariffs, midterm positioning, AfD win) are all, underneath, about nationalist/territorial identity politics and expansionist rhetoric — yet each is being covered in its own silo by outlets that don&#x27;t draw the throughline.</div>
+<div class="pattern-item">Right-leaning coverage today skews heavily toward opinion/culture-war pieces (Labor Day capitalism, socialism critiques, Mother Teresa, &#x27;Woke Machine,&#x27; Confederate memorial language) rather than hard-news engagement with same-day developments like the Acton incident or Canada tariffs — a pattern of substituting ideological commentary for direct story coverage.</div>
+<div class="pattern-item">Left-leaning coverage clusters around administration-critical process stories (trans health report framing, Confederate memorial language stripping, UK media policy) that function as steady drip criticism of the administration&#x27;s institutional conduct, largely uncontested because the right doesn&#x27;t engage with these specific stories at all.</div>
+<div class="pattern-item">Several &#x27;single stories&#x27; in the input are actually loose bundles of unrelated sub-stories stitched together by topic tag (midterms, Mamdani, courts) — meaning apparent left-right disagreement is often actually left-right selecting different sub-stories to cover, not disputing the same facts.</div>
+<div class="pattern-item">Trump&#x27;s entity presence is undercounted by fragmentation (&#x27;Donald Trump&#x27; vs. &#x27;Trump&#x27; tracked separately) — when merged, he is present in nearly every major story today, reinforcing how much the news cycle&#x27;s gravitational center remains fixed on him even amid ostensibly separate storylines (Canada, courts, midterms, DC construction).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The armed incident targeting Amy Acton — a significant act of political violence against a gubernatorial candidate — has essentially no right-of-center coverage in the sample, even as right-leaning outlets elsewhere emphasize &#x27;political toxicity&#x27; themes (DSA influence, leftward primary challenges); the asymmetry is conspicuous given how aggressively similar incidents are typically amplified when the roles are reversed.</div>
+<div class="anomaly-item">A satirical/embarrassing detail — the official-seeming GOP midterm convention site redirecting to Epstein files coverage — appears right alongside legitimate coverage of the actual Dallas GOP convention, suggesting the Epstein association remains a live reputational liability resurfacing even in unrelated technical/domain contexts just as the midterm convention season formally launches.</div>
+<div class="anomaly-item">Despite high-significance billing, the AfD/Saxony-Anhalt story has the thinnest source base (5 total) and zero left-only or far-right-only coverage in the sample — a major European election result that is otherwise heavily contested online is comparatively under-sourced in this dataset, and RCP&#x27;s own coverage of it is internally split (alarm vs. minimization), suggesting genuine editorial disagreement within the right rather than a unified line.</div>
+<div class="anomaly-item">No outlet connects the Trump Canada/Greenland flag-map posts to the earlier &#x27;renaming New Mexico&#x27; story (left-only) — both are the same rhetorical genre (map/territory trolling) occurring in the same stretch of days, but are being treated as unrelated one-off memes rather than a recognizable pattern of behavior.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The right is systematically avoiding hard-news stories that reflect poorly on the administration or its allies in the moment (the Acton shooting-adjacent incident, sanctuary city court losses, trans health report criticism), instead filling space with ideological opinion content: this suggests a strategy of narrative substitution rather than direct rebuttal. The left, conversely, is avoiding stories that complicate a &#x27;Republican peril&#x27; framing — it under-covers the Canada tariff story&#x27;s economic nuance (which a libertarian outlet actually challenged) and largely ignores intra-Democratic tension stories (DSA influence, primary challenges from the left) that the center-left and right are surfacing. Both patterns point to the same underlying dynamic: coverage is being driven less by story importance than by whether the story helps or complicates each side&#x27;s preferred midterm narrative.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Inside southern Lebanon&#x27;s villages where Israeli occupation has upended daily life</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Midterm elections head into the home stretch as candidates attend Labor Day events</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A whiplash election year enters its final stretch as Trump holds wild cards</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump officials strip military language criticizing Confederate memorial</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump suggests renaming New Mexico amid torrent of online memes and taunts</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US woman charged with killing son ‘very invested’ in Lindsay Clancy trial, prosecutors say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal investigators search for cause of Amazon cargo jet crash that killed five</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration attacks UK plans to boost traditional media on social platforms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Nakedly political’: US attempts to link trans support to authoritarianism in new health department report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US labor unions saw membership gains in 2025, mostly in states with bargaining protections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lindsay Clancy was failed by our warped understanding of motherhood | Moira Donegan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Study: Almost Half the World’s Farmers Are Poisoned by Pesticides Each Year</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani Denounces an Indian Nonprofit</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What Trump Could Learn From Bush</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialism and the Dumbest Generation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pablo Torre 1, Mark Cuban 0</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Award for Scholars Who Tell the Truth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Last First Day of School: ‘Love Is Proved in the Letting Go’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is Court Packing Constitutional? Don’t Be So Sure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen Jim Justice finds way through Senate polarization to bring WWII hero memorial to DC</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Civil society is under siege</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is America Slowly Becoming a ‘Transfer’ Nation?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Taking Venezuela’s Oil: If America Becomes a Rogue, the Future Is Dark</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Elite Formation Is Fueling the Socialist Project</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Labor Day Is a Triumph of Capitalism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› We Should Call It ‘Economic Growth Day’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mother Teresa Is Looking at You</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: James Talarico Denies Jesus Is the Only Way, Says Allah Leads to Same Truth</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hasan Piker Defends Lindsay Clancy, Rips Anyone Siding with Prosecutors</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem Rep. Neguse: Trump Attempting to &#x27;Subvert a Free and Fair Election&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Farage Warns Britain Is on Brink of &#x27;Serious Civil Disturbance&#x27; over Migrant Crisis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can a Depopulating America Still Flourish?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Who Would Want the U.S. To Be Run Like a Business?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don&#x27;t Let Dems Take American Dream from Small Biz</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Labor Day: Darkness in DC, But Sunshine Across America</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Republicans Can Win the Midterms in 5 Easy Steps</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› 2028 Dem Nominee Will Likely Be a Governor</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Woke Machine Is Lying In Wait for a Political Comeback</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Real News Is Hard To Find</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Ohio gubernatorial race security/political-violence framing following the Amy Acton incident — watch for right-wing coverage emergence or continued silence</div>
+<div class="watch-item">Musk&#x27;s financial/political role in AfD and other European far-right parties, and any explicit Trump-Musk-AfD linkage in coming coverage</div>
+<div class="watch-item">Aggregate spending/oversight reporting on White House construction (ballroom + North Portico + broader DC projects) as a consolidated story</div>
+<div class="watch-item">Sanctuary city litigation trajectory — track whether the administration&#x27;s rare win becomes an outlier or part of a reversing trend</div>
+<div class="watch-item">Mamdani&#x27;s actual 9/11 ceremony attendance and any Giuliani follow-up, plus UNGA-week protest developments in NYC</div>
+<div class="watch-item">Whether &#x27;governor pipeline&#x27; framing (Newsom, Acton, other Dem governors) solidifies into an explicit 2028 storyline across outlets</div>
+<div class="watch-item">Recurrence of Trump territorial/map rhetoric (Canada, Greenland, New Mexico renaming) as a pattern rather than isolated memes</div>
+<div class="watch-item">AfD polling/momentum nationally in Germany following the Saxony-Anhalt win, and whether U.S. right-of-center outlets converge on alarm or minimization</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
