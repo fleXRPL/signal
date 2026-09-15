@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-15 10:00 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-15 10:00 UTC</span>
+    <span class="pill">128 articles</span>
+    <span class="pill">14 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant thread this cycle is not any single event but the machinery of the 2026 midterms coming into view, and the administration is working multiple levers on it simultaneously. The Supreme Court&#x27;s rejection of the White House&#x27;s bid to reinstate USPS mail-ballot restrictions is a real legal defeat — the nationwide block from the lower court stays in place, meaning the administration&#x27;s most direct attempt to constrain mail voting ahead of the midterms has failed at the highest available venue. That loss lands in the same window as a high-significance whistleblower allegation that DHS personnel, under something called the Unlawful Voter Initiative, were directed to make false attestations to gain access to state voter registration databases — a claim that, if substantiated, describes agents lying to state officials to obtain voter data, potentially in violation of state law. Separately, Trump has floated $5,000 checks to Americans, explicitly framed around Republicans holding Congress, and is already getting pushback from Senate Republicans on cost and debt grounds. Three different instruments — litigation, data access, and direct payments — are all pointed at the same outcome eight months out, and none of the coverage sets provided treat them as a connected effort.</p>
+<p>Beneath that, there&#x27;s a lower-grade but telling story about intra-party discipline: a Texas Railroad Commission candidate&#x27;s refusal to apologize for a post read as xenophobic toward University of Texas students is producing visible friction with fellow Republicans, suggesting the party&#x27;s tolerance for this rhetoric is not uniform even in deep-red Texas politics. And at the edges, Trump used a live call-in at the All-In Summit with Nvidia&#x27;s Jensen Huang to flatly dismiss AI existential-risk concerns as a &quot;hoax&quot; and reject any slowdown — a deregulatory signal to the AI industry that matters more for what it tells industry and investors than for any immediate policy action.</p>
+<p>McConnell&#x27;s return to the Senate floor for his first vote since a June fall is a genuine health and institutional story, not a maneuver, but its timing means the Senate GOP conference is regaining a member right as it faces two live fights that will test its cohesion: the debt-financed $5,000 check proposal and whatever oversight response, if any, emerges from the DHS whistleblower claim.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Trump is driving the electoral-mechanics push directly — proposing cash payments tied explicitly to a congressional retention argument is an unusually blunt linkage of personal/party benefit to fiscal policy, and it&#x27;s already producing daylight with his own Senate conference over debt concerns. That daylight is worth tracking as a proxy for how much independent leverage Senate Republicans still have against him heading into a midterm year where he needs them unified.</p>
+<p>DHS leadership is the actor under the most direct pressure but the least covered: a whistleblower alleging illegal data-access tactics inside a named &quot;Unlawful Voter Initiative&quot; is a serious institutional accusation, and the near-total absence of a DHS response or right-leaning counter-narrative in this corpus is itself a data point — either the agency is staying silent by design, or conservative media has made an editorial choice not to engage with it yet.</p>
+<p>McConnell&#x27;s dynamic is quieter but consequential. A weakened but present McConnell returning right as the conference splits over the $5,000-check idea puts him in a position to matter on a vote where his instincts have historically run toward fiscal caution — his presence could tip a close whip count either direction depending on how firmly he re-asserts himself.</p>
+<p>At the state and local level, the Bo French episode shows Texas Republicans testing where the line is on public xenophobic rhetoric within their own primaries — the fact that &quot;some fellow Republicans&quot; are the ones calling it out, not just Democrats, indicates this is an intra-party boundary dispute, not a partisan attack line, which makes it more diagnostic of where the party&#x27;s center of gravity actually sits than a Democratic criticism would be.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The most conspicuous gap is right-leaning media&#x27;s near-total silence on the DHS whistleblower story. This is a high-significance allegation — federal agents allegedly lying to states to obtain voter registration data — and its absence from conservative coverage in this set isn&#x27;t a framing choice, it&#x27;s a coverage void. Given how aggressively conservative outlets otherwise cover election-integrity stories, this asymmetry is itself informative: a story that cuts against the administration&#x27;s own voter-fraud framing appears to be getting no oxygen on the right.</p>
+<p>Conversely, right-leaning coverage of the SCOTUS mail-ballot ruling and McConnell&#x27;s return stays deliberately narrow and personal, avoiding any framing of the ruling as a defeat for Trump&#x27;s voting-restriction agenda, and omitting the adjacent stories left outlets are bundling in — the Trump Jr./Russian-oligarch wedding financing story, the Kennedy Center&#x27;s bankruptcy tied to Trump-driven governance disputes, and a cited international finding that U.S. democracy indicators are at 50-year lows. Whether or not those adjacent stories hold up, their total absence from right-of-center coverage suggests a strategy of containment: keep each story isolated rather than let them accumulate into a pattern.</p>
+<p>On the left side, the omission is the inverse — no engagement with the administration&#x27;s stated rationale for the voter-data initiative, and no space given to the argument that the mail-ballot restrictions were a legitimate election-security measure. The $5,000-check story has essentially no left-of-center counterpart in this set at all; left coverage was pointed at an unrelated voter-roll/ERIC story instead, meaning there&#x27;s currently no visible left framing of Trump&#x27;s cash-payment proposal as either populist relief or a transactional pre-midterm gimmick — a real coverage gap given how consequential that framing choice will be if the proposal advances.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The automated cross-story correlation returned nothing, which is itself worth noting — no hidden connections, no narrative patterns, and no anomalies were surfaced by the system. That&#x27;s a tooling gap, not an absence of signal: laid side by side, the mail-ballot ruling, the voter-database whistleblower claim, and the $5,000-check proposal are three distinct mechanisms converging on the same target (the composition of the next Congress), and none of the source coverage in this set connects them as such. That&#x27;s the most important pattern in this briefing: each story is being processed by the media as a standalone event when it is more legible as one administration running parallel tracks — legal, administrative, and fiscal — toward the same electoral outcome.</p>
+<p>McConnell&#x27;s return and the Senate GOP&#x27;s skepticism on the $5,000 checks are also worth reading together rather than separately; a reconstituted, cautious Senate majority leader-emeritus voice re-entering the chamber right as his conference balks at a debt-financed, Trump-branded payout is a natural friction point, and it&#x27;s the kind of vote where his re-engagement could be decisive either way.</p>
+<p>The Bo French story and the DHS whistleblower story sit at opposite ends of the same underlying question — how far the party&#x27;s electoral apparatus and its candidates are willing to go on immigration- and voter-fraud-adjacent rhetoric and tactics — but nothing in the coverage ties the national-level allegation to the state-level candidate dispute, even though both are, at root, about where the GOP&#x27;s electoral hardline stops.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>DHS/whistleblower follow-through</strong>: watch for a DOJ or DHS Inspector General response, a formal referral, or a congressional oversight request (House/Senate Homeland Security or Judiciary committees) in the next 48-72 hours. Silence beyond this window would suggest the story is being managed rather than investigated.</li>
+<li><strong>Senate GOP whip count on the $5,000 checks</strong>: watch for a formal bill introduction, CBO cost estimate, or a Trump pressure campaign (social media posts, primary threats) aimed at skeptical Senate Republicans. This is the clearest near-term test of how much leverage the White House still has over its own conference.</li>
+<li><strong>McConnell&#x27;s subsequent votes and public statements</strong>: his position on the $5,000-check proposal specifically, and any signal on how much floor presence he intends to resume, given his health.</li>
+<li><strong>USPS operational guidance post-ruling</strong>: any updated USPS or state election-official guidance implementing the now-affirmed status quo on mail ballots ahead of the midterms.</li>
+<li><strong>Bo French&#x27;s standing in the Railroad Commission race</strong>: watch for state GOP or RNC statements, endorsement withdrawals, or primary challengers emerging in response to the controversy.</li>
+<li><strong>Trump Jr./Russian-oligarch financing story and Kennedy Center bankruptcy dispute</strong>: both are currently only surfacing in left-leaning coverage; watch whether either develops enough documentary basis to force right-leaning outlets to engage, which would be a signal of the story&#x27;s actual weight versus partisan noise.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline this cycle is that the administration is treating the 2026 midterms as a systems problem to be engineered on multiple fronts at once — through litigation over ballot access, through a data-access program aimed at the voter rolls themselves, and through a direct cash payment tied explicitly to keeping Congress in Republican hands — while the media apparatus covering all of it remains too fragmented, and in some cases too selectively silent, to describe that as a single strategy. The most consequential fact in this briefing isn&#x27;t any one story; it&#x27;s that the DHS whistleblower allegation, arguably the most serious item here, is being almost entirely ignored on the right and only thinly covered without rebuttal on the left, which means the public record on it is currently being built by one side alone. Until that changes, or until DHS is forced to respond, treat the &quot;Unlawful Voter Initiative&quot; story as underreported relative to its actual significance, not as a settled or minor matter.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">A DHS whistleblower alleges that federal agents, as part of the administration&#x27;s Unlawful Voter Initiative, directed employees to make false attestations to access state voter registration databases, potentially violating state law.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">The available reporting shows left and center outlets converging on the core factual claim — a DHS whistleblower alleges illegal data-access tactics in a voter fraud initiative — differing mainly in emphasis on overreach versus legal violation. However, no right-leaning outlet in this set actually covers the story, making it impossible to assess conservative media&#x27;s response or any rebuttal; the mismatch itself (right-wing coverage pivoting to judicial obstruction instead) suggests this story may be receiving asymmetric attention across the spectrum.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    NPR emphasizes government overreach and potential lawbreaking by federal agents, centering the whistleblower&#x27;s credibility and amplifying Democratic officials&#x27; alarmed response to make the case that executive power was misused against state legal authority.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the story primarily as a whistleblower-exposed abuse of executive power, emphasizing that DHS workers may have lied to obtain sensitive state data, positioning it as a threat to states&#x27; legal control over voter records rather than legitimate fraud enforcement.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning coverage of this specific story was provided; the supplied Fox News article instead frames a related but distinct narrative — that Obama- and Biden-appointed judges are obstructing legitimate Trump administration immigration enforcement — emphasizing frustration with judicial interference rather than addressing the voter data whistleblower claims.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not include any administration or DHS justification for the data access effort (e.g., the stated rationale of preventing unlawful voting), nor any pushback on the whistleblower&#x27;s claims — since no right-leaning rebuttal to this specific story was available in the sourced coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning source provided omits the voter data whistleblower story entirely, meaning there is no conservative counter-narrative, defense of the Unlawful Voter Initiative, or dispute of the whistleblower&#x27;s allegations available for comparison — a significant coverage gap rather than a framing choice.
+  </div>
+</div>
+</div>
+
+<div class="story-card high">
+  <div class="story-headline">A DHS Office of Inspector General report found that detainees at the &#x27;Alligator Alcatraz&#x27; facility in Florida were held in small metal enclosures (about 18 square feet) amid overcrowded, unsanitary conditions, corroborating earlier detainee accounts of mistreatment.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">Both sources — one far-left, one libertarian — converge almost entirely on the same underlying facts from the DHS OIG report, which is notable because it signals cross-ideological (if not full-spectrum) confirmation of poor detention conditions rather than a partisan dispute over facts. The real gap here isn&#x27;t left-vs-right spin but the absence of mainstream conservative or center-right coverage in this sample, which limits any conclusion about how the broader right is characterizing or defending the facility. The one framing distinction worth noting is Reason&#x27;s characterization of caging &#x27;as punishment,&#x27; which implies intent and could be a point of dispute if government officials respond.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones frames the report as vindication — detainees who made allegations are now proven right by an independent government watchdog. The emotional register centers on accountability and moral vindication, emphasizing official culpability for building and operating an inhumane facility.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source is included in this set; framing from centrist or establishment outlets cannot be assessed from the sources provided.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this set; only a libertarian outlet (Reason) is represented, which is not equivalent to mainstream conservative/right coverage. No right-of-center framing can be assessed from the sources provided.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No right-leaning coverage was provided for comparison, so no specific omissions relative to right coverage can be identified from the available sources.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage was provided for comparison, so no specific omissions relative to left coverage can be identified from the available sources. (Note: Reason, the only non-far-left source here, is libertarian and substantively agrees with Mother Jones rather than offering a contrasting conservative perspective.)
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The Supreme Court denied the Trump administration&#x27;s emergency request to reinstate new USPS mail-in ballot restrictions ahead of the 2026 midterms, leaving a lower court&#x27;s nationwide block in place, while Senate Minority Leader Mitch McConnell returned to the Capitol and cast his first vote since a June fall left him hospitalized for months.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (10)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (5)</span><span class="bias-badge" style="color:#e07a7a;">left (12)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.4;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:18.5;" title="center-left: 10"></div><div class="bias-segment" style="background:#7ae09b; flex:5.6;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:5.6;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:9.3;" title="far-right: 5"></div><div class="bias-segment" style="background:#e07a7a; flex:22.2;" title="left: 12"></div><div class="bias-segment" style="background:#a07ae0; flex:5.6;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:13.0;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The two hard facts — the Supreme Court&#x27;s rejection of the USPS mail-ballot restrictions and McConnell&#x27;s return to the Senate — are reported consistently across the spectrum with no factual dispute, only differences in emphasis and adjacent editorializing (e.g., Breitbart&#x27;s &#x27;existential threat&#x27; framing vs. Guardian&#x27;s frailty/transparency framing). The real divergence is in what each side treats as part of &#x27;the story&#x27;: left outlets weave in unrelated scandal and democracy-decline narratives to build a cumulative case against the administration, while right outlets keep the frame narrow and personal, avoiding the broader political implications. Neither side misrepresents the core facts, but both use selective context to shape the reader&#x27;s takeaway.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Emphasizes the mail-ballot ruling as a judicial check on executive overreach that protects voting access ahead of the midterms, treats McConnell&#x27;s return primarily as a personal health/comeback story, and situates both within a broader pattern of stories (Trump Jr.&#x27;s Russian-linked wedding financing, a global democracy-decline report, Kennedy Center turmoil) that collectively cast the Trump administration as corrupt or democratically corrosive.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Presents both stories in largely procedural, non-partisan terms — the ruling as a routine judicial check on the executive (often citing the lopsided vote count) and McConnell&#x27;s return as a straightforward attendance-and-health update — generally avoiding strong editorializing in either direction.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Frames the mail-ballot ruling as a procedural legal setback for Trump-backed election-security measures, giving space to supporters who see the Court as stalling legitimate reform, while portraying McConnell&#x27;s return sympathetically as a resilience-and-duty story centered on his health struggles rather than his fitness for office; far-right coverage additionally amplifies skepticism of AI-regulation alarmism and foreign threats (Iran) as competing priorities.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits the specific medical details right-leaning outlets include (McConnell&#x27;s childhood polio effects, pneumonia, slowed speech) and doesn&#x27;t engage with conservative arguments that the mail-ballot restrictions were a legitimate election-security measure worth defending.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage omits the broader scandal-adjacent stories left outlets connect to this news cycle — the Trump Jr./Russian oligarch wedding-financing story, the Kennedy Center&#x27;s bankruptcy crisis tied to Trump-driven governance disputes, and the international report finding U.S. democracy indicators at 50-year lows — and largely avoids describing the ruling as a defeat for Trump&#x27;s voting-restriction agenda.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Texas Railroad Commission candidate Bo French declined to apologize for a social media post about University of Texas students that critics, including some fellow Republicans, called xenophobic or racist.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core, verifiable fact: French posted something widely read as xenophobic and refused to walk it back under pressure. The meaningful divergence is emphasis — Politico centers the candidate&#x27;s individual defiance, while the Washington Post centers Republican infighting — but neither divergence amounts to a factual dispute. The bigger analytical gap here is coverage, not spin: with only two left-of-center outlets represented, there&#x27;s no way to assess how conservative or right-leaning media characterized the same event, which limits any real &#x27;full spectrum&#x27; comparison.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames the story primarily as an intra-GOP conflict — Republicans publicly denouncing one of their own statewide candidates — using it to spotlight internal party tension over racist rhetoric and implicitly question the GOP&#x27;s ability to police its own ranks.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Politico (center-left) frames the story around the candidate&#x27;s personal defiance — emphasizing that French &#x27;stood by&#x27; and &#x27;doubled down&#x27; on xenophobic remarks despite backlash, centering the narrative on his individual conduct rather than party dynamics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet was included in the provided sources, so right-of-center framing cannot be characterized from this data set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source was provided in this set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source was provided in this set to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Trump proposed $5,000 checks to Americans framed around Republicans retaining Congress, and Senate Republicans have responded with notable skepticism, primarily over cost and debt concerns; no other outlet in this set actually covers the story.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">The source set provided is mismatched: only the center outlet (Axios) actually reports on the $5,000 checks story, while the far-left source (Mother Jones) covers an unrelated voter-roll/ERIC story, making genuine cross-spectrum comparison impossible here. Based on the single relevant source, the real story is a GOP intra-party fiscal fight over debt-financed stimulus tied to electoral messaging — a substantive angle that would benefit from actual left and right coverage to see whether either side frames it as fiscal recklessness, needed relief, or a transactional political gimmick.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not applicable to this story — the only left-leaning source provided (Mother Jones) covers a different topic entirely (ERIC/voter-roll withdrawal) and offers no framing of the $5,000 checks proposal
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the story as an intra-GOP rift, emphasizing Senate Republicans&#x27; &#x27;chilly&#x27; reception and fiscal caution, treating the political viability and party dynamics as the central angle rather than debating the merits or fairness of direct payments themselves
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right-wing framing of the $5,000 checks proposal cannot be assessed from the given coverage
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No left-leaning coverage of this specific story exists in the provided set to compare; the supplied Mother Jones piece is on an unrelated topic, so no meaningful omission comparison can be made
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning coverage of this specific story exists in the provided set to compare; without it, it&#x27;s unclear whether conservative outlets are framing this as fiscal responsibility, populist economic relief, or political strategy
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">President Trump joined Nvidia CEO Jensen Huang for a surprise on-stage phone call at the All-In Summit, during which Trump dismissed AI existential-risk concerns as a &#x27;hoax&#x27; and rejected calls to slow AI development.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both sources agree on the core event: Trump publicly dismissed AI risk concerns during an on-stage call with Huang, aligning presidential rhetoric with industry growth interests. The key difference is framing intensity — Axios uses the industry-coined term &#x27;doomers&#x27; with relatively neutral framing, while the Washington Post foregrounds the loaded &#x27;hoax&#x27; quote to emphasize the stakes of dismissing expert warnings. Without a right-leaning source in this set, it&#x27;s impossible to assess how conservative outlets characterized the moment, which limits the full spectrum analysis.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post frames Trump&#x27;s comments as reckless dismissal of legitimate expert and industry warnings, emphasizing the word &#x27;hoax&#x27; to portray the president as anti-science and casting caution/slowdown advocates as the responsible, credible position being cast aside.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the moment as a notable political-industry alignment moment, characterizing AI safety advocates as &#x27;doomers&#x27; and presenting Trump and Huang as jointly representing a pro-growth, dismissive-of-fear stance without heavily editorializing on whether that dismissal is warranted.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this coverage set, so right-wing framing cannot be assessed from the given sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no right-leaning source was included in this coverage set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Not applicable — no right-leaning source was included in this coverage set to compare against.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    <p style='color:var(--muted)'>No significant connections identified in this run.</p>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Analysis unavailable.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas Candidate Stands Xenophobic Comments</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas Rep. Greg Casar discusses bill to temporarily pause advanced AI development</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The powerful millionaires hiding in plain sight</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Local election officials are training to defend the midterms from interference</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republican pollster discusses GOP voters&#x27; outlook as midterms approach</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mahmoud Khalil lawsuit says Columbia University failed to protect pro-Palestinian activists</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› News Wrap: Kennedy Center warns of &#x27;fiscal collapse&#x27; without Trump&#x27;s name on building</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Houthi gains in Yemen, attack on Saudi pipeline compound pressure on oil markets</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› EPA repeals limits on greenhouse gas emissions from power plants</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› More than 1.2 million children have lost SNAP benefits since last July. Experts explain why</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Alex Bores launches $30 million effort to unify Dems on AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hochul’s how-to guide to stopping ICE</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The 2026 race that’s testing Andy Beshear’s 2028 reach</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Grand conspiracy’ probe of Trump foes goes on after prosecutor’s departure</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump agrees to stricter ethics rules Democrats demanded in crypto bill</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Voting rights advocates welcome supreme court decision to stop Trump administration from restricting mail ballots– as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas governor threatens to penalize datacenters not obeying water laws</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS officers raise concerns over potentially illegal voter searches and unreliable data, whistleblower says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump administration changes how it counts measles deaths amid Pennsylvania outbreak</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Proud Boys Next Door</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A Moment for Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› One Senator’s Plea for Tariff Breaks</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Justice, Berkeley and the Race Proxies</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Britain’s Go-Somewhere-Else Tax</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Higher Ed Will Soon Get Patriotic</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› France Supports a Two-State Solution</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Yes, Virginia, There Is an Abortion Vote</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Warsh’s New Principles for the Fed</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Michigan Senate candidate Abdul El-Sayed says leaders must address ‘unpaid debts’ to Black communities</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ex-Dem insider exposes what Harris told top donors days before Biden dropped out: &#x27;Insulting&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is the End of the World Upon Us, Again?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Alarm over AI Gets Louder</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College Freshmen: If You Care About Justice, Beware the ‘Free Palestine’ Movement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The FDA’s Proposed Drug Ad Rule Is a Blueprint for Violating the First Amendment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Antisemitism Kills</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What the Venetians Might Say to Zohran Mamdani</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Government Unions Are Making a Comeback — and Taxpayers Will Pay the Price</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s Reckless $5,000 ‘Dividend’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Actor Tom Pelphrey Melts Hearts with Emotional Speech at the Emmys: &#x27;I Thank God for My Life and My Sobriety&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jewish Security Organization Runs Firearms Summer Camp for Rabbis</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› State Department Warns U.S. Companies to Avoid Doing Business with the Taliban</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Video: The Emmy Awards Deliver a Mostly Politics Free Show</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ossoff: &#x27;Trump Is a Dangerously Corrupt and Incompetent Man&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dem-Aligned Tech Oligarchs Seek Censorship, Control</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Be Afraid of AI and Regulate Aggressively</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› &#x27;We Are So Awesome It Could Become Dangerous&#x27; Is Hype, Puffery</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Brennan Subpoenaed in Florida &#x27;Grand Conspiracy&#x27; Probe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Huge Cost of Democrats Pushing To Delay Deportations</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Did GOP Just Lose Its Best Chance To Save the Midterms?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Red States Replacing Woke Colleges With Real Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Catholic Bishops, Laity Drift Apart on Immigration</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <p style='color:var(--muted)'>None identified.</p>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
