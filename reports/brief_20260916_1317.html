@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-16 13:17 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-16 13:17 UTC</span>
+    <span class="pill">124 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">7 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant story of the day is not any single headline but a pattern visible only in aggregate: three separate legal and procedural challenges to executive authority — a GOP congressman&#x27;s impeachment filing against a sitting GOP Cabinet secretary over war powers, a federal court ruling against ICE for retaliating against a private citizen&#x27;s speech, and continued litigation from a doctor against a state medical board over COVID-era enforcement — are running in parallel across military, immigration, and public-health domains. None of these are being reported as a unified trend. Each is being covered narrowly, by different outlets, for different reasons, which means the aggregate signal (a real, cross-ideological pushback against expansive agency and executive power) is invisible to anyone reading a single outlet.</p>
+<p>The more conventional story — Thomas Massie filing impeachment articles against Pete Hegseth over the Iran war&#x27;s legality, timed alongside the House&#x27;s third war-powers resolution vote — is real and substantively unusual: a Republican moving to impeach a Republican Cabinet official is not routine, and right-leaning outlets are visibly minimizing or ignoring it rather than covering it as the intra-party rupture it would normally be treated as. That asymmetry in coverage is itself a data point. Separately, AI policy is fragmenting into at least four disconnected narrative threads (a bipartisan Hawley-Blumenthal oversight bill, right-of-center opinion pieces dismissing AI companies&#x27; regulation advocacy as self-serving, scattered doomerism/ad-related commentary, and generational-competence framing about Congress regulating AI) without any outlet yet treating AI policy as a single coherent battleground — meaning the shape of the eventual fight is still forming and worth tracking now, before positions harden.</p>
+<p>Underneath both threads is a weaker but real signal: institutional trust and data control. The administration is expanding its grip on how federal agencies collect and release data, a change with long-tail consequences for policy legitimacy that is getting comparatively little attention next to louder personnel and culture-war stories (e.g., MAHA&#x27;s internal leadership shift toward MAGA-aligned men). The data-control story deserves more weight than its current coverage volume suggests.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p><strong>Thomas Massie</strong> is acting as a genuine outlier — a libertarian-right Republican willing to break with leadership on constitutional grounds (war powers) rather than partisan grounds. His impeachment filing is a leadership problem for Speaker Johnson, not a Democratic one, which is precisely why right-leaning outlets have an incentive to bury it: covering it seriously would force acknowledgment of real GOP division on Hegseth and the Iran war rather than the &quot;7 defectors, non-story&quot; framing Fox is running.</p>
+<p><strong>Pete Hegseth</strong> is the subject rather than an active driver here — the underlying allegation (waging war on Iran without congressional authorization) is unverified by any outlet in this set, which is itself notable. Nobody has actually reported out whether the legal claim has merit; coverage is entirely about the political mechanics of the filing.</p>
+<p><strong>Richard Blumenthal and Josh Hawley</strong> are running a genuinely bipartisan AI oversight push, which is unusual enough that it&#x27;s drawing an opinion-side counter-narrative (WSJ, Breitbart) framing regulation advocacy from Anthropic and OpenAI as self-interested theater. Watch whether this becomes an organized attempt to delegitimize the bill itself rather than just the companies supporting it.</p>
+<p><strong>DHS/ICE leadership</strong> is under quiet pressure from two independent, unconnected directions: Pramila Jayapal&#x27;s political claim that most recent arrestees posed no public threat, and a federal judge&#x27;s actual ruling that the agency likely violated the First Amendment against David Streever. Neither side is citing the other, but together they paint a consistent picture of an agency operating past its mandate — one that conservative and pro-enforcement outlets are conspicuously not contesting, because there is no visible attempt to do so in this dataset at all.</p>
+<p><strong>Sherrod Brown</strong> is being treated by the Post as a Senate-control bellwether and by RCP as a personal comeback story — a framing gap that matters because no right-leaning outlet has weighed in yet. When one does, watch whether it engages with the &quot;can Brown&#x27;s working-class appeal still win&quot; skepticism or ignores the race entirely, consistent with the pattern of right-leaning silence on stories requiring engagement with GOP vulnerabilities.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>Right-leaning outlets are not covering, or are actively minimizing, any story where a GOP-aligned actor or federal agency is the subject of accountability. The Massie impeachment filing and the Streever First Amendment loss against ICE both have zero meaningful right-leaning treatment in this corpus. That is not an absence of newsworthiness — a GOP member impeaching a GOP Cabinet secretary and a federal court ruling DHS likely violated the Constitution are both, by any normal editorial standard, big stories. Their absence looks like deliberate downplaying, not disinterest.</p>
+<p>Left-leaning outlets have a mirror-image gap: they are not engaging with The Hill&#x27;s argument that Democratic-led oversight expansions could backfire once Republicans regain power. That is a live, self-critical argument about institutional design that the left is simply not touching.</p>
+<p>Nobody — left or right — is naming the unifying thread: a bipartisan-flavored current of skepticism toward expansive executive and agency power, running simultaneously through military authorization, immigration enforcement, and state public-health boards. Acknowledging it would require both sides to concede that the other party&#x27;s objections to overreach aren&#x27;t uniquely partisan, which cuts against each side&#x27;s preferred narrative of the other as singularly authoritarian.</p>
+<p>The federal data-control story (Axios) also has essentially no engagement from the left beyond passing mention, and no right-leaning counter-framing at all — meaning there is currently no adversarial scrutiny of how agency data practices are changing, from any direction.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The clearest pattern is the executive-overreach throughline noted above: Massie (war powers), Streever (First Amendment vs. ICE), and Scott Jensen (state medical board) are three unconnected individuals using courts or floor procedure — not conventional politics — to check executive or agency authority, spanning a libertarian Republican, a private citizen, and a doctor. This is genuinely a below-the-radar story because it cuts across the standard left/right sorting mechanism that most coverage relies on.</p>
+<p>Several &quot;connected&quot; story pairs in this dataset are actually clustering artifacts — The Hill&#x27;s oversight-backfire piece bundled with the unrelated Hawley-Blumenthal AI bill, and the federal-data-control story bundled with the MAHA leadership shift — and should not be read as multi-source coverage of single events. Treat any apparent &quot;consensus&quot; or &quot;spectrum&quot; claim tied to those pairings as low-confidence.</p>
+<p>The AI regulation space shows early signs of a coordinated opinion-side counter-narrative: WSJ and Breitbart running parallel skepticism about AI companies&#x27; motives for supporting regulation, landing the same news cycle as the bipartisan Hawley-Blumenthal bill. Worth confirming whether this is organized messaging or coincidental ideological overlap.</p>
+<p>Reason is the only outlet in this corpus with meaningful presence across the war-powers story, general Massie coverage, and the Streever ICE ruling — consistent with a coherent libertarian, anti-executive-power editorial line that mainstream left/right framing structurally can&#x27;t see, because it doesn&#x27;t sort neatly into either camp&#x27;s story of the day.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li><strong>House GOP leadership&#x27;s handling of Massie&#x27;s impeachment articles</strong> — watch for a move to table, refer to committee indefinitely, or force a floor vote. Leadership&#x27;s choice will signal how much internal exposure they believe exists on the Iran war&#x27;s legal footing.</li>
+<li><strong>DOJ/DHS response to the Streever ruling</strong> — an appeal, and specifically whether it draws any right-leaning coverage at all, will indicate whether the enforcement-friendly press is willing to engage with an adverse court finding against ICE.</li>
+<li><strong>Hawley-Blumenthal AI oversight bill&#x27;s committee movement</strong> — track against the WSJ/Breitbart opinion pushback; a shift from opinion-page skepticism to organized lobbying against the bill would be the next escalation.</li>
+<li><strong>Any right-leaning outlet&#x27;s first substantive coverage of the Sherrod Brown race</strong> — its framing (comeback-in-doubt vs. Senate-control-stakes) will reveal how the right intends to contest Ohio.</li>
+<li><strong>Scott Jensen v. Minnesota medical board</strong>, post-Eighth Circuit ruling — a live test case for how far state boards can go in COVID-era speech enforcement.</li>
+<li><strong>MAHA internal leadership dynamics</strong> — whether the original women-led founding faction publicly responds to MAGA-aligned men&#x27;s rising influence; currently a one-sided story (Mother Jones only).</li>
+<li><strong>Federal agency data-collection and release practices</strong> — no adversarial coverage exists yet; the first sign of politicized data (economic, health, or immigration statistics) drawing bipartisan concern would be significant.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The most important thing happening right now is not any individual headline but a coverage failure: a real, cross-ideological current of resistance to expansive executive and agency power is running simultaneously through military authorization, immigration enforcement, and state health regulation, and neither side of the media landscape will name it, because doing so would require each side to admit the other party&#x27;s overreach complaints aren&#x27;t uniquely partisan theater. Right-leaning outlets are protecting the administration by burying stories of GOP-on-GOP and judicial pushback; left-leaning outlets are protecting their own institutional actors by ignoring arguments that their oversight tools could boomerang. The result is a genuinely fragmented information environment where the true center of gravity — an emerging, still-inchoate bipartisan unease about unchecked authority — is being actively obscured by the same outlets that would normally be expected to amplify it. Anyone reading only mainstream coverage from either direction today would miss this entirely.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Sherrod Brown is running for his old Ohio Senate seat in a race widely seen as pivotal to which party controls the Senate, with his appeal to working-class voters seen as the deciding factor.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">Both outlets agree on the core fact pattern — Brown&#x27;s bid to reclaim his seat hinges on working-class voter appeal — but they diverge in stakes-framing: WaPo nationalizes the race as a Senate-control bellwether, while RCP keeps it localized as a personal comeback narrative. Neither source in this set represents a right-leaning perspective, limiting full-spectrum comparison.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Washington Post elevates the race to national stakes, presenting it as a bellwether that could determine Senate control, and centers the narrative on Brown needing to win back working-class voters who defected to Trump.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    RealClearPolitics treats the race as an open, uncertain question about Brown&#x27;s personal political viability — whether his working-class brand still resonates — without framing it in terms of broader Senate power dynamics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this set; only left and center-right outlets are represented.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    The Washington Post&#x27;s framing does not surface the more skeptical, comeback-in-doubt tone found in center-right coverage, which questions whether Brown&#x27;s appeal still works rather than assuming it&#x27;s simply a swing-state proxy battle.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning outlet is present in this coverage set, so it&#x27;s not possible to assess what a right-leaning framing omits relative to the left.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Rep. Thomas Massie (R-KY), concealing his plan from GOP leadership, filed articles of impeachment against Defense Secretary Pete Hegseth on the House floor, alleging Hegseth waged an illegal war against Iran without congressional authorization, as the House separately passed a war powers resolution for the third time to end the Iran conflict.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (7)</span><span class="bias-badge" style="color:#e0a87a;">center-left (9)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (5)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (12)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:13.5;" title="center: 7"></div><div class="bias-segment" style="background:#e0a87a; flex:17.3;" title="center-left: 9"></div><div class="bias-segment" style="background:#7ae09b; flex:11.5;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:9.6;" title="far-left: 5"></div><div class="bias-segment" style="background:#3a8a52; flex:5.8;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:23.1;" title="left: 12"></div><div class="bias-segment" style="background:#a07ae0; flex:5.8;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:13.5;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The core, undisputed fact is that a Republican member of Congress filed impeachment articles against a sitting Republican defense secretary over the legality of the Iran war, while the House separately voted (again) to limit war powers — both signs of real, if likely symbolic, intra-party and cross-party unease about executive military authority. Coverage diverges less on facts than on emphasis: center/left outlets treat this as substantive constitutional accountability, while right-leaning outlets minimize it as a leadership nuisance or ignore it in favor of unrelated stories, and none of the outlets independently verify the underlying claim that the war was illegally waged.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left-leaning outlets (Guardian, WaPo) emphasize congressional pushback against executive war-making overreach, framing the war powers votes and Massie&#x27;s move as legitimate accountability efforts against Trump, while also highlighting fiscal costs of the war ($38 billion) and linking it to broader oversight failures like FBI firings of Iran specialists before the conflict.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (NPR, PBS, The Hill, Axios) frame the impeachment filing as a serious constitutional accountability challenge, noting Massie&#x27;s credibility as a consistent Trump critic, while The Hill and Axios add detail on the political mechanics — Massie concealing the move from leadership and the vote to table Al Green&#x27;s separate Trump impeachment effort — treating it as intra-GOP drama and a leadership headache.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right-leaning outlets (Fox News) frame the war powers vote as a &#x27;GOP rebellion,&#x27; emphasizing Republican defections from Trump and the vote&#x27;s likely futility against a veto, treating the episode more as an intra-party political liability story than a substantive war-powers debate; broader right coverage largely does not foreground Massie&#x27;s impeachment push at all.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits or downplays that Massie&#x27;s move is a GOP leadership headache/political liability story and does not engage with Fox&#x27;s &#x27;rebellion against Trump&#x27; framing that emphasizes only 7 defectors as a small minority.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning outlets largely omit substantive discussion of the Iran war&#x27;s legality, its $38 billion cost, and the FBI counterintelligence firings tied to Iran threats before the war — details that left and center-left outlets treat as central context for why Massie&#x27;s and Democrats&#x27; accountability pushes are gaining traction.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge ruled that DHS/ICE likely violated the First Amendment by issuing a warning notice threatening prosecution against David Streever for sending a critical email to then-Acting ICE Director Todd Lyons, and blocked the agency from acting against him.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e0a87a; flex:50.0;" title="center-left: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">Both available sources — one center-left, one libertarian — converge unusually closely on this story, both treating it as a clear free-speech win against federal overreach, which suggests the facts are relatively uncontested rather than heavily spun. The bigger gap is one of missing perspective: no conservative or pro-enforcement outlet is represented here, so it&#x27;s unclear how ICE/DHS characterized their own actions or whether any government defense of the warning notice exists in the record.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not applicable in this set — no left-leaning (non-center) outlet is included; NPR is categorized center-left and covered separately below.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    NPR (center-left) frames the story as a civil liberties victory, emphasizing government overreach by federal agents pursuing a private citizen for critical speech and centering the First Amendment implications.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is present in this coverage set; the libertarian-leaning Reason outlet emphasizes government overreach and free-speech violation rather than a traditional right-wing law-and-order frame, sympathizing with the private citizen against the federal agency.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    No distinct left-outlet is present to compare; NPR&#x27;s coverage does not detail the specific &#x27;warning notice&#x27; mechanism or its prosecutorial threat language that Reason foregrounds.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No traditional right-leaning outlet is present in this set to assess omissions against; Reason (libertarian) does not include NPR&#x27;s framing of the case as part of a broader pattern of &#x27;government overreach against First Amendment rights&#x27; at a systemic level, focusing instead narrowly on the legal violation itself.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two separate developments are being reported: the Trump administration is increasingly shaping how federal agencies collect and release official data, and separately, male MAGA-aligned figures are gaining influence within the MAHA health movement that was originally driven by women.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:50.0;" title="center: 1"></div><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">This isn&#x27;t coverage of one event from multiple angles — it&#x27;s two unrelated stories about the administration&#x27;s expanding institutional footprint that got merged under a single malformed headline. The federal-data story (Axios) is the more consequential thread, since politicized statistics have broad downstream effects on policy and public trust, while the MAHA leadership story (Mother Jones) is a narrower personnel/optics dispute. Without any right-leaning source, no genuine cross-spectrum comparison is possible here.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Mother Jones (far-left) frames the MAHA story through a gender-power lens: a movement built and led by women&#x27;s health advocates is being taken over and overshadowed by male MAGA insiders, with a critical, betrayal-inflected tone emphasizing erasure of women&#x27;s contributions.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Axios frames the data story institutionally and technocratically, emphasizing risk to the nonpartisan credibility of federal statistics rather than assigning motive in emotional terms.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was included in this sample, so right-leaning framing on either the data story or the MAHA story cannot be assessed here.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Mother Jones does not engage with the federal-data-integrity story at all, and without right-leaning coverage present, it&#x27;s unclear what counterarguments or context (e.g., administration rationale for personnel/data changes) are being left out.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    No right-leaning outlet is present in this sample, so it&#x27;s impossible to identify what specific facts or framing right-leaning coverage would add to either story.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two right-of-center opinion outlets both dismiss Anthropic and OpenAI&#x27;s public calls for AI regulation as self-serving, though they differ on how cynical the motive is.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">This is a same-side comparison, not a left-right spectrum analysis — both sources are opinion pieces from right-of-center outlets and agree on the core skeptical premise that AI companies&#x27; regulatory advocacy is self-interested. The real difference is tone and degree: WSJ hedges by acknowledging the safety concerns could be legitimate even if motives are mixed, while Breitbart&#x27;s framing forecloses that possibility entirely by calling it a hoax. Without any left-leaning or straight-news source, this dataset cannot support a genuine full-spectrum comparison.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set, so left framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No outlet in this set represents a neutral/center-positioned news source; WSJ here is labeled center-right opinion, not straight-news center coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both available sources are right-of-center and converge on skepticism: WSJ Opinion (center-right) frames the companies&#x27; regulatory push as strategic industry positioning that may still contain valid warnings, while Breitbart (far-right) goes further, branding it an outright &#x27;hoax&#x27; and asking why the companies don&#x27;t just slow down voluntarily instead of lobbying for rules.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is included in this coverage set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Since both sources are right-of-center, there is no left-side coverage to reveal omissions; notably absent from both pieces is any detailed engagement with the specific technical or safety arguments Anthropic/OpenAI have made for regulation, or perspectives from AI safety researchers who support the calls.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Two unrelated Minnesota political stories were bundled together: a new poll showing tight governor/Senate races, and an Eighth Circuit ruling allowing Dr. Scott Jensen to sue the state medical board over COVID-era speech investigations.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:50.0;" title="libertarian: 1"></div></div></div>
+  <div class="story-assessment">These are two distinct, unrelated stories rather than competing coverage of the same event — one is horse-race polling analysis, the other a First Amendment legal ruling. Treating them as ideological framings of a single &#x27;story&#x27; is a category error; each should be fact-checked independently, and Breitbart&#x27;s poll claim and &#x27;fraud-struck&#x27; framing in particular warrant scrutiny against the original Co/efficient poll methodology and any actual fraud findings in Minnesota.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set; Reason (libertarian) frames the Jensen case as a free-speech vindication rather than through a left-coded lens.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source is present in this set.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Breitbart frames close polling numbers as proof of Republican momentum in a traditionally Democratic-leaning state, using the loaded term &#x27;fraud-struck&#x27; to imply electoral illegitimacy without substantiating it.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left source provided; cannot assess omissions relative to right coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Breitbart&#x27;s polling story omits any mention of the Jensen medical board case; the two outlets are not covering the same event, so there is no actual left-right comparison possible on either topic.
+  </div>
+</div>
+</div>
+
+<div class="story-card low">
+  <div class="story-headline">The Hill argues Democratic-led congressional oversight expansions could backfire once Republicans regain power, while a separate Axios report on the same day covers an unrelated bipartisan Senate push by Hawley and Blumenthal for AI oversight legislation.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:100.0;" title="center: 2"></div></div></div>
+  <div class="story-assessment">This dataset does not actually represent two-sided coverage of one event; it pairs two unrelated center-outlet stories (a partisan-oversight analysis and an AI-bill report) under a single story label. Any &#x27;consensus&#x27; or &#x27;spectrum&#x27; comparison here is an artifact of mismatched inputs rather than genuine cross-spectrum reporting, and the analysis should be treated as low-confidence pending correctly matched sources.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set, so left framing cannot be assessed from this data.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The two center sources cover substantively different stories: The Hill offers an analytical, skeptical take on Democratic oversight tactics as a partisan tool that could boomerang, while Axios frames a Hawley-Blumenthal AI bill as a rare example of bipartisan cooperation driven by fear of AI-enabled cyberattacks. Neither piece cross-references the other&#x27;s topic.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source was provided in this set, so right framing cannot be assessed from this data.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source is present in this dataset for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in this dataset for comparison.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Thomas Massie</span><span class="entity-tag">David Streever</span><span class="entity-tag">Scott Jensen</span></div>
+  <div class="connection-text">Three unrelated stories today all involve an individual challenging federal or state executive power on constitutional grounds (war powers, First Amendment speech, COVID-era speech investigations), each adjudicated or asserted through courts or floor procedure rather than politics-as-usual.</div>
+  <div class="connection-sig">↳ Suggests a broader, cross-ideological current of pushback against expansive executive/agency authority — coming from a libertarian-right Republican, a private citizen vs. ICE, and a doctor vs. a state medical board — that isn&#x27;t being covered as a unified trend by any outlet.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Richard Blumenthal</span><span class="entity-tag">Josh Hawley</span><span class="entity-tag">Anthropic</span><span class="entity-tag">OpenAI</span></div>
+  <div class="connection-text">Blumenthal appears both in the Massie/Hegseth war-powers cluster (via the Democrats/Congress entity network) and as co-sponsor of the AI oversight bill, while separately two right-of-center outlets are simultaneously working to delegitimize AI companies&#x27; own calls for regulation.</div>
+  <div class="connection-sig">↳ A bipartisan legislative push for AI oversight is being met same-day with a coordinated opinion-side framing (from WSJ and Breitbart) that regulation advocacy itself is self-interested theater — worth watching whether this becomes an organized counter-narrative to the Hawley-Blumenthal bill specifically.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Homeland Security</span><span class="entity-tag">Pramila Jayapal</span><span class="entity-tag">David Streever</span></div>
+  <div class="connection-text">DHS/ICE shows up in two separate threads same day: Jayapal&#x27;s claim that most recent DHS arrestees posed no public threat, and the Streever First Amendment ruling against ICE for threatening a critic.</div>
+  <div class="connection-sig">↳ Two independent data points (one political, one judicial) both cast DHS enforcement posture as overbroad or retaliatory in the same news cycle, but neither is being cross-referenced by outlets covering the other.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Reason (outlet)</span><span class="entity-tag">Thomas Massie</span><span class="entity-tag">Scott Jensen</span></div>
+  <div class="connection-text">Reason is the only outlet with meaningful presence across the war-powers/impeachment story, the Massie coverage broadly, and adjacent civil-liberties-flavored stories, consistent with a libertarian throughline skeptical of both war powers and state overreach.</div>
+  <div class="connection-sig">↳ Indicates ideological consistency (anti-executive-power) cutting across party lines that mainstream left/right framing obscures by sorting stories as simply &#x27;GOP drama&#x27; or &#x27;partisan lawsuit.&#x27;</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">AI regulation is fragmenting across at least four disconnected story clusters today (Hawley-Blumenthal bipartisan bill, right-of-center dismissal of Anthropic/OpenAI as self-serving, &#x27;aging Congress&#x27; piece on regulating AI, and scattered AI-ad/AI-doomerism opinion pieces) without any single outlet connecting them — suggesting AI policy is becoming a major cross-cutting axis before it has crystallized into one storyline.</div>
+<div class="pattern-item">Multiple &#x27;bundled&#x27; story pairs (Hill oversight + AI bill; federal data control + MAHA leadership; MN polling + Jensen ruling) appear to be artifacts of algorithmic clustering rather than genuine multi-source coverage of single events — an analyst should treat any &#x27;consensus&#x27; or &#x27;spectrum&#x27; claims from this dataset with caution today.</div>
+<div class="pattern-item">A quiet pattern of judicial/procedural checks on federal and state executive actions (war powers vote #3, Streever ICE ruling, Jensen medical-board ruling) is running in parallel across military, immigration, and public-health domains without being framed by any outlet as a unified &#x27;executive overreach pushback&#x27; story.</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">A sitting GOP member filing impeachment articles against a sitting GOP Cabinet secretary is being minimized or ignored by right-leaning outlets — unusual given how newsworthy intra-party breaks normally are, suggesting deliberate downplaying rather than lack of interest.</div>
+<div class="anomaly-item">The Streever v. ICE First Amendment ruling — a federal court finding DHS likely violated the Constitution — has zero conservative or pro-enforcement source coverage in this dataset, a notable silence given how central ICE conduct is to right-leaning news cycles generally.</div>
+<div class="anomaly-item">Sherrod Brown&#x27;s Senate race is flagged as &#x27;high significance&#x27; for Senate control but has only two sources and no right-leaning outlet at all — surprising given how much attention Ohio&#x27;s Senate seat typically draws from conservative media this cycle.</div>
+<div class="anomaly-item">The MAHA &#x27;male MAGA figures gaining influence&#x27; story has no MAHA-aligned or health-focused outlet response, and no right-leaning source — a story about the right&#x27;s own coalition dynamics that the right isn&#x27;t engaging with at all yet.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">Right-leaning outlets are systematically avoiding or minimizing stories where GOP-aligned actors or agencies are the subject of accountability (Massie&#x27;s impeachment filing, the ICE First Amendment loss), while left-leaning outlets are absent from stories that would require engaging with intra-Democrat coalition or oversight-overreach critiques (the Hill&#x27;s warning about Democratic oversight tools backfiring). Both sides are ignoring the same underlying thread — a bipartisan-flavored skepticism of expansive executive/agency power — because acknowledging it cuts against each side&#x27;s preferred story of the other party as uniquely authoritarian.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vanity Fair feature profiles the political development of JD Vance at Yale</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As campaign season gears up, AI-generated ads are everywhere</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Election officials get mail-in voting clarity after Supreme Court decision</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Analyzing the Supreme Court&#x27;s mail-in voting decision and Trump&#x27;s reaction</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› NATO jets shoot down drone in Lithuania as Russia continues to provoke Europe</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Steve Bannon says &#x27;we have to rise&#x27; above partisanship to address AI &#x27;hinge in history&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Congressional Black Caucus launches effort to boost voting among Black, rural and young voters in midterms</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Department of Investigation eyes NYPD disability pensions</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Spanberger is bullish about Virginia House races even without a favorable map</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Antiestablishment anger is raging, and 4 other takeaways from primary season</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The midterms are over. Sort of.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s third surgeon general nominee, Nicole Saphier, to face Senate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pennsylvania teen died of ‘rare and severe’ complication of measles, coroner says</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Send in the clowns: the new guard of activists combating the right</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New Orleans priest accused of abusing children in deaf community dies from apparent fall aged 87</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How the Supreme Court Seized Power to Rule Over the Rest of Us</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The EPA Would Rather Monitor Water for Abortion Pills than Pollution</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Opinion: Promises Anthropic/Openai&#x27;S &#x27;Slow Down&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘Look What You Made Me Sue’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› College Grads vs. the AI Job Apocalypse</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Knuckleball Dreams</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› U.S. Space Weapons Are a Force for Peace</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› New York Dumbs Down Its Graduates</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Notable &amp; Quotable: A Poetic Disclaimer</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed grilled on Piker, Israel and socialist ties after Mike Rogers skips Senate debate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Washington Democrat claims majority of recent DHS arrestees posed &#x27;no threat to public safety&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republican upsets party-backed rival to challenge first openly trans member of Congress</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Federal judge refers Philadelphia DA Larry Krasner to DOJ for possible criminal investigation</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Academia’s meltdown over Trump’s science plan isn’t about policy. It’s about the cover letter</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trite Alchemy of &lt;i&gt;Practical Magic 2&lt;/i&gt;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fight Medicaid Waste by Reining In the States</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Against AI Doomerism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Memory Chip Crisis Washington Can’t Ignore</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Don’t Let Fear Drive AI Policy</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Case for Federal Reserve Discretion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Watch: Ceuta Residents Form Human Chain to Protest New Migrant Shelter</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Socialist Sanchez Gov&#x27;t Planning to House Up to 10,000 Illegals in Spain&#x27;s Ceuta Exclave: Report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Ivermectin + Mebendazole: Groundbreaking Study Reports 84.4% Clinical Benefit Rate in Cancer Patients</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Poll: Republican Edges Ahead in Oregon Governor’s Race as GOP Eyes First Win Since 1982</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Chuck Todd: Trump&#x27;s Attempt to Put His Name on Kennedy Center &#x27;Gross,&#x27; It&#x27;s JFK&#x27;s &#x27;Tombstone&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet the Woke Globalists Amodei Wants To Save Us From AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Safety Requirements Are Non-Negotiable</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Will Someone Please Give Kamala Harris Another Job?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Tariffs Hurt Michigan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hilton Channels Lasso, Punches Hard Against Becerra</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether House GOP leadership moves to table, delay, or force a vote on Massie&#x27;s Hegseth impeachment articles</div>
+<div class="watch-item">Any DOJ/DHS appeal of the Streever First Amendment ruling, and whether it surfaces in right-leaning coverage</div>
+<div class="watch-item">Hawley-Blumenthal AI oversight bill&#x27;s committee movement, watched against parallel right-of-center opinion pushback (WSJ/Breitbart) on AI regulation motives</div>
+<div class="watch-item">Sherrod Brown Ohio Senate race polling once a right-leaning outlet weighs in — check for framing divergence from WaPo&#x27;s national-stakes angle</div>
+<div class="watch-item">Scott Jensen v. Minnesota medical board case progress post-Eighth Circuit ruling</div>
+<div class="watch-item">Composition/leadership changes within MAHA as MAGA-aligned men gain influence — watch for response from original MAHA women founders</div>
+<div class="watch-item">Whether the House war powers resolution (3rd passage) prompts any veto threat or is quietly shelved as symbolic</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
