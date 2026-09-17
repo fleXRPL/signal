@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-17 09:15 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-17 09:15 UTC</span>
+    <span class="pill">130 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">3 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>The dominant fact of the day is procedural, not substantive: Speaker Johnson recessed the House early, and that single scheduling decision simultaneously killed floor action on two politically costly items — Rep. Thomas Massie&#x27;s articles of impeachment against Defense Secretary Hegseth over his conduct of the Iran war, and a vote to release additional Epstein files. The House did pass a Russia sanctions bill and send it to Trump before recessing, which gives leadership a substantive accomplishment to point to while the two more uncomfortable votes quietly expire. Separately, Axios is reporting Trump will hold Iran talks with Gulf leaders next week. No outlet has connected the recess timing to the diplomatic calendar, but the sequencing is notable: a public floor fight over the administration&#x27;s Iran conduct has been avoided in the exact window before sensitive Iran diplomacy opens.</p>
+<p>A second, unrelated thread involves a federal judge&#x27;s preliminary injunction against DHS for sending a prosecution-threat &quot;warning notice&quot; to a private citizen over a critical email to ICE&#x27;s acting director — a straightforward First Amendment finding that is going almost entirely uncovered on the right. A third thread is cultural: Macklemore&#x27;s exit from Ed Sheeran&#x27;s tour after pro-Palestinian remarks, with other acts following in solidarity, sitting awkwardly alongside a $2 million Kraft-backed Palestinian humanitarian donation from the same tour&#x27;s principals. None of these three threads are being covered as connected stories by any single outlet, but read together they describe a day in which dissent — legislative, individual, and artistic — was suppressed or sidelined through routine, deniable mechanisms rather than open confrontation.</p>
+<p>The broader picture is a Congress and administration managing exposure through procedure and scheduling rather than substantive resolution, while opinion media on the right runs a coordinated volume push against AI regulation that doesn&#x27;t actually engage the live legislative vehicle (the Hawley-Blumenthal bill), and left-leaning outlets stay almost entirely silent on AI industrial policy despite obvious tech-donor exposure on their own side.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Speaker Johnson is the pivotal actor today. The recess he called functioned as a two-for-one shield — it protected Hegseth from an immediate impeachment vote and protected leadership from an Epstein-files vote that many members did not want on the record. Whether this was deliberate bundling or fortunate coincidence cannot be established from the coverage, but the fact that one mechanism served two separate leadership interests is itself worth weighting as more than chance.</p>
+<p>Massie is playing the role of intra-party dissenter, pushing a war-powers argument against Hegseth that is philosophically libertarian/constitutionalist rather than partisan-Democratic. Left coverage largely ignores this framing and treats the episode as generic GOP dysfunction; right coverage outside Fox largely ignores it entirely. Massie is currently isolated — a position from which his push is easy for leadership to let expire quietly.</p>
+<p>Robert Kraft is the most interesting actor in the secondary story set. He is alleged (single-sourced, Mother Jones) to have pressured Macklemore off Sheeran&#x27;s tour over pro-Palestinian remarks, while simultaneously being reported (The Hill) as co-funding a $2 million matched donation for Palestinian humanitarian aid with the same tour&#x27;s principals. That is not necessarily a contradiction — a donor can fund humanitarian relief while objecting to a specific political statement — but no outlet has put both facts in front of Kraft for comment, and the coverage is split cleanly enough that most readers will only ever see one half.</p>
+<p>On DHS, the actor to watch is the department&#x27;s own posture: sending a prosecution-threat notice to a private citizen over a critical email is an aggressive institutional move, and the near-total silence from the right on the resulting injunction suggests the department is not facing pressure from its usual civil-liberties-minded critics on that flank.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The right is not engaging with the DHS/Streever injunction at all. This is a First Amendment case against a federal security agency threatening a private citizen with prosecution over a critical email — exactly the kind of executive-overreach story that libertarian and civil-liberties-minded right outlets normally seize on. Its complete absence from right-of-center coverage, twice running now, is a documented pattern rather than a one-off gap.</p>
+<p>The right is also underweighting the Hegseth/Iran/impeachment story relative to its actual news value: center-right coverage is thin (3 sources) against far heavier volume on the far-right, center, and center-left. That pattern reads as center-right outlets steering around a story that implicates GOP leadership and a sitting cabinet secretary, while the far-right amplifies it from an anti-establishment, pro-Massie angle rather than a pro-accountability one.</p>
+<p>The left, meanwhile, is almost entirely absent from the AI regulation fight. Right-leaning opinion media is running a heavy, coordinated volume of pieces arguing against AI oversight — dismissing &quot;doomerism,&quot; mocking congressional Democrats as hysterical, raising chip-crisis and worker-disruption alarms — while left-aligned outlets offer essentially nothing beyond a single OpenAI safety-incident disclosure. Given how exposed Democratic-aligned donors are in the AI industry, this silence looks like protection of a coalition flank rather than disengagement from the issue.</p>
+<p>Neither side is naming the Hawley-Blumenthal AI oversight bill directly in today&#x27;s opinion volume — the right is arguing against regulation in the abstract without engaging the actual bill in play, which suggests the opinion push is pre-positioning against future legislation rather than responding to it.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>Three unrelated domains — a legislative sidelining (Massie/Epstein via recess), a security-state action against a private critic (DHS/Streever), and a commercial/cultural pressure campaign (Macklemore&#x27;s tour exit) — all surfaced in the same news cycle as instances of dissent being managed through procedural or informal means rather than open argument. No outlet in the set frames these as a common pattern; it is only visible aggregated.</p>
+<p>The Russia sanctions bill signing lands in the same cycle as the Hegseth/Epstein sidelining and the DHS suppression story — a classic sequencing where a substantive administration win is available to absorb attention from three separate accountability stories. No source flags this explicitly.</p>
+<p>OpenAI and Anthropic both appear as named entities inside the Trump/House/Russia/Hegseth/Johnson story text, which is nominally about sanctions and impeachment procedure. That co-occurrence has not been explained and should be checked rather than assumed to be incidental wire or byline noise — it may indicate those companies are referenced in connection with sanctions-list technology provisions, or it may simply be tagging noise.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <p>Whether Massie&#x27;s impeachment articles are formally tabled or referred to committee, versus simply left to lapse via recess — the disposition method will tell you whether leadership wants this dead quietly or dead on the record.</p>
+<p>Confirmation and substance of Trump&#x27;s reported Iran talks with Gulf leaders next week (Axios). If this proceeds, it will likely finish displacing the Hegseth impeachment story from the news cycle entirely — worth checking whether that displacement looks organic or engineered.</p>
+<p>Any right-leaning outlet picking up the DHS v. Streever case. Continued silence through another cycle hardens this from an anomaly into a confirmed blind spot.</p>
+<p>Robert Kraft — watch for any on-record statement reconciling the alleged tour-pressure campaign with the Palestinian aid donation. Silence from Kraft&#x27;s camp will itself be informative.</p>
+<p>The Hawley-Blumenthal AI oversight bill&#x27;s committee status. If it moves while right-leaning opinion volume against AI regulation continues to avoid naming it, that confirms the opinion push is preemptive positioning rather than reactive argument.</p>
+<p>Center-right coverage volume on the Russia-sanctions/Hegseth/Epstein cluster over the next several days. If it stays flat while far-right and center-left volume continues rising, that confirms deliberate avoidance rather than a one-day anomaly.</p>
+<p>Any DOJ/DHS appeal filing on the Streever injunction — an appeal would be the first substantive right-of-center engagement with the case, even if adversarial.</p>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The throughline across today&#x27;s material is that both governing coalitions are currently managing exposure rather than resolving it, and both are doing so by starving coverage of their own most damaging stories while flooding attention toward safer fights. Leadership on the right is using scheduling mechanics to let an uncomfortable war-powers and executive-accountability question expire without a vote, and its allied media is largely declining to press a First Amendment case against its own security apparatus. Leadership-adjacent media on the left is avoiding the AI industrial-policy fight almost entirely despite obvious donor exposure, preferring to spend its ammunition on Trump-adjacent conflict-of-interest stories where the political cost is borne entirely by the other side. Neither pattern is a conspiracy in the sense of coordination across outlets; it is simpler and more durable than that — each side&#x27;s media ecosystem is protecting its own coalition&#x27;s most exposed flank by omission, and the resulting picture, when you read across the whole spectrum rather than any single outlet, is of a governing class on both sides more interested in procedural containment than public accounting.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card medium">
+  <div class="story-headline">The House passed a Russia sanctions bill and sent it to Trump while Speaker Johnson recessed the chamber early, sidelining Rep. Thomas Massie&#x27;s push to impeach Defense Secretary Pete Hegseth over the Iran war and a House vote to release more Epstein files.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (14)</span><span class="bias-badge" style="color:#e0a87a;">center-left (14)</span><span class="bias-badge" style="color:#7ae09b;">center-right (3)</span><span class="bias-badge" style="color:#e05252;">far-left (7)</span><span class="bias-badge" style="color:#3a8a52;">far-right (8)</span><span class="bias-badge" style="color:#e07a7a;">left (10)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (4)</span><span class="bias-badge" style="color:#5ab56e;">right (6)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:21.2;" title="center: 14"></div><div class="bias-segment" style="background:#e0a87a; flex:21.2;" title="center-left: 14"></div><div class="bias-segment" style="background:#7ae09b; flex:4.5;" title="center-right: 3"></div><div class="bias-segment" style="background:#e05252; flex:10.6;" title="far-left: 7"></div><div class="bias-segment" style="background:#3a8a52; flex:12.1;" title="far-right: 8"></div><div class="bias-segment" style="background:#e07a7a; flex:15.2;" title="left: 10"></div><div class="bias-segment" style="background:#a07ae0; flex:6.1;" title="libertarian: 4"></div><div class="bias-segment" style="background:#5ab56e; flex:9.1;" title="right: 6"></div></div></div>
+  <div class="story-assessment">The verifiable core is narrow and undisputed: the House passed a Russia sanctions bill, and Johnson&#x27;s early recess mechanically prevented a floor vote on Massie&#x27;s Hegseth impeachment articles. Everything beyond that — Johnson&#x27;s motive, whether this was a cover-up versus routine scheduling, and whether Hegseth&#x27;s Iran conduct was actually impeachable — is interpretive spin layered onto the same procedural fact by outlets on both sides. The story is more significant as a proxy fight over congressional war-powers oversight than as evidence of any resolved wrongdoing by Hegseth.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Left and far-left outlets (Mother Jones, Guardian, PBS) frame Johnson&#x27;s recess as a fear-driven, deliberate cover-up protecting Hegseth from accountability for an &#x27;unauthorized&#x27; Iran war, paired with blocking Epstein file releases — emphasizing executive overreach, GOP complicity, and institutional evasion of oversight.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Center outlets (Axios, The Hill, NPR) treat the Johnson-Massie recess fight as a notable political/procedural story — Axios explicitly frames it as leadership dodging accountability votes — while covering the Russia sanctions bill&#x27;s bipartisan-but-uneasy passage and new executive authority with relatively neutral, process-focused language.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets (Fox, Breitbart) center Massie&#x27;s own accusation that Johnson is protecting Hegseth, treating it largely as an intra-Republican procedural drama and factional dispute rather than a substantive accountability failure; broader right coverage otherwise emphasizes the Russia sanctions bill as a Trump tariff-power win and downplays Democratic reluctance as vindication.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage largely omits Massie&#x27;s own conservative/libertarian rationale for the impeachment push (limiting executive war powers) and doesn&#x27;t engage with right-leaning framing that treats this primarily as an intra-GOP squabble rather than a bipartisan accountability failure.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right coverage (aside from Fox&#x27;s Massie piece) largely omits the Epstein-files-release angle tied to the same recess, and downplays or ignores the argument that the recess timing was a deliberate shield for Hegseth, instead framing it through Massie&#x27;s individual grievance.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Macklemore left Ed Sheeran&#x27;s tour after his pro-Palestinian remarks drew objections, prompting other acts to exit in solidarity, while Sheeran and Macklemore separately secured a matched $2 million donation from Robert Kraft for Palestinian humanitarian aid.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#e05252;">far-left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#e05252; flex:33.3;" title="far-left: 1"></div></div></div>
+  <div class="story-assessment">The one solid, corroborated fact is that Macklemore left the tour after pro-Palestinian remarks and other acts followed in solidarity; who specifically drove that decision (venue owners vs. Kraft&#x27;s alleged pressure) remains disputed and sourced to a single outlet each. The Hill&#x27;s donation-focused story appears to sanitize the controversy by omitting the removal dispute entirely, while Mother Jones&#x27;s pressure allegation against Kraft is the most consequential unverified claim in the coverage.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Center-left (PBS) and far-left (Mother Jones) outlets both treat this as a free-speech and solidarity story, emphasizing industry-wide pushback against silencing pro-Palestinian voices; Mother Jones goes further, casting it explicitly as billionaire/corporate power (Kraft) suppressing artists, with a tone of alarm about free expression under economic pressure.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the episode primarily as a philanthropic gesture — a celebrity-driven humanitarian aid story — largely sidestepping the political dispute over Macklemore&#x27;s removal and its causes.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning outlet is included in this set, so right-of-center framing cannot be assessed from the provided sources.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no right-leaning source is present in this set to compare against.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be determined — no right-leaning source is present in this set to compare against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge issued a preliminary injunction finding DHS likely violated the First Amendment when it sent a &#x27;warning notice&#x27; threatening prosecution to David Streever, a New York man, over a critical email he sent to ICE&#x27;s acting director.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#a07ae0; flex:33.3;" title="libertarian: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:33.3;" title="right: 1"></div></div></div>
+  <div class="story-assessment">Only two of the three sources (The Hill and Reason) actually cover the DHS warning-notice/First Amendment story; the Fox News Politics article is about an unrelated DHS immigration rule and states&#x27; lawsuit, so no genuine right-leaning perspective on this specific ruling is present in this dataset. Based on the two corroborating sources, the core facts — a judge finding DHS likely violated the First Amendment by threatening a critic with prosecution over a critical email, and issuing an injunction — appear well-established and uncontested. The lack of right-of-center coverage on this specific case may itself be notable, though it cannot be confirmed as a pattern from this sample alone.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was provided in this set, so left framing cannot be assessed from the given coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames the ruling as a judicial check on government overreach, emphasizing the vindication of a private citizen&#x27;s free speech rights against a federal agency.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    The right-leaning source provided does not address this story; instead it covers a separate DHS immigration policy dispute (a multistate lawsuit over a &#x27;public charge&#x27; rule), framing that rule as bureaucratic overreach harming legal immigrants — a different controversy involving the same agency.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Not applicable — no left-leaning source was included in this coverage set.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning source omits any mention of the DHS warning-notice case, the injunction, David Streever, or the First Amendment ruling entirely, despite being presented as coverage of the same story.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Massie&#x27;s Hegseth impeachment push</span><span class="entity-tag">Trump&#x27;s Iran-Gulf talks (Axios scoop)</span></div>
+  <div class="connection-text">The same day Johnson&#x27;s early recess mechanically killed floor action on Hegseth&#x27;s Iran-war impeachment articles, Axios reported Trump will hold Iran talks with Gulf leaders next week. No source in the dataset connects these two facts, but the timing means GOP leadership avoided a public floor fight over Hegseth&#x27;s Iran conduct in the exact window before sensitive Iran diplomacy.</div>
+  <div class="connection-sig">↳ Suggests the recess timing may be driven by diplomatic sequencing rather than the &#x27;routine scheduling&#x27; or &#x27;cover-up&#x27; framings both sides are offering — a motive neither camp is testing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Robert Kraft</span><span class="entity-tag">Macklemore</span></div>
+  <div class="connection-text">Kraft is simultaneously (a) the alleged pressure source behind Macklemore&#x27;s removal from Sheeran&#x27;s tour over pro-Palestinian remarks (per Mother Jones, single-sourced) and (b) co-funder with Sheeran/Macklemore of a $2M matched donation for Palestinian humanitarian aid (per The Hill).</div>
+  <div class="connection-sig">↳ A single donor appears on both sides of the same controversy — funding Palestinian aid publicly while allegedly suppressing a pro-Palestinian voice privately. This tension is invisible unless both single-source stories are read together.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">House GOP leadership (Johnson)</span><span class="entity-tag">Epstein files vote</span><span class="entity-tag">Massie impeachment articles</span></div>
+  <div class="connection-text">One procedural act — the early recess — simultaneously shelved two unrelated but politically costly floor items: the Epstein files release vote and the Hegseth impeachment vote.</div>
+  <div class="connection-sig">↳ A single scheduling maneuver with two beneficial side effects for leadership raises the possibility of deliberate bundling rather than coincidence, a pattern not raised by any individual outlet&#x27;s framing.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">DHS</span><span class="entity-tag">Massie</span><span class="entity-tag">Macklemore</span></div>
+  <div class="connection-text">Three unrelated domains — federal law enforcement (DHS warning notice to a private citizen critic), Congress (sidelining an intra-party dissenter), and entertainment (an artist pushed off a tour for political speech) — all surfaced the same day as instances of dissent being procedurally or informally suppressed.</div>
+  <div class="connection-sig">↳ Cross-domain clustering of suppression episodes on a single news day is a pattern only visible at the aggregate level, not from any single story.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">A dissent-suppression thread runs through three unconnected stories: legislative (Massie/Epstein sidelined via recess), state security (DHS threatening a private critic), and cultural/commercial (Macklemore pressured off a tour) — none of the outlets covering these individually frame them as part of a common pattern.</div>
+<div class="pattern-item">Right-leaning outlets are running a heavy, coordinated volume of opinion pieces framing AI regulation as unnecessary or hysterical (Zuckerberg dissent, &#x27;Against AI Doomerism,&#x27; &#x27;Why Are Congressional Dems in Hysterics About AI?&#x27;, chip-crisis and worker-disruption pieces), while left-leaning coverage of AI policy is nearly absent apart from an OpenAI safety-incident disclosure — a lopsided framing battle ahead of any AI oversight legislation.</div>
+<div class="pattern-item">Center-right outlets are visibly underweighting the Hegseth/Russia-sanctions/Epstein story (only 3 center-right sources vs. 14 center-left, 14 center, and 8 far-right), suggesting center-right outlets are steering around a story that implicates GOP leadership, while far-right amplifies it (likely from a pro-Massie, anti-establishment angle).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">No right-of-center outlet covers the DHS/Streever First Amendment injunction at all — a story that, on its face, is a natural fit for libertarian/civil-liberties-minded right coverage, yet only center and libertarian sources touch it.</div>
+<div class="anomaly-item">OpenAI and Anthropic both appear as entities inside the Trump-House-Russia-Hegseth-Johnson story text, which is otherwise about sanctions and impeachment procedure — an unexplained co-occurrence worth verifying rather than assuming it&#x27;s incidental byline/wire noise.</div>
+<div class="anomaly-item">A tough-on-Russia sanctions bill signing is landing on the same news cycle as multiple stories about the administration/GOP leadership suppressing scrutiny (Hegseth, Epstein, DHS critic) — a classic &#x27;good news to bury bad news&#x27; pattern that no source flags explicitly.</div>
+<div class="anomaly-item">Despite heavy right-wing opinion volume on AI policy, none of it engages with the Hawley-Blumenthal AI oversight bill by name in today&#x27;s set — the opinion blitz argues against regulation in the abstract without engaging the specific bill in play.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is avoiding the AI industrial-policy fight almost entirely, despite heavy Democratic-aligned tech-donor exposure, while amplifying Trump-adjacent conflict-of-interest and accountability stories (Kushner&#x27;s business dealings, DOGE&#x27;s $9.5bn no-work payments, the Israel arms sale holdout). The right is avoiding direct scrutiny of Hegseth&#x27;s Iran conduct and the DHS free-speech overreach against Streever — both stories that would normally appeal to civil-liberties or accountability instincts on the right — while flooding coverage with culture-war opinion content and AI-deregulation advocacy. Both patterns suggest each side is protecting its coalition&#x27;s most exposed flank: the left&#x27;s tech-donor class, the right&#x27;s executive-branch loyalty.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A tumultuous congressional primary season closes with record departures and defeats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Jared Kushner is mixing U.S. diplomacy with his billion-dollar business</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How are rising prices affecting you? NPR wants to know</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As campaign season gears up, AI-generated ads are everywhere</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Where things stand in the battle for control of the Senate</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Jay Jacobs gets his first-ever challenger for state Dem chair</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The last day at the Kennedy Center</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Afghan terrorist gets 20 years for role in deadly 2021 attack at Kabul airport</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Iowa’s Republican Senate candidate not attending JD Vance event</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump’s arch will harm historic sites but must proceed, federal officials say</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senate Republicans manage to advance farm bill with McConnell’s return</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Susie Wiles, Trump’s chief of staff, says she is cancer-free</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sen. Cassidy says measles surge will be administration’s ‘terrible legacy’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Texas kills man by lethal injection in state’s fifth execution this year</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US government paid federal employees $9.5bn not to work amid Doge cuts – report</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Key House Democrat refuses to clear Trump’s $2.8bn arms sale to Israel</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mark Zuckerberg Offers an AI Dissent</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The U.S. Isn’t Ready to Help Workers Through the AI Disruption</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kathy Hochul’s ‘Energy Rebate Checks’</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Americans Are Getting Richer*</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Zero-Risk Society Has Arrived</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why I’m Voting for a Texas Democrat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Let Others Eat Cake</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can Military Morale Survive Smartphones?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrat candidate seen sobbing, praying in patrol car after DUI arrest: Video</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lawmakers say they are standing at the gates against &#x27;Trojan horses&#x27; promoting malign foreign interests</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fox News Poll: Squeezed by costs, frustrated voters turn to the Democrats</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mamdani confirms he added bidets to Gracie Mansion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Meet James Talarico’s favorite drag queen: Alyssa Edwards</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Academia’s meltdown over Trump’s science plan isn’t about policy. It’s about the cover letter</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The New Morality of the Assisted-Suicide Cause</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Heritage Americanism Is Massively Overrated and Counterproductive</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Macklemore Is Not the Victim</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Trite Alchemy of &lt;i&gt;Practical Magic 2&lt;/i&gt;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Fight Medicaid Waste by Reining In the States</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Gavin Newsom Walks the AI Tightrope</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Against AI Doomerism</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Memory Chip Crisis Washington Can’t Ignore</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Lena Dunham Welcomes 1st Baby Decade After Saying I ‘Haven&#x27;t Had an Abortion, But I Wish I Had&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Florida Mother Tells Deputies She and Her Son Had Sex &#x27;Only About 100 Times,&#x27; Both Charged</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Vance&#x27;s Most Important Job in the Midterm Elections</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› House Democrats Expand Map--and Definition of a Democrat</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Favored To Take Senate, But It&#x27;s Close</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump Forgot How To Do Politics--If He Ever Knew</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Are Congressional Dems in Hysterics About AI?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Every Lab Should Move at Pace To Train Models Safely</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Red States Replacing Woke Colleges With Real Education</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Hilton&#x27;s Uphill Fight in California</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Whether Massie&#x27;s Hegseth impeachment articles get formally tabled/referred to committee versus simply left to expire via recess</div>
+<div class="watch-item">Confirmation and outcome of Trump&#x27;s reported Iran talks with Gulf leaders next week, and whether that news cycle further displaces Hegseth impeachment coverage</div>
+<div class="watch-item">Any right-leaning outlet picking up the DHS v. Streever First Amendment case — continued silence would harden this into a documented pattern</div>
+<div class="watch-item">Robert Kraft — any on-record statement addressing the tension between the Palestinian aid donation and the alleged tour-pressure allegation</div>
+<div class="watch-item">Hawley-Blumenthal AI oversight bill&#x27;s committee status, tested against the volume/coordination of right-leaning anti-regulation opinion pieces appearing this cycle</div>
+<div class="watch-item">Whether center-right outlets continue underweighting the Russia-sanctions/Hegseth/Epstein story relative to far-right and center-left coverage in coming days</div>
+<div class="watch-item">DOJ/DHS appeal filing on the Streever injunction</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
