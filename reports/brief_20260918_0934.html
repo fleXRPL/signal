@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal — Political Intelligence Brief 2026-09-18 09:34 UTC</title>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-58PDJM14L7"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-58PDJM14L7');
+</script>
+<style>
+  :root {
+    --bg:       #0d1117;
+    --surface:  #161b22;
+    --border:   #30363d;
+    --text:     #c9d1d9;
+    --muted:    #8b949e;
+    --accent:   #58a6ff;
+    --warn:     #e3b341;
+    --danger:   #f85149;
+    --success:  #3fb950;
+    --code-bg:  #1f2937;
+    --mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --sans:     -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 0 0 80px 0;
+  }
+
+  /* ── Header ── */
+  .header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 40px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .wordmark {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .header h1 {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+
+  .meta-pills {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+
+  .pill {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 12px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--muted);
+  }
+
+  .pill.accent { border-color: var(--accent); color: var(--accent); }
+  .pill.warn   { border-color: var(--warn);   color: var(--warn); }
+
+  /* ── Layout ── */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── Brief sections ── */
+  .brief-section {
+    margin: 40px 0;
+    border-left: 3px solid var(--border);
+    padding-left: 24px;
+  }
+
+  .brief-section.highlight { border-left-color: var(--accent); }
+  .brief-section.warn-section { border-left-color: var(--warn); }
+  .brief-section.danger-section { border-left-color: var(--danger); }
+
+  .section-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+
+  .brief-section h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brief-section p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+
+  .brief-section ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .brief-section ul li {
+    padding: 8px 0 8px 20px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    color: var(--text);
+  }
+
+  .brief-section ul li::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-weight: bold;
+  }
+
+  /* ── Story cards ── */
+  .stories-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+  }
+
+  .story-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    transition: border-color 0.15s;
+  }
+
+  .story-card:hover { border-color: var(--accent); }
+
+  .story-card.high   { border-left: 4px solid var(--danger); }
+  .story-card.medium { border-left: 4px solid var(--warn); }
+  .story-card.low    { border-left: 4px solid var(--border); }
+
+  .story-headline {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .story-meta {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+  }
+
+  .bias-badge {
+    font-size: 11px;
+    font-family: var(--mono);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.07);
+  }
+
+  .story-assessment {
+    font-size: 14px;
+    color: var(--muted);
+    margin: 10px 0;
+    font-style: italic;
+  }
+
+  .framing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  @media (max-width: 640px) {
+    .framing-grid { grid-template-columns: 1fr; }
+  }
+
+  .framing-box {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .framing-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+
+  .omissions-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 640px) {
+    .omissions-row { grid-template-columns: 1fr; }
+  }
+
+  .omission-box {
+    background: rgba(232, 63, 61, 0.06);
+    border: 1px solid rgba(232, 63, 61, 0.2);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  .omission-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+    color: var(--danger);
+    font-weight: 700;
+  }
+
+  /* ── Bias bar ── */
+  .bias-bar-wrap { margin: 6px 0 12px; }
+  .bias-bar-label {
+    font-size: 11px;
+    font-family: var(--mono);
+    color: var(--muted);
+    margin-bottom: 4px;
+  }
+  .bias-bar {
+    display: flex;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+    gap: 1px;
+  }
+  .bias-segment { flex: 1; min-width: 3px; }
+
+  /* ── Correlation section ── */
+  .connection-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .connection-entities {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .entity-tag {
+    background: rgba(88,166,255,0.1);
+    border: 1px solid rgba(88,166,255,0.3);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .connection-text {
+    font-size: 14px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+
+  .connection-sig {
+    font-size: 12px;
+    color: var(--warn);
+    font-style: italic;
+  }
+
+  /* ── Anomaly / Pattern cards ── */
+  .anomaly-item {
+    background: rgba(248, 81, 73, 0.05);
+    border: 1px solid rgba(248, 81, 73, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  .pattern-item {
+    background: rgba(227, 179, 65, 0.05);
+    border: 1px solid rgba(227, 179, 65, 0.2);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* ── Watch list ── */
+  .watch-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--warn);
+    border-radius: 6px;
+    padding: 12px 16px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    font-family: var(--mono);
+    color: var(--warn);
+  }
+
+  /* ── Source index ── */
+  .source-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .source-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+  }
+
+  .source-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 40px 0;
+  }
+
+  /* ── Analyst note ── */
+  .analyst-note {
+    background: linear-gradient(135deg, rgba(88,166,255,0.05), rgba(88,166,255,0.02));
+    border: 1px solid rgba(88,166,255,0.25);
+    border-radius: 10px;
+    padding: 24px 28px;
+    margin: 40px 0;
+  }
+
+  .analyst-note-header {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .analyst-note p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  /* ── Scrollbar ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <div>
+      <div class="wordmark">Signal // Political Intelligence</div>
+      <h1>POLITICAL INTELLIGENCE BRIEF</h1>
+    </div>
+    <a href="../index.html" style="font-family:var(--mono); font-size:12px; color:var(--muted);
+       text-decoration:none; border:1px solid var(--border); border-radius:6px;
+       padding:6px 14px; white-space:nowrap; align-self:flex-start;"
+       title="Signal home">◁ Home</a>
+  </div>
+  <div class="meta-pills">
+    <span class="pill accent">📅 2026-09-18 09:34 UTC</span>
+    <span class="pill">127 articles</span>
+    <span class="pill">15 sources</span>
+    <span class="pill">6 story clusters</span>
+    <span class="pill warn">🤖 claude</span>
+  </div>
+</div>
+
+<div class="container">
+
+  
+<div class="brief-section highlight">
+  <div class="section-label">📡 Intelligence Brief</div>
+  <h2>SITUATION OVERVIEW</h2>
+  <p>Congress is out of session and the news cycle has thinned into two tracks that are getting wildly unequal attention. On one track, a federal judge ordered the Trump administration to give 30 days&#x27; notice before altering or demolishing the Kennedy Center — a symbolic, personality-driven dispute tied to Trump&#x27;s earlier remark that the building could be &quot;ripped down.&quot; It pulled 61 source citations across the spectrum, including a rare break from National Review, which called Trump&#x27;s motive &quot;personal and vindictive.&quot; On the other track, the House passed and sent to Trump a bill granting him new unilateral sanctions authority over Russia and any country buying Russian energy — a real transfer of executive power with direct bearing on how the war economy around Ukraine functions — and it drew three total citations. That gap is the headline finding of this period: substance is being ignored in favor of spectacle, and it&#x27;s happening on a legislative action that actually matters.</p>
+<p>A second and more troubling substance story is running on almost no oxygen at all. Following the January capture of Maduro and the U.S. seizure of Venezuelan oil assets, Democrats are demanding transparency on where the resulting oil revenue is going, and at least one outlet (Mother Jones) has specific, named allegations that Trump-connected oil executives — Continental Resources is named — are already cutting development deals with PDVSA. This is a live cronyism allegation attached to a regime-change operation the U.S. just carried out, and it has exactly two sources, both left-leaning, no independent corroboration, and no administration response. Whether that&#x27;s because the allegation is thin or because no one wants to chase it is unclear, but either way it is currently sitting outside the boundaries of the mainstream story.</p>
+<p>Layered on top of this is the opening phase of midterm opposition research. Two character-attack stories — Twitch streamer Hasan Piker&#x27;s comments being used against Michigan Senate candidate Abdul El-Sayed, and an ActBlue/House Judiciary report being used against Virginia&#x27;s Elaine Luria by the Kiggans campaign — surfaced the same day, both driven exclusively by right-leaning outlets, both built on secondhand material rather than the candidates&#x27; own statements. This is the leading edge of what will be a much larger midterm messaging war, and right now it is running uncontested because the left has not engaged with either story.</p>
+</div>
+
+<div class="brief-section ">
+  <div class="section-label">🎭 Intelligence Brief</div>
+  <h2>KEY ACTORS AND DYNAMICS</h2>
+  <p>Trump remains the central gravitational actor, but the two Trump-adjacent stories in this set pull in opposite directions on how much scrutiny he&#x27;s actually facing. The Kennedy Center fight is a low-stakes, ego-driven dispute where even sympathetic outlets are declining to defend him — no right-leaning source in this set defends the demolition push or the board&#x27;s authority, which is a real signal of thin ideological cover on stories that read as personal grievance rather than policy. Compare that to the Venezuela oil situation, where the stakes are much higher — actual public assets, actual foreign policy consequence, actual self-dealing allegation — and where no one on the right is touching it at all, and the left is only touching it lightly.</p>
+<p>Congressional Republicans passed the Russia sanctions bill with what PBS describes as a large, bipartisan vote, which — if accurate — means this wasn&#x27;t even a partisan fight; it just isn&#x27;t being treated as news relative to its actual weight. That mismatch between institutional significance and media attention is worth tracking as a pattern independent of any single story.</p>
+<p>On the midterm front, the driving actors are conservative media outlets running coordinated-feeling opposition research (Piker/El-Sayed, ActBlue/Luria) while Democratic-aligned figures scramble to distance themselves — El-Sayed publicly distanced his campaign from Piker, and even a fellow Democrat, Rep. Haley Stevens, criticized Piker&#x27;s remarks. That&#x27;s notable: it means the attack is generating intra-party friction on the left before the right even has to press further.</p>
+<p>Ambassador Huckabee&#x27;s public branding of Macklemore&#x27;s activism as antisemitic is a diplomat using an official post to intervene in a domestic culture fight, and it has drawn zero pickup outside right-leaning outlets — either it&#x27;s being treated as manufactured controversy or it&#x27;s being deliberately starved of amplification by outlets that don&#x27;t want to legitimize it either way.</p>
+</div>
+
+<div class="brief-section danger-section">
+  <div class="section-label">🔇 Intelligence Brief</div>
+  <h2>WHAT ISN&#x27;T BEING SAID</h2>
+  <p>The left is not engaging with either midterm opposition-research story (El-Sayed/Piker, Luria/ActBlue), which means right-wing framing of both Democratic candidates is currently running unrebutted in the public record. There is no visible campaign rebuttal on the Luria/ActBlue allegations and no neutral fact-check of the underlying House Judiciary report in this set.</p>
+<p>The right is not touching the Venezuela oil cronyism story at all. A Trump-connected company allegedly cutting deals with a foreign state oil company right after a U.S.-directed regime change is exactly the kind of story that would generate aggressive scrutiny if the party in power were reversed. Its absence from right-leaning coverage — and its thin, uncorroborated treatment even on the left — suggests either genuine uncertainty about the facts or a mutual disinterest in pursuing a story that doesn&#x27;t serve either side&#x27;s narrative needs.</p>
+<p>Nobody is connecting the Russia sanctions bill to the broader &quot;Congress left town&quot; storyline that&#x27;s independently circulating (&quot;Did Anyone Notice Congress Was Gone?&quot;, Democrats attacking the House GOP for an early recess). A major transfer of sanctions power to the president happening in the same window that Congress is being publicly mocked for disengagement is a connection no outlet in this set has made.</p>
+<p>The AI regulation anxiety storyline — now four separate pieces (Democratic strategists warning candidates, a New York lawmaker&#x27;s &quot;told you so,&quot; 2028-minded Democrats waking up to the issue, and a right-leaning &quot;China wants America to fear AI&quot; argument) — never crosses the aisle. No single proposal or bill is being covered by both left and right outlets; each side is having an entirely separate conversation about the same underlying anxiety.</p>
+<p>Finally, every open item from the prior watch cycle — the Massie/Hegseth impeachment articles, the DHS v. Streever case, the Kraft statement on Palestinian aid, and the Iran-Gulf talks — has disappeared entirely rather than resolved. That&#x27;s a full turnover of the news cycle in one day, not a gradual fade, and it&#x27;s worth confirming whether any of those were quietly closed out or simply displaced by the midterm and Kennedy Center stories.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">🔗 Intelligence Brief</div>
+  <h2>CONNECTIONS AND PATTERNS</h2>
+  <p>The Piker/El-Sayed and ActBlue/Luria stories surfacing on the same day, both right-sourced, both built on leaked or secondhand material rather than direct candidate statements, reads less like organic news and more like a synchronized opposition-research push timed to a slow news week. Treat this pair as a matched set rather than two unrelated stories.</p>
+<p>The Kennedy Center coverage volume (61 sources) versus the Russia sanctions bill (3 sources) versus the Venezuela oil story (2 sources) is the clearest quantitative signal in this dataset: symbolic Trump-personality conflict is absorbing attention that would otherwise go to two stories with actual policy and financial stakes. This isn&#x27;t a left or right phenomenon — both sides are participating in the Kennedy Center story and both sides are ignoring the other two, just for different reasons (the right avoids Venezuela cronyism, the left underplays the sanctions bill&#x27;s significance to Trump&#x27;s discretionary power).</p>
+<p>National Review&#x27;s break from defensive posture on the Kennedy Center — actually calling Trump&#x27;s motive personal and vindictive — is worth flagging as a data point on right-media discipline. If it recurs on other Trump-grievance-driven stories (as opposed to policy stories), that would indicate a genuine fracture point rather than a one-off.</p>
+<p>The Huckabee/Macklemore item and the Kennedy Center item share a surname coincidence (Kennedy) that shows up in raw entity clustering but has zero substantive connection — worth noting only so it isn&#x27;t mistaken for a real link in any automated analysis.</p>
+</div>
+
+<div class="brief-section warn-section">
+  <div class="section-label">👁 Intelligence Brief</div>
+  <h2>WATCH LIST</h2>
+  <ul>
+<li>Continental Resources–PDVSA deal: watch for wire-service or right-leaning corroboration, or any on-record denial from the company or the administration. This is the single highest-value story in the set if it holds up, and currently the least verified.</li>
+<li>Trump&#x27;s actual signature on the Russia sanctions bill, and whether he exercises the new authority against Russian oil buyers, specifically India and China. The bill is passed; the real story is whether he uses it or sits on it.</li>
+<li>Kennedy Center board compliance with, or an appeal against, the court&#x27;s 30-day notice order — the window is now running.</li>
+<li>Whether El-Sayed&#x27;s campaign issues any further statement on Piker, and whether any left or center outlet picks up the story independently rather than leaving it to right-wing framing.</li>
+<li>Luria campaign&#x27;s response to the ActBlue/Kiggans allegations, and whether a neutral outlet fact-checks the underlying House Judiciary report.</li>
+<li>Status of the Massie/Hegseth impeachment articles, the DHS v. Streever case, and the Kraft/Palestinian-aid story — confirm whether these were resolved or simply fell out of the cycle.</li>
+<li>Any AI oversight proposal (Hawley-Blumenthal or similar) that manages to draw both left and right coverage — would be the first sign the AI regulation debate is becoming a real bipartisan fight rather than two parallel monologues.</li>
+</ul>
+</div>
+
+<div class="analyst-note">
+  <div class="analyst-note-header">✦ Analyst Note</div>
+  <p>The underlying dynamic right now is that both media ecosystems are optimizing for stories that confirm existing tribal narratives with minimal follow-up cost, and avoiding stories that would require holding their own side accountable or doing real verification work. The Kennedy Center fight is safe for everyone — the right can quietly concede Trump looks petty without conceding anything programmatic, and the left gets an easy villain with no need to build a documented case. The Venezuela oil story and the Russia sanctions bill require actual reporting, actual document work, and in Venezuela&#x27;s case, a willingness by the right to scrutinize a Trump-connected company, which isn&#x27;t happening. The midterm opposition research stories show the same asymmetry in miniature: it&#x27;s easier to distance a campaign from a bad soundbite than to build or rebut a documented case, so that&#x27;s the fight everyone is having instead. None of this means the substantive stories are false — it means the incentive structure of the current media environment is actively selecting against the stories most worth verifying.</p>
+</div>
+
+  <hr class="divider">
+
+  <!-- Story Analysis -->
+  <div class="brief-section">
+    <div class="section-label">Cross-Spectrum Story Analysis</div>
+    <h2>INDIVIDUAL STORY BREAKDOWN</h2>
+    <div class="stories-grid">
+      
+<div class="story-card high">
+  <div class="story-headline">Following the January capture of Nicolás Maduro and the US seizure of Venezuelan oil operations, congressional Democrats are demanding transparency on where the oil revenue is going, amid reports that Trump-connected oil executives are already negotiating development deals with Venezuela&#x27;s state oil company.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#e05252;">far-left (1)</span><span class="bias-badge" style="color:#e07a7a;">left (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#e05252; flex:50.0;" title="far-left: 1"></div><div class="bias-segment" style="background:#e07a7a; flex:50.0;" title="left: 1"></div></div></div>
+  <div class="story-assessment">The two sources agree on the underlying fact — the US now controls Venezuelan oil assets after Maduro&#x27;s removal — but diverge sharply in specificity and framing: WaPo treats this as a process/oversight question, while Mother Jones supplies a concrete, damaging allegation (a specific company, acreage, and reserve estimate) that would substantiate the cronyism narrative if verified. The key missing piece is independent confirmation of the Continental Resources–PDVSA deal and any response from the administration or named parties. Without right-leaning or wire-service corroboration, it&#x27;s impossible to gauge how contested the underlying seizure and deal-making narrative actually is.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Both outlets, from center-left to far-left, frame this as an accountability and self-dealing story: the Washington Post emphasizes congressional oversight and transparency about where seized oil revenue is going, while Mother Jones goes further, framing it explicitly as cronyism — Trump donors and allies personally enriching themselves from a war/intervention outcome, invoking themes of corruption and conflicts of interest.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center/centrist source is included in this set; the Washington Post here functions as the more institutional, oversight-focused left-leaning outlet rather than a true center source.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    No right-leaning source is included in this set, so right-of-center framing cannot be assessed from the provided coverage.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    N/A — no right-leaning coverage was provided for comparison, so it cannot be determined what right-leaning outlets are reporting that left outlets omit.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Cannot be assessed; no right-leaning source is present in this set to compare omissions against.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A federal judge ordered the Trump administration and the Trump-aligned Kennedy Center board to give 30 days&#x27; written notice before making any major physical changes to the Kennedy Center building, including demolition, after Trump suggested it could be &#x27;ripped down.&#x27;</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (11)</span><span class="bias-badge" style="color:#e0a87a;">center-left (13)</span><span class="bias-badge" style="color:#7ae09b;">center-right (6)</span><span class="bias-badge" style="color:#e05252;">far-left (3)</span><span class="bias-badge" style="color:#3a8a52;">far-right (3)</span><span class="bias-badge" style="color:#e07a7a;">left (9)</span><span class="bias-badge" style="color:#a07ae0;">libertarian (3)</span><span class="bias-badge" style="color:#5ab56e;">right (7)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:20.0;" title="center: 11"></div><div class="bias-segment" style="background:#e0a87a; flex:23.6;" title="center-left: 13"></div><div class="bias-segment" style="background:#7ae09b; flex:10.9;" title="center-right: 6"></div><div class="bias-segment" style="background:#e05252; flex:5.5;" title="far-left: 3"></div><div class="bias-segment" style="background:#3a8a52; flex:5.5;" title="far-right: 3"></div><div class="bias-segment" style="background:#e07a7a; flex:16.4;" title="left: 9"></div><div class="bias-segment" style="background:#a07ae0; flex:5.5;" title="libertarian: 3"></div><div class="bias-segment" style="background:#5ab56e; flex:12.7;" title="right: 7"></div></div></div>
+  <div class="story-assessment">The factual core — a judge requiring 30 days&#x27; notice before major changes to the Kennedy Center, tied to Trump&#x27;s earlier naming dispute and demolition remark — is consistent across all outlets that covered it, which is unusual given the topic&#x27;s political charge. The most notable signal here is that even a right-leaning outlet (National Review) breaks from a defensive posture and criticizes Trump&#x27;s motives as personal and vindictive, suggesting weak ideological cover for this particular action rather than a genuine left-right factual dispute.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Frames the ruling as necessary judicial pushback against an impulsive, personally-motivated attempt by Trump and his allied board to unilaterally alter or destroy a national cultural institution, emphasizing his &#x27;ripped down&#x27; comment as evidence of vindictiveness.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    Treats the story as a straightforward procedural/institutional check — a court requiring advance notice before major changes — reported in brief, largely neutral terms (e.g., PBS&#x27;s News Wrap item, Axios&#x27;s framing of judicial intervention protecting the institution).
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Notably split from typical pro-Trump coverage: National Review, a right-leaning outlet, frames Trump&#x27;s demolition push as an angry, vindictive &#x27;tantrum&#x27; rather than legitimate policy, indicating little right-wing defense of the move in this sample. Fox News and Breitbart did not cover this specific story in the provided set.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Left coverage does not surface any stated rationale from the administration or board for wanting to alter/demolish the building beyond Trump&#x27;s own remark, nor any defense of the board&#x27;s authority to make such changes.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Right-leaning coverage in this set does not include any outlet defending the demolition push or disputing the court&#x27;s authority to impose the notice requirement — even National Review criticizes Trump&#x27;s motives, meaning right coverage largely omits a counter-narrative that might otherwise be expected from partisan outlets.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">The U.S. House passed a bill imposing new sanctions on Russia and on countries that purchase Russian energy, sending it to President Trump for signature, amid a broader wave of Russia-related actions including Latvia barring pro-Putin figures Alex Ovechkin and Umar Kremlev from entry.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ab8e0;">center (1)</span><span class="bias-badge" style="color:#e0a87a;">center-left (1)</span><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ab8e0; flex:33.3;" title="center: 1"></div><div class="bias-segment" style="background:#e0a87a; flex:33.3;" title="center-left: 1"></div><div class="bias-segment" style="background:#7ae09b; flex:33.3;" title="center-right: 1"></div></div></div>
+  <div class="story-assessment">These three stories aren&#x27;t really one event covered three ways — they&#x27;re three distinct but thematically linked Russia items (a US sanctions bill, a Latvian visa ban, and opinion commentary on Trump&#x27;s leverage) stitched together under a shared &#x27;Russia pressure&#x27; umbrella. The one hard fact that matters is that Congress delegated new sanctions authority to Trump; everything else — how &#x27;overwhelming&#x27; the vote was, whether Trump will use the power, and the Ovechkin story — is framing, speculation, or a separate news item entirely.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    PBS treats the sanctions bill as routine, low-drama legislative business — mentioned alongside other unrelated bills with no emphasis on confrontation, urgency, or Trump&#x27;s personal role, effectively normalizing the action as ordinary governance.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    The Hill frames its story (Ovechkin/Latvia) as a national-security and accountability matter, focusing on a European government&#x27;s punitive response to perceived Russian political influence via a celebrity athlete, distinct from the sanctions bill&#x27;s legislative mechanics.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    WSJ Opinion frames the story around Trump personally, casting the new law as a &#x27;power&#x27; or &#x27;tool&#x27; handed to him and implicitly challenging him to prove he will use it against Putin — emphasizing individual agency and a test of resolve rather than institutional process.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    PBS&#x27;s routine framing omits any discussion of Trump&#x27;s discretion, motives, or whether he will actually enforce the sanctions — a question WSJ raises directly — and doesn&#x27;t mention any related international actions (like Latvia&#x27;s Ovechkin ban) that reinforce the broader anti-Russia-influence narrative.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    WSJ&#x27;s framing omits the legislative details PBS reports (e.g., that the House vote was large/bipartisan, and that the bill was part of routine broader congressional action), which would undercut its narrative of Trump as the sole pivotal actor rather than Congress driving the policy.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">U.S. Ambassador to Israel Mike Huckabee publicly labeled rapper Macklemore&#x27;s pro-Palestinian activism antisemitic and backed NFL owners&#x27; efforts to cancel his performances, while conservative media separately highlighted Iran-linked outlet Al Mayadeen&#x27;s coverage of Macklemore&#x27;s Ed Sheeran feud and $1 million donation to pro-Palestinian groups including UNRWA.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:50.0;" title="right: 1"></div></div></div>
+  <div class="story-assessment">This is fundamentally a dispute over where the line falls between criticism of Israeli policy and antisemitism, with a U.S. diplomat&#x27;s official statement lending it outsized weight. Both right-leaning sources share a framing that treats pro-Palestinian advocacy and its foreign media amplification as inherently suspect, but neither source in this set provides Macklemore&#x27;s direct response or independently substantiates the UNRWA-Hamas claim, leaving key factual assertions uncorroborated.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source was included in this dataset, so left framing cannot be directly assessed from the provided coverage. Based on typical patterns, left outlets would likely frame Huckabee&#x27;s comments as conflating anti-Zionism or criticism of Israeli policy with antisemitism, emphasizing free speech and Macklemore&#x27;s humanitarian intent.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center source was included in this dataset, so center framing cannot be assessed from the provided coverage.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both sources frame Macklemore&#x27;s activism as dangerous or complicit: Fox News casts his pro-Palestinian stance as tacit support for Hamas atrocities and amplifies Huckabee&#x27;s authority as a diplomat condemning &#x27;Jew hatred&#x27;; Breitbart goes further, framing foreign amplification of Macklemore&#x27;s activism (via Al Mayadeen) as Iranian propaganda and highlighting alleged Hamas links to UNRWA, a recipient of his donation.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source was provided in this dataset for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning coverage omits Macklemore&#x27;s own stated rationale for his activism and donations, any pushback characterizing Huckabee&#x27;s comments as conflating criticism of Israeli policy with antisemitism, and independent verification (beyond assertion) of UNRWA&#x27;s alleged Hamas ties.
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">Twitch streamer Hasan Piker, an ally of Michigan Senate Democratic candidate Abdul El-Sayed, made comments to Axios comparing U.S.-caused deaths unfavorably to al-Qaeda, prompting El-Sayed to distance his campaign from Piker and drawing criticism from both Republicans and a fellow Democrat, Rep. Haley Stevens.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span><span class="bias-badge" style="color:#5ab56e;">right (2)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#3a8a52; flex:33.3;" title="far-right: 1"></div><div class="bias-segment" style="background:#5ab56e; flex:66.7;" title="right: 2"></div></div></div>
+  <div class="story-assessment">The verified core fact — Piker made an inflammatory comparison and El-Sayed subsequently distanced himself from Piker — is consistent across all three sources, but each outlet spins the motive and significance differently: Fox News maximizes campaign implication, National Review questions El-Sayed&#x27;s sincerity, and Breitbart deploys a Democratic critic to suggest party-wide fracture. Without left or center sources, it&#x27;s impossible to gauge whether this is being treated as a major story outside conservative media or is largely a right-wing-driven narrative amplifying a single streamer&#x27;s comment into a campaign liability. The story&#x27;s real significance hinges on facts not established here: how close the Piker-El-Sayed relationship actually was and whether it has any bearing on El-Sayed&#x27;s own positions.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    No left-leaning source is present in this set; left-leaning coverage cannot be characterized from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No center-positioned source is present in this set; center coverage cannot be characterized from the provided sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Right and far-right outlets frame this as evidence of dangerous, radical anti-American sentiment within or adjacent to the Democratic candidate&#x27;s orbit. Fox News emphasizes shock value (&#x27;stunning terrorist comparison&#x27;) and guilt-by-association with the campaign; National Review focuses on accountability, casting El-Sayed&#x27;s distancing as an attempt to evade responsibility rather than a genuine break; Breitbart uses an intra-Democratic voice (Stevens) to amplify the narrative that the party&#x27;s left flank is a liability, adding a veneer of bipartisan validation to the criticism.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be assessed — no left-leaning source was provided in this set, so there is no left coverage to compare against right coverage.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    The right-leaning sources omit the full original context or content of Piker&#x27;s remarks beyond the single comparative claim, any response or clarification from Piker himself, and specifics on what El-Sayed&#x27;s actual past relationship with Piker consisted of (e.g., endorsements, donations, joint appearances) versus simply being labeled an &#x27;ally.&#x27;
+  </div>
+</div>
+</div>
+
+<div class="story-card medium">
+  <div class="story-headline">A House Judiciary Committee report on ActBlue&#x27;s donation-screening practices included allegations and internal Slack screenshots that the Kiggans campaign is using to accuse Elaine Luria&#x27;s campaign of benefiting from improperly processed (including allegedly foreign) contributions.</div>
+  <div class="story-meta"><span class="bias-badge" style="color:#7ae09b;">center-right (1)</span><span class="bias-badge" style="color:#3a8a52;">far-right (1)</span></div>
+  <div class="bias-bar-wrap"><div class="bias-bar-label">Coverage spectrum</div><div class="bias-bar"><div class="bias-segment" style="background:#7ae09b; flex:50.0;" title="center-right: 1"></div><div class="bias-segment" style="background:#3a8a52; flex:50.0;" title="far-right: 1"></div></div></div>
+  <div class="story-assessment">The verified fact is narrow: a House committee released a report with internal ActBlue documents raising questions about donation-screening safeguards. Everything beyond that — that funds were definitively &#x27;illegal,&#x27; that staff &#x27;knowingly&#x27; permitted foreign donations, or that Luria&#x27;s campaign specifically benefited from fraud — is characterization from a Republican campaign and sympathetic outlets, not independently confirmed fact. Absent a rebuttal source or neutral fact-check, this reads as a one-sided opposition-research story amplified through friendly media rather than a settled scandal.</div>
+  
+<div class="framing-grid">
+  <div class="framing-box">
+    <div class="framing-label" style="color:#e07a7a;">Left</div>
+    Not represented in this coverage set — no left-leaning outlet was included, so left framing cannot be assessed from the available sources.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#7ab8e0;">Center</div>
+    No genuinely centrist or left-leaning source is present in this set; RealClearPolitics (labeled center-right) is the closest to a measured account, emphasizing primary-source documents over campaign rhetoric, but still frames the material as demonstrating knowing wrongdoing rather than presenting it as an unresolved allegation.
+  </div>
+  <div class="framing-box">
+    <div class="framing-label" style="color:#5ab56e;">Right</div>
+    Both sources treat the House report as strong or conclusive evidence of wrongdoing. Breitbart frames it as a partisan corruption story — a Democrat&#x27;s campaign benefiting from illegal cash — largely adopting the Kiggans campaign&#x27;s accusatory language. RealClearPolitics takes a more evidentiary tone, foregrounding the leaked internal Slack screenshots as proof of intentional misconduct by ActBlue itself.
+  </div>
+</div>
+  
+<div class="omissions-row">
+  <div class="omission-box">
+    <div class="omission-label">Not said by left</div>
+    Cannot be determined — no left-leaning source was provided for comparison.
+  </div>
+  <div class="omission-box">
+    <div class="omission-label">Not said by right</div>
+    Both right-leaning sources omit any response or rebuttal from Luria&#x27;s campaign or ActBlue, independent verification of the &#x27;illegal&#x27; or &#x27;foreign&#x27; donation claims, the broader context/scope of the House Judiciary Committee&#x27;s investigation, and any discussion of whether similar donation-processing issues have been found on the Republican-aligned WinRed platform.
+  </div>
+</div>
+</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Correlation / Patterns -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Intelligence Layer</div>
+    <h2>CONNECTIONS &amp; PATTERNS</h2>
+
+    
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Abdul El-Sayed</span><span class="entity-tag">Hasan Piker</span><span class="entity-tag">Kiggans campaign</span><span class="entity-tag">Elaine Luria</span></div>
+  <div class="connection-text">Two separate midterm opposition-research stories — Piker&#x27;s comments used against El-Sayed in Michigan, and the ActBlue/House Judiciary report used against Luria in Virginia — surfaced the same day, both sourced exclusively by right/far-right outlets, both leaning on secondhand material (a streamer&#x27;s remark, leaked Slack screenshots) rather than independently verified facts.</div>
+  <div class="connection-sig">↳ Suggests a coordinated or at least synchronized conservative-media push to define Democratic Senate/House candidates via guilt-by-association ahead of the midterms, timed to a week when Congress itself is out of session and hard news is thin.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Donald Trump</span><span class="entity-tag">Kennedy Center</span><span class="entity-tag">Venezuela</span><span class="entity-tag">Continental Resources</span></div>
+  <div class="connection-text">Two Trump-adjacent stories with starkly different coverage volume: the symbolic Kennedy Center demolition dispute drew 61 combined source citations and even right-wing self-criticism (National Review), while the substantive allegation that Trump-connected oil executives are cutting deals with PDVSA after the Maduro capture drew exactly 2 sources, both left-leaning, with zero right or center pickup.</div>
+  <div class="connection-sig">↳ A potential cronyism story tied to an actual regime-change operation is being effectively ignored outside left media, while a lower-stakes culture-war building dispute dominates cross-spectrum attention — a textbook case of symbolic outrage crowding out substantive accountability coverage.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Congress</span><span class="entity-tag">Russia sanctions bill</span></div>
+  <div class="connection-text">The House passed and sent to Trump a bill granting new unilateral sanctions authority over Russia and its energy buyers — arguably the most consequential legislative action in today&#x27;s set — yet it drew only 3 total source citations across the entire spectrum, compared to 61 for the Kennedy Center notice order.</div>
+  <div class="connection-sig">↳ A major transfer of executive power is being under-covered relative to its stakes, right as separate stories (&#x27;Did Anyone Notice Congress Was Gone?&#x27;, &#x27;Democrats seize on House GOP&#x27;s decision to leave town early&#x27;) frame Congress as disengaged — the two threads reinforce each other but aren&#x27;t being connected by any outlet.</div>
+</div>
+
+<div class="connection-card">
+  <div class="connection-entities"><span class="entity-tag">Robert F. Kennedy Jr.</span><span class="entity-tag">Kennedy Center</span></div>
+  <div class="connection-text">These two entities co-occur in the entity network only because of a shared surname, not any substantive relationship between the anti-vaccine event story and the Kennedy Center facility dispute.</div>
+  <div class="connection-sig">↳ Flagging this as a data-quality artifact rather than a real narrative link — worth discounting in any automated entity-clustering output.</div>
+</div>
+
+    <h3 style="font-size:15px; color: var(--warn); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">NARRATIVE PATTERNS</h3>
+    <div class="pattern-item">Two independent right-only &#x27;opposition research&#x27; stories (El-Sayed/Piker in Michigan; Kiggans/Luria in Virginia) both surfaced the same day, both leaning on leaked documents or a third party&#x27;s inflammatory remarks rather than the candidates&#x27; own statements — a midterm messaging pattern rather than organic news.</div>
+<div class="pattern-item">AI regulation anxiety now spans four separate stories (Democratic advisers warning candidates, a NY lawmaker&#x27;s &#x27;told you so,&#x27; Democrats eyeing 2028 waking up to AI fears, and a right-leaning &#x27;China wants America to fear AI&#x27; op-ed) but remains fully siloed — no outlet crosses the aisle to cover the same specific proposal from both sides.</div>
+<div class="pattern-item">Symbolic/cultural Trump storylines (Kennedy Center notice order, USIP facade carving, DC arch airspace risk, hunting-order signing) are absorbing disproportionate cross-spectrum attention relative to concurrently breaking substantive items (Russia sanctions bill, Venezuela oil revenue transparency demands).</div>
+
+    <h3 style="font-size:15px; color: var(--danger); margin: 24px 0 12px; font-family: var(--mono); letter-spacing: 0.1em;">ANOMALIES</h3>
+    <div class="anomaly-item">The Russia sanctions bill — real unilateral power transferred to Trump over Russian energy trade — drew only 3 total sources despite being sent to the President&#x27;s desk, a striking under-coverage given the Kennedy Center notice order (a non-binding procedural win) drew 61.</div>
+<div class="anomaly-item">National Review breaking from a defensive posture to call Trump&#x27;s Kennedy Center motives &#x27;personal and vindictive&#x27; is a rare visible crack in right-wing message discipline, worth tracking for whether it recurs on other Trump-personal-grievance stories.</div>
+<div class="anomaly-item">A sitting U.S. Ambassador (Huckabee) publicly branding a prominent musician&#x27;s activism antisemitic drew zero center or left pickup — unusual for an on-record diplomatic statement of this kind, suggesting either deliberate under-coverage or that outlets view it as manufactured controversy.</div>
+<div class="anomaly-item">The Venezuela oil cronyism allegation is rated &#x27;high&#x27; significance yet rests on only two left-leaning sources with no independent corroboration, no administration response, and no named-party denial — an unusually thin evidentiary base for a story of this stated importance.</div>
+<div class="anomaly-item">Every item from the previous watch list (Massie/Hegseth impeachment articles, DHS v. Streever case, Robert Kraft statement, Iran-Gulf talks) is entirely absent from today&#x27;s coverage — a total news-cycle turnover rather than gradual fade, worth confirming whether these were quietly resolved or simply displaced.</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Blindspot analysis -->
+  <div class="brief-section danger-section">
+    <div class="section-label">Coverage Gaps</div>
+    <h2>BLINDSPOT ANALYSIS</h2>
+    <p style="margin-bottom: 16px;">The left is systematically avoiding the two campaign-trail character-attack stories (El-Sayed/Piker, Luria/ActBlue), leaving right-wing opposition research to run uncontested in the public record for now. The right is systematically avoiding the Venezuela oil cronyism allegation — a Trump-adjacent self-dealing story that, if roles were reversed, would likely draw aggressive conservative-media scrutiny — suggesting selective outrage calibrated to which party benefits rather than the underlying facts. Both sides continue to prefer symbolic Trump-personality storylines (Kennedy Center) over substantive legislative or financial accountability stories (Russia sanctions, Venezuela oil), which generate less follow-up pressure on either party.</p>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+      <div>
+        <div class="omission-label" style="color: #e07a7a;">Left-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats Demand Where Venezuelan Revenue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› It&#x27;s illegal for armed federal officers to be at polls. Lawsuits seek to ensure that</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› D.C. airspace is complicated. Experts say Trump&#x27;s arch would add one more risk</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› How Trump&#x27;s immigration crackdown made it harder to become U.S. citizen</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump&#x27;s push to restrict mail ballots failed. Other efforts to reshape the midterms continue</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› ‘We told you so’: Key New York lawmaker calls for more AI rules</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democratic advisers are warning their candidates not to go too hard at AI</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Senator blocks bill meant to lower electricity prices linked to data centers</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› What to know about the Kennedy Center closing under Trump</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Democrats seize on House GOP’s decision to leave town early</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Mike Pence says he has ‘no plans’ to run for president in 2028</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Pollwatcher: Inside The Washington Post-Schar School poll on Michigan</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› As warnings mount, Democrats eyeing the presidency wake up to AI fears</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› US Institute of Peace files emergency motion to block carving of Trump’s name into facade of its headquarters – as it happened</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› LA woman charged with murder over bus crash that preceded deadly helicopter plunge</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Accused Oregon serial killer indicted in connection with death of sixth woman</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Outcry as Michigan high school asks girls to share details of menstrual cycles</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Cory Mills’ Career Imploded. Then His Grenade Factory Exploded.</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Is Meta Using Disabled People to Promote Its Glasses?</div>
+      </div>
+      <div>
+        <div class="omission-label" style="color: #5ab56e;">Right-Only Coverage</div>
+        <div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Huckabee Calls Macklemore Antisemitism: &#x27;Voice&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› El-Sayed Radical Doubles Anti-American Rhetoric</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Kiggans Campaign: Luria&#x27;S Actblue Funneled</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Pepper…and Salt</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Sandbox at the End of the World</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› A U.S. Indictment Signals an Emboldened Russia</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The SEC’s Big and Welcome Proxy Reform</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why California Diesel Is $8.35 a Gallon</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Unearthed clip exposes what &#x27;DEI Queen&#x27; in razor-thin House race thought of &#x27;Back the Blue&#x27; law</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› WATCH: Gaffe-prone Seattle socialist mayor cuts off police chief in yet another awkward interview</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Starbucks resolves Florida DEI lawsuit with blockbuster agreement</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Republicans’ chances at holding on to Senate ‘looking good’: Sarah Bedford</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Senate Races Are Breaking Bad Already</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Sydney Sweeney Manages to Clear Up the Sports World’s Gender Confusion</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Did Anyone Notice Congress Was Gone?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why We Need Our Constitution — and Need It Back</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› China Wants America to Fear AI. Congress Shouldn’t Encourage That</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› An Apology to the People of the Future</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› The Case for Containment</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Undercover Video Shows James Talarico&#x27;s Pastor Supporting Atheists, if You &#x27;Hate Religion We&#x27;re on the Same Team&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Exclusive: Rick Scott Introduces Legislation to Combat Illegal Southern Border Tunnel Crossings</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› DHS Launches Crackdown on Immigration Attorneys Filing False Asylum Claims</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Schiff: In Midterms, Trump Voters Will &#x27;Vote Democratic or Not Vote at All&#x27;</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Trump PAC Forced To Spend Deep in MAGA Country</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› AI Firms&#x27; Self-Serving Warnings</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Leftist Prosecutors Have a Crime Problem All Their Own</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Why Manchin&#x27;s Endorsement of Sen. Collins Is Infuriating</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Dems May Regret Their Primary Choices in 5 Senate Races</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Can These 4 Working-Class Populists Win?</div><div style="font-size:13px; padding:6px 0; border-bottom:1px solid var(--border);">› Teachers Unions: The Lobby at War With Learning</div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Watch List -->
+  <div class="brief-section warn-section">
+    <div class="section-label">Forward Watch</div>
+    <h2>WATCH LIST</h2>
+    <div class="watch-item">Continental Resources–PDVSA deal: watch for wire-service or right-leaning corroboration, or an on-record administration/company denial</div>
+<div class="watch-item">Whether Piker&#x27;s Michigan comments get any left/center pickup beyond the right-wing-driven cycle, and any further statement from El-Sayed&#x27;s campaign</div>
+<div class="watch-item">Luria campaign&#x27;s rebuttal to the ActBlue/Kiggans allegations, and whether any neutral fact-check of the House Judiciary report emerges</div>
+<div class="watch-item">Trump&#x27;s signature on the Russia sanctions bill and whether he actually exercises the new authority against Russian oil buyers (India, China)</div>
+<div class="watch-item">Compliance or an appeal by the Trump-aligned Kennedy Center board within the court-ordered 30-day notice window</div>
+<div class="watch-item">Whether Massie/Hegseth impeachment articles, the DHS v. Streever case, or the Kraft/Palestinian-aid story resurface or have been quietly resolved</div>
+<div class="watch-item">Any bill (e.g., Hawley-Blumenthal AI oversight) that manages to draw coverage from both left and right outlets rather than remaining siloed</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- Source Index -->
+  <div class="brief-section">
+    <div class="section-label">Sources Analyzed</div>
+    <h2>SOURCE INDEX</h2>
+    <div class="source-grid">
+      <div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>Axios</span></div>
+<div class="source-item"><div class="source-dot" style="background:#3a8a52;"></div><span>Breitbart</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Fox News Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e05252;"></div><span>Mother Jones</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>NPR Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>National Review</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>PBS NewsHour Politics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e0a87a;"></div><span>Politico</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>RealClearPolitics</span></div>
+<div class="source-item"><div class="source-dot" style="background:#a07ae0;"></div><span>Reason</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>The Guardian US</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ab8e0;"></div><span>The Hill</span></div>
+<div class="source-item"><div class="source-dot" style="background:#7ae09b;"></div><span>WSJ Opinion</span></div>
+<div class="source-item"><div class="source-dot" style="background:#5ab56e;"></div><span>Washington Examiner</span></div>
+<div class="source-item"><div class="source-dot" style="background:#e07a7a;"></div><span>Washington Post Politics</span></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
